@@ -3,6 +3,100 @@
     const filesData = {};
     const mcPackData = window.MC_PACK_DATA || {};
     const TRANSPARENT_PIXEL = mcPackData.transparentPixel || "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=";
+    const isEnglish = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+    const UI_TEXT = isEnglish ? {
+        upload: 'Upload',
+        sliced: 'Sliced',
+        itemNamePlaceholder: 'Item name (e.g. iron_pickaxe)',
+        itemNamePlaceholderShort: 'Item name',
+        blockTexturePlaceholder: 'Block texture name (e.g. oak_planks)',
+        blockTexturePlaceholderShort: 'Block texture name',
+        sliceTexture: 'Slice texture',
+        preview: 'Preview',
+        armorMaterialLabel: 'Armor material to replace:',
+        armorMaterials: {
+            leather: 'Leather (with _overlay trick)',
+            iron: 'Iron',
+            gold: 'Golden',
+            diamond: 'Diamond',
+            netherite: 'Netherite',
+            chainmail: 'Chainmail',
+            turtle: 'Turtle shell',
+            copper: 'Copper (if from mods)'
+        },
+        armorLayer1: '3D Layer 1',
+        armorLayer1Hint: '(Helmet, Chestplate, Boots)',
+        armorLayer2: '3D Layer 2',
+        armorLayer2Hint: '(Leggings)',
+        inventoryIcons: 'Inventory icons:',
+        helmet: 'Helmet',
+        chestplate: 'Chestplate',
+        leggings: 'Leggings',
+        boots: 'Boots',
+        iconHint: '(Icon)',
+        base: 'Base',
+        top: 'Top',
+        bottom: 'Bottom',
+        front: 'Front',
+        back: 'Back',
+        leftSide: 'Left side',
+        rightSide: 'Right side',
+        allSides: 'All sides',
+        noResults: 'Nothing found',
+        emptyAlert: 'You have not uploaded anything. Add at least one texture.',
+        buildingArchive: '⏳ Building archive...',
+        buildError: 'Build error: ',
+        packDefault: 'CubeInSquarePack',
+        createdWith: 'Created with Minecraft Resource Pack Generator',
+        invalidResolution: (width, height) => `⚠️ Careful! Image resolution (${width}x${height}) is not divisible by 16. Minecraft may display the texture incorrectly.`,
+        faceLabels: { main: 'Base', top: 'Top', bottom: 'Bottom', front: 'Front', back: 'Back', left: 'Left', right: 'Right', side: 'Side' }
+    } : {
+        upload: 'Загрузить',
+        sliced: 'Нарезано',
+        itemNamePlaceholder: 'Название предмета (напр. iron_pickaxe)',
+        itemNamePlaceholderShort: 'Название предмета',
+        blockTexturePlaceholder: 'Название текстуры блока (напр. oak_planks)',
+        blockTexturePlaceholderShort: 'Название текстуры блока',
+        sliceTexture: 'Нарезать текстуру',
+        preview: 'Предпросмотр',
+        armorMaterialLabel: 'Материал брони (Заменяем):',
+        armorMaterials: {
+            leather: 'Кожаная (с трюком _overlay)',
+            iron: 'Железная',
+            gold: 'Золотая',
+            diamond: 'Алмазная',
+            netherite: 'Незеритовая',
+            chainmail: 'Кольчужная',
+            turtle: 'Черепаший панцирь',
+            copper: 'Медная (если из модов)'
+        },
+        armorLayer1: '3D Слой 1',
+        armorLayer1Hint: '(Шлем, Нагрудник, Ботинки)',
+        armorLayer2: '3D Слой 2',
+        armorLayer2Hint: '(Поножи)',
+        inventoryIcons: 'Иконки инвентаря:',
+        helmet: 'Шлем',
+        chestplate: 'Нагрудник',
+        leggings: 'Поножи',
+        boots: 'Ботинки',
+        iconHint: '(Иконка)',
+        base: 'Основа',
+        top: 'Верх',
+        bottom: 'Низ',
+        front: 'Перед',
+        back: 'Зад',
+        leftSide: 'Лев.Бок',
+        rightSide: 'Прв.Бок',
+        allSides: 'Общ.Бок',
+        noResults: 'Ничего не найдено',
+        emptyAlert: 'Вы ничего не загрузили! Добавьте хотя бы одну текстуру.',
+        buildingArchive: '⏳ Сборка архива...',
+        buildError: 'Ошибка сборки: ',
+        packDefault: 'KubVKvadratePack',
+        createdWith: 'Создано в генераторе ресурс-паков Minecraft',
+        invalidResolution: (width, height) => `⚠️ Осторожно! Разрешение картинки (${width}x${height}) не кратно 16. Майнкрафт может криво отобразить текстуру.`,
+        faceLabels: { main: 'Осн', top: 'Врх', bottom: 'Низ', front: 'Прд', back: 'Зад', left: 'Лев', right: 'Прв', side: 'Бок' }
+    };
     
     // Переключение вкладок
     function openTab(tabId, btn) {
@@ -22,7 +116,7 @@
             const imgCheck = new Image();
             imgCheck.onload = () => {
                 if (imgCheck.width % 16 !== 0 || imgCheck.height % 16 !== 0) {
-                    alert("⚠️ Осторожно! Разрешение картинки (" + imgCheck.width + "x" + imgCheck.height + ") не кратно 16. Майнкрафт может криво отобразить текстуру.");
+                    alert(UI_TEXT.invalidResolution(imgCheck.width, imgCheck.height));
                 }
             };
             imgCheck.src = result;
@@ -98,14 +192,14 @@
         }
         
         const status = document.getElementById(`stat_${id}`);
-        if(status) {
-            if (id.startsWith('dyn_blocks_')) {
-                status.style.display = 'none';
-            } else {
-                status.innerHTML = "Загрузить";
+            if(status) {
+                if (id.startsWith('dyn_blocks_')) {
+                    status.style.display = 'none';
+                } else {
+                    status.innerHTML = UI_TEXT.upload;
+                }
+                status.style.color = 'var(--text-dim)';
             }
-            status.style.color = 'var(--text-dim)';
-        }
         
         const input = document.getElementById(id);
         if(input) input.value = '';
@@ -188,7 +282,7 @@
                 <div style="background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 4px; font-family: monospace; color: #cbd5e1; font-size: 0.85rem; margin-top: 5px; overflow-x: auto; white-space: nowrap; display: none;" id="give_${id}"></div>
                 <div style="position:relative; width: 100%; margin-top: 15px; flex: 1;">
                     <label class="upload-zone dynamic-upload" style="height: 100%;">
-                        <span class="status-text" id="stat_${id}">Загрузить</span>
+                        <span class="status-text" id="stat_${id}">${UI_TEXT.upload}</span>
                         <input type="file" accept="image/png" id="${id}">
                         <img class="preview-img" id="prev_${id}">
                     </label>
@@ -203,19 +297,19 @@
             row.innerHTML = `
                 <div style="display: flex; gap: 15px; width: 100%; align-items: center;">
                     <input type="text" class="dynamic-input" placeholder="${placeholder}" id="input_${id}" list="mc_blocks_list">
-                    <button class="btn-slice" onclick="openSlicer('${id}')">✂️ Нарезать текстуру</button>
-                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'blocks')">👁️ Предпросмотр</button>
+                    <button class="btn-slice" onclick="openSlicer('${id}')">✂️ ${UI_TEXT.sliceTexture}</button>
+                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'blocks')">👁️ ${UI_TEXT.preview}</button>
                     <button class="btn-remove" onclick="removeDynamicRow('${id}', 'blocks')">×</button>
                 </div>
                 <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                    ${getBlockZoneHtml(id, 'main', 'Основа', '')}
-                    ${getBlockZoneHtml(id, 'top', 'Верх', '_top')}
-                    ${getBlockZoneHtml(id, 'bottom', 'Низ', '_bottom')}
-                    ${getBlockZoneHtml(id, 'front', 'Перед', '_front')}
-                    ${getBlockZoneHtml(id, 'back', 'Зад', '_back')}
-                    ${getBlockZoneHtml(id, 'left', 'Лев.Бок', '_left')}
-                    ${getBlockZoneHtml(id, 'right', 'Прв.Бок', '_right')}
-                    ${getBlockZoneHtml(id, 'side', 'Общ.Бок', '_side')}
+                    ${getBlockZoneHtml(id, 'main', UI_TEXT.base, '')}
+                    ${getBlockZoneHtml(id, 'top', UI_TEXT.top, '_top')}
+                    ${getBlockZoneHtml(id, 'bottom', UI_TEXT.bottom, '_bottom')}
+                    ${getBlockZoneHtml(id, 'front', UI_TEXT.front, '_front')}
+                    ${getBlockZoneHtml(id, 'back', UI_TEXT.back, '_back')}
+                    ${getBlockZoneHtml(id, 'left', UI_TEXT.leftSide, '_left')}
+                    ${getBlockZoneHtml(id, 'right', UI_TEXT.rightSide, '_right')}
+                    ${getBlockZoneHtml(id, 'side', UI_TEXT.allSides, '_side')}
                 </div>
             `;
             container.appendChild(row);
@@ -225,30 +319,30 @@
             row.style.alignItems = 'stretch';
             row.innerHTML = `
                 <div style="display: flex; gap: 15px; width: 100%; align-items: center;">
-                    <span style="font-size: 0.9rem; color: var(--text-dim); white-space: nowrap;">Материал брони (Заменяем):</span>
+                    <span style="font-size: 0.9rem; color: var(--text-dim); white-space: nowrap;">${UI_TEXT.armorMaterialLabel}</span>
                     <select id="mat_${id}" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 10px; border-radius: 4px; font-size: 1rem; outline: none; flex: 1;">
-                        <option value="leather">Кожаная (с трюком _overlay)</option>
-                        <option value="iron">Железная</option>
-                        <option value="gold">Золотая</option>
-                        <option value="diamond">Алмазная</option>
-                        <option value="netherite">Незеритовая</option>
-                        <option value="chainmail">Кольчужная</option>
-                        <option value="turtle">Черепаший панцирь</option>
-                        <option value="copper">Медная (если из модов)</option>
+                        <option value="leather">${UI_TEXT.armorMaterials.leather}</option>
+                        <option value="iron">${UI_TEXT.armorMaterials.iron}</option>
+                        <option value="gold">${UI_TEXT.armorMaterials.gold}</option>
+                        <option value="diamond">${UI_TEXT.armorMaterials.diamond}</option>
+                        <option value="netherite">${UI_TEXT.armorMaterials.netherite}</option>
+                        <option value="chainmail">${UI_TEXT.armorMaterials.chainmail}</option>
+                        <option value="turtle">${UI_TEXT.armorMaterials.turtle}</option>
+                        <option value="copper">${UI_TEXT.armorMaterials.copper}</option>
                     </select>
-                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'armor')">👁️ Предпросмотр</button>
+                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'armor')">👁️ ${UI_TEXT.preview}</button>
                     <button class="btn-remove" onclick="removeDynamicRow('${id}', 'armor')">×</button>
                 </div>
                 <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                    ${getBlockZoneHtml(id, 'layer_1', '3D Слой 1', '(Шлем, Нагрудник, Ботинки)')}
-                    ${getBlockZoneHtml(id, 'layer_2', '3D Слой 2', '(Поножи)')}
+                    ${getBlockZoneHtml(id, 'layer_1', UI_TEXT.armorLayer1, UI_TEXT.armorLayer1Hint)}
+                    ${getBlockZoneHtml(id, 'layer_2', UI_TEXT.armorLayer2, UI_TEXT.armorLayer2Hint)}
                 </div>
-                <div style="font-size: 0.9rem; color: var(--text-dim); margin-top: 15px; margin-bottom: -5px;">Иконки инвентаря:</div>
+                <div style="font-size: 0.9rem; color: var(--text-dim); margin-top: 15px; margin-bottom: -5px;">${UI_TEXT.inventoryIcons}</div>
                 <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-                    ${getBlockZoneHtml(id, 'icon_helmet', 'Шлем', '(Иконка)')}
-                    ${getBlockZoneHtml(id, 'icon_chestplate', 'Нагрудник', '(Иконка)')}
-                    ${getBlockZoneHtml(id, 'icon_leggings', 'Поножи', '(Иконка)')}
-                    ${getBlockZoneHtml(id, 'icon_boots', 'Ботинки', '(Иконка)')}
+                    ${getBlockZoneHtml(id, 'icon_helmet', UI_TEXT.helmet, UI_TEXT.iconHint)}
+                    ${getBlockZoneHtml(id, 'icon_chestplate', UI_TEXT.chestplate, UI_TEXT.iconHint)}
+                    ${getBlockZoneHtml(id, 'icon_leggings', UI_TEXT.leggings, UI_TEXT.iconHint)}
+                    ${getBlockZoneHtml(id, 'icon_boots', UI_TEXT.boots, UI_TEXT.iconHint)}
                 </div>
             `;
             container.appendChild(row);
@@ -279,7 +373,7 @@
         const zip = new JSZip();
         
         let packName = document.getElementById('packNameInput').value.trim();
-        if (!packName) packName = "Universal_Custom_Pack";
+        if (!packName) packName = UI_TEXT.packDefault;
         
         let safeFileName = packName.replace(/[^a-z0-9а-яё_-]/gi, '_');
 
@@ -287,7 +381,7 @@
         zip.file("pack.mcmeta", JSON.stringify({
             pack: { 
                 pack_format: 15, 
-                description: `§b${packName}\n§7Created with Universal Pack Generator` 
+                description: `§b${packName}\n§7${UI_TEXT.createdWith}` 
             }
         }, null, 2));
 
@@ -483,13 +577,13 @@
 
         // Проверка: есть ли хоть один файл (помимо mcmeta)
         if(Object.keys(zip.files).length <= 1) {
-            alert("Вы ничего не загрузили! Добавьте хотя бы одну текстуру.");
+            alert(UI_TEXT.emptyAlert);
             return;
         }
 
         const btn = document.getElementById('generateBtn');
         const originalText = btn.innerText;
-        btn.innerText = "⏳ Сборка архива...";
+        btn.innerText = UI_TEXT.buildingArchive;
         
         zip.generateAsync({type: "blob"}).then(function(content) {
             const link = document.createElement('a');
@@ -498,7 +592,7 @@
             link.click();
             btn.innerText = originalText;
         }).catch(err => {
-            alert("Ошибка сборки: " + err);
+            alert(UI_TEXT.buildError + err);
             btn.innerText = originalText;
         });
     });
@@ -602,7 +696,7 @@
             
             el.onclick = () => {
                 mcTooltip.style.display = 'none';
-                const id = addDynamicRow(type, type === 'items' ? 'Название предмета' : (type === 'blocks' ? 'Название текстуры блока' : ''));
+                const id = addDynamicRow(type, type === 'items' ? UI_TEXT.itemNamePlaceholderShort : (type === 'blocks' ? UI_TEXT.blockTexturePlaceholderShort : ''));
                 if (type === 'items' || type === 'blocks') {
                     const inp = document.getElementById(`input_${id}`);
                     if(inp) {
@@ -625,7 +719,7 @@
             count++;
         }
         
-        if (count === 0) grid.innerHTML = `<div style="color:#555; padding: 20px;">Ничего не найдено</div>`;
+        if (count === 0) grid.innerHTML = `<div style="color:#555; padding: 20px;">${UI_TEXT.noResults}</div>`;
     }
 
     window.filterGallery = function(type, query) {
@@ -730,7 +824,7 @@
             const img = new Image();
             img.onload = () => {
                 if (img.width % 16 !== 0 || img.height % 16 !== 0) {
-                    alert("⚠️ Осторожно! Разрешение картинки (" + img.width + "x" + img.height + ") не кратно 16. Майнкрафт может криво отобразить текстуру.");
+                    alert(UI_TEXT.invalidResolution(img.width, img.height));
                 }
                 slicerContext.img = img;
                 slicerContext.selections = {};
@@ -805,7 +899,7 @@
             right: 'rgba(20, 184, 166, 0.7)',
             side: 'rgba(245, 158, 11, 0.7)'
         };
-        const faceLabels = { main: 'Осн', top: 'Врх', bottom: 'Низ', front: 'Прд', back: 'Зад', left: 'Лев', right: 'Прв', side: 'Бок' };
+        const faceLabels = UI_TEXT.faceLabels;
 
         for (const [face, coords] of Object.entries(slicerContext.selections)) {
             ctx.fillStyle = faceColors[face] || 'rgba(0,0,0,0.5)';
@@ -1006,7 +1100,7 @@
                 preview.style.display = 'block';
             }
             if (status) {
-                status.innerHTML = "✔<br><small style='font-size:9px;'>(Нарезано)</small>";
+                status.innerHTML = `✔<br><small style="font-size:9px;">(${UI_TEXT.sliced})</small>`;
                 status.style.color = '#34d399';
                 status.style.display = 'block';
                 status.style.lineHeight = '1.2';

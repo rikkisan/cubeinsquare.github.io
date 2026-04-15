@@ -1,4 +1,6 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
+Disallow: /universal_generator.html
 
 Sitemap: https://cubeinsquare.com/sitemap.xml
+
