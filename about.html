@@ -123,31 +123,18 @@
 
     <section class="page-section">
         <h2 class="section-title">Галерея сервера</h2>
-        <div class="server-gallery">
-            <figure>
-                <img src="assets/gallery/server-gallery-01.png" alt="Подводная локация сервера Куб в квадрате в дождливой синей атмосфере" loading="lazy">
-                <figcaption>Подводная локация и атмосферный свет.</figcaption>
-            </figure>
-            <figure>
+        <div class="server-slideshow" data-slideshow>
+            <button class="slideshow-btn slideshow-btn-prev" type="button" data-slide-prev aria-label="Предыдущий кадр">‹</button>
+            <div class="server-slides">
+                <img class="is-active" src="assets/gallery/server-gallery-01.png" alt="Подводная локация сервера Куб в квадрате в дождливой синей атмосфере">
                 <img src="assets/gallery/server-gallery-02.png" alt="Ролевая сцена за столом с картой, тортами и игроками" loading="lazy">
-                <figcaption>Ролевая сцена и общий стол.</figcaption>
-            </figure>
-            <figure>
                 <img src="assets/gallery/server-gallery-03.png" alt="Каменные ворота между холмами на сервере" loading="lazy">
-                <figcaption>Ворота и проход в горной долине.</figcaption>
-            </figure>
-            <figure>
                 <img src="assets/gallery/server-gallery-04.png" alt="Большое дерево над лесным поселением" loading="lazy">
-                <figcaption>Большое дерево и лесной ландшафт.</figcaption>
-            </figure>
-            <figure>
                 <img src="assets/gallery/server-gallery-05.png" alt="Ночная башня с холодной подсветкой под звездным небом" loading="lazy">
-                <figcaption>Ночная башня и кинематографичный свет.</figcaption>
-            </figure>
-            <figure>
                 <img src="assets/gallery/server-gallery-06.png" alt="Вид сверху на освещенный круг и постройки сервера ночью" loading="lazy">
-                <figcaption>Вид сверху на построенную зону.</figcaption>
-            </figure>
+            </div>
+            <button class="slideshow-btn slideshow-btn-next" type="button" data-slide-next aria-label="Следующий кадр">›</button>
+            <div class="slideshow-dots" data-slide-dots aria-label="Выбор кадра"></div>
         </div>
     </section>
 </main>
@@ -155,5 +142,6 @@
     <span>Universal MC Pack</span>
     <a href="privacy-policy.html">Политика конфиденциальности</a>
 </footer>
+<script src="assets/site.js"></script>
 </body>
 </html>
