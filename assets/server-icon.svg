@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Universal MC Pack icon</title>
+  <desc id="desc">Dark square icon with a white outline cube and the number 2.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="46%" r="72%">
+      <stop offset="0%" stop-color="#202328"/>
+      <stop offset="100%" stop-color="#080a0d"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.92" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.15"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" filter="url(#grain)" opacity="0.44"/>
+  <rect x="35" y="35" width="442" height="442" fill="none" stroke="#f8fafc" stroke-width="8" opacity="0.72"/>
+  <path d="M78 76h360M78 436h360M76 78v360M436 78v360" fill="none" stroke="#f8fafc" stroke-width="3" opacity="0.24"/>
+  <g fill="none" stroke="#f8fafc" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M146 184 266 103 395 143 284 235Z" stroke-width="8"/>
+    <path d="M146 184 161 303 284 373 284 235Z" stroke-width="8"/>
+    <path d="M395 143 379 279 284 373 284 235Z" stroke-width="8"/>
+    <path d="M266 103 284 235" stroke-width="5" opacity="0.7"/>
+    <path d="M161 303 379 279" stroke-width="5" opacity="0.7"/>
+  </g>
+  <text x="364" y="137" font-family="Arial, Helvetica, sans-serif" font-size="138" font-weight="900" fill="#ffffff">2</text>
+</svg>
