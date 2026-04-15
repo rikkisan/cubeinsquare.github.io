@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>What is CustomModelData | Universal MC Pack</title>
+    <title>Tool Coming Soon | Universal MC Pack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Learn what CustomModelData is in Minecraft, how item overrides work, and how commands changed from NBT to Components in Minecraft 1.20.5+.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="description" content="Universal MC Pack future tools page: custom potions, villager trades, and a pixel-art palette are planned for upcoming updates.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="googlebot" content="noindex, follow">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
     <meta name="author" content="Universal MC Pack">
     <meta name="application-name" content="Universal MC Pack">
     <meta name="theme-color" content="#0f172a">
-    <link rel="canonical" href="https://cuebinsquare.com/en/wiki-custom-model-data.html">
-    <link rel="alternate" hreflang="ru" href="https://cuebinsquare.com/wiki-custom-model-data.html">
-    <link rel="alternate" hreflang="en" href="https://cuebinsquare.com/en/wiki-custom-model-data.html">
-    <link rel="alternate" hreflang="x-default" href="https://cuebinsquare.com/wiki-custom-model-data.html">
+    <link rel="canonical" href="https://cuebinsquare.com/en/tool-coming-soon.html">
+    <link rel="alternate" hreflang="ru" href="https://cuebinsquare.com/tool-coming-soon.html">
+    <link rel="alternate" hreflang="en" href="https://cuebinsquare.com/en/tool-coming-soon.html">
+    <link rel="alternate" hreflang="x-default" href="https://cuebinsquare.com/tool-coming-soon.html">
     <meta property="og:site_name" content="Universal MC Pack">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="What is CustomModelData | Universal MC Pack">
-    <meta property="og:description" content="Learn what CustomModelData is in Minecraft, how item overrides work, and how commands changed from NBT to Components in Minecraft 1.20.5+.">
-    <meta property="og:url" content="https://cuebinsquare.com/en/wiki-custom-model-data.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tool Coming Soon | Universal MC Pack">
+    <meta property="og:description" content="Custom potions, villager trades, and the pixel-art palette are still in development. New tools will appear here soon.">
+    <meta property="og:url" content="https://cuebinsquare.com/en/tool-coming-soon.html">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="What is CustomModelData | Universal MC Pack">
-    <meta name="twitter:description" content="Learn what CustomModelData is in Minecraft, how item overrides work, and how commands changed from NBT to Components in Minecraft 1.20.5+.">
+    <meta name="twitter:title" content="Tool Coming Soon | Universal MC Pack">
+    <meta name="twitter:description" content="Custom potions, villager trades, and the pixel-art palette are still in development. New tools will appear here soon.">
     <!-- /Search metadata -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/styles.css">
@@ -35,7 +35,7 @@
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="wiki.html">Wiki</a>
+            <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
             <div class="steam-dropdown-panel steam-mega-panel">
                 <div class="mega-list mega-list-tree">
                     <div class="mega-group">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="tools.html">Tools</a>
+            <a class="steam-nav-dropdown is-active" href="tools.html">Tools</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
                     <a href="index.html">Universal Pack Generator</a>
@@ -92,30 +92,40 @@
             <input type="text" name="q" placeholder="Search the site...">
             <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
         </form>
-        <div class="language-switch" aria-label="Language"><a href="../wiki-custom-model-data.html">RU</a><a class="is-active" href="#">EN</a></div>
+        <div class="language-switch" aria-label="Language"><a href="../tool-coming-soon.html">RU</a><a class="is-active" href="#">EN</a></div>
     </div>
-</div><main class="page-shell wiki-article">
-    <a class="article-back" href="wiki.html">← All articles</a>
-    <section class="page-hero"><h1>Introduction: What is CustomModelData and how does it work?</h1><p class="page-lead">CustomModelData lets Minecraft resource packs show many different textures and models for a single vanilla item, without installing mods.</p></section>
-    <article>
-        <h2>What is CustomModelData?</h2><p>Added in Minecraft 1.14, CustomModelData allows pack creators to attach different textures or 3D models to one vanilla item by using numeric identifiers.</p>
-        <ul><li>Without tags, an iron sword looks like the normal vanilla sword.</li><li>With <code>CustomModelData: 1</code>, it can look like a katana.</li><li>With <code>CustomModelData: 2</code>, it can render as a 3D chainsaw.</li></ul>
-        <p>For the server and game mechanics, it is still an iron sword. Only the client-side visual wrapper changes.</p>
-        <h2>How it works</h2><p>The resource pack uses item model overrides. The base model tells the game to load another model when a specific CustomModelData value is present.</p>
-<pre><code>{
-  "parent": "item/handheld",
-  "textures": { "layer0": "item/iron_sword" },
-  "overrides": [
-    { "predicate": { "custom_model_data": 1 }, "model": "item/custom_katana" },
-    { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
-  ]
-}</code></pre>
-        <h2>NBT vs Components</h2><p>Minecraft 1.20.5 changed item data from old NBT syntax to Data Components. The visual result is similar, but commands changed.</p>
-        <h3>Before 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
-        <h3>1.20.5 and newer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
-        <p>Universal Pack Generator accounts for this switch when it shows give commands for your custom items.</p>
-    </article>
+</div>
+
+<main class="page-shell">
+    <section class="page-hero">
+        <p class="soon-kicker">Tool in development</p>
+        <h1>We have not built this one yet</h1>
+        <p class="page-lead">This page is reserved for upcoming tools. Custom potions, villager trades, and the pixel-art palette are in the development queue. For now, the working tool is Universal Pack Generator.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="index.html">Open generator</a>
+            <a class="resource-link resource-link-secondary" href="tools.html">Back to tools</a>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">What is coming next</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Custom potions <span class="status-pill">soon</span></h3>
+                <p>Planned builder for effects, color, lore, and ready-to-use commands.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Custom villager trades <span class="status-pill">soon</span></h3>
+                <p>Planned builder for prices, rewards, limits, XP, and summon commands.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Pixel-art palette <span class="status-pill">soon</span></h3>
+                <p>Planned color and transparency helpers for Minecraft texture work.</p>
+            </article>
+        </div>
+    </section>
 </main>
+
 <footer class="site-footer"><span>Universal MC Pack</span><a href="privacy-policy.html">Privacy Policy</a></footer>
 </body>
 </html>

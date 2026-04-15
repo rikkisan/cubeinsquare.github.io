@@ -1069,6 +1069,67 @@
         return t;
     }
 
+    function getPreviewFaceLabels() {
+        const isEnglish = document.documentElement.lang === 'en';
+        return isEnglish
+            ? { top: 'Top', bottom: 'Bottom', front: 'Front', back: 'Back', left: 'Left', right: 'Right' }
+            : { top: 'Верх', bottom: 'Низ', front: 'Перед', back: 'Зад', left: 'Лево', right: 'Право' };
+    }
+
+    function createPreviewLabelTexture(text) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 256;
+        canvas.height = 80;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgba(2, 6, 23, 0.72)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = 'rgba(96, 165, 250, 0.92)';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4);
+        ctx.font = '700 30px Arial, sans-serif';
+        ctx.fillStyle = '#ffffff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.magFilter = THREE.LinearFilter;
+        texture.minFilter = THREE.LinearFilter;
+        return texture;
+    }
+
+    function createPreviewFaceLabel(text, position, rotation) {
+        const labelTexture = createPreviewLabelTexture(text);
+        const labelMaterial = new THREE.MeshBasicMaterial({
+            map: labelTexture,
+            transparent: true,
+            side: THREE.DoubleSide,
+            depthWrite: false
+        });
+        const label = new THREE.Mesh(new THREE.PlaneGeometry(0.46, 0.14), labelMaterial);
+        label.position.set(position[0], position[1], position[2]);
+        label.rotation.set(rotation[0], rotation[1], rotation[2]);
+        return label;
+    }
+
+    function addBlockFaceLabels(targetGroup) {
+        const labels = getPreviewFaceLabels();
+        const gap = 0.535;
+        const under = -0.68;
+        const labelSpecs = [
+            { key: 'front', position: [0, under, gap], rotation: [0, 0, 0] },
+            { key: 'back', position: [0, under, -gap], rotation: [0, Math.PI, 0] },
+            { key: 'left', position: [-gap, under, 0], rotation: [0, -Math.PI / 2, 0] },
+            { key: 'right', position: [gap, under, 0], rotation: [0, Math.PI / 2, 0] },
+            { key: 'top', position: [0, gap, 0.68], rotation: [-Math.PI / 2, 0, 0] },
+            { key: 'bottom', position: [0, -gap, 0.68], rotation: [Math.PI / 2, 0, 0] }
+        ];
+
+        labelSpecs.forEach(spec => {
+            targetGroup.add(createPreviewFaceLabel(labels[spec.key], spec.position, spec.rotation));
+        });
+    }
+
     function openPreview(id, type) {
         document.getElementById('previewModal').style.display = 'flex';
         initPreviewEnv();
@@ -1103,6 +1164,7 @@
 
             const mesh = new THREE.Mesh(geom, mats);
             preCurrentObj.add(mesh);
+            addBlockFaceLabels(preCurrentObj);
             preCamera.position.set(1.5, 1.5, 2);
             preControls.target.set(0, 0, 0);
         } else if (type === 'items') {
@@ -1220,16 +1282,14 @@
         if (preCurrentObj) preCurrentObj.userData.view = view;
         
         if (view === 'first') {
-            document.getElementById('btn_cam_first').style.background = 'var(--accent)';
+            const firstBtn = document.getElementById('btn_cam_first');
+            if (firstBtn) firstBtn.style.background = 'var(--accent)';
             preCamera.position.set(0, 0, 0); 
             preControls.target.set(0, 0, -1);
         } else if (view === 'third_front') {
-            document.getElementById('btn_cam_front').style.background = 'var(--accent)';
+            const frontBtn = document.getElementById('btn_cam_front');
+            if (frontBtn) frontBtn.style.background = 'var(--accent)';
             preCamera.position.set(0, 0.5, 2.5);
-            preControls.target.set(0, 0, 0);
-        } else if (view === 'third_back') {
-            document.getElementById('btn_cam_back').style.background = 'var(--accent)';
-            preCamera.position.set(0, 0.5, -2.5);
             preControls.target.set(0, 0, 0);
         }
         preControls.update();
