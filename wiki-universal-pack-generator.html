@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как использовать Universal Pack Generator | Universal MC Pack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="wiki.html">Вики</a>
+            <div class="steam-dropdown-panel">
+                <a href="wiki.html#general-wiki">Общие статьи</a>
+                <a href="wiki-custom-model-data.html">CustomModelData</a>
+                <a href="wiki.html#resource-pack-paths">Структура ресурс-пака</a>
+                <a href="wiki.html#universal-pack-generator-wiki">Universal Pack Generator</a>
+                <a href="wiki-universal-pack-generator.html">Как использовать генератор</a>
+                <a href="privacy-policy.html">Политика конфиденциальности</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="tools.html">Инструменты</a>
+            <div class="steam-dropdown-panel">
+                <a href="index.html">Universal Pack Generator</a>
+                <a href="tools.html#upcoming-tools">Кастомные зелья</a>
+                <a href="tools.html#upcoming-tools">Кастомные торги жителей</a>
+                <a href="tools.html#upcoming-tools">Палитра пиксель-арта</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="about.html">О нас</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="about.html">О проекте</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="wiki.html" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="wiki-universal-pack-generator.html">RU</a><a href="en/wiki-universal-pack-generator.html">EN</a></div>
+    </div>
+</div><main class="page-shell wiki-article">
+    <a class="article-back" href="wiki.html">← Все статьи</a>
+
+    <section class="page-hero">
+        <h1>Как использовать Universal Pack Generator</h1>
+        <p class="page-lead">Universal Pack Generator собирает Minecraft resource pack прямо в браузере. Вы загружаете PNG-текстуры, выбираете, что они заменяют, а инструмент создает готовый ZIP с правильной структурой папок и JSON-файлами.</p>
+    </section>
+
+    <article>
+        <h2>1. Назовите ресурс-пак</h2>
+        <p>В верхнем поле введите имя будущего пака. Это имя попадет в описание <code>pack.mcmeta</code> и будет использовано как название ZIP-файла при скачивании.</p>
+        <p>Если оставить поле пустым, генератор использует стандартное имя <code>Universal_Custom_Pack</code>.</p>
+
+        <h2>2. Выберите версию сервера</h2>
+        <p>Переключатель версии влияет на команды выдачи предметов с CustomModelData.</p>
+        <ul>
+            <li><strong>До 1.20.5</strong> - генератор показывает команды со старым NBT-синтаксисом.</li>
+            <li><strong>1.20.5 и выше</strong> - генератор показывает команды с новым синтаксисом Data Components.</li>
+        </ul>
+
+<pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1
+/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+
+        <h2>3. Добавьте предметы</h2>
+        <p>Во вкладке <strong>Предметы</strong> можно заменить обычную ванильную текстуру или создать вариант через CustomModelData.</p>
+        <ul>
+            <li>Введите ID предмета, например <code>diamond_sword</code>, <code>stick</code> или <code>iron_pickaxe</code>.</li>
+            <li>Загрузите PNG-текстуру в область загрузки.</li>
+            <li>Если нужен отдельный кастомный вариант, укажите число в поле <code>CustomModelData</code>.</li>
+            <li>Команда <code>/give</code> появится автоматически под строкой предмета.</li>
+        </ul>
+        <p>Если вы выбираете предмет из библиотеки, строка создается автоматически, а название предмета подставляется само.</p>
+
+        <h2>4. Добавьте блоки</h2>
+        <p>Во вкладке <strong>Блоки</strong> можно заменить одну текстуру блока или собрать куб из разных сторон.</p>
+        <ul>
+            <li><strong>Основа</strong> используется как главная текстура блока.</li>
+            <li><strong>Верх</strong>, <strong>Низ</strong>, <strong>Перед</strong>, <strong>Зад</strong>, <strong>Левый бок</strong> и <strong>Правый бок</strong> позволяют собрать блок с разными гранями.</li>
+            <li><strong>Общий бок</strong> удобен для блоков, у которых все боковые стороны одинаковые.</li>
+        </ul>
+        <p>Если для блока включена генерация модели, инструмент добавит JSON-файлы в <code>models/block</code> и <code>blockstates</code>.</p>
+
+        <h2>5. Используйте нарезку текстур</h2>
+        <p>Кнопка <strong>Нарезать текстуру</strong> открывает слайсер. Он нужен, когда у вас есть один большой атлас, а из него нужно вырезать отдельные 16x16 или 32x32 фрагменты для сторон блока.</p>
+        <ul>
+            <li>Загрузите PNG-атлас.</li>
+            <li>Выберите размер ячейки, чаще всего <code>16</code>.</li>
+            <li>Назначьте фрагменты кнопками <strong>Осн</strong>, <strong>Верх</strong>, <strong>Низ</strong> и другими.</li>
+            <li>Нажмите <strong>Применить</strong>, чтобы перенести вырезанные части в блок.</li>
+        </ul>
+
+        <h2>6. Добавьте броню</h2>
+        <p>Во вкладке <strong>Броня</strong> выберите материал, который должен быть заменен: кожа, железо, золото, алмаз, незерит и другие варианты.</p>
+        <ul>
+            <li><code>3D Слой 1</code> отвечает за шлем, нагрудник и ботинки.</li>
+            <li><code>3D Слой 2</code> отвечает за поножи.</li>
+            <li>Отдельные поля иконок меняют вид брони в инвентаре.</li>
+        </ul>
+        <p>Для кожаной брони генератор использует overlay-подход, чтобы кастомные текстуры отображались без лишнего окрашивания.</p>
+
+        <h2>7. Проверяйте предпросмотр</h2>
+        <p>Кнопка предпросмотра открывает 3D-окно. Для блоков показывается куб с загруженными сторонами, для предметов - плоская иконка, для брони - упрощенная модель персонажа.</p>
+        <p>Если текстура не загружена, предпросмотр может показать яркую заглушку. Это знак, что для выбранной строки не хватает PNG-файла.</p>
+
+        <h2>8. Скачайте готовый ZIP</h2>
+        <p>Когда все нужные элементы добавлены, нажмите <strong>Скачать Ресурс-пак</strong>. Браузер соберет ZIP локально, без отправки ваших файлов на сервер.</p>
+        <p>Внутри архива будут созданы:</p>
+        <ul>
+            <li><code>pack.mcmeta</code></li>
+            <li><code>assets/minecraft/textures/item</code></li>
+            <li><code>assets/minecraft/textures/block</code></li>
+            <li><code>assets/minecraft/models/item</code> для CustomModelData</li>
+            <li><code>assets/minecraft/models/block</code> и <code>blockstates</code> для блоков с моделью</li>
+            <li><code>assets/minecraft/textures/models/armor</code> для брони</li>
+        </ul>
+
+        <h2>9. Установите пак в Minecraft</h2>
+        <p>Скачанный ZIP можно положить в папку <code>resourcepacks</code> и включить в настройках Minecraft. Если пак нужен серверу, его можно загрузить на хостинг и указать ссылку в настройках сервера.</p>
+
+        <h2>Частые ошибки</h2>
+        <ul>
+            <li><strong>Текстура выглядит размытой.</strong> Проверьте, что PNG сохранен в пиксельном стиле и имеет размер, кратный 16.</li>
+            <li><strong>Команда /give не работает.</strong> Проверьте, что выбрана правильная версия синтаксиса: до 1.20.5 или 1.20.5+.</li>
+            <li><strong>Модель не подменилась.</strong> Убедитесь, что CustomModelData в генераторе и в команде совпадает.</li>
+            <li><strong>Блок отображается не той стороной.</strong> Проверьте, куда загружены <code>top</code>, <code>bottom</code>, <code>front</code> и боковые текстуры.</li>
+        </ul>
+    </article>
+</main>
+<footer class="site-footer">
+    <span>Universal MC Pack</span>
+    <a href="privacy-policy.html">Политика конфиденциальности</a>
+</footer>
+</body>
+</html>

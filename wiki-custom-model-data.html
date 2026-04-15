@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Что такое CustomModelData | Universal MC Pack</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="wiki.html">Вики</a>
+            <div class="steam-dropdown-panel">
+                <a href="wiki.html#general-wiki">Общие статьи</a>
+                <a href="wiki-custom-model-data.html">CustomModelData</a>
+                <a href="wiki.html#resource-pack-paths">Структура ресурс-пака</a>
+                <a href="wiki.html#universal-pack-generator-wiki">Universal Pack Generator</a>
+                <a href="wiki-universal-pack-generator.html">Как использовать генератор</a>
+                <a href="privacy-policy.html">Политика конфиденциальности</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="tools.html">Инструменты</a>
+            <div class="steam-dropdown-panel">
+                <a href="index.html">Universal Pack Generator</a>
+                <a href="tools.html#upcoming-tools">Кастомные зелья</a>
+                <a href="tools.html#upcoming-tools">Кастомные торги жителей</a>
+                <a href="tools.html#upcoming-tools">Палитра пиксель-арта</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="about.html">О нас</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="about.html">О проекте</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="wiki.html" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="wiki-custom-model-data.html">RU</a><a href="en/wiki-custom-model-data.html">EN</a></div>
+    </div>
+</div><main class="page-shell wiki-article">
+    <a class="article-back" href="wiki.html">← Все статьи</a>
+
+    <section class="page-hero">
+        <h1>Введение: Что такое CustomModelData и как это работает?</h1>
+        <p class="page-lead">Если вы когда-нибудь играли на кастомных RPG-серверах, то наверняка видели магию: игроки бегают с огнестрельным оружием, пьют из резных кружек и носят уникальные шляпы, при этом игра работает абсолютно без модов.</p>
+    </section>
+
+    <article>
+        <p>Весь этот фокус держится на одной гениальной функции Minecraft, которая называется <strong>CustomModelData</strong>, или сокращенно CMD.</p>
+
+        <h2>Что такое CustomModelData?</h2>
+        <p>Появившись в версии 1.14, параметр CustomModelData позволил создателям ресурс-паков привязывать к одному ванильному предмету бесконечное множество разных текстур и 3D-моделей, используя числовые идентификаторы.</p>
+        <p>Представьте, что у вас есть обычный железный меч (<code>iron_sword</code>).</p>
+        <ul>
+            <li>Меч без тегов, ванильный, выглядит как обычный меч.</li>
+            <li>Меч с <code>CustomModelData: 1</code> игра подменяет на катану.</li>
+            <li>Меч с <code>CustomModelData: 2</code> игра рендерит как 3D-модель бензопилы.</li>
+        </ul>
+        <p>Технически, для сервера и механик игры, это все еще обычный железный меч. Он наносит тот же урон и так же ломается. Меняется только визуальная обертка на стороне клиента.</p>
+
+        <h2>Как это работает под капотом?</h2>
+        <p>Чтобы магия сработала, ресурс-пак использует систему overrides, то есть переопределений. В папке с моделями предметов <code>assets/minecraft/models/item</code> лежит базовый файл, например <code>iron_sword.json</code>.</p>
+        <p>Вместо того чтобы просто указывать текстуру, этот файл говорит игре: если у предмета есть тег CustomModelData равный 1, иди и читай другой файл.</p>
+
+<pre><code>{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "item/iron_sword"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "item/custom_katana" },
+    { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
+  ]
+}</code></pre>
+
+        <p><em>Именно эту рутинную работу по прописыванию сотен таких JSON-файлов и выполняет Universal Pack Generator в автоматическом режиме.</em></p>
+
+        <h2>Важно: разница версий NBT против Components</h2>
+        <p>С выходом Minecraft 1.20.5 разработчики Mojang полностью переписали внутреннюю систему предметов. Старые NBT-теги ушли в прошлое, а на их место пришли Data Components, то есть компоненты данных.</p>
+        <p>Для обычных игроков визуально ничего не изменилось, но для администраторов это означало, что старые команды выдачи предметов <code>/give</code> сломались.</p>
+
+        <h3>Версии до 1.20.5: синтаксис NBT</h3>
+        <p>В старых версиях CustomModelData записывался внутри фигурных скобок <code>{}</code> как часть NBT-тегов.</p>
+
+<pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
+
+        <h3>Версии 1.20.5 и выше: синтаксис Components</h3>
+        <p>Теперь свойства предмета прописываются в квадратных скобках <code>[]</code> сразу после названия, а сам параметр пишется с маленькой буквы через нижнее подчеркивание.</p>
+
+<pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+
+        <p>Генератор автоматически учитывает этот переход. При создании ресурс-пака просто выберите версию вашего сервера, и инструмент сгенерирует правильные команды.</p>
+    </article>
+</main>
+<footer class="site-footer">
+    <span>Universal MC Pack</span>
+    <a href="privacy-policy.html">Политика конфиденциальности</a>
+</footer>
+</body>
+</html>

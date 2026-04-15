@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Universal MC Pack Generator</title>
+    <title>Universal Pack Generator | Universal MC Pack</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
 <!-- Слайсер Модальное Окно -->
@@ -76,116 +76,114 @@
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="wiki.html">Вики</a>
+            <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
             <div class="steam-dropdown-panel">
-                <a href="wiki.html#general-wiki">Общие статьи</a>
+                <a href="wiki.html#general-wiki">General articles</a>
                 <a href="wiki-custom-model-data.html">CustomModelData</a>
-                <a href="wiki.html#resource-pack-paths">Структура ресурс-пака</a>
+                <a href="wiki.html#resource-pack-paths">Resource pack structure</a>
                 <a href="wiki.html#universal-pack-generator-wiki">Universal Pack Generator</a>
-                <a href="wiki-universal-pack-generator.html">Как использовать генератор</a>
-                <a href="privacy-policy.html">Политика конфиденциальности</a>
+                <a href="wiki-universal-pack-generator.html">How to use the generator</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="tools.html">Инструменты</a>
+            <a class="steam-nav-dropdown is-active" href="tools.html">Tools</a>
             <div class="steam-dropdown-panel">
                 <a href="index.html">Universal Pack Generator</a>
-                <a href="tools.html#upcoming-tools">Кастомные зелья</a>
-                <a href="tools.html#upcoming-tools">Кастомные торги жителей</a>
-                <a href="tools.html#upcoming-tools">Палитра пиксель-арта</a>
+                <a href="tools.html#upcoming-tools">Custom potions</a>
+                <a href="tools.html#upcoming-tools">Custom villager trades</a>
+                <a href="tools.html#upcoming-tools">Pixel-art palette</a>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="about.html">О нас</a>
+            <a class="steam-nav-dropdown" href="about.html">About</a>
             <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="about.html">О проекте</a>
+                <a href="about.html">About the project</a>
                 <a href="privacy-policy.html">Privacy Policy</a>
             </div>
         </div>
         <form class="steam-search" action="wiki.html" method="get">
-            <input type="text" name="q" placeholder="Поиск по сайту...">
-            <button type="submit" aria-label="Поиск">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
         </form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="index.html">RU</a><a href="en/index.html">EN</a></div>
+        <div class="language-switch" aria-label="Language"><a href="../index.html">RU</a><a class="is-active" href="index.html">EN</a></div>
     </div>
-</div>
-
-<div class="container">
+</div><div class="container">
     <h1>Universal Pack Generator</h1>
-    <div class="description">Создайте ресурс-пак для брони, инструментов и блоков прямо в браузере.</div>
+    <div class="description">Create a resource pack for armor, tools, items, and blocks directly in your browser.</div>
 
     <div style="margin-bottom: 25px; text-align: center; width: 100%;">
-        <input type="text" id="packNameInput" class="dynamic-input" style="width: 80%; max-width: 400px; text-align: center; font-size: 1.1rem; padding: 15px;" placeholder="Имя вашего ресурс-пака (напр. MyCustomPack)">
+        <input type="text" id="packNameInput" class="dynamic-input" style="width: 80%; max-width: 400px; text-align: center; font-size: 1.1rem; padding: 15px;" placeholder="Your resource pack name (e.g. MyCustomPack)">
     </div>
 
     <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Версия целевой игры:</label>
+        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Target game version:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">До 1.20.5 (Синтаксис NBT: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (Синтаксис Components: [custom_model_data=1])</option>
+            <option value="1.20.4">Before 1.20.5 (NBT syntax: {CustomModelData:1})</option>
+            <option value="1.20.5">1.20.5+ (Components syntax: [custom_model_data=1])</option>
         </select>
     </div>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('armor', this)">🛡️ Броня</button>
-        <button class="tab-btn" onclick="openTab('items', this)">⚒️ Предметы</button>
-        <button class="tab-btn" onclick="openTab('blocks', this)">🧊 Блоки</button>
+        <button class="tab-btn active" onclick="openTab('armor', this)">🛡️ Armor</button>
+        <button class="tab-btn" onclick="openTab('items', this)">⚒️ Items</button>
+        <button class="tab-btn" onclick="openTab('blocks', this)">🧊 Blocks</button>
     </div>
 
-    <!-- Вкладка Броня -->
+    <!-- Вкладка Armor -->
     <div id="armor" class="tab-content active">
-        <h3 style="margin-top:0;">Настройка 3D Моделей Брони</h3>
-        <p style="color:var(--text-dim);">Добавьте слои 3D брони, а также её 2D-иконки для инвентаря. Выберите материал для замены (например, Золотая) и загрузите файлы!</p>
+        <h3 style="margin-top:0;">Armor 3D model setup</h3>
+        <p style="color:var(--text-dim);">Add 3D armor layers and 2D inventory icons. Choose the armor material to replace and upload your files.</p>
         <div id="armor-container"></div>
-        <button class="btn" style="width:100%; justify-content:center; margin-top: 20px;" onclick="addDynamicRow('armor')">+ Добавить полный сет брони</button>
+        <button class="btn" style="width:100%; justify-content:center; margin-top: 20px;" onclick="addDynamicRow('armor')">+ Add a full armor set</button>
     </div>
 
-    <!-- Вкладка Предметы -->
+    <!-- Вкладка Items -->
     <div id="items" class="tab-content">
-        <p style="color:var(--text-dim);">Добавьте текстуры, которые заменят ванильные предметы. Например, введите <code>diamond_sword</code> и загрузите свою иконку.</p>
+        <p style="color:var(--text-dim);">Add textures that replace vanilla items. For example, enter <code>diamond_sword</code> and upload your icon.</p>
         <div id="items-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('items', 'Название предмета (напр. iron_pickaxe)')">+ Добавить ещё предмет</button>
+        <button class="btn-add" onclick="addDynamicRow('items', 'Название предмета (напр. iron_pickaxe)')">+ Add another item</button>
         
         <div class="gallery">
             <div class="gallery-header">
-                <h3 style="margin:0;">Библиотека Предметов</h3>
-                <input type="text" class="gallery-search" placeholder="Поиск предмета..." onkeyup="filterGallery('items', this.value)">
+                <h3 style="margin:0;">Item Library</h3>
+                <input type="text" class="gallery-search" placeholder="Search items..." onkeyup="filterGallery('items', this.value)">
             </div>
             <div class="gallery-grid" id="gallery-items">
-                <div style="color:var(--text-dim); padding: 20px;">Загрузка библиотеки...</div>
+                <div style="color:var(--text-dim); padding: 20px;">Loading library...</div>
             </div>
         </div>
     </div>
 
-    <!-- Вкладка Блоки -->
+    <!-- Вкладка Blocks -->
     <div id="blocks" class="tab-content">
-        <p style="color:var(--text-dim);">Добавьте текстуры, которые заменят ванильные блоки. Например, <code>crafting_table_top</code>.</p>
+        <p style="color:var(--text-dim);">Add textures that replace vanilla blocks. For example, <code>crafting_table_top</code>.</p>
         <div id="blocks-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('blocks', 'Название текстуры блока (напр. oak_planks)')">+ Добавить ещё текстуру блока</button>
+        <button class="btn-add" onclick="addDynamicRow('blocks', 'Название текстуры блока (напр. oak_planks)')">+ Add another block texture</button>
         
         <div class="gallery">
             <div class="gallery-header">
-                <h3 style="margin:0;">Библиотека Блоков</h3>
-                <input type="text" class="gallery-search" placeholder="Поиск блока..." onkeyup="filterGallery('blocks', this.value)">
+                <h3 style="margin:0;">Block Library</h3>
+                <input type="text" class="gallery-search" placeholder="Search blocks..." onkeyup="filterGallery('blocks', this.value)">
             </div>
             <div class="gallery-grid" id="gallery-blocks">
-                <div style="color:var(--text-dim); padding: 20px;">Загрузка библиотеки...</div>
+                <div style="color:var(--text-dim); padding: 20px;">Loading library...</div>
             </div>
         </div>
     </div>
 
-    <button class="generate-btn" id="generateBtn">📦 Скачать Ресурс-пак</button>
+    <button class="generate-btn" id="generateBtn">📦 Download Resource Pack</button>
 </div>
 <footer class="site-footer">
     <span>Universal MC Pack</span>
-    <a href="privacy-policy.html">Политика конфиденциальности</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="assets/data.js"></script>
-<script src="assets/app.js"></script>
+<script src="../assets/data.js"></script>
+<script src="../assets/app.js"></script>
 </body>
 </html>
