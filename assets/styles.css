@@ -541,6 +541,16 @@
         .steam-dropdown-panel--small {
             min-width: 190px;
         }
+        .steam-mega-panel {
+            width: 260px;
+            max-width: calc(100vw - 32px);
+            display: grid;
+            grid-template-columns: 220px 360px;
+            gap: 10px;
+            align-items: stretch;
+            overflow: hidden;
+            transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease, width 0.24s ease;
+        }
         .steam-dropdown-panel a {
             color: var(--text-dim);
             text-decoration: none;
@@ -561,6 +571,56 @@
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+        .steam-nav-menu:hover .steam-mega-panel,
+        .steam-nav-menu:focus-within .steam-mega-panel {
+            width: min(640px, calc(100vw - 32px));
+        }
+        .mega-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            min-width: 220px;
+            padding-right: 10px;
+            border-right: 1px solid var(--glass-border);
+        }
+        .mega-feature {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            min-width: 360px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.18s ease 0.08s, transform 0.18s ease 0.08s;
+        }
+        .steam-nav-menu:hover .mega-feature,
+        .steam-nav-menu:focus-within .mega-feature {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .steam-dropdown-panel .mega-card {
+            min-height: 88px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(255, 255, 255, 0.045);
+        }
+        .steam-dropdown-panel .mega-card strong {
+            color: #ffffff;
+            font-size: 0.96rem;
+        }
+        .steam-dropdown-panel .mega-card span {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            line-height: 1.35;
+        }
+        .steam-dropdown-panel .mega-card:hover,
+        .steam-dropdown-panel .mega-card:focus {
+            border-color: rgba(96, 165, 250, 0.42);
+            background: rgba(59, 130, 246, 0.16);
         }
         .steam-search {
             margin-left: auto;
@@ -864,6 +924,29 @@
                 top: auto;
                 min-width: 0;
                 width: auto;
+            }
+
+            .steam-mega-panel,
+            .steam-nav-menu:hover .steam-mega-panel,
+            .steam-nav-menu:focus-within .steam-mega-panel {
+                width: auto;
+                max-width: none;
+                grid-template-columns: 1fr;
+            }
+
+            .mega-list {
+                min-width: 0;
+                padding-right: 0;
+                padding-bottom: 8px;
+                border-right: 0;
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            .mega-feature {
+                min-width: 0;
+                grid-template-columns: 1fr;
+                opacity: 1;
+                transform: none;
             }
 
             .steam-search {
