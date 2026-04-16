@@ -175,12 +175,19 @@
 }
 
 .tool-note {
-    margin-top: 8px;
-    color: #bfdbfe;
-    font-size: 0.9rem;
-    line-height: 1.55;
+    margin-top: 10px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(96, 165, 250, 0.28);
+    background: rgba(59, 130, 246, 0.08);
+    color: #dbeafe;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.6;
 }
 
 .tool-note[data-long="true"] {
-    color: #fcd34d;
+    border-color: rgba(251, 191, 36, 0.32);
+    background: rgba(245, 158, 11, 0.12);
+    color: #fde68a;
 }

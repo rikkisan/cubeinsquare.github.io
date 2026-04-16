@@ -29,8 +29,8 @@
         copy: 'Copy command',
         summary: (trades, chars) => `${trades} trade${trades === 1 ? '' : 's'} generated. Command length: ${chars} characters.`,
         empty: 'Add at least one trade with a buy item and a sell item.',
-        commandBlockShort: 'Short commands usually work in chat, but a command block is still safer.',
-        commandBlockLong: (overflow) => `This summon command is about ${overflow} characters over a typical chat limit, so a command block is the safer option.`,
+        commandBlockShort: 'If the command stays within 256 characters, chat usually works. After 256 characters, use a command block.',
+        commandBlockLong: (overflow) => `This summon command is ${overflow} characters over the 256-character chat limit. Use a command block.`,
         defaults: {
             villagerName: 'Story trader',
             buy: 'emerald',
@@ -56,8 +56,8 @@
         copy: 'Копировать команду',
         summary: (trades, chars) => `Сгенерировано сделок: ${trades}. Длина команды: ${chars} символов.`,
         empty: 'Добавьте хотя бы одну сделку с предметом покупки и предметом продажи.',
-        commandBlockShort: 'Короткие команды обычно работают в чате, но командный блок все равно надежнее.',
-        commandBlockLong: (overflow) => `Эта summon-команда примерно на ${overflow} символов длиннее типичного лимита чата, так что надежнее запускать ее через командный блок.`,
+        commandBlockShort: 'Если команда укладывается в 256 символов, чат обычно справляется. После 256 символов нужен командный блок.',
+        commandBlockLong: (overflow) => `Эта summon-команда длиннее лимита чата в 256 символов на ${overflow} знаков. Нужен командный блок.`,
         defaults: {
             villagerName: 'Сюжетный торговец',
             buy: 'emerald',
@@ -86,8 +86,8 @@
             copy: 'Copier la commande',
             summary: (trades, chars) => `${trades} échange${trades === 1 ? '' : 's'} généré${trades === 1 ? '' : 's'}. Longueur de la commande : ${chars} caractères.`,
             empty: 'Ajoutez au moins un échange avec un objet demandé et un objet vendu.',
-            commandBlockShort: 'Les commandes courtes passent souvent dans le chat, mais un bloc de commande reste plus sûr.',
-            commandBlockLong: (overflow) => `Cette commande summon dépasse d’environ ${overflow} caractères une limite de chat classique, donc un bloc de commande est plus sûr.`
+            commandBlockShort: 'Si la commande reste dans 256 caractères, le chat fonctionne généralement. Au-delà de 256 caractères, il faut un bloc de commande.',
+            commandBlockLong: (overflow) => `Cette commande summon dépasse la limite de chat de 256 caractères de ${overflow} signes. Il faut un bloc de commande.`
         });
         text.defaults = {
             villagerName: 'Marchand narratif',
@@ -117,8 +117,8 @@
             copy: 'Befehl kopieren',
             summary: (trades, chars) => `${trades} Handel erzeugt. Befehlslänge: ${chars} Zeichen.`,
             empty: 'Füge mindestens einen Handel mit Kaufgegenstand und Verkaufsgegenstand hinzu.',
-            commandBlockShort: 'Kurze Befehle funktionieren oft im Chat, aber ein Befehlsblock ist trotzdem sicherer.',
-            commandBlockLong: (overflow) => `Dieser summon-Befehl liegt etwa ${overflow} Zeichen über einem typischen Chat-Limit, daher ist ein Befehlsblock die sicherere Wahl.`
+            commandBlockShort: 'Wenn der Befehl innerhalb von 256 Zeichen bleibt, funktioniert der Chat meist. Über 256 Zeichen brauchst du einen Befehlsblock.',
+            commandBlockLong: (overflow) => `Dieser summon-Befehl überschreitet das 256-Zeichen-Chatlimit um ${overflow} Zeichen. Du brauchst einen Befehlsblock.`
         });
         text.defaults = {
             villagerName: 'Story-Händler',
