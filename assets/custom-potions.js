@@ -2,6 +2,12 @@
     const root = document.querySelector('[data-potion-tool]');
     if (!root) return;
 
+    function trackEvent(name, params, options) {
+        if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
+            window.CubeAnalytics.track(name, params, options);
+        }
+    }
+
     const lang = (document.documentElement.lang || 'ru').toLowerCase().split('-')[0];
     const stringsByLang = {
         ru: {
@@ -462,6 +468,10 @@
         references.effectList.innerHTML = '';
         example.effects.forEach(createEffectCard);
         updateAll();
+        trackEvent('potion_example_loaded', {
+            item_type: example.type,
+            effect_count: example.effects.length
+        });
     }
 
     function resetTool() {
@@ -484,6 +494,14 @@
             references.output.select();
             document.execCommand('copy');
         }
+        trackEvent('potion_command_copy', {
+            syntax_version: fieldValue('pp-version', 'current'),
+            item_type: fieldValue('pp-item-type', 'potion'),
+            effect_count: result.effectCount,
+            has_base_potion: Boolean(fieldValue('pp-base-potion', '')),
+            has_color: boolValue('pp-use-color'),
+            has_custom_model_data: intValue(fieldValue('pp-custom-model-data', '0'), 0, 0, 2147483647) > 0
+        }, { conversionKey: 'potion_command_copy' });
         references.copyButton.textContent = text.copied;
         window.setTimeout(() => {
             references.copyButton.textContent = text.copy;
@@ -516,7 +534,12 @@
             }
             return;
         }
-        if (event.target === references.addEffectButton) createEffectCard({ id: 'strength', duration: 30, level: 1, particles: true, icon: true });
+        if (event.target === references.addEffectButton) {
+            createEffectCard({ id: 'strength', duration: 30, level: 1, particles: true, icon: true });
+            trackEvent('potion_effect_added', {
+                effect_count: references.effectList.children.length
+            });
+        }
         if (event.target === references.exampleButton) loadExample();
         if (event.target === references.resetButton) resetTool();
         if (event.target === references.copyButton) copyCommand();

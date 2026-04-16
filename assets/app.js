@@ -5,6 +5,19 @@
     const TRANSPARENT_PIXEL = mcPackData.transparentPixel || "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=";
     const pageLang = (document.documentElement.lang || '').toLowerCase().split('-')[0] || 'ru';
     const isEnglish = pageLang === 'en';
+    function trackEvent(name, params, options) {
+        if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
+            window.CubeAnalytics.track(name, params, options);
+        }
+    }
+    function getResourcePackStats() {
+        return {
+            armor_rows: document.querySelectorAll('#armor-container .dynamic-row').length,
+            item_rows: document.querySelectorAll('#items-container .dynamic-row').length,
+            block_rows: document.querySelectorAll('#blocks-container .dynamic-row').length,
+            uploaded_textures: Object.keys(filesData).length
+        };
+    }
     const UI_TEXT = isEnglish ? {
         upload: 'Upload',
         sliced: 'Sliced',
@@ -678,6 +691,7 @@
 
         // Проверка: есть ли хоть один файл (помимо mcmeta)
         if(Object.keys(zip.files).length <= 1) {
+            trackEvent('resource_pack_build_blocked_empty', getResourcePackStats());
             alert(UI_TEXT.emptyAlert);
             return;
         }
@@ -685,12 +699,21 @@
         const btn = document.getElementById('generateBtn');
         const originalText = btn.innerText;
         btn.innerText = UI_TEXT.buildingArchive;
+        trackEvent('resource_pack_build_started', {
+            pack_name_length: packName.length,
+            ...getResourcePackStats()
+        });
         
         zip.generateAsync({type: "blob"}).then(function(content) {
             const link = document.createElement('a');
             link.href = URL.createObjectURL(content);
             link.download = `${safeFileName}.zip`;
             link.click();
+            trackEvent('resource_pack_download', {
+                pack_name_length: packName.length,
+                archive_name_length: safeFileName.length,
+                ...getResourcePackStats()
+            }, { conversionKey: 'resource_pack_download' });
             btn.innerText = originalText;
         }).catch(err => {
             alert(UI_TEXT.buildError + err);
@@ -1221,6 +1244,11 @@
                 name = name.replace(/_(top|bottom|front|side|atlas)$/i, '');
                 inputName.value = name;
             }
+            trackEvent('texture_slices_applied', {
+                slice_count: appliedCount,
+                grid_size: gridSize,
+                block_name_length: inputName ? String(inputName.value || '').trim().length : 0
+            });
         }
     }
 
@@ -1331,6 +1359,9 @@
     }
 
     function openPreview(id, type) {
+        trackEvent('resource_pack_preview_open', {
+            preview_type: type
+        });
         document.getElementById('previewModal').style.display = 'flex';
         initPreviewEnv();
         

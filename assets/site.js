@@ -1,4 +1,10 @@
 (function () {
+    function trackEvent(name, params, options) {
+        if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
+            window.CubeAnalytics.track(name, params, options);
+        }
+    }
+
     function copyTextFallback(text) {
         const textarea = document.createElement('textarea');
         textarea.value = text;
@@ -34,6 +40,11 @@
                 } catch (error) {
                     copyTextFallback(text);
                 }
+
+                trackEvent('wiki_example_copy', {
+                    copy_target: text,
+                    copy_length: text.length
+                });
 
                 button.textContent = copiedLabel;
                 button.classList.add('is-copied');

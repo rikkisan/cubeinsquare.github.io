@@ -2,6 +2,12 @@
     const root = document.querySelector('[data-villager-tool]');
     if (!root) return;
 
+    function trackEvent(name, params, options) {
+        if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
+            window.CubeAnalytics.track(name, params, options);
+        }
+    }
+
     const pageLang = (document.documentElement.lang || '').toLowerCase().split('-')[0] || 'ru';
     const isEnglish = pageLang === 'en';
     const text = isEnglish ? {
@@ -335,6 +341,13 @@
             output.select();
             document.execCommand('copy');
         }
+        trackEvent('villager_command_copy', {
+            syntax_version: fieldValue('vt-version', 'current'),
+            trade_count: collectRecipes(fieldValue('vt-version', 'current')).length,
+            has_no_ai: checked('vt-no-ai'),
+            has_invulnerable: checked('vt-invulnerable'),
+            has_silent: checked('vt-silent')
+        }, { conversionKey: 'villager_command_copy' });
         copyButton.textContent = text.copied;
         window.setTimeout(() => {
             copyButton.textContent = text.copy;
@@ -354,7 +367,12 @@
             }
             return;
         }
-        if (event.target === addTradeButton) createTradeCard({ buyCount: 1, sellId: 'diamond', sellName: '' });
+        if (event.target === addTradeButton) {
+            createTradeCard({ buyCount: 1, sellId: 'diamond', sellName: '' });
+            trackEvent('villager_trade_added', {
+                trade_count: tradeList.querySelectorAll('[data-trade-card]').length
+            });
+        }
         if (event.target === resetButton) resetTool();
         if (event.target === copyButton) copyCommand();
     });
