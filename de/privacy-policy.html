@@ -37,6 +37,71 @@
     <!-- /Search metadata -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../assets/styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cubeinsquare.com/#organization",
+          "name": "Cube in a Square",
+          "alternateName": "Куб в квадрате",
+          "url": "https://cubeinsquare.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cubeinsquare.com/assets/server-icon.png"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "privacy support",
+            "url": "https://cubeinsquare.com/de/about.html",
+            "availableLanguage": ["ru", "en", "fr", "de"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cubeinsquare.com/#website",
+          "url": "https://cubeinsquare.com/",
+          "name": "Cube in a Square",
+          "publisher": {
+            "@id": "https://cubeinsquare.com/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://cubeinsquare.com/de/privacy-policy.html#webpage",
+          "url": "https://cubeinsquare.com/de/privacy-policy.html",
+          "name": "Datenschutzerklärung | Cube in a Square",
+          "description": "Datenschutzerklärung von Cube in a Square: Cookies, Google AdSense, lokale Dateiverarbeitung, externe Ressourcen und Datenschutzoptionen.",
+          "isPartOf": {
+            "@id": "https://cubeinsquare.com/#website"
+          },
+          "about": {
+            "@id": "https://cubeinsquare.com/#organization"
+          },
+          "inLanguage": "de"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://cubeinsquare.com/de/privacy-policy.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Startseite",
+              "item": "https://cubeinsquare.com/de/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Datenschutzerklärung",
+              "item": "https://cubeinsquare.com/de/privacy-policy.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
@@ -105,12 +170,58 @@
     </div>
 </div><main class="page-shell wiki-article">
     <section class="page-hero"><h1>Datenschutzerklärung</h1><p class="page-lead">Diese Seite erklärt, welche Daten Cube in a Square verarbeiten kann, wie Cookies genutzt werden und wie Drittanbieterwerbung über Google AdSense funktioniert.</p><p class="page-lead">Zuletzt aktualisiert: 15. April 2026.</p></section>
+    <section class="page-section">
+        <h2 class="section-title">Kurzfassung</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Lokale Verarbeitung</h3>
+                <p>Die wichtigsten Generatoren verwenden deine PNG-Dateien und Einstellungen direkt im Browser. Bei normaler Nutzung lädt die Website diese Dateien nicht auf ihren eigenen Server hoch.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Drittanbieter-Dienste</h3>
+                <p>Die Website kann Google AdSense, CDN-Bibliotheken und öffentliche Minecraft-Datenquellen verwenden. Diese Dienste können technische Anfrageinformationen aus deinem Browser erhalten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Datenschutz-Kontakt</h3>
+                <p>Wenn du eine Frage zu Datenschutz, Website-Betrieb oder Werbung hast, kannst du uns auf Discord schreiben: <code>kvaasssssssss</code>.</p>
+            </article>
+        </div>
+    </section>
+
     <article>
-        <h2>1. Von der Website verarbeitete Daten</h2><p>Cube in a Square ist ein Browser-Werkzeug zum Erstellen von Minecraft Resource-Packs. Texturdateien, die du in den Generator hochlädst, werden lokal in deinem Browser verarbeitet, um ein ZIP-Archiv zu erstellen. Die Website erfordert keine Registrierung und fragt nicht nach Name, Adresse, Telefonnummer oder ähnlichen personenbezogenen Daten.</p>
-        <h2>2. Cookies und lokaler Speicher</h2><p>Cookies sind kleine Dateien, die Websites oder Drittanbieter in deinem Browser speichern können. Sie können für Website-Funktionen, gespeicherte Einstellungen, Messung von Anzeigenleistung und relevantere Werbung genutzt werden.</p>
-        <h2>3. Google AdSense und Drittanbieterwerbung</h2><p>Die Website kann Google AdSense verwenden. Google und seine Partner können Cookies, Werbekennungen und ähnliche Technologien nutzen, um Anzeigen zu zeigen, Leistung zu messen, Betrug zu verhindern und Werberichtlinien einzuhalten.</p><ul><li><a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google-Anzeigeneinstellungen</a></li><li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzerklärung</a></li><li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Wie Google Daten in Werbung verwendet</a></li></ul>
-        <h2>4. Nutzerdateien</h2><p>PNG-Texturen, die im Generator ausgewählt werden, werden lokal in deinem Browser genutzt. Die Website lädt diese Dateien nicht auf einen Cube in a Square Server hoch.</p>
-        <h2>5. Änderungen</h2><p>Diese Richtlinie kann aktualisiert werden, wenn sich Website-Funktionen, Werbedienste oder rechtliche Anforderungen ändern. Die aktuelle Version ist immer auf dieser Seite veröffentlicht.</p>
+        <h2>1. Von der Website verarbeitete Daten</h2>
+        <p>Cube in a Square funktioniert als browserbasierte Toolbox für Minecraft Resource Packs und verwandte Server-Workflows. Texturdateien, die du in den Generator hochlädst, werden lokal in deinem Browser verarbeitet, um ein ZIP-Archiv zu erstellen. Die Website erfordert keine Registrierung und fragt nicht nach Name, Adresse, Telefonnummer oder ähnlichen direkten personenbezogenen Daten.</p>
+        <p>Beim Besuch der Website können technische Informationen durch deinen Browser, das Hosting und Drittanbieter verarbeitet werden, zum Beispiel IP-Adresse, Browsertyp, Sprache, ungefähre Netzwerkposition, Besuchszeit und geöffnete Seiten. Solche Informationen werden in der Regel für Auslieferung, Sicherheit, Hosting-Diagnosen und Werbung genutzt.</p>
+
+        <h2>2. Cookies und lokaler Speicher</h2>
+        <p>Cookies sind kleine Dateien, die Websites oder Drittanbieter in deinem Browser speichern können. Sie können für Website-Funktionen, gespeicherte Einstellungen, Messung von Anzeigenleistung und relevantere Werbung genutzt werden.</p>
+        <p>Du kannst Cookies in deinen Browser-Einstellungen deaktivieren oder löschen. Wenn Cookies deaktiviert sind, können Teile der Website oder der Werbeerfahrung anders funktionieren.</p>
+
+        <h2>3. Google AdSense und Drittanbieterwerbung</h2>
+        <p>Die Website kann Google AdSense verwenden. Google und seine Partner können Cookies, Werbekennungen und ähnliche Technologien nutzen, um Anzeigen zu zeigen, Leistung zu messen, Betrug zu verhindern und Werberichtlinien einzuhalten.</p>
+        <p>Google kann Werbe-Cookies verwenden, um Anzeigen auf Grundlage von Besuchen auf dieser und anderen Websites auszuspielen. Drittanbieter und Werbenetzwerke können ebenfalls Cookies einsetzen, um Werbung auf dieser Website anzuzeigen.</p>
+        <p>Du kannst personalisierte Google-Werbung in den Google-Anzeigeneinstellungen deaktivieren und Cookies über deinen Browser verwalten.</p>
+        <ul>
+            <li><a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Google-Anzeigeneinstellungen</a></li>
+            <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Datenschutzerklärung</a></li>
+            <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Wie Google Daten in Werbung verwendet</a></li>
+        </ul>
+
+        <h2>4. Externe Ressourcen</h2>
+        <p>Für Oberfläche und Minecraft-Galerie kann die Website Daten oder Bibliotheken aus Drittquellen laden, darunter JavaScript-CDNs und öffentliche Repositories mit Minecraft-bezogenen Daten. Bei solchen Anfragen kann dein Browser technische Anfragedetails an diese Dienste senden.</p>
+        <p>Die Website kann außerdem Links zu externen Websites enthalten. Wir kontrollieren deren Datenschutzrichtlinien nicht, daher solltest du deren Bedingungen separat prüfen.</p>
+
+        <h2>5. Nutzerdateien</h2>
+        <p>Texturen, die im Generator ausgewählt werden, werden lokal im Browser für die Erstellung eines Resource Packs verwendet. Die Website lädt diese PNG-Dateien nicht auf einen Cube in a Square Server hoch. Die fertige ZIP-Datei wird auf deinem Gerät erstellt und über den Browser heruntergeladen.</p>
+
+        <h2>6. Kinder und jüngere Nutzer</h2>
+        <p>Die Website dreht sich um Minecraft Resource Packs und kann auch für Jugendliche interessant sein. Wir sammeln nicht absichtlich personenbezogene Daten von Kindern. Wenn du Elternteil oder Erziehungsberechtigter bist und glaubst, dass ein Kind über die Website persönliche Informationen geteilt hat, kontaktiere den Website-Betreiber, damit der Fall geprüft und behandelt werden kann, falls solche Daten tatsächlich eingegangen sind.</p>
+
+        <h2>7. Änderungen</h2>
+        <p>Diese Richtlinie kann aktualisiert werden, wenn sich Website-Funktionen, Werbedienste oder rechtliche Anforderungen ändern. Die aktuelle Version ist immer auf dieser Seite veröffentlicht.</p>
+
+        <h2>8. Kontakt</h2>
+        <p>Bei Fragen zu Datenschutz, Werbung oder zum Betrieb der Website kannst du uns auf Discord schreiben: <code>kvaasssssssss</code>. Grundlegende Projektinformationen stehen auch auf der Seite <a href="about.html">Projekt</a>.</p>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Datenschutzerklärung</a></footer>

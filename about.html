@@ -37,6 +37,71 @@
     <!-- /Search metadata -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/styles.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cubeinsquare.com/#organization",
+          "name": "Cube in a Square",
+          "alternateName": "Куб в квадрате",
+          "url": "https://cubeinsquare.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cubeinsquare.com/assets/server-icon.png"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "community support",
+            "url": "https://cubeinsquare.com/about.html",
+            "availableLanguage": ["ru", "en", "fr", "de"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cubeinsquare.com/#website",
+          "url": "https://cubeinsquare.com/",
+          "name": "Cube in a Square",
+          "publisher": {
+            "@id": "https://cubeinsquare.com/#organization"
+          }
+        },
+        {
+          "@type": "AboutPage",
+          "@id": "https://cubeinsquare.com/about.html#webpage",
+          "url": "https://cubeinsquare.com/about.html",
+          "name": "О проекте | Куб в квадрате",
+          "description": "Куб в квадрате — Minecraft-сервер с упором на ролевую историю без модов. На сайте собраны инструменты, созданные при разработке сервера.",
+          "isPartOf": {
+            "@id": "https://cubeinsquare.com/#website"
+          },
+          "about": {
+            "@id": "https://cubeinsquare.com/#organization"
+          },
+          "inLanguage": "ru"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://cubeinsquare.com/about.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Домой",
+              "item": "https://cubeinsquare.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "О проекте",
+              "item": "https://cubeinsquare.com/about.html"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
@@ -106,7 +171,25 @@
 </div><main class="page-shell">
     <section class="page-hero">
         <h1>Куб в квадрате</h1>
-        <p class="page-lead">Куб в квадрате — это сервер по Minecraft, который сосредоточен на ролевой составляющей.</p>
+        <p class="page-lead">Куб в квадрате — это Minecraft-сервер с упором на ролевую историю без модов и сайт с инструментами, которые выросли из нашей повседневной разработки.</p>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Что есть на сайте</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Инструменты для Minecraft</h3>
+                <p>Мы публикуем браузерные генераторы для resource pack, кастомных зелий, торгов жителей и других задач, которые полезны на сервере без модов.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Вики и справка</h3>
+                <p>Рядом с тулзами лежат статьи и инструкции, чтобы можно было не только скачать результат, но и понять, как устроены команды, модели и структура пака.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Обновления проекта</h3>
+                <p>Сайт развивается вместе с сервером, поэтому новые инструменты и статьи появляются по мере того, как мы реально используем их в работе и игре.</p>
+            </article>
+        </div>
     </section>
 
     <section class="page-section">
@@ -114,15 +197,15 @@
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>История без модов</h3>
-                <p>Наша задача вместе с игроками — создать интересную историю, не используя моды.</p>
+                <p>Наша задача вместе с игроками — создать интересную историю, не используя моды и не ломая ванильную основу Minecraft.</p>
             </article>
             <article class="resource-card">
-                <h3>Инструменты сервера</h3>
-                <p>Этот сайт мы создали, чтобы выложить накопившиеся инструменты, которые появились при разработке сервера.</p>
+                <h3>Браузерный подход</h3>
+                <p>Основные инструменты на сайте работают прямо в браузере. PNG-файлы и собранные ZIP-архивы обрабатываются локально на устройстве пользователя, а не отправляются на сервер сайта.</p>
             </article>
             <article class="resource-card">
                 <h3>Связаться с нами</h3>
-                <p>Вы можете связаться с нами через Discord: <code>kvaasssssssss</code>.</p>
+                <p>По вопросам сайта, статей, рекламы или конфиденциальности можно написать в Discord: <code>kvaasssssssss</code>.</p>
             </article>
         </div>
     </section>
