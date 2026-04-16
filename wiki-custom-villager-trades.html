@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="Minecraft Villager Trade Guide | Cube in a Square">
     <meta name="twitter:description" content="Build a custom villager with trade prices, rewards, CustomModelData, limits, and a ready summon command.">
     <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
-    <link rel="shortcut icon" href="server-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="assets/server-icon.png">
     <!-- /Search metadata -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
@@ -174,7 +174,7 @@
 </div>
 
 <main class="page-shell wiki-article">
-    <a class="article-back" href="wiki.html">в†ђ All articles</a>
+    <a class="article-back" href="wiki.html">← All articles</a>
     <section class="page-hero">
         <h1>Minecraft Villager Trade Guide</h1>
         <p class="page-lead">A custom villager can turn a simple exchange into a story shop: passes, quest items, unique weapons, keys, documents, and rewards without mods.</p>
@@ -198,14 +198,12 @@
 }</code></pre>
 
         <h2>Minecraft versions</h2>
-        <p>Minecraft 1.20.5 moved item data to Data Components, and 1.21.4 changed the CustomModelData component shape. The builder can switch between all three item-stack formats.</p>
+        <p>Minecraft 1.20.5 moved item data to Data Components. The builder can switch between both item-stack formats.</p>
         <ul>
-            <li><strong>1.21.4+</strong> uses <code>count</code> and <code>components</code>, but <code>minecraft:custom_model_data</code> is now stored as a float list.</li>
-            <li><strong>1.20.5-1.21.3</strong> uses <code>count</code> and <code>components</code> with integer <code>custom_model_data</code>.</li>
+            <li><strong>1.20.5+</strong> uses <code>count</code> and <code>components</code>.</li>
             <li><strong>Before 1.20.5</strong> uses <code>Count</code> and the older <code>tag</code> compound.</li>
         </ul>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
-{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
+<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
 
         <h2>Villager fields</h2>
