@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="Minecraft Resource Pack Generator for Items, Blocks, and Armor | Cube in a Square">
     <meta name="twitter:description" content="A browser-based Minecraft resource pack generator for items, blocks, armor, CustomModelData, ZIP export, and 3D preview without installing software.">
     <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="server-icon.png">
     <link rel="apple-touch-icon" href="assets/server-icon.png">
     <!-- /Search metadata -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
@@ -149,13 +149,13 @@
 <!-- Texture slicer modal -->
 <div class="modal-overlay" id="slicerModal">
     <div class="modal-content">
-        <button class="modal-close" onclick="closeSlicer()">×</button>
-        <h2 style="margin-top:0;">✂️ Texture atlas slicer</h2>
-        <p style="color:var(--text-dim);">Upload an image, choose the cell size, then drag squares over the parts you need. <br><strong style="color: #fda4af;">💡 Right-click a square, or press its button again, to remove it.</strong></p>
+        <button class="modal-close" onclick="closeSlicer()">Г—</button>
+        <h2 style="margin-top:0;">вњ‚пёЏ Texture atlas slicer</h2>
+        <p style="color:var(--text-dim);">Upload an image, choose the cell size, then drag squares over the parts you need. <br><strong style="color: #fda4af;">рџ’Ў Right-click a square, or press its button again, to remove it.</strong></p>
         
         <div style="display:flex; gap:15px; align-items:center; margin-bottom: 20px; flex-wrap: wrap;">
             <input type="file" accept="image/png" id="slicerInput" style="display:none;" onchange="loadAtlas(this)">
-            <label for="slicerInput" class="slicer-btn" style="background:var(--accent);">📁 Upload image...</label>
+            <label for="slicerInput" class="slicer-btn" style="background:var(--accent);">рџ“Ѓ Upload image...</label>
             <div style="display: flex; align-items: center; gap: 5px;">
                 Cell: 
                 <input type="number" id="slicerGridSize" value="16" style="width: 50px; background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 5px; border-radius: 4px;" onchange="redrawCanvas()"> px
@@ -167,7 +167,7 @@
                 Zoom: 
                 <input type="range" id="slicerZoom" min="1" max="10" value="4" onchange="redrawCanvas()" oninput="redrawCanvas()">
             </div>
-            <button class="btn-slice" onclick="applySlices()" style="margin-left: auto;">✔ Apply</button>
+            <button class="btn-slice" onclick="applySlices()" style="margin-left: auto;">вњ” Apply</button>
         </div>
 
         <div style="text-align: center; overflow: auto; max-height: 400px;">
@@ -186,7 +186,7 @@
             <button class="slicer-btn left" onclick="assignFace('left')">Left</button>
             <button class="slicer-btn right" onclick="assignFace('right')">Right</button>
             <button class="slicer-btn side" onclick="assignFace('side')">Sides</button>
-            <button class="slicer-btn" onclick="clearSlicerSelections()" style="margin-left:auto; background: #ef4444; border-color: #dc2626;">💥 Clear all</button>
+            <button class="slicer-btn" onclick="clearSlicerSelections()" style="margin-left:auto; background: #ef4444; border-color: #dc2626;">рџ’Ґ Clear all</button>
         </div>
     </div>
 </div>
@@ -197,11 +197,11 @@
 <!-- 3D preview modal -->
 <div class="modal-overlay" id="previewModal">
     <div class="modal-content" style="max-width: 900px; padding: 20px;">
-        <button class="modal-close" onclick="closePreview()">×</button>
-        <h2 style="margin-top:0; text-align: center;">👁️ 3D Preview</h2>
+        <button class="modal-close" onclick="closePreview()">Г—</button>
+        <h2 style="margin-top:0; text-align: center;">рџ‘ЃпёЏ 3D Preview</h2>
         <div id="cameraControls" style="display:none; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center;">
-            <button class="slicer-btn" id="btn_cam_first" onclick="setCameraView('first')">👤 First person</button>
-            <button class="slicer-btn" id="btn_cam_front" onclick="setCameraView('third_front')">👀 Front view</button>
+            <button class="slicer-btn" id="btn_cam_first" onclick="setCameraView('first')">рџ‘¤ First person</button>
+            <button class="slicer-btn" id="btn_cam_front" onclick="setCameraView('third_front')">рџ‘Ђ Front view</button>
         </div>
         <div style="text-align: center; background: #000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; position: relative; height: 500px; display: flex; align-items: center; justify-content: center;" id="previewContainer">
             <!-- ThreeJS Canvas will be injected here -->
@@ -291,9 +291,9 @@
     </div>
 
     <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('armor', this)">🛡️ Armor</button>
-        <button class="tab-btn" onclick="openTab('items', this)">⚒️ Items</button>
-        <button class="tab-btn" onclick="openTab('blocks', this)">🧊 Blocks</button>
+        <button class="tab-btn active" onclick="openTab('armor', this)">рџ›ЎпёЏ Armor</button>
+        <button class="tab-btn" onclick="openTab('items', this)">вљ’пёЏ Items</button>
+        <button class="tab-btn" onclick="openTab('blocks', this)">рџ§Љ Blocks</button>
     </div>
 
     <!-- Armor tab -->
@@ -338,7 +338,7 @@
         </div>
     </div>
 
-    <button class="generate-btn" id="generateBtn">📦 Download Resource Pack</button>
+    <button class="generate-btn" id="generateBtn">рџ“¦ Download Resource Pack</button>
 </div>
 <footer class="site-footer">
     <span>Cube in a Square</span>

@@ -161,7 +161,7 @@
     }
 
     function snbtJsonText(value) {
-        const json = JSON.stringify({ text: String(value), italic: false });
+        const json = JSON.stringify(String(value));
         return `'${json.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
     }
 
@@ -183,7 +183,13 @@
         const parts = [`id:${snbtString(id)}`, `count:${count}`];
         const components = [];
         if (customName) components.push(`"minecraft:custom_name":${snbtJsonText(customName)}`);
-        if (customModelData > 0) components.push(`"minecraft:custom_model_data":${customModelData}`);
+        if (customModelData > 0) {
+            if (version === 'modern') {
+                components.push(`"minecraft:custom_model_data":{floats:[${customModelData}f]}`);
+            } else {
+                components.push(`"minecraft:custom_model_data":${customModelData}`);
+            }
+        }
         if (components.length) parts.push(`components:{${components.join(',')}}`);
         return `{${parts.join(',')}}`;
     }
@@ -289,7 +295,7 @@
     }
 
     function buildCommand() {
-        const version = fieldValue('vt-version', 'current');
+        const version = fieldValue('vt-version', 'modern');
         const recipes = collectRecipes(version);
         if (!recipes.length) return '';
 
@@ -318,7 +324,7 @@
     function updateCommand() {
         const command = buildCommand();
         output.value = command || text.empty;
-        const recipeCount = collectRecipes(fieldValue('vt-version', 'current')).length;
+        const recipeCount = collectRecipes(fieldValue('vt-version', 'modern')).length;
         summary.textContent = command ? text.summary(recipeCount, command.length) : text.empty;
         if (copyButton) copyButton.textContent = text.copy;
     }
@@ -342,8 +348,8 @@
             document.execCommand('copy');
         }
         trackEvent('villager_command_copy', {
-            syntax_version: fieldValue('vt-version', 'current'),
-            trade_count: collectRecipes(fieldValue('vt-version', 'current')).length,
+            syntax_version: fieldValue('vt-version', 'modern'),
+            trade_count: collectRecipes(fieldValue('vt-version', 'modern')).length,
             has_no_ai: checked('vt-no-ai'),
             has_invulnerable: checked('vt-invulnerable'),
             has_silent: checked('vt-silent')
