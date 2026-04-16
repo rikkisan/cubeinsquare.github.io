@@ -160,8 +160,18 @@
         return JSON.stringify(String(value));
     }
 
+    function escapeJsonUnicode(value) {
+        return String(value).replace(/[\u007F-\uFFFF]/g, (char) => {
+            const code = char.charCodeAt(0).toString(16).padStart(4, '0');
+            return `\\u${code}`;
+        });
+    }
+
     function snbtJsonText(value) {
-        const json = JSON.stringify(String(value));
+        const json = JSON.stringify({
+            text: String(value),
+            italic: false
+        }).replace(/[\u007F-\uFFFF]/g, escapeJsonUnicode);
         return `'${json.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
     }
 
