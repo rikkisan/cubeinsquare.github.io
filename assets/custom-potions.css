@@ -1,0 +1,219 @@
+.potion-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 18px;
+}
+
+.potion-layout .tool-panel {
+    min-width: 0;
+}
+
+.potion-stack {
+    display: grid;
+    gap: 18px;
+}
+
+.tool-helper {
+    margin: 4px 0 0;
+    color: var(--text-dim);
+    font-size: 0.84rem;
+    line-height: 1.45;
+}
+
+.tool-color-grid {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 12px;
+    align-items: center;
+}
+
+.tool-color-grid input[type="color"] {
+    width: 54px;
+    min-width: 54px;
+    height: 44px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.tool-color-grid input[type="color"]:disabled,
+.tool-color-grid input[type="text"]:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.effect-list {
+    display: grid;
+    gap: 14px;
+}
+
+.effect-card {
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 8px;
+    background: rgba(15, 23, 42, 0.52);
+    padding: 14px;
+}
+
+.effect-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.effect-card-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.effect-check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.potion-preview-card {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 8px;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.44);
+}
+
+.potion-preview-art {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 55%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.38), rgba(2, 6, 23, 0.86));
+    position: relative;
+    overflow: hidden;
+}
+
+.potion-preview-art::after {
+    content: "";
+    position: absolute;
+    inset: auto 22px 18px;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.22);
+    filter: blur(10px);
+}
+
+.potion-bottle {
+    position: relative;
+    width: 92px;
+    height: 156px;
+}
+
+.potion-bottle::before {
+    content: "";
+    position: absolute;
+    left: 33px;
+    top: 10px;
+    width: 26px;
+    height: 34px;
+    border-radius: 8px 8px 10px 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65), rgba(148, 163, 184, 0.18));
+    border: 2px solid rgba(226, 232, 240, 0.72);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.12);
+}
+
+.potion-bottle::after {
+    content: "";
+    position: absolute;
+    inset: 36px 10px 6px;
+    border-radius: 24px 24px 28px 28px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.08)),
+        rgba(148, 163, 184, 0.12);
+    border: 2px solid rgba(226, 232, 240, 0.72);
+    box-shadow:
+        inset 0 0 18px rgba(255, 255, 255, 0.12),
+        0 18px 32px rgba(0, 0, 0, 0.3);
+}
+
+.potion-liquid {
+    position: absolute;
+    inset: 64px 18px 16px;
+    border-radius: 18px 18px 24px 24px;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.04) 24%, transparent 24%),
+        var(--potion-liquid, #7c3aed);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.12);
+}
+
+.potion-preview-copy {
+    min-width: 0;
+}
+
+.potion-preview-copy h2 {
+    margin: 10px 0 8px;
+    font-size: 1.35rem;
+}
+
+.potion-preview-copy p {
+    margin: 0;
+    color: var(--text-dim);
+    line-height: 1.55;
+}
+
+.chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.16);
+    border: 1px solid rgba(96, 165, 250, 0.24);
+    color: #dbeafe;
+    font-size: 0.84rem;
+    max-width: 100%;
+}
+
+.chip code {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.potion-notes {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--text-dim);
+    line-height: 1.65;
+}
+
+.potion-notes li + li {
+    margin-top: 6px;
+}
+
+@media (max-width: 980px) {
+    .potion-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .potion-preview-card {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .potion-preview-art {
+        min-height: 180px;
+    }
+}
