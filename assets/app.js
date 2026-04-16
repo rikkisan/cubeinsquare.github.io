@@ -3,7 +3,8 @@
     const filesData = {};
     const mcPackData = window.MC_PACK_DATA || {};
     const TRANSPARENT_PIXEL = mcPackData.transparentPixel || "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVQYV2NgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=";
-    const isEnglish = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+    const pageLang = (document.documentElement.lang || '').toLowerCase().split('-')[0] || 'ru';
+    const isEnglish = pageLang === 'en';
     const UI_TEXT = isEnglish ? {
         upload: 'Upload',
         sliced: 'Sliced',
@@ -97,6 +98,106 @@
         invalidResolution: (width, height) => `⚠️ Осторожно! Разрешение картинки (${width}x${height}) не кратно 16. Майнкрафт может криво отобразить текстуру.`,
         faceLabels: { main: 'Осн', top: 'Врх', bottom: 'Низ', front: 'Прд', back: 'Зад', left: 'Лев', right: 'Прв', side: 'Бок' }
     };
+
+    if (pageLang === 'fr') {
+        Object.assign(UI_TEXT, {
+            upload: 'Importer',
+            sliced: 'Découpé',
+            itemNamePlaceholder: 'Nom de l’objet (ex. iron_pickaxe)',
+            itemNamePlaceholderShort: 'Nom de l’objet',
+            blockTexturePlaceholder: 'Nom de la texture de bloc (ex. oak_planks)',
+            blockTexturePlaceholderShort: 'Nom de la texture de bloc',
+            sliceTexture: 'Découper la texture',
+            preview: 'Aperçu',
+            armorMaterialLabel: 'Matériau d’armure à remplacer :',
+            armorLayer1: 'Couche 3D 1',
+            armorLayer1Hint: '(Casque, plastron, bottes)',
+            armorLayer2: 'Couche 3D 2',
+            armorLayer2Hint: '(Jambières)',
+            inventoryIcons: 'Icônes d’inventaire :',
+            helmet: 'Casque',
+            chestplate: 'Plastron',
+            leggings: 'Jambières',
+            boots: 'Bottes',
+            iconHint: '(Icône)',
+            base: 'Base',
+            top: 'Haut',
+            bottom: 'Bas',
+            front: 'Avant',
+            back: 'Arrière',
+            leftSide: 'Côté gauche',
+            rightSide: 'Côté droit',
+            allSides: 'Tous les côtés',
+            noResults: 'Aucun résultat',
+            emptyAlert: 'Vous n’avez rien importé. Ajoutez au moins une texture.',
+            buildingArchive: '⏳ Création de l’archive...',
+            buildError: 'Erreur de génération : ',
+            packDefault: 'CubeInSquarePack',
+            createdWith: 'Créé avec le générateur de packs de ressources Minecraft',
+            invalidResolution: (width, height) => `⚠️ Attention ! La résolution de l’image (${width}x${height}) n’est pas divisible par 16. Minecraft peut afficher la texture incorrectement.`
+        });
+        UI_TEXT.armorMaterials = {
+            leather: 'Cuir (avec l’astuce _overlay)',
+            iron: 'Fer',
+            gold: 'Or',
+            diamond: 'Diamant',
+            netherite: 'Netherite',
+            chainmail: 'Cotte de mailles',
+            turtle: 'Carapace de tortue',
+            copper: 'Cuivre (si utilisé par des mods)'
+        };
+        UI_TEXT.faceLabels = { main: 'Base', top: 'Haut', bottom: 'Bas', front: 'Avant', back: 'Arrière', left: 'Gauche', right: 'Droite', side: 'Côté' };
+    }
+
+    if (pageLang === 'de') {
+        Object.assign(UI_TEXT, {
+            upload: 'Hochladen',
+            sliced: 'Geschnitten',
+            itemNamePlaceholder: 'Item-Name (z. B. iron_pickaxe)',
+            itemNamePlaceholderShort: 'Item-Name',
+            blockTexturePlaceholder: 'Blocktextur-Name (z. B. oak_planks)',
+            blockTexturePlaceholderShort: 'Blocktextur-Name',
+            sliceTexture: 'Textur schneiden',
+            preview: 'Vorschau',
+            armorMaterialLabel: 'Zu ersetzendes Rüstungsmaterial:',
+            armorLayer1: '3D-Ebene 1',
+            armorLayer1Hint: '(Helm, Brustplatte, Stiefel)',
+            armorLayer2: '3D-Ebene 2',
+            armorLayer2Hint: '(Beinschutz)',
+            inventoryIcons: 'Inventar-Icons:',
+            helmet: 'Helm',
+            chestplate: 'Brustplatte',
+            leggings: 'Beinschutz',
+            boots: 'Stiefel',
+            iconHint: '(Icon)',
+            base: 'Basis',
+            top: 'Oben',
+            bottom: 'Unten',
+            front: 'Vorne',
+            back: 'Hinten',
+            leftSide: 'Linke Seite',
+            rightSide: 'Rechte Seite',
+            allSides: 'Alle Seiten',
+            noResults: 'Nichts gefunden',
+            emptyAlert: 'Du hast nichts hochgeladen. Füge mindestens eine Textur hinzu.',
+            buildingArchive: '⏳ Archiv wird erstellt...',
+            buildError: 'Build-Fehler: ',
+            packDefault: 'CubeInSquarePack',
+            createdWith: 'Erstellt mit dem Minecraft Resource-Pack-Generator',
+            invalidResolution: (width, height) => `⚠️ Achtung! Die Bildauflösung (${width}x${height}) ist nicht durch 16 teilbar. Minecraft kann die Textur falsch anzeigen.`
+        });
+        UI_TEXT.armorMaterials = {
+            leather: 'Leder (mit _overlay-Trick)',
+            iron: 'Eisen',
+            gold: 'Gold',
+            diamond: 'Diamant',
+            netherite: 'Netherit',
+            chainmail: 'Kettenrüstung',
+            turtle: 'Schildkrötenpanzer',
+            copper: 'Kupfer (falls durch Mods genutzt)'
+        };
+        UI_TEXT.faceLabels = { main: 'Basis', top: 'Oben', bottom: 'Unten', front: 'Vorne', back: 'Hinten', left: 'Links', right: 'Rechts', side: 'Seite' };
+    }
     
     // Переключение вкладок
     function openTab(tabId, btn) {
@@ -1164,8 +1265,13 @@
     }
 
     function getPreviewFaceLabels() {
-        const isEnglish = document.documentElement.lang === 'en';
-        return isEnglish
+        if (pageLang === 'fr') {
+            return { top: 'Haut', bottom: 'Bas', front: 'Avant', back: 'Arrière', left: 'Gauche', right: 'Droite' };
+        }
+        if (pageLang === 'de') {
+            return { top: 'Oben', bottom: 'Unten', front: 'Vorne', back: 'Hinten', left: 'Links', right: 'Rechts' };
+        }
+        return pageLang === 'en'
             ? { top: 'Top', bottom: 'Bottom', front: 'Front', back: 'Back', left: 'Left', right: 'Right' }
             : { top: 'Верх', bottom: 'Низ', front: 'Перед', back: 'Зад', left: 'Лево', right: 'Право' };
     }
