@@ -661,8 +661,16 @@
             visibility: visible;
             transform: translateY(0);
         }
+        .steam-nav-menu.is-open .steam-dropdown-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
         .steam-nav-menu:hover .steam-mega-panel,
         .steam-nav-menu:focus-within .steam-mega-panel {
+            width: min(640px, calc(100vw - 32px));
+        }
+        .steam-nav-menu.is-open .steam-mega-panel {
             width: min(640px, calc(100vw - 32px));
         }
         .mega-list {
@@ -708,6 +716,10 @@
         }
         .steam-nav-menu:hover .mega-feature,
         .steam-nav-menu:focus-within .mega-feature {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .steam-nav-menu.is-open .mega-feature {
             opacity: 1;
             transform: translateX(0);
         }
@@ -800,6 +812,104 @@
         .language-switch a.is-active {
             color: #ffffff;
             background: rgba(255, 255, 255, 0.1);
+        }
+
+        .steam-nav-dropdown::after {
+            content: "\25BE";
+        }
+
+        .language-switch {
+            position: relative;
+            justify-content: center;
+            gap: 4px;
+            min-width: 58px;
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .language-switch a {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .language-switch a.is-active {
+            display: inline-flex;
+            order: -1;
+        }
+
+        .language-switch a.is-active::after {
+            content: "\25BE";
+            margin-left: 6px;
+            font-size: 0.62rem;
+            opacity: 0.72;
+            transition: transform 0.2s ease;
+        }
+
+        .language-switch:hover,
+        .language-switch:focus-within,
+        .language-switch.is-open {
+            background: rgba(15, 23, 42, 0.88);
+            border-color: rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 24px -18px rgba(59, 130, 246, 0.68);
+        }
+
+        .language-switch:hover a,
+        .language-switch:focus-within a,
+        .language-switch.is-open a {
+            display: inline-flex;
+        }
+
+        .language-switch:hover a:hover,
+        .language-switch:hover a:focus,
+        .language-switch:focus-within a:hover,
+        .language-switch:focus-within a:focus,
+        .language-switch.is-open a:hover,
+        .language-switch.is-open a:focus {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            outline: none;
+        }
+
+        .language-switch:hover a.is-active::after,
+        .language-switch:focus-within a.is-active::after,
+        .language-switch.is-open a.is-active::after {
+            transform: rotate(180deg);
+        }
+
+        .search-results-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .search-results-summary {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        .search-results-clear {
+            color: #bfdbfe;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .search-results-clear:hover,
+        .search-results-clear:focus {
+            color: #ffffff;
+            text-decoration: underline;
+            outline: none;
+        }
+
+        .search-empty {
+            padding: 18px;
+            border: 1px dashed rgba(148, 163, 184, 0.28);
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.42);
+            color: var(--text-dim);
         }
 
         .page-shell {
@@ -1380,6 +1490,11 @@
                 flex: 0 1 auto;
             }
 
+            .steam-nav-menu.is-open .steam-nav-dropdown {
+                color: #ffffff;
+                background: rgba(255, 255, 255, 0.08);
+            }
+
             .steam-dropdown-panel {
                 left: 14px;
                 right: 14px;
@@ -1428,6 +1543,7 @@
             .language-switch {
                 margin-left: auto;
                 flex: 0 0 auto;
+                min-width: 56px;
             }
 
             .page-shell {
