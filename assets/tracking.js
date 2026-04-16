@@ -35,6 +35,9 @@
 
     let booted = false;
     let pageViewTracked = false;
+    const COOKIE_CONSENT_KEY = 'cube_cookie_consent';
+    const COOKIE_CONSENT_ACCEPTED = 'accepted';
+    const COOKIE_CONSENT_DECLINED = 'declined';
     const SEARCH_COPY = {
         en: {
             resultsTitle: 'Search results',
@@ -61,9 +64,62 @@
             noResults: (query) => `Für "${query}" wurde nichts gefunden.`
         }
     };
+    const CONSENT_COPY = {
+        en: {
+            message: 'We use cookies to analyze traffic and personalize ads. You can accept or decline non-essential tracking.',
+            accept: 'Accept',
+            decline: 'Decline',
+            learnMore: 'Privacy Policy'
+        },
+        ru: {
+            message: 'Мы используем cookies, чтобы анализировать трафик и персонализировать рекламу. Вы можете принять или отклонить необязательное отслеживание.',
+            accept: 'Принять',
+            decline: 'Отклонить',
+            learnMore: 'Политика конфиденциальности'
+        },
+        fr: {
+            message: 'Nous utilisons des cookies pour analyser le trafic et personnaliser les annonces. Vous pouvez accepter ou refuser le suivi non essentiel.',
+            accept: 'Accepter',
+            decline: 'Refuser',
+            learnMore: 'Politique de confidentialité'
+        },
+        de: {
+            message: 'Wir verwenden Cookies, um den Traffic zu analysieren und Werbung zu personalisieren. Sie können nicht notwendiges Tracking akzeptieren oder ablehnen.',
+            accept: 'Akzeptieren',
+            decline: 'Ablehnen',
+            learnMore: 'Datenschutz'
+        }
+    };
 
     function hasMeasurementIds() {
         return Boolean(config.ga4MeasurementId || config.googleAdsId);
+    }
+
+    function getStoredConsent() {
+        try {
+            return window.localStorage ? window.localStorage.getItem(COOKIE_CONSENT_KEY) || '' : '';
+        } catch (error) {
+            return '';
+        }
+    }
+
+    function setStoredConsent(value) {
+        try {
+            if (window.localStorage) {
+                window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
+            }
+        } catch (error) {
+            // ignore storage failures
+        }
+    }
+
+    function hasTrackingConsent() {
+        return getStoredConsent() === COOKIE_CONSENT_ACCEPTED;
+    }
+
+    function hasConsentChoice() {
+        const value = getStoredConsent();
+        return value === COOKIE_CONSENT_ACCEPTED || value === COOKIE_CONSENT_DECLINED;
     }
 
     function debugLog() {
@@ -90,7 +146,7 @@
     }
 
     function boot() {
-        if (booted || !hasMeasurementIds()) return;
+        if (booted || !hasMeasurementIds() || !hasTrackingConsent()) return;
 
         ensureGtag();
         loadScript(config.ga4MeasurementId || config.googleAdsId);
@@ -128,6 +184,10 @@
         return SEARCH_COPY[getPageLanguage()] || SEARCH_COPY.en;
     }
 
+    function getConsentCopy() {
+        return CONSENT_COPY[getPageLanguage()] || CONSENT_COPY.en;
+    }
+
     function normalizeSearchText(value) {
         return String(value || '')
             .toLowerCase()
@@ -144,6 +204,10 @@
 
     function isCompactHeaderMode() {
         return window.matchMedia('(max-width: 700px)').matches;
+    }
+
+    function getPrivacyPolicyHref() {
+        return 'privacy-policy.html';
     }
 
     function sanitizeValue(value) {
@@ -184,7 +248,7 @@
             ...sanitizeParams(params)
         };
 
-        if (hasMeasurementIds()) {
+        if (hasMeasurementIds() && hasTrackingConsent()) {
             boot();
             if (typeof window.gtag === 'function') {
                 window.gtag('event', eventName, payload);
@@ -508,14 +572,68 @@
         filterWikiSections(main, normalizedQuery);
     }
 
+    function removeConsentBanner() {
+        const banner = document.querySelector('[data-cookie-banner="true"]');
+        if (banner) banner.remove();
+    }
+
+    function applyConsentChoice(value) {
+        setStoredConsent(value);
+        removeConsentBanner();
+
+        if (value === COOKIE_CONSENT_ACCEPTED) {
+            boot();
+            trackPageView();
+            track('cookie_consent_update', { consent_state: 'accepted' });
+        }
+    }
+
+    function initConsentBanner() {
+        if (hasConsentChoice() || document.querySelector('[data-cookie-banner="true"]')) return;
+
+        const copy = getConsentCopy();
+        const banner = document.createElement('aside');
+        banner.className = 'cookie-banner';
+        banner.dataset.cookieBanner = 'true';
+        banner.innerHTML = `
+            <div class="cookie-banner-copy">
+                <strong>Cookies</strong>
+                <p>${copy.message}</p>
+                <a class="cookie-banner-link" href="${getPrivacyPolicyHref()}">${copy.learnMore}</a>
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="cookie-banner-button cookie-banner-button-secondary" type="button" data-cookie-decline="true">${copy.decline}</button>
+                <button class="cookie-banner-button" type="button" data-cookie-accept="true">${copy.accept}</button>
+            </div>
+        `;
+
+        document.body.appendChild(banner);
+
+        const acceptButton = banner.querySelector('[data-cookie-accept="true"]');
+        const declineButton = banner.querySelector('[data-cookie-decline="true"]');
+
+        if (acceptButton) {
+            acceptButton.addEventListener('click', () => applyConsentChoice(COOKIE_CONSENT_ACCEPTED));
+        }
+
+        if (declineButton) {
+            declineButton.addEventListener('click', () => applyConsentChoice(COOKIE_CONSENT_DECLINED));
+        }
+    }
+
     function init() {
-        boot();
+        if (hasTrackingConsent()) {
+            boot();
+        }
         bindSearchTracking();
         bindSearchForms();
         bindDeclarativeClickTracking();
         bindHeaderMenus();
         initSearchResults();
-        trackPageView();
+        initConsentBanner();
+        if (hasTrackingConsent()) {
+            trackPageView();
+        }
     }
 
     window.CubeAnalytics = {
