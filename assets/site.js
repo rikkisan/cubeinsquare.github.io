@@ -1,4 +1,51 @@
 (function () {
+    function copyTextFallback(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function initCopyButtons() {
+        document.querySelectorAll('[data-copy-text]').forEach((button) => {
+            if (button.dataset.copyReady === 'true') return;
+            button.dataset.copyReady = 'true';
+
+            const defaultLabel = button.dataset.copyLabel || button.textContent.trim();
+            const copiedLabel = button.dataset.copyCopiedLabel || defaultLabel;
+            let resetTimer = null;
+
+            button.addEventListener('click', async () => {
+                const text = button.dataset.copyText || '';
+                if (!text) return;
+
+                try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        await navigator.clipboard.writeText(text);
+                    } else {
+                        copyTextFallback(text);
+                    }
+                } catch (error) {
+                    copyTextFallback(text);
+                }
+
+                button.textContent = copiedLabel;
+                button.classList.add('is-copied');
+                window.clearTimeout(resetTimer);
+                resetTimer = window.setTimeout(() => {
+                    button.textContent = defaultLabel;
+                    button.classList.remove('is-copied');
+                }, 1400);
+            });
+        });
+    }
+
     function initSlideshow(root) {
         const slides = Array.from(root.querySelectorAll('.server-slides img'));
         const prev = root.querySelector('[data-slide-prev]');
@@ -75,6 +122,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        initCopyButtons();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });
 })();
