@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft Resource Pack Generator | Cube in a Square</title>
+    <title>Cube in a Square | Minecraft tools, wiki, and a mod-free server</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="A browser-based Minecraft resource pack generator for items, blocks, armor, CustomModelData, ZIP export, and 3D preview without installing software.">
+    <meta name="description" content="Cube in a Square: Minecraft tools, resource-pack wiki guides, and a mod-free server for story-driven play.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -21,16 +21,16 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/">
 <meta property="og:site_name" content="Cube in a Square">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Minecraft Resource Pack Generator | Cube in a Square">
-    <meta property="og:description" content="A browser-based Minecraft resource pack generator for items, blocks, armor, CustomModelData, ZIP export, and 3D preview without installing software.">
+    <meta property="og:title" content="Cube in a Square | Minecraft tools, wiki, and a mod-free server">
+    <meta property="og:description" content="Cube in a Square: Minecraft tools, resource-pack wiki guides, and a mod-free server for story-driven play.">
     <meta property="og:url" content="https://cubeinsquare.com/en/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Minecraft Resource Pack Generator | Cube in a Square">
-    <meta name="twitter:description" content="A browser-based Minecraft resource pack generator for items, blocks, armor, CustomModelData, ZIP export, and 3D preview without installing software.">
+    <meta name="twitter:title" content="Cube in a Square | Minecraft tools, wiki, and a mod-free server">
+    <meta name="twitter:description" content="Cube in a Square: Minecraft tools, resource-pack wiki guides, and a mod-free server for story-driven play.">
     <link rel="icon" href="../server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="apple-touch-icon" href="../assets/server-icon.png">
@@ -39,73 +39,9 @@
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-<!-- Texture slicer modal -->
-<div class="modal-overlay" id="slicerModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeSlicer()">×</button>
-        <h2 style="margin-top:0;">✂️ Texture atlas slicer</h2>
-        <p style="color:var(--text-dim);">Upload an image, choose the cell size, then drag squares over the parts you need. <br><strong style="color: #fda4af;">💡 Right-click a square, or press its button again, to remove it.</strong></p>
-        
-        <div style="display:flex; gap:15px; align-items:center; margin-bottom: 20px; flex-wrap: wrap;">
-            <input type="file" accept="image/png" id="slicerInput" style="display:none;" onchange="loadAtlas(this)">
-            <label for="slicerInput" class="slicer-btn" style="background:var(--accent);">📁 Upload image...</label>
-            <div style="display: flex; align-items: center; gap: 5px;">
-                Cell: 
-                <input type="number" id="slicerGridSize" value="16" style="width: 50px; background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 5px; border-radius: 4px;" onchange="redrawCanvas()"> px
-            </div>
-            <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                <input type="checkbox" id="slicerSnap" checked> Snap to grid
-            </label>
-            <div style="display: flex; align-items: center; gap: 5px;">
-                Zoom: 
-                <input type="range" id="slicerZoom" min="1" max="10" value="4" onchange="redrawCanvas()" oninput="redrawCanvas()">
-            </div>
-            <button class="btn-slice" onclick="applySlices()" style="margin-left: auto;">✔ Apply</button>
-        </div>
-
-        <div style="text-align: center; overflow: auto; max-height: 400px;">
-            <div class="slicer-canvas-container" id="slicerContainer" style="display:none;">
-                <canvas id="slicerCanvas"></canvas>
-            </div>
-        </div>
-
-        <div class="slicer-controls" id="slicerControls" style="display:none;">
-            <div style="font-weight: 600;">Assign fragment:</div>
-            <button class="slicer-btn main" onclick="assignFace('main')">Base</button>
-            <button class="slicer-btn top" onclick="assignFace('top')">Top</button>
-            <button class="slicer-btn bottom" onclick="assignFace('bottom')">Bottom</button>
-            <button class="slicer-btn front" onclick="assignFace('front')">Front</button>
-            <button class="slicer-btn back" onclick="assignFace('back')">Back</button>
-            <button class="slicer-btn left" onclick="assignFace('left')">Left</button>
-            <button class="slicer-btn right" onclick="assignFace('right')">Right</button>
-            <button class="slicer-btn side" onclick="assignFace('side')">Sides</button>
-            <button class="slicer-btn" onclick="clearSlicerSelections()" style="margin-left:auto; background: #ef4444; border-color: #dc2626;">💥 Clear all</button>
-        </div>
-    </div>
-</div>
-
-<datalist id="mc_items_list"></datalist>
-<datalist id="mc_blocks_list"></datalist>
-
-<!-- 3D preview modal -->
-<div class="modal-overlay" id="previewModal">
-    <div class="modal-content" style="max-width: 900px; padding: 20px;">
-        <button class="modal-close" onclick="closePreview()">×</button>
-        <h2 style="margin-top:0; text-align: center;">👁️ 3D Preview</h2>
-        <div id="cameraControls" style="display:none; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center;">
-            <button class="slicer-btn" id="btn_cam_first" onclick="setCameraView('first')">👤 First person</button>
-            <button class="slicer-btn" id="btn_cam_front" onclick="setCameraView('third_front')">👀 Front view</button>
-        </div>
-        <div style="text-align: center; background: #000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; position: relative; height: 500px; display: flex; align-items: center; justify-content: center;" id="previewContainer">
-            <!-- ThreeJS Canvas will be injected here -->
-            <div id="previewLoading" style="color: white; display: none;">Loading textures...</div>
-        </div>
-    </div>
-</div>
-
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="home.html" aria-label="Home" title="Home"><img src="../assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="index.html" aria-label="Home" title="Home"><img src="../assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu">
             <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
             <div class="steam-dropdown-panel steam-mega-panel">
@@ -139,16 +75,16 @@
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="tools.html">Tools</a>
+            <a class="steam-nav-dropdown" href="tools.html">Tools</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
-                    <a href="index.html">Minecraft Resource Pack Generator</a>
+                    <a href="resource-pack-generator.html">Minecraft Resource Pack Generator</a>
                     <a href="custom-villager-trades.html">Custom villager trades</a>
                     <a href="custom-potions.html">Custom potions</a>
                     <a href="tool-coming-soon.html">Upcoming tools</a>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="index.html"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
+                    <a class="mega-card" href="resource-pack-generator.html"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
                     <a class="mega-card" href="custom-potions.html"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
                     <a class="mega-card" href="custom-villager-trades.html"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
                 </div>
@@ -167,81 +103,42 @@
         </form>
         <div class="language-switch" aria-label="Language"><a href="../index.html">RU</a><a class="is-active" href="#">EN</a><a href="../fr/index.html">FR</a><a href="../de/index.html">DE</a></div>
     </div>
-</div><div class="container">
-    <h1>Minecraft Resource Pack Generator</h1>
-    <div class="description">Create a resource pack for armor, tools, items, and blocks directly in your browser.</div>
-
-    <div style="margin-bottom: 25px; text-align: center; width: 100%;">
-        <input type="text" id="packNameInput" class="dynamic-input" style="width: 80%; max-width: 400px; text-align: center; font-size: 1.1rem; padding: 15px;" placeholder="Your resource pack name (e.g. MyCustomPack)">
-    </div>
-
-    <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Target game version:</label>
-        <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">Before 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (Components syntax: [custom_model_data=1])</option>
-        </select>
-    </div>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('armor', this)">🛡️ Armor</button>
-        <button class="tab-btn" onclick="openTab('items', this)">⚒️ Items</button>
-        <button class="tab-btn" onclick="openTab('blocks', this)">🧊 Blocks</button>
-    </div>
-
-    <!-- Armor tab -->
-    <div id="armor" class="tab-content active">
-        <h3 style="margin-top:0;">Armor 3D model setup</h3>
-        <p style="color:var(--text-dim);">Add 3D armor layers and 2D inventory icons. Choose the armor material to replace and upload your files.</p>
-        <div id="armor-container"></div>
-        <button class="btn" style="width:100%; justify-content:center; margin-top: 20px;" onclick="addDynamicRow('armor')">+ Add a full armor set</button>
-    </div>
-
-    <!-- Items tab -->
-    <div id="items" class="tab-content">
-        <p style="color:var(--text-dim);">Add textures that replace vanilla items. For example, enter <code>diamond_sword</code> and upload your icon.</p>
-        <div id="items-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('items', 'Item name (e.g. iron_pickaxe)')">+ Add another item</button>
-        
-        <div class="gallery">
-            <div class="gallery-header">
-                <h3 style="margin:0;">Item Library</h3>
-                <input type="text" class="gallery-search" placeholder="Search items..." onkeyup="filterGallery('items', this.value)">
-            </div>
-            <div class="gallery-grid" id="gallery-items">
-                <div style="color:var(--text-dim); padding: 20px;">Loading library...</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Blocks tab -->
-    <div id="blocks" class="tab-content">
-        <p style="color:var(--text-dim);">Add textures that replace vanilla blocks. For example, <code>crafting_table_top</code>.</p>
-        <div id="blocks-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('blocks', 'Block texture name (e.g. oak_planks)')">+ Add another block texture</button>
-        
-        <div class="gallery">
-            <div class="gallery-header">
-                <h3 style="margin:0;">Block Library</h3>
-                <input type="text" class="gallery-search" placeholder="Search blocks..." onkeyup="filterGallery('blocks', this.value)">
-            </div>
-            <div class="gallery-grid" id="gallery-blocks">
-                <div style="color:var(--text-dim); padding: 20px;">Loading library...</div>
-            </div>
-        </div>
-    </div>
-
-    <button class="generate-btn" id="generateBtn">📦 Download Resource Pack</button>
 </div>
-<footer class="site-footer">
-    <span>Cube in a Square</span>
-    <a href="privacy-policy.html">Privacy Policy</a>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="../assets/data.js"></script>
-<script src="../assets/app.js"></script>
+
+<main class="page-shell">
+    <section class="page-hero">
+        <h1>Cube in a Square</h1>
+        <p class="page-lead">A home hub for the server and its tools: resource-pack generator, wiki, upcoming utilities, and project information.</p>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick Access</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Minecraft Resource Pack Generator</h3>
+                <p>Build a ZIP resource pack with items, blocks, armor, CustomModelData, and a 3D preview.</p>
+                <a class="resource-link" href="resource-pack-generator.html">Open generator</a>
+            </article>
+            <article class="resource-card">
+                <h3>Wiki</h3>
+                <p>Articles about CustomModelData, resource-pack structure, and no-mod workflows.</p>
+                <a class="resource-link" href="wiki.html">Read wiki</a>
+            </article>
+            <article class="resource-card">
+                <h3>Tools</h3>
+                        <p>A catalog of tools: generator, villager trades, custom potions, and the next-in-line palette helpers.</p>
+                <a class="resource-link" href="tools.html">View tools</a>
+            </article>
+            <article class="resource-card">
+                <h3>Project</h3>
+                <p>Who we are, why the site exists, and how to reach us on Discord.</p>
+                <a class="resource-link" href="about.html">Cube in a Square</a>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Privacy Policy</a></footer>
 </body>
 </html>
 

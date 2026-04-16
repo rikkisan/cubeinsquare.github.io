@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Générateur de packs de ressources Minecraft | Cube in a Square</title>
+    <title>Cube in a Square | Outils Minecraft, wiki et serveur sans mods</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Un générateur de packs de ressources Minecraft dans le navigateur pour objets, blocs, armures, CustomModelData, export ZIP et aperçu 3D sans installation.">
+    <meta name="description" content="Cube in a Square : outils Minecraft, guides wiki sur les packs de ressources et serveur narratif sans mods.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -21,16 +21,16 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/">
 <meta property="og:site_name" content="Cube in a Square">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Générateur de packs de ressources Minecraft | Cube in a Square">
-    <meta property="og:description" content="Un générateur de packs de ressources Minecraft dans le navigateur pour objets, blocs, armures, CustomModelData, export ZIP et aperçu 3D sans installation.">
+    <meta property="og:title" content="Cube in a Square | Outils Minecraft, wiki et serveur sans mods">
+    <meta property="og:description" content="Cube in a Square : outils Minecraft, guides wiki sur les packs de ressources et serveur narratif sans mods.">
     <meta property="og:url" content="https://cubeinsquare.com/fr/">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Générateur de packs de ressources Minecraft | Cube in a Square">
-    <meta name="twitter:description" content="Un générateur de packs de ressources Minecraft dans le navigateur pour objets, blocs, armures, CustomModelData, export ZIP et aperçu 3D sans installation.">
+    <meta name="twitter:title" content="Cube in a Square | Outils Minecraft, wiki et serveur sans mods">
+    <meta name="twitter:description" content="Cube in a Square : outils Minecraft, guides wiki sur les packs de ressources et serveur narratif sans mods.">
     <link rel="icon" href="../server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="apple-touch-icon" href="../assets/server-icon.png">
@@ -39,73 +39,9 @@
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
-<!-- Texture slicer modal -->
-<div class="modal-overlay" id="slicerModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeSlicer()">×</button>
-        <h2 style="margin-top:0;">✂️ Découpeur d’atlas de textures</h2>
-        <p style="color:var(--text-dim);">Importez une image, choisissez la taille de cellule, puis glissez des carrés sur les parties voulues. <br><strong style="color: #fda4af;">💡 Clic droit sur un carré, ou appuyez de nouveau sur son bouton, pour le supprimer.</strong></p>
-        
-        <div style="display:flex; gap:15px; align-items:center; margin-bottom: 20px; flex-wrap: wrap;">
-            <input type="file" accept="image/png" id="slicerInput" style="display:none;" onchange="loadAtlas(this)">
-            <label for="slicerInput" class="slicer-btn" style="background:var(--accent);">📁 Importer une image...</label>
-            <div style="display: flex; align-items: center; gap: 5px;">
-                Cellule : 
-                <input type="number" id="slicerGridSize" value="16" style="width: 50px; background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 5px; border-radius: 4px;" onchange="redrawCanvas()"> px
-            </div>
-            <label style="display: flex; align-items: center; gap: 5px; cursor: pointer;">
-                <input type="checkbox" id="slicerSnap" checked> Aligner sur la grille
-            </label>
-            <div style="display: flex; align-items: center; gap: 5px;">
-                Zoom: 
-                <input type="range" id="slicerZoom" min="1" max="10" value="4" onchange="redrawCanvas()" oninput="redrawCanvas()">
-            </div>
-            <button class="btn-slice" onclick="applySlices()" style="margin-left: auto;">✔ Appliquer</button>
-        </div>
-
-        <div style="text-align: center; overflow: auto; max-height: 400px;">
-            <div class="slicer-canvas-container" id="slicerContainer" style="display:none;">
-                <canvas id="slicerCanvas"></canvas>
-            </div>
-        </div>
-
-        <div class="slicer-controls" id="slicerControls" style="display:none;">
-            <div style="font-weight: 600;">Assigner le fragment :</div>
-            <button class="slicer-btn main" onclick="assignFace('main')">Base</button>
-            <button class="slicer-btn top" onclick="assignFace('top')">Haut</button>
-            <button class="slicer-btn bottom" onclick="assignFace('bottom')">Bas</button>
-            <button class="slicer-btn front" onclick="assignFace('front')">Avant</button>
-            <button class="slicer-btn back" onclick="assignFace('back')">Arrière</button>
-            <button class="slicer-btn left" onclick="assignFace('left')">Gauche</button>
-            <button class="slicer-btn right" onclick="assignFace('right')">Droite</button>
-            <button class="slicer-btn side" onclick="assignFace('side')">Côtés</button>
-            <button class="slicer-btn" onclick="clearSlicerSelections()" style="margin-left:auto; background: #ef4444; border-color: #dc2626;">💥 Tout effacer</button>
-        </div>
-    </div>
-</div>
-
-<datalist id="mc_items_list"></datalist>
-<datalist id="mc_blocks_list"></datalist>
-
-<!-- 3D preview modal -->
-<div class="modal-overlay" id="previewModal">
-    <div class="modal-content" style="max-width: 900px; padding: 20px;">
-        <button class="modal-close" onclick="closePreview()">×</button>
-        <h2 style="margin-top:0; text-align: center;">👁️ Aperçu 3D</h2>
-        <div id="cameraControls" style="display:none; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; justify-content: center;">
-            <button class="slicer-btn" id="btn_cam_first" onclick="setCameraView('first')">👤 Première personne</button>
-            <button class="slicer-btn" id="btn_cam_front" onclick="setCameraView('third_front')">👀 Vue de face</button>
-        </div>
-        <div style="text-align: center; background: #000; border: 2px solid var(--accent); border-radius: 8px; overflow: hidden; position: relative; height: 500px; display: flex; align-items: center; justify-content: center;" id="previewContainer">
-            <!-- ThreeJS Canvas will be injected here -->
-            <div id="previewLoading" style="color: white; display: none;">Chargement des textures...</div>
-        </div>
-    </div>
-</div>
-
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="home.html" aria-label="Accueil" title="Accueil"><img src="../assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="index.html" aria-label="Accueil" title="Accueil"><img src="../assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu">
             <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
             <div class="steam-dropdown-panel steam-mega-panel">
@@ -139,16 +75,16 @@
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="tools.html">Outils</a>
+            <a class="steam-nav-dropdown" href="tools.html">Outils</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
-                    <a href="index.html">Générateur de packs de ressources Minecraft</a>
+                    <a href="resource-pack-generator.html">Générateur de packs de ressources Minecraft</a>
                     <a href="custom-villager-trades.html">Échanges personnalisés de villageois</a>
                     <a href="custom-potions.html">Potions personnalisées</a>
                     <a href="tool-coming-soon.html">Outils à venir</a>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="index.html"><strong>Générateur de pack</strong><span>Objets, blocs, armures, CustomModelData et aperçu.</span></a>
+                    <a class="mega-card" href="resource-pack-generator.html"><strong>Générateur de pack</strong><span>Objets, blocs, armures, CustomModelData et aperçu.</span></a>
                     <a class="mega-card" href="custom-potions.html"><strong>Potions personnalisées</strong><span>Générateur pour potion contents, effets, couleur, lore et commandes give.</span></a>
                     <a class="mega-card" href="custom-villager-trades.html"><strong>Échanges de villageois</strong><span>Créez des échanges avec prix, récompenses, limites et commande summon.</span></a>
                 </div>
@@ -167,82 +103,42 @@
         </form>
         <div class="language-switch" aria-label="Language"><a href="../index.html">RU</a><a href="../en/index.html">EN</a><a class="is-active" href="#">FR</a><a href="../de/index.html">DE</a></div>
     </div>
-</div><div class="container">
-    <h1>Générateur de packs de ressources Minecraft</h1>
-    <div class="description">Créez un pack de ressources pour armures, outils, objets et blocs directement dans votre navigateur.</div>
-
-    <div style="margin-bottom: 25px; text-align: center; width: 100%;">
-        <input type="text" id="packNameInput" class="dynamic-input" style="width: 80%; max-width: 400px; text-align: center; font-size: 1.1rem; padding: 15px;" placeholder="Nom de votre pack de ressources (ex. MyCustomPack)">
-    </div>
-
-    <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Version cible du jeu :</label>
-        <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">Avant 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (syntaxe Components : [custom_model_data=1])</option>
-        </select>
-    </div>
-
-    <div class="tabs">
-        <button class="tab-btn active" onclick="openTab('armor', this)">🛡️ Armure</button>
-        <button class="tab-btn" onclick="openTab('items', this)">⚒️ Objets</button>
-        <button class="tab-btn" onclick="openTab('blocks', this)">🧊 Blocs</button>
-    </div>
-
-    <!-- Armure tab -->
-    <div id="armor" class="tab-content active">
-        <h3 style="margin-top:0;">Configuration du modèle 3D d’armure</h3>
-        <p style="color:var(--text-dim);">Ajoutez des couches d’armure 3D et des icônes 2D d’inventaire. Choisissez le matériau à remplacer et importez vos fichiers.</p>
-        <div id="armor-container"></div>
-        <button class="btn" style="width:100%; justify-content:center; margin-top: 20px;" onclick="addDynamicRow('armor')">+ Ajouter un set d’armure complet</button>
-    </div>
-
-    <!-- Objets tab -->
-    <div id="items" class="tab-content">
-        <p style="color:var(--text-dim);">Ajoutez des textures qui remplacent des objets vanilla. Par exemple, saisissez <code>diamond_sword</code> et importez votre icône.</p>
-        <div id="items-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('items', 'Objet name (e.g. iron_pickaxe)')">+ Ajouter un autre objet</button>
-        
-        <div class="gallery">
-            <div class="gallery-header">
-                <h3 style="margin:0;">Objet Library</h3>
-                <input type="text" class="gallery-search" placeholder="Rechercher des objets..." onkeyup="filterGallery('items', this.value)">
-            </div>
-            <div class="gallery-grid" id="gallery-items">
-                <div style="color:var(--text-dim); padding: 20px;">Chargement de la bibliothèque...</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Blocs tab -->
-    <div id="blocks" class="tab-content">
-        <p style="color:var(--text-dim);">Ajoutez des textures qui remplacent des blocs vanilla. Par exemple, <code>crafting_table_top</code>.</p>
-        <div id="blocks-container"></div>
-        <button class="btn-add" onclick="addDynamicRow('blocks', 'Bloc texture name (e.g. oak_planks)')">+ Ajouter une autre texture de bloc</button>
-        
-        <div class="gallery">
-            <div class="gallery-header">
-                <h3 style="margin:0;">Bloc Library</h3>
-                <input type="text" class="gallery-search" placeholder="Rechercher des blocs..." onkeyup="filterGallery('blocks', this.value)">
-            </div>
-            <div class="gallery-grid" id="gallery-blocks">
-                <div style="color:var(--text-dim); padding: 20px;">Chargement de la bibliothèque...</div>
-            </div>
-        </div>
-    </div>
-
-    <button class="generate-btn" id="generateBtn">📦 Télécharger le pack de ressources</button>
 </div>
-<footer class="site-footer">
-    <span>Cube in a Square</span>
-    <a href="privacy-policy.html">Politique de confidentialité</a>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-<script src="../assets/data.js"></script>
-<script src="../assets/app.js"></script>
-<script src="../assets/generator-i18n-runtime.js"></script>
+
+<main class="page-shell">
+    <section class="page-hero">
+        <h1>Cube in a Square</h1>
+        <p class="page-lead">Un hub pour le serveur et ses outils : générateur de packs de ressources, wiki, futurs utilitaires et informations du projet.</p>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Accès rapide</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Générateur de packs de ressources Minecraft</h3>
+                <p>Créez un pack de ressources ZIP avec objets, blocs, armures, CustomModelData et aperçu 3D.</p>
+                <a class="resource-link" href="resource-pack-generator.html">Ouvrir le générateur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Wiki</h3>
+                <p>Articles sur CustomModelData, la structure des packs de ressources et les workflows sans mods.</p>
+                <a class="resource-link" href="wiki.html">Lire le wiki</a>
+            </article>
+            <article class="resource-card">
+                <h3>Outils</h3>
+                        <p>Catalogue des outils : générateur, échanges de villageois, potions personnalisées et prochaine palette en préparation.</p>
+                <a class="resource-link" href="tools.html">Voir les outils</a>
+            </article>
+            <article class="resource-card">
+                <h3>Projet</h3>
+                <p>Qui nous sommes, pourquoi ce site existe et comment nous contacter sur Discord.</p>
+                <a class="resource-link" href="about.html">Cube in a Square</a>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Politique de confidentialité</a></footer>
 </body>
 </html>
 
