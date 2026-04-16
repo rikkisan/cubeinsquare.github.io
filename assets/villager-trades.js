@@ -160,19 +160,12 @@
         return JSON.stringify(String(value));
     }
 
-    function escapeJsonUnicode(value) {
-        return String(value).replace(/[\u007F-\uFFFF]/g, (char) => {
-            const code = char.charCodeAt(0).toString(16).padStart(4, '0');
-            return `\\u${code}`;
-        });
-    }
-
     function snbtJsonText(value) {
         const json = JSON.stringify({
             text: String(value),
             italic: false
-        }).replace(/[\u007F-\uFFFF]/g, escapeJsonUnicode);
-        return `'${json.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+        });
+        return `'${json.replace(/'/g, "\\'")}'`;
     }
 
     function itemStack(data, version) {
@@ -240,7 +233,7 @@
                 </div>
                 <div class="tool-field">
                     <label>${text.sellName}</label>
-                    <input data-field="sell-name" value="${values.sellName || text.defaults.sellName}" placeholder="${text.defaults.sellName}">
+                    <input data-field="sell-name" value="${values.sellName || ''}" placeholder="${text.defaults.sellName}">
                 </div>
                 <div class="tool-field">
                     <label>${text.customModelData}</label>
@@ -315,7 +308,7 @@
             'PersistenceRequired:1b'
         ];
 
-        const villagerName = fieldValue('vt-name', text.defaults.villagerName);
+        const villagerName = fieldValue('vt-name', '');
         if (villagerName) tags.push(`CustomName:${snbtJsonText(villagerName)}`);
         if (checked('vt-no-ai')) tags.push('NoAI:1b');
         if (checked('vt-invulnerable')) tags.push('Invulnerable:1b');
@@ -342,7 +335,7 @@
     function resetTool() {
         form.reset();
         tradeList.innerHTML = '';
-        root.querySelector('#vt-name').value = text.defaults.villagerName;
+        root.querySelector('#vt-name').value = '';
         createTradeCard();
         updateCommand();
     }
@@ -393,6 +386,6 @@
         if (event.target === copyButton) copyCommand();
     });
 
-    root.querySelector('#vt-name').value = text.defaults.villagerName;
+    root.querySelector('#vt-name').value = '';
     createTradeCard();
 })();
