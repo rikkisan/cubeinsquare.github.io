@@ -35,6 +35,7 @@
 
     let booted = false;
     let pageViewTracked = false;
+    let consentInitialized = false;
     const COOKIE_CONSENT_KEY = 'cube_cookie_consent';
     const COOKIE_CONSENT_ACCEPTED = 'accepted';
     const COOKIE_CONSENT_DECLINED = 'declined';
@@ -122,6 +123,19 @@
         return value === COOKIE_CONSENT_ACCEPTED || value === COOKIE_CONSENT_DECLINED;
     }
 
+    function getConsentModeState(value) {
+        const granted = value === COOKIE_CONSENT_ACCEPTED;
+        return {
+            ad_storage: granted ? 'granted' : 'denied',
+            ad_user_data: granted ? 'granted' : 'denied',
+            ad_personalization: granted ? 'granted' : 'denied',
+            analytics_storage: granted ? 'granted' : 'denied',
+            functionality_storage: 'granted',
+            security_storage: 'granted',
+            personalization_storage: granted ? 'granted' : 'denied'
+        };
+    }
+
     function debugLog() {
         if (!config.debug || !window.console || typeof window.console.info !== 'function') return;
         window.console.info.apply(window.console, arguments);
@@ -145,10 +159,28 @@
         document.head.appendChild(script);
     }
 
-    function boot() {
-        if (booted || !hasMeasurementIds() || !hasTrackingConsent()) return;
+    function initializeConsentMode() {
+        if (consentInitialized) return;
 
         ensureGtag();
+        window.gtag('consent', 'default', {
+            ...getConsentModeState(getStoredConsent()),
+            wait_for_update: 500
+        });
+        consentInitialized = true;
+    }
+
+    function updateConsentMode(value) {
+        ensureGtag();
+        initializeConsentMode();
+        window.gtag('consent', 'update', getConsentModeState(value));
+    }
+
+    function boot() {
+        if (booted || !hasMeasurementIds()) return;
+
+        ensureGtag();
+        initializeConsentMode();
         loadScript(config.ga4MeasurementId || config.googleAdsId);
         window.gtag('js', new Date());
 
@@ -248,7 +280,7 @@
             ...sanitizeParams(params)
         };
 
-        if (hasMeasurementIds() && hasTrackingConsent()) {
+        if (hasMeasurementIds()) {
             boot();
             if (typeof window.gtag === 'function') {
                 window.gtag('event', eventName, payload);
@@ -579,13 +611,9 @@
 
     function applyConsentChoice(value) {
         setStoredConsent(value);
+        updateConsentMode(value);
         removeConsentBanner();
-
-        if (value === COOKIE_CONSENT_ACCEPTED) {
-            boot();
-            trackPageView();
-            track('cookie_consent_update', { consent_state: 'accepted' });
-        }
+        track('cookie_consent_update', { consent_state: value });
     }
 
     function initConsentBanner() {
@@ -622,18 +650,14 @@
     }
 
     function init() {
-        if (hasTrackingConsent()) {
-            boot();
-        }
+        boot();
         bindSearchTracking();
         bindSearchForms();
         bindDeclarativeClickTracking();
         bindHeaderMenus();
         initSearchResults();
         initConsentBanner();
-        if (hasTrackingConsent()) {
-            trackPageView();
-        }
+        trackPageView();
     }
 
     window.CubeAnalytics = {
