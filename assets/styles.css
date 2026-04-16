@@ -8,6 +8,12 @@
             --text-dim: #94a3b8;
         }
 
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
@@ -18,6 +24,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            overflow-x: hidden;
         }
 
         .container {
@@ -230,6 +237,65 @@
 
         .btn-remove:hover {
             background: #dc2626;
+        }
+
+        .row-toolbar {
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            align-items: center;
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .row-toolbar > * {
+            min-width: 0;
+        }
+
+        .row-toolbar-label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .row-toolbar-field {
+            flex: 1 1 220px;
+            min-width: 0;
+        }
+
+        .row-toolbar-field--wide {
+            flex: 2 1 260px;
+        }
+
+        .row-toolbar-btn {
+            flex: 0 1 auto;
+        }
+
+        .command-preview {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: none;
+            width: 100%;
+        }
+
+        .block-sides {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            min-width: 0;
+        }
+
+        .block-side-cell {
+            position: relative;
+            flex: 1 1 110px;
+            min-width: 100px;
         }
 
         .btn-add {
@@ -1243,6 +1309,16 @@
         }
 
         @media (max-width: 700px) {
+            .container,
+            .page-shell,
+            .site-footer,
+            .gallery,
+            .dynamic-row,
+            .resource-card,
+            .tool-panel {
+                min-width: 0;
+            }
+
             .steam-navbar {
                 height: auto;
                 padding: 10px 14px;
@@ -1251,10 +1327,16 @@
             .steam-navbar-inner {
                 flex-wrap: wrap;
                 gap: 8px;
+                align-items: flex-start;
+            }
+
+            .steam-navbar-inner > * {
+                min-width: 0;
             }
 
             .steam-nav-menu {
                 position: static;
+                flex: 0 1 auto;
             }
 
             .steam-dropdown-panel {
@@ -1295,14 +1377,74 @@
             .steam-search {
                 width: 100%;
                 margin-left: 0;
+                min-width: 0;
             }
 
             .steam-search input {
                 width: 100%;
             }
 
+            .language-switch {
+                margin-left: auto;
+                flex: 0 0 auto;
+            }
+
             .page-shell {
                 margin: 36px auto;
+            }
+
+            .gallery-search,
+            #packNameInput,
+            #gameVersionSelect {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0;
+            }
+
+            #gameVersionSelect {
+                display: block;
+                margin: 10px auto 0;
+            }
+
+            .tool-form-grid,
+            .tool-check-grid,
+            .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .compact-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .compact-table th,
+            .compact-table td {
+                white-space: nowrap;
+            }
+
+            .row-toolbar {
+                gap: 10px;
+            }
+
+            .row-toolbar-label,
+            .row-toolbar-field,
+            .row-toolbar-field--wide {
+                flex: 1 1 100%;
+                width: 100%;
+            }
+
+            .row-toolbar .btn-slice,
+            .row-toolbar .btn-remove {
+                flex: 1 1 calc(50% - 5px);
+                width: auto;
+                min-width: 0;
+                justify-content: center;
+            }
+
+            .block-side-cell {
+                flex: 1 1 calc(50% - 5px);
+                min-width: calc(50% - 5px);
             }
 
             .site-footer {

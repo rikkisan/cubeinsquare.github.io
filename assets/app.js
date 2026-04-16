@@ -312,7 +312,7 @@
     function getBlockZoneHtml(baseId, sideId, title, suffixText) {
         const fullId = `${baseId}_${sideId}`;
         return `
-            <div style="position:relative; flex: 1 1 110px; min-width: 100px;">
+            <div class="block-side-cell">
                 <label class="upload-zone" style="height: 100%; box-sizing: border-box; min-height: 80px; padding: 10px; gap: 2px;">
                     <span style="font-size: 0.9rem; font-weight: bold; line-height: 1.1;">${title}</span>
                     <span style="font-size: 0.75rem; color: var(--text-dim);">${suffixText}</span>
@@ -374,13 +374,13 @@
             row.style.flexDirection = 'column';
             row.style.alignItems = 'stretch';
             row.innerHTML = `
-                <div style="display: flex; gap: 10px; width: 100%; align-items: center; flex-wrap: wrap;">
-                    <input type="text" class="dynamic-input" placeholder="${placeholder}" id="input_${id}" list="mc_items_list" style="flex: 2; min-width: 150px;" oninput="updateGiveCommand('${id}')">
-                    <input type="number" class="dynamic-input" placeholder="CustomModelData (CMD)" id="cmd_${id}" style="flex: 1; min-width: 150px;" oninput="updateGiveCommand('${id}')" min="1">
-                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'items')">👁️</button>
-                    <button class="btn-remove" onclick="removeDynamicRow('${id}', 'items')">×</button>
+                <div class="row-toolbar">
+                    <input type="text" class="dynamic-input row-toolbar-field row-toolbar-field--wide" placeholder="${placeholder}" id="input_${id}" list="mc_items_list" oninput="updateGiveCommand('${id}')">
+                    <input type="number" class="dynamic-input row-toolbar-field" placeholder="CustomModelData (CMD)" id="cmd_${id}" oninput="updateGiveCommand('${id}')" min="1">
+                    <button class="btn-slice row-toolbar-btn" style="background:#10b981;" onclick="openPreview('${id}', 'items')">👁️</button>
+                    <button class="btn-remove row-toolbar-btn" onclick="removeDynamicRow('${id}', 'items')">×</button>
                 </div>
-                <div style="background: rgba(0,0,0,0.4); padding: 5px 10px; border-radius: 4px; font-family: monospace; color: #cbd5e1; font-size: 0.85rem; margin-top: 5px; overflow-x: auto; white-space: nowrap; display: none;" id="give_${id}"></div>
+                <div class="command-preview" id="give_${id}"></div>
                 <div style="position:relative; width: 100%; margin-top: 15px; flex: 1;">
                     <label class="upload-zone dynamic-upload" style="height: 100%;">
                         <span class="status-text" id="stat_${id}">${UI_TEXT.upload}</span>
@@ -396,13 +396,13 @@
             row.style.flexDirection = 'column';
             row.style.alignItems = 'stretch';
             row.innerHTML = `
-                <div style="display: flex; gap: 15px; width: 100%; align-items: center;">
-                    <input type="text" class="dynamic-input" placeholder="${placeholder}" id="input_${id}" list="mc_blocks_list">
-                    <button class="btn-slice" onclick="openSlicer('${id}')">✂️ ${UI_TEXT.sliceTexture}</button>
-                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'blocks')">👁️ ${UI_TEXT.preview}</button>
-                    <button class="btn-remove" onclick="removeDynamicRow('${id}', 'blocks')">×</button>
+                <div class="row-toolbar">
+                    <input type="text" class="dynamic-input row-toolbar-field row-toolbar-field--wide" placeholder="${placeholder}" id="input_${id}" list="mc_blocks_list">
+                    <button class="btn-slice row-toolbar-btn" onclick="openSlicer('${id}')">✂️ ${UI_TEXT.sliceTexture}</button>
+                    <button class="btn-slice row-toolbar-btn" style="background:#10b981;" onclick="openPreview('${id}', 'blocks')">👁️ ${UI_TEXT.preview}</button>
+                    <button class="btn-remove row-toolbar-btn" onclick="removeDynamicRow('${id}', 'blocks')">×</button>
                 </div>
-                <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                <div class="block-sides">
                     ${getBlockZoneHtml(id, 'main', UI_TEXT.base, '')}
                     ${getBlockZoneHtml(id, 'top', UI_TEXT.top, '_top')}
                     ${getBlockZoneHtml(id, 'bottom', UI_TEXT.bottom, '_bottom')}
@@ -419,9 +419,9 @@
             row.style.flexDirection = 'column';
             row.style.alignItems = 'stretch';
             row.innerHTML = `
-                <div style="display: flex; gap: 15px; width: 100%; align-items: center;">
-                    <span style="font-size: 0.9rem; color: var(--text-dim); white-space: nowrap;">${UI_TEXT.armorMaterialLabel}</span>
-                    <select id="mat_${id}" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 10px; border-radius: 4px; font-size: 1rem; outline: none; flex: 1;">
+                <div class="row-toolbar">
+                    <span class="row-toolbar-label">${UI_TEXT.armorMaterialLabel}</span>
+                    <select id="mat_${id}" class="row-toolbar-field row-toolbar-field--wide" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 10px; border-radius: 4px; font-size: 1rem; outline: none;">
                         <option value="leather">${UI_TEXT.armorMaterials.leather}</option>
                         <option value="iron">${UI_TEXT.armorMaterials.iron}</option>
                         <option value="gold">${UI_TEXT.armorMaterials.gold}</option>
@@ -431,15 +431,15 @@
                         <option value="turtle">${UI_TEXT.armorMaterials.turtle}</option>
                         <option value="copper">${UI_TEXT.armorMaterials.copper}</option>
                     </select>
-                    <button class="btn-slice" style="background:#10b981;" onclick="openPreview('${id}', 'armor')">👁️ ${UI_TEXT.preview}</button>
-                    <button class="btn-remove" onclick="removeDynamicRow('${id}', 'armor')">×</button>
+                    <button class="btn-slice row-toolbar-btn" style="background:#10b981;" onclick="openPreview('${id}', 'armor')">👁️ ${UI_TEXT.preview}</button>
+                    <button class="btn-remove row-toolbar-btn" onclick="removeDynamicRow('${id}', 'armor')">×</button>
                 </div>
-                <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                <div class="block-sides">
                     ${getBlockZoneHtml(id, 'layer_1', UI_TEXT.armorLayer1, UI_TEXT.armorLayer1Hint)}
                     ${getBlockZoneHtml(id, 'layer_2', UI_TEXT.armorLayer2, UI_TEXT.armorLayer2Hint)}
                 </div>
                 <div style="font-size: 0.9rem; color: var(--text-dim); margin-top: 15px; margin-bottom: -5px;">${UI_TEXT.inventoryIcons}</div>
-                <div class="block-sides" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                <div class="block-sides" style="margin-top: 10px;">
                     ${getBlockZoneHtml(id, 'icon_helmet', UI_TEXT.helmet, UI_TEXT.iconHint)}
                     ${getBlockZoneHtml(id, 'icon_chestplate', UI_TEXT.chestplate, UI_TEXT.iconHint)}
                     ${getBlockZoneHtml(id, 'icon_leggings', UI_TEXT.leggings, UI_TEXT.iconHint)}
