@@ -173,3 +173,14 @@
     font-size: 0.92rem;
     line-height: 1.55;
 }
+
+.tool-note {
+    margin-top: 8px;
+    color: #bfdbfe;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.tool-note[data-long="true"] {
+    color: #fcd34d;
+}
