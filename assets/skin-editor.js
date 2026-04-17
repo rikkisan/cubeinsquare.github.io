@@ -4,6 +4,7 @@
     const DEFAULT_ALPHA = 100;
     const state = {
         tool: 'brush',
+        modelType: 'wide',
         brushSize: 1,
         zoom: DEFAULT_ZOOM,
         alpha: DEFAULT_ALPHA,
@@ -13,7 +14,7 @@
         lastPreviewPoint: null
     };
 
-    const layout = {
+    const commonLayout = {
         head: {
             size: [8, 8, 8],
             base: {
@@ -50,44 +51,6 @@
                 bottom: [28, 32, 8, 4],
                 front: [20, 36, 8, 12],
                 back: [32, 36, 8, 12]
-            }
-        },
-        rightArm: {
-            size: [4, 12, 4],
-            base: {
-                right: [40, 20, 4, 12],
-                left: [48, 20, 4, 12],
-                top: [44, 16, 4, 4],
-                bottom: [48, 16, 4, 4],
-                front: [44, 20, 4, 12],
-                back: [52, 20, 4, 12]
-            },
-            overlay: {
-                right: [40, 36, 4, 12],
-                left: [48, 36, 4, 12],
-                top: [44, 32, 4, 4],
-                bottom: [48, 32, 4, 4],
-                front: [44, 36, 4, 12],
-                back: [52, 36, 4, 12]
-            }
-        },
-        leftArm: {
-            size: [4, 12, 4],
-            base: {
-                right: [32, 52, 4, 12],
-                left: [40, 52, 4, 12],
-                top: [36, 48, 4, 4],
-                bottom: [40, 48, 4, 4],
-                front: [36, 52, 4, 12],
-                back: [44, 52, 4, 12]
-            },
-            overlay: {
-                right: [48, 52, 4, 12],
-                left: [56, 52, 4, 12],
-                top: [52, 48, 4, 4],
-                bottom: [56, 48, 4, 4],
-                front: [52, 52, 4, 12],
-                back: [60, 52, 4, 12]
             }
         },
         rightLeg: {
@@ -130,14 +93,110 @@
         }
     };
 
-    const partPositions = {
-        head: [0, 28, 0],
-        body: [0, 18, 0],
-        rightArm: [-6, 18, 0],
-        leftArm: [6, 18, 0],
-        rightLeg: [-2, 6, 0],
-        leftLeg: [2, 6, 0]
+    const armLayouts = {
+        wide: {
+            rightArm: {
+                size: [4, 12, 4],
+                base: {
+                    right: [40, 20, 4, 12],
+                    left: [48, 20, 4, 12],
+                    top: [44, 16, 4, 4],
+                    bottom: [48, 16, 4, 4],
+                    front: [44, 20, 4, 12],
+                    back: [52, 20, 4, 12]
+                },
+                overlay: {
+                    right: [40, 36, 4, 12],
+                    left: [48, 36, 4, 12],
+                    top: [44, 32, 4, 4],
+                    bottom: [48, 32, 4, 4],
+                    front: [44, 36, 4, 12],
+                    back: [52, 36, 4, 12]
+                }
+            },
+            leftArm: {
+                size: [4, 12, 4],
+                base: {
+                    right: [32, 52, 4, 12],
+                    left: [40, 52, 4, 12],
+                    top: [36, 48, 4, 4],
+                    bottom: [40, 48, 4, 4],
+                    front: [36, 52, 4, 12],
+                    back: [44, 52, 4, 12]
+                },
+                overlay: {
+                    right: [48, 52, 4, 12],
+                    left: [56, 52, 4, 12],
+                    top: [52, 48, 4, 4],
+                    bottom: [56, 48, 4, 4],
+                    front: [52, 52, 4, 12],
+                    back: [60, 52, 4, 12]
+                }
+            }
+        },
+        slim: {
+            rightArm: {
+                size: [3, 12, 4],
+                base: {
+                    right: [40, 20, 4, 12],
+                    left: [47, 20, 4, 12],
+                    top: [44, 16, 3, 4],
+                    bottom: [47, 16, 3, 4],
+                    front: [44, 20, 3, 12],
+                    back: [51, 20, 3, 12]
+                },
+                overlay: {
+                    right: [40, 36, 4, 12],
+                    left: [47, 36, 4, 12],
+                    top: [44, 32, 3, 4],
+                    bottom: [47, 32, 3, 4],
+                    front: [44, 36, 3, 12],
+                    back: [51, 36, 3, 12]
+                }
+            },
+            leftArm: {
+                size: [3, 12, 4],
+                base: {
+                    right: [32, 52, 4, 12],
+                    left: [39, 52, 4, 12],
+                    top: [36, 48, 3, 4],
+                    bottom: [39, 48, 3, 4],
+                    front: [36, 52, 3, 12],
+                    back: [43, 52, 3, 12]
+                },
+                overlay: {
+                    right: [48, 52, 4, 12],
+                    left: [55, 52, 4, 12],
+                    top: [52, 48, 3, 4],
+                    bottom: [55, 48, 3, 4],
+                    front: [52, 52, 3, 12],
+                    back: [59, 52, 3, 12]
+                }
+            }
+        }
     };
+
+    function getLayoutForModel(modelType) {
+        return {
+            head: commonLayout.head,
+            body: commonLayout.body,
+            rightArm: armLayouts[modelType].rightArm,
+            leftArm: armLayouts[modelType].leftArm,
+            rightLeg: commonLayout.rightLeg,
+            leftLeg: commonLayout.leftLeg
+        };
+    }
+
+    function getPartPositionsForModel(modelType) {
+        return {
+            head: [0, 28, 0],
+            body: [0, 18, 0],
+            rightArm: [modelType === 'slim' ? -5.5 : -6, 18, 0],
+            leftArm: [modelType === 'slim' ? 5.5 : 6, 18, 0],
+            rightLeg: [-2, 6, 0],
+            leftLeg: [2, 6, 0]
+        };
+    }
 
     let skinCanvas;
     let skinCtx;
@@ -239,10 +298,8 @@
         return group;
     }
 
-    function addBodyPart(root, partName, materialBase, materialOverlay) {
+    function addBodyPart(root, partName, definition, position, materialBase, materialOverlay) {
         const group = new THREE.Group();
-        const position = partPositions[partName];
-        const definition = layout[partName];
 
         previewPaintables = previewPaintables.filter(Boolean);
         group.add(createCuboid('base', definition, 0, materialBase));
@@ -258,8 +315,31 @@
         return group;
     }
 
+    function disposePreviewRoot() {
+        if (!previewRoot) return;
+
+        previewRoot.traverse((node) => {
+            if (node.geometry) {
+                node.geometry.dispose();
+            }
+            if (node.material) {
+                if (Array.isArray(node.material)) {
+                    node.material.forEach((material) => material.dispose());
+                } else {
+                    node.material.dispose();
+                }
+            }
+        });
+
+        scene.remove(previewRoot);
+        previewRoot = null;
+    }
+
     function buildPreviewModel() {
+        const layout = getLayoutForModel(state.modelType);
+        const partPositions = getPartPositionsForModel(state.modelType);
         previewPaintables = [];
+        disposePreviewRoot();
         previewRoot = new THREE.Group();
         const baseMaterial = new THREE.MeshStandardMaterial({
             map: texture,
@@ -273,12 +353,78 @@
         });
 
         ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'].forEach((partName) => {
-            addBodyPart(previewRoot, partName, baseMaterial, overlayMaterial);
+            addBodyPart(previewRoot, partName, layout[partName], partPositions[partName], baseMaterial, overlayMaterial);
         });
 
         previewRoot.rotation.y = Math.PI / 5;
         scene.add(previewRoot);
         updateOverlayVisibility();
+    }
+
+    function updateModelButtons() {
+        document.querySelectorAll('[data-skin-model]').forEach((button) => {
+            button.classList.toggle('is-active', button.dataset.skinModel === state.modelType);
+        });
+        if (elements.modelValue) {
+            elements.modelValue.textContent = state.modelType === 'slim' ? 'slim' : 'wide';
+        }
+    }
+
+    function setModelType(modelType, options) {
+        const nextModel = modelType === 'slim' ? 'slim' : 'wide';
+        const shouldTrack = !options || options.track !== false;
+
+        if (state.modelType === nextModel && previewRoot) {
+            updateModelButtons();
+            return;
+        }
+
+        state.modelType = nextModel;
+        updateModelButtons();
+
+        if (scene && texture) {
+            buildPreviewModel();
+            renderer.render(scene, camera);
+        }
+
+        if (shouldTrack && window.CubeAnalytics) {
+            window.CubeAnalytics.track('skin_editor_model_change', {
+                skin_model: state.modelType
+            });
+        }
+    }
+
+    function isRegionFullyTransparent(x, y, width, height) {
+        const pixels = skinCtx.getImageData(x, y, width, height).data;
+        for (let index = 3; index < pixels.length; index += 4) {
+            if (pixels[index] !== 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function detectModelType() {
+        const transparentRegions = [
+            [47, 16, 1, 4],
+            [50, 16, 1, 4],
+            [47, 20, 1, 12],
+            [54, 20, 1, 12],
+            [47, 32, 1, 4],
+            [50, 32, 1, 4],
+            [47, 36, 1, 12],
+            [54, 36, 1, 12],
+            [39, 48, 1, 4],
+            [42, 48, 1, 4],
+            [39, 52, 1, 12],
+            [46, 52, 1, 12],
+            [55, 48, 1, 4],
+            [58, 48, 1, 4],
+            [55, 52, 1, 12],
+            [62, 52, 1, 12]
+        ];
+
+        return transparentRegions.every((region) => isRegionFullyTransparent(region[0], region[1], region[2], region[3])) ? 'slim' : 'wide';
     }
 
     function initPreview() {
@@ -337,6 +483,9 @@
         elements.dimensions.textContent = `${SKIN_SIZE} x ${SKIN_SIZE}`;
         elements.mode.textContent = state.tool;
         elements.brush.textContent = `${state.brushSize}px`;
+        if (elements.modelValue) {
+            elements.modelValue.textContent = state.modelType === 'slim' ? 'slim' : 'wide';
+        }
     }
 
     function drawRectPixel(x, y) {
@@ -570,6 +719,7 @@
         skinCtx.fillStyle = '#7a2e1d';
         skinCtx.fillRect(12, 14, 8, 2);
 
+        setModelType('wide', { track: false });
         updateTexture();
     }
 
@@ -582,6 +732,7 @@
             skinCtx.drawImage(image, 40, 16, 16, 16, 32, 48, 16, 16);
         }
 
+        setModelType(image.height === 64 ? detectModelType() : 'wide', { track: false });
         updateTexture();
     }
 
@@ -604,7 +755,8 @@
                     if (window.CubeAnalytics) {
                         window.CubeAnalytics.track('skin_editor_upload', {
                             skin_width: image.width,
-                            skin_height: image.height
+                            skin_height: image.height,
+                            skin_model: state.modelType
                         });
                     }
                 };
@@ -636,6 +788,9 @@
     function bindControls() {
         document.querySelectorAll('[data-skin-tool]').forEach((button) => {
             button.addEventListener('click', () => setActiveTool(button.dataset.skinTool));
+        });
+        document.querySelectorAll('[data-skin-model]').forEach((button) => {
+            button.addEventListener('click', () => setModelType(button.dataset.skinModel));
         });
 
         elements.brushSize.addEventListener('change', () => {
@@ -687,6 +842,7 @@
         elements.dimensions = document.getElementById('skinDimensions');
         elements.mode = document.getElementById('skinMode');
         elements.brush = document.getElementById('skinBrush');
+        elements.modelValue = document.getElementById('skinModelValue');
         editorCanvas = document.getElementById('skinEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
     }
@@ -710,6 +866,7 @@
         resetStarterSkin();
         renderAtlas();
         updateStats();
+        updateModelButtons();
         setActiveTool('brush');
     }
 

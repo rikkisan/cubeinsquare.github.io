@@ -5,7 +5,7 @@
     <title>Minecraft Skin Editor Guide | Cube in a Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="How to use the Minecraft Skin Editor: 64x64 skin layout, base and overlay layers, painting directly on the model, and exporting a ready PNG.">
+    <meta name="description" content="How to use the Minecraft Skin Editor: wide vs slim arms, 64x64 skin layout, base and overlay layers, painting directly on the model, and exporting a ready PNG.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -154,7 +154,7 @@
     <a class="article-back" href="wiki.html">← All articles</a>
     <section class="page-hero">
         <h1>Minecraft Skin Editor Guide</h1>
-        <p class="page-lead">The skin editor is built for the classic Minecraft workflow: 64x64 atlas on one side, player preview on the other, and the option to paint directly on the model whenever the flat template stops being obvious.</p>
+        <p class="page-lead">The skin editor is built for the classic Minecraft workflow: 64x64 atlas on one side, player preview on the other, wide/slim arm support, and the option to paint directly on the model whenever the flat template stops being obvious.</p>
         <a class="resource-link" href="skin-editor.html">Open skin editor</a>
     </section>
 
@@ -169,6 +169,9 @@
         <h2>Classic skin layout</h2>
         <p>Minecraft skins are built around a standard atlas. The file is still just one PNG, but different rectangles in the image map to different faces of the head, body, arms, and legs.</p>
         <p>The editor always exports the same vanilla layout, so the final PNG is ready for the Minecraft launcher, websites that accept skin uploads, or the next pass in another editor.</p>
+
+        <h2>Wide vs slim arms</h2>
+        <p>Minecraft supports two arm models. <strong>Wide</strong> is the classic Steve-style arm width. <strong>Slim</strong> is the Alex-style arm width with narrower fronts, backs, tops, and bottoms. The editor now tries to auto-detect that on imported modern skins and also lets you switch manually if the imported file uses unusual filler pixels in the unused arm columns.</p>
 
         <h2>Base layer and overlay layer</h2>
         <p>Every modern skin has two visual layers:</p>
