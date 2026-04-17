@@ -255,47 +255,38 @@
         texture.flipY = false;
     }
 
-    function setPlaneUv(geometry, rect) {
+    const BOX_FACE_ORDER = ['right', 'left', 'top', 'bottom', 'front', 'back'];
+
+    function setBoxFaceUv(geometry, faceIndex, rect) {
         const [x, y, width, height] = rect;
         const u0 = x / SKIN_SIZE;
         const u1 = (x + width) / SKIN_SIZE;
         const v0 = 1 - y / SKIN_SIZE;
         const v1 = 1 - (y + height) / SKIN_SIZE;
+        const vertexOffset = faceIndex * 4;
         const uv = geometry.attributes.uv;
 
-        uv.setXY(0, u0, v0);
-        uv.setXY(1, u1, v0);
-        uv.setXY(2, u0, v1);
-        uv.setXY(3, u1, v1);
-        uv.needsUpdate = true;
+        uv.setXY(vertexOffset + 0, u0, v0);
+        uv.setXY(vertexOffset + 1, u1, v0);
+        uv.setXY(vertexOffset + 2, u0, v1);
+        uv.setXY(vertexOffset + 3, u1, v1);
     }
 
-    function createFace(width, height, rect, position, rotation, material) {
-        const geometry = new THREE.PlaneGeometry(width, height);
-        setPlaneUv(geometry, rect);
-
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.set(position[0], position[1], position[2]);
-        mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
-        previewPaintables.push(mesh);
-        return mesh;
-    }
-
-    function createCuboid(partName, definition, grow, material) {
-        const group = new THREE.Group();
+    function createCuboid(layerName, definition, grow, material) {
         const width = definition.size[0] + grow * 2;
         const height = definition.size[1] + grow * 2;
         const depth = definition.size[2] + grow * 2;
-        const faces = definition[partName];
+        const geometry = new THREE.BoxGeometry(width, height, depth);
+        const faces = definition[layerName];
 
-        group.add(createFace(width, height, faces.front, [0, 0, depth / 2], [0, 0, 0], material));
-        group.add(createFace(width, height, faces.back, [0, 0, -depth / 2], [0, Math.PI, 0], material));
-        group.add(createFace(depth, height, faces.right, [width / 2, 0, 0], [0, Math.PI / 2, 0], material));
-        group.add(createFace(depth, height, faces.left, [-width / 2, 0, 0], [0, -Math.PI / 2, 0], material));
-        group.add(createFace(width, depth, faces.top, [0, height / 2, 0], [-Math.PI / 2, 0, 0], material));
-        group.add(createFace(width, depth, faces.bottom, [0, -height / 2, 0], [Math.PI / 2, 0, 0], material));
+        BOX_FACE_ORDER.forEach((faceName, faceIndex) => {
+            setBoxFaceUv(geometry, faceIndex, faces[faceName]);
+        });
+        geometry.attributes.uv.needsUpdate = true;
 
-        return group;
+        const mesh = new THREE.Mesh(geometry, material);
+        previewPaintables.push(mesh);
+        return mesh;
     }
 
     function addBodyPart(root, partName, definition, position, materialBase, materialOverlay) {
