@@ -207,12 +207,12 @@
 
     function getPartPositionsForModel(modelType) {
         return {
-            head: [0, 28, 0],
-            body: [0, 18, 0],
-            rightArm: [modelType === 'slim' ? -5.5 : -6, 18, 0],
-            leftArm: [modelType === 'slim' ? 5.5 : 6, 18, 0],
-            rightLeg: [-2, 6, 0],
-            leftLeg: [2, 6, 0]
+            head: [0, 12, 0],
+            body: [0, 2, 0],
+            rightArm: [modelType === 'slim' ? -5.5 : -6, 2, 0],
+            leftArm: [modelType === 'slim' ? 5.5 : 6, 2, 0],
+            rightLeg: [-1.9, -10, -0.1],
+            leftLeg: [1.9, -10, -0.1]
         };
     }
 
@@ -330,6 +330,24 @@
         }
     }
 
+    function fillRegion(rect, color) {
+        if (!Array.isArray(rect)) return;
+        skinCtx.fillStyle = color;
+        skinCtx.fillRect(rect[0], rect[1], rect[2], rect[3]);
+    }
+
+    function fillPartLayer(partDefinition, layerName, palette) {
+        const faces = partDefinition[layerName];
+        if (!faces) return;
+
+        fillRegion(faces.front, palette.front || palette.side || palette.main);
+        fillRegion(faces.back, palette.back || palette.side || palette.main);
+        fillRegion(faces.right, palette.right || palette.side || palette.main);
+        fillRegion(faces.left, palette.left || palette.side || palette.main);
+        fillRegion(faces.top, palette.top || palette.main);
+        fillRegion(faces.bottom, palette.bottom || palette.main);
+    }
+
     function syncPreviewSkin() {
         if (!skinViewer) return;
 
@@ -339,6 +357,7 @@
         skinViewer.playerObject.skin.modelType = getSkinviewModelType();
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
         refreshVisiblePreviewMeshes();
+        syncHelperModelTransform();
         skinViewer.render();
     }
 
@@ -533,8 +552,20 @@
             previewHelperRoot.add(partRoot);
         });
 
-        previewHelperRoot.updateMatrixWorld(true);
+        syncHelperModelTransform();
         updateHelperOverlayVisibility();
+    }
+
+    function syncHelperModelTransform() {
+        if (!previewHelperRoot) return;
+
+        if (skinViewer && skinViewer.playerObject) {
+            previewHelperRoot.position.copy(skinViewer.playerObject.position);
+            previewHelperRoot.quaternion.copy(skinViewer.playerObject.quaternion);
+            previewHelperRoot.scale.copy(skinViewer.playerObject.scale);
+        }
+
+        previewHelperRoot.updateMatrixWorld(true);
     }
 
     function updateHelperOverlayVisibility() {
@@ -557,6 +588,17 @@
         });
     }
 
+    function setPreviewHomeView() {
+        if (!skinViewer || !skinViewer.camera || !skinViewer.controls) return;
+
+        skinViewer.playerObject.position.set(0, 0, 0);
+        skinViewer.playerObject.rotation.set(0, 0, 0);
+        skinViewer.camera.position.set(0, 2, 40);
+        skinViewer.controls.target.set(0, 2, 0);
+        skinViewer.controls.update();
+        syncHelperModelTransform();
+    }
+
     function initPreview() {
         const canvas = document.createElement('canvas');
         canvas.className = 'skin-viewer-canvas';
@@ -570,7 +612,7 @@
             skin: skinCanvas,
             model: getSkinviewModelType(),
             enableControls: true,
-            zoom: 0.82,
+            zoom: 1,
             fov: 45,
             background: 0x11182f
         });
@@ -580,8 +622,7 @@
         skinViewer.controls.enablePan = false;
         skinViewer.controls.enableDamping = true;
         skinViewer.controls.rotateSpeed = 0.8;
-        skinViewer.controls.target.set(0, 16, 0);
-        skinViewer.controls.update();
+        setPreviewHomeView();
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
 
         previewRaycaster = new THREE.Raycaster();
@@ -600,6 +641,7 @@
         const rect = skinViewer.canvas.getBoundingClientRect();
         previewPointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
         previewPointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        skinViewer.camera.updateMatrixWorld(true);
         previewRaycaster.setFromCamera(previewPointer, skinViewer.camera);
 
         const targetLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
@@ -700,35 +742,117 @@
 
     function resetStarterSkin() {
         skinCtx.clearRect(0, 0, SKIN_SIZE, SKIN_SIZE);
+        const layout = getLayoutForModel('wide');
+        const skinTone = '#c68642';
+        const skinShadow = '#a96b35';
+        const hair = '#5c3b24';
+        const hairShadow = '#402616';
+        const shirt = '#4f8fb5';
+        const shirtShadow = '#3f7696';
+        const shirtDark = '#315f79';
+        const pants = '#37516f';
+        const pantsShadow = '#283c57';
+        const boots = '#3d3d44';
 
-        const fills = [
-            { rect: [8, 8, 8, 8], color: '#f0c9a5' },
-            { rect: [8, 0, 8, 8], color: '#7b4d2d' },
-            { rect: [20, 20, 8, 12], color: '#2563eb' },
-            { rect: [16, 20, 4, 12], color: '#1d4ed8' },
-            { rect: [28, 20, 4, 12], color: '#1d4ed8' },
-            { rect: [44, 20, 4, 12], color: '#2563eb' },
-            { rect: [48, 20, 4, 12], color: '#2563eb' },
-            { rect: [36, 52, 4, 12], color: '#2563eb' },
-            { rect: [40, 52, 4, 12], color: '#2563eb' },
-            { rect: [4, 20, 4, 12], color: '#0f172a' },
-            { rect: [8, 20, 4, 12], color: '#0f172a' },
-            { rect: [20, 52, 4, 12], color: '#0f172a' },
-            { rect: [24, 52, 4, 12], color: '#0f172a' }
-        ];
-
-        fills.forEach((item) => {
-            skinCtx.fillStyle = item.color;
-            skinCtx.fillRect(item.rect[0], item.rect[1], item.rect[2], item.rect[3]);
+        fillPartLayer(layout.head, 'base', {
+            main: skinTone,
+            side: skinTone,
+            top: hair,
+            bottom: skinShadow,
+            back: skinTone
+        });
+        fillPartLayer(layout.body, 'base', {
+            main: shirt,
+            side: shirtDark,
+            top: shirtShadow,
+            bottom: shirtDark,
+            back: shirtShadow
+        });
+        fillPartLayer(layout.rightArm, 'base', {
+            main: skinTone,
+            side: skinTone,
+            top: skinShadow,
+            bottom: skinShadow,
+            back: skinShadow
+        });
+        fillPartLayer(layout.leftArm, 'base', {
+            main: skinTone,
+            side: skinTone,
+            top: skinShadow,
+            bottom: skinShadow,
+            back: skinShadow
+        });
+        fillPartLayer(layout.rightLeg, 'base', {
+            main: pants,
+            side: pantsShadow,
+            top: pantsShadow,
+            bottom: boots,
+            back: pantsShadow
+        });
+        fillPartLayer(layout.leftLeg, 'base', {
+            main: pants,
+            side: pantsShadow,
+            top: pantsShadow,
+            bottom: boots,
+            back: pantsShadow
         });
 
-        skinCtx.fillStyle = '#202020';
-        skinCtx.fillRect(10, 11, 2, 2);
-        skinCtx.fillRect(20, 11, 2, 2);
-        skinCtx.fillStyle = '#7a2e1d';
-        skinCtx.fillRect(12, 14, 8, 2);
+        fillRegion(layout.body.base.front, shirt);
+        fillRegion(layout.body.base.back, shirtShadow);
+        fillRegion(layout.body.base.right, shirtDark);
+        fillRegion(layout.body.base.left, shirtDark);
+        fillRegion(layout.body.base.top, shirtShadow);
+
+        fillRegion(layout.rightArm.base.front, skinTone);
+        fillRegion(layout.rightArm.base.back, skinShadow);
+        fillRegion(layout.rightArm.base.right, skinShadow);
+        fillRegion(layout.rightArm.base.left, skinShadow);
+        fillRegion(layout.leftArm.base.front, skinTone);
+        fillRegion(layout.leftArm.base.back, skinShadow);
+        fillRegion(layout.leftArm.base.right, skinShadow);
+        fillRegion(layout.leftArm.base.left, skinShadow);
+
+        skinCtx.fillStyle = shirt;
+        skinCtx.fillRect(layout.rightArm.base.front[0], layout.rightArm.base.front[1], layout.rightArm.base.front[2], 4);
+        skinCtx.fillRect(layout.rightArm.base.back[0], layout.rightArm.base.back[1], layout.rightArm.base.back[2], 4);
+        skinCtx.fillRect(layout.rightArm.base.right[0], layout.rightArm.base.right[1], layout.rightArm.base.right[2], 4);
+        skinCtx.fillRect(layout.rightArm.base.left[0], layout.rightArm.base.left[1], layout.rightArm.base.left[2], 4);
+        skinCtx.fillRect(layout.leftArm.base.front[0], layout.leftArm.base.front[1], layout.leftArm.base.front[2], 4);
+        skinCtx.fillRect(layout.leftArm.base.back[0], layout.leftArm.base.back[1], layout.leftArm.base.back[2], 4);
+        skinCtx.fillRect(layout.leftArm.base.right[0], layout.leftArm.base.right[1], layout.leftArm.base.right[2], 4);
+        skinCtx.fillRect(layout.leftArm.base.left[0], layout.leftArm.base.left[1], layout.leftArm.base.left[2], 4);
+
+        skinCtx.fillStyle = boots;
+        skinCtx.fillRect(layout.rightLeg.base.front[0], layout.rightLeg.base.front[1] + 10, layout.rightLeg.base.front[2], 2);
+        skinCtx.fillRect(layout.rightLeg.base.back[0], layout.rightLeg.base.back[1] + 10, layout.rightLeg.base.back[2], 2);
+        skinCtx.fillRect(layout.leftLeg.base.front[0], layout.leftLeg.base.front[1] + 10, layout.leftLeg.base.front[2], 2);
+        skinCtx.fillRect(layout.leftLeg.base.back[0], layout.leftLeg.base.back[1] + 10, layout.leftLeg.base.back[2], 2);
+
+        fillRegion(layout.head.base.front, skinTone);
+        fillRegion(layout.head.base.back, hairShadow);
+        fillRegion(layout.head.base.right, hairShadow);
+        fillRegion(layout.head.base.left, hairShadow);
+        fillRegion(layout.head.base.top, hair);
+
+        skinCtx.fillStyle = hair;
+        skinCtx.fillRect(layout.head.base.front[0], layout.head.base.front[1], layout.head.base.front[2], 2);
+        skinCtx.fillRect(layout.head.base.front[0], layout.head.base.front[1] + 2, 1, 2);
+        skinCtx.fillRect(layout.head.base.front[0] + 7, layout.head.base.front[1] + 2, 1, 2);
+        skinCtx.fillRect(layout.head.base.front[0], layout.head.base.front[1] + 4, 2, 1);
+        skinCtx.fillRect(layout.head.base.front[0] + 6, layout.head.base.front[1] + 4, 2, 1);
+
+        skinCtx.fillStyle = '#17212f';
+        skinCtx.fillRect(layout.head.base.front[0] + 2, layout.head.base.front[1] + 3, 2, 2);
+        skinCtx.fillRect(layout.head.base.front[0] + 4, layout.head.base.front[1] + 3, 2, 2);
+        skinCtx.fillStyle = '#ffffff';
+        skinCtx.fillRect(layout.head.base.front[0] + 3, layout.head.base.front[1] + 3, 1, 1);
+        skinCtx.fillRect(layout.head.base.front[0] + 5, layout.head.base.front[1] + 3, 1, 1);
+        skinCtx.fillStyle = '#8c4a2f';
+        skinCtx.fillRect(layout.head.base.front[0] + 3, layout.head.base.front[1] + 6, 2, 1);
 
         setModelType('wide', { track: false });
+        setPaintLayer('base');
+        setPreviewHomeView();
         updateTexture();
     }
 
@@ -859,6 +983,7 @@
         if (!skinViewer) return;
         const rect = elements.preview.getBoundingClientRect();
         skinViewer.setSize(Math.max(300, Math.floor(rect.width)), Math.max(320, Math.floor(rect.height)));
+        setPreviewHomeView();
         skinViewer.render();
     }
 
