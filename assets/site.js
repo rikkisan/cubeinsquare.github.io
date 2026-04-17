@@ -161,23 +161,20 @@
             }
         };
         const copy = labels[lang] || labels.en;
-        const path = String(window.location.pathname || '');
-        const inLocaleFolder = /(^|\/)(ru|fr|de)(\/|$)/.test(path);
-        const rootPrefix = inLocaleFolder ? '../' : '';
-        const skinHref = `${rootPrefix}skin-editor.html`;
-        const guideHref = `${rootPrefix}wiki-skin-editor.html`;
+        const skinHref = '/skin-editor/';
+        const guideHref = '/wiki-skin-editor/';
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
-            if (list.querySelector('a[href$="skin-editor.html"]')) return;
+            if (list.querySelector('a[href$="/skin-editor/"], a[href$="skin-editor.html"]')) return;
             const link = document.createElement('a');
             link.href = skinHref;
             link.textContent = copy.tool;
-            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /tool-coming-soon\.html$/i.test(item.getAttribute('href') || ''));
+            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             list.insertBefore(link, upcoming || null);
         });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
-            if (feature.querySelector('a[href$="skin-editor.html"]')) return;
+            if (feature.querySelector('a[href$="/skin-editor/"], a[href$="skin-editor.html"]')) return;
             const card = document.createElement('a');
             card.className = 'mega-card';
             card.href = skinHref;
@@ -187,11 +184,11 @@
 
         document.querySelectorAll('.mega-group-title[href*="#other-tools-wiki"]').forEach((title) => {
             const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
-            if (!sublist || sublist.querySelector('a[href$="wiki-skin-editor.html"]')) return;
+            if (!sublist || sublist.querySelector('a[href$="/wiki-skin-editor/"], a[href$="wiki-skin-editor.html"]')) return;
             const link = document.createElement('a');
             link.href = guideHref;
             link.textContent = copy.guide;
-            const potions = Array.from(sublist.querySelectorAll('a')).find((item) => /wiki-custom-potions\.html$/i.test(item.getAttribute('href') || ''));
+            const potions = Array.from(sublist.querySelectorAll('a')).find((item) => /(?:^|\/)wiki-custom-potions(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             sublist.insertBefore(link, potions || sublist.firstChild);
         });
     }

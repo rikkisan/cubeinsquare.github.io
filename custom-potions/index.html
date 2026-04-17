@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Custom Potion Generator and Give Command Builder | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Custom Minecraft potions builder: potion contents, custom effects, bottle color, lore, CustomModelData, and ready give commands for potion, splash_potion, and lingering_potion.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/custom-potions/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/custom-potions/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/custom-potions/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/custom-potions/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/custom-potions/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/custom-potions/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Custom Potion Generator and Give Command Builder | Cube in Square">
+    <meta property="og:description" content="Build custom Minecraft potions with base potion data, custom effects, color, lore, CustomModelData, and ready give commands for your server.">
+    <meta property="og:url" content="https://cubeinsquare.com/custom-potions/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Custom Potion Generator and Give Command Builder | Cube in Square">
+    <meta name="twitter:description" content="Browser-based custom potion builder for Minecraft with effects, color, lore, CustomModelData, and ready give commands.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/custom-potions.css">
+    <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Organization",
+                       "@id":  "https://cubeinsquare.com/#organization",
+                       "name":  "Cube in Square",
+                       "alternateName":  "Kub v kvadrate",
+                       "url":  "https://cubeinsquare.com/",
+                       "logo":  {
+                                    "@type":  "ImageObject",
+                                    "url":  "https://cubeinsquare.com/assets/server-icon.png"
+                                },
+                       "contactPoint":  {
+                                            "url":  "https://cubeinsquare.com/about/",
+                                            "contactType":  "product support",
+                                            "@type":  "ContactPoint",
+                                            "availableLanguage":  [
+                                                                      "ru",
+                                                                      "en",
+                                                                      "fr",
+                                                                      "de"
+                                                                  ]
+                                        }
+                   },
+                   {
+                       "@type":  "WebSite",
+                       "@id":  "https://cubeinsquare.com/#website",
+                       "url":  "https://cubeinsquare.com/",
+                       "name":  "Cube in Square",
+                       "publisher":  {
+                                         "@id":  "https://cubeinsquare.com/#organization"
+                                     },
+                       "potentialAction":  {
+                                               "query-input":  "required name=search_term_string",
+                                               "target":  "https://cubeinsquare.com/wiki/?q={search_term_string}",
+                                               "@type":  "SearchAction"
+                                           }
+                   },
+                   {
+                       "@type":  "SoftwareApplication",
+                       "@id":  "https://cubeinsquare.com/custom-potions/#application",
+                       "name":  "Minecraft Custom Potion Generator",
+                       "applicationCategory":  "UtilitiesApplication",
+                       "operatingSystem":  "Any",
+                       "browserRequirements":  "Requires JavaScript",
+                       "isAccessibleForFree":  true,
+                       "offers":  {
+                                      "price":  "0",
+                                      "priceCurrency":  "USD",
+                                      "@type":  "Offer"
+                                  },
+                       "url":  "https://cubeinsquare.com/custom-potions/",
+                       "description":  "Custom Minecraft potions builder: potion contents, custom effects, bottle color, lore, CustomModelData, and ready give commands for potion, splash_potion, and lingering_potion.",
+                       "inLanguage":  "en",
+                       "featureList":  [
+                                           "Generate give commands",
+                                           "Potion contents and custom effects",
+                                           "Bottle color and lore",
+                                           "Support for Components and legacy NBT"
+                                       ]
+                   },
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://cubeinsquare.com/custom-potions/#webpage",
+                       "url":  "https://cubeinsquare.com/custom-potions/",
+                       "name":  "Minecraft Custom Potion Generator and Give Command Builder | Cube in Square",
+                       "description":  "Custom Minecraft potions builder: potion contents, custom effects, bottle color, lore, CustomModelData, and ready give commands for potion, splash_potion, and lingering_potion.",
+                       "isPartOf":  {
+                                        "@id":  "https://cubeinsquare.com/#website"
+                                    },
+                       "about":  {
+                                     "@id":  "https://cubeinsquare.com/#organization"
+                                 },
+                       "inLanguage":  "en",
+                       "mainEntity":  {
+                                          "@id":  "https://cubeinsquare.com/custom-potions/#application"
+                                      }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://cubeinsquare.com/custom-potions/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://cubeinsquare.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Tools",
+                                                   "item":  "https://cubeinsquare.com/tools/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Minecraft Custom Potion Generator",
+                                                   "item":  "https://cubeinsquare.com/custom-potions/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
+                        <div class="mega-sublist">
+                            <a href="/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
+                        <div class="mega-sublist">
+                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
+                        <div class="mega-sublist">
+                            <a href="/tools/">Tools catalog</a>
+                            <a href="/wiki-custom-potions/">Custom potions</a>
+                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>How one item becomes many models without mods.</span></a>
+                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
+                    <a class="mega-card" href="/wiki-custom-potions/"><strong>Custom potions</strong><span>How to build color, lore, effects, and a give command for your server.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/tools/">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
+                    <a href="/custom-villager-trades/">Custom villager trades</a>
+                    <a href="/custom-potions/">Custom potions</a>
+                    <a href="/tool-coming-soon/">Upcoming tools</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
+                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
+                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/about/">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/about/">Cube in Square</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/wiki/" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/custom-potions/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/custom-potions/">FR</a><a href="/de/custom-potions/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-potion-tool>
+    <section class="page-hero">
+        <h1>Minecraft Custom Potion Generator</h1>
+        <p class="page-lead">Build a <code>/give</code> command for normal, splash, and lingering potions: base potion data, custom effects, bottle color, lore, CustomModelData, and support for both 1.20.5+ components and legacy NBT.</p>
+    </section>
+
+    <section class="page-section potion-layout">
+        <div class="potion-stack">
+            <form class="tool-panel" id="potionForm">
+                <h2>Potion Setup</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="pp-version">Command syntax</label>
+                        <select id="pp-version">
+                            <option value="current">1.20.5+ Components</option>
+                            <option value="legacy">Pre-1.20.5 NBT</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="pp-item-type">Bottle type</label>
+                        <select id="pp-item-type">
+                            <option value="potion">Potion</option>
+                            <option value="splash_potion">Splash potion</option>
+                            <option value="lingering_potion">Lingering potion</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="pp-base-potion">Base potion</label>
+                        <input id="pp-base-potion" list="potionBaseSuggestions" placeholder="swiftness">
+                        <p class="tool-helper">Leave empty for a fully custom bottle or use IDs like <code>long_swiftness</code> and <code>strong_healing</code>.</p>
+                    </div>
+                    <div class="tool-field">
+                        <label for="pp-count">Count</label>
+                        <input id="pp-count" type="number" min="1" max="64" value="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="pp-name">Custom name</label>
+                        <input id="pp-name" type="text" placeholder="Watcher's Draught">
+                    </div>
+                    <div class="tool-field">
+                        <label for="pp-custom-model-data">CustomModelData</label>
+                        <input id="pp-custom-model-data" type="number" min="0" value="0">
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="pp-lore">Lore</label>
+                        <textarea id="pp-lore" rows="4" placeholder="One line per lore entry."></textarea>
+                    </div>
+                </div>
+
+                <div class="tool-check-grid">
+                    <div class="tool-check"><input id="pp-use-color" type="checkbox"><label for="pp-use-color">Override bottle color</label></div>
+                </div>
+                <div class="tool-form-grid" style="margin-top: 14px;">
+                    <div class="tool-field">
+                        <label for="pp-color">Color</label>
+                        <div class="tool-color-grid">
+                            <input id="pp-color" type="color" value="#7c3aed">
+                            <input id="pp-color-hex" type="text" value="#7c3aed" inputmode="text">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <section class="tool-panel">
+                <h2>Custom Effects</h2>
+                <div class="effect-list" id="potionEffectList"></div>
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="addPotionEffectButton"><span id="pp-add-effect-label">+ Add effect</span></button>
+                    <button class="tool-button tool-button-secondary" type="button" id="loadPotionExampleButton"><span id="pp-example-label">Load example</span></button>
+                    <button class="tool-button tool-button-secondary" type="button" id="resetPotionButton"><span id="pp-reset-label">Reset</span></button>
+                </div>
+            </section>
+        </div>
+
+        <div class="potion-stack">
+            <section class="tool-panel">
+                <h2>Preview and Command</h2>
+                <div class="potion-preview-card">
+                    <div class="potion-preview-art" id="potionPreviewArt">
+                        <div class="potion-bottle">
+                            <div class="potion-liquid"></div>
+                        </div>
+                    </div>
+                    <div class="potion-preview-copy">
+                        <span class="status-pill">preview</span>
+                        <h2 id="potionPreviewName">Unnamed potion</h2>
+                        <p id="potionPreviewMeta">Syntax: Components</p>
+                        <div class="chip-row" id="potionPreviewChips"></div>
+                    </div>
+                </div>
+                <div class="tool-field" style="margin-top: 16px;">
+                    <label for="potionCommandOutput">/give</label>
+                    <textarea class="command-output" id="potionCommandOutput" readonly></textarea>
+                </div>
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="copyPotionCommandButton">Copy command</button>
+                    <a class="resource-link resource-link-secondary" href="/wiki-custom-potions/">Open article</a>
+                </div>
+                <div class="tool-summary" id="potionSummary"></div>
+            </section>
+
+            <section class="tool-panel">
+                <h2>How to Use It</h2>
+                <ul class="potion-notes">
+                    <li>The base potion field sets the vanilla foundation, such as <code>healing</code>, <code>long_swiftness</code>, or <code>strong_strength</code>.</li>
+                    <li><code>Custom effects</code> let you add or replace the default effect package in the same command.</li>
+                    <li>In legacy mode, the builder converts supported effects into old numeric IDs and warns you if something must be removed.</li>
+                    <li>For a story item, add lore, a custom color, and <code>CustomModelData</code>, then paste the command into console or a command block.</li>
+                </ul>
+            </section>
+        </div>
+    </section>
+</main>
+
+<datalist id="potionBaseSuggestions">
+    <option value="water">
+    <option value="awkward">
+    <option value="mundane">
+    <option value="thick">
+    <option value="night_vision">
+    <option value="long_night_vision">
+    <option value="invisibility">
+    <option value="long_invisibility">
+    <option value="leaping">
+    <option value="long_leaping">
+    <option value="strong_leaping">
+    <option value="fire_resistance">
+    <option value="long_fire_resistance">
+    <option value="swiftness">
+    <option value="long_swiftness">
+    <option value="strong_swiftness">
+    <option value="slowness">
+    <option value="long_slowness">
+    <option value="strong_slowness">
+    <option value="water_breathing">
+    <option value="long_water_breathing">
+    <option value="healing">
+    <option value="strong_healing">
+    <option value="harming">
+    <option value="strong_harming">
+    <option value="poison">
+    <option value="long_poison">
+    <option value="strong_poison">
+    <option value="regeneration">
+    <option value="long_regeneration">
+    <option value="strong_regeneration">
+    <option value="strength">
+    <option value="long_strength">
+    <option value="strong_strength">
+    <option value="weakness">
+    <option value="long_weakness">
+    <option value="luck">
+    <option value="turtle_master">
+    <option value="long_turtle_master">
+    <option value="strong_turtle_master">
+    <option value="slow_falling">
+    <option value="long_slow_falling">
+</datalist>
+
+<datalist id="potionEffectSuggestions">
+    <option value="speed">
+    <option value="slowness">
+    <option value="haste">
+    <option value="mining_fatigue">
+    <option value="strength">
+    <option value="instant_health">
+    <option value="instant_damage">
+    <option value="jump_boost">
+    <option value="nausea">
+    <option value="regeneration">
+    <option value="resistance">
+    <option value="fire_resistance">
+    <option value="water_breathing">
+    <option value="invisibility">
+    <option value="blindness">
+    <option value="night_vision">
+    <option value="hunger">
+    <option value="weakness">
+    <option value="poison">
+    <option value="wither">
+    <option value="health_boost">
+    <option value="absorption">
+    <option value="saturation">
+    <option value="glowing">
+    <option value="levitation">
+    <option value="luck">
+    <option value="unluck">
+    <option value="slow_falling">
+    <option value="conduit_power">
+    <option value="dolphins_grace">
+    <option value="bad_omen">
+    <option value="hero_of_the_village">
+    <option value="darkness">
+</datalist>
+
+<footer class="site-footer">
+    <span>Cube in Square</span>
+    <a href="/privacy-policy/">Privacy Policy</a>
+</footer>
+<script src="/assets/custom-potions.js"></script>
+    <script src="/assets/tracking-config.js"></script>
+    <script src="/assets/tracking.js"></script>
+</body>
+</html>
+

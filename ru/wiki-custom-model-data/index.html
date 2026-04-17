@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по CustomModelData в Minecraft | Куб в квадрате</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Что такое CustomModelData в Minecraft, как работают overrides, чем отличаются NBT-команды от Components в версиях 1.20.5 и выше.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Куб в квадрате">
+    <meta name="application-name" content="Куб в квадрате">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-custom-model-data/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-model-data/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-model-data/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-model-data/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-model-data/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-model-data/">
+<meta property="og:site_name" content="Куб в квадрате">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Гайд по CustomModelData в Minecraft | Куб в квадрате">
+    <meta property="og:description" content="Что такое CustomModelData в Minecraft, как работают overrides, чем отличаются NBT-команды от Components в версиях 1.20.5 и выше.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-custom-model-data/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Гайд по CustomModelData в Minecraft | Куб в квадрате">
+    <meta name="twitter:description" content="Что такое CustomModelData в Minecraft, как работают overrides, чем отличаются NBT-команды от Components в версиях 1.20.5 и выше.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Organization",
+                       "@id":  "https://cubeinsquare.com/ru/#organization",
+                       "name":  "Cube in Square",
+                       "alternateName":  "Kub v kvadrate",
+                       "url":  "https://cubeinsquare.com/ru/",
+                       "logo":  {
+                                    "@type":  "ImageObject",
+                                    "url":  "https://cubeinsquare.com/assets/server-icon.png"
+                                },
+                       "contactPoint":  {
+                                            "url":  "https://cubeinsquare.com/ru/about/",
+                                            "contactType":  "editorial support",
+                                            "@type":  "ContactPoint",
+                                            "availableLanguage":  [
+                                                                      "ru",
+                                                                      "en",
+                                                                      "fr",
+                                                                      "de"
+                                                                  ]
+                                        }
+                   },
+                   {
+                       "@type":  "WebSite",
+                       "@id":  "https://cubeinsquare.com/ru/#website",
+                       "url":  "https://cubeinsquare.com/ru/",
+                       "name":  "Cube in Square",
+                       "publisher":  {
+                                         "@id":  "https://cubeinsquare.com/ru/#organization"
+                                     },
+                       "potentialAction":  {
+                                               "query-input":  "required name=search_term_string",
+                                               "target":  "https://cubeinsquare.com/ru/wiki/?q={search_term_string}",
+                                               "@type":  "SearchAction"
+                                           }
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://cubeinsquare.com/ru/wiki-custom-model-data/#article",
+                       "headline":  "Гайд по CustomModelData в Minecraft | Куб в квадрате",
+                       "name":  "Гайд по CustomModelData в Minecraft | Куб в квадрате",
+                       "description":  "Что такое CustomModelData в Minecraft, как работают overrides, чем отличаются NBT-команды от Components в версиях 1.20.5 и выше.",
+                       "author":  {
+                                      "@id":  "https://cubeinsquare.com/ru/#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://cubeinsquare.com/ru/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@type":  "WebPage",
+                                                "@id":  "https://cubeinsquare.com/ru/wiki-custom-model-data/#webpage"
+                                            },
+                       "inLanguage":  "ru",
+                       "url":  "https://cubeinsquare.com/ru/wiki-custom-model-data/"
+                   },
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://cubeinsquare.com/ru/wiki-custom-model-data/#webpage",
+                       "url":  "https://cubeinsquare.com/ru/wiki-custom-model-data/",
+                       "name":  "Гайд по CustomModelData в Minecraft | Куб в квадрате",
+                       "description":  "Что такое CustomModelData в Minecraft, как работают overrides, чем отличаются NBT-команды от Components в версиях 1.20.5 и выше.",
+                       "isPartOf":  {
+                                        "@id":  "https://cubeinsquare.com/ru/#website"
+                                    },
+                       "about":  {
+                                     "@id":  "https://cubeinsquare.com/ru/#organization"
+                                 },
+                       "inLanguage":  "ru",
+                       "mainEntity":  {
+                                          "@id":  "https://cubeinsquare.com/ru/wiki-custom-model-data/#article"
+                                      }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://cubeinsquare.com/ru/wiki-custom-model-data/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://cubeinsquare.com/ru/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Wiki",
+                                                   "item":  "https://cubeinsquare.com/ru/wiki/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Гайд по CustomModelData в Minecraft: что это и как работает",
+                                                   "item":  "https://cubeinsquare.com/ru/wiki-custom-model-data/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#general-wiki">Общие статьи</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/ru/wiki/#resource-pack-paths">Структура ресурс-пака</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Генератор ресурс-паков Minecraft</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-resource-pack-generator/">Как использовать генератор</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#other-tools-wiki">Другие инструменты</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/tools/">Каталог инструментов</a><a href="/ru/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/ru/wiki-custom-villager-trades/">Торги жителей</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается в десятки моделей без модов.</span></a>
+                    <a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговая инструкция по созданию ZIP-пака.</span></a>
+                    <a class="mega-card" href="/ru/wiki/#resource-pack-paths"><strong>Структура ресурс-пака</strong><span>Короткая шпаргалка по папкам textures, models и blockstates.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/ru/resource-pack-generator/">Генератор ресурс-паков Minecraft</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и 3D-предпросмотр.</span></a>
+                    <a class="mega-card" href="/ru/custom-potions/"><strong>Кастомные зелья</strong><span>Конструктор potion contents, custom effects, цвета, lore и give-команд.</span></a>
+                    <a class="mega-card" href="/ru/custom-villager-trades/"><strong>Торги жителей</strong><span>Конструктор сделок с ценами, наградами, лимитами и summon-командой.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/about/">О проекте</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/ru/about/">Куб в квадрате</a>
+                <a href="/ru/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/ru/wiki/" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-custom-model-data/">EN</a><a href="/fr/wiki-custom-model-data/">FR</a><a href="/de/wiki-custom-model-data/">DE</a></div>
+    </div>
+</div><main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">← Все статьи</a>
+
+    <section class="page-hero">
+        <h1>Гайд по CustomModelData в Minecraft: что это и как работает</h1>
+        <p class="page-lead">Если вы когда-нибудь играли на кастомных RPG-серверах, то наверняка видели магию: игроки бегают с огнестрельным оружием, пьют из резных кружек и носят уникальные шляпы, при этом игра работает абсолютно без модов.</p>
+    </section>
+
+    <article>
+        <p>Весь этот фокус держится на одной гениальной функции Minecraft, которая называется <strong>CustomModelData</strong>, или сокращенно CMD.</p>
+
+        <h2>Что такое CustomModelData?</h2>
+        <p>Появившись в версии 1.14, параметр CustomModelData позволил создателям ресурс-паков привязывать к одному ванильному предмету бесконечное множество разных текстур и 3D-моделей, используя числовые идентификаторы.</p>
+        <p>Представьте, что у вас есть обычный железный меч (<code>iron_sword</code>).</p>
+        <ul>
+            <li>Меч без тегов, ванильный, выглядит как обычный меч.</li>
+            <li>Меч с <code>CustomModelData: 1</code> игра подменяет на катану.</li>
+            <li>Меч с <code>CustomModelData: 2</code> игра рендерит как 3D-модель бензопилы.</li>
+        </ul>
+        <p>Технически, для сервера и механик игры, это все еще обычный железный меч. Он наносит тот же урон и так же ломается. Меняется только визуальная обертка на стороне клиента.</p>
+
+        <h2>Как это работает под капотом?</h2>
+        <p>Чтобы магия сработала, ресурс-пак использует систему overrides, то есть переопределений. В папке с моделями предметов <code>assets/minecraft/models/item</code> лежит базовый файл, например <code>iron_sword.json</code>.</p>
+        <p>Вместо того чтобы просто указывать текстуру, этот файл говорит игре: если у предмета есть тег CustomModelData равный 1, иди и читай другой файл.</p>
+
+<pre><code>{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "item/iron_sword"
+  },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "item/custom_katana" },
+    { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
+  ]
+}</code></pre>
+
+        <p><em>Именно эту рутинную работу по прописыванию сотен таких JSON-файлов и выполняет Генератор ресурс-паков Minecraft в автоматическом режиме.</em></p>
+
+        <h2>Важно: разница версий NBT против Components</h2>
+        <p>С выходом Minecraft 1.20.5 разработчики Mojang полностью переписали внутреннюю систему предметов. Старые NBT-теги ушли в прошлое, а на их место пришли Data Components, то есть компоненты данных.</p>
+        <p>Для обычных игроков визуально ничего не изменилось, но для администраторов это означало, что старые команды выдачи предметов <code>/give</code> сломались.</p>
+
+        <h3>Версии до 1.20.5: синтаксис NBT</h3>
+        <p>В старых версиях CustomModelData записывался внутри фигурных скобок <code>{}</code> как часть NBT-тегов.</p>
+
+<pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
+
+        <h3>Версии 1.20.5 и выше: синтаксис Components</h3>
+        <p>Теперь свойства предмета прописываются в квадратных скобках <code>[]</code> сразу после названия, а сам параметр пишется с маленькой буквы через нижнее подчеркивание.</p>
+
+<pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+
+        <p>Генератор автоматически учитывает этот переход. При создании ресурс-пака просто выберите версию вашего сервера, и инструмент сгенерирует правильные команды.</p>
+    </article>
+</main>
+<footer class="site-footer">
+    <span>Куб в квадрате</span>
+    <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
+</footer>
+    <script src="/assets/tracking-config.js"></script>
+    <script src="/assets/tracking.js"></script>
+</body>
+</html>
+
+
+
+

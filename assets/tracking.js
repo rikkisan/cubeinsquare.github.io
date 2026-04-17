@@ -208,7 +208,7 @@
         if (path.includes('privacy-policy')) return 'privacy_policy';
         if (path.includes('about')) return 'about';
         if (path.includes('tools')) return 'tools';
-        if (path === '/' || path.endsWith('/index.html') || path.endsWith('/ru/') || path.endsWith('/fr/') || path.endsWith('/de/')) return 'home';
+        if (path === '/' || /^\/(?:ru|fr|de)\/?$/.test(path)) return 'home';
         return 'page';
     }
 
@@ -238,8 +238,13 @@
         return window.matchMedia('(max-width: 700px)').matches;
     }
 
+    function getLocalePrefix() {
+        const match = (window.location.pathname || '').toLowerCase().match(/^\/(ru|fr|de)(\/|$)/);
+        return match ? `/${match[1]}` : '';
+    }
+
     function getPrivacyPolicyHref() {
-        return 'privacy-policy.html';
+        return `${getLocalePrefix()}/privacy-policy/`;
     }
 
     function sanitizeValue(value) {
