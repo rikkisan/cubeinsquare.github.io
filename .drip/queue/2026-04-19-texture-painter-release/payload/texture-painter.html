@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Minecraft Texture Painter and PNG Canvas | Cube in a Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, import PNGs, export finished textures, and then turn them into a pack.">
+    <meta name="description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, build inventory icons or tiling block faces, export PNGs, and then turn them into a pack.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -18,12 +18,12 @@
     <meta property="og:site_name" content="Cube in a Square">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Minecraft Texture Painter and PNG Canvas | Cube in a Square">
-    <meta property="og:description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, and export finished PNGs for your pack.">
+    <meta property="og:description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, build inventory icons or block faces, and export finished PNGs for your pack.">
     <meta property="og:url" content="https://cubeinsquare.com/texture-painter.html">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Minecraft Texture Painter and PNG Canvas | Cube in a Square">
-    <meta name="twitter:description" content="Browser-based texture painter for Minecraft items and blocks with size presets, import, and export.">
+    <meta name="twitter:description" content="Browser-based texture painter for Minecraft items, inventory icons, and block faces with size presets, import, and export.">
     <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="assets/server-icon.png">
@@ -62,7 +62,7 @@
 <main class="page-shell" data-texture-painter>
     <section class="page-hero">
         <h1>Minecraft Texture Painter</h1>
-        <p class="page-lead">Paint item and block textures in the browser, switch between <code>16x16</code>, <code>32x32</code>, <code>64x64</code>, and <code>128x128</code>, then send the exported PNGs into the resource-pack generator to turn them into a pack.</p>
+        <p class="page-lead">Paint item and block textures in the browser, switch between <code>16x16</code>, <code>32x32</code>, <code>64x64</code>, and <code>128x128</code>, build inventory icons or tiling block faces, then send the exported PNGs into the resource-pack generator to turn them into a pack.</p>
         <div class="soon-actions">
             <a class="resource-link" href="resource-pack-generator.html">Turn PNGs into a pack</a>
             <a class="resource-link resource-link-secondary" href="wiki-texture-painter.html">Read texture guide</a>
@@ -120,7 +120,7 @@
                         </select>
                     </div>
                 </div>
-                <p class="texture-note">Use <strong>16x16</strong> for vanilla readability, <strong>32x32</strong> for a mild detail boost, <strong>64x64</strong> for richer art, and <strong>128x128</strong> only when the whole pack is built for high-resolution detail.</p>
+                <p class="texture-note">Use <strong>16x16</strong> for vanilla readability, <strong>32x32</strong> for a mild detail boost, <strong>64x64</strong> for richer art, and <strong>128x128</strong> only when the whole pack is built for high-resolution detail. Item icons usually need stronger silhouettes; block faces usually need cleaner tiling.</p>
             </section>
 
             <section class="tool-panel">
@@ -132,7 +132,7 @@
                     <button class="resource-link resource-link-secondary texture-tool-button" id="textureStarterButton" type="button">Starter pattern</button>
                     <button class="resource-link resource-link-secondary texture-tool-button" id="textureClearButton" type="button">Clear</button>
                 </div>
-                <p class="texture-file-note">Paint one texture at a time, export the PNG, then use the resource-pack generator to place it into a pack structure without touching folders by hand.</p>
+                <p class="texture-file-note">Paint one texture at a time, export the PNG, then use the resource-pack generator to place it into a pack structure without touching folders by hand. This works for both inventory icons and block textures.</p>
             </section>
 
             <section class="tool-panel">
@@ -152,6 +152,23 @@
                     <canvas id="textureEditorCanvas" width="288" height="288"></canvas>
                 </div>
                 <p class="texture-note">This canvas is intentionally simple: one PNG, one resolution, no hidden rescaling surprises. If it looks crisp here, it will stay crisp in the exported file.</p>
+            </section>
+            <section class="tool-panel">
+                <h2>What to draw here</h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Inventory icon</h3>
+                        <p>Keep the silhouette readable at a tiny size. Strong edges and clean contrast matter more than tiny decoration.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Block texture</h3>
+                        <p>Check the edges, the center contrast, and whether the face can tile without ugly seams when repeated in the world.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Pack-ready PNG</h3>
+                        <p>When the PNG is done, move it into the resource-pack generator and let that tool build the correct folder structure for you.</p>
+                    </article>
+                </div>
             </section>
         </div>
     </section>

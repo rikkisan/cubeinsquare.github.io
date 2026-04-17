@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Minecraft Texture Size Guide and Texture Painter Workflow | Cube in a Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn when to use 16x16, 32x32, 64x64, and 128x128 Minecraft textures, and how to move exported PNGs into the resource-pack generator.">
+    <meta name="description" content="Learn when to use 16x16, 32x32, 64x64, and 128x128 Minecraft textures, how to paint block faces and inventory icons, and how to move exported PNGs into the resource-pack generator.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -23,7 +23,7 @@
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Minecraft Texture Size Guide and Texture Painter Workflow | Cube in a Square">
-    <meta name="twitter:description" content="When to use 16x16, 32x32, 64x64, and 128x128 textures and how to turn the finished PNG into a pack.">
+    <meta name="twitter:description" content="When to use 16x16, 32x32, 64x64, and 128x128 textures, how to paint icons and block faces, and how to turn the finished PNG into a pack.">
     <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="assets/server-icon.png">
@@ -88,14 +88,60 @@
         <h2>Items and blocks</h2>
         <p>Items and blocks are still just PNGs, but they are read differently by the player. Item icons need immediate readability in an inventory slot. Block textures repeat across surfaces, so tiling, contrast, and edge behavior matter much more.</p>
 
+        <h2>How to draw block textures</h2>
+        <p>Start with the large read first. On a block face, players notice the overall material before they notice details. Build the broad color groups and value contrast first, then add chips, cracks, grain, ore shapes, moss, or other surface detail after the material already reads correctly.</p>
+        <ul>
+            <li>Check the four edges early so the texture can tile cleanly.</li>
+            <li>Avoid dumping all the contrast into the center and leaving the borders flat.</li>
+            <li>If the texture repeats often, remove accidental single-pixel highlights that create visible grid noise in the world.</li>
+            <li>At 16x16 and 32x32, one extra pixel can completely change the rhythm of a face, so zoom back out often.</li>
+        </ul>
+
+        <h2>How to draw inventory icons</h2>
+        <p>An inventory icon is not judged like a painting. It is judged by whether the player understands it instantly in a small slot. That means silhouette, contrast, and focal detail matter more than micro-decoration.</p>
+        <ul>
+            <li>Keep the outer shape readable first: blade, bottle, gem, paper, key, ring, or shard.</li>
+            <li>Put the strongest contrast near the focal edge, not everywhere at once.</li>
+            <li>Do not over-shade tiny items at 16x16. Too much internal noise makes the icon blur into mud.</li>
+            <li>If an icon must feel magical or rare, use one bright accent instead of filling every corner with highlight pixels.</li>
+        </ul>
+
+        <h2>Inventory icon workflow</h2>
+        <ol>
+            <li>Pick the canvas size that matches the rest of the pack.</li>
+            <li>Block the silhouette in one flat shape.</li>
+            <li>Add one shadow family and one highlight family.</li>
+            <li>Zoom back to actual size and check whether the item is still obvious in a slot.</li>
+            <li>Only then add engravings, gems, labels, glow accents, or edge wear.</li>
+        </ol>
+
+        <h2>Block texture workflow</h2>
+        <ol>
+            <li>Pick the base material colors.</li>
+            <li>Lay down the largest shapes first.</li>
+            <li>Test the edges and corners for tiling.</li>
+            <li>Add smaller clusters of detail instead of random single pixels.</li>
+            <li>Preview the texture repeated several times before exporting.</li>
+        </ol>
+
         <h2>Recommended workflow</h2>
         <ol>
             <li>Choose the canvas size first.</li>
+            <li>Decide whether you are drawing an inventory icon or a repeating block face.</li>
             <li>Paint the texture as a single PNG in the browser.</li>
-            <li>Export it when the edges and contrast feel right at real scale.</li>
+            <li>Export it when the silhouette, edges, and contrast feel right at real scale.</li>
             <li>Open the <a href="resource-pack-generator.html">resource-pack generator</a> and place that PNG into the correct item or block slot.</li>
             <li>Download the ZIP and test the texture in game before painting the whole set.</li>
         </ol>
+
+        <h2>Fast checklist before export</h2>
+        <ul>
+            <li>Does the item icon still read clearly at inventory size?</li>
+            <li>Does the block texture tile without obvious seams?</li>
+            <li>Does the resolution match the rest of the pack?</li>
+            <li>Is the contrast strong enough to survive Minecraft lighting?</li>
+            <li>Would this still make sense to a player who only sees it for half a second?</li>
+        </ul>
     </article>
 </main>
 
