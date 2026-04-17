@@ -2,16 +2,17 @@
     const SKIN_SIZE = 64;
     const DEFAULT_ZOOM = 8;
     const DEFAULT_ALPHA = 100;
+
     const state = {
         tool: 'brush',
         modelType: 'wide',
         brushSize: 1,
         zoom: DEFAULT_ZOOM,
-        alpha: DEFAULT_ALPHA,
         editorPainting: false,
         previewPainting: false,
         lastEditorPoint: null,
-        lastPreviewPoint: null
+        lastPreviewPoint: null,
+        previewSyncQueued: false
     };
 
     const commonLayout = {
@@ -176,6 +177,22 @@
         }
     };
 
+    const elements = {};
+    let skinCanvas;
+    let skinCtx;
+    let editorCanvas;
+    let editorCtx;
+    let skinViewer;
+    let previewRaycaster;
+    let previewPointer;
+    let previewVisibleMeshes = [];
+    let previewHelperRoot;
+    let previewHelperMeshes = [];
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
     function getLayoutForModel(modelType) {
         return {
             head: commonLayout.head,
@@ -198,46 +215,12 @@
         };
     }
 
-    let skinCanvas;
-    let skinCtx;
-    let editorCanvas;
-    let editorCtx;
-    let texture;
-    let scene;
-    let camera;
-    let renderer;
-    let controls;
-    let raycaster;
-    let pointer;
-    let previewRoot;
-    let previewPaintables = [];
-    let animationHandle = 0;
-
-    const elements = {};
-
-    function clamp(value, min, max) {
-        return Math.max(min, Math.min(max, value));
+    function getOverlayGrow(partName) {
+        return partName === 'head' ? 0.5 : 0.25;
     }
 
-    function getColorRgba() {
-        const hex = String(elements.color.value || '#ffffff').replace('#', '');
-        const alpha = clamp(Number(elements.alpha.value || DEFAULT_ALPHA), 0, 100) / 100;
-        const expanded = hex.length === 3 ? hex.split('').map((char) => char + char).join('') : hex;
-        return {
-            r: parseInt(expanded.slice(0, 2), 16),
-            g: parseInt(expanded.slice(2, 4), 16),
-            b: parseInt(expanded.slice(4, 6), 16),
-            a: Math.round(alpha * 255)
-        };
-    }
-
-    function setActiveTool(tool) {
-        state.tool = tool;
-        controls.enabled = tool === 'orbit';
-
-        document.querySelectorAll('[data-skin-tool]').forEach((button) => {
-            button.classList.toggle('is-active', button.dataset.skinTool === tool);
-        });
+    function getSkinviewModelType() {
+        return state.modelType === 'slim' ? 'slim' : 'default';
     }
 
     function createOffscreenSkinCanvas() {
@@ -248,230 +231,17 @@
         skinCtx.imageSmoothingEnabled = false;
     }
 
-    function createTexture() {
-        texture = new THREE.CanvasTexture(skinCanvas);
-        texture.magFilter = THREE.NearestFilter;
-        texture.minFilter = THREE.NearestFilter;
-        texture.flipY = false;
-    }
+    function getColorRgba() {
+        const hex = String(elements.color.value || '#ffffff').replace('#', '');
+        const alpha = clamp(Number(elements.alpha.value || DEFAULT_ALPHA), 0, 100) / 100;
+        const expanded = hex.length === 3 ? hex.split('').map((char) => char + char).join('') : hex;
 
-    const BOX_FACE_ORDER = ['right', 'left', 'top', 'bottom', 'front', 'back'];
-
-    function setBoxFaceUv(geometry, faceIndex, rect) {
-        const [x, y, width, height] = rect;
-        const u0 = x / SKIN_SIZE;
-        const u1 = (x + width) / SKIN_SIZE;
-        const v0 = 1 - y / SKIN_SIZE;
-        const v1 = 1 - (y + height) / SKIN_SIZE;
-        const vertexOffset = faceIndex * 4;
-        const uv = geometry.attributes.uv;
-
-        uv.setXY(vertexOffset + 0, u0, v0);
-        uv.setXY(vertexOffset + 1, u1, v0);
-        uv.setXY(vertexOffset + 2, u0, v1);
-        uv.setXY(vertexOffset + 3, u1, v1);
-    }
-
-    function createCuboid(layerName, definition, grow, material) {
-        const width = definition.size[0] + grow * 2;
-        const height = definition.size[1] + grow * 2;
-        const depth = definition.size[2] + grow * 2;
-        const geometry = new THREE.BoxGeometry(width, height, depth);
-        const faces = definition[layerName];
-
-        BOX_FACE_ORDER.forEach((faceName, faceIndex) => {
-            setBoxFaceUv(geometry, faceIndex, faces[faceName]);
-        });
-        geometry.attributes.uv.needsUpdate = true;
-
-        const mesh = new THREE.Mesh(geometry, material);
-        previewPaintables.push(mesh);
-        return mesh;
-    }
-
-    function getOverlayGrow(partName) {
-        return partName === 'head' ? 0.5 : 0.25;
-    }
-
-    function addBodyPart(root, partName, definition, position, materialBase, materialOverlay) {
-        const group = new THREE.Group();
-
-        previewPaintables = previewPaintables.filter(Boolean);
-        group.add(createCuboid('base', definition, 0, materialBase));
-
-        if (definition.overlay) {
-            const overlayGroup = createCuboid('overlay', definition, getOverlayGrow(partName), materialOverlay);
-            overlayGroup.userData.isOverlay = true;
-            group.add(overlayGroup);
-        }
-
-        group.position.set(position[0], position[1], position[2]);
-        root.add(group);
-        return group;
-    }
-
-    function disposePreviewRoot() {
-        if (!previewRoot) return;
-
-        previewRoot.traverse((node) => {
-            if (node.geometry) {
-                node.geometry.dispose();
-            }
-            if (node.material) {
-                if (Array.isArray(node.material)) {
-                    node.material.forEach((material) => material.dispose());
-                } else {
-                    node.material.dispose();
-                }
-            }
-        });
-
-        scene.remove(previewRoot);
-        previewRoot = null;
-    }
-
-    function buildPreviewModel() {
-        const layout = getLayoutForModel(state.modelType);
-        const partPositions = getPartPositionsForModel(state.modelType);
-        previewPaintables = [];
-        disposePreviewRoot();
-        previewRoot = new THREE.Group();
-        const baseMaterial = new THREE.MeshStandardMaterial({
-            map: texture,
-            transparent: true,
-            alphaTest: 0.01
-        });
-        const overlayMaterial = new THREE.MeshStandardMaterial({
-            map: texture,
-            transparent: true,
-            alphaTest: 0.01
-        });
-
-        ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'].forEach((partName) => {
-            addBodyPart(previewRoot, partName, layout[partName], partPositions[partName], baseMaterial, overlayMaterial);
-        });
-
-        previewRoot.rotation.y = Math.PI / 5;
-        scene.add(previewRoot);
-        updateOverlayVisibility();
-    }
-
-    function updateModelButtons() {
-        document.querySelectorAll('[data-skin-model]').forEach((button) => {
-            button.classList.toggle('is-active', button.dataset.skinModel === state.modelType);
-        });
-        if (elements.modelValue) {
-            elements.modelValue.textContent = state.modelType === 'slim' ? 'slim' : 'wide';
-        }
-    }
-
-    function setModelType(modelType, options) {
-        const nextModel = modelType === 'slim' ? 'slim' : 'wide';
-        const shouldTrack = !options || options.track !== false;
-
-        if (state.modelType === nextModel && previewRoot) {
-            updateModelButtons();
-            return;
-        }
-
-        state.modelType = nextModel;
-        updateModelButtons();
-
-        if (scene && texture) {
-            buildPreviewModel();
-            renderer.render(scene, camera);
-        }
-
-        if (shouldTrack && window.CubeAnalytics) {
-            window.CubeAnalytics.track('skin_editor_model_change', {
-                skin_model: state.modelType
-            });
-        }
-    }
-
-    function isRegionFullyTransparent(x, y, width, height) {
-        const pixels = skinCtx.getImageData(x, y, width, height).data;
-        for (let index = 3; index < pixels.length; index += 4) {
-            if (pixels[index] !== 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function detectModelType() {
-        const transparentRegions = [
-            [47, 16, 1, 4],
-            [50, 16, 1, 4],
-            [47, 20, 1, 12],
-            [54, 20, 1, 12],
-            [47, 32, 1, 4],
-            [50, 32, 1, 4],
-            [47, 36, 1, 12],
-            [54, 36, 1, 12],
-            [39, 48, 1, 4],
-            [42, 48, 1, 4],
-            [39, 52, 1, 12],
-            [46, 52, 1, 12],
-            [55, 48, 1, 4],
-            [58, 48, 1, 4],
-            [55, 52, 1, 12],
-            [62, 52, 1, 12]
-        ];
-
-        return transparentRegions.every((region) => isRegionFullyTransparent(region[0], region[1], region[2], region[3])) ? 'slim' : 'wide';
-    }
-
-    function initPreview() {
-        const container = elements.preview;
-        scene = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(35, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.set(34, 24, 34);
-
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        container.appendChild(renderer.domElement);
-
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.target.set(0, 16, 0);
-        controls.minDistance = 18;
-        controls.maxDistance = 70;
-        controls.enablePan = false;
-        controls.enabled = false;
-
-        raycaster = new THREE.Raycaster();
-        pointer = new THREE.Vector2();
-
-        scene.add(new THREE.AmbientLight(0xffffff, 0.75));
-        const frontLight = new THREE.DirectionalLight(0xffffff, 0.9);
-        frontLight.position.set(30, 36, 22);
-        scene.add(frontLight);
-
-        const rimLight = new THREE.DirectionalLight(0x60a5fa, 0.55);
-        rimLight.position.set(-18, 12, -20);
-        scene.add(rimLight);
-
-        buildPreviewModel();
-        bindPreviewPainting();
-        onResize();
-        animate();
-    }
-
-    function updateTexture() {
-        texture.needsUpdate = true;
-        renderAtlas();
-        updateStats();
-    }
-
-    function updateOverlayVisibility() {
-        const showOverlay = Boolean(elements.overlay.checked);
-        previewRoot.traverse((node) => {
-            if (node.userData && node.userData.isOverlay) {
-                node.visible = showOverlay;
-            }
-        });
+        return {
+            r: parseInt(expanded.slice(0, 2), 16),
+            g: parseInt(expanded.slice(2, 4), 16),
+            b: parseInt(expanded.slice(4, 6), 16),
+            a: Math.round(alpha * 255)
+        };
     }
 
     function updateStats() {
@@ -483,11 +253,103 @@
         }
     }
 
+    function updateModelButtons() {
+        document.querySelectorAll('[data-skin-model]').forEach((button) => {
+            const isActive = button.dataset.skinModel === state.modelType;
+            button.classList.toggle('is-active', isActive);
+            button.classList.toggle('resource-link-secondary', !isActive);
+        });
+        updateStats();
+    }
+
+    function setActiveTool(tool) {
+        state.tool = tool;
+
+        if (skinViewer && skinViewer.controls) {
+            skinViewer.controls.enabled = tool === 'orbit';
+        }
+
+        document.querySelectorAll('[data-skin-tool]').forEach((button) => {
+            const isActive = button.dataset.skinTool === tool;
+            button.classList.toggle('is-active', isActive);
+            button.classList.toggle('resource-link-secondary', !isActive);
+        });
+
+        updateStats();
+    }
+
+    function renderAtlas() {
+        const size = state.zoom;
+        const canvasSize = SKIN_SIZE * size;
+
+        if (editorCanvas.width !== canvasSize || editorCanvas.height !== canvasSize) {
+            editorCanvas.width = canvasSize;
+            editorCanvas.height = canvasSize;
+        }
+
+        editorCtx.imageSmoothingEnabled = false;
+        editorCtx.clearRect(0, 0, canvasSize, canvasSize);
+
+        for (let y = 0; y < SKIN_SIZE; y += 1) {
+            for (let x = 0; x < SKIN_SIZE; x += 1) {
+                editorCtx.fillStyle = (x + y) % 2 === 0 ? 'rgba(15, 23, 42, 0.88)' : 'rgba(30, 41, 59, 0.88)';
+                editorCtx.fillRect(x * size, y * size, size, size);
+            }
+        }
+
+        editorCtx.drawImage(skinCanvas, 0, 0, canvasSize, canvasSize);
+
+        if (size >= 6) {
+            editorCtx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
+            editorCtx.lineWidth = 1;
+
+            for (let axis = 0; axis <= SKIN_SIZE; axis += 1) {
+                const offset = axis * size + 0.5;
+                editorCtx.beginPath();
+                editorCtx.moveTo(offset, 0);
+                editorCtx.lineTo(offset, canvasSize);
+                editorCtx.stroke();
+                editorCtx.beginPath();
+                editorCtx.moveTo(0, offset);
+                editorCtx.lineTo(canvasSize, offset);
+                editorCtx.stroke();
+            }
+        }
+    }
+
+    function syncPreviewSkin() {
+        if (!skinViewer) return;
+
+        skinViewer.loadSkin(skinCanvas, {
+            model: getSkinviewModelType()
+        });
+        skinViewer.playerObject.skin.modelType = getSkinviewModelType();
+        skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
+        refreshVisiblePreviewMeshes();
+        skinViewer.render();
+    }
+
+    function queuePreviewSync() {
+        if (!skinViewer || state.previewSyncQueued) return;
+
+        state.previewSyncQueued = true;
+        window.requestAnimationFrame(() => {
+            state.previewSyncQueued = false;
+            syncPreviewSkin();
+        });
+    }
+
+    function updateTexture() {
+        renderAtlas();
+        updateStats();
+        queuePreviewSync();
+    }
+
     function drawRectPixel(x, y) {
         const half = Math.floor((state.brushSize - 1) / 2);
         const color = getColorRgba();
-        const startX = x - half;
-        const startY = y - half;
+        const startX = clamp(x - half, 0, SKIN_SIZE - state.brushSize);
+        const startY = clamp(y - half, 0, SKIN_SIZE - state.brushSize);
 
         if (state.tool === 'eraser') {
             skinCtx.clearRect(startX, startY, state.brushSize, state.brushSize);
@@ -557,8 +419,8 @@
         const rect = editorCanvas.getBoundingClientRect();
         const scaleX = editorCanvas.width / rect.width;
         const scaleY = editorCanvas.height / rect.height;
-        const x = Math.floor((event.clientX - rect.left) * scaleX / state.zoom);
-        const y = Math.floor((event.clientY - rect.top) * scaleY / state.zoom);
+        const x = Math.floor(((event.clientX - rect.left) * scaleX) / state.zoom);
+        const y = Math.floor(((event.clientY - rect.top) * scaleY) / state.zoom);
 
         if (x < 0 || y < 0 || x >= SKIN_SIZE || y >= SKIN_SIZE) return null;
         return { x, y };
@@ -592,26 +454,172 @@
         editorCanvas.addEventListener('pointercancel', stopEditorPaint);
     }
 
-    function previewEventToIntersection(event) {
-        const rect = renderer.domElement.getBoundingClientRect();
-        pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-        raycaster.setFromCamera(pointer, camera);
+    function createHelperFace(partName, layerName, faceName, rect, width, height, position, rotation) {
+        const geometry = new THREE.PlaneGeometry(width, height);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0,
+            side: THREE.DoubleSide,
+            depthWrite: false
+        });
+        const mesh = new THREE.Mesh(geometry, material);
+        mesh.position.set(position[0], position[1], position[2]);
+        mesh.rotation.set(rotation[0], rotation[1], rotation[2]);
+        mesh.userData = {
+            partName,
+            layerName,
+            faceName,
+            rect
+        };
+        previewHelperMeshes.push(mesh);
+        return mesh;
+    }
 
-        return raycaster.intersectObjects(previewPaintables, false)[0] || null;
+    function createHelperPart(partName, definition, layerName, grow) {
+        const group = new THREE.Group();
+        const width = definition.size[0] + grow * 2;
+        const height = definition.size[1] + grow * 2;
+        const depth = definition.size[2] + grow * 2;
+        const faces = definition[layerName];
+
+        group.add(createHelperFace(partName, layerName, 'front', faces.front, width, height, [0, 0, depth / 2], [0, 0, 0]));
+        group.add(createHelperFace(partName, layerName, 'back', faces.back, width, height, [0, 0, -depth / 2], [0, Math.PI, 0]));
+        group.add(createHelperFace(partName, layerName, 'right', faces.right, depth, height, [width / 2, 0, 0], [0, Math.PI / 2, 0]));
+        group.add(createHelperFace(partName, layerName, 'left', faces.left, depth, height, [-width / 2, 0, 0], [0, -Math.PI / 2, 0]));
+        group.add(createHelperFace(partName, layerName, 'top', faces.top, width, depth, [0, height / 2, 0], [-Math.PI / 2, 0, 0]));
+        group.add(createHelperFace(partName, layerName, 'bottom', faces.bottom, width, depth, [0, -height / 2, 0], [Math.PI / 2, 0, 0]));
+
+        return group;
+    }
+
+    function disposePreviewHelperRoot() {
+        if (!previewHelperRoot) return;
+
+        previewHelperRoot.traverse((node) => {
+            if (node.geometry) node.geometry.dispose();
+            if (node.material) node.material.dispose();
+        });
+
+        previewHelperRoot = null;
+        previewHelperMeshes = [];
+    }
+
+    function buildPreviewHelperModel() {
+        const layout = getLayoutForModel(state.modelType);
+        const positions = getPartPositionsForModel(state.modelType);
+        disposePreviewHelperRoot();
+
+        previewHelperRoot = new THREE.Group();
+
+        ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'].forEach((partName) => {
+            const partRoot = new THREE.Group();
+            partRoot.add(createHelperPart(partName, layout[partName], 'base', 0));
+            partRoot.add(createHelperPart(partName, layout[partName], 'overlay', getOverlayGrow(partName)));
+            partRoot.position.set(positions[partName][0], positions[partName][1], positions[partName][2]);
+            previewHelperRoot.add(partRoot);
+        });
+
+        previewHelperRoot.updateMatrixWorld(true);
+        updateHelperOverlayVisibility();
+    }
+
+    function updateHelperOverlayVisibility() {
+        const showOverlay = Boolean(elements.overlay.checked);
+        previewHelperMeshes.forEach((mesh) => {
+            if (mesh.userData.layerName === 'overlay') {
+                mesh.visible = showOverlay;
+            }
+        });
+    }
+
+    function refreshVisiblePreviewMeshes() {
+        previewVisibleMeshes = [];
+        if (!skinViewer || !skinViewer.playerObject) return;
+
+        skinViewer.playerObject.traverse((node) => {
+            if (node.isMesh) {
+                previewVisibleMeshes.push(node);
+            }
+        });
+    }
+
+    function initPreview() {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'skin-viewer-canvas';
+        elements.preview.innerHTML = '';
+        elements.preview.appendChild(canvas);
+
+        skinViewer = new skinview3d.SkinViewer({
+            canvas,
+            width: Math.max(300, elements.preview.clientWidth),
+            height: Math.max(320, elements.preview.clientHeight),
+            skin: skinCanvas,
+            model: getSkinviewModelType(),
+            enableControls: true,
+            zoom: 0.82,
+            fov: 45,
+            background: 0x11182f
+        });
+
+        skinViewer.animation = null;
+        skinViewer.autoRotate = false;
+        skinViewer.controls.enablePan = false;
+        skinViewer.controls.enableDamping = true;
+        skinViewer.controls.rotateSpeed = 0.8;
+        skinViewer.controls.target.set(0, 16, 0);
+        skinViewer.controls.update();
+        skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
+
+        previewRaycaster = new THREE.Raycaster();
+        previewPointer = new THREE.Vector2();
+
+        refreshVisiblePreviewMeshes();
+        buildPreviewHelperModel();
+        bindPreviewPainting();
+        onResize();
+        syncPreviewSkin();
+    }
+
+    function previewEventToIntersection(event) {
+        if (!skinViewer || !previewRaycaster || !previewPointer) return null;
+
+        const rect = skinViewer.canvas.getBoundingClientRect();
+        previewPointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        previewPointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+        previewRaycaster.setFromCamera(previewPointer, skinViewer.camera);
+
+        const visibleHits = previewVisibleMeshes.length ? previewRaycaster.intersectObjects(previewVisibleMeshes, true) : [];
+        if (visibleHits.length && visibleHits[0].uv) {
+            return visibleHits[0];
+        }
+
+        return previewHelperMeshes.length ? previewRaycaster.intersectObjects(previewHelperMeshes, false)[0] || null : null;
     }
 
     function intersectionToPixel(intersection) {
-        if (!intersection || !intersection.uv) return null;
+        if (!intersection) return null;
 
-        return {
-            x: clamp(Math.floor(intersection.uv.x * SKIN_SIZE), 0, SKIN_SIZE - 1),
-            y: clamp(Math.floor((1 - intersection.uv.y) * SKIN_SIZE), 0, SKIN_SIZE - 1)
-        };
+        if (intersection.object && intersection.object.userData && Array.isArray(intersection.object.userData.rect) && intersection.uv) {
+            const rect = intersection.object.userData.rect;
+            return {
+                x: clamp(rect[0] + Math.floor(clamp(intersection.uv.x, 0, 0.999999) * rect[2]), 0, SKIN_SIZE - 1),
+                y: clamp(rect[1] + Math.floor(clamp(1 - intersection.uv.y, 0, 0.999999) * rect[3]), 0, SKIN_SIZE - 1)
+            };
+        }
+
+        if (intersection.uv) {
+            return {
+                x: clamp(Math.floor(intersection.uv.x * SKIN_SIZE), 0, SKIN_SIZE - 1),
+                y: clamp(Math.floor((1 - intersection.uv.y) * SKIN_SIZE), 0, SKIN_SIZE - 1)
+            };
+        }
+
+        return null;
     }
 
     function bindPreviewPainting() {
-        const canvas = renderer.domElement;
+        const canvas = skinViewer.canvas;
 
         canvas.addEventListener('pointerdown', (event) => {
             if (state.tool === 'orbit') return;
@@ -621,7 +629,7 @@
 
             state.previewPainting = true;
             state.lastPreviewPoint = null;
-            controls.enabled = false;
+            skinViewer.controls.enabled = false;
             canvas.setPointerCapture(event.pointerId);
             paintPoint(intersectionToPixel(intersection), 'lastPreviewPoint');
         });
@@ -637,7 +645,9 @@
         const stopPreviewPaint = () => {
             state.previewPainting = false;
             state.lastPreviewPoint = null;
-            controls.enabled = state.tool === 'orbit';
+            if (skinViewer && skinViewer.controls) {
+                skinViewer.controls.enabled = state.tool === 'orbit';
+            }
         };
 
         canvas.addEventListener('pointerup', stopPreviewPaint);
@@ -645,43 +655,37 @@
         canvas.addEventListener('pointercancel', stopPreviewPaint);
     }
 
-    function renderAtlas() {
-        const size = state.zoom;
-        const canvasSize = SKIN_SIZE * size;
-
-        if (editorCanvas.width !== canvasSize || editorCanvas.height !== canvasSize) {
-            editorCanvas.width = canvasSize;
-            editorCanvas.height = canvasSize;
-        }
-
-        editorCtx.imageSmoothingEnabled = false;
-        editorCtx.clearRect(0, 0, canvasSize, canvasSize);
-
-        for (let y = 0; y < SKIN_SIZE; y += 1) {
-            for (let x = 0; x < SKIN_SIZE; x += 1) {
-                editorCtx.fillStyle = (x + y) % 2 === 0 ? 'rgba(15, 23, 42, 0.88)' : 'rgba(30, 41, 59, 0.88)';
-                editorCtx.fillRect(x * size, y * size, size, size);
+    function isRegionFullyTransparent(x, y, width, height) {
+        const pixels = skinCtx.getImageData(x, y, width, height).data;
+        for (let index = 3; index < pixels.length; index += 4) {
+            if (pixels[index] !== 0) {
+                return false;
             }
         }
+        return true;
+    }
 
-        editorCtx.drawImage(skinCanvas, 0, 0, canvasSize, canvasSize);
+    function detectModelType() {
+        const transparentRegions = [
+            [47, 16, 1, 4],
+            [50, 16, 1, 4],
+            [47, 20, 1, 12],
+            [54, 20, 1, 12],
+            [47, 32, 1, 4],
+            [50, 32, 1, 4],
+            [47, 36, 1, 12],
+            [54, 36, 1, 12],
+            [39, 48, 1, 4],
+            [42, 48, 1, 4],
+            [39, 52, 1, 12],
+            [46, 52, 1, 12],
+            [55, 48, 1, 4],
+            [58, 48, 1, 4],
+            [55, 52, 1, 12],
+            [62, 52, 1, 12]
+        ];
 
-        if (size >= 6) {
-            editorCtx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
-            editorCtx.lineWidth = 1;
-
-            for (let axis = 0; axis <= SKIN_SIZE; axis += 1) {
-                const offset = axis * size + 0.5;
-                editorCtx.beginPath();
-                editorCtx.moveTo(offset, 0);
-                editorCtx.lineTo(offset, canvasSize);
-                editorCtx.stroke();
-                editorCtx.beginPath();
-                editorCtx.moveTo(0, offset);
-                editorCtx.lineTo(canvasSize, offset);
-                editorCtx.stroke();
-            }
-        }
+        return transparentRegions.every((region) => isRegionFullyTransparent(region[0], region[1], region[2], region[3])) ? 'slim' : 'wide';
     }
 
     function resetStarterSkin() {
@@ -780,6 +784,28 @@
         });
     }
 
+    function setModelType(modelType, options) {
+        const nextModel = modelType === 'slim' ? 'slim' : 'wide';
+        const shouldTrack = !options || options.track !== false;
+
+        if (state.modelType === nextModel && previewHelperRoot) {
+            updateModelButtons();
+            queuePreviewSync();
+            return;
+        }
+
+        state.modelType = nextModel;
+        updateModelButtons();
+        buildPreviewHelperModel();
+        queuePreviewSync();
+
+        if (shouldTrack && window.CubeAnalytics) {
+            window.CubeAnalytics.track('skin_editor_model_change', {
+                skin_model: state.modelType
+            });
+        }
+    }
+
     function bindControls() {
         document.querySelectorAll('[data-skin-tool]').forEach((button) => {
             button.addEventListener('click', () => setActiveTool(button.dataset.skinTool));
@@ -802,23 +828,20 @@
             elements.alphaValue.textContent = `${elements.alpha.value}%`;
         });
 
-        elements.overlay.addEventListener('change', updateOverlayVisibility);
-    }
-
-    function animate() {
-        animationHandle = window.requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
+        elements.overlay.addEventListener('change', () => {
+            updateHelperOverlayVisibility();
+            if (skinViewer) {
+                skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
+                skinViewer.render();
+            }
+        });
     }
 
     function onResize() {
-        if (!renderer || !camera) return;
+        if (!skinViewer) return;
         const rect = elements.preview.getBoundingClientRect();
-        const width = Math.max(300, Math.floor(rect.width));
-        const height = Math.max(320, Math.floor(rect.height));
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
+        skinViewer.setSize(Math.max(300, Math.floor(rect.width)), Math.max(320, Math.floor(rect.height)));
+        skinViewer.render();
     }
 
     function initElements() {
@@ -844,10 +867,13 @@
 
     function init() {
         if (!document.querySelector('[data-skin-editor]')) return;
+        if (!window.skinview3d || !window.THREE) {
+            console.error('Skin editor dependencies did not load.');
+            return;
+        }
 
         initElements();
         createOffscreenSkinCanvas();
-        createTexture();
         bindControls();
         bindFileControls();
         bindEditorPainting();

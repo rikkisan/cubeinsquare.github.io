@@ -272,7 +272,7 @@
                         </label>
                     </div>
                 </div>
-                <p class="skin-editor-note">Brush, eraser, and picker work both on the 2D atlas and directly on the model. Switch to <strong>Orbit</strong> when you only want to rotate the player. Imported skins try to auto-detect <strong>wide</strong> versus <strong>slim</strong>, and you can still override that manually.</p>
+                <p class="skin-editor-note">The main painting surface is the 3D player model. Use the atlas when you want fine pixel cleanup, fast imports, or a direct look at the vanilla 64x64 layout.</p>
             </section>
 
             <section class="tool-panel">
@@ -300,17 +300,17 @@
 
         <div class="skin-workspace">
             <section class="tool-panel skin-preview-card">
-                <h2>3D player preview</h2>
+                <h2>3D painting surface</h2>
                 <div class="skin-preview-stage" id="skinPreview"></div>
-                <p class="skin-preview-note">Paint right on the model when you want to check sleeves, the top of the head, boots, or the outer layer without guessing the atlas coordinates.</p>
+                <p class="skin-preview-note">Paint directly on the player model first. The atlas below stays in sync so you can still inspect the exact pixels and export a standard Minecraft skin PNG.</p>
             </section>
 
             <section class="tool-panel skin-canvas-card">
-                <h2>Classic 64x64 atlas</h2>
+                <h2>64x64 atlas helper</h2>
                 <div class="skin-atlas-wrap">
                     <canvas id="skinEditorCanvas" width="512" height="512"></canvas>
                 </div>
-                <p class="skin-editor-note">The atlas always stays in the vanilla Minecraft skin layout, so the exported PNG is ready for launcher use or any skin workflow that expects the standard template.</p>
+                <p class="skin-editor-note">The atlas stays in the vanilla Minecraft layout, so the exported PNG is still ready for launcher use, skin websites, and other standard workflows.</p>
             </section>
         </div>
     </section>
@@ -323,8 +323,8 @@
                 <p>Load an existing skin PNG or begin from the built-in starter skin to block out colors quickly.</p>
             </article>
             <article class="resource-card">
-                <h3>2. Paint atlas or model</h3>
-                <p>Use the atlas for precise pixel work and the model for sleeves, boots, hats, and any face you want to see in place.</p>
+                <h3>2. Paint on the 3D player first</h3>
+                <p>Block out the look directly on the model, then use the atlas only when you need precise pixel cleanup or want to inspect the layout.</p>
             </article>
             <article class="resource-card">
                 <h3>3. Export the PNG</h3>
@@ -336,7 +336,7 @@
 
 <footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Privacy Policy</a></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js"></script>
 <script src="assets/site.js"></script>
 <script src="assets/tracking-config.js"></script>
 <script src="assets/tracking.js"></script>
