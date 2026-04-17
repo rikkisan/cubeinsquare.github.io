@@ -7,6 +7,8 @@
         tool: 'brush',
         paintLayer: 'base',
         modelType: 'wide',
+        previewOrbiting: false,
+        recentColors: [],
         hiddenParts: {
             rightArm: false,
             leftArm: false,
@@ -252,6 +254,47 @@
         };
     }
 
+    function getCurrentColorSnapshot() {
+        return {
+            hex: String(elements.color.value || '#ffffff'),
+            alpha: clamp(Number(elements.alpha.value || DEFAULT_ALPHA), 0, 100)
+        };
+    }
+
+    function applyColorSnapshot(snapshot) {
+        if (!snapshot) return;
+        elements.color.value = snapshot.hex;
+        elements.alpha.value = snapshot.alpha;
+        elements.alphaValue.textContent = `${snapshot.alpha}%`;
+    }
+
+    function renderRecentColors() {
+        if (!elements.recentColors) return;
+
+        elements.recentColors.innerHTML = '';
+        state.recentColors.forEach((snapshot, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'skin-recent-color';
+            button.style.setProperty('--swatch', snapshot.hex);
+            button.title = `${snapshot.hex.toUpperCase()} | ${snapshot.alpha}%`;
+            button.setAttribute('aria-label', `Use recent color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
+            button.addEventListener('click', () => {
+                applyColorSnapshot(snapshot);
+            });
+            elements.recentColors.appendChild(button);
+        });
+    }
+
+    function rememberCurrentColor() {
+        const snapshot = getCurrentColorSnapshot();
+        const key = `${snapshot.hex}|${snapshot.alpha}`;
+        state.recentColors = [snapshot]
+            .concat(state.recentColors.filter((entry) => `${entry.hex}|${entry.alpha}` !== key))
+            .slice(0, 10);
+        renderRecentColors();
+    }
+
     function updateStats() {
         elements.dimensions.textContent = `${SKIN_SIZE} x ${SKIN_SIZE}`;
         elements.mode.textContent = state.tool;
@@ -286,7 +329,7 @@
         state.tool = tool;
 
         if (skinViewer && skinViewer.controls) {
-            skinViewer.controls.enabled = tool === 'orbit';
+            skinViewer.controls.enabled = tool === 'orbit' || state.previewOrbiting;
         }
 
         document.querySelectorAll('[data-skin-tool]').forEach((button) => {
@@ -408,6 +451,7 @@
         elements.color.value = hex;
         elements.alpha.value = alpha;
         elements.alphaValue.textContent = `${alpha}%`;
+        rememberCurrentColor();
     }
 
     function drawLine(start, end) {
@@ -652,6 +696,9 @@
         skinViewer.controls.enablePan = false;
         skinViewer.controls.enableDamping = true;
         skinViewer.controls.rotateSpeed = 0.8;
+        skinViewer.controls.mouseButtons.LEFT = THREE.MOUSE.ROTATE;
+        skinViewer.controls.mouseButtons.MIDDLE = THREE.MOUSE.DOLLY;
+        skinViewer.controls.mouseButtons.RIGHT = THREE.MOUSE.ROTATE;
         setPreviewHomeView();
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
 
@@ -709,8 +756,25 @@
     function bindPreviewPainting() {
         const canvas = skinViewer.canvas;
 
+        const startTemporaryOrbit = (event) => {
+            if (event.button !== 2 || !skinViewer || !skinViewer.controls) return;
+            state.previewOrbiting = true;
+            skinViewer.controls.enabled = true;
+        };
+
+        const stopTemporaryOrbit = () => {
+            if (!state.previewOrbiting) return;
+            state.previewOrbiting = false;
+            if (skinViewer && skinViewer.controls) {
+                skinViewer.controls.enabled = state.tool === 'orbit';
+            }
+        };
+
+        canvas.addEventListener('contextmenu', (event) => event.preventDefault());
+        canvas.addEventListener('pointerdown', startTemporaryOrbit, true);
+
         canvas.addEventListener('pointerdown', (event) => {
-            if (state.tool === 'orbit') return;
+            if (event.button === 2 || state.previewOrbiting || state.tool === 'orbit') return;
 
             const intersection = previewEventToIntersection(event);
             if (!intersection) return;
@@ -723,7 +787,7 @@
         });
 
         canvas.addEventListener('pointermove', (event) => {
-            if (!state.previewPainting) return;
+            if (state.previewOrbiting || !state.previewPainting) return;
 
             const intersection = previewEventToIntersection(event);
             if (!intersection) {
@@ -736,8 +800,9 @@
         const stopPreviewPaint = () => {
             state.previewPainting = false;
             state.lastPreviewPoint = null;
+            stopTemporaryOrbit();
             if (skinViewer && skinViewer.controls) {
-                skinViewer.controls.enabled = state.tool === 'orbit';
+                skinViewer.controls.enabled = state.tool === 'orbit' || state.previewOrbiting;
             }
         };
 
@@ -1039,6 +1104,8 @@
                 skinViewer.render();
             }
         });
+        elements.color.addEventListener('input', rememberCurrentColor);
+        elements.alpha.addEventListener('change', rememberCurrentColor);
     }
 
     function onResize() {
@@ -1067,6 +1134,7 @@
         elements.mode = document.getElementById('skinMode');
         elements.brush = document.getElementById('skinBrush');
         elements.modelValue = document.getElementById('skinModelValue');
+        elements.recentColors = document.getElementById('skinRecentColors');
         editorCanvas = document.getElementById('skinEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
     }
@@ -1089,6 +1157,7 @@
         state.brushSize = Number(elements.brushSize.value || 1);
         state.zoom = Number(elements.zoom.value || DEFAULT_ZOOM);
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
+        rememberCurrentColor();
 
         resetStarterSkin();
         renderAtlas();
