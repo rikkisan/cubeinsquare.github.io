@@ -289,6 +289,10 @@
         return mesh;
     }
 
+    function getOverlayGrow(partName) {
+        return partName === 'head' ? 0.5 : 0.25;
+    }
+
     function addBodyPart(root, partName, definition, position, materialBase, materialOverlay) {
         const group = new THREE.Group();
 
@@ -296,7 +300,7 @@
         group.add(createCuboid('base', definition, 0, materialBase));
 
         if (definition.overlay) {
-            const overlayGroup = createCuboid('overlay', definition, 0.45, materialOverlay);
+            const overlayGroup = createCuboid('overlay', definition, getOverlayGrow(partName), materialOverlay);
             overlayGroup.userData.isOverlay = true;
             group.add(overlayGroup);
         }
