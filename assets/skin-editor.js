@@ -7,6 +7,12 @@
         tool: 'brush',
         paintLayer: 'base',
         modelType: 'wide',
+        hiddenParts: {
+            rightArm: false,
+            leftArm: false,
+            rightLeg: false,
+            leftLeg: false
+        },
         brushSize: 1,
         zoom: DEFAULT_ZOOM,
         editorPainting: false,
@@ -189,6 +195,7 @@
     let previewVisibleMeshes = [];
     let previewHelperRoot;
     let previewHelperMeshes = [];
+    const previewPartNames = ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'];
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
@@ -358,6 +365,7 @@
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
         refreshVisiblePreviewMeshes();
         syncHelperModelTransform();
+        applyPreviewPartVisibility();
         skinViewer.render();
     }
 
@@ -437,7 +445,7 @@
         }
 
         const previous = state[lastPointKey];
-        if (previous) {
+        if (previous && previous.paintKey === point.paintKey) {
             drawLine(previous, point);
         } else {
             drawRectPixel(point.x, point.y);
@@ -455,7 +463,7 @@
         const y = Math.floor(((event.clientY - rect.top) * scaleY) / state.zoom);
 
         if (x < 0 || y < 0 || x >= SKIN_SIZE || y >= SKIN_SIZE) return null;
-        return { x, y };
+        return { x, y, paintKey: 'atlas' };
     }
 
     function bindEditorPainting() {
@@ -553,7 +561,7 @@
         });
 
         syncHelperModelTransform();
-        updateHelperOverlayVisibility();
+        applyPreviewPartVisibility();
     }
 
     function syncHelperModelTransform() {
@@ -569,12 +577,34 @@
     }
 
     function updateHelperOverlayVisibility() {
+        applyPreviewPartVisibility();
+    }
+
+    function applyPreviewPartVisibility() {
         const showOverlay = Boolean(elements.overlay.checked);
         previewHelperMeshes.forEach((mesh) => {
-            if (mesh.userData.layerName === 'overlay') {
-                mesh.visible = showOverlay;
+            const hidden = Boolean(state.hiddenParts[mesh.userData.partName]);
+            mesh.visible = mesh.userData.layerName === 'overlay' ? showOverlay && !hidden : !hidden;
+        });
+
+        if (!skinViewer || !skinViewer.playerObject || !skinViewer.playerObject.skin) return;
+
+        previewPartNames.forEach((partName) => {
+            const part = skinViewer.playerObject.skin[partName];
+            if (!part) return;
+
+            const hidden = Boolean(state.hiddenParts[partName]);
+            if (part.innerLayer) {
+                part.innerLayer.visible = !hidden;
+            }
+            if (part.outerLayer) {
+                part.outerLayer.visible = showOverlay && !hidden;
             }
         });
+
+        if (skinViewer) {
+            skinViewer.render();
+        }
     }
 
     function refreshVisiblePreviewMeshes() {
@@ -645,7 +675,7 @@
         previewRaycaster.setFromCamera(previewPointer, skinViewer.camera);
 
         const targetLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
-        const targetMeshes = previewHelperMeshes.filter((mesh) => mesh.userData.layerName === targetLayer);
+        const targetMeshes = previewHelperMeshes.filter((mesh) => mesh.userData.layerName === targetLayer && mesh.visible);
         return targetMeshes.length ? previewRaycaster.intersectObjects(targetMeshes, false)[0] || null : null;
     }
 
@@ -656,14 +686,20 @@
             const rect = intersection.object.userData.rect;
             return {
                 x: clamp(rect[0] + Math.floor(clamp(intersection.uv.x, 0, 0.999999) * rect[2]), 0, SKIN_SIZE - 1),
-                y: clamp(rect[1] + Math.floor(clamp(1 - intersection.uv.y, 0, 0.999999) * rect[3]), 0, SKIN_SIZE - 1)
+                y: clamp(rect[1] + Math.floor(clamp(1 - intersection.uv.y, 0, 0.999999) * rect[3]), 0, SKIN_SIZE - 1),
+                paintKey: [
+                    intersection.object.userData.partName,
+                    intersection.object.userData.layerName,
+                    intersection.object.userData.faceName
+                ].join(':')
             };
         }
 
         if (intersection.uv) {
             return {
                 x: clamp(Math.floor(intersection.uv.x * SKIN_SIZE), 0, SKIN_SIZE - 1),
-                y: clamp(Math.floor((1 - intersection.uv.y) * SKIN_SIZE), 0, SKIN_SIZE - 1)
+                y: clamp(Math.floor((1 - intersection.uv.y) * SKIN_SIZE), 0, SKIN_SIZE - 1),
+                paintKey: 'model'
             };
         }
 
@@ -690,7 +726,10 @@
             if (!state.previewPainting) return;
 
             const intersection = previewEventToIntersection(event);
-            if (!intersection) return;
+            if (!intersection) {
+                state.lastPreviewPoint = null;
+                return;
+            }
             paintPoint(intersectionToPixel(intersection), 'lastPreviewPoint');
         });
 
@@ -740,7 +779,7 @@
         return transparentRegions.every((region) => isRegionFullyTransparent(region[0], region[1], region[2], region[3])) ? 'slim' : 'wide';
     }
 
-    function resetStarterSkin() {
+    function paintFallbackSteveSkin() {
         skinCtx.clearRect(0, 0, SKIN_SIZE, SKIN_SIZE);
         const layout = getLayoutForModel('wide');
         const skinTone = '#c68642';
@@ -856,6 +895,19 @@
         updateTexture();
     }
 
+    function resetStarterSkin() {
+        const image = new Image();
+        image.onload = () => {
+            importSkinFromImage(image);
+            setPaintLayer('base');
+            setPreviewHomeView();
+        };
+        image.onerror = () => {
+            paintFallbackSteveSkin();
+        };
+        image.src = 'assets/skin-editor-starter.png?v=20260417';
+    }
+
     function importSkinFromImage(image) {
         skinCtx.clearRect(0, 0, SKIN_SIZE, SKIN_SIZE);
         skinCtx.drawImage(image, 0, 0, image.width, image.height, 0, 0, image.width, image.height);
@@ -945,6 +997,12 @@
         updateLayerButtons();
     }
 
+    function setPartHidden(partName, hidden) {
+        if (!Object.prototype.hasOwnProperty.call(state.hiddenParts, partName)) return;
+        state.hiddenParts[partName] = Boolean(hidden);
+        applyPreviewPartVisibility();
+    }
+
     function bindControls() {
         document.querySelectorAll('[data-skin-tool]').forEach((button) => {
             button.addEventListener('click', () => setActiveTool(button.dataset.skinTool));
@@ -954,6 +1012,11 @@
         });
         document.querySelectorAll('[data-skin-model]').forEach((button) => {
             button.addEventListener('click', () => setModelType(button.dataset.skinModel));
+        });
+        document.querySelectorAll('[data-skin-part]').forEach((input) => {
+            input.addEventListener('change', () => {
+                setPartHidden(input.dataset.skinPart, input.checked);
+            });
         });
 
         elements.brushSize.addEventListener('change', () => {
@@ -973,7 +1036,6 @@
         elements.overlay.addEventListener('change', () => {
             updateHelperOverlayVisibility();
             if (skinViewer) {
-                skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
                 skinViewer.render();
             }
         });
