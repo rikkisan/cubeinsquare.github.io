@@ -823,19 +823,45 @@
             justify-content: center;
             gap: 4px;
             min-width: 58px;
-            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+            max-width: 58px;
+            transition:
+                max-width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.22s ease,
+                background 0.22s ease,
+                box-shadow 0.22s ease,
+                transform 0.22s ease;
         }
 
         .language-switch a {
-            display: none;
             align-items: center;
             justify-content: center;
             white-space: nowrap;
+            display: inline-flex;
+            overflow: hidden;
+            max-width: 0;
+            opacity: 0;
+            transform: translateX(-6px) scale(0.96);
+            padding-left: 0;
+            padding-right: 0;
+            pointer-events: none;
+            transition:
+                max-width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.18s ease,
+                transform 0.22s ease,
+                padding 0.22s ease,
+                background 0.18s ease,
+                color 0.18s ease;
         }
 
         .language-switch a.is-active {
-            display: inline-flex;
             order: -1;
+            max-width: 52px;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            padding-left: 8px;
+            padding-right: 8px;
+            pointer-events: auto;
         }
 
         .language-switch a.is-active::after {
@@ -852,12 +878,18 @@
             background: rgba(15, 23, 42, 0.88);
             border-color: rgba(96, 165, 250, 0.3);
             box-shadow: 0 10px 24px -18px rgba(59, 130, 246, 0.68);
+            max-width: 220px;
         }
 
         .language-switch:hover a,
         .language-switch:focus-within a,
         .language-switch.is-open a {
-            display: inline-flex;
+            max-width: 52px;
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            padding-left: 8px;
+            padding-right: 8px;
+            pointer-events: auto;
         }
 
         .language-switch:hover a:hover,
