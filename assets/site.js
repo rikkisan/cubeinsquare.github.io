@@ -132,7 +132,72 @@
         startAuto();
     }
 
+    function initGlobalToolLinks() {
+        const lang = (document.documentElement.lang || 'en').toLowerCase();
+        const labels = {
+            ru: {
+                tool: 'Редактор скинов',
+                guide: 'Гайд по редактору скинов',
+                featureTitle: 'Редактор скинов',
+                featureDesc: 'Рисуйте по атласу или прямо по 3D-модели игрока.'
+            },
+            fr: {
+                tool: 'Editeur de skins',
+                guide: 'Guide de l editeur de skins',
+                featureTitle: 'Editeur de skins',
+                featureDesc: 'Dessinez sur l atlas ou directement sur le modele 3D.'
+            },
+            de: {
+                tool: 'Skin-Editor',
+                guide: 'Skin-Editor-Anleitung',
+                featureTitle: 'Skin-Editor',
+                featureDesc: 'Male auf dem Atlas oder direkt auf dem 3D-Modell.'
+            },
+            en: {
+                tool: 'Minecraft Skin Editor',
+                guide: 'Skin editor guide',
+                featureTitle: 'Skin editor',
+                featureDesc: 'Draw on the atlas or paint directly on the 3D player model.'
+            }
+        };
+        const copy = labels[lang] || labels.en;
+        const path = String(window.location.pathname || '');
+        const inLocaleFolder = /(^|\/)(ru|fr|de)(\/|$)/.test(path);
+        const rootPrefix = inLocaleFolder ? '../' : '';
+        const skinHref = `${rootPrefix}skin-editor.html`;
+        const guideHref = `${rootPrefix}wiki-skin-editor.html`;
+
+        document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
+            if (list.querySelector('a[href$="skin-editor.html"]')) return;
+            const link = document.createElement('a');
+            link.href = skinHref;
+            link.textContent = copy.tool;
+            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /tool-coming-soon\.html$/i.test(item.getAttribute('href') || ''));
+            list.insertBefore(link, upcoming || null);
+        });
+
+        document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
+            if (feature.querySelector('a[href$="skin-editor.html"]')) return;
+            const card = document.createElement('a');
+            card.className = 'mega-card';
+            card.href = skinHref;
+            card.innerHTML = `<strong>${copy.featureTitle}</strong><span>${copy.featureDesc}</span>`;
+            feature.insertBefore(card, feature.firstChild);
+        });
+
+        document.querySelectorAll('.mega-group-title[href*="#other-tools-wiki"]').forEach((title) => {
+            const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
+            if (!sublist || sublist.querySelector('a[href$="wiki-skin-editor.html"]')) return;
+            const link = document.createElement('a');
+            link.href = guideHref;
+            link.textContent = copy.guide;
+            const potions = Array.from(sublist.querySelectorAll('a')).find((item) => /wiki-custom-potions\.html$/i.test(item.getAttribute('href') || ''));
+            sublist.insertBefore(link, potions || sublist.firstChild);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+        initGlobalToolLinks();
         initCopyButtons();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });

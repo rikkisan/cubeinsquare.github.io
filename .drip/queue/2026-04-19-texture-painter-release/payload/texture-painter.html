@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Texture Painter and PNG Canvas | Cube in a Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, import PNGs, export finished textures, and then turn them into a pack.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in a Square">
+    <meta name="application-name" content="Cube in a Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/texture-painter.html">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/texture-painter.html">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/texture-painter.html">
+    <meta property="og:site_name" content="Cube in a Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Texture Painter and PNG Canvas | Cube in a Square">
+    <meta property="og:description" content="Paint Minecraft item and block textures in the browser, choose the canvas size, and export finished PNGs for your pack.">
+    <meta property="og:url" content="https://cubeinsquare.com/texture-painter.html">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Texture Painter and PNG Canvas | Cube in a Square">
+    <meta name="twitter:description" content="Browser-based texture painter for Minecraft items and blocks with size presets, import, and export.">
+    <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/texture-painter.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="index.html" aria-label="Home" title="Home"><img src="assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#general-wiki">General articles</a><div class="mega-sublist"><a href="wiki-custom-model-data.html">CustomModelData</a><a href="wiki.html#resource-pack-paths">Resource pack structure</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="wiki-resource-pack-generator.html">How to use the generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="tools.html">Tools catalog</a><a href="wiki-skin-editor.html">Skin editor</a><a href="wiki-texture-painter.html">Texture painter</a><a href="wiki-custom-potions.html">Custom potions</a><a href="wiki-custom-villager-trades.html">Villager trades</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="wiki-texture-painter.html"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="wiki-resource-pack-generator.html"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="wiki-skin-editor.html"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="tools.html">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="resource-pack-generator.html">Minecraft Resource Pack Generator</a><a href="skin-editor.html">Minecraft Skin Editor</a><a href="texture-painter.html">Texture painter</a><a href="custom-villager-trades.html">Custom villager trades</a><a href="custom-potions.html">Custom potions</a><a href="tool-coming-soon.html">Upcoming tools</a></div>
+                <div class="mega-feature"><a class="mega-card" href="texture-painter.html"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a><a class="mega-card" href="skin-editor.html"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a><a class="mega-card" href="resource-pack-generator.html"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="about.html">Project</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="about.html">Cube in a Square</a><a href="privacy-policy.html">Privacy Policy</a></div></div>
+        <form class="steam-search" action="wiki.html" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="texture-painter.html">RU</a><a class="is-active" href="#">EN</a><a href="texture-painter.html">FR</a><a href="texture-painter.html">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-texture-painter>
+    <section class="page-hero">
+        <h1>Minecraft Texture Painter</h1>
+        <p class="page-lead">Paint item and block textures in the browser, switch between <code>16x16</code>, <code>32x32</code>, <code>64x64</code>, and <code>128x128</code>, then send the exported PNGs into the resource-pack generator to turn them into a pack.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="resource-pack-generator.html">Turn PNGs into a pack</a>
+            <a class="resource-link resource-link-secondary" href="wiki-texture-painter.html">Read texture guide</a>
+        </div>
+    </section>
+
+    <section class="page-section texture-layout">
+        <aside class="texture-sidebar">
+            <section class="tool-panel">
+                <h2>Painting tools</h2>
+                <div class="texture-tool-grid">
+                    <button class="resource-link texture-tool-button is-active" type="button" data-texture-tool="brush">Brush</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="eraser">Eraser</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="picker">Picker</button>
+                </div>
+                <div class="tool-field">
+                    <label for="textureColor">Color</label>
+                    <div class="texture-color-row">
+                        <input id="textureColor" type="color" value="#8b5cf6">
+                        <div class="tool-field">
+                            <label for="textureAlpha">Opacity</label>
+                            <input id="textureAlpha" type="range" min="0" max="100" value="100">
+                            <span class="row-toolbar-label" id="textureAlphaValue">100%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="texture-compact-grid">
+                    <div class="tool-field">
+                        <label for="textureCanvasSize">Canvas size</label>
+                        <select id="textureCanvasSize">
+                            <option value="16" selected>16 x 16</option>
+                            <option value="32">32 x 32</option>
+                            <option value="64">64 x 64</option>
+                            <option value="128">128 x 128</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureZoom">Zoom</label>
+                        <select id="textureZoom">
+                            <option value="8">8x</option>
+                            <option value="12">12x</option>
+                            <option value="18" selected>18x</option>
+                            <option value="24">24x</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureBrushSize">Brush size</label>
+                        <select id="textureBrushSize">
+                            <option value="1">1 px</option>
+                            <option value="2">2 px</option>
+                            <option value="3">3 px</option>
+                            <option value="4">4 px</option>
+                            <option value="6">6 px</option>
+                            <option value="8">8 px</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="texture-note">Use <strong>16x16</strong> for vanilla readability, <strong>32x32</strong> for a mild detail boost, <strong>64x64</strong> for richer art, and <strong>128x128</strong> only when the whole pack is built for high-resolution detail.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Files</h2>
+                <input class="texture-hidden-input" id="textureFileInput" type="file" accept=".png,image/png">
+                <div class="texture-tool-grid">
+                    <button class="resource-link texture-tool-button" id="textureUploadButton" type="button">Import PNG</button>
+                    <button class="resource-link texture-tool-button" id="textureExportButton" type="button">Export PNG</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureStarterButton" type="button">Starter pattern</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureClearButton" type="button">Clear</button>
+                </div>
+                <p class="texture-file-note">Paint one texture at a time, export the PNG, then use the resource-pack generator to place it into a pack structure without touching folders by hand.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Quick status</h2>
+                <div class="texture-stats">
+                    <span class="texture-stat-pill">Canvas: <strong id="textureCanvasSizeValue">16 x 16</strong></span>
+                    <span class="texture-stat-pill">Tool: <strong id="textureToolValue">brush</strong></span>
+                    <span class="texture-stat-pill">Brush: <strong id="textureBrushValue">1px</strong></span>
+                </div>
+            </section>
+        </aside>
+
+        <div class="texture-workspace">
+            <section class="tool-panel">
+                <h2>Texture canvas</h2>
+                <div class="texture-stage">
+                    <canvas id="textureEditorCanvas" width="288" height="288"></canvas>
+                </div>
+                <p class="texture-note">This canvas is intentionally simple: one PNG, one resolution, no hidden rescaling surprises. If it looks crisp here, it will stay crisp in the exported file.</p>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Privacy Policy</a></footer>
+<script src="assets/site.js"></script>
+<script src="assets/tracking-config.js"></script>
+<script src="assets/tracking.js"></script>
+<script src="assets/texture-painter.js"></script>
+</body>
+</html>

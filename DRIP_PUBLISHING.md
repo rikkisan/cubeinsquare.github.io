@@ -4,7 +4,7 @@ This project can publish one pre-made site update at a time on a schedule.
 
 ## What it does
 
-- runs every week through GitHub Actions
+- runs every Sunday through GitHub Actions
 - takes the first queued release from `.drip/queue/`
 - copies its `payload/` files into the site
 - optionally deletes listed files

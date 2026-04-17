@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Skin Editor with 3D Player Preview | Cube in a Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Draw Minecraft skins in the browser with a classic 64x64 atlas, paint directly on the player model, import PNG skins, and export the finished file.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in a Square">
+    <meta name="application-name" content="Cube in a Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/skin-editor.html">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/skin-editor.html">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/skin-editor.html">
+    <meta property="og:site_name" content="Cube in a Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Skin Editor with 3D Player Preview | Cube in a Square">
+    <meta property="og:description" content="Paint Minecraft skins on a classic 64x64 atlas or directly on the 3D player model, then export the finished PNG.">
+    <meta property="og:url" content="https://cubeinsquare.com/skin-editor.html">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Skin Editor with 3D Player Preview | Cube in a Square">
+    <meta name="twitter:description" content="Browser-based Minecraft skin painter with atlas editing, model painting, PNG import, and export.">
+    <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/skin-editor.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in a Square",
+            "alternateName": "Kub v kvadrate",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://cubeinsquare.com/#website",
+            "url": "https://cubeinsquare.com/",
+            "name": "Cube in a Square",
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://cubeinsquare.com/wiki.html?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "@id": "https://cubeinsquare.com/skin-editor.html#application",
+            "name": "Minecraft Skin Editor",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and WebGL",
+            "isAccessibleForFree": true,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "url": "https://cubeinsquare.com/skin-editor.html",
+            "description": "Draw Minecraft skins in the browser with a classic 64x64 atlas, paint directly on the player model, import PNG skins, and export the finished file.",
+            "inLanguage": "en",
+            "featureList": [
+                "3D player preview",
+                "Painting directly on the model",
+                "Classic 64x64 atlas editing",
+                "PNG import and export"
+            ]
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/skin-editor.html#webpage",
+            "url": "https://cubeinsquare.com/skin-editor.html",
+            "name": "Minecraft Skin Editor with 3D Player Preview | Cube in a Square",
+            "description": "Draw Minecraft skins in the browser with a classic 64x64 atlas, paint directly on the player model, import PNG skins, and export the finished file.",
+            "isPartOf": {
+                "@id": "https://cubeinsquare.com/#website"
+            },
+            "about": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "inLanguage": "en",
+            "mainEntity": {
+                "@id": "https://cubeinsquare.com/skin-editor.html#application"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/skin-editor.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Tools",
+                    "item": "https://cubeinsquare.com/tools.html"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Minecraft Skin Editor",
+                    "item": "https://cubeinsquare.com/skin-editor.html"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="index.html" aria-label="Home" title="Home"><img src="assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="wiki.html">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="wiki.html#general-wiki">General articles</a>
+                        <div class="mega-sublist">
+                            <a href="wiki-custom-model-data.html">CustomModelData</a>
+                            <a href="wiki.html#resource-pack-paths">Resource pack structure</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="wiki.html#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
+                        <div class="mega-sublist">
+                            <a href="wiki-resource-pack-generator.html">How to use the generator</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="wiki.html#other-tools-wiki">Other tools</a>
+                        <div class="mega-sublist">
+                            <a href="tools.html">Tools catalog</a>
+                            <a href="wiki-skin-editor.html">Skin editor</a>
+                            <a href="wiki-custom-potions.html">Custom potions</a>
+                            <a href="wiki-custom-villager-trades.html">Villager trades</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="wiki-custom-model-data.html"><strong>CustomModelData</strong><span>How one item becomes many models without mods.</span></a>
+                    <a class="mega-card" href="wiki-resource-pack-generator.html"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
+                    <a class="mega-card" href="wiki-skin-editor.html"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="tools.html">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="resource-pack-generator.html">Minecraft Resource Pack Generator</a>
+                    <a href="skin-editor.html">Minecraft Skin Editor</a>
+                    <a href="custom-villager-trades.html">Custom villager trades</a>
+                    <a href="custom-potions.html">Custom potions</a>
+                    <a href="tool-coming-soon.html">Upcoming tools</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="skin-editor.html"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a>
+                    <a class="mega-card" href="resource-pack-generator.html"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
+                    <a class="mega-card" href="custom-potions.html"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="about.html">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="about.html">Cube in a Square</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="wiki.html" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="skin-editor.html">RU</a><a class="is-active" href="#">EN</a><a href="skin-editor.html">FR</a><a href="skin-editor.html">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-skin-editor>
+    <section class="page-hero">
+        <h1>Minecraft Skin Editor</h1>
+        <p class="page-lead">Classic skin painting in the browser: load a PNG, edit the 64x64 atlas, or paint directly on the 3D player model and watch the texture update in real time.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="wiki-skin-editor.html">Read guide</a>
+            <a class="resource-link resource-link-secondary" href="tools.html">Back to tools</a>
+        </div>
+    </section>
+
+    <section class="page-section skin-layout">
+        <aside class="skin-sidebar">
+            <section class="tool-panel">
+                <h2>Painting tools</h2>
+                <div class="skin-toolbar-grid">
+                    <div class="skin-tool-grid">
+                        <button class="resource-link skin-tool-button is-active" type="button" data-skin-tool="brush">Brush</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="eraser">Eraser</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="picker">Picker</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit">Orbit</button>
+                    </div>
+
+                    <div class="tool-field">
+                        <label for="skinColor">Color</label>
+                        <div class="skin-color-row">
+                            <input id="skinColor" type="color" value="#60a5fa">
+                            <div class="tool-field">
+                                <label for="skinAlpha">Opacity</label>
+                                <input id="skinAlpha" type="range" min="0" max="100" value="100">
+                                <span class="row-toolbar-label" id="skinAlphaValue">100%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skin-compact-grid">
+                        <div class="tool-field">
+                            <label for="skinBrushSize">Brush size</label>
+                            <select id="skinBrushSize">
+                                <option value="1">1 px</option>
+                                <option value="2">2 px</option>
+                                <option value="3">3 px</option>
+                                <option value="4">4 px</option>
+                                <option value="6">6 px</option>
+                                <option value="8">8 px</option>
+                            </select>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinZoom">Atlas zoom</label>
+                            <select id="skinZoom">
+                                <option value="4">4x</option>
+                                <option value="6">6x</option>
+                                <option value="8" selected>8x</option>
+                                <option value="10">10x</option>
+                                <option value="12">12x</option>
+                                <option value="16">16x</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tool-check-grid">
+                        <label class="tool-check">
+                            <input id="skinShowOverlay" type="checkbox" checked>
+                            <span>Show hat / jacket / sleeves / pants layer</span>
+                        </label>
+                    </div>
+                </div>
+                <p class="skin-editor-note">Brush, eraser, and picker work both on the 2D atlas and directly on the model. Switch to <strong>Orbit</strong> when you only want to rotate the player.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Files</h2>
+                <input class="skin-hidden-input" id="skinFileInput" type="file" accept=".png,image/png">
+                <div class="skin-tool-grid">
+                    <button class="resource-link skin-tool-button" id="skinUploadButton" type="button">Import PNG</button>
+                    <button class="resource-link skin-tool-button" id="skinDownloadButton" type="button">Export PNG</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinResetButton" type="button">Starter skin</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinClearButton" type="button">Clear</button>
+                </div>
+                <p class="skin-file-note">The editor accepts classic <code>64x64</code> skins and legacy <code>64x32</code> skins. Legacy files are expanded into the modern layout automatically.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Quick status</h2>
+                <div class="skin-stats">
+                    <span class="skin-stat-pill">Atlas: <strong id="skinDimensions">64 x 64</strong></span>
+                    <span class="skin-stat-pill">Tool: <strong id="skinMode">brush</strong></span>
+                    <span class="skin-stat-pill">Brush: <strong id="skinBrush">1px</strong></span>
+                </div>
+            </section>
+        </aside>
+
+        <div class="skin-workspace">
+            <section class="tool-panel skin-preview-card">
+                <h2>3D player preview</h2>
+                <div class="skin-preview-stage" id="skinPreview"></div>
+                <p class="skin-preview-note">Paint right on the model when you want to check sleeves, the top of the head, boots, or the outer layer without guessing the atlas coordinates.</p>
+            </section>
+
+            <section class="tool-panel skin-canvas-card">
+                <h2>Classic 64x64 atlas</h2>
+                <div class="skin-atlas-wrap">
+                    <canvas id="skinEditorCanvas" width="512" height="512"></canvas>
+                </div>
+                <p class="skin-editor-note">The atlas always stays in the vanilla Minecraft skin layout, so the exported PNG is ready for launcher use or any skin workflow that expects the standard template.</p>
+            </section>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Fast workflow</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Import or start fresh</h3>
+                <p>Load an existing skin PNG or begin from the built-in starter skin to block out colors quickly.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Paint atlas or model</h3>
+                <p>Use the atlas for precise pixel work and the model for sleeves, boots, hats, and any face you want to see in place.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Export the PNG</h3>
+                <p>Download a standard Minecraft skin file and drop it into your launcher, website profile, or next skin iteration.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Privacy Policy</a></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/tracking-config.js"></script>
+<script src="assets/tracking.js"></script>
+<script src="assets/skin-editor.js"></script>
+</body>
+</html>

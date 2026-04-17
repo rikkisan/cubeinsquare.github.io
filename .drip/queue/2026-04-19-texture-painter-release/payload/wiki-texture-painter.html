@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Texture Size Guide and Texture Painter Workflow | Cube in a Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn when to use 16x16, 32x32, 64x64, and 128x128 Minecraft textures, and how to move exported PNGs into the resource-pack generator.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in a Square">
+    <meta name="application-name" content="Cube in a Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-texture-painter.html">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-texture-painter.html">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-texture-painter.html">
+    <meta property="og:site_name" content="Cube in a Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft Texture Size Guide and Texture Painter Workflow | Cube in a Square">
+    <meta property="og:description" content="A practical guide to Minecraft texture sizes and a clean workflow from browser painting to a resource pack.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-texture-painter.html">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Texture Size Guide and Texture Painter Workflow | Cube in a Square">
+    <meta name="twitter:description" content="When to use 16x16, 32x32, 64x64, and 128x128 textures and how to turn the finished PNG into a pack.">
+    <link rel="icon" href="server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="index.html" aria-label="Home" title="Home"><img src="assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="wiki.html">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#general-wiki">General articles</a><div class="mega-sublist"><a href="wiki-custom-model-data.html">CustomModelData</a><a href="wiki.html#resource-pack-paths">Resource pack structure</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="wiki-resource-pack-generator.html">How to use the generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="wiki.html#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="tools.html">Tools catalog</a><a href="wiki-skin-editor.html">Skin editor</a><a href="wiki-texture-painter.html">Texture painter</a><a href="wiki-custom-potions.html">Custom potions</a><a href="wiki-custom-villager-trades.html">Villager trades</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="wiki-texture-painter.html"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="wiki-resource-pack-generator.html"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="wiki-skin-editor.html"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="tools.html">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="resource-pack-generator.html">Minecraft Resource Pack Generator</a><a href="skin-editor.html">Minecraft Skin Editor</a><a href="texture-painter.html">Texture painter</a><a href="custom-villager-trades.html">Custom villager trades</a><a href="custom-potions.html">Custom potions</a><a href="tool-coming-soon.html">Upcoming tools</a></div>
+                <div class="mega-feature"><a class="mega-card" href="texture-painter.html"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a><a class="mega-card" href="skin-editor.html"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a><a class="mega-card" href="resource-pack-generator.html"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="about.html">Project</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="about.html">Cube in a Square</a><a href="privacy-policy.html">Privacy Policy</a></div></div>
+        <form class="steam-search" action="wiki.html" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="wiki-texture-painter.html">RU</a><a class="is-active" href="#">EN</a><a href="wiki-texture-painter.html">FR</a><a href="wiki-texture-painter.html">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="wiki.html">← All articles</a>
+    <section class="page-hero">
+        <h1>Minecraft Texture Size Guide</h1>
+        <p class="page-lead">Resolution changes more than sharpness. It changes workload, style consistency, and how easy it is to keep an entire pack readable in motion.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="texture-painter.html">Open texture painter</a>
+            <a class="resource-link resource-link-secondary" href="resource-pack-generator.html">Turn PNGs into a pack</a>
+        </div>
+    </section>
+
+    <article>
+        <h2>Start with the question, not the number</h2>
+        <p>The right texture size depends on what you want the pack to feel like. Bigger is not automatically better. If the whole project is meant to stay close to vanilla Minecraft, very large textures can make one block look beautiful on its own while making the pack feel inconsistent in motion.</p>
+
+        <h2>16x16</h2>
+        <p>This is the vanilla baseline. It is fast to paint, easy to read from a distance, and ideal for packs that want clean silhouettes and minimal noise.</p>
+
+        <h2>32x32</h2>
+        <p>This is the sweet spot for many custom packs. You get room for cleaner shading and small details without turning each texture into a large art project.</p>
+
+        <h2>64x64</h2>
+        <p>Use this when the pack has a strong art direction and the extra detail actually matters. It works well for hero items, custom icons, and stylized block families, but it takes more time to keep every face consistent.</p>
+
+        <h2>128x128 and higher</h2>
+        <p>High-resolution textures need a clear reason. They can look beautiful for showcase builds, but they also raise the workload and make style drift much easier. If only one or two textures are huge while the rest of the pack stays simple, the result often feels disconnected.</p>
+
+        <h2>Items and blocks</h2>
+        <p>Items and blocks are still just PNGs, but they are read differently by the player. Item icons need immediate readability in an inventory slot. Block textures repeat across surfaces, so tiling, contrast, and edge behavior matter much more.</p>
+
+        <h2>Recommended workflow</h2>
+        <ol>
+            <li>Choose the canvas size first.</li>
+            <li>Paint the texture as a single PNG in the browser.</li>
+            <li>Export it when the edges and contrast feel right at real scale.</li>
+            <li>Open the <a href="resource-pack-generator.html">resource-pack generator</a> and place that PNG into the correct item or block slot.</li>
+            <li>Download the ZIP and test the texture in game before painting the whole set.</li>
+        </ol>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in a Square</span><a href="privacy-policy.html">Privacy Policy</a></footer>
+<script src="assets/site.js"></script>
+<script src="assets/tracking-config.js"></script>
+<script src="assets/tracking.js"></script>
+</body>
+</html>
