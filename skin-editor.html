@@ -235,6 +235,13 @@
 
                     <div class="skin-compact-grid">
                         <div class="tool-field">
+                            <label>Paint layer</label>
+                            <div class="skin-tool-grid">
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">Base</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Outer</button>
+                            </div>
+                        </div>
+                        <div class="tool-field">
                             <label>Arm model</label>
                             <div class="skin-tool-grid">
                                 <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">Wide</button>
@@ -272,7 +279,7 @@
                         </label>
                     </div>
                 </div>
-                <p class="skin-editor-note">The main painting surface is the 3D player model. Use the atlas when you want fine pixel cleanup, fast imports, or a direct look at the vanilla 64x64 layout.</p>
+                <p class="skin-editor-note">The main painting surface is the 3D player model. Pick <strong>Base</strong> when you want the lower skin layer and <strong>Outer</strong> when you want hats, jackets, sleeves, and pants.</p>
             </section>
 
             <section class="tool-panel">
@@ -292,6 +299,7 @@
                 <div class="skin-stats">
                     <span class="skin-stat-pill">Atlas: <strong id="skinDimensions">64 x 64</strong></span>
                     <span class="skin-stat-pill">Model: <strong id="skinModelValue">wide</strong></span>
+                    <span class="skin-stat-pill">Layer: <strong id="skinLayerValue">base</strong></span>
                     <span class="skin-stat-pill">Tool: <strong id="skinMode">brush</strong></span>
                     <span class="skin-stat-pill">Brush: <strong id="skinBrush">1px</strong></span>
                 </div>

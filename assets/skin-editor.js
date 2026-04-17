@@ -5,6 +5,7 @@
 
     const state = {
         tool: 'brush',
+        paintLayer: 'base',
         modelType: 'wide',
         brushSize: 1,
         zoom: DEFAULT_ZOOM,
@@ -248,9 +249,21 @@
         elements.dimensions.textContent = `${SKIN_SIZE} x ${SKIN_SIZE}`;
         elements.mode.textContent = state.tool;
         elements.brush.textContent = `${state.brushSize}px`;
+        if (elements.layerValue) {
+            elements.layerValue.textContent = state.paintLayer === 'overlay' ? 'outer' : 'base';
+        }
         if (elements.modelValue) {
             elements.modelValue.textContent = state.modelType === 'slim' ? 'slim' : 'wide';
         }
+    }
+
+    function updateLayerButtons() {
+        document.querySelectorAll('[data-skin-layer]').forEach((button) => {
+            const isActive = button.dataset.skinLayer === state.paintLayer;
+            button.classList.toggle('is-active', isActive);
+            button.classList.toggle('resource-link-secondary', !isActive);
+        });
+        updateStats();
     }
 
     function updateModelButtons() {
@@ -589,12 +602,9 @@
         previewPointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
         previewRaycaster.setFromCamera(previewPointer, skinViewer.camera);
 
-        const visibleHits = previewVisibleMeshes.length ? previewRaycaster.intersectObjects(previewVisibleMeshes, true) : [];
-        if (visibleHits.length && visibleHits[0].uv) {
-            return visibleHits[0];
-        }
-
-        return previewHelperMeshes.length ? previewRaycaster.intersectObjects(previewHelperMeshes, false)[0] || null : null;
+        const targetLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
+        const targetMeshes = previewHelperMeshes.filter((mesh) => mesh.userData.layerName === targetLayer);
+        return targetMeshes.length ? previewRaycaster.intersectObjects(targetMeshes, false)[0] || null : null;
     }
 
     function intersectionToPixel(intersection) {
@@ -806,9 +816,17 @@
         }
     }
 
+    function setPaintLayer(layerName) {
+        state.paintLayer = layerName === 'overlay' ? 'overlay' : 'base';
+        updateLayerButtons();
+    }
+
     function bindControls() {
         document.querySelectorAll('[data-skin-tool]').forEach((button) => {
             button.addEventListener('click', () => setActiveTool(button.dataset.skinTool));
+        });
+        document.querySelectorAll('[data-skin-layer]').forEach((button) => {
+            button.addEventListener('click', () => setPaintLayer(button.dataset.skinLayer));
         });
         document.querySelectorAll('[data-skin-model]').forEach((button) => {
             button.addEventListener('click', () => setModelType(button.dataset.skinModel));
@@ -858,6 +876,7 @@
         elements.clear = document.getElementById('skinClearButton');
         elements.fileInput = document.getElementById('skinFileInput');
         elements.dimensions = document.getElementById('skinDimensions');
+        elements.layerValue = document.getElementById('skinLayerValue');
         elements.mode = document.getElementById('skinMode');
         elements.brush = document.getElementById('skinBrush');
         elements.modelValue = document.getElementById('skinModelValue');
@@ -887,6 +906,7 @@
         resetStarterSkin();
         renderAtlas();
         updateStats();
+        updateLayerButtons();
         updateModelButtons();
         setActiveTool('brush');
     }
