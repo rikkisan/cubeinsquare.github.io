@@ -1,3 +1,0 @@
-Publish the browser texture painter together with a wiki article about Minecraft texture sizes.
-
-Add the new tool, expose it from the tools and wiki hubs, and link the workflow back into the resource-pack generator so finished PNGs can become a pack.
