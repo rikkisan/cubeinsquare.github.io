@@ -970,7 +970,7 @@
         image.onerror = () => {
             paintFallbackSteveSkin();
         };
-        image.src = 'assets/skin-editor-starter.png?v=20260417';
+        image.src = '/assets/skin-editor-starter.png?v=20260422';
     }
 
     function importSkinFromImage(image) {
