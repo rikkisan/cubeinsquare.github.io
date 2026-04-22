@@ -211,6 +211,60 @@
         };
         UI_TEXT.faceLabels = { main: 'Basis', top: 'Oben', bottom: 'Unten', front: 'Vorne', back: 'Hinten', left: 'Links', right: 'Rechts', side: 'Seite' };
     }
+
+    Object.assign(UI_TEXT, {
+        packDescriptionLabel: 'Pack description',
+        packDescriptionPlaceholder: 'Optional description for pack.mcmeta',
+        slicerAssignFragment: 'Assign fragment:',
+        clearAllSlices: '💥 Clear all',
+        leftRightPair: 'Left + right',
+        frontBackPair: 'Front + back'
+    });
+    Object.assign(UI_TEXT.faceLabels, {
+        left_right: 'Left + right',
+        front_back: 'Front + back'
+    });
+
+    if (pageLang === 'ru') {
+        Object.assign(UI_TEXT, {
+            packDescriptionLabel: 'Описание ресурс-пака',
+            packDescriptionPlaceholder: 'Необязательное описание для pack.mcmeta',
+            slicerAssignFragment: 'Назначить фрагмент:',
+            clearAllSlices: '💥 Очистить всё',
+            leftRightPair: 'Лево + право',
+            frontBackPair: 'Перед + зад'
+        });
+        Object.assign(UI_TEXT.faceLabels, {
+            left_right: 'Лево + право',
+            front_back: 'Перед + зад'
+        });
+    } else if (pageLang === 'fr') {
+        Object.assign(UI_TEXT, {
+            packDescriptionLabel: 'Description du pack',
+            packDescriptionPlaceholder: 'Description facultative pour pack.mcmeta',
+            slicerAssignFragment: 'Assigner le fragment :',
+            clearAllSlices: '💥 Tout effacer',
+            leftRightPair: 'Gauche + droite',
+            frontBackPair: 'Avant + arrière'
+        });
+        Object.assign(UI_TEXT.faceLabels, {
+            left_right: 'Gauche + droite',
+            front_back: 'Avant + arrière'
+        });
+    } else if (pageLang === 'de') {
+        Object.assign(UI_TEXT, {
+            packDescriptionLabel: 'Pack-Beschreibung',
+            packDescriptionPlaceholder: 'Optionale Beschreibung für pack.mcmeta',
+            slicerAssignFragment: 'Ausschnitt zuweisen:',
+            clearAllSlices: '💥 Alles löschen',
+            leftRightPair: 'Links + rechts',
+            frontBackPair: 'Vorne + hinten'
+        });
+        Object.assign(UI_TEXT.faceLabels, {
+            left_right: 'Links + rechts',
+            front_back: 'Vorne + hinten'
+        });
+    }
     
     // Переключение вкладок
     function openTab(tabId, btn) {
@@ -475,12 +529,38 @@
             ['main', 'top', 'bottom', 'front', 'back', 'left', 'right', 'side'].forEach(side => {
                 delete filesData[`${id}_${side}`];
             });
+            delete slicerSessions[id];
         }
     }
 
+    function ensurePackDescriptionField() {
+        const packNameInput = document.getElementById('packNameInput');
+        if (!packNameInput || document.getElementById('packDescriptionInput')) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.style.marginBottom = '25px';
+        wrapper.style.textAlign = 'center';
+        wrapper.style.width = '100%';
+        wrapper.innerHTML = `
+            <label for="packDescriptionInput" style="display:block; margin-bottom:8px; color:var(--text-dim); font-size:0.95rem;">
+                ${UI_TEXT.packDescriptionLabel}
+            </label>
+            <textarea
+                id="packDescriptionInput"
+                class="dynamic-input"
+                style="width: 80%; max-width: 520px; min-height: 90px; text-align: left; font-size: 1rem; padding: 15px; resize: vertical;"
+                placeholder="${UI_TEXT.packDescriptionPlaceholder}"
+            ></textarea>
+        `;
+
+        packNameInput.parentElement.insertAdjacentElement('afterend', wrapper);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-        // Изначально ничего не добавляем, чтобы подставлялось то, что выбрал пользователь
         addDynamicRow('armor');
+        ensurePackDescriptionField();
+        ensureSlicerUiEnhancements();
+        bindSlicerStateControls();
     });
 
     document.getElementById('generateBtn').addEventListener('click', () => {
@@ -488,6 +568,10 @@
         
         let packName = document.getElementById('packNameInput').value.trim();
         if (!packName) packName = UI_TEXT.packDefault;
+        const packDescriptionInput = document.getElementById('packDescriptionInput');
+        const packDescription = packDescriptionInput
+            ? packDescriptionInput.value.trim().replace(/\r\n?/g, '\n')
+            : '';
         
         let safeFileName = packName.replace(/[^a-z0-9а-яё_-]/gi, '_');
 
@@ -495,7 +579,7 @@
         zip.file("pack.mcmeta", JSON.stringify({
             pack: { 
                 pack_format: 15, 
-                description: `§b${packName}\n§7${UI_TEXT.createdWith}` 
+                description: `§b${packName}\n§7${packDescription || UI_TEXT.createdWith}` 
             }
         }, null, 2));
 
@@ -913,6 +997,20 @@
         });
 
     // --- Логика Слайсера ---
+    const SLICER_SELECTION_TARGETS = {
+        main: ['main'],
+        top: ['top'],
+        bottom: ['bottom'],
+        front: ['front'],
+        back: ['back'],
+        left: ['left'],
+        right: ['right'],
+        side: ['side'],
+        left_right: ['left', 'right'],
+        front_back: ['front', 'back']
+    };
+    const slicerSessions = {};
+
     let slicerContext = {
         blockId: null, // Напр. dyn_blocks_1
         img: null,
@@ -923,48 +1021,202 @@
         dragOffsetY: 0
     };
 
-    function openSlicer(blockId) {
-        slicerContext = { blockId: blockId, img: null, selections: {}, isDragging: false, dragTarget: null, dragOffsetX: 0, dragOffsetY: 0 };
-        document.getElementById('slicerModal').style.display = 'flex';
-        document.getElementById('slicerContainer').style.display = 'none';
-        document.getElementById('slicerControls').style.display = 'none';
-        document.getElementById('slicerInput').value = '';
-        
-        // Сброс активных кнопок
-        document.querySelectorAll('#slicerControls .slicer-btn').forEach(b => {
-             b.style.boxShadow = 'none';
-             b.style.background = 'rgba(255, 255, 255, 0.1)';
+    function cloneSlicerSelections(selections) {
+        return Object.fromEntries(
+            Object.entries(selections || {}).map(([face, coords]) => [
+                face,
+                { x: coords.x, y: coords.y }
+            ])
+        );
+    }
+
+    function getSlicerSession(blockId) {
+        if (!blockId) return null;
+        if (!slicerSessions[blockId]) {
+            slicerSessions[blockId] = {
+                atlasDataUrl: '',
+                fileName: '',
+                gridSize: 16,
+                zoom: 4,
+                snap: true,
+                selections: {}
+            };
+        }
+        return slicerSessions[blockId];
+    }
+
+    function setSlicerButtonVisual(btn, isActive) {
+        if (!btn) return;
+        btn.style.boxShadow = isActive ? 'inset 0 0 10px rgba(0,0,0,0.5)' : 'none';
+        btn.style.background = isActive ? 'var(--accent)' : 'rgba(255, 255, 255, 0.1)';
+    }
+
+    function refreshSlicerButtons() {
+        document.querySelectorAll('#slicerControls .slicer-btn[data-face]').forEach(btn => {
+            setSlicerButtonVisual(btn, Boolean(slicerContext.selections[btn.dataset.face]));
         });
     }
 
+    function syncSlicerControlsFromSession(session) {
+        if (!session) return;
+        const gridInput = document.getElementById('slicerGridSize');
+        const zoomInput = document.getElementById('slicerZoom');
+        const snapInput = document.getElementById('slicerSnap');
+
+        if (gridInput) gridInput.value = session.gridSize || 16;
+        if (zoomInput) zoomInput.value = session.zoom || 4;
+        if (snapInput) snapInput.checked = session.snap !== false;
+    }
+
+    function saveSlicerSession() {
+        if (!slicerContext.blockId) return;
+        const session = getSlicerSession(slicerContext.blockId);
+        if (!session) return;
+
+        const gridInput = document.getElementById('slicerGridSize');
+        const zoomInput = document.getElementById('slicerZoom');
+        const snapInput = document.getElementById('slicerSnap');
+        const fileInput = document.getElementById('slicerInput');
+
+        session.selections = cloneSlicerSelections(slicerContext.selections);
+        session.gridSize = parseInt(gridInput?.value, 10) || 16;
+        session.zoom = parseInt(zoomInput?.value, 10) || 4;
+        session.snap = Boolean(snapInput?.checked);
+        session.fileName = fileInput?.dataset.fileName || session.fileName || '';
+
+        if (slicerContext.img?.src) {
+            session.atlasDataUrl = slicerContext.img.src;
+        }
+    }
+
+    function ensureSlicerUiEnhancements() {
+        const controls = document.getElementById('slicerControls');
+        if (!controls) return;
+
+        const label = controls.querySelector('div');
+        if (label) label.textContent = UI_TEXT.slicerAssignFragment;
+
+        const existingLabels = {
+            main: UI_TEXT.base,
+            top: UI_TEXT.top,
+            bottom: UI_TEXT.bottom,
+            front: UI_TEXT.front,
+            back: UI_TEXT.back,
+            left: UI_TEXT.leftSide,
+            right: UI_TEXT.rightSide,
+            side: UI_TEXT.allSides
+        };
+
+        Object.entries(existingLabels).forEach(([face, text]) => {
+            const btn = controls.querySelector(`.slicer-btn.${face}`);
+            if (!btn) return;
+            btn.dataset.face = face;
+            btn.textContent = text;
+        });
+
+        const clearBtn = controls.querySelector('button[onclick*="clearSlicerSelections"]');
+        if (clearBtn) {
+            clearBtn.textContent = UI_TEXT.clearAllSlices;
+        }
+
+        [
+            { key: 'left_right', className: 'left-right', label: UI_TEXT.leftRightPair },
+            { key: 'front_back', className: 'front-back', label: UI_TEXT.frontBackPair }
+        ].forEach((spec) => {
+            if (controls.querySelector(`.slicer-btn.${spec.className}`)) return;
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = `slicer-btn ${spec.className}`;
+            btn.dataset.face = spec.key;
+            btn.textContent = spec.label;
+            btn.addEventListener('click', () => assignFace(spec.key));
+            if (clearBtn) {
+                controls.insertBefore(btn, clearBtn);
+            } else {
+                controls.appendChild(btn);
+            }
+        });
+    }
+
+    function bindSlicerStateControls() {
+        [
+            { id: 'slicerGridSize', events: ['change', 'input'] },
+            { id: 'slicerZoom', events: ['change', 'input'] },
+            { id: 'slicerSnap', events: ['change'] }
+        ].forEach(({ id, events }) => {
+            const el = document.getElementById(id);
+            if (!el || el.dataset.slicerBound === 'true') return;
+            const handler = () => {
+                redrawCanvas();
+                saveSlicerSession();
+            };
+            events.forEach(evt => el.addEventListener(evt, handler));
+            el.dataset.slicerBound = 'true';
+        });
+    }
+
+    function setSlicerAtlas(source, options = {}) {
+        const { selections = {}, skipAlert = false } = options;
+        const img = new Image();
+        img.onload = () => {
+            if (!skipAlert && (img.width % 16 !== 0 || img.height % 16 !== 0)) {
+                alert(UI_TEXT.invalidResolution(img.width, img.height));
+            }
+
+            slicerContext.img = img;
+            slicerContext.selections = cloneSlicerSelections(selections);
+
+            document.getElementById('slicerContainer').style.display = 'inline-block';
+            document.getElementById('slicerControls').style.display = 'flex';
+
+            refreshSlicerButtons();
+            redrawCanvas();
+            saveSlicerSession();
+        };
+        img.src = source;
+    }
+
+    function openSlicer(blockId) {
+        slicerContext = { blockId: blockId, img: null, selections: {}, isDragging: false, dragTarget: null, dragOffsetX: 0, dragOffsetY: 0 };
+        const session = getSlicerSession(blockId);
+        ensureSlicerUiEnhancements();
+        document.getElementById('slicerModal').style.display = 'flex';
+        document.getElementById('slicerContainer').style.display = session?.atlasDataUrl ? 'inline-block' : 'none';
+        document.getElementById('slicerControls').style.display = session?.atlasDataUrl ? 'flex' : 'none';
+        document.getElementById('slicerInput').value = '';
+        document.getElementById('slicerInput').dataset.fileName = session?.fileName || '';
+        syncSlicerControlsFromSession(session);
+        slicerContext.selections = cloneSlicerSelections(session?.selections || {});
+        refreshSlicerButtons();
+
+        if (session?.atlasDataUrl) {
+            setSlicerAtlas(session.atlasDataUrl, {
+                selections: session.selections,
+                skipAlert: true
+            });
+        }
+    }
+
     function closeSlicer() {
+        saveSlicerSession();
         document.getElementById('slicerModal').style.display = 'none';
     }
 
     function loadAtlas(input) {
         if (!input.files || !input.files[0]) return;
+        const file = input.files[0];
         const reader = new FileReader();
         reader.onload = (e) => {
-            const img = new Image();
-            img.onload = () => {
-                if (img.width % 16 !== 0 || img.height % 16 !== 0) {
-                    alert(UI_TEXT.invalidResolution(img.width, img.height));
-                }
-                slicerContext.img = img;
-                slicerContext.selections = {};
-                
-                document.querySelectorAll('#slicerControls .slicer-btn').forEach(b => {
-                     b.style.boxShadow = 'none';
-                     b.style.background = 'rgba(255, 255, 255, 0.1)';
-                });
-
-                document.getElementById('slicerContainer').style.display = 'inline-block';
-                document.getElementById('slicerControls').style.display = 'flex';
-                redrawCanvas();
-            };
-            img.src = e.target.result;
+            const session = getSlicerSession(slicerContext.blockId);
+            input.dataset.fileName = file.name;
+            if (session) {
+                session.fileName = file.name;
+                session.atlasDataUrl = e.target.result;
+                session.selections = {};
+            }
+            setSlicerAtlas(e.target.result, { selections: {} });
         };
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(file);
     }
 
     function redrawCanvas() {
@@ -1014,16 +1266,18 @@
 
         // Рисуем назначения (Top, Bottom, etc)
         const faceColors = {
-            main: 'rgba(168, 85, 247, 0.7)',
-            top: 'rgba(239, 68, 68, 0.7)',
-            bottom: 'rgba(59, 130, 246, 0.7)',
-            front: 'rgba(16, 185, 129, 0.7)',
-            back: 'rgba(99, 102, 241, 0.7)',
-            left: 'rgba(236, 72, 153, 0.7)',
-            right: 'rgba(20, 184, 166, 0.7)',
-            side: 'rgba(245, 158, 11, 0.7)'
-        };
-        const faceLabels = UI_TEXT.faceLabels;
+              main: 'rgba(168, 85, 247, 0.7)',
+              top: 'rgba(239, 68, 68, 0.7)',
+              bottom: 'rgba(59, 130, 246, 0.7)',
+              front: 'rgba(16, 185, 129, 0.7)',
+              back: 'rgba(99, 102, 241, 0.7)',
+              left: 'rgba(236, 72, 153, 0.7)',
+              right: 'rgba(20, 184, 166, 0.7)',
+              side: 'rgba(245, 158, 11, 0.7)',
+              left_right: 'rgba(249, 115, 22, 0.7)',
+              front_back: 'rgba(14, 165, 233, 0.7)'
+          };
+          const faceLabels = UI_TEXT.faceLabels;
 
         for (const [face, coords] of Object.entries(slicerContext.selections)) {
             ctx.fillStyle = faceColors[face] || 'rgba(0,0,0,0.5)';
@@ -1119,6 +1373,7 @@
 
                     slicerContext.selections[slicerContext.dragTarget].x = newX;
                     slicerContext.selections[slicerContext.dragTarget].y = newY;
+                    saveSlicerSession();
                     redrawCanvas();
                 }
             });
@@ -1127,6 +1382,7 @@
                 if(slicerContext.isDragging) {
                     slicerContext.isDragging = false;
                     slicerContext.dragTarget = null;
+                    saveSlicerSession();
                     redrawCanvas();
                 }
             };
@@ -1146,11 +1402,8 @@
                         pos.y >= coords.y && pos.y <= coords.y + gridSize) {
                         
                         delete slicerContext.selections[face];
-                        const btn = document.querySelector(`.slicer-btn.${face}`);
-                        if (btn) {
-                            btn.style.boxShadow = 'none';
-                            btn.style.background = 'rgba(255, 255, 255, 0.1)';
-                        }
+                        refreshSlicerButtons();
+                        saveSlicerSession();
                         redrawCanvas();
                         break;
                     }
@@ -1162,33 +1415,22 @@
     function assignFace(side) {
         if (!slicerContext.img) return;
         
-        const btn = document.querySelector(`.slicer-btn.${side}`);
-        
         if (slicerContext.selections[side]) {
             // Если уже есть - выключаем (удаляем кубик)
             delete slicerContext.selections[side];
-            if (btn) {
-                btn.style.boxShadow = 'none';
-                btn.style.background = 'rgba(255, 255, 255, 0.1)';
-            }
         } else {
             // Включаем - добавляем кубик в угол или центр
             slicerContext.selections[side] = { x: 0, y: 0 };
-            if (btn) {
-                btn.style.boxShadow = 'inset 0 0 10px rgba(0,0,0,0.5)';
-                btn.style.background = 'var(--accent)';
-            }
         }
+        refreshSlicerButtons();
+        saveSlicerSession();
         redrawCanvas();
     }
 
     function clearSlicerSelections() {
         slicerContext.selections = {};
-        document.querySelectorAll('#slicerControls .slicer-btn').forEach(btn => {
-            if (!btn.hasAttribute('onclick') || btn.getAttribute('onclick').includes('clearSlicer')) return;
-            btn.style.boxShadow = 'none';
-            btn.style.background = 'rgba(255, 255, 255, 0.1)';
-        });
+        refreshSlicerButtons();
+        saveSlicerSession();
         redrawCanvas();
     }
 
@@ -1214,34 +1456,39 @@
             );
             
             const dataUrl = tempCanvas.toDataURL('image/png');
-            const fileId = `${rowIdBase}_${side}`;
-            filesData[fileId] = dataUrl.split(',')[1];
-            
-            const preview = document.getElementById(`prev_${fileId}`);
-            const status = document.getElementById(`stat_${fileId}`);
-            if (preview) {
-                preview.src = dataUrl;
-                preview.style.display = 'block';
-            }
-            if (status) {
-                status.innerHTML = `✔<br><small style="font-size:9px;">(${UI_TEXT.sliced})</small>`;
-                status.style.color = '#34d399';
-                status.style.display = 'block';
-                status.style.lineHeight = '1.2';
-            }
-            const clearBtn = document.getElementById(`clear_${fileId}`);
-            if(clearBtn) clearBtn.style.display = 'flex';
-            
-            appliedCount++;
+            const base64 = dataUrl.split(',')[1];
+            const targetSides = SLICER_SELECTION_TARGETS[side] || [side];
+
+            targetSides.forEach((targetSide) => {
+                const fileId = `${rowIdBase}_${targetSide}`;
+                filesData[fileId] = base64;
+
+                const preview = document.getElementById(`prev_${fileId}`);
+                const status = document.getElementById(`stat_${fileId}`);
+                if (preview) {
+                    preview.src = dataUrl;
+                    preview.style.display = 'block';
+                }
+                if (status) {
+                    status.innerHTML = `✔<br><small style="font-size:9px;">(${UI_TEXT.sliced})</small>`;
+                    status.style.color = '#34d399';
+                    status.style.display = 'block';
+                    status.style.lineHeight = '1.2';
+                }
+                const clearBtn = document.getElementById(`clear_${fileId}`);
+                if(clearBtn) clearBtn.style.display = 'flex';
+
+                appliedCount++;
+            });
         }
         
-        closeSlicer();
         if(appliedCount > 0) {
             const inputName = document.getElementById(`input_${rowIdBase}`);
             const fileInput = document.getElementById('slicerInput');
-            if (inputName && !inputName.value && fileInput.files[0]) {
-                let name = fileInput.files[0].name.replace(/\.[^/.]+$/, "");
-                name = name.replace(/_(top|bottom|front|side|atlas)$/i, '');
+            const sourceFileName = fileInput.files[0]?.name || fileInput.dataset.fileName || '';
+            if (inputName && !inputName.value && sourceFileName) {
+                let name = sourceFileName.replace(/\.[^/.]+$/, "");
+                name = name.replace(/_(top|bottom|front|back|left|right|side|atlas)$/i, '');
                 inputName.value = name;
             }
             trackEvent('texture_slices_applied', {
@@ -1250,6 +1497,8 @@
                 block_name_length: inputName ? String(inputName.value || '').trim().length : 0
             });
         }
+        saveSlicerSession();
+        closeSlicer();
     }
 
     // --- 3D Preview Logic ---
