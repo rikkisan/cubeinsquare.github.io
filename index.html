@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            if (/\/index\.html$/i.test(window.location.pathname)) {
+                window.location.replace(window.location.pathname.replace(/index\.html$/i, '') + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
     <title>Minecraft Tools, Resource Pack Generator and Wiki | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
@@ -223,7 +230,6 @@
     <script src="/assets/tracking.js"></script>
 </body>
 </html>
-
 
 
 
