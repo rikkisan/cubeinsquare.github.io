@@ -1,6 +1,12 @@
 (function () {
     const DEFAULT_SIZE = 16;
     const DEFAULT_ZOOM = 18;
+    const ZOOM_BY_SIZE = {
+        16: 18,
+        32: 12,
+        64: 8,
+        128: 6
+    };
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
@@ -18,6 +24,10 @@
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
+    }
+
+    function recommendedZoomForSize(size) {
+        return ZOOM_BY_SIZE[size] || 8;
     }
 
     function getColorRgba() {
@@ -219,6 +229,8 @@
             const nextSize = clamp(Number(elements.canvasSize.value || DEFAULT_SIZE), 8, 256);
             rebuildTextureCanvas(nextSize, true);
             state.size = nextSize;
+            state.zoom = recommendedZoomForSize(nextSize);
+            elements.zoom.value = String(state.zoom);
             renderCanvas();
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_resize', { texture_size: nextSize });
@@ -313,6 +325,7 @@
         bindControls();
         bindFileControls();
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
+        elements.zoom.value = String(state.zoom);
         setTool('brush');
         renderCanvas();
     }
