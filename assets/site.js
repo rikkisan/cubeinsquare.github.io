@@ -132,23 +132,80 @@
         startAuto();
     }
 
+    function getLocaleInfo() {
+        const path = window.location.pathname.toLowerCase();
+        if (path.startsWith('/ru/')) return { lang: 'ru', prefix: '/ru' };
+        if (path.startsWith('/fr/')) return { lang: 'fr', prefix: '/fr' };
+        if (path.startsWith('/de/')) return { lang: 'de', prefix: '/de' };
+        return { lang: 'en', prefix: '' };
+    }
+
+    function withPrefix(path) {
+        const { prefix } = getLocaleInfo();
+        return prefix ? `${prefix}${path}` : path;
+    }
+
     function initGlobalToolLinks() {
+        const locale = getLocaleInfo().lang;
+        const labels = {
+            en: {
+                skinTool: 'Minecraft Skin Editor',
+                skinGuide: 'Skin editor guide',
+                skinTitle: 'Skin editor',
+                skinDesc: 'Draw on the atlas or paint directly on the 3D player model.',
+                textureTool: 'Texture painter',
+                textureGuide: 'Texture painter guide',
+                textureTitle: 'Texture painter',
+                textureDesc: 'Choose a canvas size, paint a PNG, and send it into your pack workflow.'
+            },
+            ru: {
+                skinTool: 'Редактор скинов Minecraft',
+                skinGuide: 'Гайд по редактору скинов',
+                skinTitle: 'Редактор скинов',
+                skinDesc: 'Рисуйте по атласу или прямо по 3D-модели игрока.',
+                textureTool: 'Редактор текстур',
+                textureGuide: 'Гайд по редактору текстур',
+                textureTitle: 'Редактор текстур',
+                textureDesc: 'Выберите холст, нарисуйте PNG и отправьте его в генератор ресурс-пака.'
+            },
+            fr: {
+                skinTool: 'Éditeur de skins Minecraft',
+                skinGuide: 'Guide de l’éditeur de skins',
+                skinTitle: 'Éditeur de skins',
+                skinDesc: 'Dessinez sur l’atlas ou directement sur le modèle 3D du joueur.',
+                textureTool: 'Éditeur de textures',
+                textureGuide: 'Guide de l’éditeur de textures',
+                textureTitle: 'Éditeur de textures',
+                textureDesc: 'Choisissez un canevas, peignez un PNG, puis envoyez-le dans votre workflow de pack.'
+            },
+            de: {
+                skinTool: 'Minecraft Skin-Editor',
+                skinGuide: 'Skin-Editor-Anleitung',
+                skinTitle: 'Skin-Editor',
+                skinDesc: 'Male auf dem Atlas oder direkt auf dem 3D-Spielermodell.',
+                textureTool: 'Textur-Editor',
+                textureGuide: 'Textur-Editor-Anleitung',
+                textureTitle: 'Textur-Editor',
+                textureDesc: 'Wähle eine Leinwandgröße, male ein PNG und sende es in deinen Pack-Workflow.'
+            }
+        };
+        const copy = labels[locale] || labels.en;
         const tools = [
             {
-                toolHref: '/skin-editor/',
-                guideHref: '/wiki-skin-editor/',
-                toolLabel: 'Minecraft Skin Editor',
-                guideLabel: 'Skin editor guide',
-                featureTitle: 'Skin editor',
-                featureDesc: 'Draw on the atlas or paint directly on the 3D player model.'
+                toolHref: withPrefix('/skin-editor/'),
+                guideHref: withPrefix('/wiki-skin-editor/'),
+                toolLabel: copy.skinTool,
+                guideLabel: copy.skinGuide,
+                featureTitle: copy.skinTitle,
+                featureDesc: copy.skinDesc
             },
             {
-                toolHref: '/texture-painter/',
-                guideHref: '/wiki-texture-painter/',
-                toolLabel: 'Texture painter',
-                guideLabel: 'Texture painter guide',
-                featureTitle: 'Texture painter',
-                featureDesc: 'Choose a canvas size, paint a PNG, and send it into your pack workflow.'
+                toolHref: withPrefix('/texture-painter/'),
+                guideHref: withPrefix('/wiki-texture-painter/'),
+                toolLabel: copy.textureTool,
+                guideLabel: copy.textureGuide,
+                featureTitle: copy.textureTitle,
+                featureDesc: copy.textureDesc
             }
         ];
 
@@ -196,8 +253,7 @@
             fr: 'Patreon',
             de: 'Patreon'
         };
-        const lang = (document.documentElement.lang || 'en').toLowerCase();
-        const label = labels[lang] || labels.en;
+        const label = labels[getLocaleInfo().lang] || labels.en;
 
         document.querySelectorAll('.steam-nav-menu').forEach((menu) => {
             const dropdown = menu.querySelector('.steam-nav-dropdown');
