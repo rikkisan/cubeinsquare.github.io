@@ -65,25 +65,83 @@
         elements.color.value = snapshot.hex;
         elements.alpha.value = snapshot.alpha;
         elements.alphaValue.textContent = `${snapshot.alpha}%`;
+        renderSimilarColors();
     }
 
-    function renderRecentColors() {
-        if (!elements.recentColors) return;
+    function hexToRgb(hex) {
+        const value = String(hex || '#ffffff').replace('#', '');
+        return {
+            r: parseInt(value.slice(0, 2), 16),
+            g: parseInt(value.slice(2, 4), 16),
+            b: parseInt(value.slice(4, 6), 16)
+        };
+    }
 
-        elements.recentColors.innerHTML = '';
-        state.recentColors.forEach((snapshot) => {
+    function rgbToHex(r, g, b) {
+        return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    function mixHex(hex, targetHex, amount) {
+        const from = hexToRgb(hex);
+        const to = hexToRgb(targetHex);
+        return rgbToHex(
+            from.r + (to.r - from.r) * amount,
+            from.g + (to.g - from.g) * amount,
+            from.b + (to.b - from.b) * amount
+        );
+    }
+
+    function renderColorButtons(container, snapshots) {
+        if (!container) return;
+
+        container.innerHTML = '';
+        snapshots.forEach((snapshot) => {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'texture-recent-color';
             button.style.setProperty('--swatch', snapshot.hex);
             button.title = `${snapshot.hex.toUpperCase()} | ${snapshot.alpha}%`;
-            button.setAttribute('aria-label', `Use recent color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
+            button.setAttribute('aria-label', `Use color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
             button.addEventListener('click', () => applyColorSnapshot(snapshot));
-            elements.recentColors.appendChild(button);
+            container.appendChild(button);
         });
     }
 
-    function rememberCurrentColor() {
+    function renderRecentColors() {
+        if (!elements.recentColors) return;
+        renderColorButtons(elements.recentColors, state.recentColors);
+    }
+
+    function buildSimilarColorSnapshots() {
+        const current = getCurrentColorSnapshot();
+        const variants = [
+            mixHex(current.hex, '#ffffff', 0.18),
+            mixHex(current.hex, '#ffffff', 0.35),
+            current.hex,
+            mixHex(current.hex, '#000000', 0.18),
+            mixHex(current.hex, '#000000', 0.35),
+            mixHex(current.hex, '#ffd166', 0.18),
+            mixHex(current.hex, '#60a5fa', 0.18),
+            mixHex(current.hex, '#22c55e', 0.18)
+        ];
+        const seen = new Set();
+        return variants
+            .map((hex) => ({ hex, alpha: current.alpha }))
+            .filter((snapshot) => {
+                const key = `${snapshot.hex}|${snapshot.alpha}`;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .slice(0, 10);
+    }
+
+    function renderSimilarColors() {
+        if (!elements.similarColors) return;
+        renderColorButtons(elements.similarColors, buildSimilarColorSnapshots());
+    }
+
+    function rememberPaintedColor() {
         const snapshot = getCurrentColorSnapshot();
         const key = `${snapshot.hex}|${snapshot.alpha}`;
         state.recentColors = [snapshot]
@@ -244,7 +302,7 @@
         elements.color.value = hex;
         elements.alpha.value = alpha;
         elements.alphaValue.textContent = `${alpha}%`;
-        rememberCurrentColor();
+        renderSimilarColors();
     }
 
     function drawLine(start, end) {
@@ -409,7 +467,9 @@
 
             if (state.tool !== 'picker') {
                 pushUndoSnapshot();
-                rememberCurrentColor();
+                if (state.tool === 'brush') {
+                    rememberPaintedColor();
+                }
             }
 
             state.painting = true;
@@ -521,8 +581,8 @@
         elements.alpha.addEventListener('input', () => {
             elements.alphaValue.textContent = `${elements.alpha.value}%`;
         });
-        elements.color.addEventListener('input', rememberCurrentColor);
-        elements.alpha.addEventListener('change', rememberCurrentColor);
+        elements.color.addEventListener('input', renderSimilarColors);
+        elements.alpha.addEventListener('change', renderSimilarColors);
 
         elements.canvasSize.addEventListener('change', () => {
             pushUndoSnapshot();
@@ -628,6 +688,7 @@
         elements.clearButton = document.getElementById('textureClearButton');
         elements.starterButton = document.getElementById('textureStarterButton');
         elements.recentColors = document.getElementById('textureRecentColors');
+        elements.similarColors = document.getElementById('textureSimilarColors');
         elements.undoButton = document.getElementById('textureUndoButton');
         elements.redoButton = document.getElementById('textureRedoButton');
         elements.zoomOutButton = document.getElementById('textureZoomOutButton');
@@ -649,7 +710,7 @@
         bindFileControls();
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         elements.zoom.value = String(state.zoom);
-        rememberCurrentColor();
+        renderSimilarColors();
         setTool('brush');
         renderCanvas();
         centerStageOnPixel(state.size / 2, state.size / 2);
