@@ -16,8 +16,11 @@
     width: 100%;
     min-width: 0;
     max-width: 100%;
+    min-height: 420px;
+    height: min(74vh, 920px);
     max-height: min(74vh, 920px);
     overflow: auto;
+    overflow-anchor: none;
     padding: 12px;
     border-radius: 8px;
     border: 1px solid rgba(148, 163, 184, 0.22);
@@ -183,6 +186,8 @@
     }
 
     .texture-stage {
+        min-height: 360px;
+        height: min(68vh, 760px);
         max-height: min(68vh, 760px);
     }
 }

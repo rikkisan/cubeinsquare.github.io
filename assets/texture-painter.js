@@ -595,11 +595,24 @@
             }
         });
 
-        elements.undoButton.addEventListener('click', undo);
-        elements.redoButton.addEventListener('click', redo);
-        elements.zoomOutButton.addEventListener('click', () => stepZoom(-1, getViewportCenterPixel()));
-        elements.zoomInButton.addEventListener('click', () => stepZoom(1, getViewportCenterPixel()));
-        elements.fitButton.addEventListener('click', () => {
+        elements.undoButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            undo();
+        });
+        elements.redoButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            redo();
+        });
+        elements.zoomOutButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            stepZoom(-1, getViewportCenterPixel());
+        });
+        elements.zoomInButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            stepZoom(1, getViewportCenterPixel());
+        });
+        elements.fitButton.addEventListener('click', (event) => {
+            event.preventDefault();
             setZoom(recommendedZoomForSize(state.size), { x: state.size / 2, y: state.size / 2 });
         });
     }
