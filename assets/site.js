@@ -188,8 +188,40 @@
         });
     }
 
+    function initProjectSupportLinks() {
+        const patreonUrl = 'https://www.patreon.com/c/Cubeinaquare?vanity=user';
+        const labels = {
+            en: 'Patreon',
+            ru: 'Patreon',
+            fr: 'Patreon',
+            de: 'Patreon'
+        };
+        const lang = (document.documentElement.lang || 'en').toLowerCase();
+        const label = labels[lang] || labels.en;
+
+        document.querySelectorAll('.steam-nav-menu').forEach((menu) => {
+            const dropdown = menu.querySelector('.steam-nav-dropdown');
+            const panel = menu.querySelector('.steam-dropdown-panel--small');
+            if (!dropdown || !panel) return;
+
+            const href = dropdown.getAttribute('href') || '';
+            if (!/(?:^|\/)about(?:\/|\.html)?$/i.test(href)) return;
+            if (panel.querySelector(`a[href="${patreonUrl}"]`)) return;
+
+            const link = document.createElement('a');
+            link.href = patreonUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = label;
+
+            const privacy = Array.from(panel.querySelectorAll('a')).find((item) => /privacy-policy/i.test(item.getAttribute('href') || ''));
+            panel.insertBefore(link, privacy || null);
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
+        initProjectSupportLinks();
         initCopyButtons();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });
