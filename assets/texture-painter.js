@@ -1,19 +1,24 @@
 (function () {
     const DEFAULT_SIZE = 16;
     const DEFAULT_ZOOM = 18;
+    const ZOOM_LEVELS = [6, 8, 12, 18, 24, 32];
     const ZOOM_BY_SIZE = {
         16: 18,
         32: 12,
         64: 8,
         128: 6
     };
+    const HISTORY_LIMIT = 40;
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
         tool: 'brush',
         brushSize: 1,
         painting: false,
-        lastPoint: null
+        lastPoint: null,
+        undoStack: [],
+        redoStack: [],
+        navigatorDragging: false
     };
 
     const elements = {};
@@ -21,6 +26,7 @@
     let textureCtx;
     let editorCanvas;
     let editorCtx;
+    let navigatorCtx;
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
@@ -28,6 +34,11 @@
 
     function recommendedZoomForSize(size) {
         return ZOOM_BY_SIZE[size] || 8;
+    }
+
+    function normalizeZoomLevel(value) {
+        const numeric = clamp(Number(value || DEFAULT_ZOOM), ZOOM_LEVELS[0], ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
+        return ZOOM_LEVELS.reduce((closest, candidate) => (Math.abs(candidate - numeric) < Math.abs(closest - numeric) ? candidate : closest), ZOOM_LEVELS[0]);
     }
 
     function getColorRgba() {
@@ -39,6 +50,117 @@
             b: parseInt(hex.slice(4, 6), 16),
             a: Math.round(alpha * 255)
         };
+    }
+
+    function getStagePadding() {
+        const style = window.getComputedStyle(elements.stage);
+        return {
+            left: parseFloat(style.paddingLeft || '0') || 0,
+            right: parseFloat(style.paddingRight || '0') || 0,
+            top: parseFloat(style.paddingTop || '0') || 0,
+            bottom: parseFloat(style.paddingBottom || '0') || 0
+        };
+    }
+
+    function getVisibleCanvasSize() {
+        const padding = getStagePadding();
+        return {
+            width: Math.max(0, elements.stage.clientWidth - padding.left - padding.right),
+            height: Math.max(0, elements.stage.clientHeight - padding.top - padding.bottom)
+        };
+    }
+
+    function getViewportCenterPixel() {
+        const visible = getVisibleCanvasSize();
+        const x = clamp((elements.stage.scrollLeft + visible.width / 2) / state.zoom, 0, state.size - 0.5);
+        const y = clamp((elements.stage.scrollTop + visible.height / 2) / state.zoom, 0, state.size - 0.5);
+        return { x, y };
+    }
+
+    function centerStageOnPixel(pixelX, pixelY) {
+        const visible = getVisibleCanvasSize();
+        const nextLeft = pixelX * state.zoom - visible.width / 2;
+        const nextTop = pixelY * state.zoom - visible.height / 2;
+
+        elements.stage.scrollLeft = clamp(nextLeft, 0, Math.max(0, elements.stage.scrollWidth - elements.stage.clientWidth));
+        elements.stage.scrollTop = clamp(nextTop, 0, Math.max(0, elements.stage.scrollHeight - elements.stage.clientHeight));
+        renderNavigator();
+    }
+
+    function setZoom(nextZoom, focusPoint) {
+        state.zoom = normalizeZoomLevel(nextZoom);
+        elements.zoom.value = String(state.zoom);
+        renderCanvas();
+        if (focusPoint) {
+            centerStageOnPixel(focusPoint.x, focusPoint.y);
+        } else {
+            renderNavigator();
+        }
+    }
+
+    function stepZoom(direction, focusPoint) {
+        const currentIndex = Math.max(0, ZOOM_LEVELS.indexOf(state.zoom));
+        const nextIndex = clamp(currentIndex + direction, 0, ZOOM_LEVELS.length - 1);
+        if (ZOOM_LEVELS[nextIndex] === state.zoom) return;
+        setZoom(ZOOM_LEVELS[nextIndex], focusPoint);
+    }
+
+    function createSnapshot() {
+        return {
+            size: state.size,
+            zoom: state.zoom,
+            imageData: textureCtx.getImageData(0, 0, state.size, state.size)
+        };
+    }
+
+    function updateHistoryButtons() {
+        if (elements.undoButton) {
+            elements.undoButton.disabled = state.undoStack.length === 0;
+        }
+        if (elements.redoButton) {
+            elements.redoButton.disabled = state.redoStack.length === 0;
+        }
+    }
+
+    function pushUndoSnapshot() {
+        state.undoStack.push(createSnapshot());
+        if (state.undoStack.length > HISTORY_LIMIT) {
+            state.undoStack.shift();
+        }
+        state.redoStack = [];
+        updateHistoryButtons();
+    }
+
+    function restoreSnapshot(snapshot) {
+        if (!snapshot) return;
+
+        if (snapshot.size !== state.size) {
+            rebuildTextureCanvas(snapshot.size, false);
+            state.size = snapshot.size;
+            elements.canvasSize.value = String(snapshot.size);
+        }
+
+        textureCtx.clearRect(0, 0, state.size, state.size);
+        textureCtx.putImageData(snapshot.imageData, 0, 0);
+        state.zoom = normalizeZoomLevel(snapshot.zoom);
+        elements.zoom.value = String(state.zoom);
+        renderCanvas();
+        centerStageOnPixel(state.size / 2, state.size / 2);
+        updateHistoryButtons();
+    }
+
+    function undo() {
+        if (!state.undoStack.length) return;
+        state.redoStack.push(createSnapshot());
+        const snapshot = state.undoStack.pop();
+        restoreSnapshot(snapshot);
+    }
+
+    function redo() {
+        if (!state.redoStack.length) return;
+        state.undoStack.push(createSnapshot());
+        const snapshot = state.redoStack.pop();
+        restoreSnapshot(snapshot);
     }
 
     function rebuildTextureCanvas(nextSize, preserve) {
@@ -110,6 +232,39 @@
         }
     }
 
+    function renderNavigator() {
+        if (!navigatorCtx || !elements.navigator) return;
+
+        const width = elements.navigator.width;
+        const height = elements.navigator.height;
+        navigatorCtx.clearRect(0, 0, width, height);
+
+        const tile = 12;
+        for (let y = 0; y < height; y += tile) {
+            for (let x = 0; x < width; x += tile) {
+                navigatorCtx.fillStyle = ((x / tile) + (y / tile)) % 2 === 0 ? 'rgba(15, 23, 42, 0.96)' : 'rgba(30, 41, 59, 0.94)';
+                navigatorCtx.fillRect(x, y, tile, tile);
+            }
+        }
+
+        navigatorCtx.imageSmoothingEnabled = false;
+        navigatorCtx.drawImage(textureCanvas, 0, 0, width, height);
+
+        const visible = getVisibleCanvasSize();
+        const widthRatio = visible.width / Math.max(editorCanvas.width, 1);
+        const heightRatio = visible.height / Math.max(editorCanvas.height, 1);
+        const viewportWidth = widthRatio >= 1 ? width : clamp(widthRatio * width, 12, width);
+        const viewportHeight = heightRatio >= 1 ? height : clamp(heightRatio * height, 12, height);
+        const viewportX = clamp((elements.stage.scrollLeft / Math.max(editorCanvas.width, 1)) * width, 0, Math.max(0, width - viewportWidth));
+        const viewportY = clamp((elements.stage.scrollTop / Math.max(editorCanvas.height, 1)) * height, 0, Math.max(0, height - viewportHeight));
+
+        navigatorCtx.strokeStyle = 'rgba(96, 165, 250, 0.96)';
+        navigatorCtx.lineWidth = 2;
+        navigatorCtx.strokeRect(viewportX, viewportY, viewportWidth, viewportHeight);
+        navigatorCtx.fillStyle = 'rgba(59, 130, 246, 0.16)';
+        navigatorCtx.fillRect(viewportX, viewportY, viewportWidth, viewportHeight);
+    }
+
     function renderCanvas() {
         const canvasSize = state.size * state.zoom;
         editorCanvas.width = canvasSize;
@@ -145,6 +300,8 @@
         elements.canvasSizeValue.textContent = `${state.size} x ${state.size}`;
         elements.toolValue.textContent = state.tool;
         elements.brushValue.textContent = `${state.brushSize}px`;
+        elements.stage.classList.toggle('is-zooming', state.zoom < ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
+        renderNavigator();
     }
 
     function eventToPixel(event) {
@@ -177,6 +334,11 @@
         editorCanvas.addEventListener('pointerdown', (event) => {
             const point = eventToPixel(event);
             if (!point) return;
+
+            if (state.tool !== 'picker') {
+                pushUndoSnapshot();
+            }
+
             state.painting = true;
             state.lastPoint = null;
             editorCanvas.setPointerCapture(event.pointerId);
@@ -186,6 +348,12 @@
         editorCanvas.addEventListener('pointermove', (event) => {
             if (!state.painting) return;
             paintPoint(eventToPixel(event));
+        });
+
+        editorCanvas.addEventListener('dblclick', (event) => {
+            const point = eventToPixel(event);
+            if (!point) return;
+            stepZoom(event.shiftKey ? -1 : 1, { x: point.x + 0.5, y: point.y + 0.5 });
         });
 
         const stopPaint = () => {
@@ -206,6 +374,55 @@
         renderCanvas();
     }
 
+    function bindNavigator() {
+        const updateFromNavigator = (event) => {
+            const rect = elements.navigator.getBoundingClientRect();
+            const x = clamp((event.clientX - rect.left) / rect.width, 0, 1) * state.size;
+            const y = clamp((event.clientY - rect.top) / rect.height, 0, 1) * state.size;
+            centerStageOnPixel(x, y);
+        };
+
+        elements.stage.addEventListener('scroll', renderNavigator);
+        elements.navigator.addEventListener('pointerdown', (event) => {
+            state.navigatorDragging = true;
+            elements.navigator.setPointerCapture(event.pointerId);
+            updateFromNavigator(event);
+        });
+        elements.navigator.addEventListener('pointermove', (event) => {
+            if (!state.navigatorDragging) return;
+            updateFromNavigator(event);
+        });
+        const stopDrag = () => {
+            state.navigatorDragging = false;
+        };
+        elements.navigator.addEventListener('pointerup', stopDrag);
+        elements.navigator.addEventListener('pointercancel', stopDrag);
+        elements.navigator.addEventListener('pointerleave', stopDrag);
+    }
+
+    function bindKeyboardShortcuts() {
+        document.addEventListener('keydown', (event) => {
+            if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
+            const active = document.activeElement;
+            if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT') && active !== elements.color) {
+                return;
+            }
+
+            const key = String(event.key || '').toLowerCase();
+            if (key === 'z') {
+                event.preventDefault();
+                if (event.shiftKey) {
+                    redo();
+                } else {
+                    undo();
+                }
+            } else if (key === 'y') {
+                event.preventDefault();
+                redo();
+            }
+        });
+    }
+
     function bindControls() {
         document.querySelectorAll('[data-texture-tool]').forEach((button) => {
             button.addEventListener('click', () => setTool(button.dataset.textureTool));
@@ -217,8 +434,7 @@
         });
 
         elements.zoom.addEventListener('change', () => {
-            state.zoom = clamp(Number(elements.zoom.value || DEFAULT_ZOOM), 6, 28);
-            renderCanvas();
+            setZoom(elements.zoom.value, getViewportCenterPixel());
         });
 
         elements.alpha.addEventListener('input', () => {
@@ -226,15 +442,20 @@
         });
 
         elements.canvasSize.addEventListener('change', () => {
+            pushUndoSnapshot();
             const nextSize = clamp(Number(elements.canvasSize.value || DEFAULT_SIZE), 8, 256);
             rebuildTextureCanvas(nextSize, true);
             state.size = nextSize;
-            state.zoom = recommendedZoomForSize(nextSize);
-            elements.zoom.value = String(state.zoom);
-            renderCanvas();
+            setZoom(recommendedZoomForSize(nextSize), { x: nextSize / 2, y: nextSize / 2 });
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_resize', { texture_size: nextSize });
             }
+        });
+
+        elements.undoButton.addEventListener('click', undo);
+        elements.redoButton.addEventListener('click', redo);
+        elements.fitButton.addEventListener('click', () => {
+            setZoom(recommendedZoomForSize(state.size), { x: state.size / 2, y: state.size / 2 });
         });
     }
 
@@ -248,9 +469,11 @@
             reader.onload = () => {
                 const image = new Image();
                 image.onload = () => {
+                    pushUndoSnapshot();
                     textureCtx.clearRect(0, 0, state.size, state.size);
                     textureCtx.drawImage(image, 0, 0, image.width, image.height, 0, 0, state.size, state.size);
                     renderCanvas();
+                    centerStageOnPixel(state.size / 2, state.size / 2);
                     if (window.CubeAnalytics) {
                         window.CubeAnalytics.track('texture_painter_upload', {
                             source_width: image.width,
@@ -275,11 +498,13 @@
         });
 
         elements.clearButton.addEventListener('click', () => {
+            pushUndoSnapshot();
             textureCtx.clearRect(0, 0, state.size, state.size);
             renderCanvas();
         });
 
         elements.starterButton.addEventListener('click', () => {
+            pushUndoSnapshot();
             textureCtx.clearRect(0, 0, state.size, state.size);
             textureCtx.fillStyle = '#8b5cf6';
             textureCtx.fillRect(0, 0, state.size, state.size);
@@ -302,6 +527,10 @@
 
         editorCanvas = document.getElementById('textureEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
+        elements.stage = document.querySelector('.texture-stage');
+        elements.navigator = document.getElementById('textureNavigatorCanvas');
+        navigatorCtx = elements.navigator.getContext('2d');
+        navigatorCtx.imageSmoothingEnabled = false;
         elements.canvasSize = document.getElementById('textureCanvasSize');
         elements.zoom = document.getElementById('textureZoom');
         elements.color = document.getElementById('textureColor');
@@ -313,6 +542,9 @@
         elements.exportButton = document.getElementById('textureExportButton');
         elements.clearButton = document.getElementById('textureClearButton');
         elements.starterButton = document.getElementById('textureStarterButton');
+        elements.undoButton = document.getElementById('textureUndoButton');
+        elements.redoButton = document.getElementById('textureRedoButton');
+        elements.fitButton = document.getElementById('textureFitButton');
         elements.canvasSizeValue = document.getElementById('textureCanvasSizeValue');
         elements.toolValue = document.getElementById('textureToolValue');
         elements.brushValue = document.getElementById('textureBrushValue');
@@ -323,11 +555,15 @@
         initElements();
         bindCanvasPainting();
         bindControls();
+        bindNavigator();
+        bindKeyboardShortcuts();
         bindFileControls();
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         elements.zoom.value = String(state.zoom);
         setTool('brush');
         renderCanvas();
+        centerStageOnPixel(state.size / 2, state.size / 2);
+        updateHistoryButtons();
     }
 
     if (document.readyState === 'loading') {

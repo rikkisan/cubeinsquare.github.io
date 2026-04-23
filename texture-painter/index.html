@@ -110,6 +110,7 @@
                             <option value="12">12x</option>
                             <option value="18" selected>18x</option>
                             <option value="24">24x</option>
+                            <option value="32">32x</option>
                         </select>
                     </div>
                     <div class="tool-field">
@@ -173,6 +174,20 @@
                         <p>When the PNG is done, move it into the resource-pack generator and let that tool build the correct folder structure for you.</p>
                     </article>
                 </div>
+            </section>
+            <section class="tool-panel">
+                <div class="texture-panel-head">
+                    <h2>Navigator</h2>
+                    <div class="texture-stage-actions">
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureUndoButton" type="button">Undo</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureRedoButton" type="button">Redo</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureFitButton" type="button">Fit view</button>
+                    </div>
+                </div>
+                <div class="texture-navigator-wrap">
+                    <canvas id="textureNavigatorCanvas" width="192" height="192"></canvas>
+                </div>
+                <p class="texture-note">Double-click the main canvas to zoom into a chunk. Hold <kbd>Shift</kbd> while double-clicking to zoom back out. Click or drag the navigator to jump to a specific region. <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Z</kbd> undoes the last stroke.</p>
             </section>
         </div>
     </section>

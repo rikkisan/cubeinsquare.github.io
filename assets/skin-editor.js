@@ -2,6 +2,7 @@
     const SKIN_SIZE = 64;
     const DEFAULT_ZOOM = 8;
     const DEFAULT_ALPHA = 100;
+    const HISTORY_LIMIT = 40;
 
     const state = {
         tool: 'brush',
@@ -19,6 +20,8 @@
         zoom: DEFAULT_ZOOM,
         editorPainting: false,
         previewPainting: false,
+        undoStack: [],
+        redoStack: [],
         lastEditorPoint: null,
         lastPreviewPoint: null,
         previewSyncQueued: false
@@ -295,6 +298,39 @@
         renderRecentColors();
     }
 
+    function createHistorySnapshot() {
+        return {
+            imageData: skinCtx.getImageData(0, 0, SKIN_SIZE, SKIN_SIZE)
+        };
+    }
+
+    function pushUndoSnapshot() {
+        state.undoStack.push(createHistorySnapshot());
+        if (state.undoStack.length > HISTORY_LIMIT) {
+            state.undoStack.shift();
+        }
+        state.redoStack = [];
+    }
+
+    function restoreHistorySnapshot(snapshot) {
+        if (!snapshot || !snapshot.imageData) return;
+        skinCtx.clearRect(0, 0, SKIN_SIZE, SKIN_SIZE);
+        skinCtx.putImageData(snapshot.imageData, 0, 0);
+        updateTexture();
+    }
+
+    function undo() {
+        if (!state.undoStack.length) return;
+        state.redoStack.push(createHistorySnapshot());
+        restoreHistorySnapshot(state.undoStack.pop());
+    }
+
+    function redo() {
+        if (!state.redoStack.length) return;
+        state.undoStack.push(createHistorySnapshot());
+        restoreHistorySnapshot(state.redoStack.pop());
+    }
+
     function updateStats() {
         elements.dimensions.textContent = `${SKIN_SIZE} x ${SKIN_SIZE}`;
         elements.mode.textContent = state.tool;
@@ -514,6 +550,10 @@
         editorCanvas.addEventListener('pointerdown', (event) => {
             const point = editorEventToPixel(event);
             if (!point) return;
+
+            if (state.tool !== 'picker' && state.tool !== 'orbit') {
+                pushUndoSnapshot();
+            }
 
             state.editorPainting = true;
             state.lastEditorPoint = null;
@@ -779,6 +819,10 @@
             const intersection = previewEventToIntersection(event);
             if (!intersection) return;
 
+            if (state.tool !== 'picker') {
+                pushUndoSnapshot();
+            }
+
             state.previewPainting = true;
             state.lastPreviewPoint = null;
             skinViewer.controls.enabled = false;
@@ -960,14 +1004,21 @@
         updateTexture();
     }
 
-    function resetStarterSkin() {
+    function resetStarterSkin(options) {
+        const shouldRemember = !options || options.remember !== false;
         const image = new Image();
         image.onload = () => {
+            if (shouldRemember) {
+                pushUndoSnapshot();
+            }
             importSkinFromImage(image);
             setPaintLayer('base');
             setPreviewHomeView();
         };
         image.onerror = () => {
+            if (shouldRemember) {
+                pushUndoSnapshot();
+            }
             paintFallbackSteveSkin();
         };
         image.src = '/assets/skin-editor-starter.png?v=20260422';
@@ -1001,6 +1052,7 @@
                         return;
                     }
 
+                    pushUndoSnapshot();
                     importSkinFromImage(image);
                     if (window.CubeAnalytics) {
                         window.CubeAnalytics.track('skin_editor_upload', {
@@ -1028,8 +1080,9 @@
             }
         });
 
-        elements.reset.addEventListener('click', resetStarterSkin);
+        elements.reset.addEventListener('click', () => resetStarterSkin({ remember: true }));
         elements.clear.addEventListener('click', () => {
+            pushUndoSnapshot();
             skinCtx.clearRect(0, 0, SKIN_SIZE, SKIN_SIZE);
             updateTexture();
         });
@@ -1108,6 +1161,30 @@
         elements.alpha.addEventListener('change', rememberCurrentColor);
     }
 
+    function bindKeyboardShortcuts() {
+        document.addEventListener('keydown', (event) => {
+            if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
+
+            const active = document.activeElement;
+            if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT') && active !== elements.color) {
+                return;
+            }
+
+            const key = String(event.key || '').toLowerCase();
+            if (key === 'z') {
+                event.preventDefault();
+                if (event.shiftKey) {
+                    redo();
+                } else {
+                    undo();
+                }
+            } else if (key === 'y') {
+                event.preventDefault();
+                redo();
+            }
+        });
+    }
+
     function onResize() {
         if (!skinViewer) return;
         const rect = elements.preview.getBoundingClientRect();
@@ -1149,6 +1226,7 @@
         initElements();
         createOffscreenSkinCanvas();
         bindControls();
+        bindKeyboardShortcuts();
         bindFileControls();
         bindEditorPainting();
         initPreview();
@@ -1159,7 +1237,7 @@
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         rememberCurrentColor();
 
-        resetStarterSkin();
+        resetStarterSkin({ remember: false });
         renderAtlas();
         updateStats();
         updateLayerButtons();
