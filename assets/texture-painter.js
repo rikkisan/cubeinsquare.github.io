@@ -91,6 +91,62 @@
         );
     }
 
+    function fillRectPixels(x, y, width, height, color) {
+        textureCtx.fillStyle = color;
+        textureCtx.fillRect(x, y, width, height);
+    }
+
+    function drawPixelNoise(x, y, color) {
+        textureCtx.fillStyle = color;
+        textureCtx.fillRect(x, y, 1, 1);
+    }
+
+    function applyBlockTemplate() {
+        const base = String(elements.color.value || '#8b5cf6');
+        const light = mixHex(base, '#ffffff', 0.14);
+        const lighter = mixHex(base, '#ffffff', 0.28);
+        const dark = mixHex(base, '#000000', 0.14);
+        const darker = mixHex(base, '#000000', 0.28);
+        const accent = mixHex(base, '#d1d5db', 0.2);
+        const size = state.size;
+        const border = Math.max(1, Math.round(size * 0.08));
+        const inset = Math.max(1, Math.round(size * 0.18));
+
+        textureCtx.clearRect(0, 0, size, size);
+        fillRectPixels(0, 0, size, size, base);
+
+        fillRectPixels(0, 0, size, border, light);
+        fillRectPixels(0, 0, border, size, light);
+        fillRectPixels(0, size - border, size, border, dark);
+        fillRectPixels(size - border, 0, border, size, dark);
+
+        fillRectPixels(inset, inset, size - inset * 2, size - inset * 2, mixHex(base, '#ffffff', 0.06));
+
+        const seeds = [
+            [0.18, 0.22, light], [0.36, 0.14, lighter], [0.62, 0.2, lighter],
+            [0.22, 0.48, accent], [0.48, 0.42, dark], [0.72, 0.38, accent],
+            [0.14, 0.72, dark], [0.38, 0.68, lighter], [0.58, 0.74, accent], [0.78, 0.64, dark]
+        ];
+
+        seeds.forEach(([rx, ry, color], index) => {
+            const x = Math.min(size - 2, Math.max(border, Math.round(size * rx)));
+            const y = Math.min(size - 2, Math.max(border, Math.round(size * ry)));
+            const width = index % 3 === 0 ? 2 : 1;
+            const height = index % 2 === 0 ? 1 : 2;
+            fillRectPixels(x, y, width, height, color);
+        });
+
+        const speckles = Math.max(6, Math.round(size * 0.18));
+        for (let index = 0; index < speckles; index += 1) {
+            const x = border + ((index * 7) % Math.max(1, size - border * 2));
+            const y = border + ((index * 11) % Math.max(1, size - border * 2));
+            drawPixelNoise(x, y, index % 2 === 0 ? dark : light);
+        }
+
+        renderCanvas();
+        centerStageOnPixel(size / 2, size / 2);
+    }
+
     function renderColorButtons(container, snapshots) {
         if (!container) return;
 
@@ -661,6 +717,17 @@
             renderCanvas();
         });
 
+        elements.blockTemplateButton.addEventListener('click', () => {
+            pushUndoSnapshot();
+            rememberPaintedColor();
+            applyBlockTemplate();
+            if (window.CubeAnalytics) {
+                window.CubeAnalytics.track('texture_painter_block_template', {
+                    texture_size: state.size
+                });
+            }
+        });
+
         elements.starterButton.addEventListener('click', () => {
             pushUndoSnapshot();
             textureCtx.clearRect(0, 0, state.size, state.size);
@@ -698,6 +765,7 @@
         elements.fileInput = document.getElementById('textureFileInput');
         elements.uploadButton = document.getElementById('textureUploadButton');
         elements.exportButton = document.getElementById('textureExportButton');
+        elements.blockTemplateButton = document.getElementById('textureBlockTemplateButton');
         elements.clearButton = document.getElementById('textureClearButton');
         elements.starterButton = document.getElementById('textureStarterButton');
         elements.recentColors = document.getElementById('textureRecentColors');
