@@ -354,6 +354,24 @@
         return { x, y };
     }
 
+    function wheelEventToFocusPoint(event) {
+        const rect = editorCanvas.getBoundingClientRect();
+        const insideCanvas = event.clientX >= rect.left && event.clientX <= rect.right && event.clientY >= rect.top && event.clientY <= rect.bottom;
+        if (!insideCanvas) {
+            return getViewportCenterPixel();
+        }
+
+        const point = eventToPixel(event);
+        if (!point) {
+            return getViewportCenterPixel();
+        }
+
+        return {
+            x: point.x + 0.5,
+            y: point.y + 0.5
+        };
+    }
+
     function paintPoint(point) {
         if (!point) return;
 
@@ -453,6 +471,14 @@
         elements.navigator.addEventListener('pointerup', stopDrag);
         elements.navigator.addEventListener('pointercancel', stopDrag);
         elements.navigator.addEventListener('pointerleave', stopDrag);
+    }
+
+    function bindWheelZoom() {
+        elements.stage.addEventListener('wheel', (event) => {
+            if (!event.deltaY) return;
+            event.preventDefault();
+            stepZoom(event.deltaY > 0 ? -1 : 1, wheelEventToFocusPoint(event));
+        }, { passive: false });
     }
 
     function bindKeyboardShortcuts() {
@@ -618,6 +644,7 @@
         bindCanvasPainting();
         bindControls();
         bindNavigator();
+        bindWheelZoom();
         bindKeyboardShortcuts();
         bindFileControls();
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
