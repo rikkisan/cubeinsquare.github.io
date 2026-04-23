@@ -14,6 +14,7 @@
         zoom: DEFAULT_ZOOM,
         tool: 'brush',
         brushSize: 1,
+        recentColors: [],
         painting: false,
         lastPoint: null,
         undoStack: [],
@@ -50,6 +51,45 @@
             b: parseInt(hex.slice(4, 6), 16),
             a: Math.round(alpha * 255)
         };
+    }
+
+    function getCurrentColorSnapshot() {
+        return {
+            hex: String(elements.color.value || '#ffffff'),
+            alpha: clamp(Number(elements.alpha.value || 100), 0, 100)
+        };
+    }
+
+    function applyColorSnapshot(snapshot) {
+        if (!snapshot) return;
+        elements.color.value = snapshot.hex;
+        elements.alpha.value = snapshot.alpha;
+        elements.alphaValue.textContent = `${snapshot.alpha}%`;
+    }
+
+    function renderRecentColors() {
+        if (!elements.recentColors) return;
+
+        elements.recentColors.innerHTML = '';
+        state.recentColors.forEach((snapshot) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'texture-recent-color';
+            button.style.setProperty('--swatch', snapshot.hex);
+            button.title = `${snapshot.hex.toUpperCase()} | ${snapshot.alpha}%`;
+            button.setAttribute('aria-label', `Use recent color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
+            button.addEventListener('click', () => applyColorSnapshot(snapshot));
+            elements.recentColors.appendChild(button);
+        });
+    }
+
+    function rememberCurrentColor() {
+        const snapshot = getCurrentColorSnapshot();
+        const key = `${snapshot.hex}|${snapshot.alpha}`;
+        state.recentColors = [snapshot]
+            .concat(state.recentColors.filter((entry) => `${entry.hex}|${entry.alpha}` !== key))
+            .slice(0, 10);
+        renderRecentColors();
     }
 
     function getStagePadding() {
@@ -204,6 +244,7 @@
         elements.color.value = hex;
         elements.alpha.value = alpha;
         elements.alphaValue.textContent = `${alpha}%`;
+        rememberCurrentColor();
     }
 
     function drawLine(start, end) {
@@ -301,6 +342,7 @@
         elements.toolValue.textContent = state.tool;
         elements.brushValue.textContent = `${state.brushSize}px`;
         elements.stage.classList.toggle('is-zooming', state.zoom < ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
+        elements.stage.classList.toggle('is-zoom-tool', state.tool === 'zoom');
         renderNavigator();
     }
 
@@ -331,12 +373,25 @@
     }
 
     function bindCanvasPainting() {
+        editorCanvas.addEventListener('contextmenu', (event) => {
+            if (state.tool === 'zoom') {
+                event.preventDefault();
+            }
+        });
+
         editorCanvas.addEventListener('pointerdown', (event) => {
             const point = eventToPixel(event);
             if (!point) return;
 
+            if (state.tool === 'zoom') {
+                event.preventDefault();
+                stepZoom(event.button === 2 || event.shiftKey ? -1 : 1, { x: point.x + 0.5, y: point.y + 0.5 });
+                return;
+            }
+
             if (state.tool !== 'picker') {
                 pushUndoSnapshot();
+                rememberCurrentColor();
             }
 
             state.painting = true;
@@ -440,6 +495,8 @@
         elements.alpha.addEventListener('input', () => {
             elements.alphaValue.textContent = `${elements.alpha.value}%`;
         });
+        elements.color.addEventListener('input', rememberCurrentColor);
+        elements.alpha.addEventListener('change', rememberCurrentColor);
 
         elements.canvasSize.addEventListener('change', () => {
             pushUndoSnapshot();
@@ -454,6 +511,8 @@
 
         elements.undoButton.addEventListener('click', undo);
         elements.redoButton.addEventListener('click', redo);
+        elements.zoomOutButton.addEventListener('click', () => stepZoom(-1, getViewportCenterPixel()));
+        elements.zoomInButton.addEventListener('click', () => stepZoom(1, getViewportCenterPixel()));
         elements.fitButton.addEventListener('click', () => {
             setZoom(recommendedZoomForSize(state.size), { x: state.size / 2, y: state.size / 2 });
         });
@@ -542,8 +601,11 @@
         elements.exportButton = document.getElementById('textureExportButton');
         elements.clearButton = document.getElementById('textureClearButton');
         elements.starterButton = document.getElementById('textureStarterButton');
+        elements.recentColors = document.getElementById('textureRecentColors');
         elements.undoButton = document.getElementById('textureUndoButton');
         elements.redoButton = document.getElementById('textureRedoButton');
+        elements.zoomOutButton = document.getElementById('textureZoomOutButton');
+        elements.zoomInButton = document.getElementById('textureZoomInButton');
         elements.fitButton = document.getElementById('textureFitButton');
         elements.canvasSizeValue = document.getElementById('textureCanvasSizeValue');
         elements.toolValue = document.getElementById('textureToolValue');
@@ -560,6 +622,7 @@
         bindFileControls();
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         elements.zoom.value = String(state.zoom);
+        rememberCurrentColor();
         setTool('brush');
         renderCanvas();
         centerStageOnPixel(state.size / 2, state.size / 2);
