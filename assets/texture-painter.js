@@ -271,8 +271,14 @@
         if (elements.undoButton) {
             elements.undoButton.disabled = state.undoStack.length === 0;
         }
+        if (elements.undoQuickButton) {
+            elements.undoQuickButton.disabled = state.undoStack.length === 0;
+        }
         if (elements.redoButton) {
             elements.redoButton.disabled = state.redoStack.length === 0;
+        }
+        if (elements.redoQuickButton) {
+            elements.redoQuickButton.disabled = state.redoStack.length === 0;
         }
     }
 
@@ -598,10 +604,15 @@
     }
 
     function bindKeyboardShortcuts() {
-        document.addEventListener('keydown', (event) => {
+        window.addEventListener('keydown', (event) => {
             if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
             const active = document.activeElement;
-            if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.tagName === 'SELECT') && active !== elements.color) {
+            const tag = active ? active.tagName : '';
+            const inputType = active && tag === 'INPUT' ? String(active.type || '').toLowerCase() : '';
+            const isTypingField = tag === 'TEXTAREA'
+                || active?.isContentEditable
+                || (tag === 'INPUT' && ['text', 'search', 'email', 'url', 'tel', 'password', 'number'].includes(inputType));
+            if (isTypingField) {
                 return;
             }
 
@@ -655,7 +666,15 @@
             event.preventDefault();
             undo();
         });
+        elements.undoQuickButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            undo();
+        });
         elements.redoButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            redo();
+        });
+        elements.redoQuickButton.addEventListener('click', (event) => {
             event.preventDefault();
             redo();
         });
@@ -771,7 +790,9 @@
         elements.recentColors = document.getElementById('textureRecentColors');
         elements.similarColors = document.getElementById('textureSimilarColors');
         elements.undoButton = document.getElementById('textureUndoButton');
+        elements.undoQuickButton = document.getElementById('textureUndoQuickButton');
         elements.redoButton = document.getElementById('textureRedoButton');
+        elements.redoQuickButton = document.getElementById('textureRedoQuickButton');
         elements.zoomOutButton = document.getElementById('textureZoomOutButton');
         elements.zoomInButton = document.getElementById('textureZoomInButton');
         elements.fitButton = document.getElementById('textureFitButton');

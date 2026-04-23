@@ -77,10 +77,14 @@
             <section class="tool-panel">
                 <h2>Painting tools</h2>
                 <div class="texture-tool-grid">
-                    <button class="resource-link texture-tool-button is-active" type="button" data-texture-tool="brush">Brush</button>
-                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="eraser">Eraser</button>
-                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="picker">Picker</button>
-                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="zoom">Zoom</button>
+                    <button class="resource-link texture-tool-button is-active" type="button" data-texture-tool="brush"><span class="texture-tool-icon" aria-hidden="true">🖌</span><span>Brush</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="eraser"><span class="texture-tool-icon" aria-hidden="true">⌫</span><span>Eraser</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="picker"><span class="texture-tool-icon" aria-hidden="true">🎯</span><span>Picker</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="zoom"><span class="texture-tool-icon" aria-hidden="true">🔍</span><span>Zoom</span></button>
+                </div>
+                <div class="texture-tool-grid texture-history-grid">
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureUndoQuickButton" type="button"><span class="texture-tool-icon" aria-hidden="true">↶</span><span>Undo</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureRedoQuickButton" type="button"><span class="texture-tool-icon" aria-hidden="true">↷</span><span>Redo</span></button>
                 </div>
                 <div class="tool-field">
                     <label for="textureColor">Color</label>

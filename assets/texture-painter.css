@@ -64,13 +64,27 @@
     gap: 10px;
 }
 
+.texture-history-grid {
+    margin-top: 10px;
+}
+
 .texture-tool-button {
     min-width: 88px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .texture-tool-button.is-active {
     background: var(--accent-hover);
     box-shadow: 0 10px 24px -18px rgba(59, 130, 246, 0.7);
+}
+
+.texture-tool-icon {
+    font-size: 0.95rem;
+    line-height: 1;
+    flex: 0 0 auto;
 }
 
 .texture-note,
