@@ -269,27 +269,83 @@
         elements.color.value = snapshot.hex;
         elements.alpha.value = snapshot.alpha;
         elements.alphaValue.textContent = `${snapshot.alpha}%`;
+        renderSimilarColors();
     }
 
-    function renderRecentColors() {
-        if (!elements.recentColors) return;
+    function hexToRgb(hex) {
+        const value = String(hex || '#ffffff').replace('#', '');
+        return {
+            r: parseInt(value.slice(0, 2), 16),
+            g: parseInt(value.slice(2, 4), 16),
+            b: parseInt(value.slice(4, 6), 16)
+        };
+    }
 
-        elements.recentColors.innerHTML = '';
-        state.recentColors.forEach((snapshot, index) => {
+    function rgbToHex(r, g, b) {
+        return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    function mixHex(hex, targetHex, amount) {
+        const from = hexToRgb(hex);
+        const to = hexToRgb(targetHex);
+        return rgbToHex(
+            from.r + (to.r - from.r) * amount,
+            from.g + (to.g - from.g) * amount,
+            from.b + (to.b - from.b) * amount
+        );
+    }
+
+    function renderColorButtons(container, snapshots) {
+        if (!container) return;
+
+        container.innerHTML = '';
+        snapshots.forEach((snapshot) => {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'skin-recent-color';
             button.style.setProperty('--swatch', snapshot.hex);
             button.title = `${snapshot.hex.toUpperCase()} | ${snapshot.alpha}%`;
-            button.setAttribute('aria-label', `Use recent color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
-            button.addEventListener('click', () => {
-                applyColorSnapshot(snapshot);
-            });
-            elements.recentColors.appendChild(button);
+            button.setAttribute('aria-label', `Use color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
+            button.addEventListener('click', () => applyColorSnapshot(snapshot));
+            container.appendChild(button);
         });
     }
 
-    function rememberCurrentColor() {
+    function renderRecentColors() {
+        if (!elements.recentColors) return;
+        renderColorButtons(elements.recentColors, state.recentColors);
+    }
+
+    function buildSimilarColorSnapshots() {
+        const current = getCurrentColorSnapshot();
+        const variants = [
+            mixHex(current.hex, '#ffffff', 0.18),
+            mixHex(current.hex, '#ffffff', 0.35),
+            current.hex,
+            mixHex(current.hex, '#000000', 0.18),
+            mixHex(current.hex, '#000000', 0.35),
+            mixHex(current.hex, '#ffd166', 0.18),
+            mixHex(current.hex, '#60a5fa', 0.18),
+            mixHex(current.hex, '#22c55e', 0.18)
+        ];
+        const seen = new Set();
+        return variants
+            .map((hex) => ({ hex, alpha: current.alpha }))
+            .filter((snapshot) => {
+                const key = `${snapshot.hex}|${snapshot.alpha}`;
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .slice(0, 10);
+    }
+
+    function renderSimilarColors() {
+        if (!elements.similarColors) return;
+        renderColorButtons(elements.similarColors, buildSimilarColorSnapshots());
+    }
+
+    function rememberPaintedColor() {
         const snapshot = getCurrentColorSnapshot();
         const key = `${snapshot.hex}|${snapshot.alpha}`;
         state.recentColors = [snapshot]
@@ -487,7 +543,7 @@
         elements.color.value = hex;
         elements.alpha.value = alpha;
         elements.alphaValue.textContent = `${alpha}%`;
-        rememberCurrentColor();
+        renderSimilarColors();
     }
 
     function drawLine(start, end) {
@@ -553,6 +609,9 @@
 
             if (state.tool !== 'picker' && state.tool !== 'orbit') {
                 pushUndoSnapshot();
+                if (state.tool === 'brush') {
+                    rememberPaintedColor();
+                }
             }
 
             state.editorPainting = true;
@@ -821,6 +880,9 @@
 
             if (state.tool !== 'picker') {
                 pushUndoSnapshot();
+                if (state.tool === 'brush') {
+                    rememberPaintedColor();
+                }
             }
 
             state.previewPainting = true;
@@ -1157,8 +1219,8 @@
                 skinViewer.render();
             }
         });
-        elements.color.addEventListener('input', rememberCurrentColor);
-        elements.alpha.addEventListener('change', rememberCurrentColor);
+        elements.color.addEventListener('input', renderSimilarColors);
+        elements.alpha.addEventListener('change', renderSimilarColors);
     }
 
     function bindKeyboardShortcuts() {
@@ -1212,6 +1274,7 @@
         elements.brush = document.getElementById('skinBrush');
         elements.modelValue = document.getElementById('skinModelValue');
         elements.recentColors = document.getElementById('skinRecentColors');
+        elements.similarColors = document.getElementById('skinSimilarColors');
         editorCanvas = document.getElementById('skinEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
     }
@@ -1235,7 +1298,7 @@
         state.brushSize = Number(elements.brushSize.value || 1);
         state.zoom = Number(elements.zoom.value || DEFAULT_ZOOM);
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
-        rememberCurrentColor();
+        renderSimilarColors();
 
         resetStarterSkin({ remember: false });
         renderAtlas();
