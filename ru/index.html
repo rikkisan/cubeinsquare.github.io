@@ -1,24 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <script>
-        (function () {
-            if (/\/index\.html$/i.test(window.location.pathname)) {
-                window.location.replace(window.location.pathname.replace(/index\.html$/i, '') + window.location.search + window.location.hash);
-            }
-        })();
-    </script>
-    <title>Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Рё РІРёРєРё | РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ</title>
+    <title>Minecraft-инструменты, генератор ресурс-паков и вики | Куб в квадрате</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="РҐР°Р± СЃ Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё: РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ, РіР°Р№РґС‹ РїРѕ CustomModelData, РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Р·РµР»РёР№ Рё С‚РѕСЂРіРѕРІ Р¶РёС‚РµР»РµР№ Рё СЃРµСЂРІРµСЂРЅР°СЏ РёСЃС‚РѕСЂРёСЏ Р±РµР· РјРѕРґРѕРІ.">
+    <meta name="description" content="Хаб с Minecraft-инструментами: генератор ресурс-паков, гайды по CustomModelData, конструкторы зелий и торгов жителей и серверная история без модов.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-    <meta name="author" content="РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ">
-    <meta name="application-name" content="РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ">
+    <meta name="author" content="Куб в квадрате">
+    <meta name="application-name" content="Куб в квадрате">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/ru/">
     <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/">
@@ -26,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/">
-<meta property="og:site_name" content="РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ">
+<meta property="og:site_name" content="Куб в квадрате">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Рё РІРёРєРё | РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ">
-    <meta property="og:description" content="РҐР°Р± СЃ Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё: РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ, РіР°Р№РґС‹ РїРѕ CustomModelData, РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Р·РµР»РёР№ Рё С‚РѕСЂРіРѕРІ Р¶РёС‚РµР»РµР№ Рё СЃРµСЂРІРµСЂРЅР°СЏ РёСЃС‚РѕСЂРёСЏ Р±РµР· РјРѕРґРѕРІ.">
+    <meta property="og:title" content="Minecraft-инструменты, генератор ресурс-паков и вики | Куб в квадрате">
+    <meta property="og:description" content="Хаб с Minecraft-инструментами: генератор ресурс-паков, гайды по CustomModelData, конструкторы зелий и торгов жителей и серверная история без модов.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Рё РІРёРєРё | РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ">
-    <meta name="twitter:description" content="РҐР°Р± СЃ Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё: РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ, РіР°Р№РґС‹ РїРѕ CustomModelData, РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Р·РµР»РёР№ Рё С‚РѕСЂРіРѕРІ Р¶РёС‚РµР»РµР№ Рё СЃРµСЂРІРµСЂРЅР°СЏ РёСЃС‚РѕСЂРёСЏ Р±РµР· РјРѕРґРѕРІ.">
+    <meta name="twitter:title" content="Minecraft-инструменты, генератор ресурс-паков и вики | Куб в квадрате">
+    <meta name="twitter:description" content="Хаб с Minecraft-инструментами: генератор ресурс-паков, гайды по CustomModelData, конструкторы зелий и торгов жителей и серверная история без модов.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -88,8 +81,8 @@
                        "@type":  "CollectionPage",
                        "@id":  "https://cubeinsquare.com/ru/#webpage",
                        "url":  "https://cubeinsquare.com/ru/",
-                       "name":  "Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Рё РІРёРєРё | РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ",
-                       "description":  "РҐР°Р± СЃ Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё: РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ, РіР°Р№РґС‹ РїРѕ CustomModelData, РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Р·РµР»РёР№ Рё С‚РѕСЂРіРѕРІ Р¶РёС‚РµР»РµР№ Рё СЃРµСЂРІРµСЂРЅР°СЏ РёСЃС‚РѕСЂРёСЏ Р±РµР· РјРѕРґРѕРІ.",
+                       "name":  "Minecraft-инструменты, генератор ресурс-паков и вики | Куб в квадрате",
+                       "description":  "Хаб с Minecraft-инструментами: генератор ресурс-паков, гайды по CustomModelData, конструкторы зелий и торгов жителей и серверная история без модов.",
                        "isPartOf":  {
                                         "@id":  "https://cubeinsquare.com/ru/#website"
                                     },
@@ -128,65 +121,71 @@
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/ru/" aria-label="Р”РѕРјРѕР№" title="Р”РѕРјРѕР№"><img src="/assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/ru/wiki/">Р’РёРєРё</a>
+            <a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a>
             <div class="steam-dropdown-panel steam-mega-panel">
                 <div class="mega-list mega-list-tree">
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/ru/wiki/#general-wiki">РћР±С‰РёРµ СЃС‚Р°С‚СЊРё</a>
+                        <a class="mega-group-title" href="/ru/wiki/#general-wiki">Общие статьи</a>
                         <div class="mega-sublist">
                             <a href="/ru/wiki-custom-model-data/">CustomModelData</a>
-                            <a href="/ru/wiki/#resource-pack-paths">РЎС‚СЂСѓРєС‚СѓСЂР° СЂРµСЃСѓСЂСЃ-РїР°РєР°</a>
+                            <a href="/ru/wiki/#resource-pack-paths">Структура ресурс-пака</a>
                         </div>
                     </div>
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Р“РµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Minecraft</a>
+                        <a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Генератор ресурс-паков Minecraft</a>
                         <div class="mega-sublist">
-                            <a href="/ru/wiki-resource-pack-generator/">РљР°Рє РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РіРµРЅРµСЂР°С‚РѕСЂ</a>
+                            <a href="/ru/wiki-resource-pack-generator/">Как использовать генератор</a>
                         </div>
                     </div>
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/ru/wiki/#other-tools-wiki">Р”СЂСѓРіРёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+                        <a class="mega-group-title" href="/ru/wiki/#other-tools-wiki">Другие инструменты</a>
                         <div class="mega-sublist">
-                            <a href="/ru/tools/">РљР°С‚Р°Р»РѕРі РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ</a><a href="/ru/wiki-custom-potions/">РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</a>
-                            <a href="/ru/wiki-custom-villager-trades/">РўРѕСЂРіРё Р¶РёС‚РµР»РµР№</a>
+                            <a href="/ru/tools/">Каталог инструментов</a><a href="/ru/wiki-skin-editor/">Редактор скинов</a>
+                            <a href="/ru/texture-painter/">Редактор текстур</a>
+                            <a href="/ru/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/ru/wiki-custom-villager-trades/">Торги жителей</a>
                         </div>
                     </div>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="/ru/wiki-custom-model-data/"><strong>CustomModelData</strong><span>РљР°Рє РѕРґРёРЅ РїСЂРµРґРјРµС‚ РїСЂРµРІСЂР°С‰Р°РµС‚СЃСЏ РІ РґРµСЃСЏС‚РєРё РјРѕРґРµР»РµР№ Р±РµР· РјРѕРґРѕРІ.</span></a>
-                    <a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Р“Р°Р№Рґ РїРѕ РіРµРЅРµСЂР°С‚РѕСЂСѓ</strong><span>РџРѕС€Р°РіРѕРІР°СЏ РёРЅСЃС‚СЂСѓРєС†РёСЏ РїРѕ СЃРѕР·РґР°РЅРёСЋ ZIP-РїР°РєР°.</span></a>
-                    <a class="mega-card" href="/ru/wiki/#resource-pack-paths"><strong>РЎС‚СЂСѓРєС‚СѓСЂР° СЂРµСЃСѓСЂСЃ-РїР°РєР°</strong><span>РљРѕСЂРѕС‚РєР°СЏ С€РїР°СЂРіР°Р»РєР° РїРѕ РїР°РїРєР°Рј textures, models Рё blockstates.</span></a>
+                    <a class="mega-card" href="/ru/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается в десятки моделей без модов.</span></a>
+                    <a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговая инструкция по созданию ZIP-пака.</span></a>
+                    <a class="mega-card" href="/ru/wiki/#resource-pack-paths"><strong>Структура ресурс-пака</strong><span>Короткая шпаргалка по папкам textures, models и blockstates.</span></a>
                 </div>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/ru/tools/">РРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+            <a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
-                    <a href="/ru/resource-pack-generator/">Р“РµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Minecraft</a>
-                    <a href="/ru/custom-villager-trades/">РљР°СЃС‚РѕРјРЅС‹Рµ С‚РѕСЂРіРё Р¶РёС‚РµР»РµР№</a>
-                    <a href="/ru/custom-potions/">РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</a>
-                    <a href="/ru/tool-coming-soon/">Р‘СѓРґСѓС‰РёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+                    <a href="/ru/resource-pack-generator/">Генератор ресурс-паков Minecraft</a>
+                    <a href="/ru/skin-editor/">Редактор скинов Minecraft</a>
+                    <a href="/ru/texture-painter/">Редактор текстур</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Р“РµРЅРµСЂР°С‚РѕСЂ РїР°РєРѕРІ</strong><span>РџСЂРµРґРјРµС‚С‹, Р±Р»РѕРєРё, Р±СЂРѕРЅСЏ, CustomModelData Рё 3D-РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ.</span></a>
-                    <a class="mega-card" href="/ru/custom-potions/"><strong>РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</strong><span>РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ potion contents, custom effects, С†РІРµС‚Р°, lore Рё give-РєРѕРјР°РЅРґ.</span></a>
-                    <a class="mega-card" href="/ru/custom-villager-trades/"><strong>РўРѕСЂРіРё Р¶РёС‚РµР»РµР№</strong><span>РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃРґРµР»РѕРє СЃ С†РµРЅР°РјРё, РЅР°РіСЂР°РґР°РјРё, Р»РёРјРёС‚Р°РјРё Рё summon-РєРѕРјР°РЅРґРѕР№.</span></a>
+                    <a class="mega-card" href="/ru/texture-painter/"><strong>Редактор текстур</strong><span>Выберите размер холста, нарисуйте PNG и отправьте его в workflow ресурс-пака.</span></a>
+                    <a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисование по атласу или прямо по 3D-модели игрока.</span></a>
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и 3D-предпросмотр.</span></a>
+                    <a class="mega-card" href="/ru/custom-potions/"><strong>Кастомные зелья</strong><span>Конструктор potion contents, custom effects, цвета, lore и give-команд.</span></a>
+                    <a class="mega-card" href="/ru/custom-villager-trades/"><strong>Торги жителей</strong><span>Конструктор сделок с ценами, наградами, лимитами и summon-командой.</span></a>
                 </div>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/ru/about/">Рћ РїСЂРѕРµРєС‚Рµ</a>
+            <a class="steam-nav-dropdown" href="/ru/about/">О проекте</a>
             <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/ru/about/">РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ</a>
+                <a href="/ru/about/">Куб в квадрате</a>
                 <a href="/ru/privacy-policy/">Privacy Policy</a>
             </div>
         </div>
         <form class="steam-search" action="/ru/wiki/" method="get">
-            <input type="text" name="q" placeholder="РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ...">
-            <button type="submit" aria-label="РџРѕРёСЃРє"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
         </form>
         <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/">EN</a><a href="/fr/">FR</a><a href="/de/">DE</a></div>
     </div>
@@ -194,43 +193,42 @@
 
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹, РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Рё РІРёРєРё</h1>
-        <p class="page-lead">РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ вЂ” СЌС‚Рѕ С…Р°Р± СЃ Minecraft-РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°РјРё: РіРµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ, РіР°Р№РґС‹ РїРѕ CustomModelData, РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹ Р·РµР»РёР№ Рё С‚РѕСЂРіРѕРІ Р¶РёС‚РµР»РµР№ Рё СЃРµСЂРІРµСЂРЅР°СЏ РёСЃС‚РѕСЂРёСЏ Р±РµР· РјРѕРґРѕРІ.</p>
+        <h1>Minecraft-инструменты, генератор ресурс-паков и вики</h1>
+        <p class="page-lead">Куб в квадрате — это хаб с Minecraft-инструментами: генератор ресурс-паков, гайды по CustomModelData, конструкторы зелий и торгов жителей и серверная история без модов.</p>
     </section>
 
     <section class="page-section">
-        <h2 class="section-title">Р‘С‹СЃС‚СЂС‹Р№ РґРѕСЃС‚СѓРї</h2>
+        <h2 class="section-title">Быстрый доступ</h2>
         <div class="resource-grid">
             <article class="resource-card">
-                <h3>Р“РµРЅРµСЂР°С‚РѕСЂ СЂРµСЃСѓСЂСЃ-РїР°РєРѕРІ Minecraft</h3>
-                <p>РЎРѕР±СЂР°С‚СЊ ZIP СЂРµСЃСѓСЂСЃ-РїР°РєР° СЃ РїСЂРµРґРјРµС‚Р°РјРё, Р±Р»РѕРєР°РјРё, Р±СЂРѕРЅРµР№, CustomModelData Рё 3D-РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂРѕРј.</p>
-                <a class="resource-link" href="/ru/resource-pack-generator/">РћС‚РєСЂС‹С‚СЊ РіРµРЅРµСЂР°С‚РѕСЂ</a>
+                <h3>Генератор ресурс-паков Minecraft</h3>
+                <p>Собрать ZIP ресурс-пака с предметами, блоками, броней, CustomModelData и 3D-предпросмотром.</p>
+                <a class="resource-link" href="/ru/resource-pack-generator/">Открыть генератор</a>
             </article>
             <article class="resource-card">
-                <h3>Р’РёРєРё</h3>
-                <p>РЎС‚Р°С‚СЊРё РїСЂРѕ CustomModelData, СЃС‚СЂСѓРєС‚СѓСЂСѓ СЂРµСЃСѓСЂСЃ-РїР°РєР° Рё СЂР°Р±РѕС‚Сѓ РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ Р±РµР· РјРѕРґРѕРІ.</p>
-                <a class="resource-link" href="/ru/wiki/">Р§РёС‚Р°С‚СЊ РІРёРєРё</a>
+                <h3>Вики</h3>
+                <p>Статьи про CustomModelData, структуру ресурс-пака и работу инструментов без модов.</p>
+                <a class="resource-link" href="/ru/wiki/">Читать вики</a>
             </article>
             <article class="resource-card">
-                <h3>РРЅСЃС‚СЂСѓРјРµРЅС‚С‹</h3>
-                        <p>РљР°С‚Р°Р»РѕРі РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ: РіРµРЅРµСЂР°С‚РѕСЂ, С‚РѕСЂРіРё Р¶РёС‚РµР»РµР№, РєР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ Рё СЃР»РµРґСѓСЋС‰Р°СЏ РІ РѕС‡РµСЂРµРґРё РїР°Р»РёС‚СЂР°.</p>
-                <a class="resource-link" href="/ru/tools/">РЎРјРѕС‚СЂРµС‚СЊ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+                <h3>Инструменты</h3>
+                        <p>Каталог инструментов: генератор ресурс-паков, редактор скинов, редактор текстур, торги жителей и кастомные зелья.</p>
+                <a class="resource-link" href="/ru/tools/">Смотреть инструменты</a>
             </article>
             <article class="resource-card">
-                <h3>Рћ РїСЂРѕРµРєС‚Рµ</h3>
-                <p>РљС‚Рѕ РјС‹, Р·Р°С‡РµРј РЅСѓР¶РµРЅ СЃР°Р№С‚ Рё РєР°Рє СЃРІСЏР·Р°С‚СЊСЃСЏ С‡РµСЂРµР· Discord.</p>
-                <a class="resource-link" href="/ru/about/">РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ</a>
+                <h3>О проекте</h3>
+                <p>Кто мы, зачем нужен сайт и как связаться через Discord.</p>
+                <a class="resource-link" href="/ru/about/">Куб в квадрате</a>
             </article>
         </div>
     </section>
 </main>
 
-<footer class="site-footer"><span>РљСѓР± РІ РєРІР°РґСЂР°С‚Рµ</span><a href="/ru/privacy-policy/">РџРѕР»РёС‚РёРєР° РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё</a></footer>
+<footer class="site-footer"><span>Куб в квадрате</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
     <script src="/assets/tracking-config.js"></script>
     <script src="/assets/tracking.js"></script>
 </body>
 </html>
-
 
 
 
