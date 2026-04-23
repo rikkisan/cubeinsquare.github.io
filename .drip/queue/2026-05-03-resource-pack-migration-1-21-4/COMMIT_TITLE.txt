@@ -1,0 +1,1 @@
+﻿Publish article: Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era

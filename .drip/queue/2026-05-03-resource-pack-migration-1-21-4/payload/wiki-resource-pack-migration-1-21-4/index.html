@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square">
+    <meta property="og:description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square">
+    <meta name="twitter:description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">← All articles</a>
+    <section class="page-hero">
+        <h1>Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era</h1>
+        <p class="page-lead">Minecraft 1.21.4 does not only change command spelling. It changes how your pack workflow thinks about item identity, potion payloads, custom model references, and every hand-written give command you still keep in old notes.</p>
+        <a class="resource-link" href="/resource-pack-generator/">Open resource-pack generator</a>
+    </section>
+    <article>
+        <h2>What actually changed</h2>
+        <p>The painful part of the migration is not the ZIP pack itself. Textures, models, and blockstates still live in the same folders. The real shift is item data: commands moved away from old NBT-style item tags and into explicit components.</p>
+        <h2>The first thing to audit</h2>
+        <ul><li>Saved <code>/give</code> commands in docs or command blocks</li><li>Villager trade commands that embed item payloads</li><li>Potion commands and NPC rewards</li><li>Any CustomModelData items used in quests, shops, or scripts</li></ul>
+        <h2>Old and new mindset</h2>
+<pre><code>/give @p minecraft:paper{CustomModelData:12,display:{Name:'{"text":"Pass"}'}} 1
+/give @p minecraft:paper[minecraft:custom_model_data=12,minecraft:custom_name='[{"text":"Pass"}]'] 1</code></pre>
+        <p>The new syntax is flatter, easier to compose, and better for long-term maintenance once you stop thinking in nested NBT blobs.</p>
+        <h2>Migration checklist</h2>
+        <ol><li>List every old command your server still uses.</li><li>Convert visible fields like names and lore to dedicated components.</li><li>Move hidden identity checks into <code>minecraft:custom_data</code>.</li><li>Re-test villager trades, quest rewards, and potion items on a staging world.</li><li>Update wiki notes and admin cheat sheets so staff stop pasting old syntax.</li></ol>
+        <h2>Resource-pack files vs command files</h2>
+        <p>Your resource-pack ZIP often survives the version jump almost untouched. The parts that fail first are admin commands, loot distribution, shops, NPCs, and story items. Treat migration as a command-and-data audit, not only as a texture-pack update.</p>
+        <h2>Where the generator helps</h2>
+        <p>The pack generator already separates target version choices. That means you can keep the art pipeline stable while changing the command syntax that staff and builders copy from the tools.</p>
+        <h2>What to retest after the move</h2>
+        <ul><li>Every item that uses <code>custom_model_data</code></li><li>Every potion with custom contents</li><li>Every villager that validates a special item</li><li>Every admin macro or staff note with a saved command</li></ul>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

@@ -46,6 +46,8 @@
         previewOrbiting: false,
         recentColors: [],
         hiddenParts: {
+            head: false,
+            body: false,
             rightArm: false,
             leftArm: false,
             rightLeg: false,
@@ -683,7 +685,7 @@
             color: 0xffffff,
             transparent: true,
             opacity: 0,
-            side: THREE.DoubleSide,
+            side: THREE.FrontSide,
             depthWrite: false
         });
         const mesh = new THREE.Mesh(geometry, material);
@@ -862,7 +864,16 @@
 
         const targetLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
         const targetMeshes = previewHelperMeshes.filter((mesh) => mesh.userData.layerName === targetLayer && mesh.visible);
-        return targetMeshes.length ? previewRaycaster.intersectObjects(targetMeshes, false)[0] || null : null;
+        if (!targetMeshes.length) return null;
+
+        const intersections = previewRaycaster.intersectObjects(targetMeshes, false);
+        if (!intersections.length) return null;
+
+        return intersections.find((entry) => {
+            if (!entry.face || !entry.object) return true;
+            const worldNormal = entry.face.normal.clone().transformDirection(entry.object.matrixWorld);
+            return worldNormal.dot(previewRaycaster.ray.direction) < 0;
+        }) || intersections[0] || null;
     }
 
     function intersectionToPixel(intersection) {

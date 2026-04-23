@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Custom Potions in Minecraft 1.21.4: Working with potion_contents | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to build smarter custom potions in Minecraft 1.21.4 with the potion_contents component, custom effects, names, and visual identity.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Smart Custom Potions in Minecraft 1.21.4: Working with potion_contents | Cube in Square">
+    <meta property="og:description" content="How to build smarter custom potions in Minecraft 1.21.4 with the potion_contents component, custom effects, names, and visual identity.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Smart Custom Potions in Minecraft 1.21.4: Working with potion_contents | Cube in Square">
+    <meta name="twitter:description" content="How to build smarter custom potions in Minecraft 1.21.4 with the potion_contents component, custom effects, names, and visual identity.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">← All articles</a>
+    <section class="page-hero">
+        <h1>Smart Custom Potions in Minecraft 1.21.4: Working with potion_contents</h1>
+        <p class="page-lead">The new potion system is one of the cleanest examples of why the component era is actually useful. Instead of forcing everything into a single old tag blob, the item now tells you directly what its potion payload is supposed to be.</p>
+        <a class="resource-link" href="/custom-potions/">Open potion builder</a>
+    </section>
+    <article>
+        <h2>Why <code>potion_contents</code> matters</h2>
+        <p>In 1.21.4 a custom potion no longer has to feel like a mysterious NBT object. The important part of the payload now lives in a dedicated component that clearly describes potion color, custom effects, and the base potion entry when you use one.</p>
+        <h2>Typical component shape</h2>
+<pre><code>minecraft:potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <h2>What makes a potion feel smart</h2>
+        <ul><li>The color matches the in-world story role.</li><li>The visible name explains what the potion is in RP terms.</li><li>The hidden data is predictable enough for staff to maintain.</li><li>The tooltip does not drown players in raw admin structure.</li></ul>
+        <h2>Good RP use cases</h2>
+        <ul><li>Medic tinctures with mild speed and regeneration.</li><li>Investigator elixirs with night vision and short invisibility.</li><li>Faction tonics with different bottle colors but shared base logic.</li><li>Quest-only brews with a readable name and custom model.</li></ul>
+        <h2>Pairing with other components</h2>
+        <p>A smart potion usually combines <code>minecraft:potion_contents</code> with at least a custom name, lore, and sometimes <code>minecraft:custom_model_data</code>. That is what turns a raw mechanics item into something that feels authored for your server world.</p>
+        <h2>When to avoid overdesign</h2>
+        <p>If every potion has too many effects, too much lore, and too much visual noise, players stop understanding what they are drinking. Use the component system to make potions cleaner, not busier.</p>
+        <h2>Builder workflow</h2>
+        <ol><li>Choose potion type and target version.</li><li>Pick the visible identity: name, lore, model, bottle style.</li><li>Compose effects inside <code>potion_contents</code>.</li><li>Test the item in-game and verify tooltip readability.</li></ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
