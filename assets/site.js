@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     function trackEvent(name, params, options) {
         if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
             window.CubeAnalytics.track(name, params, options);
@@ -133,63 +133,58 @@
     }
 
     function initGlobalToolLinks() {
-        const lang = (document.documentElement.lang || 'en').toLowerCase();
-        const labels = {
-            ru: {
-                tool: 'Редактор скинов',
-                guide: 'Гайд по редактору скинов',
-                featureTitle: 'Редактор скинов',
-                featureDesc: 'Рисуйте по атласу или прямо по 3D-модели игрока.'
-            },
-            fr: {
-                tool: 'Editeur de skins',
-                guide: 'Guide de l editeur de skins',
-                featureTitle: 'Editeur de skins',
-                featureDesc: 'Dessinez sur l atlas ou directement sur le modele 3D.'
-            },
-            de: {
-                tool: 'Skin-Editor',
-                guide: 'Skin-Editor-Anleitung',
-                featureTitle: 'Skin-Editor',
-                featureDesc: 'Male auf dem Atlas oder direkt auf dem 3D-Modell.'
-            },
-            en: {
-                tool: 'Minecraft Skin Editor',
-                guide: 'Skin editor guide',
+        const tools = [
+            {
+                toolHref: '/skin-editor/',
+                guideHref: '/wiki-skin-editor/',
+                toolLabel: 'Minecraft Skin Editor',
+                guideLabel: 'Skin editor guide',
                 featureTitle: 'Skin editor',
                 featureDesc: 'Draw on the atlas or paint directly on the 3D player model.'
+            },
+            {
+                toolHref: '/texture-painter/',
+                guideHref: '/wiki-texture-painter/',
+                toolLabel: 'Texture painter',
+                guideLabel: 'Texture painter guide',
+                featureTitle: 'Texture painter',
+                featureDesc: 'Choose a canvas size, paint a PNG, and send it into your pack workflow.'
             }
-        };
-        const copy = labels[lang] || labels.en;
-        const skinHref = '/skin-editor/';
-        const guideHref = '/wiki-skin-editor/';
+        ];
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
-            if (list.querySelector('a[href$="/skin-editor/"], a[href$="skin-editor.html"]')) return;
-            const link = document.createElement('a');
-            link.href = skinHref;
-            link.textContent = copy.tool;
             const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
-            list.insertBefore(link, upcoming || null);
+            tools.forEach((tool) => {
+                if (list.querySelector(`a[href="${tool.toolHref}"], a[href$="${tool.toolHref}"]`)) return;
+                const link = document.createElement('a');
+                link.href = tool.toolHref;
+                link.textContent = tool.toolLabel;
+                list.insertBefore(link, upcoming || null);
+            });
         });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
-            if (feature.querySelector('a[href$="/skin-editor/"], a[href$="skin-editor.html"]')) return;
-            const card = document.createElement('a');
-            card.className = 'mega-card';
-            card.href = skinHref;
-            card.innerHTML = `<strong>${copy.featureTitle}</strong><span>${copy.featureDesc}</span>`;
-            feature.insertBefore(card, feature.firstChild);
+            tools.slice().reverse().forEach((tool) => {
+                if (feature.querySelector(`a[href="${tool.toolHref}"], a[href$="${tool.toolHref}"]`)) return;
+                const card = document.createElement('a');
+                card.className = 'mega-card';
+                card.href = tool.toolHref;
+                card.innerHTML = `<strong>${tool.featureTitle}</strong><span>${tool.featureDesc}</span>`;
+                feature.insertBefore(card, feature.firstChild);
+            });
         });
 
         document.querySelectorAll('.mega-group-title[href*="#other-tools-wiki"]').forEach((title) => {
             const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
-            if (!sublist || sublist.querySelector('a[href$="/wiki-skin-editor/"], a[href$="wiki-skin-editor.html"]')) return;
-            const link = document.createElement('a');
-            link.href = guideHref;
-            link.textContent = copy.guide;
-            const potions = Array.from(sublist.querySelectorAll('a')).find((item) => /(?:^|\/)wiki-custom-potions(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
-            sublist.insertBefore(link, potions || sublist.firstChild);
+            const potions = sublist ? Array.from(sublist.querySelectorAll('a')).find((item) => /(?:^|\/)wiki-custom-potions(?:\/|\.html)?$/i.test(item.getAttribute('href') || '')) : null;
+            if (!sublist) return;
+            tools.forEach((tool) => {
+                if (sublist.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
+                const link = document.createElement('a');
+                link.href = tool.guideHref;
+                link.textContent = tool.guideLabel;
+                sublist.insertBefore(link, potions || sublist.firstChild);
+            });
         });
     }
 
