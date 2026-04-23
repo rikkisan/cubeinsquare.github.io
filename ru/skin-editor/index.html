@@ -141,32 +141,32 @@
             <div class="steam-dropdown-panel steam-mega-panel">
                 <div class="mega-list mega-list-tree">
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
+                        <a class="mega-group-title" href="/wiki/#general-wiki">Общие статьи</a>
                         <div class="mega-sublist">
                             <a href="/wiki-custom-model-data/">CustomModelData</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
+                            <a href="/wiki/#resource-pack-paths">Структура ресурс-пака</a>
                         </div>
                     </div>
                     <div class="mega-group">
                         <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
                         <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
+                            <a href="/wiki-resource-pack-generator/">Как использовать генератор</a>
                         </div>
                     </div>
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
+                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Другие инструменты</a>
                         <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a>
-                            <a href="/wiki-skin-editor/">Skin editor</a>
-                            <a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
+                            <a href="/tools/">Каталог инструментов</a>
+                            <a href="/wiki-skin-editor/">Редактор скинов</a>
+                            <a href="/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/wiki-custom-villager-trades/">Торги жителей</a>
                         </div>
                     </div>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>How one item becomes many models without mods.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a>
+                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается во множество моделей без модов.</span></a>
+                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговый сценарий создания ресурс-пака.</span></a>
+                    <a class="mega-card" href="/wiki-skin-editor/"><strong>Гайд по редактору скинов</strong><span>Как рисовать по атласу и прямо по модели игрока.</span></a>
                 </div>
             </div>
         </div>
@@ -175,16 +175,16 @@
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
                     <a href="/ru/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/ru/skin-editor/">Minecraft Skin Editor</a>
-                    <a href="/ru/texture-painter/">Texture painter</a>
-                    <a href="/ru/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/ru/custom-potions/">Custom potions</a>
-                    <a href="/ru/tool-coming-soon/">Upcoming tools</a>
+                    <a href="/ru/skin-editor/">Редактор скинов Minecraft</a>
+                    <a href="/ru/texture-painter/">Редактор текстур</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
                 </div>
                 <div class="mega-feature">
                     <a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисование по атласу и прямо по 3D-модели игрока.</span></a>
-                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/ru/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и предпросмотр.</span></a>
+                    <a class="mega-card" href="/ru/custom-potions/"><strong>Кастомные зелья</strong><span>Генератор содержимого зелий, эффектов, цвета, лора и give-команд.</span></a>
                 </div>
             </div>
         </div>
@@ -235,22 +235,29 @@
                                 <span class="row-toolbar-label" id="skinAlphaValue">100%</span>
                             </div>
                         </div>
-                        <div class="skin-recent-colors" id="skinRecentColors" aria-label="Последние цвета"></div>
+                        <div class="tool-field">
+                            <label for="skinRecentColors">Последние цвета</label>
+                            <div class="skin-recent-colors" id="skinRecentColors" aria-label="Последние цвета"></div>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinSimilarColors">Похожие оттенки</label>
+                            <div class="skin-recent-colors" id="skinSimilarColors" aria-label="Похожие оттенки"></div>
+                        </div>
                     </div>
 
                     <div class="skin-compact-grid">
                         <div class="tool-field">
                             <label>Слой рисования</label>
                             <div class="skin-tool-grid">
-                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">Base</button>
-                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Outer</button>
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">База</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Верхний</button>
                             </div>
                         </div>
                         <div class="tool-field">
                             <label>Модель рук</label>
                             <div class="skin-tool-grid">
-                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">Wide</button>
-                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-model="slim">Slim</button>
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">Широкие</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-model="slim">Тонкие</button>
                             </div>
                         </div>
                         <div class="tool-field">
@@ -306,7 +313,7 @@
                         </div>
                     </div>
                 </div>
-                <p class="skin-editor-note">Главная поверхность для рисования здесь — 3D-модель игрока. Выбирайте <strong>Base</strong> для нижнего слоя скина и <strong>Outer</strong> для шляпы, куртки, рукавов и штанин.</p>
+                <p class="skin-editor-note">Главная поверхность для рисования здесь — 3D-модель игрока. Выбирайте <strong>База</strong> для нижнего слоя скина и <strong>Верхний</strong> для шляпы, куртки, рукавов и штанин.</p>
             </section>
 
             <section class="tool-panel">
@@ -325,9 +332,9 @@
                 <h2>Быстрый статус</h2>
                 <div class="skin-stats">
                     <span class="skin-stat-pill">Атлас: <strong id="skinDimensions">64 x 64</strong></span>
-                    <span class="skin-stat-pill">Модель: <strong id="skinModelValue">wide</strong></span>
-                    <span class="skin-stat-pill">Слой: <strong id="skinLayerValue">base</strong></span>
-                    <span class="skin-stat-pill">Инструмент: <strong id="skinMode">brush</strong></span>
+                    <span class="skin-stat-pill">Модель: <strong id="skinModelValue">широкие</strong></span>
+                    <span class="skin-stat-pill">Слой: <strong id="skinLayerValue">база</strong></span>
+                    <span class="skin-stat-pill">Инструмент: <strong id="skinMode">кисть</strong></span>
                     <span class="skin-stat-pill">Кисть: <strong id="skinBrush">1px</strong></span>
                 </div>
             </section>

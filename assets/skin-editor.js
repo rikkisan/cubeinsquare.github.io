@@ -3,6 +3,41 @@
     const DEFAULT_ZOOM = 8;
     const DEFAULT_ALPHA = 100;
     const HISTORY_LIMIT = 40;
+    const UI_LANG = (document.documentElement.lang || 'en').toLowerCase();
+    const UI_TEXT = {
+        en: {
+            tools: {
+                brush: 'brush',
+                eraser: 'eraser',
+                picker: 'picker',
+                orbit: 'orbit'
+            },
+            layers: {
+                base: 'base',
+                overlay: 'outer'
+            },
+            models: {
+                wide: 'wide',
+                slim: 'slim'
+            }
+        },
+        ru: {
+            tools: {
+                brush: 'кисть',
+                eraser: 'ластик',
+                picker: 'пипетка',
+                orbit: 'орбита'
+            },
+            layers: {
+                base: 'база',
+                overlay: 'верхний'
+            },
+            models: {
+                wide: 'широкие',
+                slim: 'тонкие'
+            }
+        }
+    };
 
     const state = {
         tool: 'brush',
@@ -388,14 +423,19 @@
     }
 
     function updateStats() {
+        const labels = UI_TEXT[UI_LANG] || UI_TEXT.en;
         elements.dimensions.textContent = `${SKIN_SIZE} x ${SKIN_SIZE}`;
-        elements.mode.textContent = state.tool;
+        elements.mode.textContent = labels.tools[state.tool] || state.tool;
         elements.brush.textContent = `${state.brushSize}px`;
         if (elements.layerValue) {
-            elements.layerValue.textContent = state.paintLayer === 'overlay' ? 'outer' : 'base';
+            elements.layerValue.textContent = state.paintLayer === 'overlay'
+                ? labels.layers.overlay
+                : labels.layers.base;
         }
         if (elements.modelValue) {
-            elements.modelValue.textContent = state.modelType === 'slim' ? 'slim' : 'wide';
+            elements.modelValue.textContent = state.modelType === 'slim'
+                ? labels.models.slim
+                : labels.models.wide;
         }
     }
 
