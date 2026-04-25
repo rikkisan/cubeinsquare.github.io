@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square</title>
+    <title>Full Minecraft 1.21.4 Migration Guide: Why Old Resource Packs Break and How to Rebuild Them | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <meta name="description" content="A full 1.21.4 migration guide for Minecraft creators: why old 1.20 resource-pack workflows break, how items replace models/item overrides, and how to rebuild commands and item identity in the component era.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -17,13 +17,13 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square">
-    <meta property="og:description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <meta property="og:title" content="Full Minecraft 1.21.4 Migration Guide: Why Old Resource Packs Break and How to Rebuild Them | Cube in Square">
+    <meta property="og:description" content="A full migration guide for moving old 1.20 resource-pack and command workflows into Minecraft 1.21.4 item definitions and data components.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era | Cube in Square">
-    <meta name="twitter:description" content="A practical migration checklist for updating resource packs and command workflows to Minecraft 1.21.4 component syntax.">
+    <meta name="twitter:title" content="Full Minecraft 1.21.4 Migration Guide: Why Old Resource Packs Break and How to Rebuild Them | Cube in Square">
+    <meta name="twitter:description" content="Why models/item overrides break in 1.21.4, what Data Components replace, and how to rebuild your pack workflow without mods.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -42,29 +42,146 @@
     </div>
 </div>
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/wiki/">← All articles</a>
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
     <section class="page-hero">
-        <h1>Minecraft 1.21.4 Migration Guide: Moving Resource Packs to the Component Era</h1>
-        <p class="page-lead">Minecraft 1.21.4 does not only change command spelling. It changes how your pack workflow thinks about item identity, potion payloads, custom model references, and every hand-written give command you still keep in old notes.</p>
+        <h1>Full Minecraft 1.21.4 Migration Guide: Why Old Resource Packs Break and How to Rebuild Them</h1>
+        <p class="page-lead">Minecraft 1.21.4 does not just rename a few tags. It changes the whole mental model behind custom items. If your old 1.20 workflow was built around <code>models/item</code>, numeric <code>CustomModelData</code>, and hand-written NBT blobs, this update is the moment where all of that starts to crack at once.</p>
         <a class="resource-link" href="/resource-pack-generator/">Open resource-pack generator</a>
     </section>
     <article>
-        <h2>What actually changed</h2>
-        <p>The painful part of the migration is not the ZIP pack itself. Textures, models, and blockstates still live in the same folders. The real shift is item data: commands moved away from old NBT-style item tags and into explicit components.</p>
-        <h2>The first thing to audit</h2>
-        <ul><li>Saved <code>/give</code> commands in docs or command blocks</li><li>Villager trade commands that embed item payloads</li><li>Potion commands and NPC rewards</li><li>Any CustomModelData items used in quests, shops, or scripts</li></ul>
-        <h2>Old and new mindset</h2>
-<pre><code>/give @p minecraft:paper{CustomModelData:12,display:{Name:'{"text":"Pass"}'}} 1
-/give @p minecraft:paper[minecraft:custom_model_data=12,minecraft:custom_name='[{"text":"Pass"}]'] 1</code></pre>
-        <p>The new syntax is flatter, easier to compose, and better for long-term maintenance once you stop thinking in nested NBT blobs.</p>
-        <h2>Migration checklist</h2>
-        <ol><li>List every old command your server still uses.</li><li>Convert visible fields like names and lore to dedicated components.</li><li>Move hidden identity checks into <code>minecraft:custom_data</code>.</li><li>Re-test villager trades, quest rewards, and potion items on a staging world.</li><li>Update wiki notes and admin cheat sheets so staff stop pasting old syntax.</li></ol>
-        <h2>Resource-pack files vs command files</h2>
-        <p>Your resource-pack ZIP often survives the version jump almost untouched. The parts that fail first are admin commands, loot distribution, shops, NPCs, and story items. Treat migration as a command-and-data audit, not only as a texture-pack update.</p>
-        <h2>Where the generator helps</h2>
-        <p>The pack generator already separates target version choices. That means you can keep the art pipeline stable while changing the command syntax that staff and builders copy from the tools.</p>
-        <h2>What to retest after the move</h2>
-        <ul><li>Every item that uses <code>custom_model_data</code></li><li>Every potion with custom contents</li><li>Every villager that validates a special item</li><li>Every admin macro or staff note with a saved command</li></ul>
+        <h2>Why old 1.20 packs suddenly feel broken</h2>
+        <p>The most misleading thing about 1.21.4 is that your pack may look half-alive. Textures still exist. PNGs still open. Some models may still seem to work in limited cases. That makes the migration feel like a small syntax annoyance, when in reality Mojang changed the layer that decides which model an item should use.</p>
+        <p>In older workflows, creators often thought like this: "I have an item model in <code>models/item</code>. Inside that file I place <code>overrides</code>. Each override watches some predicate like <code>custom_model_data</code>, and then redirects to another model." That logic is no longer the center of the system.</p>
+        <p>In 1.21.4, item rendering shifts into <strong>item model definitions</strong> stored in <code>assets/&lt;namespace&gt;/items/</code>. At the same time, item payloads stop behaving like old NBT compounds and move into explicit <strong>Data Components</strong>. So the migration is not just "fix the path" or "change one give command." It is really a migration from one architecture to another.</p>
+
+        <h2>What changed at a glance</h2>
+        <table class="compact-table">
+            <tr><th>Old 1.20 habit</th><th>1.21.4 reality</th><th>Why it matters</th></tr>
+            <tr><td><code>assets/&lt;ns&gt;/models/item/...</code></td><td><code>assets/&lt;ns&gt;/items/...</code> chooses the logic</td><td>The selection layer is now separate from the raw model.</td></tr>
+            <tr><td><code>overrides</code> in item model JSON</td><td><code>minecraft:select</code>, <code>minecraft:range_dispatch</code>, <code>minecraft:condition</code></td><td>You now describe routing logic with dedicated model-definition types.</td></tr>
+            <tr><td><code>{CustomModelData:12}</code></td><td><code>minecraft:custom_model_data</code> component</td><td>Identity is component-driven, not an ad-hoc NBT tag.</td></tr>
+            <tr><td><code>display:{Name:...,Lore:...}</code></td><td><code>minecraft:custom_name</code>, <code>minecraft:lore</code></td><td>Visible item presentation is broken into named components.</td></tr>
+            <tr><td>Numeric-only model identity</td><td>Strings, flags, floats, colors inside <code>custom_model_data</code></td><td>One item can now carry richer state than just one integer.</td></tr>
+        </table>
+
+        <h2>The folder move is real, but the deeper change is conceptual</h2>
+        <p>Yes, you really do move from <code>models/item</code> logic toward the <code>items</code> folder. But the more important shift is this: the game no longer assumes your raw item model should also be the place where all render-choice logic lives.</p>
+        <p>That split is actually healthier. It means you can treat the raw model as shape and art, and treat the item definition as the dispatcher that decides when that art is shown.</p>
+
+        <h2>A minimal old vs new example</h2>
+<pre><code>// Old 1.20-style item model
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "minecraft:item/paper"
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 12 },
+      "model": "cubeinsquare:item/paper/pass"
+    }
+  ]
+}</code></pre>
+        <p>In the old system, the same file both defined the base item and controlled the switch into a custom variant. That is exactly the pattern 1.21.4 moves away from.</p>
+
+<pre><code>// New 1.21.4-style items definition
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "cases": [
+      {
+        "when": "pass_document",
+        "model": {
+          "type": "minecraft:model",
+          "model": "cubeinsquare:item/paper/pass"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/paper"
+    }
+  }
+}</code></pre>
+
+        <h2>Line-by-line explanation of the new definition</h2>
+        <p><code>"model"</code>: this is the root routing object. Instead of dumping render logic into old <code>overrides</code>, you now declare an item model definition object.</p>
+        <p><code>"type": "minecraft:select"</code>: this tells the game to choose between discrete cases. Use this when the item should jump between named states like "pass," "ticket," "permit," or "ritual seal."</p>
+        <p><code>"property": "minecraft:custom_model_data"</code>: the selection source is the <code>custom_model_data</code> component, not the legacy predicate field.</p>
+        <p><code>"index": 0</code>: the game reads the first string from the relevant list inside the component. This matters because the component can now hold more than one kind of payload.</p>
+        <p><code>"cases"</code>: these are your explicit branches. Each case says, "when the value is this, render that."</p>
+        <p><code>"when": "pass_document"</code>: this is a string key, not an old numeric ID. That makes your intent much easier to read in commands, loot tables, or villager trades.</p>
+        <p><code>"type": "minecraft:model"</code>: this says the selected branch should render a plain raw model from the <code>models</code> directory.</p>
+        <p><code>"model": "cubeinsquare:item/paper/pass"</code>: this points to the actual raw item model, the same kind of art asset you already know how to build.</p>
+        <p><code>"fallback"</code>: if nothing matches, the item still needs a safe base appearance. Without a fallback, you are effectively inviting missing-model chaos.</p>
+
+        <h2>Commands break for the same reason</h2>
+        <p>The command layer and the pack layer break together because they used to depend on the same old assumptions. Here is the shape of the transition:</p>
+<pre><code>// Old style
+/give @p minecraft:paper{CustomModelData:12,display:{Name:'{"text":"Pass"}'}} 1
+
+// New style
+/give @p minecraft:paper[
+  minecraft:custom_model_data={strings:["pass_document"]},
+  minecraft:custom_name='[{"text":"Pass"}]'
+] 1</code></pre>
+
+        <h2>Line-by-line explanation of the new command</h2>
+        <p><code>minecraft:paper</code>: the vanilla base item still matters. Your pack logic decorates or redirects a real item, it does not create a new registry item.</p>
+        <p><code>minecraft:custom_model_data={...}</code>: the identity payload now sits in a named component block.</p>
+        <p><code>strings:["pass_document"]</code>: instead of encoding meaning into a number like <code>12</code>, you can now write a human-readable state key. That is much friendlier for long-term maintenance.</p>
+        <p><code>minecraft:custom_name</code>: visible text becomes its own component. In older workflows, creators often buried everything inside <code>display</code>; now the data is flatter and easier to reason about.</p>
+
+        <h2>What should you audit first on a real server</h2>
+        <ul>
+            <li>Saved staff commands in documents or pinned messages</li>
+            <li>Villager trades that expect special items as currency</li>
+            <li>Potions and quest rewards with old NBT syntax</li>
+            <li>NPC scripts or command blocks that still use numeric-only <code>CustomModelData</code></li>
+            <li>Any old resource-pack file where item selection still depends on <code>overrides</code></li>
+        </ul>
+        <p>This is why migration often feels bigger than the pack itself. The ZIP may survive. The staff workflow is what usually collapses first.</p>
+
+        <h2>Typical migration mistakes</h2>
+        <ol>
+            <li><strong>Only changing commands, not pack logic.</strong> You can convert <code>/give</code> syntax and still forget that old model routing also needs to move.</li>
+            <li><strong>Treating the <code>items</code> folder like a rename-only patch.</strong> It is not just a new folder. It is a new routing layer.</li>
+            <li><strong>Leaving no fallback model.</strong> That makes debugging much harder because "nothing shows" and "wrong branch selected" start to look the same.</li>
+            <li><strong>Keeping old numeric IDs without reconsidering meaning.</strong> 1.21.4 gives you strings, flags, floats, and colors. Use that extra expressiveness.</li>
+            <li><strong>Testing only in inventory.</strong> The new item model system can also react to context, hand, charge, time, and other states, so one view is not enough.</li>
+        </ol>
+
+        <h2>What the migration gives you in return</h2>
+        <p>The change is painful, but it also opens cleaner design space. The new item system is much closer to describing meaning than patching around engine quirks. Once you stop thinking in old NBT blobs, you gain a better vocabulary for dynamic items.</p>
+        <p>You can separate visible text from hidden identity. You can route models through named string states instead of remembering random numbers. You can use <code>range_dispatch</code> for durability-driven states and <code>select</code> for symbolic states. And you can start treating item rendering like a deliberate system instead of one huge pile of overrides.</p>
+
+        <h2>Practical conclusion</h2>
+        <p>If your old 1.20 setup is breaking, the fix is not "find the one wrong tag." The fix is to migrate your whole item workflow into the new architecture:</p>
+        <ol>
+            <li>Move item-selection logic into <code>assets/&lt;namespace&gt;/items</code></li>
+            <li>Replace old <code>overrides</code> thinking with item model definitions</li>
+            <li>Move names, lore, and hidden identity into proper components</li>
+            <li>Retest commands, villager trades, and pack routing together</li>
+        </ol>
+        <p>Once you do that, 1.21.4 stops looking like a random breaking update and starts looking like the version where item identity finally becomes explicit.</p>
+
+        <h2>FAQ</h2>
+        <h3>Do my textures and raw model files need to move out of <code>models</code>?</h3>
+        <p>No. The big shift is that the <em>selection logic</em> moves into <code>items</code>. Raw models still exist in the model layer; they are simply referenced differently.</p>
+
+        <h3>Do I have to replace every numeric <code>CustomModelData</code> value immediately?</h3>
+        <p>Not always immediately, but 1.21.4 gives you richer fields inside the component, and strings are usually clearer for long-term server maintenance than magic numbers.</p>
+
+        <h3>Why does my old give command fail even though the texture is still in the pack?</h3>
+        <p>Because the texture was rarely the fragile part. The command payload and the model-routing logic were the pieces tied to old NBT and old override behavior.</p>
+
+        <h3>What should I migrate first on an RP server?</h3>
+        <p>Quest items, villager trade currencies, passes, permits, potion rewards, and any staff cheat-sheet commands. Those are the objects most likely to break your live gameplay if left half-migrated.</p>
+
+        <h3>Why is this better than the old system?</h3>
+        <p>Because the new system is more descriptive. It separates concerns, supports richer data, and lets you model item identity in a way that is easier to read, document, and scale.</p>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
