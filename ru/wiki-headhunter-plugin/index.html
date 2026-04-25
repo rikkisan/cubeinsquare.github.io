@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Плагин HeadHunter для RP-серверов Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Русский разбор HeadHunter Plugin: Hunter's Fang, 87 способностей мобов, ограничения, GUI, смерть с потерей прогрессии и админские настройки для RP-сервера на Paper.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-headhunter-plugin/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-headhunter-plugin/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-headhunter-plugin/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-headhunter-plugin/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-headhunter-plugin/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-headhunter-plugin/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Плагин HeadHunter для RP-серверов Minecraft | Cube in Square">
+    <meta property="og:description" content="Как HeadHunter превращает охоту на мобов в систему классов, развития и RP-архетипов через Hunter's Fang и десятки способностей.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-headhunter-plugin/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Плагин HeadHunter для RP-серверов Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Hunter's Fang, 87 моб-способностей, ограничения и логика progression в одной статье.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Плагин HeadHunter для RP-серверов Minecraft","description":"Русский разбор HeadHunter Plugin: Hunter's Fang, 87 способностей мобов, ограничения, GUI, смерть с потерей прогрессии и админские настройки для RP-сервера на Paper.","inLanguage":"ru","url":"https://cubeinsquare.com/ru/wiki-headhunter-plugin/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://cubeinsquare.com/ru/"},{"@type":"ListItem","position":2,"name":"Вики","item":"https://cubeinsquare.com/ru/wiki/"},{"@type":"ListItem","position":3,"name":"HeadHunter Plugin","item":"https://cubeinsquare.com/ru/wiki-headhunter-plugin/"}]}]}</script>
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-headhunter-plugin/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-headhunter-plugin/">FR</a><a href="/de/wiki-headhunter-plugin/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Плагин HeadHunter для RP-серверов Minecraft</h1>
+        <p class="page-lead">Система прогрессии охотника, в которой почти каждый моб становится источником силы, а весь рост персонажа держится на одном связанном артефакте и длинном наборе активных и пассивных способностей.</p>
+        <a class="resource-link" href="https://www.patreon.com/posts/headhunter-155944378">Открыть пост Patreon</a>
+    </section>
+    <article>
+        <h2>Почему этот плагин вообще интересен</h2>
+        <p>HeadHunter превращает обычную охоту на мобов в полноценную серверную систему классов. Игрок больше не собирает трофеи ради декора или ачивки. Он буквально собирает новые свойства живых существ и встраивает их в свою ролевую идентичность. Благодаря этому PvE начинает питать RP, а не существовать отдельно от него.</p>
+
+        <h2>Hunter's Fang — центральный артефакт</h2>
+        <p>Вся система вращается вокруг <strong>Hunter's Fang</strong>. Пост описывает его как связанный предмет прогрессии, который нельзя выбросить, спрятать или потерять в обычном инвентарном цикле. Он переживает смерть персонажа и усиливается на крупных рубежах развития.</p>
+        <ul>
+            <li>Уровень 1 — по умолчанию.</li>
+            <li>Уровень 2 — после 20 способностей.</li>
+            <li>Уровень 3 — после 40 способностей.</li>
+            <li>Уровень 4 — после 60 способностей.</li>
+        </ul>
+        <p>Есть и ручной путь апгрейда через <code>Shift + F</code> и дорогие блоки. Это хороший компромисс между гриндом и церемониальным продвижением по статусу.</p>
+
+        <h2>87 способностей мобов меняют словарь сервера</h2>
+        <p>Главная цифра в посте — <strong>87 разных способностей</strong>. Но ценность здесь не только в количестве. Важно то, что игроки начинают описывать себя не через броню и урон, а через существ, чьи свойства они присвоили.</p>
+        <ul>
+            <li><strong>Vex</strong> — краткая разведка почти в режиме призрака.</li>
+            <li><strong>Allay</strong> — утилитарное поведение помощника и работа с предметами.</li>
+            <li><strong>Warden</strong> — отслеживание движущихся целей.</li>
+            <li><strong>Wither</strong> — удаление жидкостей и восстановление в тяжёлом состоянии.</li>
+            <li><strong>Evoker</strong> — доступ к тотемам и усиленные моменты спасения.</li>
+            <li><strong>Shulker</strong> — аварийная телепортация.</li>
+            <li><strong>Slime</strong> — дополнительная мобильность через прыжки.</li>
+        </ul>
+        <p>Это особенно хорошо для RP, потому что такие способности создают архетипы, а не только цифры урона.</p>
+
+        <h2>Ограничения здесь не менее важны, чем сила</h2>
+        <p>Пост не продаёт систему как бесконечный power fantasy. Он одновременно отрезает часть ванильных удобств, чтобы класс действительно что-то стоил.</p>
+        <ul>
+            <li>Bundles могут взрываться.</li>
+            <li>Доступ к Ender Chest зависит от активных баффов.</li>
+            <li>Totem ограничен, если не активен нужный эффект Evoker.</li>
+            <li>После смерти можно потерять часть активных способностей, по умолчанию — 10.</li>
+            <li>Опыт и его использование тоже переработаны.</li>
+        </ul>
+        <p>Это критично для баланса. Сильный progression-плагин без трения очень быстро превращает всех игроков в один и тот же набор оптимальных билдов.</p>
+
+        <h2>GUI делает прогрессию читаемой</h2>
+        <p>У плагина есть отдельный интерфейс, где каждый моб получает свой слот и состояние вроде <code>[???]</code>, <code>[DISCOVERED]</code>, <code>[OFF]</code> или <code>[ACTIVE]</code>. Плюс есть Info Tablet, который показывает уровень Fang, открытые силы, активные баффы и требование к следующему апгрейду.</p>
+        <p>Для Paper-сервера это очень важно: как только система становится больше нескольких эффектов, половина успеха — это понятный интерфейс и хороший discoverability.</p>
+
+        <h2>Админская сторона выглядит здоровой</h2>
+        <p>Команды через <code>/headhunter</code> позволяют выдать или снять Fang, добавить нужный бафф, очистить прогрессию, посмотреть сборку игрока, выставить уровень вручную и менять параметр потери после смерти. Отдельно есть смена языка через <code>/hunterlang</code>. Это значит, что плагин рассчитан на реальную серверную эксплуатацию, а не только на “идеальный запуск один раз”.</p>
+
+        <h2>Почему это хорошо работает для RP</h2>
+        <p>HeadHunter даёт игрокам понятную фантазию роста без клиентских модов. Охотник со временем становится странным специалистом, а мир начинает реагировать на конкретные свойства мобов, встроенные в его тело. На такой базе легко строить гильдии, охотничьи контракты, чёрный рынок редких способностей и целые ветки лора вокруг опасных трофеев.</p>
+
+        <h2>Источник</h2>
+        <p>Эта статья собрана как удобный сайт-обзор по публичному посту автора:<br><a href="https://www.patreon.com/posts/headhunter-155944378">HeadHunter Plugin | Patreon</a></p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

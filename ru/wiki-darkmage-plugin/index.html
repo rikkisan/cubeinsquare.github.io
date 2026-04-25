@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Плагин DarkMage для RP-серверов Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Русский разбор DarkMage Plugin: экономика максимального здоровья, бутылки крови, проклятия, ритуалы, артефакты и жёсткая интеграция с hardcore-миром.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-darkmage-plugin/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-darkmage-plugin/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-darkmage-plugin/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-darkmage-plugin/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-darkmage-plugin/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-darkmage-plugin/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Плагин DarkMage для RP-серверов Minecraft | Cube in Square">
+    <meta property="og:description" content="Как DarkMage строит тёмную магию вокруг здоровья как валюты, проклятий, ритуалов и опасных артефактов.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-darkmage-plugin/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Плагин DarkMage для RP-серверов Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Бутылки крови, ритуальные инструменты, проклятия и контроль жертвы в одной статье.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Плагин DarkMage для RP-серверов Minecraft","description":"Русский разбор DarkMage Plugin: экономика максимального здоровья, бутылки крови, проклятия, ритуалы, артефакты и жёсткая интеграция с hardcore-миром.","inLanguage":"ru","url":"https://cubeinsquare.com/ru/wiki-darkmage-plugin/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://cubeinsquare.com/ru/"},{"@type":"ListItem","position":2,"name":"Вики","item":"https://cubeinsquare.com/ru/wiki/"},{"@type":"ListItem","position":3,"name":"DarkMage Plugin","item":"https://cubeinsquare.com/ru/wiki-darkmage-plugin/"}]}]}</script>
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-darkmage-plugin/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-darkmage-plugin/">FR</a><a href="/de/wiki-darkmage-plugin/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Плагин DarkMage для RP-серверов Minecraft</h1>
+        <p class="page-lead">Тёмный ритуальный плагин, построенный вокруг экономики максимального здоровья, извлечения крови, проклятий, жертвенных артефактов, удалённого контроля над жертвой и необратимых последствий в hardcore-мире.</p>
+        <a class="resource-link" href="https://www.patreon.com/posts/darkmage-plugin-156509643">Открыть пост Patreon</a>
+    </section>
+    <article>
+        <h2>Чем этот плагин ощущается иначе</h2>
+        <p>DarkMage не пытается выглядеть как аккуратный набор заклинаний или безобидный utility-класс. Он строит магию как экономику украденной жизненной силы, подготовки ритуалов, отмеченных жертв и опасных артефактов. На RP-сервере это особенно важно: игрок не просто получает новые умения, а входит в мир, где здоровье, наблюдение и жертва становятся ресурсами.</p>
+        <p>Главная идея плагина — центральной валютой становится не мана и не кулдауны, а <strong>максимальное здоровье</strong>. Уже одно это меняет тон всей роли. Тёмный маг вмешивается не в полоску HP на пару секунд, а в сам фундамент чужого тела.</p>
+
+        <h2>Максимальное здоровье как кровавая экономика</h2>
+        <p>Самая яркая механика здесь — экономика крови. Базовый потолок здоровья равен 20 HP, а минимальный порог опускается до 2 HP. Плагин отслеживает изменения этого потолка, поэтому удар и ритуал становятся не обычным боевым уроном, а долгосрочным структурным повреждением.</p>
+        <ul>
+            <li><strong>Hungry Blade</strong> навсегда крадёт 1 HP максимального здоровья у цели при ударе.</li>
+            <li>Если у атакующего в левой руке пустая бутылка, удар превращает её в <strong>Blood Bottle</strong>.</li>
+            <li>Тем же клинком маг может пожертвовать 1 HP собственного потолка, чтобы набрать свою кровь в бутылку.</li>
+            <li><strong>Blood Bottles</strong> возвращают 1 HP максимального здоровья при употреблении.</li>
+        </ul>
+        <p>Для RP это мощный цикл, потому что бутылка здесь — не просто расходник. Это улика, долг, рычаг давления, ритуальный материал и потенциальный объект торговли.</p>
+
+        <h2>Связка с hardcore-миром делает смерть реальной</h2>
+        <p>Плагин умеет работать с отдельным hardcore-миром. Смерть в нём не выглядит как обычный ванильный респаун: игрок немедленно и навсегда переводится в Spectator Mode. Это резко усиливает любую тёмную магию, потому что она сосуществует с пространством, где смерть действительно окончательна.</p>
+        <p>Такой контраст очень полезен для RP. Он позволяет отделить “опасную игру” от “территории, где цена слишком высока”, а ритуалы автоматически начинают ощущаться серьёзнее.</p>
+
+        <h2>Снаряжение построено как настоящая дисциплина</h2>
+        <p>DarkMage не ограничивается одной магической саблей. Пост описывает целый ритуальный набор.</p>
+        <ul>
+            <li><strong>Grimoire</strong> — книга, которой маг привязывает ритуальное место и открывает GUI магии.</li>
+            <li><strong>Mage Robe</strong> — обязательная мантия для большинства серьёзных заклинаний и артефактов.</li>
+            <li><strong>Ritual Dagger</strong> — инструмент маркировки текущей жертвы.</li>
+            <li><strong>King Sword</strong> — временный артефакт с сильными дебаффами и жёстким временем жизни.</li>
+            <li><strong>Cursed Water</strong> и <strong>Tainted Eye</strong> — инструменты для проклятий и удалённого наблюдения.</li>
+            <li><strong>Tower Totem</strong>, <strong>Invisible Veil</strong> и <strong>Force Barrier</strong> — контроль, побег и мобильность.</li>
+        </ul>
+        <p>Именно поэтому класс не распадается на “мага с дамагом”. Он ощущается как дисциплина со своими одеждами, инструментами и ритуальной практикой.</p>
+
+        <h2>Проклятия дают плагину социальные зубы</h2>
+        <p>Настоящая сила плагина — в системе проклятий. В посте описаны несколько слоёв вредоносного влияния:</p>
+        <ul>
+            <li><strong>Evil Eye</strong> — привязка души жертвы к магу и возможность удалённого воздействия.</li>
+            <li><strong>Bird Sorrow</strong> — тематическое проклятие с долгим давлением на персонажа.</li>
+            <li><strong>Vision Fog</strong> — постоянная слепота и тьма, которую нельзя смыть обычным молоком.</li>
+        </ul>
+        <p>Благодаря этому DarkMage работает не только как боевой плагин. Он становится инструментом шантажа, расследования, мести, контроля и запрещённых сделок.</p>
+
+        <h2>Ритуалы привязаны к структурам, а не к кнопке</h2>
+        <p>Лучшее в этой системе то, что магия возвращается в мир. Игрок привязывает ритуальную точку, присев и нажав Grimoire по структуре вроде котла, огня или варочной стойки. После этого GUI потребляет катализаторы из инвентаря.</p>
+        <p>Среди ритуалов особенно выделяются:</p>
+        <ul>
+            <li><strong>Mage Robe Creation</strong> — пентаграмма с lightning rod, блоками, бронёй и Ghast Tear.</li>
+            <li><strong>Evil Eye</strong> — создание Cursed Water и Tainted Eye для текущей жертвы.</li>
+            <li><strong>Vision Fog</strong> — усиленное проклятие через ink, diamond и paper.</li>
+            <li><strong>Undead Summon</strong> — вызов особых зомби, охотящихся на цель.</li>
+            <li><strong>Absolute Blood Extraction</strong> — физическое извлечение максимального здоровья в бутылки.</li>
+        </ul>
+        <p>Такой подход хорош тем, что магия создаёт места, сцены и ритуальные площадки, которые другие игроки могут найти, сорвать, осквернить или расследовать.</p>
+
+        <h2>Артефакты здесь работают как генераторы сцен</h2>
+        <p>Часть предметов интересна не только механически, но и драматургически.</p>
+        <ul>
+            <li><strong>Invisible Veil</strong> снимает броню, даёт невидимость и полёт, оставляя дымный след — идеальный инструмент для проникновения.</li>
+            <li><strong>Tainted Eye</strong> делает другого игрока целью наблюдения и одновременно калечит его зрение.</li>
+            <li><strong>Force Barrier</strong> создаёт взрывную волну отбрасывания и отражает снаряды.</li>
+            <li><strong>King Sword</strong> живёт всего пятнадцать минут и потому идеально подходит для одной кульминационной сцены.</li>
+        </ul>
+        <p>Это очень верное направление для RP-плагина: способности должны не только выигрывать бой, но и создавать момент.</p>
+
+        <h2>Контр-ритуалы не дают системе стать тупиком</h2>
+        <p>Пост описывает и контрмеры: огненный ритуал снятия проклятий, очистку предметов от Binding и Vanishing, а также Soul Healing, который восстанавливает мага и снимает негативные эффекты. Благодаря этому тёмная магия остаётся частью живого мира, где есть сопротивление, очищение и попытка вернуть утраченное.</p>
+
+        <h2>Админские команды показывают, что плагин готов к реальному серверу</h2>
+        <p>Через <code>/darkmage</code> можно выдавать и снимать артефакты, возвращать украденные сердца, отмечать миры как hardcore и менять язык. Это означает, что система рассчитана не на одну идеальную кампанию, а на настоящую жизнь сервера с модерацией, ремонтом и перенастройкой баланса.</p>
+
+        <h2>Почему это работает для RP-дизайна</h2>
+        <p>DarkMage силён потому, что он превращает магию в социальное давление и телесную цену, а не просто в красивое шоу. Здоровье становится валютой. Бутылки становятся уликами. Робы становятся знаком допуска. Ритуальные площадки становятся местом преступления. Для сервера без модов это очень мощный инструмент построения фракций, культов, расследований и страха.</p>
+
+        <h2>Источник</h2>
+        <p>Эта статья собрана как удобный сайт-обзор по публичному посту автора:<br><a href="https://www.patreon.com/posts/darkmage-plugin-156509643">DarkMage Plugin | Patreon</a></p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
