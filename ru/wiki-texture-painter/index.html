@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по размеру текстур Minecraft и workflow редактора текстур | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Когда использовать 16x16, 32x32, 64x64 и 128x128 текстуры Minecraft, как рисовать block faces и inventory icons и как отправлять PNG в генератор ресурс-паков.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-texture-painter/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-texture-painter/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-texture-painter/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-texture-painter/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-texture-painter/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-texture-painter/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Гайд по размеру текстур Minecraft и workflow редактора текстур | Cube in Square">
+    <meta property="og:description" content="Практический гайд по размерам текстур Minecraft и workflow от PNG в браузере до готового ресурс-пака.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-texture-painter/">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-texture-painter/">EN</a><a href="/fr/wiki-texture-painter/">FR</a><a href="/de/wiki-texture-painter/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&lsaquo; Все статьи</a>
+    <section class="page-hero">
+        <h1>Гайд по размеру текстур Minecraft</h1>
+        <p class="page-lead">Разрешение меняет не только резкость. Оно меняет объём работы, цельность стиля и то, насколько легко пак читается в движении и в реальном игровом освещении.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/ru/texture-painter/">Открыть редактор текстур</a>
+            <a class="resource-link resource-link-secondary" href="/ru/resource-pack-generator/">Превратить PNG в пак</a>
+        </div>
+    </section>
+
+    <article>
+        <h2>Начинайте не с числа, а с задачи</h2>
+        <p>Подходящий размер текстуры зависит не от того, насколько хочется “покрасивее”, а от того, как в целом должен ощущаться ваш пак. Больший размер не равен автоматически лучшему результату. Если весь проект тянется к ванильной читабельности, слишком большие текстуры могут сделать один блок красивым в изоляции, но весь пак развалить по стилю в движении.</p>
+
+        <h2>16x16</h2>
+        <p>Это ванильная база. Такой размер быстро рисуется, хорошо читается издалека и подходит пакам, которым нужны чистые силуэты и минимум визуального шума.</p>
+
+        <h2>32x32</h2>
+        <p>Для многих кастомных паков это золотая середина. Появляется место для более аккуратной светотени и мелких деталей, но каждый файл ещё не превращается в отдельный арт-проект.</p>
+
+        <h2>64x64</h2>
+        <p>Используйте этот размер, если у пака уже есть выраженное художественное направление и дополнительные детали реально работают на образ. Он особенно хорош для hero-иконок, кастомных предметов и стилизованных семейств блоков, но требует больше дисциплины, чтобы все поверхности оставались согласованными.</p>
+
+        <h2>128x128 и выше</h2>
+        <p>Высокое разрешение должно быть оправдано. Оно может смотреться красиво в showcase-сценах, но одновременно сильно поднимает объём работы и ускоряет расползание стиля. Если только одна-две текстуры огромные, а остальной пак остаётся простым, итог почти всегда выглядит разорванным.</p>
+
+        <h2>Предметы и блоки читаются по-разному</h2>
+        <p>Иконка предмета и block face — это всё ещё PNG, но игрок воспринимает их по-разному. Предмет должен считываться мгновенно в инвентарной ячейке. Блоковая текстура повторяется на поверхностях, поэтому у неё гораздо важнее тайлинг, поведение краёв и общая ритмика рисунка.</p>
+
+        <h2>Как рисовать block textures</h2>
+        <p>Начинайте с крупного чтения материала. На block face игрок сначала замечает, что это за материал вообще, а уже потом сколы, трещины, руду или мох. Сначала собирайте большие цветовые массы и value-контраст, потом добавляйте детали.</p>
+        <ul>
+            <li>Проверяйте края рано, чтобы текстура тайлилась чисто.</li>
+            <li>Не складывайте весь контраст в центр, оставляя борта пустыми.</li>
+            <li>Если блок будет часто повторяться, убирайте случайные одиночные highlight-пиксели, которые дают сеточный шум.</li>
+            <li>На 16x16 и 32x32 один лишний пиксель уже способен полностью сломать ритм поверхности, так что чаще отдаляйте холст.</li>
+        </ul>
+
+        <h2>Как рисовать inventory icons</h2>
+        <p>Инвентарная иконка оценивается не как живопись, а по тому, понял ли игрок, что это, с первого взгляда в маленьком слоте. Поэтому силуэт, контраст и фокусная деталь важнее, чем микродекор.</p>
+        <ul>
+            <li>Сначала держите читаемую внешнюю форму: клинок, бутылка, камень, бумага, ключ или осколок.</li>
+            <li>Сильный контраст лучше ставить рядом с главным краем, а не размазывать по всему предмету.</li>
+            <li>Не пересвечивайте маленькие иконки на 16x16: слишком много внутреннего шума делает их грязными.</li>
+            <li>Если предмет должен казаться редким или магическим, один яркий акцент почти всегда работает лучше, чем россыпь подсветки во всех углах.</li>
+        </ul>
+
+        <h2>Workflow для inventory icons</h2>
+        <ol>
+            <li>Выберите размер холста, который совпадает с остальным паком.</li>
+            <li>Сначала соберите силуэт одним плоским пятном.</li>
+            <li>Добавьте одну семейство теней и одну семейство светлых акцентов.</li>
+            <li>Отдалите холст до реального размера слота и проверьте, понятен ли предмет.</li>
+            <li>Только после этого добавляйте гравировку, камни, подписи, магические свечения или потёртости.</li>
+        </ol>
+
+        <h2>Workflow для block textures</h2>
+        <ol>
+            <li>Выберите базовые цвета материала.</li>
+            <li>Заложите самые крупные формы.</li>
+            <li>Проверьте углы и края на тайлинг.</li>
+            <li>Добавляйте детали пятнами и кластерами, а не случайными одиночными пикселями.</li>
+            <li>Перед экспортом посмотрите, как текстура повторяется несколько раз подряд.</li>
+        </ol>
+
+        <h2>Рекомендуемый путь работы</h2>
+        <ol>
+            <li>Сначала выберите размер холста.</li>
+            <li>Решите, рисуете ли вы инвентарную иконку или повторяющуюся block face.</li>
+            <li>Соберите PNG в браузере.</li>
+            <li>Экспортируйте только после проверки силуэта, краёв и контраста на реальном масштабе.</li>
+            <li>Потом откройте <a href="/ru/resource-pack-generator/">генератор ресурс-паков</a> и положите PNG в правильный слот для предмета или блока.</li>
+            <li>Скачайте ZIP и проверьте результат в игре до того, как раскрашивать всю серию текстур.</li>
+        </ol>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

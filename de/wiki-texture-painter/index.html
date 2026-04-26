@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide zu Minecraft-Texturgrößen und zum Textur-Editor-Workflow | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wann man 16x16-, 32x32-, 64x64- und 128x128-Minecraft-Texturen nutzt, wie Blockflächen und Inventar-Icons gezeichnet werden und wie das fertige PNG in den Pack-Generator geht.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-texture-painter/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-texture-painter/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-texture-painter/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-texture-painter/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-texture-painter/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-texture-painter/">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/ru/wiki-texture-painter/">RU</a><a href="/wiki-texture-painter/">EN</a><a href="/fr/wiki-texture-painter/">FR</a><a class="is-active" href="#">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&lsaquo; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Guide zu Minecraft-Texturgrößen</h1>
+        <p class="page-lead">Auflösung verändert nicht nur Schärfe. Sie verändert Arbeitsaufwand, Stilkonstanz und die Frage, wie gut ein Pack in Bewegung und unter echtem Ingame-Licht lesbar bleibt.</p>
+        <div class="soon-actions"><a class="resource-link" href="/de/texture-painter/">Textur-Editor öffnen</a><a class="resource-link resource-link-secondary" href="/de/resource-pack-generator/">PNG in Pack verwandeln</a></div>
+    </section>
+    <article>
+        <h2>Starte mit der Aufgabe, nicht mit der Zahl</h2>
+        <p>Die richtige Größe hängt davon ab, wie sich das Pack insgesamt anfühlen soll. Größer ist nicht automatisch besser. Wenn der Rest des Projekts nah an Vanilla-Lesbarkeit bleiben soll, können zu große Texturen einen einzelnen Block schön aussehen lassen und trotzdem das Gesamtbild auseinanderziehen.</p>
+        <h2>16x16, 32x32, 64x64, 128x128</h2>
+        <p><strong>16x16</strong> ist der Vanilla-Standard: schnell zu zeichnen, klar zu lesen, wenig Rauschen. <strong>32x32</strong> ist oft der beste Kompromiss für mehr Tiefe ohne ausufernden Aufwand. <strong>64x64</strong> lohnt sich, wenn die künstlerische Richtung schon stark ist und zusätzlicher Detailgrad wirklich gebraucht wird. <strong>128x128</strong> und darüber sollten einen klaren Grund haben, sonst steigt die Arbeit schneller als der echte Nutzen.</p>
+        <h2>Item-Icons und Blockflächen</h2>
+        <p>Ein Inventar-Icon muss in einem kleinen Slot sofort verstanden werden. Eine Blocktextur wiederholt sich dagegen über Flächen, daher sind Kanten, Tiling, Kontrast und Rhythmus dort viel wichtiger. Dasselbe PNG wird also je nach Einsatz völlig anders gelesen.</p>
+        <h2>Wie man Blocktexturen zeichnet</h2>
+        <ul>
+            <li>Zuerst die großen Materialformen aufbauen.</li>
+            <li>Kanten früh testen, damit die Textur sauber tilet.</li>
+            <li>Details lieber in Clustern als als zufälliges Einzelpixelrauschen setzen.</li>
+            <li>Regelmäßig herauszoomen, um zu prüfen, ob das Material noch klar lesbar ist.</li>
+        </ul>
+        <h2>Wie man Inventar-Icons zeichnet</h2>
+        <ul>
+            <li>Mit einer klaren Silhouette beginnen.</li>
+            <li>Den stärksten Kontrast an der Fokusstelle bündeln.</li>
+            <li>Kleine Icons nicht mit zu viel Mikrodeko überladen.</li>
+            <li>Für seltene oder magische Items meist lieber einen starken Akzent als Glanz überall setzen.</li>
+        </ul>
+        <h2>Empfohlener Workflow</h2>
+        <ol>
+            <li>Die Leinwandgröße wählen.</li>
+            <li>Entscheiden, ob ein Inventar-Icon oder eine wiederholbare Blockfläche entsteht.</li>
+            <li>Das PNG im Browser zeichnen.</li>
+            <li>Erst exportieren, wenn Silhouette, Kontrast und Kanten auf echter Größe geprüft wurden.</li>
+            <li>Das Ergebnis anschließend in den <a href="/de/resource-pack-generator/">Resource-Pack-Generator</a> übernehmen.</li>
+        </ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по редактору скинов Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Как пользоваться редактором скинов Minecraft: classic 64x64 atlas, wide и slim руки, базовый и внешний слой, рисование прямо по 3D-модели и экспорт готового PNG.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-skin-editor/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-skin-editor/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-skin-editor/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-skin-editor/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-skin-editor/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-skin-editor/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Гайд по редактору скинов Minecraft | Cube in Square">
+    <meta property="og:description" content="Как рисовать Minecraft-скин через atlas и 3D-модель, работать со слоями и экспортировать готовый PNG.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-skin-editor/">
+    <meta property="og:locale" content="ru_RU">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-skin-editor/">EN</a><a href="/fr/wiki-skin-editor/">FR</a><a href="/de/wiki-skin-editor/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&lsaquo; Все статьи</a>
+    <section class="page-hero">
+        <h1>Гайд по редактору скинов Minecraft</h1>
+        <p class="page-lead">Редактор скинов сделан под классический Minecraft-workflow: 64x64 atlas с одной стороны, 3D-модель игрока с другой, поддержка wide/slim рук и возможность рисовать прямо по модели, когда плоская развертка перестаёт быть очевидной.</p>
+        <a class="resource-link" href="/ru/skin-editor/">Открыть редактор скинов</a>
+    </section>
+
+    <article>
+        <h2>Что делает этот инструмент</h2>
+        <p>Редактор держит одну стандартную Minecraft-текстуру скина и одновременно показывает её в двух видах: как классический <code>64x64</code> atlas для точной пиксельной работы и как 3D-модель игрока для рукавов, шляпы, ботинок и других частей, которые легче понимать в объёме.</p>
+
+        <h2>Как устроен atlas скина</h2>
+        <p>Minecraft-скин всё ещё остаётся одним PNG-файлом, но разные прямоугольники внутри него отвечают за разные стороны головы, тела, рук и ног. Редактор не придумывает собственную экзотическую схему: он всегда экспортирует тот же стандартный layout, который ожидают лаунчер Minecraft, сайты для загрузки скинов и другие инструменты.</p>
+
+        <h2>Wide и slim руки</h2>
+        <p>У Minecraft есть два варианта рук. <strong>Wide</strong> — это классическая ширина Steve. <strong>Slim</strong> — более узкие Alex-руки. В редакторе можно либо довериться автоопределению при импорте, либо вручную переключить модель, если PNG использует нестандартные пиксели-заполнители и автоматике лучше не верить.</p>
+
+        <h2>Базовый и внешний слой</h2>
+        <p>У современного скина есть два видимых уровня. <strong>Base</strong> — это основная поверхность персонажа. <strong>Outer</strong> — дополнительный слой для волос, шляпы, куртки, рукавов, перчаток, карманов и других объёмных деталей. Держать внешний слой включённым полезно даже тогда, когда вы рисуете базу: так проще заметить клиппинг и расхождение по цветам до экспорта.</p>
+
+        <h2>Почему вообще рисовать по 3D-модели</h2>
+        <p>Плоский atlas идеален для точной пиксельной работы, но неудобен на сложных частях вроде макушки, боковой стороны рукава или переднего края ботинка. Рисование по модели позволяет кликнуть ровно в ту грань, которую вы видите глазами, а редактор сам записывает изменения обратно в правильные пиксели atlas.</p>
+
+        <h2>Рекомендуемый workflow</h2>
+        <ol>
+            <li>Импортируйте старый скин или начните со встроенного шаблона.</li>
+            <li>Заблокируйте крупные цветовые массы на atlas.</li>
+            <li>Переключитесь на модель, когда нужно аккуратно добить внешний слой, рукава или мелкие правки, которые трудно читать на плоской схеме.</li>
+            <li>Используйте пипетку, чтобы сохранять один и тот же цвет на разных частях тела.</li>
+            <li>Перед экспортом посмотрите на модель с нескольких углов, а не только спереди.</li>
+        </ol>
+
+        <h2>Поддержка старых скинов</h2>
+        <p>Редактор принимает и старые <code>64x32</code> скины. При импорте они разворачиваются в современный layout, так что их можно продолжать редактировать уже со sleeve, jacket и отдельными левыми/правыми конечностями.</p>
+
+        <h2>Экспорт</h2>
+        <p>Кнопка экспорта скачивает обычный PNG. Никакая дополнительная конвертация после этого не нужна: если превью в редакторе выглядит правильно, значит файл уже находится в том формате, который ожидает Minecraft.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

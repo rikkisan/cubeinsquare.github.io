@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide zum Minecraft Skin-Editor | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie man den Minecraft Skin-Editor benutzt: 64x64-Atlas, Wide- und Slim-Arme, Basis- und Außenschicht, direktes Zeichnen auf dem 3D-Modell und Export eines fertigen PNGs.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-skin-editor/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-skin-editor/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-skin-editor/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-skin-editor/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-skin-editor/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-skin-editor/">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/ru/wiki-skin-editor/">RU</a><a href="/wiki-skin-editor/">EN</a><a href="/fr/wiki-skin-editor/">FR</a><a class="is-active" href="#">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&lsaquo; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Guide zum Minecraft Skin-Editor</h1>
+        <p class="page-lead">Der Skin-Editor folgt dem klassischen Minecraft-Workflow: 64x64-Atlas auf der einen Seite, Spielermodell auf der anderen, Unterstützung für Wide- und Slim-Arme und die Möglichkeit, direkt auf dem Modell zu zeichnen, wenn die flache Vorlage zu abstrakt wird.</p>
+        <a class="resource-link" href="/de/skin-editor/">Skin-Editor öffnen</a>
+    </section>
+    <article>
+        <h2>Was das Werkzeug macht</h2>
+        <p>Der Editor hält eine Standard-Skin-Textur im Speicher und zeigt sie gleichzeitig in zwei Ansichten: als klassischen <code>64x64</code>-Atlas für präzise Pixelarbeit und als 3D-Spielermodell für Ärmel, Hüte, Stiefel und andere Flächen, die räumlich leichter zu verstehen sind.</p>
+        <h2>Atlas, Wide und Slim</h2>
+        <p>Ein Minecraft-Skin ist immer noch nur eine PNG-Datei. Verschiedene Bereiche stehen für Kopf, Körper, Arme und Beine. <strong>Wide</strong> ist die klassische Steve-Breite, <strong>Slim</strong> die schmalere Alex-Variante. Der Editor versucht das beim Import zu erkennen, lässt dir aber jederzeit einen manuellen Wechsel.</p>
+        <h2>Basis- und Außenschicht</h2>
+        <p>Die <strong>Base</strong>-Schicht ist die eigentliche Oberfläche der Figur. Die <strong>Outer</strong>-Schicht ist für Haare, Jacke, Ärmel, Mütze, Handschuhe und alle zusätzlichen Volumen gedacht. Wenn du die Außenschicht beim Zeichnen sichtbar lässt, erkennst du Clipping und Farbsprünge viel früher.</p>
+        <h2>Warum auf dem Modell zeichnen?</h2>
+        <p>Der flache Atlas ist großartig für exakte Pixelarbeit, aber unbequem für die Oberseite des Kopfes, die Seite eines Ärmels oder den Rand eines Stiefels. Zeichnen auf dem Modell heißt: direkt die sichtbare Fläche anklicken, während der Editor den Strich automatisch in die richtigen Atlas-Pixel zurückschreibt.</p>
+        <h2>Empfohlener Workflow</h2>
+        <ol>
+            <li>Einen alten Skin importieren oder mit dem Start-Skin beginnen.</li>
+            <li>Große Farbflächen zuerst auf dem Atlas anlegen.</li>
+            <li>Dann für Außenschicht und schwer lesbare Bereiche auf das 3D-Modell wechseln.</li>
+            <li>Mit der Pipette Farben zwischen verschiedenen Körperteilen konsistent halten.</li>
+            <li>Vor dem Export mehrere Blickwinkel kontrollieren.</li>
+        </ol>
+        <h2>Legacy-Skins und Export</h2>
+        <p>Auch alte <code>64x32</code>-Skins werden unterstützt. Sie werden beim Import in das moderne Layout überführt. Der Export bleibt ein normales PNG, das direkt vom Minecraft-Launcher oder jedem üblichen Upload-Workflow verstanden wird.</p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>
