@@ -213,6 +213,30 @@
     color: #fde68a;
 }
 
+.tool-note-helper-version {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.tool-note-helper-version label {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.tool-note-helper-select {
+    min-width: 170px;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 8px;
+    background: rgba(2, 6, 23, 0.58);
+    color: var(--text-main);
+    padding: 9px 12px;
+    font: inherit;
+}
+
 .tool-note-code {
     display: block;
     overflow-x: auto;
