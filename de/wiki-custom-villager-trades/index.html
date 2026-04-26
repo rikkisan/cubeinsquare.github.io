@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -64,6 +64,20 @@
                                         }
                    },
                    {
+                       "@type":  "WebSite",
+                       "@id":  "https://cubeinsquare.com/de/#website",
+                       "url":  "https://cubeinsquare.com/de/",
+                       "name":  "Cube in Square",
+                       "publisher":  {
+                                         "@id":  "https://cubeinsquare.com/de/#organization"
+                                     },
+                       "potentialAction":  {
+                                               "query-input":  "required name=search_term_string",
+                                               "target":  "https://cubeinsquare.com/de/wiki/?q={search_term_string}",
+                                               "@type":  "SearchAction"
+                                           }
+                   },
+                   {
                        "@type":  "Article",
                        "@id":  "https://cubeinsquare.com/de/wiki-custom-villager-trades/#article",
                        "headline":  "Minecraft-Dorfbewohner-Handels-Guide | Cube in Square",
@@ -76,15 +90,11 @@
                                          "@id":  "https://cubeinsquare.com/de/#organization"
                                      },
                        "mainEntityOfPage":  {
+                                                "@type":  "WebPage",
                                                 "@id":  "https://cubeinsquare.com/de/wiki-custom-villager-trades/#webpage"
                                             },
                        "inLanguage":  "de",
-                       "url":  "https://cubeinsquare.com/de/wiki-custom-villager-trades/",
-                       "image":  [
-                                     "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
-                                 ],
-                       "datePublished":  "2026-04-26",
-                       "dateModified":  "2026-04-26"
+                       "url":  "https://cubeinsquare.com/de/wiki-custom-villager-trades/"
                    },
                    {
                        "@type":  "WebPage",
@@ -154,29 +164,29 @@
             <a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list"><a href="/de/resource-pack-generator/">Minecraft Resource-Pack-Generator</a><a href="/de/custom-villager-trades/">Benutzerdefinierte Dorfbewohner-Handel</a><a href="/de/custom-potions/">Custom-Potions</a><a href="/de/tool-coming-soon/">Kommende Werkzeuge</a></div>
-                <div class="mega-feature"><a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, BlГ¶cke, RГјstung, CustomModelData und Vorschau.</span></a><a class="mega-card" href="/de/custom-villager-trades/"><strong>Dorfbewohner-Handel</strong><span>Erstelle Handel mit Preisen, Belohnungen, Limits und summon-Befehl.</span></a><a class="mega-card" href="/de/custom-potions/"><strong>Custom-Potions</strong><span>Generator fГјr potion contents, Effekte, Farbe, Lore und give-Befehle.</span></a></div>
+                <div class="mega-feature"><a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, Blöcke, Rüstung, CustomModelData und Vorschau.</span></a><a class="mega-card" href="/de/custom-villager-trades/"><strong>Dorfbewohner-Handel</strong><span>Erstelle Handel mit Preisen, Belohnungen, Limits und summon-Befehl.</span></a><a class="mega-card" href="/de/custom-potions/"><strong>Custom-Potions</strong><span>Generator für potion contents, Effekte, Farbe, Lore und give-Befehle.</span></a></div>
             </div>
         </div>
-        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/de/about/">Cube in Square</a><a href="/de/privacy-policy/">DatenschutzerklГ¤rung</a></div></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/de/about/">Cube in Square</a><a href="/de/privacy-policy/">Datenschutzerklärung</a></div></div>
         <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
         <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-villager-trades/">RU</a><a href="/wiki-custom-villager-trades/">EN</a><a href="/fr/wiki-custom-villager-trades/">FR</a><a class="is-active" href="#">DE</a></div>
     </div>
 </div>
 
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/de/wiki/">в†ђ Alle Artikel</a>
+    <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero">
         <h1>Minecraft-Dorfbewohner-Handels-Guide</h1>
-        <p class="page-lead">Ein benutzerdefinierter Dorfbewohner kann einen einfachen Handel in einen Story-Shop verwandeln: PГ¤sse, Quest-Items, einzigartige Waffen, SchlГјssel, Dokumente und Belohnungen ohne Mods.</p>
-        <a class="resource-link" href="/de/custom-villager-trades/">Builder Г¶ffnen</a>
+        <p class="page-lead">Ein benutzerdefinierter Dorfbewohner kann einen einfachen Handel in einen Story-Shop verwandeln: Pässe, Quest-Items, einzigartige Waffen, Schlüssel, Dokumente und Belohnungen ohne Mods.</p>
+        <a class="resource-link" href="/de/custom-villager-trades/">Builder öffnen</a>
     </section>
 
     <article>
         <h2>Was das Werkzeug macht</h2>
-        <p>Der Builder erzeugt einen langen <code>/summon minecraft:villager</code> Befehl. Der Befehl definiert Aussehen und Verhalten des Dorfbewohners und fГјgt dann einen <code>Offers</code> Block mit einer Liste von <code>Recipes</code>.</p>
+        <p>Der Builder erzeugt einen langen <code>/summon minecraft:villager</code> Befehl. Der Befehl definiert Aussehen und Verhalten des Dorfbewohners und fügt dann einen <code>Offers</code> Block mit einer Liste von <code>Recipes</code>.</p>
 
         <h2>Hauptstruktur</h2>
-        <p>Jeder Handel hat mindestens zwei Item-Stacks: <code>buy</code> and <code>sell</code>. Wenn der Preis zwei Items nutzt, enthГ¤lt der Befehl auch <code>buyB</code>.</p>
+        <p>Jeder Handel hat mindestens zwei Item-Stacks: <code>buy</code> and <code>sell</code>. Wenn der Preis zwei Items nutzt, enthält der Befehl auch <code>buyB</code>.</p>
 <pre><code>Offers:{
   Recipes:[
     {
@@ -202,43 +212,42 @@
         <h2>Dorfbewohner-Felder</h2>
         <ul>
             <li><strong>Beruf</strong> steuert Kleidung und Arbeitsstil des Dorfbewohners.</li>
-            <li><strong>Biomtyp</strong> Г¤ndert die visuelle Variante: Ebene, WГјste, Taiga, Sumpf und mehr.</li>
-            <li><strong>Stufe</strong> Г¤ndert das Abzeichen am GГјrtel des Dorfbewohners.</li>
-            <li><strong>NoAI</strong> hГ¤lt den Dorfbewohner an Ort und Stelle, nГјtzlich fГјr NPC-Shops auf Servern.</li>
-            <li><strong>Unverwundbar</strong> schГјtzt den HГ¤ndler vor versehentlichem Schaden.</li>
+            <li><strong>Biomtyp</strong> ändert die visuelle Variante: Ebene, Wüste, Taiga, Sumpf und mehr.</li>
+            <li><strong>Stufe</strong> ändert das Abzeichen am Gürtel des Dorfbewohners.</li>
+            <li><strong>NoAI</strong> hält den Dorfbewohner an Ort und Stelle, nützlich für NPC-Shops auf Servern.</li>
+            <li><strong>Unverwundbar</strong> schützt den Händler vor versehentlichem Schaden.</li>
         </ul>
 
         <h2>Handelsfelder</h2>
         <ul>
             <li><strong>Kaufgegenstand</strong> ist der Hauptpreis, zum Beispiel <code>emerald</code>.</li>
             <li><strong>Zweiter Kaufgegenstand</strong> ist ein optionaler Zusatzpreis, zum Beispiel <code>diamond</code> or a quest item.</li>
-            <li><strong>Verkaufsgegenstand</strong> ist die Belohnung, die der Spieler erhГ¤lt.</li>
-            <li><strong>CustomModelData</strong> lГ¤sst den Dorfbewohner ein Item mit eigenem Resource-Pack-Modell verkaufen.</li>
+            <li><strong>Verkaufsgegenstand</strong> ist die Belohnung, die der Spieler erhält.</li>
+            <li><strong>CustomModelData</strong> lässt den Dorfbewohner ein Item mit eigenem Resource-Pack-Modell verkaufen.</li>
             <li><strong>Maximale Nutzungen</strong> steuert, wie oft der Handel genutzt werden kann.</li>
         </ul>
 
         <h2>Verwendung auf einem Server</h2>
         <p>Kopiere den erzeugten Befehl in einen Befehlsblock oder eine Operator-Konsole.</p>
-        <p><strong>Wichtig:</strong> wenn der Befehl lГ¤nger als <code>256</code> Zeichen ist, brauchst du einen Befehlsblock. Der Minecraft-Chat kann lange summon-Befehle abschneiden.</p>
+        <p><strong>Wichtig:</strong> wenn der Befehl länger als <code>256</code> Zeichen ist, brauchst du einen Befehlsblock. Der Minecraft-Chat kann lange summon-Befehle abschneiden.</p>
 
         <h2>Praktische Ideen</h2>
         <ul>
-            <li>Ein PasshГ¤ndler, der Quest-Marken annimmt.</li>
+            <li>Ein Passhändler, der Quest-Marken annimmt.</li>
             <li>Ein NPC-Schmied, der CustomModelData-Waffen verkauft.</li>
             <li>Ein Archivar, der gefundene Dokumente gegen Hinweise tauscht.</li>
-            <li>Ein FraktionshГ¤ndler mit Items hinter Story-WГ¤hrung.</li>
+            <li>Ein Fraktionshändler mit Items hinter Story-Währung.</li>
         </ul>
     </article>
 </main>
 
 <footer class="site-footer">
     <span>Cube in Square</span>
-    <a href="/de/privacy-policy/">DatenschutzerklГ¤rung</a>
+    <a href="/de/privacy-policy/">Datenschutzerklärung</a>
 </footer>
     <script src="/assets/site.js"></script>
     <script src="/assets/tracking-config.js"></script>
     <script src="/assets/tracking.js"></script>
 </body>
 </html>
-
 

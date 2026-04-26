@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft СЃ 3D-РїСЂРѕСЃРјРѕС‚СЂРѕРј | Cube in Square</title>
+    <title>Редактор скинов Minecraft с 3D-просмотром | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Р РёСЃСѓР№С‚Рµ СЃРєРёРЅС‹ Minecraft РІ Р±СЂР°СѓР·РµСЂРµ: wide Рё slim СЂСѓРєРё, РєР»Р°СЃСЃРёС‡РµСЃРєРёР№ Р°С‚Р»Р°СЃ 64x64, СЂРёСЃРѕРІР°РЅРёРµ РїРѕ 3D-РјРѕРґРµР»Рё, РёРјРїРѕСЂС‚ PNG Рё СЌРєСЃРїРѕСЂС‚ РіРѕС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°.">
+    <meta name="description" content="Рисуйте скины Minecraft в браузере: wide и slim руки, классический атлас 64x64, рисование по 3D-модели, импорт PNG и экспорт готового файла.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -21,13 +21,13 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/skin-editor/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft СЃ 3D-РїСЂРѕСЃРјРѕС‚СЂРѕРј | Cube in Square">
-    <meta property="og:description" content="Р РёСЃСѓР№С‚Рµ СЃРєРёРЅС‹ Minecraft РїРѕ Р°С‚Р»Р°СЃСѓ 64x64 РёР»Рё РїСЂСЏРјРѕ РїРѕ 3D-РјРѕРґРµР»Рё РёРіСЂРѕРєР°, РїРµСЂРµРєР»СЋС‡Р°Р№С‚Рµ wide/slim Рё СЌРєСЃРїРѕСЂС‚РёСЂСѓР№С‚Рµ РіРѕС‚РѕРІС‹Р№ PNG.">
+    <meta property="og:title" content="Редактор скинов Minecraft с 3D-просмотром | Cube in Square">
+    <meta property="og:description" content="Рисуйте скины Minecraft по атласу 64x64 или прямо по 3D-модели игрока, переключайте wide/slim и экспортируйте готовый PNG.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/skin-editor/">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft СЃ 3D-РїСЂРѕСЃРјРѕС‚СЂРѕРј | Cube in Square">
-    <meta name="twitter:description" content="Р‘СЂР°СѓР·РµСЂРЅС‹Р№ СЂРµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft: wide/slim, Р°С‚Р»Р°СЃ 64x64, СЂРёСЃРѕРІР°РЅРёРµ РїРѕ РјРѕРґРµР»Рё, РёРјРїРѕСЂС‚ PNG Рё СЌРєСЃРїРѕСЂС‚.">
+    <meta name="twitter:title" content="Редактор скинов Minecraft с 3D-просмотром | Cube in Square">
+    <meta name="twitter:description" content="Браузерный редактор скинов Minecraft: wide/slim, атлас 64x64, рисование по модели, импорт PNG и экспорт.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -37,157 +37,167 @@
     <link rel="stylesheet" href="/assets/skin-editor.css">
     <script type="application/ld+json">
 {
-    "@context":  "https://schema.org",
-    "@graph":  [
-                   {
-                       "@type":  "Organization",
-                       "@id":  "https://cubeinsquare.com/#organization",
-                       "name":  "Cube in Square",
-                       "alternateName":  "Kub v kvadrate",
-                       "url":  "https://cubeinsquare.com/",
-                       "logo":  {
-                                    "@type":  "ImageObject",
-                                    "url":  "https://cubeinsquare.com/assets/server-icon.png"
-                                }
-                   },
-                   {
-                       "@type":  "SoftwareApplication",
-                       "@id":  "https://cubeinsquare.com/skin-editor/#application",
-                       "name":  "Minecraft Skin Editor",
-                       "applicationCategory":  "MultimediaApplication",
-                       "operatingSystem":  "Any",
-                       "browserRequirements":  "Requires JavaScript and WebGL",
-                       "isAccessibleForFree":  true,
-                       "offers":  {
-                                      "@type":  "Offer",
-                                      "price":  "0",
-                                      "priceCurrency":  "USD"
-                                  },
-                       "url":  "https://cubeinsquare.com/ru/skin-editor/",
-                       "description":  "Р РёСЃСѓР№С‚Рµ СЃРєРёРЅС‹ Minecraft РІ Р±СЂР°СѓР·РµСЂРµ: wide Рё slim СЂСѓРєРё, РєР»Р°СЃСЃРёС‡РµСЃРєРёР№ Р°С‚Р»Р°СЃ 64x64, СЂРёСЃРѕРІР°РЅРёРµ РїРѕ 3D-РјРѕРґРµР»Рё, РёРјРїРѕСЂС‚ PNG Рё СЌРєСЃРїРѕСЂС‚ РіРѕС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°.",
-                       "inLanguage":  "ru",
-                       "featureList":  [
-                                           "3D player preview",
-                                           "Painting directly on the model",
-                                           "Classic 64x64 atlas editing",
-                                           "PNG import and export"
-                                       ],
-                       "image":  "https://cubeinsquare.com/assets/server-icon.png",
-                       "author":  {
-                                      "@id":  "https://cubeinsquare.com/#organization"
-                                  }
-                   },
-                   {
-                       "@type":  "WebPage",
-                       "@id":  "https://cubeinsquare.com/skin-editor/#webpage",
-                       "url":  "https://cubeinsquare.com/ru/skin-editor/",
-                       "name":  "Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft СЃ 3D-РїСЂРѕСЃРјРѕС‚СЂРѕРј | Cube in Square",
-                       "description":  "Р РёСЃСѓР№С‚Рµ СЃРєРёРЅС‹ Minecraft РІ Р±СЂР°СѓР·РµСЂРµ: wide Рё slim СЂСѓРєРё, РєР»Р°СЃСЃРёС‡РµСЃРєРёР№ Р°С‚Р»Р°СЃ 64x64, СЂРёСЃРѕРІР°РЅРёРµ РїРѕ 3D-РјРѕРґРµР»Рё, РёРјРїРѕСЂС‚ PNG Рё СЌРєСЃРїРѕСЂС‚ РіРѕС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°.",
-                       "isPartOf":  {
-                                        "@id":  "https://cubeinsquare.com/#website"
-                                    },
-                       "about":  {
-                                     "@id":  "https://cubeinsquare.com/#organization"
-                                 },
-                       "inLanguage":  "ru",
-                       "mainEntity":  {
-                                          "@id":  "https://cubeinsquare.com/skin-editor/#application"
-                                      }
-                   },
-                   {
-                       "@type":  "BreadcrumbList",
-                       "@id":  "https://cubeinsquare.com/skin-editor/#breadcrumb",
-                       "itemListElement":  [
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  1,
-                                                   "name":  "Р”РѕРјРѕР№",
-                                                   "item":  "https://cubeinsquare.com/ru/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  2,
-                                                   "name":  "РРЅСЃС‚СЂСѓРјРµРЅС‚С‹",
-                                                   "item":  "https://cubeinsquare.com/ru/tools/"
-                                               },
-                                               {
-                                                   "@type":  "ListItem",
-                                                   "position":  3,
-                                                   "name":  "Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft",
-                                                   "item":  "https://cubeinsquare.com/ru/skin-editor/"
-                                               }
-                                           ]
-                   }
-               ]
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "alternateName": "Kub v kvadrate",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://cubeinsquare.com/#website",
+            "url": "https://cubeinsquare.com/",
+            "name": "Cube in Square",
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://cubeinsquare.com/wiki/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "SoftwareApplication",
+            "@id": "https://cubeinsquare.com/skin-editor/#application",
+            "name": "Minecraft Skin Editor",
+            "applicationCategory": "MultimediaApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript and WebGL",
+            "isAccessibleForFree": true,
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "url": "https://cubeinsquare.com/ru/skin-editor/",
+            "description": "Рисуйте скины Minecraft в браузере: wide и slim руки, классический атлас 64x64, рисование по 3D-модели, импорт PNG и экспорт готового файла.",
+            "inLanguage": "ru",
+            "featureList": [
+                "3D player preview",
+                "Painting directly on the model",
+                "Classic 64x64 atlas editing",
+                "PNG import and export"
+            ]
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/skin-editor/#webpage",
+            "url": "https://cubeinsquare.com/ru/skin-editor/",
+            "name": "Редактор скинов Minecraft с 3D-просмотром | Cube in Square",
+            "description": "Рисуйте скины Minecraft в браузере: wide и slim руки, классический атлас 64x64, рисование по 3D-модели, импорт PNG и экспорт готового файла.",
+            "isPartOf": {
+                "@id": "https://cubeinsquare.com/#website"
+            },
+            "about": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "inLanguage": "ru",
+            "mainEntity": {
+                "@id": "https://cubeinsquare.com/skin-editor/#application"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/skin-editor/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Домой",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Инструменты",
+                    "item": "https://cubeinsquare.com/ru/tools/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Редактор скинов Minecraft",
+                    "item": "https://cubeinsquare.com/ru/skin-editor/"
+                }
+            ]
+        }
+    ]
 }
     </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/ru/" aria-label="Р”РѕРјРѕР№" title="Р”РѕРјРѕР№"><img src="/assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/ru/wiki/">Р’РёРєРё</a>
+            <a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a>
             <div class="steam-dropdown-panel steam-mega-panel">
                 <div class="mega-list mega-list-tree">
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">РћР±С‰РёРµ СЃС‚Р°С‚СЊРё</a>
+                        <a class="mega-group-title" href="/wiki/#general-wiki">Общие статьи</a>
                         <div class="mega-sublist">
                             <a href="/wiki-custom-model-data/">CustomModelData</a>
-                            <a href="/wiki/#resource-pack-paths">РЎС‚СЂСѓРєС‚СѓСЂР° СЂРµСЃСѓСЂСЃ-РїР°РєР°</a>
+                            <a href="/wiki/#resource-pack-paths">Структура ресурс-пака</a>
                         </div>
                     </div>
                     <div class="mega-group">
                         <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
                         <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">РљР°Рє РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РіРµРЅРµСЂР°С‚РѕСЂ</a>
+                            <a href="/wiki-resource-pack-generator/">Как использовать генератор</a>
                         </div>
                     </div>
                     <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Р”СЂСѓРіРёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Другие инструменты</a>
                         <div class="mega-sublist">
-                            <a href="/tools/">РљР°С‚Р°Р»РѕРі РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ</a>
-                            <a href="/ru/wiki-skin-editor/">Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ</a>
-                            <a href="/wiki-custom-potions/">РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</a>
-                            <a href="/wiki-custom-villager-trades/">РўРѕСЂРіРё Р¶РёС‚РµР»РµР№</a>
+                            <a href="/tools/">Каталог инструментов</a>
+                            <a href="/ru/wiki-skin-editor/">Редактор скинов</a>
+                            <a href="/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/wiki-custom-villager-trades/">Торги жителей</a>
                         </div>
                     </div>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>РљР°Рє РѕРґРёРЅ РїСЂРµРґРјРµС‚ РїСЂРµРІСЂР°С‰Р°РµС‚СЃСЏ РІРѕ РјРЅРѕР¶РµСЃС‚РІРѕ РјРѕРґРµР»РµР№ Р±РµР· РјРѕРґРѕРІ.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Р“Р°Р№Рґ РїРѕ РіРµРЅРµСЂР°С‚РѕСЂСѓ</strong><span>РџРѕС€Р°РіРѕРІС‹Р№ СЃС†РµРЅР°СЂРёР№ СЃРѕР·РґР°РЅРёСЏ СЂРµСЃСѓСЂСЃ-РїР°РєР°.</span></a>
-                    <a class="mega-card" href="/ru/wiki-skin-editor/"><strong>Р“Р°Р№Рґ РїРѕ СЂРµРґР°РєС‚РѕСЂСѓ СЃРєРёРЅРѕРІ</strong><span>РљР°Рє СЂРёСЃРѕРІР°С‚СЊ РїРѕ Р°С‚Р»Р°СЃСѓ Рё РїСЂСЏРјРѕ РїРѕ РјРѕРґРµР»Рё РёРіСЂРѕРєР°.</span></a>
+                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается во множество моделей без модов.</span></a>
+                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговый сценарий создания ресурс-пака.</span></a>
+                    <a class="mega-card" href="/ru/wiki-skin-editor/"><strong>Гайд по редактору скинов</strong><span>Как рисовать по атласу и прямо по модели игрока.</span></a>
                 </div>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/ru/tools/">РРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+            <a class="steam-nav-dropdown is-active" href="/ru/tools/">Инструменты</a>
             <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
                 <div class="mega-list">
                     <a href="/ru/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/ru/skin-editor/">Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft</a>
-                    <a href="/ru/texture-painter/">Р РµРґР°РєС‚РѕСЂ С‚РµРєСЃС‚СѓСЂ</a>
-                    <a href="/ru/custom-villager-trades/">РљР°СЃС‚РѕРјРЅС‹Рµ С‚РѕСЂРіРё Р¶РёС‚РµР»РµР№</a>
-                    <a href="/ru/custom-potions/">РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</a>
-                    <a href="/ru/tool-coming-soon/">Р‘СѓРґСѓС‰РёРµ РёРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a>
+                    <a href="/ru/skin-editor/">Редактор скинов Minecraft</a>
+                    <a href="/ru/texture-painter/">Редактор текстур</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
                 </div>
                 <div class="mega-feature">
-                    <a class="mega-card" href="/ru/skin-editor/"><strong>Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ</strong><span>Р РёСЃРѕРІР°РЅРёРµ РїРѕ Р°С‚Р»Р°СЃСѓ Рё РїСЂСЏРјРѕ РїРѕ 3D-РјРѕРґРµР»Рё РёРіСЂРѕРєР°.</span></a>
-                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Р“РµРЅРµСЂР°С‚РѕСЂ РїР°РєРѕРІ</strong><span>РџСЂРµРґРјРµС‚С‹, Р±Р»РѕРєРё, Р±СЂРѕРЅСЏ, CustomModelData Рё РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ.</span></a>
-                    <a class="mega-card" href="/ru/custom-potions/"><strong>РљР°СЃС‚РѕРјРЅС‹Рµ Р·РµР»СЊСЏ</strong><span>Р“РµРЅРµСЂР°С‚РѕСЂ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ Р·РµР»РёР№, СЌС„С„РµРєС‚РѕРІ, С†РІРµС‚Р°, Р»РѕСЂР° Рё give-РєРѕРјР°РЅРґ.</span></a>
+                    <a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисование по атласу и прямо по 3D-модели игрока.</span></a>
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и предпросмотр.</span></a>
+                    <a class="mega-card" href="/ru/custom-potions/"><strong>Кастомные зелья</strong><span>Генератор содержимого зелий, эффектов, цвета, лора и give-команд.</span></a>
                 </div>
             </div>
         </div>
         <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/ru/about/">Рћ РїСЂРѕРµРєС‚Рµ</a>
+            <a class="steam-nav-dropdown" href="/ru/about/">О проекте</a>
             <div class="steam-dropdown-panel steam-dropdown-panel--small">
                 <a href="/ru/about/">Cube in Square</a>
-                <a href="/ru/privacy-policy/">РџРѕР»РёС‚РёРєР° РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё</a>
+                <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
             </div>
         </div>
         <form class="steam-search" action="/ru/wiki/" method="get">
-            <input type="text" name="q" placeholder="РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ...">
-            <button type="submit" aria-label="РџРѕРёСЃРє"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
         </form>
         <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/skin-editor/">EN</a><a href="/fr/skin-editor/">FR</a><a href="/de/skin-editor/">DE</a></div>
     </div>
@@ -195,63 +205,63 @@
 
 <main class="page-shell" data-skin-editor>
     <section class="page-hero">
-        <h1>Р РµРґР°РєС‚РѕСЂ СЃРєРёРЅРѕРІ Minecraft</h1>
-        <p class="page-lead">РљР»Р°СЃСЃРёС‡РµСЃРєРѕРµ СЂРёСЃРѕРІР°РЅРёРµ СЃРєРёРЅРѕРІ РІ Р±СЂР°СѓР·РµСЂРµ: Р·Р°РіСЂСѓР·РёС‚Рµ PNG, СЂРµРґР°РєС‚РёСЂСѓР№С‚Рµ Р°С‚Р»Р°СЃ 64x64, РїРµСЂРµРєР»СЋС‡Р°Р№С‚Рµ wide Рё slim СЂСѓРєРё РёР»Рё СЂРёСЃСѓР№С‚Рµ РїСЂСЏРјРѕ РїРѕ 3D-РјРѕРґРµР»Рё РёРіСЂРѕРєР° Рё СЃСЂР°Р·Сѓ РІРёРґСЊС‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚.</p>
+        <h1>Редактор скинов Minecraft</h1>
+        <p class="page-lead">Классическое рисование скинов в браузере: загрузите PNG, редактируйте атлас 64x64, переключайте wide и slim руки или рисуйте прямо по 3D-модели игрока и сразу видьте результат.</p>
         <div class="soon-actions">
-        <a class="resource-link" href="/ru/wiki-skin-editor/">РџСЂРѕС‡РёС‚Р°С‚СЊ РіР°Р№Рґ</a>
-            <a class="resource-link resource-link-secondary" href="/ru/tools/">РќР°Р·Р°Рґ Рє РёРЅСЃС‚СЂСѓРјРµРЅС‚Р°Рј</a>
+        <a class="resource-link" href="/ru/wiki-skin-editor/">Прочитать гайд</a>
+            <a class="resource-link resource-link-secondary" href="/ru/tools/">Назад к инструментам</a>
         </div>
     </section>
 
     <section class="page-section skin-layout">
         <aside class="skin-sidebar">
             <section class="tool-panel">
-                <h2>РРЅСЃС‚СЂСѓРјРµРЅС‚С‹ СЂРёСЃРѕРІР°РЅРёСЏ</h2>
+                <h2>Инструменты рисования</h2>
                 <div class="skin-toolbar-grid">
                     <div class="skin-tool-grid">
-                        <button class="resource-link skin-tool-button is-active" type="button" data-skin-tool="brush">РљРёСЃС‚СЊ</button>
-                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="eraser">Р›Р°СЃС‚РёРє</button>
-                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="picker">РџРёРїРµС‚РєР°</button>
-                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit">РћСЂР±РёС‚Р°</button>
+                        <button class="resource-link skin-tool-button is-active" type="button" data-skin-tool="brush">Кисть</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="eraser">Ластик</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="picker">Пипетка</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit">Орбита</button>
                     </div>
 
                     <div class="tool-field">
-                        <label for="skinColor">Р¦РІРµС‚</label>
+                        <label for="skinColor">Цвет</label>
                         <div class="skin-color-row">
                             <input id="skinColor" type="color" value="#60a5fa">
                             <div class="tool-field">
-                                <label for="skinAlpha">РќРµРїСЂРѕР·СЂР°С‡РЅРѕСЃС‚СЊ</label>
+                                <label for="skinAlpha">Непрозрачность</label>
                                 <input id="skinAlpha" type="range" min="0" max="100" value="100">
                                 <span class="row-toolbar-label" id="skinAlphaValue">100%</span>
                             </div>
                         </div>
                         <div class="tool-field">
-                            <label for="skinRecentColors">РџРѕСЃР»РµРґРЅРёРµ С†РІРµС‚Р°</label>
-                            <div class="skin-recent-colors" id="skinRecentColors" aria-label="РџРѕСЃР»РµРґРЅРёРµ С†РІРµС‚Р°"></div>
+                            <label for="skinRecentColors">Последние цвета</label>
+                            <div class="skin-recent-colors" id="skinRecentColors" aria-label="Последние цвета"></div>
                         </div>
                         <div class="tool-field">
-                            <label for="skinSimilarColors">РџРѕС…РѕР¶РёРµ РѕС‚С‚РµРЅРєРё</label>
-                            <div class="skin-recent-colors" id="skinSimilarColors" aria-label="РџРѕС…РѕР¶РёРµ РѕС‚С‚РµРЅРєРё"></div>
+                            <label for="skinSimilarColors">Похожие оттенки</label>
+                            <div class="skin-recent-colors" id="skinSimilarColors" aria-label="Похожие оттенки"></div>
                         </div>
                     </div>
 
                     <div class="skin-compact-grid">
                         <div class="tool-field">
-                            <label>РЎР»РѕР№ СЂРёСЃРѕРІР°РЅРёСЏ</label>
+                            <label>Слой рисования</label>
                             <div class="skin-tool-grid">
-                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">Р‘Р°Р·Р°</button>
-                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Р’РµСЂС…РЅРёР№</button>
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">База</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Верхний</button>
                             </div>
                         </div>
                         <div class="tool-field">
-                            <label>РњРѕРґРµР»СЊ СЂСѓРє</label>
+                            <label>Модель рук</label>
                             <div class="skin-tool-grid">
-                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">РЁРёСЂРѕРєРёРµ</button>
-                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-model="slim">РўРѕРЅРєРёРµ</button>
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">Широкие</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-model="slim">Тонкие</button>
                             </div>
                         </div>
                         <div class="tool-field">
-                            <label for="skinBrushSize">Р Р°Р·РјРµСЂ РєРёСЃС‚Рё</label>
+                            <label for="skinBrushSize">Размер кисти</label>
                             <select id="skinBrushSize">
                                 <option value="1">1 px</option>
                                 <option value="2">2 px</option>
@@ -262,7 +272,7 @@
                             </select>
                         </div>
                         <div class="tool-field">
-                            <label for="skinZoom">РњР°СЃС€С‚Р°Р± Р°С‚Р»Р°СЃР°</label>
+                            <label for="skinZoom">Масштаб атласа</label>
                             <select id="skinZoom">
                                 <option value="4">4x</option>
                                 <option value="6">6x</option>
@@ -277,104 +287,104 @@
                     <div class="tool-check-grid">
                         <label class="tool-check">
                             <input id="skinShowOverlay" type="checkbox" checked>
-                            <span>РџРѕРєР°Р·С‹РІР°С‚СЊ СЃР»РѕР№ С€Р»СЏРїС‹ / РєСѓСЂС‚РєРё / СЂСѓРєР°РІРѕРІ / С€С‚Р°РЅРёРЅ</span>
+                            <span>Показывать слой шляпы / куртки / рукавов / штанин</span>
                         </label>
                     </div>
 
                     <div class="tool-field">
-                        <label>РЎРєСЂС‹С‚СЊ С‡Р°СЃС‚Рё С‚РµР»Р°</label>
+                        <label>Скрыть части тела</label>
                         <div class="skin-part-grid">
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="head">
-                                <span>РЎРєСЂС‹С‚СЊ РіРѕР»РѕРІСѓ</span>
+                                <span>Скрыть голову</span>
                             </label>
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="body">
-                                <span>РЎРєСЂС‹С‚СЊ С‚СѓР»РѕРІРёС‰Рµ</span>
+                                <span>Скрыть туловище</span>
                             </label>
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="rightArm">
-                                <span>РЎРєСЂС‹С‚СЊ РїСЂР°РІСѓСЋ СЂСѓРєСѓ</span>
+                                <span>Скрыть правую руку</span>
                             </label>
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="leftArm">
-                                <span>РЎРєСЂС‹С‚СЊ Р»РµРІСѓСЋ СЂСѓРєСѓ</span>
+                                <span>Скрыть левую руку</span>
                             </label>
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="rightLeg">
-                                <span>РЎРєСЂС‹С‚СЊ РїСЂР°РІСѓСЋ РЅРѕРіСѓ</span>
+                                <span>Скрыть правую ногу</span>
                             </label>
                             <label class="tool-check">
                                 <input type="checkbox" data-skin-part="leftLeg">
-                                <span>РЎРєСЂС‹С‚СЊ Р»РµРІСѓСЋ РЅРѕРіСѓ</span>
+                                <span>Скрыть левую ногу</span>
                             </label>
                         </div>
                     </div>
                 </div>
-                <p class="skin-editor-note">Р“Р»Р°РІРЅР°СЏ РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ Р·РґРµСЃСЊ вЂ” 3D-РјРѕРґРµР»СЊ РёРіСЂРѕРєР°. Р’С‹Р±РёСЂР°Р№С‚Рµ <strong>Р‘Р°Р·Р°</strong> РґР»СЏ РЅРёР¶РЅРµРіРѕ СЃР»РѕСЏ СЃРєРёРЅР° Рё <strong>Р’РµСЂС…РЅРёР№</strong> РґР»СЏ С€Р»СЏРїС‹, РєСѓСЂС‚РєРё, СЂСѓРєР°РІРѕРІ Рё С€С‚Р°РЅРёРЅ.</p>
+                <p class="skin-editor-note">Главная поверхность для рисования здесь — 3D-модель игрока. Выбирайте <strong>База</strong> для нижнего слоя скина и <strong>Верхний</strong> для шляпы, куртки, рукавов и штанин.</p>
             </section>
 
             <section class="tool-panel">
-                <h2>Р¤Р°Р№Р»С‹</h2>
+                <h2>Файлы</h2>
                 <input class="skin-hidden-input" id="skinFileInput" type="file" accept=".png,image/png">
                 <div class="skin-tool-grid">
-                    <button class="resource-link skin-tool-button" id="skinUploadButton" type="button">РРјРїРѕСЂС‚ PNG</button>
-                    <button class="resource-link skin-tool-button" id="skinDownloadButton" type="button">Р­РєСЃРїРѕСЂС‚ PNG</button>
-                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinResetButton" type="button">РЎС‚Р°СЂС‚РѕРІС‹Р№ СЃРєРёРЅ</button>
-                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinClearButton" type="button">РћС‡РёСЃС‚РёС‚СЊ</button>
+                    <button class="resource-link skin-tool-button" id="skinUploadButton" type="button">Импорт PNG</button>
+                    <button class="resource-link skin-tool-button" id="skinDownloadButton" type="button">Экспорт PNG</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinResetButton" type="button">Стартовый скин</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinClearButton" type="button">Очистить</button>
                 </div>
-                <p class="skin-file-note">Р РµРґР°РєС‚РѕСЂ РїСЂРёРЅРёРјР°РµС‚ РєР»Р°СЃСЃРёС‡РµСЃРєРёРµ СЃРєРёРЅС‹ <code>64x64</code> Рё СЃС‚Р°СЂС‹Рµ <code>64x32</code>. РЎС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЂР°Р·РІРѕСЂР°С‡РёРІР°СЋС‚СЃСЏ РІ СЃРѕРІСЂРµРјРµРЅРЅСѓСЋ СЂР°СЃРєР»Р°РґРєСѓ.</p>
+                <p class="skin-file-note">Редактор принимает классические скины <code>64x64</code> и старые <code>64x32</code>. Старые файлы автоматически разворачиваются в современную раскладку.</p>
             </section>
 
             <section class="tool-panel">
-                <h2>Р‘С‹СЃС‚СЂС‹Р№ СЃС‚Р°С‚СѓСЃ</h2>
+                <h2>Быстрый статус</h2>
                 <div class="skin-stats">
-                    <span class="skin-stat-pill">РђС‚Р»Р°СЃ: <strong id="skinDimensions">64 x 64</strong></span>
-                    <span class="skin-stat-pill">РњРѕРґРµР»СЊ: <strong id="skinModelValue">С€РёСЂРѕРєРёРµ</strong></span>
-                    <span class="skin-stat-pill">РЎР»РѕР№: <strong id="skinLayerValue">Р±Р°Р·Р°</strong></span>
-                    <span class="skin-stat-pill">РРЅСЃС‚СЂСѓРјРµРЅС‚: <strong id="skinMode">РєРёСЃС‚СЊ</strong></span>
-                    <span class="skin-stat-pill">РљРёСЃС‚СЊ: <strong id="skinBrush">1px</strong></span>
+                    <span class="skin-stat-pill">Атлас: <strong id="skinDimensions">64 x 64</strong></span>
+                    <span class="skin-stat-pill">Модель: <strong id="skinModelValue">широкие</strong></span>
+                    <span class="skin-stat-pill">Слой: <strong id="skinLayerValue">база</strong></span>
+                    <span class="skin-stat-pill">Инструмент: <strong id="skinMode">кисть</strong></span>
+                    <span class="skin-stat-pill">Кисть: <strong id="skinBrush">1px</strong></span>
                 </div>
             </section>
         </aside>
 
         <div class="skin-workspace">
             <section class="tool-panel skin-preview-card">
-                <h2>3D-РїРѕРІРµСЂС…РЅРѕСЃС‚СЊ РґР»СЏ СЂРёСЃРѕРІР°РЅРёСЏ</h2>
+                <h2>3D-поверхность для рисования</h2>
                 <div class="skin-preview-stage" id="skinPreview"></div>
-                <p class="skin-preview-note">РЎРЅР°С‡Р°Р»Р° СЂРёСЃСѓР№С‚Рµ РїСЂСЏРјРѕ РїРѕ РјРѕРґРµР»Рё РёРіСЂРѕРєР°. РђС‚Р»Р°СЃ РЅРёР¶Рµ РѕСЃС‚Р°С‘С‚СЃСЏ СЃРёРЅС…СЂРѕРЅРёР·РёСЂРѕРІР°РЅРЅС‹Рј, С‚Р°Рє С‡С‚Рѕ РІС‹ РІСЃС‘ РµС‰С‘ РјРѕР¶РµС‚Рµ РїСЂРѕРІРµСЂРёС‚СЊ С‚РѕС‡РЅС‹Рµ РїРёРєСЃРµР»Рё Рё СЌРєСЃРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ PNG-СЃРєРёРЅ Minecraft.</p>
+                <p class="skin-preview-note">Сначала рисуйте прямо по модели игрока. Атлас ниже остаётся синхронизированным, так что вы всё ещё можете проверить точные пиксели и экспортировать стандартный PNG-скин Minecraft.</p>
             </section>
 
             <section class="tool-panel skin-canvas-card">
-                <h2>РџРѕРјРѕС‰РЅРёРє СЃ Р°С‚Р»Р°СЃРѕРј 64x64</h2>
+                <h2>Помощник с атласом 64x64</h2>
                 <div class="skin-atlas-wrap">
                     <canvas id="skinEditorCanvas" width="512" height="512"></canvas>
                 </div>
-                <p class="skin-editor-note">РђС‚Р»Р°СЃ РѕСЃС‚Р°С‘С‚СЃСЏ РІ РІР°РЅРёР»СЊРЅРѕР№ СЂР°СЃРєР»Р°РґРєРµ Minecraft, РїРѕСЌС‚РѕРјСѓ СЌРєСЃРїРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ PNG СЃСЂР°Р·Сѓ РїРѕРґС…РѕРґРёС‚ РґР»СЏ Р»Р°СѓРЅС‡РµСЂРѕРІ, СЃР°Р№С‚РѕРІ СЃРѕ СЃРєРёРЅР°РјРё Рё РїСЂРёРІС‹С‡РЅС‹С… СЂР°Р±РѕС‡РёС… РїСЂРѕС†РµСЃСЃРѕРІ.</p>
+                <p class="skin-editor-note">Атлас остаётся в ванильной раскладке Minecraft, поэтому экспортированный PNG сразу подходит для лаунчеров, сайтов со скинами и привычных рабочих процессов.</p>
             </section>
         </div>
     </section>
 
     <section class="page-section">
-        <h2 class="section-title">Р‘С‹СЃС‚СЂС‹Р№ СЃС†РµРЅР°СЂРёР№</h2>
+        <h2 class="section-title">Быстрый сценарий</h2>
         <div class="resource-grid">
             <article class="resource-card">
-                <h3>1. РРјРїРѕСЂС‚РёСЂСѓР№С‚Рµ РёР»Рё РЅР°С‡РЅРёС‚Рµ СЃ РЅСѓР»СЏ</h3>
-                <p>Р—Р°РіСЂСѓР·РёС‚Рµ РіРѕС‚РѕРІС‹Р№ PNG-СЃРєРёРЅ РёР»Рё РЅР°С‡РЅРёС‚Рµ СЃРѕ РІСЃС‚СЂРѕРµРЅРЅРѕРіРѕ СЃС‚Р°СЂС‚РѕРІРѕРіРѕ СЃРєРёРЅР°, С‡С‚РѕР±С‹ Р±С‹СЃС‚СЂРѕ РЅР°Р±СЂРѕСЃР°С‚СЊ С†РІРµС‚Р° Рё С„РѕСЂРјСѓ.</p>
+                <h3>1. Импортируйте или начните с нуля</h3>
+                <p>Загрузите готовый PNG-скин или начните со встроенного стартового скина, чтобы быстро набросать цвета и форму.</p>
             </article>
             <article class="resource-card">
-                <h3>2. РЎРЅР°С‡Р°Р»Р° СЂРёСЃСѓР№С‚Рµ РїРѕ 3D-РјРѕРґРµР»Рё</h3>
-                <p>РЎРѕР±РµСЂРёС‚Рµ РІРЅРµС€РЅРёР№ РІРёРґ РїСЂСЏРјРѕ РЅР° РјРѕРґРµР»Рё, Р° Рє Р°С‚Р»Р°СЃСѓ РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ СѓР¶Рµ РґР»СЏ С‚РѕС‡РµС‡РЅРѕР№ РїСЂР°РІРєРё РїРёРєСЃРµР»РµР№ Рё РїСЂРѕРІРµСЂРєРё СЂР°СЃРєР»Р°РґРєРё.</p>
+                <h3>2. Сначала рисуйте по 3D-модели</h3>
+                <p>Соберите внешний вид прямо на модели, а к атласу обращайтесь уже для точечной правки пикселей и проверки раскладки.</p>
             </article>
             <article class="resource-card">
-                <h3>3. Р­РєСЃРїРѕСЂС‚РёСЂСѓР№С‚Рµ PNG</h3>
-                <p>РЎРєР°С‡Р°Р№С‚Рµ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С„Р°Р№Р» СЃРєРёРЅР° Minecraft Рё РѕС‚РїСЂР°РІСЊС‚Рµ РµРіРѕ РІ Р»Р°СѓРЅС‡РµСЂ, РїСЂРѕС„РёР»СЊ РЅР° СЃР°Р№С‚Рµ РёР»Рё РІ СЃР»РµРґСѓСЋС‰СѓСЋ РёС‚РµСЂР°С†РёСЋ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.</p>
+                <h3>3. Экспортируйте PNG</h3>
+                <p>Скачайте стандартный файл скина Minecraft и отправьте его в лаунчер, профиль на сайте или в следующую итерацию редактирования.</p>
             </article>
         </div>
     </section>
 </main>
 
-<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">РџРѕР»РёС‚РёРєР° РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё</a></footer>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js"></script>
 <script src="/assets/site.js"></script>
@@ -383,4 +393,3 @@
 <script src="/assets/skin-editor.js?v=20260422"></script>
 </body>
 </html>
-
