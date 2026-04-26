@@ -35,6 +35,7 @@
         commandBlockVersionLabel: 'Version',
         commandBlockCopy: 'Copy command block command',
         commandBlockCopied: 'Copied',
+        commandBlockSync: 'Use summon version',
         versionModern: '1.21.4+',
         versionCurrent: '1.20.5-1.21.3',
         versionLegacy: 'Before 1.20.5',
@@ -69,6 +70,7 @@
         commandBlockVersionLabel: 'Версия',
         commandBlockCopy: 'Скопировать команду блока',
         commandBlockCopied: 'Скопировано',
+        commandBlockSync: 'Как у summon-команды',
         versionModern: '1.21.4+',
         versionCurrent: '1.20.5-1.21.3',
         versionLegacy: 'До 1.20.5',
@@ -106,6 +108,7 @@
             commandBlockVersionLabel: 'Version',
             commandBlockCopy: 'Copier la commande du bloc',
             commandBlockCopied: 'Copie',
+            commandBlockSync: 'Utiliser la version summon',
             versionModern: '1.21.4+',
             versionCurrent: '1.20.5-1.21.3',
             versionLegacy: 'Avant 1.20.5'
@@ -144,6 +147,7 @@
             commandBlockVersionLabel: 'Version',
             commandBlockCopy: 'Befehlsblock-Befehl kopieren',
             commandBlockCopied: 'Kopiert',
+            commandBlockSync: 'Summon-Version nutzen',
             versionModern: '1.21.4+',
             versionCurrent: '1.20.5-1.21.3',
             versionLegacy: 'Vor 1.20.5'
@@ -181,6 +185,7 @@
                 <option value="current"></option>
                 <option value="legacy"></option>
             </select>
+            <button class="tool-button tool-button-secondary tool-button-compact" type="button" data-command-block-sync></button>
         </div>
         <code class="tool-note-code" data-command-block-output></code>
     `;
@@ -190,6 +195,7 @@
     const commandBlockCopyButton = commandBlockHelper.querySelector('[data-copy-command-block]');
     const commandBlockVersionLabel = commandBlockHelper.querySelector('[data-command-block-version-label]');
     const commandBlockVersionSelect = commandBlockHelper.querySelector('[data-command-block-version]');
+    const commandBlockSyncButton = commandBlockHelper.querySelector('[data-command-block-sync]');
     let commandBlockVersionOverride = '';
 
     function fieldValue(id, fallback = '') {
@@ -417,6 +423,7 @@
             commandBlockVersionSelect.options[2].textContent = text.versionLegacy;
             commandBlockVersionSelect.value = commandBlockVersion;
         }
+        if (commandBlockSyncButton) commandBlockSyncButton.textContent = text.commandBlockSync;
         if (commandBlockOutput) commandBlockOutput.textContent = buildCommandBlockGiveCommand(commandBlockVersion);
         if (commandBlockCopyButton) commandBlockCopyButton.textContent = text.commandBlockCopy;
         commandBlockHelper.hidden = !(command && overflow > 0);
@@ -491,6 +498,7 @@
     root.addEventListener('click', (event) => {
         const removeButton = event.target.closest('[data-remove-trade]');
         const commandBlockButton = event.target.closest('[data-copy-command-block]');
+        const commandBlockSync = event.target.closest('[data-command-block-sync]');
         if (removeButton) {
             const card = removeButton.closest('[data-trade-card]');
             if (card && tradeList.children.length > 1) {
@@ -509,6 +517,10 @@
         if (event.target === resetButton) resetTool();
         if (event.target === copyButton) copyCommand();
         if (commandBlockButton === commandBlockCopyButton) copyCommandBlockGive();
+        if (commandBlockSync === commandBlockSyncButton) {
+            commandBlockVersionOverride = '';
+            updateCommand();
+        }
     });
 
     root.querySelector('#vt-name').value = '';
