@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Structure d’un resource pack Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide pratique de structure des resource packs Minecraft: où placer textures, models, blockstates, couches d’armure et item definitions dans les versions modernes.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-resource-pack-structure/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Structure d’un resource pack Minecraft | Cube in Square">
+    <meta property="og:description" content="Guide pratique de structure des resource packs Minecraft: où placer textures, models, blockstates, couches d’armure et item definitions dans les versions modernes.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-resource-pack-structure/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Structure d’un resource pack Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Guide pratique de structure des resource packs Minecraft: où placer textures, models, blockstates, couches d’armure et item definitions dans les versions modernes.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-resource-pack-structure/">RU</a><a href="/wiki-resource-pack-structure/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-resource-pack-structure/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell article-shell">
+    <nav class="article-breadcrumb"><a href="/fr/">Accueil</a><span>/</span><a href="/fr/wiki/">Wiki</a><span>/</span><span>Structure du pack</span></nav>
+
+    <article class="wiki-article">
+        <header class="article-hero">
+            <p class="article-kicker">Référence</p>
+            <h1>Structure d’un resource pack Minecraft</h1>
+            <p class="article-lead">Quand un pack commence à grandir, la confusion arrive souvent avant la finition. Les textures tombent dans le mauvais dossier, les modèles pointent vers les mauvais fichiers, les couches d’armure prennent des noms incohérents et les nouvelles item definitions de 1.21.4 se mélangent aux vieilles habitudes. Cette page sert de carte rapide: où mettre les fichiers, comment les nommer et quelle structure reste saine aujourd’hui.</p>
+        </header>
+
+        <section class="article-section">
+            <h2>Les dossiers les plus utiles</h2>
+            <p>La majorité du travail concret tourne autour d’un petit nombre de dossiers. Si vous remplacez une face de bloc, ajoutez un objet personnalisé, montez un blockstate ou exportez des couches d’armure, ce sont ces chemins qu’il faut garder sous la main.</p>
+            <table class="compact-table">
+                <tr><th>Type</th><th>Chemin du pack</th><th>Exemple</th></tr>
+                <tr><td>Texture d’objet</td><td><code>assets/minecraft/textures/item</code></td><td><code>diamond_sword.png</code></td></tr>
+                <tr><td>Texture de bloc</td><td><code>assets/minecraft/textures/block</code></td><td><code>oak_planks.png</code></td></tr>
+                <tr><td>Modèle d’objet</td><td><code>assets/minecraft/models/item</code></td><td><code>custom_diamond_sword_1.json</code></td></tr>
+                <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><code>crafting_table.json</code></td></tr>
+                <tr><td>Couche d’armure</td><td><code>assets/minecraft/textures/models/armor</code></td><td><code>diamond_layer_1.png</code></td></tr>
+                <tr><td>Item definition 1.21.4+</td><td><code>assets/minecraft/items</code></td><td><code>diamond_sword.json</code></td></tr>
+            </table>
+        </section>
+
+        <section class="article-section">
+            <h2>Ce qui change après 1.21.4</h2>
+            <p>Beaucoup de vieux tutoriels partent du principe que toute la logique d’un objet custom reste enfermée dans <code>models/item</code> et sa chaîne d’<code>overrides</code>. Ce n’est plus toute l’histoire. Dans les versions récentes, les item definitions ont leur propre place dans <code>assets/minecraft/items</code>. Cela change la manière de penser l’objet: la texture, le modèle et la définition deviennent trois couches distinctes.</p>
+            <p>Les anciens dossiers restent utiles. Les textures vivent toujours sous <code>textures</code>. Les modèles restent nécessaires. Mais si vous montez un pack pour 1.21.4+, il vaut mieux garder en tête cette architecture en trois temps au lieu de tout comprimer dans une seule habitude héritée des overrides.</p>
+        </section>
+
+        <section class="article-section">
+            <h2>Un ordre de montage pratique</h2>
+            <p>Le cycle de travail le plus propre reste presque toujours le même. On crée ou exporte le PNG. On le place dans le bon dossier. On branche ensuite le modèle ou l’item definition. Puis on vérifie le résultat dans le générateur ou dans le jeu. Quand cet ordre casse, le pack se transforme vite en collection de noms presque semblables et de chemins contradictoires.</p>
+            <ol class="article-list">
+                <li>Préparer le PNG.</li>
+                <li>Le placer dans le bon dossier de textures.</li>
+                <li>Créer ou mettre à jour le JSON du modèle.</li>
+                <li>Si la version est 1.21.4+, écrire le fichier dans <code>assets/minecraft/items</code>.</li>
+                <li>Tester le résultat avant d’empiler l’asset suivant.</li>
+            </ol>
+        </section>
+
+        <section class="article-section">
+            <h2>Les erreurs de nommage les plus fréquentes</h2>
+            <p>Les pannes les plus courantes sont souvent très simples: un bloc est nommé comme un item, un JSON vise <code>item/foo</code> alors que le PNG vit dans <code>textures/block</code>, un fichier contient des majuscules ou des espaces, ou bien le chemin existe mais ne correspond pas à la référence écrite dans le modèle. La routine la plus sûre reste d’utiliser uniquement des minuscules, des underscores et une base de nom partagée entre les fichiers liés.</p>
+        </section>
+
+        <section class="article-section">
+            <h2>Où aller après cette page</h2>
+            <p>Si vous vouliez simplement la carte des dossiers, cette référence suffit. Si vous êtes en train de construire un pack, la suite logique est souvent le <a href="/fr/wiki-resource-pack-generator/">guide du générateur</a>, l’article sur <a href="/fr/wiki-custom-model-data/">CustomModelData</a> et les guides de migration vers 1.21.4. C’est là que cette structure se transforme en workflow réel.</p>
+        </section>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

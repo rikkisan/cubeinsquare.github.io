@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Структура ресурс-пака Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Практическая шпаргалка по структуре ресурс-пака Minecraft: где лежат textures, models, blockstates, armor layers и item definitions в современных версиях.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-resource-pack-structure/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-resource-pack-structure/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Структура ресурс-пака Minecraft | Cube in Square">
+    <meta property="og:description" content="Практическая шпаргалка по структуре ресурс-пака Minecraft: где лежат textures, models, blockstates, armor layers и item definitions в современных версиях.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-resource-pack-structure/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Структура ресурс-пака Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Практическая шпаргалка по структуре ресурс-пака Minecraft: где лежат textures, models, blockstates, armor layers и item definitions в современных версиях.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-resource-pack-structure/">EN</a><a href="/fr/wiki-resource-pack-structure/">FR</a><a href="/de/wiki-resource-pack-structure/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell article-shell">
+    <nav class="article-breadcrumb"><a href="/ru/">Домой</a><span>/</span><a href="/ru/wiki/">Вики</a><span>/</span><span>Структура ресурс-пака</span></nav>
+
+    <article class="wiki-article">
+        <header class="article-hero">
+            <p class="article-kicker">Справочник</p>
+            <h1>Структура ресурс-пака Minecraft</h1>
+            <p class="article-lead">Когда пак начинает разрастаться, путаница обычно приходит раньше красоты. Текстуры уезжают не в те папки, модели ссылаются не на те файлы, слои брони получают случайные имена, а новые item definitions из 1.21.4 начинают смешиваться со старыми привычками из эпохи <code>models/item</code>. Эта статья нужна как быстрая рабочая карта: куда что класть, как это называть и что в современных паках считается нормальной структурой.</p>
+        </header>
+
+        <section class="article-section">
+            <h2>Папки, которые важны чаще всего</h2>
+            <p>Большая часть практической работы крутится вокруг нескольких папок. Если вы заменяете грань блока, добавляете кастомный предмет, собираете blockstate или выгружаете слои брони, в первую очередь нужны именно эти пути. Когда они стабильны, всё остальное уже складывается гораздо спокойнее.</p>
+            <table class="compact-table">
+                <tr><th>Тип</th><th>Путь в паке</th><th>Пример имени</th></tr>
+                <tr><td>Текстура предмета</td><td><code>assets/minecraft/textures/item</code></td><td><code>diamond_sword.png</code></td></tr>
+                <tr><td>Текстура блока</td><td><code>assets/minecraft/textures/block</code></td><td><code>oak_planks.png</code></td></tr>
+                <tr><td>Модель предмета</td><td><code>assets/minecraft/models/item</code></td><td><code>custom_diamond_sword_1.json</code></td></tr>
+                <tr><td>Состояние блока</td><td><code>assets/minecraft/blockstates</code></td><td><code>crafting_table.json</code></td></tr>
+                <tr><td>Слой брони</td><td><code>assets/minecraft/textures/models/armor</code></td><td><code>diamond_layer_1.png</code></td></tr>
+                <tr><td>Item definition для 1.21.4+</td><td><code>assets/minecraft/items</code></td><td><code>diamond_sword.json</code></td></tr>
+            </table>
+        </section>
+
+        <section class="article-section">
+            <h2>Что изменилось после 1.21.4</h2>
+            <p>Старые гайды часто исходят из того, что вся логика кастомного предмета живёт в <code>models/item</code> и цепочке <code>overrides</code>. Теперь этого уже недостаточно. В новых версиях item definitions переехали в <code>assets/minecraft/items</code>, и именно там часто решается, какую модель или визуальную ветку должен получить предмет.</p>
+            <p>Это не делает старые папки бесполезными. Текстуры по-прежнему лежат в <code>textures</code>. Модели по-прежнему нужны. Но если вы работаете под 1.21.4+, полезно думать не одной папкой, а тремя слоями сразу: PNG, модель и item definition, которая связывает всё вместе.</p>
+        </section>
+
+        <section class="article-section">
+            <h2>Практический порядок сборки</h2>
+            <p>Чаще всего рабочий путь выглядит одинаково. Сначала вы рисуете или экспортируете PNG. Потом кладёте его в правильную папку. После этого подключаете модель или item definition. И только потом проверяете предмет, блок или броню в игре. Когда этот порядок ломается, пак очень быстро превращается в набор почти совпадающих имён и случайных ссылок.</p>
+            <ol class="article-list">
+                <li>Подготовить PNG.</li>
+                <li>Положить его в нужную папку текстур.</li>
+                <li>Создать или обновить JSON-модель.</li>
+                <li>Если версия 1.21.4+, собрать файл в <code>assets/minecraft/items</code>.</li>
+                <li>Проверить результат в генераторе или прямо в игре.</li>
+            </ol>
+        </section>
+
+        <section class="article-section">
+            <h2>Какие ошибки встречаются чаще всего</h2>
+            <p>Самые частые проблемы обычно скучные, но от этого не менее дорогие по времени. Блок называют как предмет. JSON смотрит в <code>item/foo</code>, а PNG лежит в <code>textures/block</code>. В имени файла появляются пробелы, заглавные буквы или случайные хвосты. Или путь формально существует, но не совпадает с тем, что вы написали в модели. Безопасная привычка тут простая: использовать lowercase, подчёркивания и один и тот же корень имени для связанных файлов.</p>
+        </section>
+
+        <section class="article-section">
+            <h2>Куда идти дальше</h2>
+            <p>Если вам нужна была только карта папок, этого уже достаточно. Если вы прямо сейчас собираете пак, дальше обычно полезнее всего открыть <a href="/ru/wiki-resource-pack-generator/">гайд по генератору</a>, статью про <a href="/ru/wiki-custom-model-data/">CustomModelData</a> и материал по миграции на 1.21.4. Там эта базовая структура уже превращается в команды, предметные кейсы и рабочие схемы подключения.</p>
+        </section>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>
