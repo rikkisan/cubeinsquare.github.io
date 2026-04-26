@@ -99,6 +99,27 @@
             gap: 18px;
         }
 
+        .error-mascot-card {
+            overflow: hidden;
+        }
+
+        .error-mascot {
+            width: min(100%, 320px);
+            aspect-ratio: 1;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 16px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .error-mascot-copy {
+            margin: 0;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
         .error-side h2,
         .error-side h3 {
             margin: 0 0 10px;
@@ -193,6 +214,11 @@
         </div>
 
         <div class="error-side">
+            <article class="resource-card error-mascot-card">
+                <img class="error-mascot" src="/assets/404-watermelon.gif" alt="Animated watermelon on the 404 page">
+                <h2>Wrong turn, but the tools are still here</h2>
+                <p class="error-mascot-copy">The page slipped away, but the useful parts of the site did not. Use the buttons below to jump back into the wiki, the generators, or the editors without starting over.</p>
+            </article>
             <article class="resource-card">
                 <h2 id="popular-title">Maybe you were looking for</h2>
                 <ul class="error-list">
