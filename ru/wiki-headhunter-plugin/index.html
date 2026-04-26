@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Плагин HeadHunter для RP-серверов Minecraft | Cube in Square</title>
+    <title>РџР»Р°РіРёРЅ HeadHunter РґР»СЏ RP-СЃРµСЂРІРµСЂРѕРІ Minecraft | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Русский разбор HeadHunter Plugin: Hunter's Fang, 87 способностей мобов, ограничения, GUI, смерть с потерей прогрессии и админские настройки для RP-сервера на Paper.">
+    <meta name="description" content="Р СѓСЃСЃРєРёР№ СЂР°Р·Р±РѕСЂ HeadHunter Plugin: Hunter's Fang, 87 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№ РјРѕР±РѕРІ, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ, GUI, СЃРјРµСЂС‚СЊ СЃ РїРѕС‚РµСЂРµР№ РїСЂРѕРіСЂРµСЃСЃРёРё Рё Р°РґРјРёРЅСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё РґР»СЏ RP-СЃРµСЂРІРµСЂР° РЅР° Paper.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,84 +19,126 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-headhunter-plugin/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Плагин HeadHunter для RP-серверов Minecraft | Cube in Square">
-    <meta property="og:description" content="Как HeadHunter превращает охоту на мобов в систему классов, развития и RP-архетипов через Hunter's Fang и десятки способностей.">
+    <meta property="og:title" content="РџР»Р°РіРёРЅ HeadHunter РґР»СЏ RP-СЃРµСЂРІРµСЂРѕРІ Minecraft | Cube in Square">
+    <meta property="og:description" content="РљР°Рє HeadHunter РїСЂРµРІСЂР°С‰Р°РµС‚ РѕС…РѕС‚Сѓ РЅР° РјРѕР±РѕРІ РІ СЃРёСЃС‚РµРјСѓ РєР»Р°СЃСЃРѕРІ, СЂР°Р·РІРёС‚РёСЏ Рё RP-Р°СЂС…РµС‚РёРїРѕРІ С‡РµСЂРµР· Hunter's Fang Рё РґРµСЃСЏС‚РєРё СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-headhunter-plugin/">
     <meta property="og:locale" content="ru_RU">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Плагин HeadHunter для RP-серверов Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Hunter's Fang, 87 моб-способностей, ограничения и логика progression в одной статье.">
+    <meta name="twitter:title" content="РџР»Р°РіРёРЅ HeadHunter РґР»СЏ RP-СЃРµСЂРІРµСЂРѕРІ Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Hunter's Fang, 87 РјРѕР±-СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ Рё Р»РѕРіРёРєР° progression РІ РѕРґРЅРѕР№ СЃС‚Р°С‚СЊРµ.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Плагин HeadHunter для RP-серверов Minecraft","description":"Русский разбор HeadHunter Plugin: Hunter's Fang, 87 способностей мобов, ограничения, GUI, смерть с потерей прогрессии и админские настройки для RP-сервера на Paper.","inLanguage":"ru","url":"https://cubeinsquare.com/ru/wiki-headhunter-plugin/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://cubeinsquare.com/ru/"},{"@type":"ListItem","position":2,"name":"Вики","item":"https://cubeinsquare.com/ru/wiki/"},{"@type":"ListItem","position":3,"name":"HeadHunter Plugin","item":"https://cubeinsquare.com/ru/wiki-headhunter-plugin/"}]}]}</script>
+    <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Article",
+                       "headline":  "РџР»Р°РіРёРЅ HeadHunter РґР»СЏ RP-СЃРµСЂРІРµСЂРѕРІ Minecraft",
+                       "description":  "Р СѓСЃСЃРєРёР№ СЂР°Р·Р±РѕСЂ HeadHunter Plugin: Hunter\u0027s Fang, 87 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№ РјРѕР±РѕРІ, РѕРіСЂР°РЅРёС‡РµРЅРёСЏ, GUI, СЃРјРµСЂС‚СЊ СЃ РїРѕС‚РµСЂРµР№ РїСЂРѕРіСЂРµСЃСЃРёРё Рё Р°РґРјРёРЅСЃРєРёРµ РЅР°СЃС‚СЂРѕР№РєРё РґР»СЏ RP-СЃРµСЂРІРµСЂР° РЅР° Paper.",
+                       "inLanguage":  "ru",
+                       "url":  "https://cubeinsquare.com/ru/wiki-headhunter-plugin/",
+                       "image":  [
+                                     "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+                                 ],
+                       "datePublished":  "2026-04-25",
+                       "dateModified":  "2026-04-25"
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Р“Р»Р°РІРЅР°СЏ",
+                                                   "item":  "https://cubeinsquare.com/ru/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Р’РёРєРё",
+                                                   "item":  "https://cubeinsquare.com/ru/wiki/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "HeadHunter Plugin",
+                                                   "item":  "https://cubeinsquare.com/ru/wiki-headhunter-plugin/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-headhunter-plugin/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-headhunter-plugin/">FR</a><a href="/de/wiki-headhunter-plugin/">DE</a></div></div></div>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Р“Р»Р°РІРЅР°СЏ" title="Р“Р»Р°РІРЅР°СЏ"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Р’РёРєРё</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">РРЅСЃС‚СЂСѓРјРµРЅС‚С‹</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">Рћ РїСЂРѕРµРєС‚Рµ</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ..."><button type="submit" aria-label="РџРѕРёСЃРє"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-headhunter-plugin/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-headhunter-plugin/">FR</a><a href="/de/wiki-headhunter-plugin/">DE</a></div></div></div>
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <a class="article-back" href="/ru/wiki/">&larr; Р’СЃРµ СЃС‚Р°С‚СЊРё</a>
     <section class="page-hero">
-        <h1>Плагин HeadHunter для RP-серверов Minecraft</h1>
-        <p class="page-lead">Система прогрессии охотника, в которой почти каждый моб становится источником силы, а весь рост персонажа держится на одном связанном артефакте и длинном наборе активных и пассивных способностей.</p>
-        <a class="resource-link" href="https://www.patreon.com/posts/headhunter-155944378">Открыть пост Patreon</a>
+        <h1>РџР»Р°РіРёРЅ HeadHunter РґР»СЏ RP-СЃРµСЂРІРµСЂРѕРІ Minecraft</h1>
+        <p class="page-lead">РЎРёСЃС‚РµРјР° РїСЂРѕРіСЂРµСЃСЃРёРё РѕС…РѕС‚РЅРёРєР°, РІ РєРѕС‚РѕСЂРѕР№ РїРѕС‡С‚Рё РєР°Р¶РґС‹Р№ РјРѕР± СЃС‚Р°РЅРѕРІРёС‚СЃСЏ РёСЃС‚РѕС‡РЅРёРєРѕРј СЃРёР»С‹, Р° РІРµСЃСЊ СЂРѕСЃС‚ РїРµСЂСЃРѕРЅР°Р¶Р° РґРµСЂР¶РёС‚СЃСЏ РЅР° РѕРґРЅРѕРј СЃРІСЏР·Р°РЅРЅРѕРј Р°СЂС‚РµС„Р°РєС‚Рµ Рё РґР»РёРЅРЅРѕРј РЅР°Р±РѕСЂРµ Р°РєС‚РёРІРЅС‹С… Рё РїР°СЃСЃРёРІРЅС‹С… СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№.</p>
+        <a class="resource-link" href="https://www.patreon.com/posts/headhunter-155944378">РћС‚РєСЂС‹С‚СЊ РїРѕСЃС‚ Patreon</a>
     </section>
     <article>
-        <h2>Почему этот плагин вообще интересен</h2>
-        <p>HeadHunter превращает обычную охоту на мобов в полноценную серверную систему классов. Игрок больше не собирает трофеи ради декора или ачивки. Он буквально собирает новые свойства живых существ и встраивает их в свою ролевую идентичность. Благодаря этому PvE начинает питать RP, а не существовать отдельно от него.</p>
+        <h2>РџРѕС‡РµРјСѓ СЌС‚РѕС‚ РїР»Р°РіРёРЅ РІРѕРѕР±С‰Рµ РёРЅС‚РµСЂРµСЃРµРЅ</h2>
+        <p>HeadHunter РїСЂРµРІСЂР°С‰Р°РµС‚ РѕР±С‹С‡РЅСѓСЋ РѕС…РѕС‚Сѓ РЅР° РјРѕР±РѕРІ РІ РїРѕР»РЅРѕС†РµРЅРЅСѓСЋ СЃРµСЂРІРµСЂРЅСѓСЋ СЃРёСЃС‚РµРјСѓ РєР»Р°СЃСЃРѕРІ. РРіСЂРѕРє Р±РѕР»СЊС€Рµ РЅРµ СЃРѕР±РёСЂР°РµС‚ С‚СЂРѕС„РµРё СЂР°РґРё РґРµРєРѕСЂР° РёР»Рё Р°С‡РёРІРєРё. РћРЅ Р±СѓРєРІР°Р»СЊРЅРѕ СЃРѕР±РёСЂР°РµС‚ РЅРѕРІС‹Рµ СЃРІРѕР№СЃС‚РІР° Р¶РёРІС‹С… СЃСѓС‰РµСЃС‚РІ Рё РІСЃС‚СЂР°РёРІР°РµС‚ РёС… РІ СЃРІРѕСЋ СЂРѕР»РµРІСѓСЋ РёРґРµРЅС‚РёС‡РЅРѕСЃС‚СЊ. Р‘Р»Р°РіРѕРґР°СЂСЏ СЌС‚РѕРјСѓ PvE РЅР°С‡РёРЅР°РµС‚ РїРёС‚Р°С‚СЊ RP, Р° РЅРµ СЃСѓС‰РµСЃС‚РІРѕРІР°С‚СЊ РѕС‚РґРµР»СЊРЅРѕ РѕС‚ РЅРµРіРѕ.</p>
 
-        <h2>Hunter's Fang — центральный артефакт</h2>
-        <p>Вся система вращается вокруг <strong>Hunter's Fang</strong>. Пост описывает его как связанный предмет прогрессии, который нельзя выбросить, спрятать или потерять в обычном инвентарном цикле. Он переживает смерть персонажа и усиливается на крупных рубежах развития.</p>
+        <h2>Hunter's Fang вЂ” С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ Р°СЂС‚РµС„Р°РєС‚</h2>
+        <p>Р’СЃСЏ СЃРёСЃС‚РµРјР° РІСЂР°С‰Р°РµС‚СЃСЏ РІРѕРєСЂСѓРі <strong>Hunter's Fang</strong>. РџРѕСЃС‚ РѕРїРёСЃС‹РІР°РµС‚ РµРіРѕ РєР°Рє СЃРІСЏР·Р°РЅРЅС‹Р№ РїСЂРµРґРјРµС‚ РїСЂРѕРіСЂРµСЃСЃРёРё, РєРѕС‚РѕСЂС‹Р№ РЅРµР»СЊР·СЏ РІС‹Р±СЂРѕСЃРёС‚СЊ, СЃРїСЂСЏС‚Р°С‚СЊ РёР»Рё РїРѕС‚РµСЂСЏС‚СЊ РІ РѕР±С‹С‡РЅРѕРј РёРЅРІРµРЅС‚Р°СЂРЅРѕРј С†РёРєР»Рµ. РћРЅ РїРµСЂРµР¶РёРІР°РµС‚ СЃРјРµСЂС‚СЊ РїРµСЂСЃРѕРЅР°Р¶Р° Рё СѓСЃРёР»РёРІР°РµС‚СЃСЏ РЅР° РєСЂСѓРїРЅС‹С… СЂСѓР±РµР¶Р°С… СЂР°Р·РІРёС‚РёСЏ.</p>
         <ul>
-            <li>Уровень 1 — по умолчанию.</li>
-            <li>Уровень 2 — после 20 способностей.</li>
-            <li>Уровень 3 — после 40 способностей.</li>
-            <li>Уровень 4 — после 60 способностей.</li>
+            <li>РЈСЂРѕРІРµРЅСЊ 1 вЂ” РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.</li>
+            <li>РЈСЂРѕРІРµРЅСЊ 2 вЂ” РїРѕСЃР»Рµ 20 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№.</li>
+            <li>РЈСЂРѕРІРµРЅСЊ 3 вЂ” РїРѕСЃР»Рµ 40 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№.</li>
+            <li>РЈСЂРѕРІРµРЅСЊ 4 вЂ” РїРѕСЃР»Рµ 60 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№.</li>
         </ul>
-        <p>Есть и ручной путь апгрейда через <code>Shift + F</code> и дорогие блоки. Это хороший компромисс между гриндом и церемониальным продвижением по статусу.</p>
+        <p>Р•СЃС‚СЊ Рё СЂСѓС‡РЅРѕР№ РїСѓС‚СЊ Р°РїРіСЂРµР№РґР° С‡РµСЂРµР· <code>Shift + F</code> Рё РґРѕСЂРѕРіРёРµ Р±Р»РѕРєРё. Р­С‚Рѕ С…РѕСЂРѕС€РёР№ РєРѕРјРїСЂРѕРјРёСЃСЃ РјРµР¶РґСѓ РіСЂРёРЅРґРѕРј Рё С†РµСЂРµРјРѕРЅРёР°Р»СЊРЅС‹Рј РїСЂРѕРґРІРёР¶РµРЅРёРµРј РїРѕ СЃС‚Р°С‚СѓСЃСѓ.</p>
 
-        <h2>87 способностей мобов меняют словарь сервера</h2>
-        <p>Главная цифра в посте — <strong>87 разных способностей</strong>. Но ценность здесь не только в количестве. Важно то, что игроки начинают описывать себя не через броню и урон, а через существ, чьи свойства они присвоили.</p>
+        <h2>87 СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№ РјРѕР±РѕРІ РјРµРЅСЏСЋС‚ СЃР»РѕРІР°СЂСЊ СЃРµСЂРІРµСЂР°</h2>
+        <p>Р“Р»Р°РІРЅР°СЏ С†РёС„СЂР° РІ РїРѕСЃС‚Рµ вЂ” <strong>87 СЂР°Р·РЅС‹С… СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№</strong>. РќРѕ С†РµРЅРЅРѕСЃС‚СЊ Р·РґРµСЃСЊ РЅРµ С‚РѕР»СЊРєРѕ РІ РєРѕР»РёС‡РµСЃС‚РІРµ. Р’Р°Р¶РЅРѕ С‚Рѕ, С‡С‚Рѕ РёРіСЂРѕРєРё РЅР°С‡РёРЅР°СЋС‚ РѕРїРёСЃС‹РІР°С‚СЊ СЃРµР±СЏ РЅРµ С‡РµСЂРµР· Р±СЂРѕРЅСЋ Рё СѓСЂРѕРЅ, Р° С‡РµСЂРµР· СЃСѓС‰РµСЃС‚РІ, С‡СЊРё СЃРІРѕР№СЃС‚РІР° РѕРЅРё РїСЂРёСЃРІРѕРёР»Рё.</p>
         <ul>
-            <li><strong>Vex</strong> — краткая разведка почти в режиме призрака.</li>
-            <li><strong>Allay</strong> — утилитарное поведение помощника и работа с предметами.</li>
-            <li><strong>Warden</strong> — отслеживание движущихся целей.</li>
-            <li><strong>Wither</strong> — удаление жидкостей и восстановление в тяжёлом состоянии.</li>
-            <li><strong>Evoker</strong> — доступ к тотемам и усиленные моменты спасения.</li>
-            <li><strong>Shulker</strong> — аварийная телепортация.</li>
-            <li><strong>Slime</strong> — дополнительная мобильность через прыжки.</li>
+            <li><strong>Vex</strong> вЂ” РєСЂР°С‚РєР°СЏ СЂР°Р·РІРµРґРєР° РїРѕС‡С‚Рё РІ СЂРµР¶РёРјРµ РїСЂРёР·СЂР°РєР°.</li>
+            <li><strong>Allay</strong> вЂ” СѓС‚РёР»РёС‚Р°СЂРЅРѕРµ РїРѕРІРµРґРµРЅРёРµ РїРѕРјРѕС‰РЅРёРєР° Рё СЂР°Р±РѕС‚Р° СЃ РїСЂРµРґРјРµС‚Р°РјРё.</li>
+            <li><strong>Warden</strong> вЂ” РѕС‚СЃР»РµР¶РёРІР°РЅРёРµ РґРІРёР¶СѓС‰РёС…СЃСЏ С†РµР»РµР№.</li>
+            <li><strong>Wither</strong> вЂ” СѓРґР°Р»РµРЅРёРµ Р¶РёРґРєРѕСЃС‚РµР№ Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РІ С‚СЏР¶С‘Р»РѕРј СЃРѕСЃС‚РѕСЏРЅРёРё.</li>
+            <li><strong>Evoker</strong> вЂ” РґРѕСЃС‚СѓРї Рє С‚РѕС‚РµРјР°Рј Рё СѓСЃРёР»РµРЅРЅС‹Рµ РјРѕРјРµРЅС‚С‹ СЃРїР°СЃРµРЅРёСЏ.</li>
+            <li><strong>Shulker</strong> вЂ” Р°РІР°СЂРёР№РЅР°СЏ С‚РµР»РµРїРѕСЂС‚Р°С†РёСЏ.</li>
+            <li><strong>Slime</strong> вЂ” РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РјРѕР±РёР»СЊРЅРѕСЃС‚СЊ С‡РµСЂРµР· РїСЂС‹Р¶РєРё.</li>
         </ul>
-        <p>Это особенно хорошо для RP, потому что такие способности создают архетипы, а не только цифры урона.</p>
+        <p>Р­С‚Рѕ РѕСЃРѕР±РµРЅРЅРѕ С…РѕСЂРѕС€Рѕ РґР»СЏ RP, РїРѕС‚РѕРјСѓ С‡С‚Рѕ С‚Р°РєРёРµ СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё СЃРѕР·РґР°СЋС‚ Р°СЂС…РµС‚РёРїС‹, Р° РЅРµ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹ СѓСЂРѕРЅР°.</p>
 
-        <h2>Ограничения здесь не менее важны, чем сила</h2>
-        <p>Пост не продаёт систему как бесконечный power fantasy. Он одновременно отрезает часть ванильных удобств, чтобы класс действительно что-то стоил.</p>
+        <h2>РћРіСЂР°РЅРёС‡РµРЅРёСЏ Р·РґРµСЃСЊ РЅРµ РјРµРЅРµРµ РІР°Р¶РЅС‹, С‡РµРј СЃРёР»Р°</h2>
+        <p>РџРѕСЃС‚ РЅРµ РїСЂРѕРґР°С‘С‚ СЃРёСЃС‚РµРјСѓ РєР°Рє Р±РµСЃРєРѕРЅРµС‡РЅС‹Р№ power fantasy. РћРЅ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ РѕС‚СЂРµР·Р°РµС‚ С‡Р°СЃС‚СЊ РІР°РЅРёР»СЊРЅС‹С… СѓРґРѕР±СЃС‚РІ, С‡С‚РѕР±С‹ РєР»Р°СЃСЃ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С‡С‚Рѕ-С‚Рѕ СЃС‚РѕРёР».</p>
         <ul>
-            <li>Bundles могут взрываться.</li>
-            <li>Доступ к Ender Chest зависит от активных баффов.</li>
-            <li>Totem ограничен, если не активен нужный эффект Evoker.</li>
-            <li>После смерти можно потерять часть активных способностей, по умолчанию — 10.</li>
-            <li>Опыт и его использование тоже переработаны.</li>
+            <li>Bundles РјРѕРіСѓС‚ РІР·СЂС‹РІР°С‚СЊСЃСЏ.</li>
+            <li>Р”РѕСЃС‚СѓРї Рє Ender Chest Р·Р°РІРёСЃРёС‚ РѕС‚ Р°РєС‚РёРІРЅС‹С… Р±Р°С„С„РѕРІ.</li>
+            <li>Totem РѕРіСЂР°РЅРёС‡РµРЅ, РµСЃР»Рё РЅРµ Р°РєС‚РёРІРµРЅ РЅСѓР¶РЅС‹Р№ СЌС„С„РµРєС‚ Evoker.</li>
+            <li>РџРѕСЃР»Рµ СЃРјРµСЂС‚Рё РјРѕР¶РЅРѕ РїРѕС‚РµСЂСЏС‚СЊ С‡Р°СЃС‚СЊ Р°РєС‚РёРІРЅС‹С… СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” 10.</li>
+            <li>РћРїС‹С‚ Рё РµРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С‚РѕР¶Рµ РїРµСЂРµСЂР°Р±РѕС‚Р°РЅС‹.</li>
         </ul>
-        <p>Это критично для баланса. Сильный progression-плагин без трения очень быстро превращает всех игроков в один и тот же набор оптимальных билдов.</p>
+        <p>Р­С‚Рѕ РєСЂРёС‚РёС‡РЅРѕ РґР»СЏ Р±Р°Р»Р°РЅСЃР°. РЎРёР»СЊРЅС‹Р№ progression-РїР»Р°РіРёРЅ Р±РµР· С‚СЂРµРЅРёСЏ РѕС‡РµРЅСЊ Р±С‹СЃС‚СЂРѕ РїСЂРµРІСЂР°С‰Р°РµС‚ РІСЃРµС… РёРіСЂРѕРєРѕРІ РІ РѕРґРёРЅ Рё С‚РѕС‚ Р¶Рµ РЅР°Р±РѕСЂ РѕРїС‚РёРјР°Р»СЊРЅС‹С… Р±РёР»РґРѕРІ.</p>
 
-        <h2>GUI делает прогрессию читаемой</h2>
-        <p>У плагина есть отдельный интерфейс, где каждый моб получает свой слот и состояние вроде <code>[???]</code>, <code>[DISCOVERED]</code>, <code>[OFF]</code> или <code>[ACTIVE]</code>. Плюс есть Info Tablet, который показывает уровень Fang, открытые силы, активные баффы и требование к следующему апгрейду.</p>
-        <p>Для Paper-сервера это очень важно: как только система становится больше нескольких эффектов, половина успеха — это понятный интерфейс и хороший discoverability.</p>
+        <h2>GUI РґРµР»Р°РµС‚ РїСЂРѕРіСЂРµСЃСЃРёСЋ С‡РёС‚Р°РµРјРѕР№</h2>
+        <p>РЈ РїР»Р°РіРёРЅР° РµСЃС‚СЊ РѕС‚РґРµР»СЊРЅС‹Р№ РёРЅС‚РµСЂС„РµР№СЃ, РіРґРµ РєР°Р¶РґС‹Р№ РјРѕР± РїРѕР»СѓС‡Р°РµС‚ СЃРІРѕР№ СЃР»РѕС‚ Рё СЃРѕСЃС‚РѕСЏРЅРёРµ РІСЂРѕРґРµ <code>[???]</code>, <code>[DISCOVERED]</code>, <code>[OFF]</code> РёР»Рё <code>[ACTIVE]</code>. РџР»СЋСЃ РµСЃС‚СЊ Info Tablet, РєРѕС‚РѕСЂС‹Р№ РїРѕРєР°Р·С‹РІР°РµС‚ СѓСЂРѕРІРµРЅСЊ Fang, РѕС‚РєСЂС‹С‚С‹Рµ СЃРёР»С‹, Р°РєС‚РёРІРЅС‹Рµ Р±Р°С„С„С‹ Рё С‚СЂРµР±РѕРІР°РЅРёРµ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ Р°РїРіСЂРµР№РґСѓ.</p>
+        <p>Р”Р»СЏ Paper-СЃРµСЂРІРµСЂР° СЌС‚Рѕ РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ: РєР°Рє С‚РѕР»СЊРєРѕ СЃРёСЃС‚РµРјР° СЃС‚Р°РЅРѕРІРёС‚СЃСЏ Р±РѕР»СЊС€Рµ РЅРµСЃРєРѕР»СЊРєРёС… СЌС„С„РµРєС‚РѕРІ, РїРѕР»РѕРІРёРЅР° СѓСЃРїРµС…Р° вЂ” СЌС‚Рѕ РїРѕРЅСЏС‚РЅС‹Р№ РёРЅС‚РµСЂС„РµР№СЃ Рё С…РѕСЂРѕС€РёР№ discoverability.</p>
 
-        <h2>Админская сторона выглядит здоровой</h2>
-        <p>Команды через <code>/headhunter</code> позволяют выдать или снять Fang, добавить нужный бафф, очистить прогрессию, посмотреть сборку игрока, выставить уровень вручную и менять параметр потери после смерти. Отдельно есть смена языка через <code>/hunterlang</code>. Это значит, что плагин рассчитан на реальную серверную эксплуатацию, а не только на “идеальный запуск один раз”.</p>
+        <h2>РђРґРјРёРЅСЃРєР°СЏ СЃС‚РѕСЂРѕРЅР° РІС‹РіР»СЏРґРёС‚ Р·РґРѕСЂРѕРІРѕР№</h2>
+        <p>РљРѕРјР°РЅРґС‹ С‡РµСЂРµР· <code>/headhunter</code> РїРѕР·РІРѕР»СЏСЋС‚ РІС‹РґР°С‚СЊ РёР»Рё СЃРЅСЏС‚СЊ Fang, РґРѕР±Р°РІРёС‚СЊ РЅСѓР¶РЅС‹Р№ Р±Р°С„С„, РѕС‡РёСЃС‚РёС‚СЊ РїСЂРѕРіСЂРµСЃСЃРёСЋ, РїРѕСЃРјРѕС‚СЂРµС‚СЊ СЃР±РѕСЂРєСѓ РёРіСЂРѕРєР°, РІС‹СЃС‚Р°РІРёС‚СЊ СѓСЂРѕРІРµРЅСЊ РІСЂСѓС‡РЅСѓСЋ Рё РјРµРЅСЏС‚СЊ РїР°СЂР°РјРµС‚СЂ РїРѕС‚РµСЂРё РїРѕСЃР»Рµ СЃРјРµСЂС‚Рё. РћС‚РґРµР»СЊРЅРѕ РµСЃС‚СЊ СЃРјРµРЅР° СЏР·С‹РєР° С‡РµСЂРµР· <code>/hunterlang</code>. Р­С‚Рѕ Р·РЅР°С‡РёС‚, С‡С‚Рѕ РїР»Р°РіРёРЅ СЂР°СЃСЃС‡РёС‚Р°РЅ РЅР° СЂРµР°Р»СЊРЅСѓСЋ СЃРµСЂРІРµСЂРЅСѓСЋ СЌРєСЃРїР»СѓР°С‚Р°С†РёСЋ, Р° РЅРµ С‚РѕР»СЊРєРѕ РЅР° вЂњРёРґРµР°Р»СЊРЅС‹Р№ Р·Р°РїСѓСЃРє РѕРґРёРЅ СЂР°Р·вЂќ.</p>
 
-        <h2>Почему это хорошо работает для RP</h2>
-        <p>HeadHunter даёт игрокам понятную фантазию роста без клиентских модов. Охотник со временем становится странным специалистом, а мир начинает реагировать на конкретные свойства мобов, встроенные в его тело. На такой базе легко строить гильдии, охотничьи контракты, чёрный рынок редких способностей и целые ветки лора вокруг опасных трофеев.</p>
+        <h2>РџРѕС‡РµРјСѓ СЌС‚Рѕ С…РѕСЂРѕС€Рѕ СЂР°Р±РѕС‚Р°РµС‚ РґР»СЏ RP</h2>
+        <p>HeadHunter РґР°С‘С‚ РёРіСЂРѕРєР°Рј РїРѕРЅСЏС‚РЅСѓСЋ С„Р°РЅС‚Р°Р·РёСЋ СЂРѕСЃС‚Р° Р±РµР· РєР»РёРµРЅС‚СЃРєРёС… РјРѕРґРѕРІ. РћС…РѕС‚РЅРёРє СЃРѕ РІСЂРµРјРµРЅРµРј СЃС‚Р°РЅРѕРІРёС‚СЃСЏ СЃС‚СЂР°РЅРЅС‹Рј СЃРїРµС†РёР°Р»РёСЃС‚РѕРј, Р° РјРёСЂ РЅР°С‡РёРЅР°РµС‚ СЂРµР°РіРёСЂРѕРІР°С‚СЊ РЅР° РєРѕРЅРєСЂРµС‚РЅС‹Рµ СЃРІРѕР№СЃС‚РІР° РјРѕР±РѕРІ, РІСЃС‚СЂРѕРµРЅРЅС‹Рµ РІ РµРіРѕ С‚РµР»Рѕ. РќР° С‚Р°РєРѕР№ Р±Р°Р·Рµ Р»РµРіРєРѕ СЃС‚СЂРѕРёС‚СЊ РіРёР»СЊРґРёРё, РѕС…РѕС‚РЅРёС‡СЊРё РєРѕРЅС‚СЂР°РєС‚С‹, С‡С‘СЂРЅС‹Р№ СЂС‹РЅРѕРє СЂРµРґРєРёС… СЃРїРѕСЃРѕР±РЅРѕСЃС‚РµР№ Рё С†РµР»С‹Рµ РІРµС‚РєРё Р»РѕСЂР° РІРѕРєСЂСѓРі РѕРїР°СЃРЅС‹С… С‚СЂРѕС„РµРµРІ.</p>
 
-        <h2>Источник</h2>
-        <p>Эта статья собрана как удобный сайт-обзор по публичному посту автора:<br><a href="https://www.patreon.com/posts/headhunter-155944378">HeadHunter Plugin | Patreon</a></p>
+        <h2>РСЃС‚РѕС‡РЅРёРє</h2>
+        <p>Р­С‚Р° СЃС‚Р°С‚СЊСЏ СЃРѕР±СЂР°РЅР° РєР°Рє СѓРґРѕР±РЅС‹Р№ СЃР°Р№С‚-РѕР±Р·РѕСЂ РїРѕ РїСѓР±Р»РёС‡РЅРѕРјСѓ РїРѕСЃС‚Сѓ Р°РІС‚РѕСЂР°:<br><a href="https://www.patreon.com/posts/headhunter-155944378">HeadHunter Plugin | Patreon</a></p>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">РџРѕР»РёС‚РёРєР° РєРѕРЅС„РёРґРµРЅС†РёР°Р»СЊРЅРѕСЃС‚Рё</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
 </body>
 </html>
+
