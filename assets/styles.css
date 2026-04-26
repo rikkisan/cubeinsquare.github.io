@@ -1604,6 +1604,10 @@
             box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
         }
 
         .wiki-sidebar-eyebrow,
@@ -2013,6 +2017,11 @@
 
              .wiki-sidebar {
                  position: static;
+             }
+
+             .wiki-sidebar-card {
+                 max-height: none;
+                 overflow-y: visible;
              }
 
              .article-layout {
