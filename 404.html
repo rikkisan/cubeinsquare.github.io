@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>404 | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The page does not exist anymore, or the link has changed. Return to the Minecraft tools, wiki, and guides on Cube in Square.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="googlebot" content="noindex, follow">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <style>
+        .error-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .error-code {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(59, 130, 246, 0.14);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            color: #bfdbfe;
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .error-title {
+            margin: 18px 0 12px;
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
+            line-height: 1.05;
+        }
+
+        .error-copy {
+            display: grid;
+            gap: 16px;
+        }
+
+        .error-copy p {
+            margin: 0;
+            color: var(--text-dim);
+            font-size: 1.06rem;
+            line-height: 1.8;
+        }
+
+        .error-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .error-search {
+            margin-top: 6px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .error-search label {
+            color: var(--text-dim);
+            font-size: 0.94rem;
+            font-weight: 700;
+        }
+
+        .error-search-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .error-search-row input {
+            flex: 1 1 240px;
+            min-width: 0;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--text-main);
+            padding: 12px 14px;
+            border-radius: 8px;
+            font: inherit;
+            outline: none;
+        }
+
+        .error-search-row input:focus {
+            border-color: rgba(96, 165, 250, 0.65);
+            box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.3);
+        }
+
+        .error-side {
+            display: grid;
+            gap: 18px;
+        }
+
+        .error-side h2,
+        .error-side h3 {
+            margin: 0 0 10px;
+        }
+
+        .error-list {
+            margin: 0;
+            padding-left: 18px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .error-list a {
+            color: #dbeafe;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .error-list a:hover {
+            color: #ffffff;
+        }
+
+        .error-path {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.58);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            color: #cbd5e1;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 0.92rem;
+            word-break: break-word;
+        }
+
+        @media (max-width: 900px) {
+            .error-shell {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .error-title {
+                font-size: clamp(2rem, 8vw, 2.8rem);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" id="nav-home" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" id="nav-wiki" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" id="nav-tools" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" id="nav-project" href="/about/">Project</a></div>
+        <form class="steam-search" id="nav-search" action="/wiki/" method="get">
+            <input type="text" name="q" id="nav-search-input" placeholder="Search the site...">
+            <button type="submit" aria-label="Search">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </form>
+        <div class="language-switch" aria-label="Language">
+            <a id="lang-ru" href="/ru/">RU</a>
+            <a id="lang-en" href="/">EN</a>
+            <a id="lang-fr" href="/fr/">FR</a>
+            <a id="lang-de" href="/de/">DE</a>
+        </div>
+    </div>
+</div>
+
+<main class="page-shell">
+    <section class="page-hero error-shell">
+        <div class="error-copy">
+            <span class="error-code" id="error-code">Error 404</span>
+            <h1 class="error-title" id="error-title">This page does not exist anymore</h1>
+            <p id="error-lead">The link may be old, the page may have moved, or the address may simply be mistyped. The good news is that the site itself is fine, and we can get you back to the useful parts quickly.</p>
+            <p id="error-body">If you were looking for a Minecraft tool, a wiki guide, or a server article, the fastest path is usually the tools catalog or the wiki homepage. Both are live and updated.</p>
+            <div class="error-actions">
+                <a class="resource-link" id="action-home" href="/">Go home</a>
+                <a class="resource-link resource-link-secondary" id="action-tools" href="/tools/">Open tools</a>
+                <a class="resource-link resource-link-secondary" id="action-wiki" href="/wiki/">Open wiki</a>
+            </div>
+            <form class="error-search" id="error-search" action="/wiki/" method="get">
+                <label for="error-search-input" id="search-label">Search the wiki instead</label>
+                <div class="error-search-row">
+                    <input id="error-search-input" type="text" name="q" placeholder="Try CustomModelData, villager trades, skin editor...">
+                    <button class="resource-link" type="submit" id="search-button">Search</button>
+                </div>
+            </form>
+            <div class="error-path" id="error-path"></div>
+        </div>
+
+        <div class="error-side">
+            <article class="resource-card">
+                <h2 id="popular-title">Maybe you were looking for</h2>
+                <ul class="error-list">
+                    <li><a id="popular-pack" href="/resource-pack-generator/">Minecraft Resource Pack Generator</a></li>
+                    <li><a id="popular-skins" href="/skin-editor/">Minecraft Skin Editor</a></li>
+                    <li><a id="popular-textures" href="/texture-painter/">Texture Painter</a></li>
+                    <li><a id="popular-villagers" href="/custom-villager-trades/">Custom villager trades</a></li>
+                    <li><a id="popular-cmd" href="/wiki-custom-model-data/">CustomModelData guide</a></li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3 id="next-title">Good places to restart</h3>
+                <p id="next-copy">If you landed here from an old tutorial or a stale bookmark, start with the current hub pages. They collect the newest routes, tools, and guides in one place.</p>
+                <div class="tool-button-row">
+                    <a class="resource-link" id="next-generator" href="/resource-pack-generator/">Pack generator</a>
+                    <a class="resource-link resource-link-secondary" id="next-project" href="/about/">About the project</a>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span id="footer-copy">Cube in Square — Minecraft tools, guides, and a mod-free roleplay server.</span>
+    <div>
+        <a id="footer-privacy" href="/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer>
+
+<script>
+    (function () {
+        const path = window.location.pathname || "/";
+        const locale = path.startsWith("/ru/") ? "ru" : path.startsWith("/fr/") ? "fr" : path.startsWith("/de/") ? "de" : "en";
+        const prefix = locale === "en" ? "" : "/" + locale;
+
+        const copy = {
+            en: {
+                lang: "en",
+                pageTitle: "404 | Cube in Square",
+                navWiki: "Wiki",
+                navTools: "Tools",
+                navProject: "Project",
+                searchSite: "Search the site...",
+                errorCode: "Error 404",
+                title: "This page does not exist anymore",
+                lead: "The link may be old, the page may have moved, or the address may simply be mistyped. The good news is that the site itself is fine, and we can get you back to the useful parts quickly.",
+                body: "If you were looking for a Minecraft tool, a wiki guide, or a server article, the fastest path is usually the tools catalog or the wiki homepage. Both are live and updated.",
+                goHome: "Go home",
+                openTools: "Open tools",
+                openWiki: "Open wiki",
+                searchLabel: "Search the wiki instead",
+                searchPlaceholder: "Try CustomModelData, villager trades, skin editor...",
+                searchButton: "Search",
+                currentPath: "Requested path",
+                popularTitle: "Maybe you were looking for",
+                pack: "Minecraft Resource Pack Generator",
+                skins: "Minecraft Skin Editor",
+                textures: "Texture Painter",
+                villagers: "Custom villager trades",
+                cmd: "CustomModelData guide",
+                nextTitle: "Good places to restart",
+                nextCopy: "If you landed here from an old tutorial or a stale bookmark, start with the current hub pages. They collect the newest routes, tools, and guides in one place.",
+                nextGenerator: "Pack generator",
+                nextProject: "About the project",
+                footer: "Cube in Square — Minecraft tools, guides, and a mod-free roleplay server.",
+                privacy: "Privacy Policy"
+            },
+            ru: {
+                lang: "ru",
+                pageTitle: "404 | Cube in Square",
+                navWiki: "Вики",
+                navTools: "Инструменты",
+                navProject: "О проекте",
+                searchSite: "Поиск по сайту...",
+                errorCode: "Ошибка 404",
+                title: "Такой страницы больше нет",
+                lead: "Ссылка могла устареть, страница могла переехать, а адрес мог просто оказаться набран с ошибкой. Сам сайт при этом в порядке, так что сейчас быстро вернёмся к полезным разделам.",
+                body: "Если ты искал инструмент для Minecraft, гайд из вики или статью про серверные механики, проще всего вернуться в каталог инструментов или на главную страницу вики. Оба раздела живые и обновляются.",
+                goHome: "На главную",
+                openTools: "Открыть инструменты",
+                openWiki: "Открыть вики",
+                searchLabel: "Или поищи в вики",
+                searchPlaceholder: "Например: CustomModelData, торги жителей, редактор скинов...",
+                searchButton: "Найти",
+                currentPath: "Запрошенный адрес",
+                popularTitle: "Возможно, ты искал",
+                pack: "Генератор ресурс-паков Minecraft",
+                skins: "Редактор скинов Minecraft",
+                textures: "Редактор текстур",
+                villagers: "Кастомные торги жителей",
+                cmd: "Гайд по CustomModelData",
+                nextTitle: "С чего удобнее начать заново",
+                nextCopy: "Если ты пришёл сюда из старого гайда или из устаревшей закладки, начни с актуальных хабов. Там собраны свежие маршруты, инструменты и статьи.",
+                nextGenerator: "Генератор паков",
+                nextProject: "О проекте",
+                footer: "Cube in Square — инструменты, гайды и Minecraft RP-сервер без модов.",
+                privacy: "Политика конфиденциальности"
+            },
+            fr: {
+                lang: "fr",
+                pageTitle: "404 | Cube in Square",
+                navWiki: "Wiki",
+                navTools: "Outils",
+                navProject: "Projet",
+                searchSite: "Rechercher sur le site...",
+                errorCode: "Erreur 404",
+                title: "Cette page n’existe plus",
+                lead: "Le lien est peut-être ancien, la page a pu changer d’adresse, ou l’URL contient simplement une erreur. Le site lui-même va bien, donc on peut te ramener vite vers les sections utiles.",
+                body: "Si tu cherchais un outil Minecraft, un guide du wiki ou un article sur le serveur, le plus simple est de revenir au catalogue d’outils ou à la page principale du wiki. Les deux sont actifs et à jour.",
+                goHome: "Accueil",
+                openTools: "Ouvrir les outils",
+                openWiki: "Ouvrir le wiki",
+                searchLabel: "Ou cherche directement dans le wiki",
+                searchPlaceholder: "Essaie CustomModelData, échanges de villageois, éditeur de skins...",
+                searchButton: "Rechercher",
+                currentPath: "Chemin demandé",
+                popularTitle: "Tu cherchais peut-être",
+                pack: "Générateur de resource packs Minecraft",
+                skins: "Éditeur de skins Minecraft",
+                textures: "Éditeur de textures",
+                villagers: "Échanges personnalisés des villageois",
+                cmd: "Guide CustomModelData",
+                nextTitle: "De bons points de reprise",
+                nextCopy: "Si tu arrives ici depuis un vieux tutoriel ou un favori obsolète, repars des pages hub actuelles. Elles regroupent les routes, outils et guides les plus récents.",
+                nextGenerator: "Générateur de packs",
+                nextProject: "À propos du projet",
+                footer: "Cube in Square — outils Minecraft, guides et serveur roleplay sans mods.",
+                privacy: "Politique de confidentialité"
+            },
+            de: {
+                lang: "de",
+                pageTitle: "404 | Cube in Square",
+                navWiki: "Wiki",
+                navTools: "Tools",
+                navProject: "Projekt",
+                searchSite: "Website durchsuchen...",
+                errorCode: "Fehler 404",
+                title: "Diese Seite existiert nicht mehr",
+                lead: "Der Link kann veraltet sein, die Seite wurde vielleicht verschoben, oder die Adresse enthält einfach einen Tippfehler. Die Website selbst ist in Ordnung, also bringen wir dich schnell zurück zu den nützlichen Bereichen.",
+                body: "Wenn du nach einem Minecraft-Tool, einem Wiki-Guide oder einem Serverartikel gesucht hast, kommst du am schnellsten über den Tool-Katalog oder die Wiki-Startseite weiter. Beide Bereiche sind aktiv und aktuell.",
+                goHome: "Zur Startseite",
+                openTools: "Tools öffnen",
+                openWiki: "Wiki öffnen",
+                searchLabel: "Oder suche direkt im Wiki",
+                searchPlaceholder: "Zum Beispiel: CustomModelData, Villager-Trades, Skin-Editor...",
+                searchButton: "Suchen",
+                currentPath: "Angeforderter Pfad",
+                popularTitle: "Vielleicht suchtest du",
+                pack: "Minecraft Resource Pack Generator",
+                skins: "Minecraft Skin-Editor",
+                textures: "Textur-Editor",
+                villagers: "Eigene Villager-Trades",
+                cmd: "CustomModelData-Guide",
+                nextTitle: "Gute Neustart-Punkte",
+                nextCopy: "Wenn du über ein altes Tutorial oder ein veraltetes Lesezeichen hier gelandet bist, starte am besten mit den aktuellen Hub-Seiten. Dort findest du die neuesten Routen, Tools und Guides gesammelt an einem Ort.",
+                nextGenerator: "Pack-Generator",
+                nextProject: "Über das Projekt",
+                footer: "Cube in Square — Minecraft-Tools, Guides und ein modfreier Roleplay-Server.",
+                privacy: "Datenschutzerklärung"
+            }
+        };
+
+        const t = copy[locale];
+        document.documentElement.lang = t.lang;
+        document.title = t.pageTitle;
+
+        const ids = {
+            "nav-wiki": t.navWiki,
+            "nav-tools": t.navTools,
+            "nav-project": t.navProject,
+            "error-code": t.errorCode,
+            "error-title": t.title,
+            "error-lead": t.lead,
+            "error-body": t.body,
+            "action-home": t.goHome,
+            "action-tools": t.openTools,
+            "action-wiki": t.openWiki,
+            "search-label": t.searchLabel,
+            "search-button": t.searchButton,
+            "popular-title": t.popularTitle,
+            "popular-pack": t.pack,
+            "popular-skins": t.skins,
+            "popular-textures": t.textures,
+            "popular-villagers": t.villagers,
+            "popular-cmd": t.cmd,
+            "next-title": t.nextTitle,
+            "next-copy": t.nextCopy,
+            "next-generator": t.nextGenerator,
+            "next-project": t.nextProject,
+            "footer-copy": t.footer,
+            "footer-privacy": t.privacy
+        };
+
+        Object.entries(ids).forEach(([id, value]) => {
+            const node = document.getElementById(id);
+            if (node) {
+                node.textContent = value;
+            }
+        });
+
+        document.getElementById("nav-search-input").placeholder = t.searchSite;
+        document.getElementById("error-search-input").placeholder = t.searchPlaceholder;
+        document.getElementById("error-path").textContent = t.currentPath + ": " + path;
+
+        const route = function (suffix) {
+            return prefix + suffix;
+        };
+
+        const links = {
+            "nav-home": route("/"),
+            "nav-wiki": route("/wiki/"),
+            "nav-tools": route("/tools/"),
+            "nav-project": route("/about/"),
+            "action-home": route("/"),
+            "action-tools": route("/tools/"),
+            "action-wiki": route("/wiki/"),
+            "popular-pack": route("/resource-pack-generator/"),
+            "popular-skins": route("/skin-editor/"),
+            "popular-textures": route("/texture-painter/"),
+            "popular-villagers": route("/custom-villager-trades/"),
+            "popular-cmd": route("/wiki-custom-model-data/"),
+            "next-generator": route("/resource-pack-generator/"),
+            "next-project": route("/about/"),
+            "footer-privacy": route("/privacy-policy/")
+        };
+
+        Object.entries(links).forEach(([id, href]) => {
+            const node = document.getElementById(id);
+            if (node) {
+                node.href = href;
+            }
+        });
+
+        document.getElementById("nav-search").action = route("/wiki/");
+        document.getElementById("error-search").action = route("/wiki/");
+
+        ["en", "ru", "fr", "de"].forEach(function (lang) {
+            const el = document.getElementById("lang-" + lang);
+            if (!el) {
+                return;
+            }
+            el.href = lang === "en" ? "/" : "/" + lang + "/";
+            el.classList.toggle("is-active", lang === locale);
+        });
+    })();
+</script>
+</body>
+</html>
