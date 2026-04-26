@@ -1417,6 +1417,34 @@
             font-size: 1rem;
         }
 
+        .wiki-article a,
+        .page-section p a,
+        .page-section li a,
+        .resource-card p a,
+        .resource-card li a {
+            color: #93c5fd;
+            font-weight: 700;
+            text-decoration-line: underline;
+            text-decoration-color: rgba(147, 197, 253, 0.55);
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 0.16em;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        }
+
+        .wiki-article a:hover,
+        .wiki-article a:focus-visible,
+        .page-section p a:hover,
+        .page-section p a:focus-visible,
+        .page-section li a:hover,
+        .page-section li a:focus-visible,
+        .resource-card p a:hover,
+        .resource-card p a:focus-visible,
+        .resource-card li a:hover,
+        .resource-card li a:focus-visible {
+            color: #dbeafe;
+            text-decoration-color: rgba(219, 234, 254, 0.95);
+        }
+
         .wiki-article ul {
             padding-left: 22px;
         }
