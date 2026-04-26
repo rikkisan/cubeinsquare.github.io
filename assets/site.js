@@ -275,10 +275,120 @@
         });
     }
 
+    function slugifyHeading(text) {
+        return (text || '')
+            .toLowerCase()
+            .trim()
+            .replace(/['’"]/g, '')
+            .replace(/[^a-z0-9\u0400-\u04ff\u00c0-\u024f]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    function initArticleToc() {
+        const articleShell = document.querySelector('.article-shell');
+        const article = articleShell ? articleShell.querySelector('.wiki-article') : null;
+        if (!articleShell || !article) return;
+
+        const headings = Array.from(article.querySelectorAll('h2, h3'));
+        if (headings.length < 2) return;
+
+        const locale = getLocaleInfo().lang;
+        const copy = {
+            en: { eyebrow: 'On this page', title: 'Jump to section' },
+            ru: { eyebrow: 'На странице', title: 'Разделы статьи' },
+            fr: { eyebrow: 'Sur la page', title: 'Plan de l’article' },
+            de: { eyebrow: 'Auf dieser Seite', title: 'Abschnitte' }
+        }[locale] || { eyebrow: 'On this page', title: 'Jump to section' };
+
+        let articleLayout = articleShell.querySelector('.article-layout');
+        if (!articleLayout) {
+            articleLayout = document.createElement('div');
+            articleLayout.className = 'article-layout';
+            article.parentNode.insertBefore(articleLayout, article);
+            articleLayout.appendChild(article);
+        }
+
+        let tocAside = articleLayout.querySelector('.article-toc');
+        if (tocAside) tocAside.remove();
+
+        tocAside = document.createElement('aside');
+        tocAside.className = 'article-toc';
+
+        const card = document.createElement('div');
+        card.className = 'article-toc-card';
+        card.innerHTML = `<p class="article-toc-eyebrow">${copy.eyebrow}</p><h2 class="article-toc-title">${copy.title}</h2>`;
+
+        const list = document.createElement('ul');
+        list.className = 'article-toc-list';
+
+        let currentTopLevel = null;
+        const linkMap = new Map();
+
+        headings.forEach((heading, index) => {
+            if (!heading.id) {
+                const base = slugifyHeading(heading.textContent) || `section-${index + 1}`;
+                let candidate = base;
+                let suffix = 2;
+                while (document.getElementById(candidate)) {
+                    candidate = `${base}-${suffix++}`;
+                }
+                heading.id = candidate;
+            }
+
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.textContent = heading.textContent.trim();
+            item.appendChild(link);
+            linkMap.set(heading.id, link);
+
+            if (heading.tagName === 'H2') {
+                list.appendChild(item);
+                currentTopLevel = item;
+                return;
+            }
+
+            let sublist = currentTopLevel ? currentTopLevel.querySelector('.article-toc-sublist') : null;
+            if (!sublist) {
+                sublist = document.createElement('ul');
+                sublist.className = 'article-toc-sublist';
+                if (currentTopLevel) {
+                    currentTopLevel.appendChild(sublist);
+                } else {
+                    list.appendChild(sublist);
+                }
+            }
+            sublist.appendChild(item);
+        });
+
+        card.appendChild(list);
+        tocAside.appendChild(card);
+        articleLayout.insertBefore(tocAside, article);
+
+        const headingObserver = new IntersectionObserver((entries) => {
+            const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+            if (!visible.length) return;
+
+            linkMap.forEach((anchor) => anchor.classList.remove('is-active'));
+            const activeId = visible[0].target.id;
+            const activeLink = linkMap.get(activeId);
+            if (activeLink) activeLink.classList.add('is-active');
+        }, {
+            rootMargin: '-20% 0px -65% 0px',
+            threshold: [0, 1]
+        });
+
+        headings.forEach((heading) => headingObserver.observe(heading));
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
         initProjectSupportLinks();
         initCopyButtons();
+        initArticleToc();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });
 })();

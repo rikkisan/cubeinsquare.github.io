@@ -1311,6 +1311,93 @@
             max-width: 860px;
         }
 
+        .article-layout {
+            display: grid;
+            grid-template-columns: minmax(220px, 260px) minmax(0, 860px);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .article-toc {
+            position: sticky;
+            top: 92px;
+        }
+
+        .article-toc-card {
+            padding: 18px 18px 20px;
+            border-radius: 14px;
+            background: rgba(15, 23, 42, 0.56);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 18px 40px rgba(2, 6, 23, 0.18);
+        }
+
+        .article-toc-eyebrow {
+            margin: 0 0 10px;
+            color: #93c5fd;
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .article-toc-title {
+            margin: 0 0 12px;
+            color: var(--text-main);
+            font-size: 1.15rem;
+        }
+
+        .article-toc-list,
+        .article-toc-sublist {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .article-toc-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .article-toc-list a,
+        .article-toc-sublist a {
+            display: block;
+            padding: 8px 10px;
+            border-radius: 9px;
+            color: var(--text-dim);
+            text-decoration: none;
+            line-height: 1.4;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .article-toc-list a:hover,
+        .article-toc-sublist a:hover,
+        .article-toc-list a:focus-visible,
+        .article-toc-sublist a:focus-visible {
+            background: rgba(59, 130, 246, 0.14);
+            color: #ffffff;
+            transform: translateX(1px);
+        }
+
+        .article-toc-list a.is-active,
+        .article-toc-sublist a.is-active {
+            background: rgba(59, 130, 246, 0.18);
+            color: #ffffff;
+            box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.28);
+        }
+
+        .article-toc-sublist {
+            margin-top: 3px;
+            margin-left: 10px;
+            padding-left: 10px;
+            border-left: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .article-toc-sublist a {
+            padding: 6px 9px;
+            font-size: 0.95rem;
+        }
+
         .wiki-article h2 {
             margin: 34px 0 12px;
             color: var(--text-main);
@@ -1898,6 +1985,15 @@
 
              .wiki-sidebar {
                  position: static;
+             }
+
+             .article-layout {
+                 grid-template-columns: minmax(0, 1fr);
+             }
+
+             .article-toc {
+                 position: static;
+                 order: -1;
              }
 
              .hero-metric-grid {
