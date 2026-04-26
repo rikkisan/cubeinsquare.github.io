@@ -198,12 +198,15 @@
 }</code></pre>
 
         <h2>Minecraft-Versionen</h2>
-        <p>Minecraft 1.20.5 hat Item-Daten zu Data Components verschoben. Der Builder kann zwischen beiden Item-Stack-Formaten wechseln.</p>
+        <p>Der Builder zeigt jetzt drei Versionen, weil sich die Itemsprache nicht nur einmal, sondern zweimal verandert hat. Minecraft 1.20.5 hat Item-Daten zu Data Components verschoben, und Minecraft 1.21.4 hat den modernen Stil noch einmal nachgeschliffen, besonders bei <code>custom_model_data</code>.</p>
         <ul>
-            <li><strong>1.20.5+</strong> nutzt <code>count</code> und <code>components</code>.</li>
-            <li><strong>Vor 1.20.5</strong> nutzt <code>Count</code> und das ältere <code>tag</code>-Compound.</li>
+            <li><strong>1.21.4+</strong> nutzt weiterhin <code>count</code> und <code>components</code>, aber einige Component-Werte sind strukturierter geworden. In diesem Tool merkt man das vor allem an <code>minecraft:custom_model_data</code>.</li>
+            <li><strong>1.20.5-1.21.3</strong> nutzt bereits <code>count</code> und <code>components</code>, aber noch die einfachere fruhere Components-Schreibweise.</li>
+            <li><strong>Vor 1.20.5</strong> nutzt <code>Count</code> und das alte <code>tag</code>-Compound mit klassischer NBT-Struktur.</li>
         </ul>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
+        <p>Die drei Optionen sind also nicht nur Deko. Sie verandern, wie der Builder <code>buy</code>, <code>buyB</code> und <code>sell</code> im summon-Befehl serialisiert. Der kleine Helfer fur den Befehlsblock zeigt dieselbe Versionslogik vor allem aus Klarheitsgrunden, obwohl sich der reine <code>/give</code>-Befehl deutlich weniger verandert als die Item-Stacks im Handels-Teil.</p>
+<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
+{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
 
         <h2>Dorfbewohner-Felder</h2>

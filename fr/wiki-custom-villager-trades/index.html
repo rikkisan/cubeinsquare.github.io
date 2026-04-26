@@ -198,12 +198,15 @@
 }</code></pre>
 
         <h2>Versions de Minecraft</h2>
-        <p>Minecraft 1.20.5 a déplacé les données d’objets vers les Data Components. Le générateur peut basculer entre les deux formats de piles.</p>
+        <p>Le constructeur affiche maintenant trois choix parce que la syntaxe des objets a changé deux fois. Minecraft 1.20.5 a déplacé les données vers les Data Components, puis Minecraft 1.21.4 a encore affiné le format moderne, surtout autour de <code>custom_model_data</code>.</p>
         <ul>
-            <li><strong>1.20.5+</strong> utilise <code>count</code> et <code>components</code>.</li>
-            <li><strong>Avant 1.20.5</strong> utilise <code>Count</code> et l’ancien composé <code>tag</code>.</li>
+            <li><strong>1.21.4+</strong> utilise toujours <code>count</code> et <code>components</code>, mais certaines valeurs de composants sont devenues plus structurées. Ici, cela se voit surtout sur <code>minecraft:custom_model_data</code>.</li>
+            <li><strong>1.20.5-1.21.3</strong> utilise deja <code>count</code> et <code>components</code>, mais avec la forme plus simple du debut de la periode Components.</li>
+            <li><strong>Avant 1.20.5</strong> utilise <code>Count</code> et l'ancien compose <code>tag</code> avec la structure NBT classique.</li>
         </ul>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
+        <p>Ces trois choix ne sont donc pas decoratifs. Ils changent la facon dont le constructeur serialise <code>buy</code>, <code>buyB</code> et <code>sell</code> dans la commande summon. Le petit helper pour le bloc de commande reprend les memes versions surtout pour la clarte, meme si la commande <code>/give</code> elle-meme varie beaucoup moins que la structure des piles d'objets.</p>
+<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
+{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
 
         <h2>Champs du villageois</h2>

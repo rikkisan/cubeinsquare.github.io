@@ -198,12 +198,15 @@
 }</code></pre>
 
         <h2>Minecraft versions</h2>
-        <p>Minecraft 1.20.5 moved item data to Data Components. The builder can switch between both item-stack formats.</p>
+        <p>The builder now shows three version choices because the item syntax changed twice, not once. Minecraft 1.20.5 moved item data to Data Components, and Minecraft 1.21.4 refined the modern format again for fields such as <code>custom_model_data</code>.</p>
         <ul>
-            <li><strong>1.20.5+</strong> uses <code>count</code> and <code>components</code>.</li>
-            <li><strong>Before 1.20.5</strong> uses <code>Count</code> and the older <code>tag</code> compound.</li>
+            <li><strong>1.21.4+</strong> still uses <code>count</code> and <code>components</code>, but newer component payloads can become more structured. In this builder that mainly matters for how <code>minecraft:custom_model_data</code> is written.</li>
+            <li><strong>1.20.5-1.21.3</strong> already uses <code>count</code> and <code>components</code>, but keeps the simpler earlier component syntax.</li>
+            <li><strong>Before 1.20.5</strong> uses <code>Count</code> and the older <code>tag</code> compound with legacy NBT-style item stacks.</li>
         </ul>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
+        <p>So the three choices are not cosmetic. They decide how the <code>buy</code>, <code>buyB</code>, and <code>sell</code> stacks are serialized inside the summon command. The command block helper mirrors the same version split mostly for clarity and consistency, even though the plain <code>/give</code> command for a command block changes much less than the villager trade payload itself.</p>
+<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
+{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
 
         <h2>Villager fields</h2>

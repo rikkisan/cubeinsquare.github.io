@@ -198,12 +198,15 @@
 }</code></pre>
 
         <h2>Версии Minecraft</h2>
-        <p>В Minecraft 1.20.5 Mojang перевела предметы на Data Components. Поэтому инструмент умеет переключаться между двумя форматами.</p>
+        <p>Теперь в конструкторе три выбора версии, потому что синтаксис предметов менялся не один раз, а дважды. В 1.20.5 Mojang перевела предметы на Data Components, а в 1.21.4 ещё раз уточнила современный формат, в том числе для <code>custom_model_data</code>.</p>
         <ul>
-            <li><strong>1.20.5+</strong> использует <code>count</code> и <code>components</code>.</li>
-            <li><strong>До 1.20.5</strong> использует <code>Count</code> и старый <code>tag</code>.</li>
+            <li><strong>1.21.4+</strong> всё ещё использует <code>count</code> и <code>components</code>, но часть компонентных значений стала более структурированной. В этом инструменте это заметнее всего на записи <code>minecraft:custom_model_data</code>.</li>
+            <li><strong>1.20.5-1.21.3</strong> уже использует <code>count</code> и <code>components</code>, но держится за более ранний, простой вариант компонентного синтаксиса.</li>
+            <li><strong>До 1.20.5</strong> использует <code>Count</code> и старый <code>tag</code> с NBT-подобной структурой предмета.</li>
         </ul>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
+        <p>То есть эти три пункта меняют не оформление меню, а то, как инструмент сериализует <code>buy</code>, <code>buyB</code> и <code>sell</code> внутри summon-команды. Блок с командой на выдачу командного блока повторяет те же версии скорее для наглядности и согласованности, хотя сама команда <code>/give</code> меняется куда слабее, чем структура предметных стаков в сделках.</p>
+<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
+{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
 
         <h2>Поля жителя</h2>
