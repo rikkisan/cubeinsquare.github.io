@@ -31,6 +31,9 @@
         empty: 'Add at least one trade with a buy item and a sell item.',
         commandBlockShort: 'If the command stays within 256 characters, chat usually works. After 256 characters, use a command block.',
         commandBlockLong: (overflow) => `This summon command is ${overflow} characters over the 256-character chat limit. Use a command block.`,
+        commandBlockNeed: 'Need the give command for a command block too?',
+        commandBlockCopy: 'Copy command block command',
+        commandBlockCopied: 'Copied',
         defaults: {
             villagerName: 'Story trader',
             buy: 'emerald',
@@ -58,6 +61,9 @@
         empty: 'Добавьте хотя бы одну сделку с предметом покупки и предметом продажи.',
         commandBlockShort: 'Если команда укладывается в 256 символов, чат обычно справляется. После 256 символов нужен командный блок.',
         commandBlockLong: (overflow) => `Эта summon-команда длиннее лимита чата в 256 символов на ${overflow} знаков. Нужен командный блок.`,
+        commandBlockNeed: 'Нужна команда на выдачу командного блока?',
+        commandBlockCopy: 'Скопировать команду блока',
+        commandBlockCopied: 'Скопировано',
         defaults: {
             villagerName: 'Сюжетный торговец',
             buy: 'emerald',
@@ -87,7 +93,10 @@
             summary: (trades, chars) => `${trades} échange${trades === 1 ? '' : 's'} généré${trades === 1 ? '' : 's'}. Longueur de la commande : ${chars} caractères.`,
             empty: 'Ajoutez au moins un échange avec un objet demandé et un objet vendu.',
             commandBlockShort: 'Si la commande reste dans 256 caractères, le chat fonctionne généralement. Au-delà de 256 caractères, il faut un bloc de commande.',
-            commandBlockLong: (overflow) => `Cette commande summon dépasse la limite de chat de 256 caractères de ${overflow} signes. Il faut un bloc de commande.`
+            commandBlockLong: (overflow) => `Cette commande summon dépasse la limite de chat de 256 caractères de ${overflow} signes. Il faut un bloc de commande.`,
+            commandBlockNeed: 'Besoin aussi de la commande pour obtenir un bloc de commande ?',
+            commandBlockCopy: 'Copier la commande du bloc',
+            commandBlockCopied: 'Copie'
         });
         text.defaults = {
             villagerName: 'Marchand narratif',
@@ -118,7 +127,10 @@
             summary: (trades, chars) => `${trades} Handel erzeugt. Befehlslänge: ${chars} Zeichen.`,
             empty: 'Füge mindestens einen Handel mit Kaufgegenstand und Verkaufsgegenstand hinzu.',
             commandBlockShort: 'Wenn der Befehl innerhalb von 256 Zeichen bleibt, funktioniert der Chat meist. Über 256 Zeichen brauchst du einen Befehlsblock.',
-            commandBlockLong: (overflow) => `Dieser summon-Befehl überschreitet das 256-Zeichen-Chatlimit um ${overflow} Zeichen. Du brauchst einen Befehlsblock.`
+            commandBlockLong: (overflow) => `Dieser summon-Befehl überschreitet das 256-Zeichen-Chatlimit um ${overflow} Zeichen. Du brauchst einen Befehlsblock.`,
+            commandBlockNeed: 'Brauchst du auch den Befehl fur einen Befehlsblock?',
+            commandBlockCopy: 'Befehlsblock-Befehl kopieren',
+            commandBlockCopied: 'Kopiert'
         });
         text.defaults = {
             villagerName: 'Story-Händler',
@@ -138,6 +150,20 @@
     const commandHint = document.createElement('div');
     commandHint.className = 'tool-note';
     summary.insertAdjacentElement('afterend', commandHint);
+    const commandBlockHelper = document.createElement('div');
+    commandBlockHelper.className = 'tool-note-helper';
+    commandBlockHelper.hidden = true;
+    commandBlockHelper.innerHTML = `
+        <div class="tool-note-helper-head">
+            <span data-command-block-label></span>
+            <button class="tool-button tool-button-secondary tool-button-compact" type="button" data-copy-command-block></button>
+        </div>
+        <code class="tool-note-code" data-command-block-output></code>
+    `;
+    commandHint.insertAdjacentElement('afterend', commandBlockHelper);
+    const commandBlockLabel = commandBlockHelper.querySelector('[data-command-block-label]');
+    const commandBlockOutput = commandBlockHelper.querySelector('[data-command-block-output]');
+    const commandBlockCopyButton = commandBlockHelper.querySelector('[data-copy-command-block]');
 
     function fieldValue(id, fallback = '') {
         const field = root.querySelector(`#${id}`);
@@ -328,6 +354,13 @@
         return `/summon minecraft:villager ~ ~1 ~ {${tags.join(',')}}`;
     }
 
+    function buildCommandBlockGiveCommand(version) {
+        if (version === 'legacy') {
+            return '/give @p command_block 1';
+        }
+        return '/give @p minecraft:command_block';
+    }
+
     function updateTradeTitles() {
         tradeList.querySelectorAll('[data-trade-card]').forEach((card, index) => {
             const title = card.querySelector('[data-trade-title]');
@@ -337,8 +370,9 @@
 
     function updateCommand() {
         const command = buildCommand();
+        const version = fieldValue('vt-version', 'modern');
         output.value = command || text.empty;
-        const recipeCount = collectRecipes(fieldValue('vt-version', 'modern')).length;
+        const recipeCount = collectRecipes(version).length;
         summary.textContent = command ? text.summary(recipeCount, command.length) : text.empty;
         const chatLimit = 256;
         const overflow = Math.max(0, command.length - chatLimit);
@@ -347,6 +381,10 @@
             : text.commandBlockShort;
         commandHint.dataset.long = overflow > 0 ? 'true' : 'false';
         if (copyButton) copyButton.textContent = text.copy;
+        if (commandBlockLabel) commandBlockLabel.textContent = text.commandBlockNeed;
+        if (commandBlockOutput) commandBlockOutput.textContent = buildCommandBlockGiveCommand(version);
+        if (commandBlockCopyButton) commandBlockCopyButton.textContent = text.commandBlockCopy;
+        commandBlockHelper.hidden = !(command && overflow > 0);
     }
 
     function resetTool() {
@@ -381,10 +419,36 @@
         }, 1600);
     }
 
+    async function copyCommandBlockGive() {
+        const version = fieldValue('vt-version', 'modern');
+        const command = buildCommandBlockGiveCommand(version);
+        try {
+            await navigator.clipboard.writeText(command);
+        } catch (error) {
+            const helperField = document.createElement('textarea');
+            helperField.value = command;
+            helperField.setAttribute('readonly', '');
+            helperField.style.position = 'absolute';
+            helperField.style.left = '-9999px';
+            document.body.appendChild(helperField);
+            helperField.select();
+            document.execCommand('copy');
+            document.body.removeChild(helperField);
+        }
+        trackEvent('villager_command_block_copy', {
+            syntax_version: version
+        });
+        commandBlockCopyButton.textContent = text.commandBlockCopied;
+        window.setTimeout(() => {
+            commandBlockCopyButton.textContent = text.commandBlockCopy;
+        }, 1600);
+    }
+
     root.addEventListener('input', updateCommand);
     root.addEventListener('change', updateCommand);
     root.addEventListener('click', (event) => {
         const removeButton = event.target.closest('[data-remove-trade]');
+        const commandBlockButton = event.target.closest('[data-copy-command-block]');
         if (removeButton) {
             const card = removeButton.closest('[data-trade-card]');
             if (card && tradeList.children.length > 1) {
@@ -402,6 +466,7 @@
         }
         if (event.target === resetButton) resetTool();
         if (event.target === copyButton) copyCommand();
+        if (commandBlockButton === commandBlockCopyButton) copyCommandBlockGive();
     });
 
     root.querySelector('#vt-name').value = '';
