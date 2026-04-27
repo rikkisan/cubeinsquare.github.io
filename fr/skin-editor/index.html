@@ -1,13 +1,196 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Minecraft Skin Editor | Cube in Square</title>
+    <title>Éditeur de skins Minecraft avec aperçu 3D | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
-    <link rel="canonical" href="https://cubeinsquare.com/skin-editor/">
-    <meta http-equiv="refresh" content="0; url=/skin-editor/">
-    <script>window.location.replace('/skin-editor/');</script>
+    <meta name="description" content="Peignez des skins Minecraft dans le navigateur: atlas 64x64, modèle 3D, bras wide ou slim, import PNG et export du skin final.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/skin-editor/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/skin-editor/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/skin-editor/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/skin-editor/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/skin-editor/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/skin-editor/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Éditeur de skins Minecraft avec aperçu 3D | Cube in Square">
+    <meta property="og:description" content="Peignez un atlas 64x64 ou dessinez directement sur le modèle 3D du joueur, puis exportez un PNG prêt pour Minecraft.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/skin-editor/">
+    <meta property="og:locale" content="fr_FR">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/skin-editor.css">
 </head>
-<body></body>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get">
+            <input type="text" name="q" placeholder="Rechercher sur le site...">
+            <button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/skin-editor/">RU</a><a href="/skin-editor/">EN</a><a class="is-active" href="#">FR</a><a href="/de/skin-editor/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-skin-editor>
+    <section class="page-hero">
+        <h1>Éditeur de skins Minecraft</h1>
+        <p class="page-lead">Peignez un skin directement dans le navigateur: importez un PNG, modifiez l’atlas 64x64, choisissez les bras wide ou slim, ou dessinez sur le modèle 3D et voyez la texture se mettre à jour.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/fr/wiki-skin-editor/">Lire le guide</a>
+            <a class="resource-link resource-link-secondary" href="/fr/tools/">Retour aux outils</a>
+        </div>
+    </section>
+
+    <section class="page-section skin-layout">
+        <aside class="skin-sidebar">
+            <section class="tool-panel">
+                <h2>Outils de dessin</h2>
+                <div class="skin-toolbar-grid">
+                    <div class="skin-tool-grid">
+                        <button class="resource-link skin-tool-button is-active" type="button" data-skin-tool="brush">Pinceau</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="eraser">Gomme</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="picker">Pipette</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit">Orbite</button>
+                    </div>
+
+                    <div class="tool-field">
+                        <label for="skinColor">Couleur</label>
+                        <div class="skin-color-row">
+                            <input id="skinColor" type="color" value="#60a5fa">
+                            <div class="tool-field">
+                                <label for="skinAlpha">Opacité</label>
+                                <input id="skinAlpha" type="range" min="0" max="100" value="100">
+                                <span class="row-toolbar-label" id="skinAlphaValue">100%</span>
+                            </div>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinRecentColors">Couleurs récentes</label>
+                            <div class="skin-recent-colors" id="skinRecentColors" aria-label="Couleurs récentes"></div>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinSimilarColors">Nuances proches</label>
+                            <div class="skin-recent-colors" id="skinSimilarColors" aria-label="Nuances proches"></div>
+                        </div>
+                    </div>
+
+                    <div class="skin-compact-grid">
+                        <div class="tool-field">
+                            <label>Couche</label>
+                            <div class="skin-tool-grid">
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-layer="base">Base</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-layer="overlay">Extérieur</button>
+                            </div>
+                        </div>
+                        <div class="tool-field">
+                            <label>Modèle de bras</label>
+                            <div class="skin-tool-grid">
+                                <button class="resource-link skin-tool-button is-active" type="button" data-skin-model="wide">Wide</button>
+                                <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-model="slim">Slim</button>
+                            </div>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinBrushSize">Taille du pinceau</label>
+                            <select id="skinBrushSize">
+                                <option value="1">1 px</option>
+                                <option value="2">2 px</option>
+                                <option value="3">3 px</option>
+                                <option value="4">4 px</option>
+                                <option value="6">6 px</option>
+                                <option value="8">8 px</option>
+                            </select>
+                        </div>
+                        <div class="tool-field">
+                            <label for="skinZoom">Zoom de l’atlas</label>
+                            <select id="skinZoom">
+                                <option value="4">4x</option>
+                                <option value="6">6x</option>
+                                <option value="8" selected>8x</option>
+                                <option value="10">10x</option>
+                                <option value="12">12x</option>
+                                <option value="16">16x</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tool-check-grid">
+                        <label class="tool-check">
+                            <input id="skinShowOverlay" type="checkbox" checked>
+                            <span>Afficher chapeau / veste / manches / pantalon</span>
+                        </label>
+                    </div>
+
+                    <div class="tool-field">
+                        <label>Masquer des parties</label>
+                        <div class="skin-part-grid">
+                            <label class="tool-check"><input type="checkbox" data-skin-part="head"><span>Masquer la tête</span></label>
+                            <label class="tool-check"><input type="checkbox" data-skin-part="body"><span>Masquer le corps</span></label>
+                            <label class="tool-check"><input type="checkbox" data-skin-part="rightArm"><span>Masquer le bras droit</span></label>
+                            <label class="tool-check"><input type="checkbox" data-skin-part="leftArm"><span>Masquer le bras gauche</span></label>
+                            <label class="tool-check"><input type="checkbox" data-skin-part="rightLeg"><span>Masquer la jambe droite</span></label>
+                            <label class="tool-check"><input type="checkbox" data-skin-part="leftLeg"><span>Masquer la jambe gauche</span></label>
+                        </div>
+                    </div>
+                </div>
+                <p class="skin-editor-note">La surface principale est le modèle 3D. Utilisez <strong>Base</strong> pour la peau basse et <strong>Extérieur</strong> pour le chapeau, la veste, les manches et le pantalon.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Fichiers</h2>
+                <input class="skin-hidden-input" id="skinFileInput" type="file" accept=".png,image/png">
+                <div class="skin-tool-grid">
+                    <button class="resource-link skin-tool-button" id="skinUploadButton" type="button">Importer PNG</button>
+                    <button class="resource-link skin-tool-button" id="skinDownloadButton" type="button">Exporter PNG</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinResetButton" type="button">Skin de départ</button>
+                    <button class="resource-link resource-link-secondary skin-tool-button" id="skinClearButton" type="button">Effacer</button>
+                </div>
+                <p class="skin-file-note">L’éditeur accepte les skins <code>64x64</code> et les anciens skins <code>64x32</code>. Les fichiers anciens sont convertis automatiquement vers la mise en page moderne.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>État rapide</h2>
+                <div class="skin-stats">
+                    <span class="skin-stat-pill">Atlas: <strong id="skinDimensions">64 x 64</strong></span>
+                    <span class="skin-stat-pill">Modèle: <strong id="skinModelValue">large</strong></span>
+                    <span class="skin-stat-pill">Couche: <strong id="skinLayerValue">base</strong></span>
+                    <span class="skin-stat-pill">Outil: <strong id="skinMode">pinceau</strong></span>
+                    <span class="skin-stat-pill">Pinceau: <strong id="skinBrush">1px</strong></span>
+                </div>
+            </section>
+        </aside>
+
+        <div class="skin-workspace">
+            <section class="tool-panel skin-preview-card">
+                <h2>Surface de dessin 3D</h2>
+                <div class="skin-preview-stage" id="skinPreview"></div>
+                <p class="skin-preview-note">Dessinez d’abord sur le modèle. L’atlas reste synchronisé pour inspecter les pixels exacts et exporter un PNG Minecraft standard.</p>
+            </section>
+
+            <section class="tool-panel skin-canvas-card">
+                <h2>Aide atlas 64x64</h2>
+                <div class="skin-atlas-wrap">
+                    <canvas id="skinEditorCanvas" width="512" height="512"></canvas>
+                </div>
+                <p class="skin-editor-note">L’atlas conserve la disposition vanilla de Minecraft, donc le PNG exporté reste prêt pour les launchers et les sites de skins.</p>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@3.4.1/bundles/skinview3d.bundle.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/skin-editor.js?v=20260422"></script>
+</body>
 </html>
