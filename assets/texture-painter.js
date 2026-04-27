@@ -9,6 +9,26 @@
         128: 6
     };
     const HISTORY_LIMIT = 40;
+    const UI_LANG = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+    const UI_TEXT = {
+        en: {
+            toolNames: { brush: 'brush', eraser: 'eraser', picker: 'picker', zoom: 'zoom' },
+            colorAria: (hex, alpha) => `Use color ${hex} at ${alpha}% opacity`
+        },
+        ru: {
+            toolNames: { brush: 'Кисть', eraser: 'Ластик', picker: 'Пипетка', zoom: 'Зум' },
+            colorAria: (hex, alpha) => `Использовать цвет ${hex} с непрозрачностью ${alpha}%`
+        },
+        fr: {
+            toolNames: { brush: 'Pinceau', eraser: 'Gomme', picker: 'Pipette', zoom: 'Zoom' },
+            colorAria: (hex, alpha) => `Utiliser la couleur ${hex} avec ${alpha}% d’opacité`
+        },
+        de: {
+            toolNames: { brush: 'Pinsel', eraser: 'Radierer', picker: 'Pipette', zoom: 'Zoom' },
+            colorAria: (hex, alpha) => `Farbe ${hex} mit ${alpha}% Deckkraft verwenden`
+        }
+    };
+    const text = UI_TEXT[UI_LANG] || UI_TEXT.en;
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
@@ -152,12 +172,13 @@
 
         container.innerHTML = '';
         snapshots.forEach((snapshot) => {
+            const hex = snapshot.hex.toUpperCase();
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'texture-recent-color';
             button.style.setProperty('--swatch', snapshot.hex);
-            button.title = `${snapshot.hex.toUpperCase()} | ${snapshot.alpha}%`;
-            button.setAttribute('aria-label', `Use color ${snapshot.hex.toUpperCase()} at ${snapshot.alpha}% opacity`);
+            button.title = `${hex} | ${snapshot.alpha}%`;
+            button.setAttribute('aria-label', text.colorAria(hex, snapshot.alpha));
             button.addEventListener('click', () => applyColorSnapshot(snapshot));
             container.appendChild(button);
         });
@@ -459,7 +480,7 @@
         }
 
         elements.canvasSizeValue.textContent = `${state.size} x ${state.size}`;
-        elements.toolValue.textContent = state.tool;
+        elements.toolValue.textContent = text.toolNames[state.tool] || state.tool;
         elements.brushValue.textContent = `${state.brushSize}px`;
         elements.stage.classList.toggle('is-zooming', state.zoom < ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
         elements.stage.classList.toggle('is-zoom-tool', state.tool === 'zoom');
