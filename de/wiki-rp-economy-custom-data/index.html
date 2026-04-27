@@ -2,9 +2,9 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>RP Server Economy on Custom Villagers: Protecting Currency with custom_data | Cube in Square</title>
+    <title>RP-Ökonomie mit eigenen Dorfbewohnern: Währung mit custom_data schützen | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="How to protect RP server currency from copied or forged items by using custom_data and villager trade checks.">
+    <meta name="description" content="So schützt du die Währung eines RP-Servers mit custom_data und Prüfungen in Dorfbewohner-Handeln vor Kopien und Fälschungen.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -20,13 +20,13 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-rp-economy-custom-data/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="RP Server Economy on Custom Villagers: Protecting Currency with custom_data | Cube in Square">
-    <meta property="og:description" content="How to protect RP server currency from copied or forged items by using custom_data and villager trade checks.">
+    <meta property="og:title" content="RP-Ökonomie mit eigenen Dorfbewohnern: Währung mit custom_data schützen | Cube in Square">
+    <meta property="og:description" content="So schützt du die Währung eines RP-Servers mit custom_data und Prüfungen in Dorfbewohner-Handeln vor Kopien und Fälschungen.">
     <meta property="og:url" content="https://cubeinsquare.com/de/wiki-rp-economy-custom-data/">
     <meta property="og:locale" content="de_DE">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="RP Server Economy on Custom Villagers: Protecting Currency with custom_data | Cube in Square">
-    <meta name="twitter:description" content="How to protect RP server currency from copied or forged items by using custom_data and villager trade checks.">
+    <meta name="twitter:title" content="RP-Ökonomie mit eigenen Dorfbewohnern: Währung mit custom_data schützen | Cube in Square">
+    <meta name="twitter:description" content="So schützt du die Währung eines RP-Servers mit custom_data und Prüfungen in Dorfbewohner-Handeln vor Kopien und Fälschungen.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -36,51 +36,51 @@
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/de/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
-        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Tools</a></div>
-        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Project</a></div>
-        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
         <div class="language-switch" aria-label="Language"><a href="/ru/wiki-rp-economy-custom-data/">RU</a><a href="/wiki-rp-economy-custom-data/">EN</a><a href="/fr/wiki-rp-economy-custom-data/">FR</a><a class="is-active" href="#">DE</a></div>
     </div>
 </div>
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/wiki/">← All articles</a>
+    <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero">
-        <h1>RP Server Economy on Custom Villagers: Protecting Currency with custom_data</h1>
-        <p class="page-lead">A paper note, guild pass, ration token, or stamped certificate only works as server currency if players cannot duplicate it with a renamed vanilla item. The easiest defense is to make your economy read item identity through components, not just through the visible name.</p>
-        <a class="resource-link" href="/de/custom-villager-trades/">Open villager trade builder</a>
+        <h1>RP-Ökonomie mit eigenen Dorfbewohnern: Währung mit custom_data schützen</h1>
+        <p class="page-lead">Ein Papiergeldschein, Gildenpass, Rationsmarke oder gestempeltes Zertifikat funktioniert nur dann als Serverwährung, wenn Spieler es nicht mit einem umbenannten Vanilla-Item nachbauen können. Der einfachste Schutz ist, die Identität des Items über Komponenten zu prüfen, nicht nur über den sichtbaren Namen.</p>
+        <a class="resource-link" href="/de/custom-villager-trades/">Dorfbewohner-Handel-Builder öffnen</a>
     </section>
     <article>
-        <h2>Why visible names are not enough</h2>
-        <p>If your villager only asks for a paper named <code>City voucher</code>, any player with an anvil can fake it. Lore alone is also weak, because it still lives in visible text. For economy items, the villager should validate an invisible payload inside the stack.</p>
-        <h2>Use <code>minecraft:custom_data</code> as the identity layer</h2>
-        <p>In modern versions you can attach a hidden component to the currency item. The visible label can still say <em>Guild voucher</em>, but the real check lives in a structured object.</p>
+        <h2>Warum sichtbare Namen nicht reichen</h2>
+        <p>Wenn dein Dorfbewohner nur nach Papier mit dem Namen <code>City voucher</code> fragt, kann jeder Spieler mit einem Amboss eine Fälschung herstellen. Lore allein ist ebenfalls schwach, weil sie weiterhin sichtbarer Text ist. Für Wirtschafts-Items sollte der Dorfbewohner eine unsichtbare Nutzlast im Stack prüfen.</p>
+        <h2><code>minecraft:custom_data</code> als Identitätsschicht nutzen</h2>
+        <p>In modernen Versionen kannst du dem Währungsitem eine versteckte Komponente geben. Das sichtbare Label kann weiterhin <em>Gildengutschein</em> heißen, aber die echte Prüfung liegt in einem strukturierten Objekt.</p>
 <pre><code>components:{
-  "minecraft:custom_name":'[{"text":"Guild voucher","italic":false}]',
+  "minecraft:custom_name":'[{"text":"Gildengutschein","italic":false}]',
   "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
 }</code></pre>
-        <h2>Why this protects the economy</h2>
-        <ul><li>A renamed vanilla item will not have the same hidden payload.</li><li>You can rotate designs without changing the underlying ID.</li><li>Different factions can use separate issuers and tiers.</li><li>The same visible note can still be invalid if the hidden data is wrong.</li></ul>
-        <h2>Practical villager pattern</h2>
-        <p>When you build the <code>buy</code> stack for a trade, add the same <code>custom_data</code> object there. That way the villager accepts only the real token, not an imitation with copied text.</p>
+        <h2>Warum das die Wirtschaft schützt</h2>
+        <ul><li>Ein umbenanntes Vanilla-Item hat nicht dieselbe versteckte Nutzlast.</li><li>Du kannst das Design wechseln, ohne die eigentliche ID zu ändern.</li><li>Verschiedene Fraktionen können eigene Aussteller und Stufen verwenden.</li><li>Ein sichtbar gleicher Schein kann trotzdem ungültig sein, wenn die versteckten Daten falsch sind.</li></ul>
+        <h2>Praktisches Muster für Dorfbewohner</h2>
+        <p>Wenn du den <code>buy</code>-Stack für einen Handel baust, füge dort dasselbe <code>custom_data</code>-Objekt hinzu. So akzeptiert der Dorfbewohner nur den echten Token und keine Imitation mit kopiertem Text.</p>
 <pre><code>buy:{
   id:"minecraft:paper",
   count:3,
   components:{
-    "minecraft:custom_name":'[{"text":"Guild voucher","italic":false}]',
+    "minecraft:custom_name":'[{"text":"Gildengutschein","italic":false}]',
     "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
   }
 }</code></pre>
-        <h2>Good economy rules for RP servers</h2>
-        <ul><li>Keep one stable string for each currency family: <code>guild_voucher</code>, <code>dock_token</code>, <code>ration_stamp</code>.</li><li>Add a second field for who issued it: city, bank, guild, or chapter.</li><li>Never trust only lore, display name, or model.</li><li>Reserve numeric fields for counts and values, but keep IDs readable.</li></ul>
-        <h2>When to split currencies</h2>
-        <p>Use separate IDs for money that should not mix. For example, temple donation slips, military payroll chits, and black-market coupons can all be paper, but they should never share the same <code>custom_data</code> payload.</p>
-        <h2>Recommended workflow</h2>
-        <ol><li>Create the reward and payment items with matching <code>custom_data</code>.</li><li>Give them a readable visible name for players.</li><li>Use the villager trade builder to lock the payment stack to that hidden payload.</li><li>Test the trade with a fake renamed copy before shipping it live.</li></ol>
+        <h2>Gute Wirtschaftsregeln für RP-Server</h2>
+        <ul><li>Behalte pro Währungsfamilie eine stabile Zeichenkette: <code>guild_voucher</code>, <code>dock_token</code>, <code>ration_stamp</code>.</li><li>Füge ein zweites Feld für den Aussteller hinzu: Stadt, Bank, Gilde oder Kapitel.</li><li>Vertraue nie nur auf Lore, Anzeigenamen oder Modell.</li><li>Nutze Zahlenfelder für Mengen und Werte, aber halte IDs lesbar.</li></ul>
+        <h2>Wann Währungen getrennt werden sollten</h2>
+        <p>Nutze getrennte IDs für Geld, das sich nicht vermischen soll. Tempelspendenzettel, Militärsoldscheine und Schwarzmarkt-Coupons können alle Papier sein, sollten aber nie dieselbe <code>custom_data</code>-Nutzlast teilen.</p>
+        <h2>Empfohlener Workflow</h2>
+        <ol><li>Erstelle Belohnungs- und Zahlungsitems mit passendem <code>custom_data</code>.</li><li>Gib ihnen einen gut lesbaren sichtbaren Namen für Spieler.</li><li>Nutze den Dorfbewohner-Handel-Builder, um den Zahlungsstack an diese versteckte Nutzlast zu binden.</li><li>Teste den Handel mit einer gefälschten umbenannten Kopie, bevor du ihn live stellst.</li></ol>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Privacy Policy</a></footer>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutz</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
