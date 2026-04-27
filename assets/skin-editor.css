@@ -193,7 +193,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    column-gap: 12px;
+    column-gap: 20px;
 }
 
 .skin-range-field label {
@@ -202,13 +202,20 @@
 
 .skin-range-field input[type="range"] {
     grid-column: 1;
+    width: calc(100% - 12px);
+    min-width: 0;
+    justify-self: start;
 }
 
 .skin-range-field .row-toolbar-label {
     grid-column: 2;
-    min-width: 54px;
+    min-width: 58px;
     justify-content: center;
     text-align: center;
+}
+
+.skin-preview-zoom-field {
+    grid-column: 1 / -1;
 }
 
 .page-shell[data-skin-editor] input[type="range"] {
