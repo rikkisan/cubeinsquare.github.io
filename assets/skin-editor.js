@@ -618,6 +618,7 @@
                 labels.previewZoom,
                 '<input id="skinPreviewZoom" type="range" min="60" max="200" step="5" value="100"><span class="row-toolbar-label" id="skinPreviewZoomValue">100%</span>'
             );
+            previewZoomField.classList.add('skin-preview-zoom-field');
             if (atlasZoomField) {
                 atlasZoomField.insertAdjacentElement('afterend', previewZoomField);
             }
