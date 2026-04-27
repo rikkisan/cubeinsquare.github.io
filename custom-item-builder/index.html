@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Custom Item Builder | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build version-aware Minecraft give commands for custom items with lore, hidden IDs, item_model, and custom_model_data slots.">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/villager-trades.css">
+    <link rel="stylesheet" href="/assets/custom-item-builder.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/wiki-custom-model-data/">CustomModelData</a><a href="/wiki-resource-pack-structure/">Resource pack structure</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/wiki-resource-pack-generator/">How to use the generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/wiki-custom-model-data/"><strong>CustomModelData</strong><span>How one item becomes many models without mods.</span></a>
+                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
+                    <a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/tools/">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
+                    <a href="/custom-item-builder/">Custom item builder</a>
+                    <a href="/skin-editor/">Minecraft Skin Editor</a>
+                    <a href="/texture-painter/">Texture painter</a>
+                    <a href="/custom-villager-trades/">Custom villager trades</a>
+                    <a href="/custom-potions/">Custom potions</a>
+                    <a href="/tool-coming-soon/">Upcoming tools</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/custom-item-builder/"><strong>Custom item builder</strong><span>Build version-aware give commands with item_model, custom_data, lore, and CustomModelData.</span></a>
+                    <a class="mega-card" href="/texture-painter/"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a>
+                    <a class="mega-card" href="/skin-editor/"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/about/">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/about/">Cube in Square</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/wiki/" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-item-builder>
+    <section class="page-hero">
+        <h1>Minecraft Custom Item Builder</h1>
+        <p class="page-lead">Build ready <code>/give</code> commands for RP props, guild passes, quest items, and pack-linked rewards. This builder keeps the versions separate, so you can stay compact on older syntax and use <code>item_model</code>, <code>custom_data</code>, and richer <code>custom_model_data</code> slots on 1.21.4+.</p>
+        <div class="tool-button-row">
+            <a class="tool-button" href="/resource-pack-generator/">Open pack generator</a>
+            <a class="tool-button tool-button-secondary" href="/wiki-custom-model-data/">Read CustomModelData guide</a>
+        </div>
+    </section>
+
+    <section class="page-section item-builder-layout">
+        <div class="item-builder-stack">
+            <form class="tool-panel" id="itemBuilderForm">
+                <h2>Item setup</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="ci-version">Command version</label>
+                        <select id="ci-version">
+                            <option value="modern">1.21.4+</option>
+                            <option value="current">1.20.5-1.21.3</option>
+                            <option value="legacy">Before 1.20.5</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-base-item">Base item</label>
+                        <input id="ci-base-item" list="ci-item-suggestions" placeholder="paper">
+                        <p class="tool-helper">Use the real vanilla item the player will receive, like <code>paper</code>, <code>stick</code>, <code>book</code>, or <code>carrot_on_a_stick</code>.</p>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-count">Count</label>
+                        <input id="ci-count" type="number" min="1" max="64" value="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-hidden-id">Hidden item id</label>
+                        <input id="ci-hidden-id" type="text" placeholder="rp.guild.pass">
+                        <p class="tool-helper">A logic-facing ID for scripts, quests, or admin checks. It stays hidden from players.</p>
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-name">Visible item name</label>
+                        <input id="ci-name" type="text" placeholder="Guild archive pass">
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-lore">Lore</label>
+                        <textarea id="ci-lore" rows="4" placeholder="One line per lore entry."></textarea>
+                    </div>
+                </div>
+
+                <div class="version-callout">
+                    <h3>What changes with the version?</h3>
+                    <p id="itemVersionNote">Use 1.21.4+ when you want item_model, readable string states, float slots, flag slots, or color slots inside custom_model_data.</p>
+                </div>
+
+                <div class="item-version-groups">
+                    <section class="item-version-group" data-version-group="legacy">
+                        <h3>Legacy / 1.20.5-1.21.3 identity</h3>
+                        <p>Older flows are still compact: one numeric CustomModelData value, a visible name, lore, and an optional hidden item ID.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field">
+                                <label for="ci-cmd-number">Numeric CustomModelData</label>
+                                <input id="ci-cmd-number" type="number" min="0" value="2047">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="item-version-group" data-version-group="modern" hidden>
+                        <h3>1.21.4+ item model and CMD slots</h3>
+                        <p>Modern items can split rendering and logic cleanly: <code>item_model</code> points to art, while <code>custom_model_data</code> can carry float, string, flag, and color slots together.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field" style="grid-column: 1 / -1;">
+                                <label for="ci-item-model">item_model path</label>
+                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                <p class="tool-helper">Use a full model path like <code>your_namespace:item/path_here</code>. Leave it empty if you only need hidden identity and not a separate visual route yet.</p>
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-float">Float slot 0</label>
+                                <input id="ci-modern-float" type="number" min="0" step="0.1" placeholder="2047">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-string">String slot 0</label>
+                                <input id="ci-modern-string" type="text" placeholder="guild_pass">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-color">Color slot 0</label>
+                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                            </div>
+                            <div class="tool-check">
+                                <input id="ci-modern-flag" type="checkbox">
+                                <label for="ci-modern-flag">Flag slot 0 = true</label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="loadItemExampleButton">Load example</button>
+                    <button class="tool-button tool-button-secondary" type="button" id="resetItemBuilderButton">Reset</button>
+                </div>
+            </form>
+
+            <section class="tool-panel">
+                <h2>Generated command</h2>
+                <label class="tool-field" for="customItemCommandOutput">
+                    <span>Ready <code>/give</code> command</span>
+                    <textarea class="command-output" id="customItemCommandOutput" readonly></textarea>
+                </label>
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="copyItemCommandButton">Copy command</button>
+                </div>
+                <p class="tool-summary" id="customItemSummary">Version: 1.21.4+. Command length: 0 characters.</p>
+                <p class="item-builder-output-note">The builder keeps older syntax compact on purpose. If you switch to 1.21.4+, it expands into the richer component format instead of pretending every version speaks the same language.</p>
+            </section>
+        </div>
+
+        <aside class="item-builder-stack">
+            <section class="tool-panel item-preview-card">
+                <div class="item-preview-head">
+                    <div class="item-preview-icon" aria-hidden="true"><span>&#128220;</span></div>
+                    <div class="item-preview-copy">
+                        <h2 id="itemPreviewName">Guild archive pass</h2>
+                        <p id="itemPreviewMeta">1.21.4+ | minecraft:paper | 1 item</p>
+                    </div>
+                </div>
+                <div class="item-preview-note">
+                    <p id="itemPreviewCopy">This version can carry a visible model route, a readable hidden ID, and richer custom_model_data slots at the same time.</p>
+                </div>
+                <div class="chip-row" id="itemPreviewChips"></div>
+            </section>
+
+            <section class="tool-panel">
+                <h2>What this is good for</h2>
+                <ul class="item-builder-help">
+                    <li>RP currencies, permits, signed contracts, clues, keys, relics, and guild props</li>
+                    <li>Quest rewards that need a hidden logic ID and a separate visible model</li>
+                    <li>Server-side validation where a readable item identity matters more than a random number</li>
+                    <li>Fast testing when you want the command first and the full pack pipeline second</li>
+                </ul>
+            </section>
+        </aside>
+    </section>
+
+    <datalist id="ci-item-suggestions">
+        <option value="paper"></option>
+        <option value="book"></option>
+        <option value="written_book"></option>
+        <option value="stick"></option>
+        <option value="carrot_on_a_stick"></option>
+        <option value="warped_fungus_on_a_stick"></option>
+        <option value="clock"></option>
+        <option value="compass"></option>
+        <option value="emerald"></option>
+        <option value="iron_sword"></option>
+        <option value="blaze_rod"></option>
+        <option value="tripwire_hook"></option>
+        <option value="name_tag"></option>
+        <option value="potion"></option>
+    </datalist>
+</main>
+
+<footer class="site-footer">
+    <span>Cube in Square</span>
+    <a href="/privacy-policy/">Privacy Policy</a>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/custom-item-builder.js"></script>
+</body>
+</html>

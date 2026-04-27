@@ -244,6 +244,9 @@
         const locale = getLocaleInfo().lang;
         const labels = {
             en: {
+                itemTool: 'Custom item builder',
+                itemTitle: 'Custom item builder',
+                itemDesc: 'Assemble version-aware give commands with item_model, custom_data, lore, and CustomModelData.',
                 skinTool: 'Minecraft Skin Editor',
                 skinGuide: 'Skin editor guide',
                 skinTitle: 'Skin editor',
@@ -303,6 +306,14 @@
                 featureDesc: copy.textureDesc
             }
         ];
+        if (locale === 'en') {
+            tools.unshift({
+                toolHref: '/custom-item-builder/',
+                toolLabel: copy.itemTool,
+                featureTitle: copy.itemTitle,
+                featureDesc: copy.itemDesc
+            });
+        }
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
@@ -330,7 +341,7 @@
             const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
             const potions = sublist ? Array.from(sublist.querySelectorAll('a')).find((item) => /(?:^|\/)wiki-custom-potions(?:\/|\.html)?$/i.test(item.getAttribute('href') || '')) : null;
             if (!sublist) return;
-            tools.forEach((tool) => {
+            tools.filter((tool) => tool.guideHref).forEach((tool) => {
                 if (sublist.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
                 const link = document.createElement('a');
                 link.href = tool.guideHref;
