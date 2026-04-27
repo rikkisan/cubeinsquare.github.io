@@ -1,9 +1,61 @@
 ﻿(function () {
+    const DESIGN_STORAGE_KEY = 'cubeinsquare-design-mode';
+    const READABLE_FONT_STORAGE_KEY = 'cubeinsquare-readable-font';
+
     function trackEvent(name, params, options) {
         if (window.CubeAnalytics && typeof window.CubeAnalytics.track === 'function') {
             window.CubeAnalytics.track(name, params, options);
         }
     }
+
+    function getSavedDesignMode() {
+        try {
+            return window.localStorage.getItem(DESIGN_STORAGE_KEY) === 'classic' ? 'classic' : 'modern';
+        } catch (error) {
+            return 'modern';
+        }
+    }
+
+    function getSavedReadableFont() {
+        try {
+            return window.localStorage.getItem(READABLE_FONT_STORAGE_KEY) === 'enabled';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function saveDesignMode(mode) {
+        try {
+            window.localStorage.setItem(DESIGN_STORAGE_KEY, mode);
+        } catch (error) {
+            // Storage can be unavailable in strict/private contexts; the live toggle still works.
+        }
+    }
+
+    function saveReadableFont(enabled) {
+        try {
+            window.localStorage.setItem(READABLE_FONT_STORAGE_KEY, enabled ? 'enabled' : 'disabled');
+        } catch (error) {
+            // Storage can be unavailable in strict/private contexts; the live toggle still works.
+        }
+    }
+
+    function applyDesignMode(mode) {
+        const isModern = mode === 'modern';
+        document.documentElement.dataset.design = isModern ? 'modern' : 'classic';
+
+        const themeMeta = document.querySelector('meta[name="theme-color"]');
+        if (themeMeta) {
+            themeMeta.setAttribute('content', isModern ? '#313338' : '#0f172a');
+        }
+    }
+
+    function applyReadableFont(enabled) {
+        document.documentElement.toggleAttribute('data-readable-font', enabled);
+    }
+
+    applyDesignMode(getSavedDesignMode());
+    applyReadableFont(getSavedReadableFont());
 
     function copyTextFallback(text) {
         const textarea = document.createElement('textarea');
@@ -55,6 +107,49 @@
                 }, 1400);
             });
         });
+    }
+
+    function updateRangeProgress(input) {
+        const min = Number(input.min || 0);
+        const max = Number(input.max || 100);
+        const value = Number(input.value || min);
+        const progress = max > min ? ((value - min) / (max - min)) * 100 : 0;
+        input.style.setProperty('--range-progress', `${Math.min(100, Math.max(0, progress))}%`);
+    }
+
+    function initRangeInputs(root) {
+        const scope = root || document;
+        const ranges = [];
+
+        if (scope instanceof HTMLInputElement && scope.type === 'range') {
+            ranges.push(scope);
+        } else if (scope.querySelectorAll) {
+            ranges.push(...scope.querySelectorAll('input[type="range"]'));
+        }
+
+        ranges.forEach((input) => {
+            updateRangeProgress(input);
+            if (input.dataset.rangeProgressReady === 'true') return;
+            input.dataset.rangeProgressReady = 'true';
+            input.addEventListener('input', () => updateRangeProgress(input));
+            input.addEventListener('change', () => updateRangeProgress(input));
+        });
+    }
+
+    function observeRangeInputs() {
+        initRangeInputs(document);
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        initRangeInputs(node);
+                    }
+                });
+            });
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
     }
 
     function initSlideshow(root) {
@@ -275,6 +370,124 @@
         });
     }
 
+    function getDesignToggleCopy() {
+        const locale = getLocaleInfo().lang;
+        return ({
+            en: {
+                toModern: 'Switch to new theme',
+                toClassic: 'Switch to classic theme'
+            },
+            ru: {
+                toModern: 'Включить новую тему',
+                toClassic: 'Вернуть классическую тему'
+            },
+            fr: {
+                toModern: 'Activer le nouveau thème',
+                toClassic: 'Revenir au thème classique'
+            },
+            de: {
+                toModern: 'Neues Theme einschalten',
+                toClassic: 'Klassisches Theme wiederherstellen'
+            }
+        })[locale] || {
+            toModern: 'Switch to new theme',
+            toClassic: 'Switch to classic theme'
+        };
+    }
+
+    function getReadableFontToggleCopy() {
+        const locale = getLocaleInfo().lang;
+        return ({
+            en: {
+                enable: 'Enable dyslexia-friendly font',
+                disable: 'Disable dyslexia-friendly font'
+            },
+            ru: {
+                enable: 'Включить шрифт для дислексии',
+                disable: 'Выключить шрифт для дислексии'
+            },
+            fr: {
+                enable: 'Activer la police adaptée à la dyslexie',
+                disable: 'Désactiver la police adaptée à la dyslexie'
+            },
+            de: {
+                enable: 'Legasthenie-freundliche Schrift einschalten',
+                disable: 'Legasthenie-freundliche Schrift ausschalten'
+            }
+        })[locale] || {
+            enable: 'Enable dyslexia-friendly font',
+            disable: 'Disable dyslexia-friendly font'
+        };
+    }
+
+    function initDesignToggle() {
+        const navbar = document.querySelector('.steam-navbar-inner');
+        if (!navbar || navbar.querySelector('.design-toggle')) return;
+
+        const copy = getDesignToggleCopy();
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'design-toggle';
+        button.innerHTML = '<span class="design-toggle-icon" aria-hidden="true"></span>';
+
+        function syncButton() {
+            const isModern = document.documentElement.dataset.design === 'modern';
+            button.setAttribute('aria-pressed', String(isModern));
+            button.setAttribute('aria-label', isModern ? copy.toClassic : copy.toModern);
+            button.title = isModern ? copy.toClassic : copy.toModern;
+        }
+
+        button.addEventListener('click', () => {
+            const nextMode = document.documentElement.dataset.design === 'modern' ? 'classic' : 'modern';
+            applyDesignMode(nextMode);
+            saveDesignMode(nextMode);
+            syncButton();
+        });
+
+        const languageSwitch = navbar.querySelector('.language-switch');
+        if (languageSwitch) {
+            navbar.insertBefore(button, languageSwitch);
+        } else {
+            navbar.appendChild(button);
+        }
+
+        syncButton();
+    }
+
+    function initReadableFontToggle() {
+        const navbar = document.querySelector('.steam-navbar-inner');
+        if (!navbar || navbar.querySelector('.font-toggle')) return;
+
+        const copy = getReadableFontToggleCopy();
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'font-toggle';
+        button.innerHTML = '<span class="font-toggle-icon" aria-hidden="true">Aa</span>';
+
+        function syncButton() {
+            const enabled = document.documentElement.hasAttribute('data-readable-font');
+            button.setAttribute('aria-pressed', String(enabled));
+            button.setAttribute('aria-label', enabled ? copy.disable : copy.enable);
+            button.title = enabled ? copy.disable : copy.enable;
+        }
+
+        button.addEventListener('click', () => {
+            const enabled = !document.documentElement.hasAttribute('data-readable-font');
+            applyReadableFont(enabled);
+            saveReadableFont(enabled);
+            syncButton();
+        });
+
+        const languageSwitch = navbar.querySelector('.language-switch');
+        if (languageSwitch) {
+            navbar.insertBefore(button, languageSwitch);
+        } else {
+            navbar.appendChild(button);
+        }
+
+        syncButton();
+    }
+
     function slugifyHeading(text) {
         return (text || '')
             .toLowerCase()
@@ -387,7 +600,10 @@
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
         initProjectSupportLinks();
+        initDesignToggle();
+        initReadableFontToggle();
         initCopyButtons();
+        observeRangeInputs();
         initArticleToc();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });

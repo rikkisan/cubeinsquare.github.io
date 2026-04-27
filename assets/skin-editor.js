@@ -1,8 +1,11 @@
 (function () {
     const SKIN_SIZE = 64;
     const DEFAULT_ZOOM = 8;
+    const DEFAULT_PREVIEW_ZOOM = 1;
     const DEFAULT_ALPHA = 100;
     const HISTORY_LIMIT = 40;
+    const PREVIEW_GRID_EDGE_INSET_RATIO = 0.08;
+    const PREVIEW_GRID_VISIBILITY_EPSILON = 0.001;
     const UI_LANG = (document.documentElement.lang || 'en').toLowerCase();
     const UI_TEXT = {
         en: {
@@ -19,6 +22,15 @@
             models: {
                 wide: 'wide',
                 slim: 'slim'
+            },
+            controls: {
+                undo: 'Undo',
+                redo: 'Redo',
+                undoTitle: 'Undo (Ctrl+Z)',
+                redoTitle: 'Redo (Ctrl+Y)',
+                previewZoom: '3D zoom',
+                pixelGrid: 'Pixel grid',
+                largePreview: 'Large 3D view'
             }
         },
         ru: {
@@ -35,6 +47,65 @@
             models: {
                 wide: 'широкие',
                 slim: 'тонкие'
+            },
+            controls: {
+                undo: 'Отменить',
+                redo: 'Повторить',
+                undoTitle: 'Отменить (Ctrl+Z)',
+                redoTitle: 'Повторить (Ctrl+Y)',
+                previewZoom: 'Зум 3D',
+                pixelGrid: 'Пиксельная сетка',
+                largePreview: 'Большой 3D-вид'
+            }
+        },
+        fr: {
+            tools: {
+                brush: 'pinceau',
+                eraser: 'gomme',
+                picker: 'pipette',
+                orbit: 'orbite'
+            },
+            layers: {
+                base: 'base',
+                overlay: 'exterieur'
+            },
+            models: {
+                wide: 'large',
+                slim: 'mince'
+            },
+            controls: {
+                undo: 'Annuler',
+                redo: 'Rétablir',
+                undoTitle: 'Annuler (Ctrl+Z)',
+                redoTitle: 'Rétablir (Ctrl+Y)',
+                previewZoom: 'Zoom 3D',
+                pixelGrid: 'Grille de pixels',
+                largePreview: 'Grande vue 3D'
+            }
+        },
+        de: {
+            tools: {
+                brush: 'pinsel',
+                eraser: 'radierer',
+                picker: 'pipette',
+                orbit: 'orbit'
+            },
+            layers: {
+                base: 'basis',
+                overlay: 'aussen'
+            },
+            models: {
+                wide: 'breit',
+                slim: 'schmal'
+            },
+            controls: {
+                undo: 'Rückgängig',
+                redo: 'Wiederholen',
+                undoTitle: 'Rückgängig (Ctrl+Z)',
+                redoTitle: 'Wiederholen (Ctrl+Y)',
+                previewZoom: '3D-Zoom',
+                pixelGrid: 'Pixelraster',
+                largePreview: 'Große 3D-Ansicht'
             }
         }
     };
@@ -55,12 +126,16 @@
         },
         brushSize: 1,
         zoom: DEFAULT_ZOOM,
+        previewZoom: DEFAULT_PREVIEW_ZOOM,
+        showPixelGrid: true,
+        largePreview: false,
         editorPainting: false,
         previewPainting: false,
         undoStack: [],
         redoStack: [],
         lastEditorPoint: null,
         lastPreviewPoint: null,
+        previewHoverCell: null,
         previewSyncQueued: false
     };
 
@@ -237,7 +312,10 @@
     let previewVisibleMeshes = [];
     let previewHelperRoot;
     let previewHelperMeshes = [];
+    let previewGridCtx;
+    let previewResizeObserver;
     const previewPartNames = ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg'];
+    const previewFaceNames = ['right', 'left', 'top', 'bottom', 'front', 'back'];
 
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
@@ -260,8 +338,8 @@
             body: [0, 2, 0],
             rightArm: [modelType === 'slim' ? -5.5 : -6, 2, 0],
             leftArm: [modelType === 'slim' ? 5.5 : 6, 2, 0],
-            rightLeg: [-1.9, -10, -0.1],
-            leftLeg: [1.9, -10, -0.1]
+            rightLeg: [-2, -10, 0],
+            leftLeg: [2, -10, 0]
         };
     }
 
@@ -403,6 +481,7 @@
             state.undoStack.shift();
         }
         state.redoStack = [];
+        updateHistoryButtons();
     }
 
     function restoreHistorySnapshot(snapshot) {
@@ -413,15 +492,32 @@
     }
 
     function undo() {
-        if (!state.undoStack.length) return;
+        if (!state.undoStack.length) {
+            updateHistoryButtons();
+            return;
+        }
         state.redoStack.push(createHistorySnapshot());
         restoreHistorySnapshot(state.undoStack.pop());
+        updateHistoryButtons();
     }
 
     function redo() {
-        if (!state.redoStack.length) return;
+        if (!state.redoStack.length) {
+            updateHistoryButtons();
+            return;
+        }
         state.undoStack.push(createHistorySnapshot());
         restoreHistorySnapshot(state.redoStack.pop());
+        updateHistoryButtons();
+    }
+
+    function updateHistoryButtons() {
+        if (elements.undo) {
+            elements.undo.disabled = state.undoStack.length === 0;
+        }
+        if (elements.redo) {
+            elements.redo.disabled = state.redoStack.length === 0;
+        }
     }
 
     function updateStats() {
@@ -447,6 +543,7 @@
             button.classList.toggle('is-active', isActive);
             button.classList.toggle('resource-link-secondary', !isActive);
         });
+        applyPreviewPartVisibility();
         updateStats();
     }
 
@@ -475,6 +572,66 @@
         updateStats();
     }
 
+    function createToolField(id, label, controlHtml) {
+        const field = document.createElement('div');
+        field.className = 'tool-field';
+        field.innerHTML = `<label for="${id}">${label}</label>${controlHtml}`;
+        return field;
+    }
+
+    function createToolCheck(id, label, checked) {
+        const wrapper = document.createElement('label');
+        wrapper.className = 'tool-check';
+        wrapper.innerHTML = `<input id="${id}" type="checkbox"${checked ? ' checked' : ''}><span>${label}</span>`;
+        return wrapper;
+    }
+
+    function ensureEnhancementControls() {
+        const labels = (UI_TEXT[UI_LANG] || UI_TEXT.en).controls || UI_TEXT.en.controls;
+
+        if (!document.getElementById('skinUndoButton')) {
+            const toolGrid = document.querySelector('[data-skin-tool="brush"]') ? document.querySelector('[data-skin-tool="brush"]').closest('.skin-tool-grid') : null;
+            if (toolGrid) {
+                const undoButton = document.createElement('button');
+                undoButton.className = 'resource-link resource-link-secondary skin-tool-button';
+                undoButton.id = 'skinUndoButton';
+                undoButton.type = 'button';
+                undoButton.textContent = labels.undo;
+                undoButton.title = labels.undoTitle;
+
+                const redoButton = document.createElement('button');
+                redoButton.className = 'resource-link resource-link-secondary skin-tool-button';
+                redoButton.id = 'skinRedoButton';
+                redoButton.type = 'button';
+                redoButton.textContent = labels.redo;
+                redoButton.title = labels.redoTitle;
+
+                toolGrid.appendChild(undoButton);
+                toolGrid.appendChild(redoButton);
+            }
+        }
+
+        if (!document.getElementById('skinPreviewZoom')) {
+            const atlasZoomField = document.getElementById('skinZoom') ? document.getElementById('skinZoom').closest('.tool-field') : null;
+            const previewZoomField = createToolField(
+                'skinPreviewZoom',
+                labels.previewZoom,
+                '<input id="skinPreviewZoom" type="range" min="60" max="200" step="5" value="100"><span class="row-toolbar-label" id="skinPreviewZoomValue">100%</span>'
+            );
+            if (atlasZoomField) {
+                atlasZoomField.insertAdjacentElement('afterend', previewZoomField);
+            }
+        }
+
+        const checkGrid = document.querySelector('.tool-check-grid');
+        if (checkGrid && !document.getElementById('skinPixelGrid')) {
+            checkGrid.appendChild(createToolCheck('skinPixelGrid', labels.pixelGrid, true));
+        }
+        if (checkGrid && !document.getElementById('skinLargePreview')) {
+            checkGrid.appendChild(createToolCheck('skinLargePreview', labels.largePreview, false));
+        }
+    }
+
     function renderAtlas() {
         const size = state.zoom;
         const canvasSize = SKIN_SIZE * size;
@@ -496,7 +653,7 @@
 
         editorCtx.drawImage(skinCanvas, 0, 0, canvasSize, canvasSize);
 
-        if (size >= 6) {
+        if (state.showPixelGrid && size >= 4) {
             editorCtx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
             editorCtx.lineWidth = 1;
 
@@ -539,6 +696,7 @@
             model: getSkinviewModelType()
         });
         skinViewer.playerObject.skin.modelType = getSkinviewModelType();
+        normalizePreviewModelGeometry();
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
         refreshVisiblePreviewMeshes();
         syncHelperModelTransform();
@@ -695,7 +853,9 @@
             partName,
             layerName,
             faceName,
-            rect
+            rect,
+            flipX: faceName === 'bottom',
+            flipY: false
         };
         previewHelperMeshes.push(mesh);
         return mesh;
@@ -710,16 +870,36 @@
 
         group.add(createHelperFace(partName, layerName, 'front', faces.front, width, height, [0, 0, depth / 2], [0, 0, 0]));
         group.add(createHelperFace(partName, layerName, 'back', faces.back, width, height, [0, 0, -depth / 2], [0, Math.PI, 0]));
-        group.add(createHelperFace(partName, layerName, 'right', faces.right, depth, height, [width / 2, 0, 0], [0, Math.PI / 2, 0]));
-        group.add(createHelperFace(partName, layerName, 'left', faces.left, depth, height, [-width / 2, 0, 0], [0, -Math.PI / 2, 0]));
+        group.add(createHelperFace(partName, layerName, 'right', faces.right, depth, height, [-width / 2, 0, 0], [0, -Math.PI / 2, 0]));
+        group.add(createHelperFace(partName, layerName, 'left', faces.left, depth, height, [width / 2, 0, 0], [0, Math.PI / 2, 0]));
         group.add(createHelperFace(partName, layerName, 'top', faces.top, width, depth, [0, height / 2, 0], [-Math.PI / 2, 0, 0]));
         group.add(createHelperFace(partName, layerName, 'bottom', faces.bottom, width, depth, [0, -height / 2, 0], [Math.PI / 2, 0, 0]));
 
         return group;
     }
 
+    function normalizePreviewModelGeometry() {
+        if (!skinViewer || !skinViewer.playerObject || !skinViewer.playerObject.skin) return;
+
+        const skin = skinViewer.playerObject.skin;
+        if (skin.rightLeg) {
+            skin.rightLeg.position.x = -2;
+            skin.rightLeg.position.z = 0;
+        }
+        if (skin.leftLeg) {
+            skin.leftLeg.position.x = 2;
+            skin.leftLeg.position.z = 0;
+        }
+        skin.updateMatrixWorld(true);
+        skinViewer.playerObject.updateMatrixWorld(true);
+    }
+
     function disposePreviewHelperRoot() {
         if (!previewHelperRoot) return;
+
+        if (previewHelperRoot.parent) {
+            previewHelperRoot.parent.remove(previewHelperRoot);
+        }
 
         previewHelperRoot.traverse((node) => {
             if (node.geometry) node.geometry.dispose();
@@ -790,17 +970,417 @@
         if (skinViewer) {
             skinViewer.render();
         }
+        drawPreviewPixelGrid();
     }
 
     function refreshVisiblePreviewMeshes() {
         previewVisibleMeshes = [];
-        if (!skinViewer || !skinViewer.playerObject) return;
+        if (!skinViewer || !skinViewer.playerObject || !skinViewer.playerObject.skin) return;
 
-        skinViewer.playerObject.traverse((node) => {
-            if (node.isMesh) {
+        const collectLayerMeshes = (root, partName, layerName) => {
+            if (!root || !root.traverse) return;
+            root.traverse((node) => {
+                if (!node.isMesh) return;
+                node.userData.skinPaintPart = partName;
+                node.userData.skinPaintLayer = layerName;
                 previewVisibleMeshes.push(node);
+            });
+        };
+
+        previewPartNames.forEach((partName) => {
+            const part = skinViewer.playerObject.skin[partName];
+            if (!part) return;
+
+            collectLayerMeshes(part.innerLayer, partName, 'base');
+            collectLayerMeshes(part.outerLayer, partName, 'overlay');
+        });
+    }
+
+    function updatePreviewZoomValue() {
+        if (elements.previewZoomValue) {
+            elements.previewZoomValue.textContent = `${Math.round(state.previewZoom * 100)}%`;
+        }
+        if (elements.previewZoom) {
+            elements.previewZoom.value = String(Math.round(state.previewZoom * 100));
+            updateRangeProgress(elements.previewZoom);
+        }
+    }
+
+    function updateRangeProgress(input) {
+        if (!input) return;
+
+        const min = Number(input.min || 0);
+        const max = Number(input.max || 100);
+        const value = Number(input.value || min);
+        const progress = max > min ? ((value - min) / (max - min)) * 100 : 0;
+
+        input.style.setProperty('--range-progress', `${clamp(progress, 0, 100)}%`);
+
+        const field = input.closest('.tool-field');
+        if (field) {
+            field.classList.add('skin-range-field');
+        }
+    }
+
+    function syncRangeControls() {
+        document.querySelectorAll('[data-skin-editor] input[type="range"]').forEach(updateRangeProgress);
+    }
+
+    function resizePreviewGridOverlay() {
+        if (!elements.previewGridOverlay || !elements.preview) return null;
+
+        const rect = elements.preview.getBoundingClientRect();
+        const ratio = window.devicePixelRatio || 1;
+        const width = Math.max(1, Math.floor(rect.width));
+        const height = Math.max(1, Math.floor(rect.height));
+        const targetWidth = Math.floor(width * ratio);
+        const targetHeight = Math.floor(height * ratio);
+
+        if (elements.previewGridOverlay.width !== targetWidth || elements.previewGridOverlay.height !== targetHeight) {
+            elements.previewGridOverlay.width = targetWidth;
+            elements.previewGridOverlay.height = targetHeight;
+        }
+
+        previewGridCtx = previewGridCtx || elements.previewGridOverlay.getContext('2d');
+        previewGridCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        return { width, height };
+    }
+
+    function drawProjectedLine(ctx, from, to) {
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(2, 6, 23, 0.5)';
+        ctx.stroke();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.34)';
+        ctx.stroke();
+    }
+
+    function drawProjectedPolygon(ctx, points) {
+        if (points.some((point) => !point)) return;
+
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        points.slice(1).forEach((point) => ctx.lineTo(point.x, point.y));
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(96, 165, 250, 0.24)';
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.82)';
+        ctx.stroke();
+    }
+
+    function projectPreviewPoint(mesh, localX, localY, viewport) {
+        const point = new THREE.Vector3(localX, localY, 0).applyMatrix4(mesh.matrixWorld).project(skinViewer.camera);
+        if (point.z < -1 || point.z > 1) return null;
+
+        return {
+            x: (point.x + 1) * 0.5 * viewport.width,
+            y: (1 - point.y) * 0.5 * viewport.height
+        };
+    }
+
+    function isPreviewFaceTowardCamera(mesh, cameraPosition) {
+        const center = mesh.getWorldPosition(new THREE.Vector3());
+        const normal = new THREE.Vector3(0, 0, 1).applyQuaternion(mesh.getWorldQuaternion(new THREE.Quaternion())).normalize();
+        return normal.dot(cameraPosition.clone().sub(center).normalize()) > 0.02;
+    }
+
+    function isNearestPreviewFace(mesh, candidates, viewport) {
+        const width = mesh.geometry && mesh.geometry.parameters ? mesh.geometry.parameters.width : 1;
+        const height = mesh.geometry && mesh.geometry.parameters ? mesh.geometry.parameters.height : 1;
+        const samples = [];
+
+        for (let yStep = 0; yStep <= 4; yStep += 1) {
+            for (let xStep = 0; xStep <= 4; xStep += 1) {
+                samples.push([
+                    -width * 0.48 + (width * 0.96 * xStep) / 4,
+                    -height * 0.48 + (height * 0.96 * yStep) / 4
+                ]);
+            }
+        }
+
+        return samples.some(([x, y]) => {
+            const point = new THREE.Vector3(x, y, 0).applyMatrix4(mesh.matrixWorld).project(skinViewer.camera);
+            if (point.z < -1 || point.z > 1) return false;
+            if (point.x < -1.05 || point.x > 1.05 || point.y < -1.05 || point.y > 1.05) return false;
+
+            previewRaycaster.setFromCamera(new THREE.Vector2(point.x, point.y), skinViewer.camera);
+            const hits = previewRaycaster.intersectObjects(candidates, false);
+            return Boolean(hits.length && hits[0].object === mesh);
+        });
+    }
+
+    function projectWorldPoint(point, viewport) {
+        const projected = point.clone().project(skinViewer.camera);
+        if (projected.z < -1 || projected.z > 1) return null;
+
+        const screenX = (projected.x + 1) * 0.5 * viewport.width;
+        const screenY = (1 - projected.y) * 0.5 * viewport.height;
+
+        return {
+            ndc: projected,
+            screen: {
+                x: Math.round(screenX * 2) / 2,
+                y: Math.round(screenY * 2) / 2
+            }
+        };
+    }
+
+    function getPreviewFaceData(mesh, sideIndex) {
+        const geometry = mesh && mesh.geometry;
+        const position = geometry && geometry.attributes ? geometry.attributes.position : null;
+        const uv = geometry && geometry.attributes ? geometry.attributes.uv : null;
+        const normal = geometry && geometry.attributes ? geometry.attributes.normal : null;
+        const start = sideIndex * 4;
+
+        if (!position || !uv || start + 3 >= position.count) return null;
+
+        const points = [];
+        const uvs = [];
+        for (let index = 0; index < 4; index += 1) {
+            const vertexIndex = start + index;
+            points.push(new THREE.Vector3().fromBufferAttribute(position, vertexIndex));
+            uvs.push(new THREE.Vector2().fromBufferAttribute(uv, vertexIndex));
+        }
+
+        const minU = Math.min(...uvs.map((point) => point.x));
+        const maxU = Math.max(...uvs.map((point) => point.x));
+        const minV = Math.min(...uvs.map((point) => point.y));
+        const maxV = Math.max(...uvs.map((point) => point.y));
+        if (maxU - minU <= 0 || maxV - minV <= 0) return null;
+
+        const findCorner = (targetU, targetV) => {
+            let bestIndex = 0;
+            let bestDistance = Number.POSITIVE_INFINITY;
+            uvs.forEach((point, index) => {
+                const distance = Math.abs(point.x - targetU) + Math.abs(point.y - targetV);
+                if (distance < bestDistance) {
+                    bestDistance = distance;
+                    bestIndex = index;
+                }
+            });
+            return points[bestIndex];
+        };
+
+        const localNormal = normal && start < normal.count
+            ? new THREE.Vector3().fromBufferAttribute(normal, start).normalize()
+            : new THREE.Vector3(0, 0, 1);
+
+        return {
+            mesh,
+            sideIndex,
+            minU,
+            maxU,
+            minV,
+            maxV,
+            p00: findCorner(minU, minV),
+            p10: findCorner(maxU, minV),
+            p11: findCorner(maxU, maxV),
+            p01: findCorner(minU, maxV),
+            normal: localNormal.transformDirection(mesh.matrixWorld).normalize()
+        };
+    }
+
+    function faceUvToWorld(face, u, v) {
+        const t = (u - face.minU) / (face.maxU - face.minU);
+        const s = (v - face.minV) / (face.maxV - face.minV);
+        const bottom = face.p00.clone().lerp(face.p10, t);
+        const top = face.p01.clone().lerp(face.p11, t);
+        return bottom.lerp(top, s).applyMatrix4(face.mesh.matrixWorld);
+    }
+
+    function isFaceTowardCamera(face, cameraPosition) {
+        const center = faceUvToWorld(face, (face.minU + face.maxU) / 2, (face.minV + face.maxV) / 2);
+        return face.normal.dot(cameraPosition.clone().sub(center).normalize()) > 0.16;
+    }
+
+    function isFaceNearestAtPoint(face, u, v, targetMeshes) {
+        const safeU = clamp(u, face.minU + PREVIEW_GRID_VISIBILITY_EPSILON, face.maxU - PREVIEW_GRID_VISIBILITY_EPSILON);
+        const safeV = clamp(v, face.minV + PREVIEW_GRID_VISIBILITY_EPSILON, face.maxV - PREVIEW_GRID_VISIBILITY_EPSILON);
+        const viewportPoint = faceUvToWorld(face, safeU, safeV).project(skinViewer.camera);
+        if (viewportPoint.z < -1 || viewportPoint.z > 1) return false;
+        if (viewportPoint.x < -1.05 || viewportPoint.x > 1.05 || viewportPoint.y < -1.05 || viewportPoint.y > 1.05) return false;
+
+        previewRaycaster.setFromCamera(new THREE.Vector2(viewportPoint.x, viewportPoint.y), skinViewer.camera);
+        const hits = previewRaycaster.intersectObjects(targetMeshes, false);
+        return Boolean(hits.length && hits[0].object === face.mesh && Math.floor(hits[0].faceIndex / 2) === face.sideIndex);
+    }
+
+    function isPreviewFaceVisible(face, targetMeshes) {
+        const samples = [
+            [0.5, 0.5],
+            [0.18, 0.18],
+            [0.82, 0.18],
+            [0.82, 0.82],
+            [0.18, 0.82],
+            [0.5, 0.18],
+            [0.82, 0.5],
+            [0.5, 0.82],
+            [0.18, 0.5]
+        ];
+
+        return samples.some(([uPart, vPart]) => (
+            isFaceNearestAtPoint(
+                face,
+                face.minU + (face.maxU - face.minU) * uPart,
+                face.minV + (face.maxV - face.minV) * vPart,
+                targetMeshes
+            )
+        ));
+    }
+
+    function drawScreenLine(ctx, from, to) {
+        if (!from || !to) return;
+
+        ctx.beginPath();
+        ctx.moveTo(from.screen.x, from.screen.y);
+        ctx.lineTo(to.screen.x, to.screen.y);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(2, 6, 23, 0.62)';
+        ctx.stroke();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(226, 232, 240, 0.52)';
+        ctx.stroke();
+    }
+
+    function getFaceGridInset(face, columns, rows) {
+        return {
+            u: ((face.maxU - face.minU) / columns) * PREVIEW_GRID_EDGE_INSET_RATIO,
+            v: ((face.maxV - face.minV) / rows) * PREVIEW_GRID_EDGE_INSET_RATIO
+        };
+    }
+
+    function drawFaceGrid(ctx, face, viewport, targetMeshes) {
+        const columns = Math.max(1, Math.round((face.maxU - face.minU) * SKIN_SIZE));
+        const rows = Math.max(1, Math.round((face.maxV - face.minV) * SKIN_SIZE));
+        const inset = getFaceGridInset(face, columns, rows);
+        const minDrawU = face.minU + inset.u;
+        const maxDrawU = face.maxU - inset.u;
+        const minDrawV = face.minV + inset.v;
+        const maxDrawV = face.maxV - inset.v;
+
+        for (let column = 1; column < columns; column += 1) {
+            const u = face.minU + (face.maxU - face.minU) * (column / columns);
+            for (let row = 0; row < rows; row += 1) {
+                const v0 = clamp(face.minV + (face.maxV - face.minV) * (row / rows), minDrawV, maxDrawV);
+                const v1 = clamp(face.minV + (face.maxV - face.minV) * ((row + 1) / rows), minDrawV, maxDrawV);
+                if (v1 <= v0) continue;
+                if (!isFaceNearestAtPoint(face, u, (v0 + v1) / 2, targetMeshes)) continue;
+                drawScreenLine(
+                    ctx,
+                    projectWorldPoint(faceUvToWorld(face, u, v0), viewport),
+                    projectWorldPoint(faceUvToWorld(face, u, v1), viewport)
+                );
+            }
+        }
+
+        for (let row = 1; row < rows; row += 1) {
+            const v = face.minV + (face.maxV - face.minV) * (row / rows);
+            for (let column = 0; column < columns; column += 1) {
+                const u0 = clamp(face.minU + (face.maxU - face.minU) * (column / columns), minDrawU, maxDrawU);
+                const u1 = clamp(face.minU + (face.maxU - face.minU) * ((column + 1) / columns), minDrawU, maxDrawU);
+                if (u1 <= u0) continue;
+                if (!isFaceNearestAtPoint(face, (u0 + u1) / 2, v, targetMeshes)) continue;
+                drawScreenLine(
+                    ctx,
+                    projectWorldPoint(faceUvToWorld(face, u0, v), viewport),
+                    projectWorldPoint(faceUvToWorld(face, u1, v), viewport)
+                );
+            }
+        }
+    }
+
+    function drawPreviewHoverCell(ctx, face, viewport) {
+        const hover = state.previewHoverCell;
+        if (!hover || hover.object !== face.mesh || hover.sideIndex !== face.sideIndex || !hover.pixel) return;
+
+        const columns = Math.max(1, Math.round((face.maxU - face.minU) * SKIN_SIZE));
+        const rows = Math.max(1, Math.round((face.maxV - face.minV) * SKIN_SIZE));
+        const inset = getFaceGridInset(face, columns, rows);
+        const u0 = clamp(hover.pixel.x / SKIN_SIZE, face.minU + inset.u, face.maxU - inset.u);
+        const u1 = clamp((hover.pixel.x + 1) / SKIN_SIZE, face.minU + inset.u, face.maxU - inset.u);
+        const v0 = clamp(1 - (hover.pixel.y + 1) / SKIN_SIZE, face.minV + inset.v, face.maxV - inset.v);
+        const v1 = clamp(1 - hover.pixel.y / SKIN_SIZE, face.minV + inset.v, face.maxV - inset.v);
+        if (u1 <= u0 || v1 <= v0) return;
+
+        const points = [
+            projectWorldPoint(faceUvToWorld(face, u0, v1), viewport),
+            projectWorldPoint(faceUvToWorld(face, u1, v1), viewport),
+            projectWorldPoint(faceUvToWorld(face, u1, v0), viewport),
+            projectWorldPoint(faceUvToWorld(face, u0, v0), viewport)
+        ];
+
+        if (points.some((point) => !point)) return;
+
+        ctx.beginPath();
+        ctx.moveTo(points[0].screen.x, points[0].screen.y);
+        points.slice(1).forEach((point) => ctx.lineTo(point.screen.x, point.screen.y));
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(96, 165, 250, 0.32)';
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.88)';
+        ctx.stroke();
+    }
+
+    function drawPreviewPixelGrid() {
+        if (!elements.previewGridOverlay || !previewGridCtx) return;
+
+        const viewport = resizePreviewGridOverlay();
+        if (!viewport) return;
+
+        previewGridCtx.clearRect(0, 0, viewport.width, viewport.height);
+
+        if (!state.showPixelGrid || !skinViewer || !skinViewer.camera || !previewVisibleMeshes.length) {
+            return;
+        }
+
+        skinViewer.camera.updateMatrixWorld(true);
+        const gridLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
+        const cameraPosition = skinViewer.camera.getWorldPosition(new THREE.Vector3());
+        const targetMeshes = previewVisibleMeshes.filter((mesh) => (
+            mesh.userData.skinPaintLayer === gridLayer &&
+            isPreviewObjectVisible(mesh) &&
+            !state.hiddenParts[mesh.userData.skinPaintPart]
+        ));
+
+        targetMeshes.forEach((mesh) => {
+            mesh.updateMatrixWorld(true);
+            for (let sideIndex = 0; sideIndex < previewFaceNames.length; sideIndex += 1) {
+                const face = getPreviewFaceData(mesh, sideIndex);
+                if (!face) continue;
+                if (!isFaceTowardCamera(face, cameraPosition)) continue;
+                if (!isPreviewFaceVisible(face, targetMeshes)) continue;
+
+                drawFaceGrid(previewGridCtx, face, viewport, targetMeshes);
+                drawPreviewHoverCell(previewGridCtx, face, viewport);
             }
         });
+    }
+
+    function applyPreviewZoom() {
+        if (skinViewer && skinViewer.camera) {
+            skinViewer.camera.zoom = state.previewZoom;
+            skinViewer.camera.updateProjectionMatrix();
+            skinViewer.render();
+        }
+        updatePreviewZoomValue();
+        drawPreviewPixelGrid();
+    }
+
+    function setPreviewZoom(nextZoom) {
+        state.previewZoom = clamp(Number(nextZoom) || DEFAULT_PREVIEW_ZOOM, 0.6, 2);
+        applyPreviewZoom();
+    }
+
+    function applyPreviewSize() {
+        if (elements.previewCard) {
+            elements.previewCard.classList.toggle('is-large-preview', state.largePreview);
+        }
+        window.requestAnimationFrame(onResize);
     }
 
     function setPreviewHomeView() {
@@ -811,14 +1391,20 @@
         skinViewer.camera.position.set(0, 2, 40);
         skinViewer.controls.target.set(0, 2, 0);
         skinViewer.controls.update();
+        applyPreviewZoom();
         syncHelperModelTransform();
     }
 
     function initPreview() {
         const canvas = document.createElement('canvas');
         canvas.className = 'skin-viewer-canvas';
+        const gridOverlay = document.createElement('canvas');
+        gridOverlay.className = 'skin-grid-overlay';
         elements.preview.innerHTML = '';
         elements.preview.appendChild(canvas);
+        elements.preview.appendChild(gridOverlay);
+        elements.previewGridOverlay = gridOverlay;
+        previewGridCtx = gridOverlay.getContext('2d');
 
         skinViewer = new skinview3d.SkinViewer({
             canvas,
@@ -835,12 +1421,19 @@
         skinViewer.animation = null;
         skinViewer.autoRotate = false;
         skinViewer.controls.enablePan = false;
+        skinViewer.controls.enableZoom = false;
         skinViewer.controls.enableDamping = true;
         skinViewer.controls.rotateSpeed = 0.8;
         skinViewer.controls.mouseButtons.LEFT = THREE.MOUSE.ROTATE;
         skinViewer.controls.mouseButtons.MIDDLE = THREE.MOUSE.DOLLY;
         skinViewer.controls.mouseButtons.RIGHT = THREE.MOUSE.ROTATE;
+        if (skinViewer.controls.addEventListener) {
+            skinViewer.controls.addEventListener('change', () => {
+                drawPreviewPixelGrid();
+            });
+        }
         setPreviewHomeView();
+        normalizePreviewModelGeometry();
         skinViewer.playerObject.skin.setOuterLayerVisible(Boolean(elements.overlay.checked));
 
         previewRaycaster = new THREE.Raycaster();
@@ -849,6 +1442,11 @@
         refreshVisiblePreviewMeshes();
         buildPreviewHelperModel();
         bindPreviewPainting();
+        if (window.ResizeObserver) {
+            if (previewResizeObserver) previewResizeObserver.disconnect();
+            previewResizeObserver = new ResizeObserver(onResize);
+            previewResizeObserver.observe(elements.preview);
+        }
         onResize();
         syncPreviewSkin();
     }
@@ -863,7 +1461,11 @@
         previewRaycaster.setFromCamera(previewPointer, skinViewer.camera);
 
         const targetLayer = state.paintLayer === 'overlay' ? 'overlay' : 'base';
-        const targetMeshes = previewHelperMeshes.filter((mesh) => mesh.userData.layerName === targetLayer && mesh.visible);
+        const targetMeshes = previewVisibleMeshes.filter((mesh) => (
+            mesh.userData.skinPaintLayer === targetLayer &&
+            isPreviewObjectVisible(mesh) &&
+            !state.hiddenParts[mesh.userData.skinPaintPart]
+        ));
         if (!targetMeshes.length) return null;
 
         const intersections = previewRaycaster.intersectObjects(targetMeshes, false);
@@ -876,14 +1478,54 @@
         }) || intersections[0] || null;
     }
 
+    function isPreviewObjectVisible(object) {
+        let current = object;
+        while (current) {
+            if (!current.visible) return false;
+            current = current.parent;
+        }
+        return true;
+    }
+
+    function getIntersectionFaceName(intersection) {
+        if (!intersection || typeof intersection.faceIndex !== 'number') return 'model';
+        return previewFaceNames[Math.floor(intersection.faceIndex / 2)] || 'model';
+    }
+
+    function intersectionToTexturePixel(intersection) {
+        if (!intersection || !intersection.uv) return null;
+
+        return {
+            x: clamp(Math.floor(clamp(intersection.uv.x, 0, 0.999999) * SKIN_SIZE), 0, SKIN_SIZE - 1),
+            y: clamp(Math.floor(clamp(1 - intersection.uv.y, 0, 0.999999) * SKIN_SIZE), 0, SKIN_SIZE - 1)
+        };
+    }
+
     function intersectionToPixel(intersection) {
         if (!intersection) return null;
 
+        if (intersection.object && intersection.object.userData && intersection.object.userData.skinPaintLayer && intersection.uv) {
+            const pixel = intersectionToTexturePixel(intersection);
+            if (!pixel) return null;
+
+            return {
+                x: pixel.x,
+                y: pixel.y,
+                paintKey: [
+                    intersection.object.userData.skinPaintPart || 'model',
+                    intersection.object.userData.skinPaintLayer,
+                    getIntersectionFaceName(intersection)
+                ].join(':')
+            };
+        }
+
         if (intersection.object && intersection.object.userData && Array.isArray(intersection.object.userData.rect) && intersection.uv) {
             const rect = intersection.object.userData.rect;
+            const u = intersection.object.userData.flipX ? 1 - intersection.uv.x : intersection.uv.x;
+            const v = intersection.object.userData.flipY ? 1 - intersection.uv.y : intersection.uv.y;
             return {
-                x: clamp(rect[0] + Math.floor(clamp(intersection.uv.x, 0, 0.999999) * rect[2]), 0, SKIN_SIZE - 1),
-                y: clamp(rect[1] + Math.floor(clamp(1 - intersection.uv.y, 0, 0.999999) * rect[3]), 0, SKIN_SIZE - 1),
+                x: clamp(rect[0] + Math.floor(clamp(u, 0, 0.999999) * rect[2]), 0, SKIN_SIZE - 1),
+                y: clamp(rect[1] + Math.floor(clamp(1 - v, 0, 0.999999) * rect[3]), 0, SKIN_SIZE - 1),
                 paintKey: [
                     intersection.object.userData.partName,
                     intersection.object.userData.layerName,
@@ -901,6 +1543,56 @@
         }
 
         return null;
+    }
+
+    function arePreviewHoverCellsEqual(a, b) {
+        if (!a && !b) return true;
+        if (!a || !b) return false;
+
+        if (a.object || b.object) {
+            return a.object === b.object &&
+                a.sideIndex === b.sideIndex &&
+                a.pixel &&
+                b.pixel &&
+                a.pixel.x === b.pixel.x &&
+                a.pixel.y === b.pixel.y;
+        }
+
+        return a.gridFace === b.gridFace &&
+            a.column === b.column &&
+            a.row === b.row;
+    }
+
+    function setPreviewHoverCell(nextHoverCell) {
+        if (arePreviewHoverCellsEqual(state.previewHoverCell, nextHoverCell)) return;
+        state.previewHoverCell = nextHoverCell;
+        drawPreviewPixelGrid();
+    }
+
+    function updatePreviewHoverCell(intersection) {
+        if (intersection && intersection.object && intersection.object.userData && intersection.object.userData.skinPaintLayer && intersection.uv) {
+            const pixel = intersectionToTexturePixel(intersection);
+            setPreviewHoverCell(pixel ? {
+                object: intersection.object,
+                sideIndex: Math.floor(intersection.faceIndex / 2),
+                pixel
+            } : null);
+            return;
+        }
+
+        if (!intersection || !intersection.object || !intersection.uv || !Array.isArray(intersection.object.userData.rect)) {
+            setPreviewHoverCell(null);
+            return;
+        }
+
+        const rect = intersection.object.userData.rect;
+        const u = intersection.object.userData.flipX ? 1 - intersection.uv.x : intersection.uv.x;
+        const v = intersection.object.userData.flipY ? 1 - intersection.uv.y : intersection.uv.y;
+        setPreviewHoverCell({
+            gridFace: null,
+            column: clamp(Math.floor(clamp(u, 0, 0.999999) * rect[2]), 0, rect[2] - 1),
+            row: clamp(Math.floor(clamp(1 - v, 0, 0.999999) * rect[3]), 0, rect[3] - 1)
+        });
     }
 
     function bindPreviewPainting() {
@@ -921,13 +1613,28 @@
         };
 
         canvas.addEventListener('contextmenu', (event) => event.preventDefault());
+        canvas.addEventListener('wheel', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            const direction = event.deltaY > 0 ? -1 : 1;
+            setPreviewZoom(state.previewZoom + direction * 0.1);
+        }, { passive: false, capture: true });
         canvas.addEventListener('pointerdown', startTemporaryOrbit, true);
+
+        canvas.addEventListener('pointermove', (event) => {
+            if (state.previewOrbiting || state.tool === 'orbit') {
+                updatePreviewHoverCell(null);
+                return;
+            }
+            updatePreviewHoverCell(previewEventToIntersection(event));
+        });
 
         canvas.addEventListener('pointerdown', (event) => {
             if (event.button === 2 || state.previewOrbiting || state.tool === 'orbit') return;
 
             const intersection = previewEventToIntersection(event);
             if (!intersection) return;
+            updatePreviewHoverCell(intersection);
 
             if (state.tool !== 'picker') {
                 pushUndoSnapshot();
@@ -964,8 +1671,14 @@
         };
 
         canvas.addEventListener('pointerup', stopPreviewPaint);
-        canvas.addEventListener('pointerleave', stopPreviewPaint);
-        canvas.addEventListener('pointercancel', stopPreviewPaint);
+        canvas.addEventListener('pointerleave', () => {
+            updatePreviewHoverCell(null);
+            stopPreviewPaint();
+        });
+        canvas.addEventListener('pointercancel', () => {
+            updatePreviewHoverCell(null);
+            stopPreviewPaint();
+        });
     }
 
     function isRegionFullyTransparent(x, y, width, height) {
@@ -1151,6 +1864,13 @@
     }
 
     function bindFileControls() {
+        if (elements.undo) {
+            elements.undo.addEventListener('click', undo);
+        }
+        if (elements.redo) {
+            elements.redo.addEventListener('click', redo);
+        }
+
         elements.upload.addEventListener('click', () => elements.fileInput.click());
         elements.fileInput.addEventListener('change', () => {
             const [file] = elements.fileInput.files || [];
@@ -1260,8 +1980,31 @@
             renderAtlas();
         });
 
+        if (elements.pixelGrid) {
+            elements.pixelGrid.addEventListener('change', () => {
+                state.showPixelGrid = Boolean(elements.pixelGrid.checked);
+                renderAtlas();
+                applyPreviewPartVisibility();
+            });
+        }
+
+        if (elements.largePreview) {
+            elements.largePreview.addEventListener('change', () => {
+                state.largePreview = Boolean(elements.largePreview.checked);
+                applyPreviewSize();
+            });
+        }
+
+        if (elements.previewZoom) {
+            elements.previewZoom.addEventListener('input', () => {
+                setPreviewZoom(Number(elements.previewZoom.value || 100) / 100);
+                updateRangeProgress(elements.previewZoom);
+            });
+        }
+
         elements.alpha.addEventListener('input', () => {
             elements.alphaValue.textContent = `${elements.alpha.value}%`;
+            updateRangeProgress(elements.alpha);
         });
 
         elements.overlay.addEventListener('change', () => {
@@ -1304,6 +2047,7 @@
         skinViewer.setSize(Math.max(300, Math.floor(rect.width)), Math.max(320, Math.floor(rect.height)));
         setPreviewHomeView();
         skinViewer.render();
+        drawPreviewPixelGrid();
     }
 
     function initElements() {
@@ -1313,6 +2057,13 @@
         elements.alphaValue = document.getElementById('skinAlphaValue');
         elements.brushSize = document.getElementById('skinBrushSize');
         elements.zoom = document.getElementById('skinZoom');
+        ensureEnhancementControls();
+        elements.previewZoom = document.getElementById('skinPreviewZoom');
+        elements.previewZoomValue = document.getElementById('skinPreviewZoomValue');
+        elements.pixelGrid = document.getElementById('skinPixelGrid');
+        elements.largePreview = document.getElementById('skinLargePreview');
+        elements.undo = document.getElementById('skinUndoButton');
+        elements.redo = document.getElementById('skinRedoButton');
         elements.overlay = document.getElementById('skinShowOverlay');
         elements.upload = document.getElementById('skinUploadButton');
         elements.download = document.getElementById('skinDownloadButton');
@@ -1326,8 +2077,10 @@
         elements.modelValue = document.getElementById('skinModelValue');
         elements.recentColors = document.getElementById('skinRecentColors');
         elements.similarColors = document.getElementById('skinSimilarColors');
+        elements.previewCard = elements.preview ? elements.preview.closest('.skin-preview-card') : null;
         editorCanvas = document.getElementById('skinEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
+        syncRangeControls();
     }
 
     function init() {
@@ -1338,6 +2091,14 @@
         }
 
         initElements();
+        state.brushSize = Number(elements.brushSize.value || 1);
+        state.zoom = Number(elements.zoom.value || DEFAULT_ZOOM);
+        state.previewZoom = clamp(Number(elements.previewZoom ? elements.previewZoom.value : 100) / 100, 0.6, 2);
+        state.showPixelGrid = elements.pixelGrid ? Boolean(elements.pixelGrid.checked) : true;
+        state.largePreview = elements.largePreview ? Boolean(elements.largePreview.checked) : false;
+        if (elements.previewCard) {
+            elements.previewCard.classList.toggle('is-large-preview', state.largePreview);
+        }
         createOffscreenSkinCanvas();
         bindControls();
         bindKeyboardShortcuts();
@@ -1346,14 +2107,14 @@
         initPreview();
         window.addEventListener('resize', onResize);
 
-        state.brushSize = Number(elements.brushSize.value || 1);
-        state.zoom = Number(elements.zoom.value || DEFAULT_ZOOM);
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
+        updatePreviewZoomValue();
         renderSimilarColors();
 
         resetStarterSkin({ remember: false });
         renderAtlas();
         updateStats();
+        updateHistoryButtons();
         updateLayerButtons();
         updateModelButtons();
         setActiveTool('brush');
