@@ -168,14 +168,111 @@ var locales = [
 function buildHtml(article, locale) {
   var content = article.content[locale.code];
   var newHtml = template;
+  var prefix = locale.code === 'en' ? '' : '/' + locale.code;
+  var canonicalUrl = 'https://cubeinsquare.com' + prefix + '/' + article.slug + '/';
+  var localeOgMap = {
+    en: 'en_US',
+    ru: 'ru_RU',
+    fr: 'fr_FR',
+    de: 'de_DE'
+  };
+  var labelMap = {
+    en: { back: '← All articles', home: 'Home', wiki: 'Wiki' },
+    ru: { back: '← Все статьи', home: 'Главная', wiki: 'Вики' },
+    fr: { back: '← Tous les articles', home: 'Accueil', wiki: 'Wiki' },
+    de: { back: '← Alle Artikel', home: 'Startseite', wiki: 'Wiki' }
+  };
+  var labels = labelMap[locale.code];
+  var titleJson = content.title.replace(/"/g, '\\"');
+  var descJson = content.desc.replace(/"/g, '\\"');
+  var structuredData = '<script type="application/ld+json">\n' +
+'{\n' +
+'  "@context": "https://schema.org",\n' +
+'  "@graph": [\n' +
+'    {\n' +
+'      "@type": "Organization",\n' +
+'      "@id": "https://cubeinsquare.com/#organization",\n' +
+'      "name": "Cube in Square",\n' +
+'      "alternateName": "Kub v kvadrate",\n' +
+'      "url": "https://cubeinsquare.com/",\n' +
+'      "logo": {\n' +
+'        "@type": "ImageObject",\n' +
+'        "url": "https://cubeinsquare.com/assets/server-icon.png"\n' +
+'      },\n' +
+'      "contactPoint": {\n' +
+'        "@type": "ContactPoint",\n' +
+'        "url": "https://cubeinsquare.com/about/",\n' +
+'        "contactType": "editorial support",\n' +
+'        "availableLanguage": ["ru", "en", "fr", "de"]\n' +
+'      }\n' +
+'    },\n' +
+'    {\n' +
+'      "@type": "Article",\n' +
+'      "@id": "' + canonicalUrl + '#article",\n' +
+'      "headline": "' + titleJson + '",\n' +
+'      "name": "' + titleJson + '",\n' +
+'      "description": "' + descJson + '",\n' +
+'      "author": { "@id": "https://cubeinsquare.com/#organization" },\n' +
+'      "publisher": { "@id": "https://cubeinsquare.com/#organization" },\n' +
+'      "mainEntityOfPage": { "@id": "' + canonicalUrl + '#webpage" },\n' +
+'      "inLanguage": "' + locale.code + '",\n' +
+'      "url": "' + canonicalUrl + '",\n' +
+'      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],\n' +
+'      "datePublished": "2026-04-23",\n' +
+'      "dateModified": "2026-04-28"\n' +
+'    },\n' +
+'    {\n' +
+'      "@type": "WebPage",\n' +
+'      "@id": "' + canonicalUrl + '#webpage",\n' +
+'      "url": "' + canonicalUrl + '",\n' +
+'      "name": "' + titleJson + '",\n' +
+'      "description": "' + descJson + '",\n' +
+'      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },\n' +
+'      "about": { "@id": "https://cubeinsquare.com/#organization" },\n' +
+'      "inLanguage": "' + locale.code + '",\n' +
+'      "mainEntity": { "@id": "' + canonicalUrl + '#article" }\n' +
+'    },\n' +
+'    {\n' +
+'      "@type": "BreadcrumbList",\n' +
+'      "@id": "' + canonicalUrl + '#breadcrumb",\n' +
+'      "itemListElement": [\n' +
+'        {\n' +
+'          "@type": "ListItem",\n' +
+'          "position": 1,\n' +
+'          "name": "' + labels.home + '",\n' +
+'          "item": "https://cubeinsquare.com' + prefix + '/"\n' +
+'        },\n' +
+'        {\n' +
+'          "@type": "ListItem",\n' +
+'          "position": 2,\n' +
+'          "name": "' + labels.wiki + '",\n' +
+'          "item": "https://cubeinsquare.com' + prefix + '/wiki/"\n' +
+'        },\n' +
+'        {\n' +
+'          "@type": "ListItem",\n' +
+'          "position": 3,\n' +
+'          "name": "' + titleJson + '",\n' +
+'          "item": "' + canonicalUrl + '"\n' +
+'        }\n' +
+'      ]\n' +
+'    }\n' +
+'  ]\n' +
+'}\n' +
+'</script>';
   
   newHtml = newHtml.replace(/<title>.*?<\/title>/g, "<title>" + content.title + " | Cube in Square</title>");
   newHtml = newHtml.replace(/<meta name="description" content=".*?">/g, '<meta name="description" content="' + content.desc + '">');
   newHtml = newHtml.replace(/wiki-custom-model-data/g, article.slug);
   newHtml = newHtml.replace(/<meta property="og:title" content=".*?">/g, '<meta property="og:title" content="' + content.title + ' | Cube in Square">');
   newHtml = newHtml.replace(/<meta property="og:description" content=".*?">/g, '<meta property="og:description" content="' + content.desc + '">');
+  newHtml = newHtml.replace(/<meta property="og:url" content=".*?">/g, '<meta property="og:url" content="' + canonicalUrl + '">');
+  newHtml = newHtml.replace(/<meta property="og:locale" content=".*?">/g, '<meta property="og:locale" content="' + localeOgMap[locale.code] + '">');
   newHtml = newHtml.replace(/<meta name="twitter:title" content=".*?">/g, '<meta name="twitter:title" content="' + content.title + ' | Cube in Square">');
   newHtml = newHtml.replace(/<meta name="twitter:description" content=".*?">/g, '<meta name="twitter:description" content="' + content.desc + '">');
+  newHtml = newHtml.replace(/<link rel="canonical" href=".*?">/g, '<link rel="canonical" href="' + canonicalUrl + '">');
+  newHtml = newHtml.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, structuredData);
+  newHtml = newHtml.replace(new RegExp('<a href="\\/' + article.slug + '\\/">CustomModelData<\\/a>'), '<a href="/' + article.slug + '/">' + content.title + '</a>');
+  newHtml = newHtml.replace(new RegExp('<a class="mega-card" href="\\/' + article.slug + '\\/"><strong>CustomModelData<\\/strong><span>How one item becomes many models without mods\\.<\\/span><\\/a>'), '<a class="mega-card" href="/' + article.slug + '/"><strong>' + content.title + '</strong><span>' + content.desc + '</span></a>');
   
   var sw = '<div class="language-switch" aria-label="Language"><a ' + (locale.code === 'ru' ? 'class="is-active" ' : '') + 'href="/ru/' + article.slug + '/">RU</a><a ' + (locale.code === 'en' ? 'class="is-active" ' : '') + 'href="/' + article.slug + '/">EN</a><a ' + (locale.code === 'fr' ? 'class="is-active" ' : '') + 'href="/fr/' + article.slug + '/">FR</a><a ' + (locale.code === 'de' ? 'class="is-active" ' : '') + 'href="/de/' + article.slug + '/">DE</a></div>';
   newHtml = newHtml.replace(/<div class="language-switch".*?<\/div>/g, sw);
@@ -186,7 +283,7 @@ function buildHtml(article, locale) {
   var prefix = locale.code === 'en' ? '' : '/' + locale.code;
   
   var bodyRegex = /<main class="page-shell wiki-article">[\s\S]*?<\/main>/;
-  var articleHtml = '<main class="page-shell wiki-article">\n    <a class="article-back" href="' + prefix + '/wiki/">' + backLabel + '</a>\n    <section class="page-hero"><h1>' + content.title + '</h1><p class="page-lead">' + content.desc + '</p></section>\n    <article>\n        ' + content.body + '\n    </article>\n</main>';
+  var articleHtml = '<main class="page-shell wiki-article">\n    <a class="article-back" href="' + prefix + '/wiki/">' + labels.back + '</a>\n    <section class="page-hero"><h1>' + content.title + '</h1><p class="page-lead">' + content.desc + '</p></section>\n    <article>\n        ' + content.body + '\n    </article>\n</main>';
   
   newHtml = newHtml.replace(bodyRegex, articleHtml);
   return newHtml;
