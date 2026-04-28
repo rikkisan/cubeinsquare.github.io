@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Components instead of NBT: Everything about items in modern Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-components-vs-nbt/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-components-vs-nbt/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-components-vs-nbt/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-components-vs-nbt/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-components-vs-nbt/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-components-vs-nbt/">
+<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Components instead of NBT: Everything about items in modern Minecraft | Cube in Square">
+    <meta property="og:description" content="Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-components-vs-nbt/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+<meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Components instead of NBT: Everything about items in modern Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context":  "https://schema.org",
+    "@graph":  [
+                   {
+                       "@type":  "Organization",
+                       "@id":  "https://cubeinsquare.com/#organization",
+                       "name":  "Cube in Square",
+                       "alternateName":  "Kub v kvadrate",
+                       "url":  "https://cubeinsquare.com/",
+                       "logo":  {
+                                    "@type":  "ImageObject",
+                                    "url":  "https://cubeinsquare.com/assets/server-icon.png"
+                                },
+                       "contactPoint":  {
+                                            "url":  "https://cubeinsquare.com/about/",
+                                            "contactType":  "editorial support",
+                                            "@type":  "ContactPoint",
+                                            "availableLanguage":  [
+                                                                      "ru",
+                                                                      "en",
+                                                                      "fr",
+                                                                      "de"
+                                                                  ]
+                                        }
+                   },
+                   {
+                       "@type":  "Article",
+                       "@id":  "https://cubeinsquare.com/wiki-components-vs-nbt/#article",
+                       "headline":  "Minecraft CustomModelData Guide | Cube in Square",
+                       "name":  "Minecraft CustomModelData Guide | Cube in Square",
+                       "description":  "Learn what CustomModelData is in Minecraft, how item overrides work, and how commands changed from NBT to Components in Minecraft 1.20.5+.",
+                       "author":  {
+                                      "@id":  "https://cubeinsquare.com/#organization"
+                                  },
+                       "publisher":  {
+                                         "@id":  "https://cubeinsquare.com/#organization"
+                                     },
+                       "mainEntityOfPage":  {
+                                                "@id":  "https://cubeinsquare.com/wiki-components-vs-nbt/#webpage"
+                                            },
+                       "inLanguage":  "en",
+                       "url":  "https://cubeinsquare.com/wiki-components-vs-nbt/",
+                       "image":  [
+                                     "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+                                 ],
+                       "datePublished":  "2026-04-23",
+                       "dateModified":  "2026-04-23"
+                   },
+                   {
+                       "@type":  "WebPage",
+                       "@id":  "https://cubeinsquare.com/wiki-components-vs-nbt/#webpage",
+                       "url":  "https://cubeinsquare.com/wiki-components-vs-nbt/",
+                       "name":  "Minecraft CustomModelData Guide | Cube in Square",
+                       "description":  "Learn what CustomModelData is in Minecraft, how item overrides work, and how commands changed from NBT to Components in Minecraft 1.20.5+.",
+                       "isPartOf":  {
+                                        "@id":  "https://cubeinsquare.com/#website"
+                                    },
+                       "about":  {
+                                     "@id":  "https://cubeinsquare.com/#organization"
+                                 },
+                       "inLanguage":  "en",
+                       "mainEntity":  {
+                                          "@id":  "https://cubeinsquare.com/wiki-components-vs-nbt/#article"
+                                      }
+                   },
+                   {
+                       "@type":  "BreadcrumbList",
+                       "@id":  "https://cubeinsquare.com/wiki-components-vs-nbt/#breadcrumb",
+                       "itemListElement":  [
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  1,
+                                                   "name":  "Home",
+                                                   "item":  "https://cubeinsquare.com/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  2,
+                                                   "name":  "Wiki",
+                                                   "item":  "https://cubeinsquare.com/wiki/"
+                                               },
+                                               {
+                                                   "@type":  "ListItem",
+                                                   "position":  3,
+                                                   "name":  "Minecraft CustomModelData Guide: What It Is and How It Works",
+                                                   "item":  "https://cubeinsquare.com/wiki-components-vs-nbt/"
+                                               }
+                                           ]
+                   }
+               ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
+                        <div class="mega-sublist">
+                            <a href="/wiki-components-vs-nbt/">CustomModelData</a>
+                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
+                        <div class="mega-sublist">
+                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
+                        <div class="mega-sublist">
+                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
+                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/wiki-components-vs-nbt/"><strong>CustomModelData</strong><span>How one item becomes many models without mods.</span></a>
+                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
+                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
+                    <a href="/custom-villager-trades/">Custom villager trades</a>
+                    <a href="/custom-potions/">Custom potions</a>
+                    <a href="/tool-coming-soon/">Upcoming tools</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
+                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
+                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/about/">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/about/">Cube in Square</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/wiki/" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-components-vs-nbt/">RU</a><a class="is-active" href="/wiki-components-vs-nbt/">EN</a><a href="/fr/wiki-components-vs-nbt/">FR</a><a href="/de/wiki-components-vs-nbt/">DE</a></div>
+    </div>
+</div><main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">← All articles</a>
+    <section class="page-hero"><h1>Components instead of NBT: Everything about items in modern Minecraft</h1><p class="page-lead">Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.</p></section>
+    <article>
+        <h2>The End of NBT</h2>
+<p>For over a decade, Minecraft used NBT (Named Binary Tag) to store item data like names, enchantments, and lore. In Minecraft 1.20.5, Mojang entirely replaced item NBT with Data Components.</p>
+<h2>What changed?</h2>
+<p>Components are more modular and explicit. Instead of arbitrary nested JSON structures, each attribute has a strict component name. For example, <code>{display:{Name:'{"text":"Sword"}'}}</code> became <code>[minecraft:custom_name='{"text":"Sword"}']</code>.</p>
+<h2>How our tools simplify the transition</h2>
+<p>The syntax shift broke millions of existing command blocks and server plugins. Memorizing the new bracket system is tedious. Our tools, like the <a href='/custom-potions/'>Custom Potions Builder</a> and <a href='/custom-villager-trades/'>Villager Trades Builder</a>, have built-in version toggles.</p>
+<p>You can design your items visually, and the site will automatically translate your configuration into perfectly formatted Data Components for 1.21.4+ or legacy NBT for older servers.</p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+    <script src="/assets/site.js"></script>
+    <script src="/assets/tracking-config.js"></script>
+    <script src="/assets/tracking.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
