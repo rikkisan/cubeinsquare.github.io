@@ -10,6 +10,7 @@
 
 .item-builder-stack {
     display: grid;
+    align-content: start;
     gap: 18px;
 }
 
