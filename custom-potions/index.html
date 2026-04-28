@@ -316,6 +316,87 @@
             </section>
         </div>
     </section>
+
+    <section class="page-section">
+        <h2 class="section-title">When this potion builder is most useful</h2>
+        <p class="section-intro">Potion commands stop being simple the moment the bottle is supposed to carry more than one job. A vanilla potion is easy. A quest reward with custom lore, a story color, and a clean payload for a modern server version is where people start losing time. This builder is for that second case: when the bottle has to feel intentional, not generic.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Reward items</h3>
+                <p>If a potion should feel like a crafted object instead of a random drop, the combination of custom name, lore, color, and effect stack matters more than raw strength. The builder lets you shape that whole package at once instead of bolting details on afterward.</p>
+            </article>
+            <article class="resource-card">
+                <h3>RP consumables</h3>
+                <p>This page is especially handy for drinks, alchemical tonics, poisons, or ritual brews that need readable text and a memorable look. Even if the mechanical effect is small, the item can still feel distinct because the visual and textual layer is already part of the command.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Version-sensitive commands</h3>
+                <p>One of the most annoying parts of potion commands is not the potion itself, but the syntax drift between legacy NBT and the modern component system. The builder is useful precisely because it keeps that translation in one place.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A simple workflow that stays readable later</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Start with the bottle type</h3>
+                <p>Choose normal, splash, or lingering first. That decision affects how the potion behaves in play and prevents you from mentally designing one kind of item while the command is actually building another.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Pick the vanilla base only if it helps</h3>
+                <p>Sometimes a real base potion is useful because it gives you familiar defaults. Sometimes it is cleaner to leave the base empty and define everything through custom effects. The builder supports both paths, and that is important when you are trying to keep the design legible.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Write lore like a player will read it</h3>
+                <p>Lore works best when each line answers one question: what is this, what does it do, and why should I care. When the text starts sounding like raw admin notes, the potion may still function, but it stops feeling like an item people actually want to use.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Only then refine effects and color</h3>
+                <p>The effect stack and bottle color should reinforce the idea you already have, not replace it. Bright purple can suggest danger, pale blue can suggest clarity, and deep green can signal poison or medicine, but only if the rest of the item supports that read.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Mistakes that usually break potion commands</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Overbuilding the bottle</h3>
+                <p>It is easy to pile on too many effects and turn a flavorful item into a hard-to-read spreadsheet in a glass bottle. In practice, one primary purpose and one secondary twist usually reads better than a huge stack of tiny bonuses.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Forgetting that lore and mechanics tell the same story</h3>
+                <p>If the lore says the potion is subtle but the command gives instant fireworks, the item feels fake. If the lore promises danger and the effect is barely noticeable, the item feels weak. The command and the text need to point in the same direction.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Using the wrong syntax for the server version</h3>
+                <p>This is the most practical failure mode. A potion can look perfect in the form and still fail if the environment expects modern components and you pasted an old NBT pattern, or the other way around. That is why the version switch matters before you copy the final command.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Should I use a base potion or only custom effects?</h3>
+                <p>Use a base potion when you want to inherit a familiar vanilla identity. Skip it when the bottle is supposed to be fully custom and the default behavior would only get in the way.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Is this page only for combat potions?</h3>
+                <p>No. It is just as useful for social drinks, quest medicine, ritual ingredients, joke items, or collectible bottles that mainly exist to support story and atmosphere.</p>
+            </article>
+            <article class="resource-card">
+                <h3>When should I add CustomModelData?</h3>
+                <p>Add it when the bottle should also hook into a resource pack and look different from normal potions. If the item only needs mechanical changes, you can leave that field empty.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What should I do after the command is copied?</h3>
+                <p>Test it in the real environment where it will live: the server, command block, or admin console you actually use. Potions are small items, but they often reveal syntax and formatting mistakes immediately.</p>
+            </article>
+        </div>
+    </section>
 </main>
 
 <datalist id="potionBaseSuggestions">

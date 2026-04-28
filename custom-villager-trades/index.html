@@ -297,6 +297,87 @@
             <div class="tool-summary" id="villagerSummary"></div>
         </section>
     </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Why use a trade generator instead of hand-writing the summon</h2>
+        <p class="section-intro">Villager commands become fragile long before they become interesting. A single trade is manageable by hand. A named shopkeeper with multiple offers, custom rewards, usage limits, and version-specific item syntax stops being a pleasant copy-paste task very quickly. This generator is useful because it keeps the structure readable while you are still designing the actual NPC.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Shop NPCs for real servers</h3>
+                <p>If you are building a librarian merchant, a quartermaster, a guild clerk, or a black-market trader, the item itself is only half the work. The rest is profession, biome flavor, trade balance, stock limits, and how the command survives copy-paste into the environment you actually use.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Good for currency and quest loops</h3>
+                <p>Trades are often where custom items become playable. You can turn a token into a reward, an RP currency into a stable exchange object, or a quest drop into a repeatable profession flow. The generator helps because it keeps all of those decisions in one visible place.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Version changes matter here</h3>
+                <p>The three syntax modes are not decoration. They exist because the trade payload for items changed, and a villager that looks correct in the editor can still fail in game if the reward or cost is serialized for the wrong generation of Minecraft commands.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A stable workflow for designing a villager</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Decide the role before the price</h3>
+                <p>Start with who this villager is. Is it a mundane supplier, a rare specialist, a quest broker, or a disguised admin helper? Once the role is clear, the profession, naming, and trade limits become much easier to shape without guessing.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Build the reward item first</h3>
+                <p>The traded item is the emotional center of the exchange. If you know what the player is actually getting, setting the emerald cost, second ingredient, and stock limit becomes more grounded instead of arbitrary.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Set max uses with intent</h3>
+                <p>Infinite stock and very low stock create very different economies. A decorative merchant can stay permanent. A progression gate, event token seller, or rare crafter often needs a tighter cap so the trade still feels like a choice.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Copy the summon only after the version is correct</h3>
+                <p>The command field is the finish line, not the starting line. If you copy too early, then switch syntax mode later, you are likely to test the wrong string and lose time on a problem that is not actually about balancing or design.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Common reasons villager commands fail</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Long commands pasted into normal chat</h3>
+                <p>This is the boring but frequent one. Complex villagers cross the practical chat limit fast, especially when reward items carry extra data. If the page warns that you need a command block, believe it and save yourself a confusing failure.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Reward items designed for the wrong syntax generation</h3>
+                <p>A trade can fail even when the villager fields are fine if the item itself belongs to another command era. This matters most when you use custom names, lore, CustomModelData, or modern item components inside the reward.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Trying to balance the economy after the NPC already exists</h3>
+                <p>Once a merchant is live on a server, changing it is more annoying than shaping it well from the start. It helps to decide early whether the villager is a sink, a faucet, a convenience shortcut, or a rare specialist, then price around that role.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Why are there three version choices?</h3>
+                <p>Because the item payload inside trades changed. Older commands rely on legacy NBT, while newer Minecraft versions expect component-based item syntax. The generator separates those paths so you do not have to mentally translate every offer by hand.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Can I use this for RP shopkeepers, not only vanilla merchants?</h3>
+                <p>Absolutely. That is one of the best uses for it. Named NPCs with custom rewards and controlled stock are where the page becomes much more useful than a plain summon example from a forum post.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Should I put the custom reward together somewhere else first?</h3>
+                <p>Usually yes. If the sold item needs a lot of display or component work, it is often easier to design it in the Custom Item Builder first, then bring the final values back into the trade.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What should I test first in game?</h3>
+                <p>Test whether the villager summons, whether every trade appears, and whether the reward item arrives exactly as expected. Once those three things are stable, economy tuning becomes much easier.</p>
+            </article>
+        </div>
+    </section>
 </main>
 
 <datalist id="villagerItemSuggestions">

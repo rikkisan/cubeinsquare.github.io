@@ -330,6 +330,102 @@
 
     <button class="generate-btn" id="generateBtn">рџ“¦ Download Resource Pack</button>
 </div>
+
+<main class="page-shell">
+    <section class="page-section">
+        <h2 class="section-title">What this generator is actually good at</h2>
+        <p class="section-intro">This page is most useful when you already know the item, block, or armor slot you want to replace, but you do not want to hand-build the folder structure, rewrite JSON over and over, or package the ZIP manually every time. It keeps the boring parts predictable so you can spend your energy on the actual look and behavior of the content.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Use it for real pack work, not only tests</h3>
+                <p>If you are making custom props for an RP server, a themed survival pack, or a small event item set, the generator is good at turning scattered PNGs into a pack that is already structured well enough to open in Minecraft. It works especially well when you need to move quickly between texture ideas, model hooks, and in-game preview.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Good fit for mixed workflows</h3>
+                <p>You do not need to choose between “I use a pack tool” and “I do everything by hand”. Many creators sketch icons in the texture painter, refine skins or sprites elsewhere, then come back here to attach the right vanilla item, block face, or armor layer and export a clean archive.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Especially helpful after 1.20.5+</h3>
+                <p>Modern Minecraft content is less forgiving than older tutorials make it seem. Once item syntax, model definitions, and resource-pack paths start diverging from old examples, a browser workflow that keeps the pieces aligned becomes a lot more valuable than another half-broken copy-paste guide.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A practical workflow from PNG to usable pack</h2>
+        <p class="section-intro">If you are not sure in which order to touch things, this sequence keeps the project tidy and reduces the chance of exporting a pack that technically builds but is hard to debug later.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Name the pack like a project, not like a test</h3>
+                <p>Use a pack name that still makes sense two weeks later. If you plan to reuse the pack for a server season, guild event, or prop library, pick the final name now. That sounds small, but it saves a surprising amount of confusion once you have multiple ZIPs on disk.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Sort the content by type first</h3>
+                <ol>
+                    <li><strong>Items</strong> if one vanilla item should display a new icon or model.</li>
+                    <li><strong>Blocks</strong> if you are replacing specific block textures or block faces.</li>
+                    <li><strong>Armor</strong> if you need wearable layers plus inventory art.</li>
+                </ol>
+            </article>
+            <article class="resource-card">
+                <h3>3. Keep the replacement target stable</h3>
+                <p>Decide early which vanilla item or texture name is going to carry the custom look. A lot of pack problems are not rendering bugs at all; they come from changing the replacement target halfway through and forgetting to update related commands or documentation.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Use the slicer only when the atlas is already final</h3>
+                <p>The texture atlas slicer is strongest when you already know where your faces live. If the atlas is still moving around every few minutes, slice later. Otherwise you end up debugging selection rectangles instead of the pack itself.</p>
+            </article>
+            <article class="resource-card">
+                <h3>5. Preview before export</h3>
+                <p>A fast 3D preview catches the embarrassing mistakes: upside-down block tops, wrong side faces, missing transparency, or an item that reads well in the atlas but collapses visually in the hand. Export only after the silhouette still feels right in preview.</p>
+            </article>
+            <article class="resource-card">
+                <h3>6. Treat the ZIP as the deliverable</h3>
+                <p>Once the pack looks right, export and test the exact ZIP in Minecraft. That is the thing your players, teammates, or event build process will actually use. It is the only state that fully matters.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Common mistakes this page helps you avoid</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Mixing item art and block art without a plan</h3>
+                <p>Item icons want readability at a glance. Block textures want repetition that does not look noisy when tiled. If you draw both with the same habits, one of them usually suffers. The generator helps by keeping those pipelines separate from the start.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Testing with placeholder filenames too long</h3>
+                <p>“final-final-real-use-this-one.png” is funny until you have five of them. Clean target names and predictable slots matter because they spill into your pack structure, your command notes, and your own future memory.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Forgetting the command side of the content</h3>
+                <p>Many creators build the pack first and only later realize they still need a clean item command, villager trade, or reward flow. If the pack is for gameplay and not just screenshots, it helps to think about the command side at the same time. That is why this tool works best together with the Custom Item Builder, Villager Trades, and Potions pages.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Can I use this for both vanilla-style icons and heavier RP props?</h3>
+                <p>Yes. The workflow is light enough for a single icon replacement, but it is also useful when you are building a whole little family of props and want the ZIP structure to stay coherent.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Do I need Blockbench before using this?</h3>
+                <p>No. If you only need texture replacement or simple pack assembly, you can stay here. If you are doing more involved 3D work, Blockbench still pairs well with this generator.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Should I prepare every texture outside the generator first?</h3>
+                <p>Usually yes. It is easier to draw or revise art in the texture tools first, then bring final PNGs here when you are ready to bind them to vanilla targets and export the pack.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What should I open next if my pack is meant for gameplay?</h3>
+                <p>Open the wiki guide for pack structure if you want the folder logic explained, or jump into the Custom Item Builder, Villager Trades, and Custom Potions tools if the pack is only one part of a larger gameplay setup.</p>
+            </article>
+        </div>
+    </section>
+</main>
 <footer class="site-footer">
     <span>Cube in Square</span>
     <a href="/privacy-policy/">Privacy Policy</a>
