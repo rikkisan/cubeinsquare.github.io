@@ -201,17 +201,16 @@
     <section class="page-hero"><h1>Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON</h1><p class="page-lead">Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.</p></section>
     <article>
         <h2>Le problème avec JSON et Minecraft moderne</h2>
-<p>Pendant des années, créer des objets impliquait de manipuler des tags NBT et du JSON. Avec Minecraft 1.20.5 et 1.21.4+, le jeu est passé du NBT aux Composants de Données. Cela améliore les performances, mais la syntaxe effraie de nombreux créateurs.</p>
-<h2>Pourquoi les composants font peur</h2>
-<p>L'ancien NBT ressemblait à ceci : <code>{CustomModelData:1}</code>. Le nouveau système : <code>[minecraft:custom_model_data=1]</code>. Cela semble simple, mais avec du lore et des noms, les crochets et guillemets deviennent un cauchemar.</p>
+<p>Pendant des années, créer des objets impliquait de manipuler des tags NBT et du JSON. Avec Minecraft 1.20.5 et 1.21.4+, le jeu est passé du NBT aux Composants de Données. Cela améliore les performances, mais la syntaxe effraie de nombreux créateurs. Une simple erreur de crochet casse désormais tout le script.</p>
 <h2>Création d'objets visuelle</h2>
 <p>Au lieu de deviner où va une virgule, utilisez notre <a href='/custom-item-builder/'>Générateur d'objets</a>. Tapez le nom, collez le lore et définissez le Custom Model Data. L'outil génère la commande <code>/give</code> exacte.</p>
-<ul>
-    <li><strong>Aucune erreur de syntaxe :</strong> Le générateur équilibre parfaitement les crochets.</li>
-    <li><strong>Changement de version :</strong> Passez facilement du NBT classique aux composants modernes.</li>
-    <li><strong>Itération rapide :</strong> Modifiez votre objet et copiez la commande instantanément.</li>
-</ul>
-<p>Ne perdez plus des heures à déboguer du JSON. Utilisez l'éditeur visuel et concentrez-vous sur votre serveur !</p>
+<h2>Foire Aux Questions (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Qu'est-ce qui a changé dans la 1.20.5 ?</h3>
+    <p>Le NBT a été remplacé par des composants de données. Les commandes utilisent maintenant des crochets [] au lieu d'accolades {}.</p>
+    <h3>Dois-je apprendre le JSON ?</h3>
+    <p>Non ! Avec le <a href='/resource-pack-generator/'>Générateur de Resource Pack</a>, la syntaxe complexe est générée pour vous automatiquement.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

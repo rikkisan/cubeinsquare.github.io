@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Wie man ein Custom Model Data-Modell zu einem Item hinzufügt: Ein visuelles Tutorial | Cube in Square</title>
+    <title>Wie man ein Custom Model Data-Modell zu einem Item hinzufügt | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
     <meta name="description" content="Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.">
@@ -21,7 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-blockbench-custom-model/">
 <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Wie man ein Custom Model Data-Modell zu einem Item hinzufügt: Ein visuelles Tutorial | Cube in Square">
+    <meta property="og:title" content="Wie man ein Custom Model Data-Modell zu einem Item hinzufügt | Cube in Square">
     <meta property="og:description" content="Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-blockbench-custom-model/">
     <meta property="og:locale" content="en_US">
@@ -29,7 +29,7 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Wie man ein Custom Model Data-Modell zu einem Item hinzufügt: Ein visuelles Tutorial | Cube in Square">
+    <meta name="twitter:title" content="Wie man ein Custom Model Data-Modell zu einem Item hinzufügt | Cube in Square">
     <meta name="twitter:description" content="Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -198,15 +198,20 @@
     </div>
 </div><main class="page-shell wiki-article">
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
-    <section class="page-hero"><h1>Wie man ein Custom Model Data-Modell zu einem Item hinzufügt: Ein visuelles Tutorial</h1><p class="page-lead">Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.</p></section>
+    <section class="page-hero"><h1>Wie man ein Custom Model Data-Modell zu einem Item hinzufügt</h1><p class="page-lead">Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.</p></section>
     <article>
         <h2>Von Blockbench zu Minecraft</h2>
-<p>Du hast ein 3D-Modell in Blockbench entworfen und als JSON exportiert. Wie sorgst du nun dafür, dass es im Spiel erscheint?</p>
+<p>Du hast ein 3D-Modell in Blockbench entworfen und als JSON exportiert. Wie sorgst du nun dafür, dass es im Spiel erscheint? Ohne Mods ermöglicht Minecraft, dass Resource Packs das Aussehen eines Items ändern.</p>
 <h2>Die Resource Pack-Struktur</h2>
 <p>Dein JSON-Modell gehört in <code>assets/minecraft/models/item/</code>. Du musst jedoch ein Vanilla-Item überschreiben, damit es auf dein neues Modell verweist. Hier kommt Custom Model Data ins Spiel.</p>
-<p>Anstatt den Code manuell zu schreiben, nutze unseren <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Lade dein Modell hoch, weise ihm eine CustomModelData-ID zu, und der Generator erledigt den Rest.</p>
+<p>Nutze einfach unseren <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Lade dein Modell hoch, weise ihm eine CustomModelData-ID zu, und der Generator erledigt den Rest.</p>
 <h2>Das Item spawnen</h2>
-<p>Sobald das Pack geladen ist, brauchst du einen Befehl. Öffne den <a href='/custom-item-builder/'>Custom Item Builder</a>, gib dieselbe CustomModelData-ID ein und kopiere den <code>/give</code>-Befehl. So einfach ist das!</p>
+<p>Öffne den <a href='/custom-item-builder/'>Custom Item Builder</a>, gib dieselbe CustomModelData-ID ein und kopiere den <code>/give</code>-Befehl.</p>
+<h2>Häufig gestellte Fragen (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Brauchen Spieler Mods, um die Modelle zu sehen?</h3>
+    <p>Nein! CustomModelData ist ein reines Vanilla-Feature. Die Spieler müssen nur dein Resource Pack herunterladen.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

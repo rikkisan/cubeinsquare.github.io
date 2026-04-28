@@ -201,17 +201,16 @@
     <section class="page-hero"><h1>Benutzerdefiniertes Item in Minecraft 1.20.5+ ohne JSON erstellen</h1><p class="page-lead">Erfahre, wie du benutzerdefinierte Items mit den neuen Datenkomponenten in Minecraft 1.21.4+ erstellst, ohne JSON manuell zu schreiben.</p></section>
     <article>
         <h2>Das Problem mit JSON und dem modernen Minecraft</h2>
-<p>Jahrelang bedeutete das Erstellen von Items das Wühlen in NBT-Tags und JSON-Dateien. Mit Minecraft 1.20.5 und 1.21.4+ wechselte das Spiel von NBT zu Datenkomponenten. Das verbessert die Leistung, verwirrt aber viele Server-Admins.</p>
-<h2>Warum Komponenten abschrecken</h2>
-<p>Altes NBT sah so aus: <code>{CustomModelData:1}</code>. Das neue System: <code>[minecraft:custom_model_data=1]</code>. Es wirkt einfach, aber mit Lore und Namen wird die Syntax schnell zum Albtraum.</p>
+<p>Jahrelang bedeutete das Erstellen von Items das Wühlen in NBT-Tags und JSON-Dateien. Mit Minecraft 1.20.5 und 1.21.4+ wechselte das Spiel von NBT zu Datenkomponenten. Das verbessert die Leistung, verwirrt aber viele Server-Admins. Eine fehlende Klammer ruiniert jetzt den ganzen Befehl.</p>
 <h2>Items visuell erstellen</h2>
 <p>Anstatt zu raten, wo ein Komma fehlt, nutze unseren <a href='/custom-item-builder/'>Custom Item Builder</a>. Gib den Namen ein, füge Lore hinzu und setze die Custom Model Data. Das Tool generiert den exakten <code>/give</code>-Befehl.</p>
-<ul>
-    <li><strong>Keine Syntaxfehler:</strong> Der Builder sorgt für perfekte Klammern und Anführungszeichen.</li>
-    <li><strong>Versionswechsel:</strong> Wechsle einfach zwischen Legacy-NBT und modernen Komponenten.</li>
-    <li><strong>Schnelle Iteration:</strong> Passe dein Item an und kopiere den Befehl sofort.</li>
-</ul>
-<p>Verschwende keine Stunden mehr mit dem Debuggen von JSON. Nutze den visuellen Builder und konzentriere dich auf deinen Server!</p>
+<h2>Häufig gestellte Fragen (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Was hat sich in 1.20.5 geändert?</h3>
+    <p>NBT wurde durch Datenkomponenten ersetzt. Befehle verwenden nun eckige Klammern [] statt geschweifter {}.</p>
+    <h3>Muss ich JSON lernen?</h3>
+    <p>Nein! Mit dem <a href='/resource-pack-generator/'>Resource Pack Generator</a> übernehmen wir die gesamte Syntax für dich.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

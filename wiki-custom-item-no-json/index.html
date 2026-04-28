@@ -201,17 +201,24 @@
     <section class="page-hero"><h1>How to create a custom item in Minecraft 1.20.5+ without JSON</h1><p class="page-lead">Learn how to easily build custom items using the new Data Components in Minecraft 1.21.4+ without manually writing JSON files.</p></section>
     <article>
         <h2>The problem with JSON and modern Minecraft</h2>
-<p>For years, creating custom items meant digging through NBT tags and JSON files. With the release of Minecraft 1.20.5 and the transition to 1.21.4+, the game shifted from NBT to Data Components. While this makes the game run better, it has left many server admins confused by the new syntax.</p>
+<p>For years, creating custom items meant digging through NBT tags and JSON files. With the release of Minecraft 1.20.5 and the transition to 1.21.4+, the game shifted from NBT to Data Components. While this makes the game run better, it has left many server admins confused by the new syntax. Before 1.20.5, item data was a loose dictionary of tags. Now, components act as rigid, structured arrays. This means that a single typo or misplaced bracket completely invalidates your command block or server plugin script.</p>
 <h2>Why Components scare creators</h2>
-<p>Old NBT looked like this: <code>{CustomModelData:1}</code>. The new component system looks like this: <code>[minecraft:custom_model_data=1]</code>. It seems simple, but when you add lore, names, and custom states, the brackets and quotes become a nightmare to format manually.</p>
-<h2>Creating items visually</h2>
+<p>Old NBT looked like this: <code>{CustomModelData:1}</code>. The new component system looks like this: <code>[minecraft:custom_model_data=1]</code>. It seems simple at first glance. However, when you start adding custom lore, specific item names, and custom states, the brackets and quotes become an absolute nightmare to format manually. For example, assigning a colored name now requires escaping JSON strings inside a component array.</p>
+<h2>Creating items visually with our tools</h2>
 <p>Instead of guessing where a comma goes, you can use our <a href='/custom-item-builder/'>Custom Item Builder</a>. You just type your item name, paste your lore, and set your Custom Model Data. The tool automatically generates the exact <code>/give</code> command for the version you select.</p>
 <ul>
-    <li><strong>No syntax errors:</strong> The builder ensures your quotes and brackets are perfectly balanced.</li>
-    <li><strong>Version switching:</strong> Easily toggle between legacy NBT and modern Components to see how the command changes.</li>
-    <li><strong>Fast iteration:</strong> Tweak your item and copy the new command instantly.</li>
+    <li><strong>No syntax errors:</strong> The builder ensures your quotes and brackets are perfectly balanced, eliminating chat errors.</li>
+    <li><strong>Version switching:</strong> Easily toggle between legacy NBT (1.20.4 and below) and modern Components (1.20.5+) to see how the command changes.</li>
+    <li><strong>Fast iteration:</strong> Tweak your item and copy the new command instantly without opening a code editor.</li>
 </ul>
 <p>Stop wasting hours debugging JSON arrays. Use the visual builder and get back to actually playing and managing your server!</p>
+<h2>Frequently Asked Questions</h2>
+<div class='faq-section'>
+    <h3>What changed in Minecraft 1.20.5 regarding items?</h3>
+    <p>Mojang removed traditional NBT item tags and replaced them with structured Data Components. This changed the syntax used in /give commands from curly brackets {} to square brackets [].</p>
+    <h3>Do I need to learn JSON to use CustomModelData?</h3>
+    <p>No! By using tools like the <a href='/resource-pack-generator/'>Resource Pack Generator</a> and our Custom Item Builder, the JSON files and component syntaxes are generated automatically for you.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

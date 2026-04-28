@@ -203,9 +203,14 @@
         <h2>Das Ende von NBT</h2>
 <p>Über ein Jahrzehnt lang nutzte Minecraft NBT, um Item-Daten wie Namen und Lore zu speichern. In Minecraft 1.20.5 hat Mojang Item-NBT vollständig durch Datenkomponenten ersetzt.</p>
 <h2>Was hat sich geändert?</h2>
-<p>Komponenten sind modularer und expliziter. Anstelle von verschachtelten JSON-Strukturen hat jedes Attribut einen strikten Komponentennamen. Zum Beispiel wurde <code>{display:{Name:'{"text":"Schwert"}'}}</code> zu <code>[minecraft:custom_name='{"text":"Schwert"}']</code>.</p>
+<p>Komponenten sind modularer und expliziter. Zum Beispiel wurde <code>{display:{Name:'{"text":"Schwert"}'}}</code> zu <code>[minecraft:custom_name='{"text":"Schwert"}']</code>. Die Syntax ist strenger, aber deutlich performanter.</p>
 <h2>Wie unsere Tools den Übergang vereinfachen</h2>
-<p>Die Änderung der Syntax brach Millionen von Befehlsblöcken. Unsere Tools, wie der <a href='/custom-potions/'>Trank-Generator</a>, haben eingebaute Versionsschalter. Du gestaltest visuell, und die Seite generiert perfekt formatierte Komponenten für 1.21.4+ oder Legacy-NBT für ältere Server.</p>
+<p>Die Änderung der Syntax brach Millionen von Befehlsblöcken. Unsere Tools, wie der <a href='/custom-potions/'>Trank-Generator</a> und <a href='/custom-villager-trades/'>Villager Trades Builder</a>, haben eingebaute Versionsschalter. Du gestaltest visuell, und die Seite generiert perfekt formatierte Komponenten für 1.21.4+ oder Legacy-NBT für ältere Server.</p>
+<h2>Häufig gestellte Fragen (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Muss ich alte Befehlsblöcke umschreiben?</h3>
+    <p>Das Spiel konvertiert alte NBT-Items automatisch beim Welt-Update, aber komplexe Befehle müssen manuell umgeschrieben werden.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

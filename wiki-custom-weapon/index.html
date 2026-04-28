@@ -201,16 +201,23 @@
     <section class="page-hero"><h1>Step-by-step: Creating unique weapons with custom attributes</h1><p class="page-lead">Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.</p></section>
     <article>
         <h2>Beyond standard swords</h2>
-<p>Vanilla Minecraft only offers a few weapon tiers. If you are running an RPG server, you need custom weapons with unique stats. You need a dagger that attacks fast but deals little damage, or a heavy hammer that is slow but devastating.</p>
+<p>Vanilla Minecraft only offers a few weapon tiers like iron, diamond, and netherite. If you are running an RPG server, you need custom weapons with unique stats. You might need a dagger that attacks blazingly fast but deals little damage, or a massive heavy hammer that is slow but devastating. With modern commands, you can turn any item into a deadly weapon.</p>
 <h2>Setting weapon attributes</h2>
-<p>In Minecraft, weapon stats are modified using the <code>attribute_modifiers</code> component. This allows you to override the base damage and attack speed of any item.</p>
+<p>In Minecraft, weapon stats are modified using the <code>attribute_modifiers</code> component. This allows you to override the base damage and attack speed of any item. For example, you can give a stick the attack damage of a Netherite Sword!</p>
 <ul>
-    <li><strong>Attack Damage:</strong> Determines how many hearts the weapon takes away.</li>
-    <li><strong>Attack Speed:</strong> Determines the cooldown between swings.</li>
+    <li><strong>Attack Damage:</strong> Determines how many hearts the weapon takes away. Uses <code>minecraft:generic.attack_damage</code>.</li>
+    <li><strong>Attack Speed:</strong> Determines the cooldown between swings. Uses <code>minecraft:generic.attack_speed</code>.</li>
 </ul>
-<h2>Using our Generator</h2>
-<p>You can package your custom weapon textures and models easily using our <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Once you have the visual part ready, you can use command builders to attach the exact damage and speed attributes.</p>
+<h2>Using our Generators</h2>
+<p>You can package your custom weapon textures and models easily using our <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Once you have the visual part ready (by assigning it a CustomModelData ID), you can use command builders to attach the exact damage and speed attributes.</p>
 <p>For the best player experience, always pair custom stats with a custom texture using CustomModelData, so players can easily distinguish the heavy hammer from a standard iron sword.</p>
+<h2>Frequently Asked Questions</h2>
+<div class='faq-section'>
+    <h3>Can I make an item that isn't a sword deal damage?</h3>
+    <p>Yes! By applying the <code>attribute_modifiers</code> component, you can make items like a carrot on a stick, a feather, or a piece of dirt deal 100 attack damage.</p>
+    <h3>Will custom damage weapons break durability?</h3>
+    <p>If the base item is a tool or weapon, it will lose durability as normal. If you apply attack damage to a non-tool item (like a feather), it will not have durability unless you also add the <code>max_damage</code> component to it.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

@@ -203,9 +203,14 @@
         <h2>La fin du NBT</h2>
 <p>Pendant plus d'une décennie, Minecraft a utilisé le NBT pour stocker les données des objets. Dans Minecraft 1.20.5, Mojang a entièrement remplacé le NBT des objets par des Composants de Données.</p>
 <h2>Qu'est-ce qui a changé ?</h2>
-<p>Les composants sont plus modulaires et explicites. Au lieu de structures JSON imbriquées, chaque attribut a un nom strict. Par exemple, <code>{display:{Name:'{"text":"Épée"}'}}</code> est devenu <code>[minecraft:custom_name='{"text":"Épée"}']</code>.</p>
+<p>Les composants sont plus modulaires et explicites. Par exemple, <code>{display:{Name:'{"text":"Épée"}'}}</code> est devenu <code>[minecraft:custom_name='{"text":"Épée"}']</code>.</p>
 <h2>Comment nos outils simplifient la transition</h2>
 <p>Le changement de syntaxe a cassé des millions de blocs de commande. Nos outils, comme le <a href='/custom-potions/'>Générateur de Potions</a>, ont des sélecteurs de version intégrés. Concevez visuellement, et le site génère des composants parfaitement formatés pour la 1.21.4+ ou du NBT legacy.</p>
+<h2>Foire Aux Questions (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Dois-je réécrire mes anciens blocs de commande ?</h3>
+    <p>Le jeu convertit automatiquement les anciens objets NBT, mais les commandes complexes devront probablement être réécrites.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

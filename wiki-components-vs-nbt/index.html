@@ -201,12 +201,19 @@
     <section class="page-hero"><h1>Components instead of NBT: Everything about items in modern Minecraft</h1><p class="page-lead">Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.</p></section>
     <article>
         <h2>The End of NBT</h2>
-<p>For over a decade, Minecraft used NBT (Named Binary Tag) to store item data like names, enchantments, and lore. In Minecraft 1.20.5, Mojang entirely replaced item NBT with Data Components.</p>
+<p>For over a decade, Minecraft used NBT (Named Binary Tag) to store item data like names, enchantments, and lore. In Minecraft 1.20.5, Mojang entirely replaced item NBT with Data Components. This marks the biggest technical shift in Minecraft items since the flattening in 1.13.</p>
 <h2>What changed?</h2>
-<p>Components are more modular and explicit. Instead of arbitrary nested JSON structures, each attribute has a strict component name. For example, <code>{display:{Name:'{"text":"Sword"}'}}</code> became <code>[minecraft:custom_name='{"text":"Sword"}']</code>.</p>
+<p>Components are more modular and explicit. Instead of arbitrary nested JSON structures, each attribute has a strict component name. For example, the old syntax <code>{display:{Name:'{"text":"Sword"}'}}</code> became <code>[minecraft:custom_name='{"text":"Sword"}']</code>. The new system drastically reduces lag and makes datapack modification much safer, but the initial learning curve is extremely steep for administrators.</p>
 <h2>How our tools simplify the transition</h2>
 <p>The syntax shift broke millions of existing command blocks and server plugins. Memorizing the new bracket system is tedious. Our tools, like the <a href='/custom-potions/'>Custom Potions Builder</a> and <a href='/custom-villager-trades/'>Villager Trades Builder</a>, have built-in version toggles.</p>
 <p>You can design your items visually, and the site will automatically translate your configuration into perfectly formatted Data Components for 1.21.4+ or legacy NBT for older servers.</p>
+<h2>Frequently Asked Questions</h2>
+<div class='faq-section'>
+    <h3>Are older versions of Minecraft still supported?</h3>
+    <p>Yes, any version 1.20.4 or below uses the traditional NBT system. Our tools provide a toggle to generate commands for both environments.</p>
+    <h3>Do I have to update my old command blocks?</h3>
+    <p>When you load an old world in 1.20.5+, the game tries to automatically convert older NBT items and entities, but heavily modified command blocks will need to be rewritten.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

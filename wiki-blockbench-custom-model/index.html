@@ -201,12 +201,19 @@
     <section class="page-hero"><h1>How to add a Custom Model Data model to an item: A visual tutorial</h1><p class="page-lead">Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.</p></section>
     <article>
         <h2>From Blockbench to Minecraft</h2>
-<p>You've designed a beautiful 3D model in Blockbench, exported the JSON, and now you want it in the game. But how do you actually make it appear when a player holds a specific item?</p>
+<p>You've designed a beautiful 3D model in Blockbench, exported the JSON, and now you want it in the game. But how do you actually make it appear when a player holds a specific item? Without mods, Minecraft allows resource packs to replace the visuals of an item if a specific condition is met.</p>
 <h2>The Resource Pack Structure</h2>
-<p>Your 3D model JSON goes into <code>assets/minecraft/models/item/</code>. But you must also override a vanilla item to point to your new model. This is where Custom Model Data comes in.</p>
+<p>Your 3D model JSON goes into <code>assets/minecraft/models/item/</code>. But you must also override a vanilla item to point to your new model. This is where Custom Model Data comes in. It acts as a bridge between the item's code in-game and the 3D model in your resource pack.</p>
 <p>Instead of writing the override code manually, you can use our <a href='/resource-pack-generator/'>Resource Pack Generator</a>. You just upload your custom model and texture, assign it a CustomModelData ID, and the generator builds the correct folder structure and JSON overrides automatically.</p>
 <h2>Spawning the item</h2>
 <p>Once the resource pack is loaded, you need a command to give yourself the item. Open the <a href='/custom-item-builder/'>Custom Item Builder</a>, type the same CustomModelData ID you used in the generator, and copy the <code>/give</code> command. It's that simple!</p>
+<h2>Frequently Asked Questions</h2>
+<div class='faq-section'>
+    <h3>Can I use any vanilla item as the base?</h3>
+    <p>Yes, you can use a carrot on a stick, a piece of paper, or a diamond sword. Note that items that have durability (like swords) are better for custom weapons because they won't stack.</p>
+    <h3>Do players need to download a mod to see the models?</h3>
+    <p>No! CustomModelData is a completely vanilla feature introduced in Minecraft 1.14. Players only need to load the Resource Pack.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

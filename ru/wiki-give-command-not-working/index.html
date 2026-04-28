@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Почему ваш /give не работает? Разбор типичных ошибок | Cube in Square</title>
+    <title>Почему ваш /give не работает? Разбор типичных ошибок в синтаксисе команд | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
     <meta name="description" content="Решение проблем со сломанными командами /give в Minecraft, исправление ошибок со скобками и использование генераторов команд.">
@@ -21,7 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-give-command-not-working/">
 <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Почему ваш /give не работает? Разбор типичных ошибок | Cube in Square">
+    <meta property="og:title" content="Почему ваш /give не работает? Разбор типичных ошибок в синтаксисе команд | Cube in Square">
     <meta property="og:description" content="Решение проблем со сломанными командами /give в Minecraft, исправление ошибок со скобками и использование генераторов команд.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-give-command-not-working/">
     <meta property="og:locale" content="en_US">
@@ -29,7 +29,7 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Почему ваш /give не работает? Разбор типичных ошибок | Cube in Square">
+    <meta name="twitter:title" content="Почему ваш /give не работает? Разбор типичных ошибок в синтаксисе команд | Cube in Square">
     <meta name="twitter:description" content="Решение проблем со сломанными командами /give в Minecraft, исправление ошибок со скобками и использование генераторов команд.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -198,18 +198,23 @@
     </div>
 </div><main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">← Все статьи</a>
-    <section class="page-hero"><h1>Почему ваш /give не работает? Разбор типичных ошибок</h1><p class="page-lead">Решение проблем со сломанными командами /give в Minecraft, исправление ошибок со скобками и использование генераторов команд.</p></section>
+    <section class="page-hero"><h1>Почему ваш /give не работает? Разбор типичных ошибок в синтаксисе команд</h1><p class="page-lead">Решение проблем со сломанными командами /give в Minecraft, исправление ошибок со скобками и использование генераторов команд.</p></section>
     <article>
         <h2>Красный текст отчаяния</h2>
-<p>Каждый админ сервера знает эту боль: нажимаешь Enter, и чат заливает красным текстом ошибки. Обычно виновата одна крошечная опечатка, которая ломает всю команду <code>/give</code>.</p>
+<p>Каждый админ сервера знает эту боль: нажимаешь Enter, и чат заливает красным текстом ошибки. Обычно виновата одна крошечная опечатка, которая ломает всю команду <code>/give</code>. С каждым обновлением команды становятся всё длиннее, и писать их вручную становится всё рискованнее.</p>
 <h2>Типичные ошибки</h2>
 <ol>
-    <li><strong>Незакрытые скобки:</strong> Забытая <code>}</code> или <code>]</code> — причина №1 сломанных команд.</li>
-    <li><strong>Синтаксис не той версии:</strong> Использование фигурных скобок NBT <code>{}</code> в 1.21.4 или квадратных скобок компонентов <code>[]</code> в 1.19.</li>
-    <li><strong>Неэкранированные кавычки:</strong> Двойные кавычки внутри двойных кавычек без обратного слеша.</li>
+    <li><strong>Незакрытые скобки:</strong> Забытая <code>}</code> или <code>]</code> — причина №1 сломанных команд. Игра мгновенно откажется её читать.</li>
+    <li><strong>Синтаксис не той версии:</strong> Использование фигурных скобок NBT <code>{}</code> в 1.21.4 или квадратных скобок компонентов <code>[]</code> в 1.19 вызывает ошибку 'Unknown item component'.</li>
+    <li><strong>Неэкранированные кавычки:</strong> Двойные кавычки внутри двойных кавычек без обратного слеша (<code>\"</code>).</li>
 </ol>
 <h2>Хватит писать команды вручную</h2>
 <p>Человеческий мозг не создан для чтения вложенных JSON-массивов. Вместо того чтобы мучиться, используйте инструменты, которые гарантируют валидный синтаксис. Нужен предмет? Используйте <a href='/custom-item-builder/'>Генератор предметов</a>. Нужен житель? Поможет <a href='/custom-villager-trades/'>Генератор торгов</a>. Не страдайте от ошибок синтаксиса — доверьте это генераторам.</p>
+<h2>Часто задаваемые вопросы (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Почему чат пишет, что команда слишком длинная?</h3>
+    <p>Чат игрока ограничен 256 символами. Командные блоки вмещают до 32,500 символов. Если команда огромная (например, торговец с предметами), используйте командный блок.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

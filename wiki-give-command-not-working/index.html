@@ -201,15 +201,20 @@
     <section class="page-hero"><h1>Why is your /give command not working? Common syntax errors</h1><p class="page-lead">Troubleshoot your broken Minecraft /give commands, fix bracket errors, and learn how to use command generators effectively.</p></section>
     <article>
         <h2>The Red Text of Doom</h2>
-<p>Every server admin knows the pain of pressing Enter and seeing the dreaded red error text in the Minecraft chat. Usually, it's just a tiny typo ruining the entire <code>/give</code> command.</p>
+<p>Every server admin knows the pain of pressing Enter and seeing the dreaded red error text in the Minecraft chat. Usually, it's just a tiny typo ruining the entire <code>/give</code> command. With commands getting longer and more complex every update, writing them by hand is a risk.</p>
 <h2>Common mistakes</h2>
 <ol>
-    <li><strong>Unbalanced brackets:</strong> Forgetting to close a <code>}</code> or <code>]</code> is the #1 cause of broken commands.</li>
-    <li><strong>Wrong version syntax:</strong> Using NBT curly braces <code>{}</code> in 1.21.4, or using Component square brackets <code>[]</code> in 1.19.</li>
-    <li><strong>Unescaped quotes:</strong> Putting double quotes inside double quotes without escaping them.</li>
+    <li><strong>Unbalanced brackets:</strong> Forgetting to close a <code>}</code> or <code>]</code> is the #1 cause of broken commands. The game will immediately fail to parse it.</li>
+    <li><strong>Wrong version syntax:</strong> Using NBT curly braces <code>{}</code> in 1.21.4, or using Component square brackets <code>[]</code> in 1.19. This causes the 'Unknown item component' error.</li>
+    <li><strong>Unescaped quotes:</strong> Putting double quotes inside double quotes without escaping them using backslashes (<code>\"</code>).</li>
 </ol>
 <h2>Stop writing commands manually</h2>
 <p>The human brain isn't built to parse nested JSON arrays. Instead of torturing yourself, use tools that guarantee valid syntax. Need a custom item? Use the <a href='/custom-item-builder/'>Custom Item Builder</a>. Need a villager? Use the <a href='/custom-villager-trades/'>Villager Trades Builder</a>. Don't suffer through syntax errors when generators can do the math for you.</p>
+<h2>Frequently Asked Questions</h2>
+<div class='faq-section'>
+    <h3>Why does my command block say 'Command too long'?</h3>
+    <p>The chat box limits you to 256 characters. Command blocks allow up to 32,500 characters. If your generated command is massive, paste it into a Command Block rather than the chat.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

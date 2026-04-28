@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Компоненты вместо NBT: всё, что нужно знать о создании предметов | Cube in Square</title>
+    <title>Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
     <meta name="description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
@@ -21,7 +21,7 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-components-vs-nbt/">
 <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов | Cube in Square">
+    <meta property="og:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square">
     <meta property="og:description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-components-vs-nbt/">
     <meta property="og:locale" content="en_US">
@@ -29,7 +29,7 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
 <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов | Cube in Square">
+    <meta name="twitter:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square">
     <meta name="twitter:description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
@@ -198,15 +198,22 @@
     </div>
 </div><main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">← Все статьи</a>
-    <section class="page-hero"><h1>Компоненты вместо NBT: всё, что нужно знать о создании предметов</h1><p class="page-lead">Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.</p></section>
+    <section class="page-hero"><h1>Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft</h1><p class="page-lead">Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.</p></section>
     <article>
         <h2>Конец эпохи NBT</h2>
-<p>Более десяти лет Minecraft использовал NBT для хранения данных предметов (имена, чары, лор). В версии 1.20.5 разработчики полностью заменили NBT предметов на компоненты данных.</p>
+<p>Более десяти лет Minecraft использовал NBT (Named Binary Tag) для хранения данных предметов: имена, чары, лор. В версии 1.20.5 разработчики полностью заменили NBT предметов на компоненты данных. Это стало самым масштабным техническим сдвигом со времен 1.13.</p>
 <h2>Что изменилось?</h2>
-<p>Компоненты более модульные и строгие. Вместо вложенных JSON-структур теперь используются явные имена компонентов. Например, <code>{display:{Name:'{"text":"Меч"}'}}</code> превратилось в <code>[minecraft:custom_name='{"text":"Меч"}']</code>.</p>
+<p>Компоненты более модульные и строгие. Вместо вложенных JSON-структур теперь используются явные имена компонентов. Например, <code>{display:{Name:'{"text":"Меч"}'}}</code> превратилось в <code>[minecraft:custom_name='{"text":"Меч"}']</code>. Новая система снижает лаги и упрощает датапаки, но для админов серверов начальный порог вхождения стал крайне высоким.</p>
 <h2>Как наши инструменты упрощают переход</h2>
 <p>Смена синтаксиса сломала миллионы командных блоков и плагинов. Запоминать новую систему скобок утомительно. Наши инструменты, такие как <a href='/custom-potions/'>Генератор зелий</a> и <a href='/custom-villager-trades/'>Торги жителей</a>, имеют встроенный переключатель версий.</p>
 <p>Вы создаете предмет визуально, а сайт сам переводит ваши настройки в идеально отформатированные компоненты для 1.21.4+ или в старый NBT для старых серверов.</p>
+<h2>Часто задаваемые вопросы (FAQ)</h2>
+<div class='faq-section'>
+    <h3>Поддерживаются ли старые версии Minecraft?</h3>
+    <p>Да, версии 1.20.4 и ниже используют классический NBT. Наши инструменты позволяют одним кликом переключать генерацию команд под вашу версию.</p>
+    <h3>Нужно ли мне переписывать старые командные блоки?</h3>
+    <p>При обновлении мира игра пытается автоматически конвертировать старые NBT-предметы, но сложные команды в командных блоках скорее всего придется переписывать.</p>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
