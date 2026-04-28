@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Конструктор кастомных предметов Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Генератор /give команд для Minecraft. Создавайте кастомные предметы с lore, скрытыми ID, item_model и слотами custom_model_data.">
+    <meta name="keywords" content="Minecraft, Генератор команд give, Custom Model Data, item_model, кастомные предметы, RPG предметы">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/custom-item-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/custom-item-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/custom-item-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/custom-item-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/custom-item-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/custom-item-builder/">
+    <meta property="og:title" content="Конструктор кастомных предметов Minecraft | Cube in Square">
+    <meta property="og:description" content="Генератор /give команд для Minecraft. Создавайте кастомные предметы с lore, скрытыми ID, item_model и слотами custom_model_data.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/custom-item-builder/">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/villager-trades.css">
+    <link rel="stylesheet" href="/assets/custom-item-builder.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#general-wiki">Общие статьи</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/ru/wiki/#resource-pack-paths">Структура ресурс-пака</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Генератор ресурс-паков Minecraft</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-resource-pack-generator/">Как использовать генератор</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#other-tools-wiki">Другие инструменты</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/tools/">Каталог инструментов</a>
+                            <a href="/ru/wiki-skin-editor/">Редактор скинов</a>
+                            <a href="/ru/wiki-texture-painter/">Редактор текстур</a>
+                            <a href="/ru/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/ru/wiki-custom-villager-trades/">Торги жителей</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается в десятки моделей без модов.</span></a>
+                    <a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговый workflow по сборке паков.</span></a>
+                    <a class="mega-card" href="/ru/wiki-skin-editor/"><strong>Редактор скинов</strong><span>Рисование по атласу и прямо по 3D-модели игрока.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/ru/tools/">Инструменты</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/ru/resource-pack-generator/">Генератор ресурс-паков Minecraft</a>
+                    <a href="/ru/custom-item-builder/">Конструктор кастомных предметов Minecraft</a>
+                    <a href="/ru/skin-editor/">Редактор скинов Minecraft</a>
+                    <a href="/ru/texture-painter/">Редактор текстур</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/texture-painter/"><strong>Редактор текстур</strong><span>Выберите размер холста, нарисуйте PNG и отправьте его в workflow ресурс-пака.</span></a>
+                    <a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисуйте по атласу или прямо по 3D-модели игрока.</span></a>
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и 3D-предпросмотр.</span></a>
+                    <a class="mega-card" href="/ru/custom-potions/"><strong>Кастомные зелья</strong><span>Конструктор potion contents, эффектов, цвета, lore и give-команд.</span></a>
+                    <a class="mega-card" href="/ru/custom-villager-trades/"><strong>Торги жителей</strong><span>Конструктор сделок с ценами, наградами, лимитами и summon-командой.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/about/">О проекте</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/ru/about/">Cube in Square</a>
+                <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/ru/wiki/" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/custom-item-builder/">EN</a><a href="/fr/custom-item-builder/">FR</a><a href="/de/custom-item-builder/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-item-builder>
+    <section class="page-hero">
+        <h1>Конструктор кастомных предметов Minecraft</h1>
+        <p class="page-lead">Создавайте готовые команды <code>/give</code> для RP-предметов, квестовых наград и пропусков. Этот конструктор учитывает разницу версий: вы можете использовать компактный старый синтаксис или новые слоты <code>item_model</code>, <code>custom_data</code> и <code>custom_model_data</code> для 1.21.4+.</p>
+        <div class="tool-button-row">
+            <a class="tool-button" href="/ru/resource-pack-generator/">Открыть генератор ресурс-паков</a>
+            <a class="tool-button tool-button-secondary" href="/ru/wiki-custom-model-data/">Гайд по CustomModelData</a>
+        </div>
+    </section>
+
+    <section class="page-section item-builder-layout">
+        <div class="item-builder-stack">
+            <form class="tool-panel" id="itemBuilderForm">
+                <h2>Настройка предмета</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="ci-version">Версия команды</label>
+                        <select id="ci-version">
+                            <option value="modern">1.21.4+</option>
+                            <option value="current">1.20.5-1.21.3</option>
+                            <option value="legacy">Before 1.20.5</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-base-item">Базовый предмет</label>
+                        <input id="ci-base-item" list="ci-item-suggestions" placeholder="paper">
+                        <p class="tool-helper">Ванильный предмет, который получит игрок (напр. <code>paper</code>, <code>stick</code> или <code>book</code>).</p>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-count">Количество</label>
+                        <input id="ci-count" type="number" min="1" max="64" value="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-hidden-id">Скрытый ID предмета</label>
+                        <input id="ci-hidden-id" type="text" placeholder="rp.guild.pass">
+                        <p class="tool-helper">Скрытый логический ID для квестов, скриптов и проверок. Игроки его не видят.</p>
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-name">Видимое имя предмета</label>
+                        <input id="ci-name" type="text" placeholder="Guild archive pass">
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-lore">Описание (Lore)</label>
+                        <textarea id="ci-lore" rows="4" placeholder="По одной строке на каждую запись лора."></textarea>
+                    </div>
+                </div>
+
+                <div class="version-callout">
+                    <h3>Что меняется в зависимости от версии?</h3>
+                    <p id="itemVersionNote">Используйте 1.21.4+, когда вам нужны item_model, текстовые состояния, float, flag или слоты цвета внутри custom_model_data.</p>
+                </div>
+
+                <div class="item-version-groups">
+                    <section class="item-version-group" data-version-group="legacy">
+                        <h3>Старый формат (до 1.21.3)</h3>
+                        <p>Старые форматы компактны: одно число CustomModelData, видимое имя, лор и скрытый ID.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field">
+                                <label for="ci-cmd-number">Числовой CustomModelData</label>
+                                <input id="ci-cmd-number" type="number" min="0" value="2047">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="item-version-group" data-version-group="modern" hidden>
+                        <h3>1.21.4+: item model и слоты CMD</h3>
+                        <p>Современные предметы разделяют логику и визуал: <code>item_model</code> указывает на текстуру, а <code>custom_model_data</code> хранит значения float, string, flag и color.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field" style="grid-column: 1 / -1;">
+                                <label for="ci-item-model">Путь item_model</label>
+                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                <p class="tool-helper">Укажите полный путь, например <code>cubeinsquare:item/path_here</code>. Оставьте пустым, если вам нужен только скрытый ID без визуальной модели.</p>
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-float">Float слот 0</label>
+                                <input id="ci-modern-float" type="number" min="0" step="0.1" placeholder="2047">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-string">String слот 0</label>
+                                <input id="ci-modern-string" type="text" placeholder="guild_pass">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-color">Color слот 0</label>
+                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                            </div>
+                            <div class="tool-check">
+                                <input id="ci-modern-flag" type="checkbox">
+                                <label for="ci-modern-flag">Flag слот 0 = true</label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="loadItemExampleButton">Загрузить пример</button>
+                    <button class="tool-button tool-button-secondary" type="button" id="resetItemBuilderButton">Сбросить</button>
+                </div>
+            </form>
+
+            <section class="tool-panel">
+                <h2>Сгенерированная команда</h2>
+                <label class="tool-field" for="customItemCommandOutput">
+                    <span>Готовая команда <code>/give</code></span>
+                    <textarea class="command-output" id="customItemCommandOutput" readonly></textarea>
+                </label>
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="copyItemCommandButton">Скопировать команду</button>
+                </div>
+                <p class="tool-summary" id="customItemSummary">Версия: 1.21.4+. Длина: 0 символов.</p>
+                <p class="item-builder-output-note">Конструктор специально оставляет старый синтаксис компактным. При переключении на 1.21.4+ команда расширяется в новый компонентный формат.</p>
+            </section>
+        </div>
+
+        <aside class="item-builder-stack">
+            <section class="tool-panel item-preview-card">
+                <div class="item-preview-head">
+                    <div class="item-preview-icon" aria-hidden="true"><span>&#128220;</span></div>
+                    <div class="item-preview-copy">
+                        <h2 id="itemPreviewName">Guild archive pass</h2>
+                        <p id="itemPreviewMeta">1.21.4+ | minecraft:paper | 1 item</p>
+                    </div>
+                </div>
+                <div class="item-preview-note">
+                    <p id="itemPreviewCopy">Эта версия позволяет одновременно хранить путь к визуальной модели, читаемый скрытый ID и богатые слоты custom_model_data.</p>
+                </div>
+                <div class="chip-row" id="itemPreviewChips"></div>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Для чего это нужно</h2>
+                <ul class="item-builder-help">
+                    <li>RP-валюты, пропуска, контракты, ключи, реликвии и реквизит гильдий</li>
+                    <li>Награды за квесты, требующие скрытого логического ID и отдельной визуальной модели</li>
+                    <li>Валидация на сервере, где понятное имя предмета важнее случайного числа</li>
+                    <li>Быстрое тестирование, когда вам сначала нужна команда, а потом полная сборка пака</li>
+                </ul>
+            </section>
+        </aside>
+    </section>
+
+    <datalist id="ci-item-suggestions">
+        <option value="paper"></option>
+        <option value="book"></option>
+        <option value="written_book"></option>
+        <option value="stick"></option>
+        <option value="carrot_on_a_stick"></option>
+        <option value="warped_fungus_on_a_stick"></option>
+        <option value="clock"></option>
+        <option value="compass"></option>
+        <option value="emerald"></option>
+        <option value="iron_sword"></option>
+        <option value="blaze_rod"></option>
+        <option value="tripwire_hook"></option>
+        <option value="name_tag"></option>
+        <option value="potion"></option>
+    </datalist>
+</main>
+
+<footer class="site-footer">
+    <span>Cube in Square</span>
+    <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

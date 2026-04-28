@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Custom Item Builder | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Erstellen Sie /give-Befehle für Minecraft. Generieren Sie benutzerdefinierte Items mit Lore, versteckten IDs, item_model und custom_model_data Slots.">
+    <meta name="keywords" content="Minecraft, give Befehl Generator, Custom Model Data, item_model, benutzerdefinierte Items, RPG Items">
+    <link rel="canonical" href="https://cubeinsquare.com/de/custom-item-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/custom-item-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/custom-item-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/custom-item-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/custom-item-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/custom-item-builder/">
+    <meta property="og:title" content="Minecraft Custom Item Builder | Cube in Square">
+    <meta property="og:description" content="Erstellen Sie /give-Befehle für Minecraft. Generieren Sie benutzerdefinierte Items mit Lore, versteckten IDs, item_model und custom_model_data Slots.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cubeinsquare.com/de/custom-item-builder/">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/villager-trades.css">
+    <link rel="stylesheet" href="/assets/custom-item-builder.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#general-wiki">Allgemeine Artikel</a>
+                        <div class="mega-sublist">
+                            <a href="/de/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/de/wiki/#resource-pack-paths">Resource-Pack-Struktur</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#resource-pack-generator-wiki">Minecraft Resource-Pack-Generator</a>
+                        <div class="mega-sublist">
+                            <a href="/de/wiki-resource-pack-generator/">Generator verwenden</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#other-tools-wiki">Andere Werkzeuge</a>
+                        <div class="mega-sublist">
+                            <a href="/de/tools/">Werkzeugkatalog</a>
+                            <a href="/de/wiki-skin-editor/">Skin-Editor</a>
+                            <a href="/de/wiki-texture-painter/">Textur-Editor</a>
+                            <a href="/de/wiki-custom-potions/">Custom-Potions</a>
+                            <a href="/de/wiki-custom-villager-trades/">Dorfbewohner-Handel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/de/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Wie ein einzelnes Item ohne Mods zu vielen Modellen wird.</span></a>
+                    <a class="mega-card" href="/de/wiki-resource-pack-generator/"><strong>Generator-Guide</strong><span>Schritt-für-Schritt-Workflow für den Packbau.</span></a>
+                    <a class="mega-card" href="/de/wiki-skin-editor/"><strong>Skin-Editor</strong><span>Auf dem Atlas und direkt auf dem 3D-Spielermodell zeichnen.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/de/tools/">Werkzeuge</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/de/resource-pack-generator/">Minecraft Resource-Pack-Generator</a>
+                    <a href="/de/custom-item-builder/">Minecraft Custom Item Builder</a>
+                    <a href="/de/skin-editor/">Minecraft Skin-Editor</a>
+                    <a href="/de/texture-painter/">Textur-Editor</a>
+                    <a href="/de/custom-villager-trades/">Benutzerdefinierter Dorfbewohner-Handel</a>
+                    <a href="/de/custom-potions/">Custom-Potions</a>
+                    <a href="/de/tool-coming-soon/">Kommende Werkzeuge</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/de/texture-painter/"><strong>Textur-Editor</strong><span>Wähle eine Leinwandgröße, male dein PNG und schicke es direkt in deinen Pack-Workflow.</span></a>
+                    <a class="mega-card" href="/de/skin-editor/"><strong>Skin-Editor</strong><span>Zeichne auf dem Atlas oder direkt auf dem 3D-Spielermodell.</span></a>
+                    <a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, Blöcke, Rüstung, CustomModelData und Vorschau.</span></a>
+                    <a class="mega-card" href="/de/custom-potions/"><strong>Custom-Potions</strong><span>Builder für potion contents, Effekte, Farbe, Lore und Give-Befehle.</span></a>
+                    <a class="mega-card" href="/de/custom-villager-trades/"><strong>Dorfbewohner-Handel</strong><span>Erstelle Handel mit Preisen, Belohnungen, Limits und Summon-Befehl.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/about/">Projekt</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/de/about/">Cube in Square</a>
+                <a href="/de/privacy-policy/">Datenschutzerklärung</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/de/wiki/" method="get">
+            <input type="text" name="q" placeholder="Website durchsuchen...">
+            <button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/custom-item-builder/">RU</a><a href="/custom-item-builder/">EN</a><a href="/fr/custom-item-builder/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-item-builder>
+    <section class="page-hero">
+        <h1>Minecraft Custom Item Builder</h1>
+        <p class="page-lead">Erstellen Sie fertige <code>/give</code>-Befehle für RP-Requisiten, Quest-Belohnungen und Gildenpässe. Dieser Builder trennt die Versionen, sodass Sie bei älterer Syntax kompakt bleiben oder <code>item_model</code>, <code>custom_data</code> und reichhaltige <code>custom_model_data</code>-Slots für 1.21.4+ nutzen können.</p>
+        <div class="tool-button-row">
+            <a class="tool-button" href="/de/resource-pack-generator/">Pack-Generator öffnen</a>
+            <a class="tool-button tool-button-secondary" href="/de/wiki-custom-model-data/">CustomModelData-Guide lesen</a>
+        </div>
+    </section>
+
+    <section class="page-section item-builder-layout">
+        <div class="item-builder-stack">
+            <form class="tool-panel" id="itemBuilderForm">
+                <h2>Item-Setup</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="ci-version">Befehlsversion</label>
+                        <select id="ci-version">
+                            <option value="modern">1.21.4+</option>
+                            <option value="current">1.20.5-1.21.3</option>
+                            <option value="legacy">Before 1.20.5</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-base-item">Basis-Item</label>
+                        <input id="ci-base-item" list="ci-item-suggestions" placeholder="paper">
+                        <p class="tool-helper">Verwenden Sie das Vanilla-Item, das der Spieler erhält (z.B. <code>paper</code>, <code>stick</code> oder <code>book</code>).</p>
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-count">Anzahl</label>
+                        <input id="ci-count" type="number" min="1" max="64" value="1">
+                    </div>
+                    <div class="tool-field">
+                        <label for="ci-hidden-id">Versteckte Item-ID</label>
+                        <input id="ci-hidden-id" type="text" placeholder="rp.guild.pass">
+                        <p class="tool-helper">Eine Logik-ID für Skripte, Quests und Admin-Prüfungen. Sie bleibt für Spieler verborgen.</p>
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-name">Sichtbarer Item-Name</label>
+                        <input id="ci-name" type="text" placeholder="Guild archive pass">
+                    </div>
+                    <div class="tool-field" style="grid-column: 1 / -1;">
+                        <label for="ci-lore">Lore (Beschreibung)</label>
+                        <textarea id="ci-lore" rows="4" placeholder="Eine Zeile pro Lore-Eintrag."></textarea>
+                    </div>
+                </div>
+
+                <div class="version-callout">
+                    <h3>Was ändert sich mit der Version?</h3>
+                    <p id="itemVersionNote">Verwenden Sie 1.21.4+, wenn Sie item_model, lesbare String-Zustände, Float-, Flag- oder Color-Slots in custom_model_data benötigen.</p>
+                </div>
+
+                <div class="item-version-groups">
+                    <section class="item-version-group" data-version-group="legacy">
+                        <h3>Älteres Format (bis 1.21.3)</h3>
+                        <p>Ältere Formate sind kompakt: ein numerischer CustomModelData-Wert, ein sichtbarer Name, Lore und eine optionale versteckte Item-ID.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field">
+                                <label for="ci-cmd-number">Numerische CustomModelData</label>
+                                <input id="ci-cmd-number" type="number" min="0" value="2047">
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="item-version-group" data-version-group="modern" hidden>
+                        <h3>1.21.4+: item model und CMD-Slots</h3>
+                        <p>Moderne Items trennen Rendering und Logik sauber: <code>item_model</code> verweist auf die Kunst, während <code>custom_model_data</code> Float-, String-, Flag- und Color-Slots zusammen tragen kann.</p>
+                        <div class="tool-form-grid">
+                            <div class="tool-field" style="grid-column: 1 / -1;">
+                                <label for="ci-item-model">item_model-Pfad</label>
+                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                <p class="tool-helper">Verwenden Sie einen vollständigen Pfad wie <code>cubeinsquare:item/path_here</code>. Lassen Sie es leer, wenn Sie nur eine versteckte ID benötigen.</p>
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-float">Float-Slot 0</label>
+                                <input id="ci-modern-float" type="number" min="0" step="0.1" placeholder="2047">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-string">String-Slot 0</label>
+                                <input id="ci-modern-string" type="text" placeholder="guild_pass">
+                            </div>
+                            <div class="tool-field">
+                                <label for="ci-modern-color">Color-Slot 0</label>
+                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                            </div>
+                            <div class="tool-check">
+                                <input id="ci-modern-flag" type="checkbox">
+                                <label for="ci-modern-flag">Flag-Slot 0 = true</label>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="loadItemExampleButton">Beispiel laden</button>
+                    <button class="tool-button tool-button-secondary" type="button" id="resetItemBuilderButton">Zurücksetzen</button>
+                </div>
+            </form>
+
+            <section class="tool-panel">
+                <h2>Generierter Befehl</h2>
+                <label class="tool-field" for="customItemCommandOutput">
+                    <span>Fertiger <code>/give</code>-Befehl</span>
+                    <textarea class="command-output" id="customItemCommandOutput" readonly></textarea>
+                </label>
+                <div class="tool-button-row">
+                    <button class="tool-button" type="button" id="copyItemCommandButton">Befehl kopieren</button>
+                </div>
+                <p class="tool-summary" id="customItemSummary">Version: 1.21.4+. Befehlslänge: 0 Zeichen.</p>
+                <p class="item-builder-output-note">Der Builder hält die ältere Syntax absichtlich kompakt. Beim Wechsel zu 1.21.4+ erweitert sie sich in das reichhaltigere Komponentenformat.</p>
+            </section>
+        </div>
+
+        <aside class="item-builder-stack">
+            <section class="tool-panel item-preview-card">
+                <div class="item-preview-head">
+                    <div class="item-preview-icon" aria-hidden="true"><span>&#128220;</span></div>
+                    <div class="item-preview-copy">
+                        <h2 id="itemPreviewName">Guild archive pass</h2>
+                        <p id="itemPreviewMeta">1.21.4+ | minecraft:paper | 1 item</p>
+                    </div>
+                </div>
+                <div class="item-preview-note">
+                    <p id="itemPreviewCopy">Diese Version kann gleichzeitig eine visuelle Modellroute, eine lesbare versteckte ID und reichhaltige custom_model_data-Slots tragen.</p>
+                </div>
+                <div class="chip-row" id="itemPreviewChips"></div>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Wofür das gut ist</h2>
+                <ul class="item-builder-help">
+                    <li>RP-Währungen, Genehmigungen, Verträge, Hinweise, Schlüssel, Relikte und Gildenrequisiten</li>
+                    <li>Quest-Belohnungen, die eine versteckte Logik-ID und ein separates visuelles Modell benötigen</li>
+                    <li>Serverseitige Validierung, bei der eine lesbare Item-Identität wichtiger ist als eine Zufallszahl</li>
+                    <li>Schnelles Testen, wenn Sie zuerst den Befehl und dann die Pack-Pipeline wollen</li>
+                </ul>
+            </section>
+        </aside>
+    </section>
+
+    <datalist id="ci-item-suggestions">
+        <option value="paper"></option>
+        <option value="book"></option>
+        <option value="written_book"></option>
+        <option value="stick"></option>
+        <option value="carrot_on_a_stick"></option>
+        <option value="warped_fungus_on_a_stick"></option>
+        <option value="clock"></option>
+        <option value="compass"></option>
+        <option value="emerald"></option>
+        <option value="iron_sword"></option>
+        <option value="blaze_rod"></option>
+        <option value="tripwire_hook"></option>
+        <option value="name_tag"></option>
+        <option value="potion"></option>
+    </datalist>
+</main>
+
+<footer class="site-footer">
+    <span>Cube in Square</span>
+    <a href="/de/privacy-policy/">Datenschutzerklärung</a>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
