@@ -181,20 +181,122 @@
     <a class="article-back" href="/wiki/">← All articles</a>
     <section class="page-hero"><h1>Components instead of NBT: Everything about items in modern Minecraft</h1><p class="page-lead">Understand the difference between old NBT tags and the new Data Components system in Minecraft 1.20.5+.</p></section>
     <article>
-        <h2>The End of NBT</h2>
-<p>For over a decade, Minecraft used NBT (Named Binary Tag) to store item data like names, enchantments, and lore. In Minecraft 1.20.5, Mojang entirely replaced item NBT with Data Components. This marks the biggest technical shift in Minecraft items since the flattening in 1.13.</p>
-<h2>What changed?</h2>
-<p>Components are more modular and explicit. Instead of arbitrary nested JSON structures, each attribute has a strict component name. For example, the old syntax <code>{display:{Name:'{"text":"Sword"}'}}</code> became <code>[minecraft:custom_name='{"text":"Sword"}']</code>. The new system drastically reduces lag and makes datapack modification much safer, but the initial learning curve is extremely steep for administrators.</p>
-<h2>How our tools simplify the transition</h2>
-<p>The syntax shift broke millions of existing command blocks and server plugins. Memorizing the new bracket system is tedious. Our tools, like the <a href='/custom-potions/'>Custom Potions Builder</a> and <a href='/custom-villager-trades/'>Villager Trades Builder</a>, have built-in version toggles.</p>
-<p>You can design your items visually, and the site will automatically translate your configuration into perfectly formatted Data Components for 1.21.4+ or legacy NBT for older servers.</p>
-<h2>Frequently Asked Questions</h2>
-<div class='faq-section'>
-    <h3>Are older versions of Minecraft still supported?</h3>
-    <p>Yes, any version 1.20.4 or below uses the traditional NBT system. Our tools provide a toggle to generate commands for both environments.</p>
-    <h3>Do I have to update my old command blocks?</h3>
-    <p>When you load an old world in 1.20.5+, the game tries to automatically convert older NBT items and entities, but heavily modified command blocks will need to be rewritten.</p>
-</div>
+        <h2>Why this migration feels bigger than a syntax tweak</h2>
+        <p>For years, Minecraft item editing had one familiar backbone: NBT. Server owners, datapack authors, map builders, and RP admins all learned to squeeze names, lore, model hooks, potion data, and weird edge cases into nested tag structures. It was not pretty, but it was familiar. Then Minecraft 1.20.5 replaced item NBT with Data Components, and suddenly even simple <code>/give</code> commands started looking foreign.</p>
+        <p>That is why the migration feels larger than "curly braces became square brackets". The change is structural. Mojang moved item data from a loose tag dictionary to a stricter system with named components. The result is cleaner in the long run, but it breaks habits, old tutorials, copied Reddit snippets, and entire libraries of admin notes.</p>
+
+        <h2>What Mojang actually changed</h2>
+        <p>Under the old system, item data lived inside one NBT blob. You could keep stacking fields into it, and as long as the syntax held together, the command often worked. Under the new system, each piece of item behavior lives in a named component. A custom name is its own component. Lore is another component. Potion contents are another. Custom model data is another. That separation is what makes the new syntax more readable for the game engine, but harder for humans at first glance.</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Before 1.20.5</th>
+                    <th>1.20.5+</th>
+                    <th>Why it matters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>General item syntax</td>
+                    <td><code>{...}</code></td>
+                    <td><code>[...]</code></td>
+                    <td>Most old commands fail immediately if you keep the old wrapper.</td>
+                </tr>
+                <tr>
+                    <td>Visible name</td>
+                    <td><code>display.Name</code></td>
+                    <td><code>minecraft:custom_name</code></td>
+                    <td>Name editing moved into an explicit item component.</td>
+                </tr>
+                <tr>
+                    <td>Lore</td>
+                    <td><code>display.Lore</code></td>
+                    <td><code>minecraft:lore</code></td>
+                    <td>You now think in separate slots, not in one display bundle.</td>
+                </tr>
+                <tr>
+                    <td>Model hook</td>
+                    <td><code>CustomModelData</code></td>
+                    <td><code>minecraft:custom_model_data</code></td>
+                    <td>The idea stays, but the syntax and future workflow change.</td>
+                </tr>
+                <tr>
+                    <td>Potion data</td>
+                    <td>Mixed into NBT</td>
+                    <td><code>minecraft:potion_contents</code></td>
+                    <td>Potions become much clearer, but old snippets stop matching.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Old command versus modern command</h2>
+        <p>Here is the same basic idea, a named paper item with a model hook, shown in both systems:</p>
+        <pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild Pass","italic":false}'}}</code></pre>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_model_data=2047,minecraft:custom_name='{"text":"Guild Pass","italic":false}']</code></pre>
+        <p>At a glance, the new line can feel harsher. But the logic is actually more explicit:</p>
+        <ul>
+            <li><code>minecraft:paper</code> is still the base item.</li>
+            <li><code>minecraft:custom_model_data=2047</code> is the model hook.</li>
+            <li><code>minecraft:custom_name=...</code> handles the visible player-facing text.</li>
+            <li>Each concern has its own slot instead of hiding inside one big nested structure.</li>
+        </ul>
+
+        <h2>What usually breaks first on a live server</h2>
+        <p>When a server updates and old knowledge collides with the new item system, the failures are usually boring but expensive:</p>
+        <ul>
+            <li>Old admin notes still paste <code>{CustomModelData:...}</code> into a 1.21.4 command and fail immediately.</li>
+            <li>Command blocks keep old syntax while the server version has already switched.</li>
+            <li>People fix the wrapper, but forget that names, lore, potion contents, and model hooks all moved into their own components.</li>
+            <li>Resource pack work continues, but the give commands no longer point at the item in a readable way.</li>
+            <li>One copied fix works for a sword, but breaks again as soon as lore, effects, or custom logic enter the picture.</li>
+        </ul>
+        <p>That is why the transition hurts most on practical server work. It is not one big dramatic rewrite. It is twenty little places where old snippets stop being trustworthy.</p>
+
+        <h2>Where our tools remove the worst friction</h2>
+        <p>If you are hand-writing everything, the migration forces you to think about syntax and game design at the same time. That is the part we try to separate. The <a href='/custom-item-builder/'>Custom Item Builder</a> helps when you need a give command with visible text, hidden identity, and model hooks. The <a href='/custom-potions/'>Custom Potions Builder</a> handles potion contents without forcing you to memorize every component field. The <a href='/custom-villager-trades/'>Villager Trades Builder</a> keeps version differences visible, so you do not accidentally copy a legacy trade into a modern command block.</p>
+        <p>The point is not to avoid learning forever. The point is to stop losing time to punctuation while you are still designing the item itself.</p>
+
+        <h2>A practical migration order that wastes less time</h2>
+        <ol>
+            <li>Start with one real item, not your whole archive. Pick something simple like a token, pass, or named book.</li>
+            <li>Confirm the base item, visible name, and lore in the modern syntax.</li>
+            <li>Reconnect the model hook, either through <code>minecraft:custom_model_data</code> or your newer item model flow.</li>
+            <li>Only after that, move on to potions, trades, and more nested logic.</li>
+            <li>Keep the old and new versions side by side while you test. It is much easier to see what moved when you compare one item at a time.</li>
+        </ol>
+
+        <h2>Common mistakes when moving from NBT to components</h2>
+        <ul>
+            <li><strong>Treating components like renamed NBT:</strong> the names changed, but the structure changed too.</li>
+            <li><strong>Trying to remember everything from memory:</strong> this is the fastest path to malformed commands.</li>
+            <li><strong>Mixing tutorial eras:</strong> many guides online still explain pre-1.20.5 syntax without warning.</li>
+            <li><strong>Keeping logic only in visible text:</strong> once commands get larger, readable hidden identifiers become much more valuable.</li>
+            <li><strong>Migrating the art before the command flow:</strong> players do not care if the model is beautiful when the item cannot be spawned correctly.</li>
+        </ul>
+
+        <h2>Practical conclusion</h2>
+        <p>Mojang did not just repaint item syntax. They changed the mental model. Old NBT invited one giant bag of tags. Components ask you to think in separate responsibilities: name, lore, visuals, potion behavior, stats, and logic. Once that clicks, the system stops feeling hostile. It starts feeling strict, which is annoying at first, but far easier to maintain when your server grows.</p>
+        <p>If you are migrating a no-mod RP workflow, that clarity matters. It means your items become easier to reason about, easier to document, and easier to reuse across pack generation, villager trades, quest rewards, and command blocks.</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class='faq-section'>
+            <h3>Are older versions of Minecraft still supported?</h3>
+            <p>Yes. Versions up to 1.20.4 still use traditional item NBT. That is why our builders expose explicit version modes instead of pretending one command works everywhere.</p>
+
+            <h3>Do I have to rewrite every old command by hand?</h3>
+            <p>Not every single one, but anything complex usually needs attention. Simple items may auto-convert when the world updates, but command blocks and admin workflows still need deliberate cleanup.</p>
+
+            <h3>Did CustomModelData disappear?</h3>
+            <p>No. The idea is still there, but it now lives in component syntax. On modern versions it also sits next to newer flows like <code>item_model</code> and richer custom model data slots.</p>
+
+            <h3>Why do so many old tutorials still confuse people?</h3>
+            <p>Because many of them were correct when they were written. The problem is that Minecraft 1.20.5 changed the foundation, while search results still surface older advice with no warning.</p>
+
+            <h3>What is the safest first tool to use during migration?</h3>
+            <p>Usually the <a href='/custom-item-builder/'>Custom Item Builder</a>. It is the fastest way to compare old and new command eras without dragging potion logic, villager syntax, and pack structure into the same test at once.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

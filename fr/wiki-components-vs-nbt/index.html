@@ -181,16 +181,123 @@
     <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
     <section class="page-hero"><h1>Composants au lieu de NBT : Tout sur les objets dans Minecraft moderne</h1><p class="page-lead">Comprenez la différence entre les anciens tags NBT et le nouveau système de composants de données dans Minecraft 1.20.5+.</p></section>
     <article>
-        <h2>La fin du NBT</h2>
-<p>Pendant plus d'une décennie, Minecraft a utilisé le NBT pour stocker les données des objets. Dans Minecraft 1.20.5, Mojang a entièrement remplacé le NBT des objets par des Composants de Données.</p>
-<h2>Qu'est-ce qui a changé ?</h2>
-<p>Les composants sont plus modulaires et explicites. Par exemple, <code>{display:{Name:'{"text":"Épée"}'}}</code> est devenu <code>[minecraft:custom_name='{"text":"Épée"}']</code>.</p>
-<h2>Comment nos outils simplifient la transition</h2>
-<p>Le changement de syntaxe a cassé des millions de blocs de commande. Nos outils, comme le <a href='/custom-potions/'>Générateur de Potions</a>, ont des sélecteurs de version intégrés. Concevez visuellement, et le site génère des composants parfaitement formatés pour la 1.21.4+ ou du NBT legacy.</p>
-<h2>Foire Aux Questions (FAQ)</h2>
-<div class='faq-section'>
-    <h3>Dois-je réécrire mes anciens blocs de commande ?</h3>
-    <p>Le jeu convertit automatiquement les anciens objets NBT, mais les commandes complexes devront probablement être réécrites.</p>
+        <h2>Pourquoi cette migration ressemble à bien plus qu'un simple ajustement de syntaxe</h2>
+<p>Le passage du NBT aux composants n'est pas seulement une histoire de crochets différents. Pendant des années, les créateurs de serveurs, les mapmakers et les auteurs de resource packs ont appris à penser les objets comme un grand bloc de données attaché à la fin d'une commande. On pouvait y glisser un nom, une lore, un marqueur de modèle, parfois quelques tags utilitaires, puis espérer que tout reste lisible assez longtemps pour être recopié dans un autre bloc de commande.</p>
+<p>Dans Minecraft 1.20.5+, Mojang casse cette habitude. Les objets ne sont plus décrits comme une masse opaque de NBT, mais comme une collection de composants séparés, chacun responsable d'une partie précise du comportement. La conséquence pratique est simple: les vieilles commandes cessent de ressembler au jeu actuel, les anciens tutoriels deviennent trompeurs, et beaucoup de gens ont l'impression d'avoir « oublié » comment faire un item alors que c'est surtout le langage du jeu qui a changé sous leurs pieds.</p>
+<p>Pour un serveur vivant, le choc arrive très vite. La monnaie doit rester lisible. Les objets de quête doivent garder leur identité. Les récompenses de boss, les livres, les badges, les armes et les tickets de voyage doivent continuer à exister sans se transformer en chaos de copier-coller. C'est là que comprendre les composants aide vraiment: pas pour réciter la documentation, mais pour retrouver une méthode stable.</p>
+
+<h2>Ce que Mojang a réellement changé</h2>
+<p>Dans l'ancien monde, beaucoup d'informations passaient par des blocs NBT imbriqués comme <code>display</code>, <code>Enchantments</code>, <code>HideFlags</code> ou <code>CustomModelData</code>. Dans le nouveau monde, ces informations existent encore, mais elles sont exposées comme des composants nommés de manière plus explicite. Un nom visible devient <code>minecraft:custom_name</code>. Une description devient <code>minecraft:lore</code>. La logique visuelle d'un objet peut maintenant s'accrocher à <code>minecraft:item_model</code> ou à un <code>minecraft:custom_model_data</code> plus riche selon la version et le pipeline que vous utilisez.</p>
+<p>Ce changement rend les objets plus modulaires, mais aussi plus stricts. L'ancienne commande « bricolée » que l'on pouvait encore relire malgré son désordre fonctionne beaucoup moins bien dans un environnement où chaque composant doit être posé au bon endroit. Le bon côté, c'est qu'une fois la logique comprise, les objets deviennent plus faciles à maintenir: on sait mieux quelle partie gère le nom, laquelle gère l'aspect visuel, laquelle transporte un identifiant caché, et laquelle pilote le comportement côté serveur.</p>
+
+<table class="compact-table">
+    <thead>
+        <tr>
+            <th>Zone</th>
+            <th>Avant 1.20.5</th>
+            <th>Depuis 1.20.5+</th>
+            <th>Pourquoi c'est important</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Nom visible</td>
+            <td><code>display.Name</code></td>
+            <td><code>minecraft:custom_name</code></td>
+            <td>Le nom n'est plus caché dans un gros bloc <code>display</code>.</td>
+        </tr>
+        <tr>
+            <td>Lore</td>
+            <td><code>display.Lore</code></td>
+            <td><code>minecraft:lore</code></td>
+            <td>Les lignes de texte deviennent un composant distinct et plus lisible.</td>
+        </tr>
+        <tr>
+            <td>Apparence / modèle</td>
+            <td><code>CustomModelData</code> numérique dans le NBT</td>
+            <td><code>minecraft:custom_model_data</code> ou <code>minecraft:item_model</code></td>
+            <td>Le pipeline visuel s'aligne mieux avec les systèmes modernes de modèles.</td>
+        </tr>
+        <tr>
+            <td>Données cachées</td>
+            <td>Tags NBT ad hoc</td>
+            <td><code>custom_data</code> ou composants dédiés</td>
+            <td>Les marqueurs serveur deviennent plus propres et plus faciles à documenter.</td>
+        </tr>
+        <tr>
+            <td>Maintenance</td>
+            <td>Une seule grosse chaîne difficile à relire</td>
+            <td>Des composants séparés</td>
+            <td>Les erreurs sont plus simples à isoler et à corriger.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Ancienne commande contre commande moderne</h2>
+<p>Voici un exemple concret. Imaginons un simple laissez-passer de guilde basé sur du papier. Dans l'ancien style, on injectait le nom visible et le marqueur de modèle dans le NBT:</p>
+<pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild Pass","italic":false}'}}</code></pre>
+<p>La version moderne raconte la même idée différemment:</p>
+<pre><code>/give @p minecraft:paper[minecraft:custom_model_data=2047,minecraft:custom_name='{"text":"Guild Pass","italic":false}']</code></pre>
+<p>Le résultat visible peut sembler presque identique, mais la logique est bien plus claire. Le marqueur visuel reste un marqueur visuel. Le nom reste un nom. Quand on agrandit ensuite l'objet avec une lore, un modèle spécifique, des données cachées ou des attributs de combat, cette séparation devient très précieuse.</p>
+
+<h2>Ce qui casse en premier sur un serveur vivant</h2>
+<p>Dans la pratique, les premiers problèmes n'arrivent pas forcément sur les objets les plus impressionnants. Ils arrivent sur les objets les plus ordinaires, ceux qu'on donne tout le temps et qu'on croit « trop simples pour poser problème ».</p>
+<ul>
+    <li>Les monnaies RP perdent leur identité parce que le marqueur caché n'a pas été déplacé vers une structure moderne.</li>
+    <li>Les objets de quête gardent leur texture, mais plus leur nom ou leur lore parce qu'une vieille syntaxe a été copiée d'un tutoriel obsolète.</li>
+    <li>Les récompenses de boss ne se distinguent plus en inventaire, car <code>CustomModelData</code> a été renseigné dans un format qui ne correspond plus au flux de travail actuel.</li>
+    <li>Les commandes de PNJ ou de blocs de commande deviennent si longues qu'on ne sait plus quelle partie est réellement fausse.</li>
+</ul>
+<p>C'est précisément pour cette raison que le passage aux composants mérite d'être traité comme une migration de workflow, et non comme une simple correction cosmétique. Le vrai gain n'est pas de « parler la langue de Mojang » par principe. Le vrai gain est de ne plus perdre du temps sur des objets qui cassent silencieusement.</p>
+
+<h2>Là où nos outils enlèvent le plus de friction</h2>
+<p>Le site n'efface pas le système des composants, mais il vous évite sa partie la plus pénible: mémoriser la forme exacte de chaque ligne pendant que vous essayez surtout de créer un objet utile. Le <a href="/custom-item-builder/">Custom Item Builder</a> sert justement de couche visuelle entre l'idée d'objet et la commande finale. Vous choisissez un item de base, un nom, une lore, un identifiant caché ou un hook de modèle, puis l'outil génère une structure cohérente pour la version visée.</p>
+<p>Le <a href="/resource-pack-generator/">resource-pack generator</a> prend ensuite le relais côté pack. Si l'objet doit avoir un modèle ou une texture dédiés, vous ne repartez pas de zéro dans une pile de JSON. Le <a href="/custom-villager-trades/">builder de trades</a> et le <a href="/custom-potions/">générateur de potions</a> prolongent la même logique: la partie laborieuse de la syntaxe est gérée par l'interface, ce qui vous laisse l'énergie pour le design de l'objet, son rôle en jeu et son intégration dans votre monde.</p>
+
+<h2>Un ordre de migration pratique qui gaspille moins de temps</h2>
+<p>Si vous avez un ancien projet, le meilleur réflexe n'est pas de tout réécrire en une soirée. Commencez par les objets qui circulent le plus: monnaies, passes, objets de quête, consommables, récompenses récurrentes. Ce sont eux qui portent le plus de risque fonctionnel.</p>
+<ol>
+    <li>Listez les objets qui existent déjà et notez ceux qui utilisent encore du NBT ancien.</li>
+    <li>Repérez ceux qui ont une identité visuelle importante: modèle, texture, lore, nom, couleur.</li>
+    <li>Refaites un exemplaire propre dans le builder au lieu d'essayer de rafistoler une vieille commande illisible.</li>
+    <li>Testez l'objet en inventaire, au sol, dans les trades et dans les récompenses avant de migrer toute une famille d'items.</li>
+    <li>Documentez le nouveau schéma pendant que vous le reconstruisez, pour éviter de recréer la même confusion trois semaines plus tard.</li>
+</ol>
+<p>Cette approche paraît plus lente sur le moment, mais elle évite le piège classique: convertir beaucoup d'objets très vite, puis passer plusieurs jours à chercher pourquoi la moitié d'entre eux n'apparaissent plus comme prévu.</p>
+
+<h2>Erreurs fréquentes quand on passe du NBT aux composants</h2>
+<ul>
+    <li>Continuer à copier des tutoriels avant 1.20.5 sans vérifier la version réelle du serveur.</li>
+    <li>Mélanger dans la même commande des habitudes NBT anciennes et une syntaxe moderne incomplète.</li>
+    <li>Penser qu'un objet qui « ressemble au bon item » est forcément correctement identifié côté logique serveur.</li>
+    <li>Traiter <code>custom_model_data</code> comme une simple décoration visuelle alors qu'il doit rester cohérent avec le pack et le reste du pipeline.</li>
+    <li>Réécrire des commandes géantes à la main alors qu'un builder visuel peut déjà générer une version propre et relisible.</li>
+</ul>
+
+<h2>Conclusion pratique</h2>
+<p>Le passage des tags NBT aux composants ressemble d'abord à une mauvaise nouvelle, parce qu'il casse des automatismes que toute la communauté avait fini par considérer comme naturels. Mais une fois la transition acceptée, le système moderne est plus stable, plus explicite et plus facile à maintenir sur la durée. Pour un petit serveur RP, cela veut dire moins de temps perdu sur des commandes qui dérivent. Pour un projet plus large, cela veut dire un pipeline d'objets plus lisible et donc plus partageable entre les membres de l'équipe.</p>
+<p>Le bon objectif n'est pas de mémoriser chaque nom de composant comme une récitation. Le bon objectif est de construire une méthode: séparer la logique visuelle, la logique de gameplay et les marqueurs cachés, puis laisser les outils générer la syntaxe à votre place quand c'est possible. C'est exactement là que la transition devient supportable au lieu de rester intimidante.</p>
+
+<h2>FAQ</h2>
+<div class="faq-section">
+    <h3>Les composants ont-ils complètement supprimé le NBT de Minecraft&nbsp;?</h3>
+    <p>Non. Le NBT existe encore dans le jeu, mais le NBT des objets n'est plus la manière principale de décrire un item dans les commandes modernes. Pour les créateurs de contenu, la grande rupture concerne surtout la façon de construire, donner et maintenir les objets.</p>
+</div>
+<div class="faq-section">
+    <h3>Dois-je réécrire tous mes anciens objets immédiatement&nbsp;?</h3>
+    <p>Pas forcément. Commencez par les objets qui circulent souvent ou qui cassent l'expérience si leur identité visuelle disparaît. Les monnaies, objets de quête et récompenses récurrentes donnent généralement les gains les plus rapides.</p>
+</div>
+<div class="faq-section">
+    <h3>Est-ce que les anciens packs de textures cessent de fonctionner automatiquement&nbsp;?</h3>
+    <p>Pas toujours, mais le simple fait qu'un vieux pack charge encore ne signifie pas que son pipeline d'objets est sain. Dès que vous touchez aux commandes, aux modèles ou à la maintenance d'un serveur actuel, comprendre les composants devient beaucoup plus fiable que dépendre d'anciens bricolages.</p>
+</div>
+<div class="faq-section">
+    <h3>CustomModelData existe-t-il encore dans ce nouveau système&nbsp;?</h3>
+    <p>Oui, mais son rôle s'inscrit désormais dans un écosystème plus moderne où <code>custom_model_data</code>, <code>item_model</code> et les item definitions peuvent être combinés plus proprement selon la version et le style du projet.</p>
+</div>
+<div class="faq-section">
+    <h3>À quel moment vaut-il mieux utiliser un builder au lieu d'écrire la commande à la main&nbsp;?</h3>
+    <p>Dès que l'objet dépasse un simple test rapide. Si vous devez garder une logique propre, transmettre la commande à quelqu'un d'autre, la réutiliser plus tard ou lier l'objet à un pack, un builder visuel vous fait gagner du temps et évite beaucoup d'erreurs silencieuses.</p>
 </div>
     </article>
 </main>

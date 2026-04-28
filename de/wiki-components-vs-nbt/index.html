@@ -181,16 +181,123 @@
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero"><h1>Komponenten statt NBT: Alles über Items im modernen Minecraft</h1><p class="page-lead">Verstehe den Unterschied zwischen alten NBT-Tags und dem neuen Datenkomponenten-System in Minecraft 1.20.5+.</p></section>
     <article>
-        <h2>Das Ende von NBT</h2>
-<p>Über ein Jahrzehnt lang nutzte Minecraft NBT, um Item-Daten wie Namen und Lore zu speichern. In Minecraft 1.20.5 hat Mojang Item-NBT vollständig durch Datenkomponenten ersetzt.</p>
-<h2>Was hat sich geändert?</h2>
-<p>Komponenten sind modularer und expliziter. Zum Beispiel wurde <code>{display:{Name:'{"text":"Schwert"}'}}</code> zu <code>[minecraft:custom_name='{"text":"Schwert"}']</code>. Die Syntax ist strenger, aber deutlich performanter.</p>
-<h2>Wie unsere Tools den Übergang vereinfachen</h2>
-<p>Die Änderung der Syntax brach Millionen von Befehlsblöcken. Unsere Tools, wie der <a href='/custom-potions/'>Trank-Generator</a> und <a href='/custom-villager-trades/'>Villager Trades Builder</a>, haben eingebaute Versionsschalter. Du gestaltest visuell, und die Seite generiert perfekt formatierte Komponenten für 1.21.4+ oder Legacy-NBT für ältere Server.</p>
-<h2>Häufig gestellte Fragen (FAQ)</h2>
-<div class='faq-section'>
-    <h3>Muss ich alte Befehlsblöcke umschreiben?</h3>
-    <p>Das Spiel konvertiert alte NBT-Items automatisch beim Welt-Update, aber komplexe Befehle müssen manuell umgeschrieben werden.</p>
+        <h2>Warum sich diese Migration größer anfühlt als nur ein bisschen neue Syntax</h2>
+<p>Der Wechsel von NBT zu Komponenten ist nicht einfach eine andere Art, Klammern zu setzen. Über viele Jahre haben Serverbauer, Mapmaker und Resource-Pack-Autorinnen gelernt, Items als einen großen Datenblock zu denken, der am Ende eines Befehls hängt. Man packte einen Namen hinein, etwas Lore, vielleicht ein Modellkennzeichen oder ein paar Hilfs-Tags, und hoffte dann, dass die Zeile lange genug lesbar bleibt, um sie im nächsten Befehlsblock noch einmal zu verwenden.</p>
+<p>Mit Minecraft 1.20.5+ zerlegt Mojang genau diese Gewohnheit. Items werden nicht mehr als undurchsichtiger NBT-Klumpen beschrieben, sondern als Sammlung einzelner Komponenten, von denen jede für einen klaren Teil des Verhaltens zuständig ist. Praktisch bedeutet das: Alte Befehle fühlen sich plötzlich nicht mehr wie das aktuelle Spiel an, ältere Tutorials werden schnell irreführend, und viele Leute denken zuerst, sie hätten verlernt, wie man ein Item baut, obwohl sich vor allem die Sprache des Spiels verändert hat.</p>
+<p>Auf einem lebenden Server spürt man das sofort. Währungen müssen lesbar bleiben. Quest-Items brauchen ihre Identität. Boss-Belohnungen, Bücher, Ausweise, Waffen und Reisetickets sollen weiter funktionieren, ohne in Copy-Paste-Chaos zu enden. Genau deshalb hilft es, Komponenten wirklich zu verstehen: nicht um Dokumentation auswendig zu lernen, sondern um wieder eine stabile Methode zu bekommen.</p>
+
+<h2>Was Mojang tatsächlich geändert hat</h2>
+<p>Im alten System landeten viele Informationen in verschachtelten NBT-Blöcken wie <code>display</code>, <code>Enchantments</code>, <code>HideFlags</code> oder <code>CustomModelData</code>. Im neuen System existieren dieselben Ideen weiterhin, werden aber als klarer benannte Komponenten dargestellt. Ein sichtbarer Name wird zu <code>minecraft:custom_name</code>. Eine Beschreibung wird zu <code>minecraft:lore</code>. Die visuelle Logik eines Items kann sich nun an <code>minecraft:item_model</code> oder an ein moderneres <code>minecraft:custom_model_data</code> anlehnen, je nach Version und Pipeline.</p>
+<p>Das macht Items modularer, aber auch strenger. Der alte „zusammengebaute“ Befehl, den man trotz Unordnung irgendwie noch lesen konnte, funktioniert in einer Welt mit sauber getrennten Komponenten deutlich schlechter. Der Vorteil ist: Wenn die Logik einmal sitzt, werden Items leichter wartbar. Man sieht klarer, welcher Teil den Namen steuert, welcher Teil das Aussehen trägt, welcher Teil versteckte Kennungen speichert und welcher Teil fürs Gameplay relevant ist.</p>
+
+<table class="compact-table">
+    <thead>
+        <tr>
+            <th>Bereich</th>
+            <th>Vor 1.20.5</th>
+            <th>Seit 1.20.5+</th>
+            <th>Warum das wichtig ist</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sichtbarer Name</td>
+            <td><code>display.Name</code></td>
+            <td><code>minecraft:custom_name</code></td>
+            <td>Der Name steckt nicht mehr versteckt in einem großen <code>display</code>-Block.</td>
+        </tr>
+        <tr>
+            <td>Lore</td>
+            <td><code>display.Lore</code></td>
+            <td><code>minecraft:lore</code></td>
+            <td>Textzeilen sind nun eine eigene, besser lesbare Komponente.</td>
+        </tr>
+        <tr>
+            <td>Aussehen / Modell</td>
+            <td>Numerisches <code>CustomModelData</code> im NBT</td>
+            <td><code>minecraft:custom_model_data</code> oder <code>minecraft:item_model</code></td>
+            <td>Die visuelle Pipeline passt besser zu modernen Modell-Workflows.</td>
+        </tr>
+        <tr>
+            <td>Versteckte Daten</td>
+            <td>Ad-hoc-NBT-Tags</td>
+            <td><code>custom_data</code> oder eigene Komponenten</td>
+            <td>Server-Marker werden sauberer und leichter zu dokumentieren.</td>
+        </tr>
+        <tr>
+            <td>Wartung</td>
+            <td>Eine große schwer lesbare Befehlszeile</td>
+            <td>Sauber getrennte Komponenten</td>
+            <td>Fehler lassen sich schneller finden und gezielter beheben.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Alter Befehl gegen modernen Befehl</h2>
+<p>Ein konkretes Beispiel hilft meist mehr als Theorie. Nehmen wir einen einfachen Gildenpass auf Papierbasis. Im alten Stil schrieb man sichtbaren Namen und Modellhinweis direkt ins NBT:</p>
+<pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild Pass","italic":false}'}}</code></pre>
+<p>Die moderne Variante erzählt dieselbe Idee anders:</p>
+<pre><code>/give @p minecraft:paper[minecraft:custom_model_data=2047,minecraft:custom_name='{"text":"Guild Pass","italic":false}']</code></pre>
+<p>Das sichtbare Ergebnis kann fast identisch aussehen, aber die Logik ist deutlich klarer. Der visuelle Marker bleibt ein visueller Marker. Der Name bleibt ein Name. Wenn später noch Lore, ein eigenes Modell, versteckte Daten oder Kampfeigenschaften dazukommen, wird genau diese Trennung extrem wertvoll.</p>
+
+<h2>Was auf einem Live-Server zuerst kaputtgeht</h2>
+<p>In der Praxis brechen selten zuerst die spektakulärsten Items. Meist stolpern die ganz normalen Dinge, die man dauernd verteilt und deshalb für „zu simpel, um problematisch zu sein“ hält.</p>
+<ul>
+    <li>RP-Währungen verlieren ihre Identität, weil der versteckte Marker nicht in eine moderne Struktur überführt wurde.</li>
+    <li>Quest-Items behalten vielleicht ihre Textur, aber nicht mehr ihren Namen oder ihre Lore, weil alte Syntax aus einem veralteten Tutorial kopiert wurde.</li>
+    <li>Boss-Belohnungen unterscheiden sich im Inventar nicht mehr sauber, weil <code>CustomModelData</code> in einem Format eingetragen wurde, das nicht mehr zum aktuellen Workflow passt.</li>
+    <li>NPC- oder Befehlsblock-Kommandos werden so lang, dass niemand mehr sicher erkennt, welcher Teil eigentlich falsch ist.</li>
+</ul>
+<p>Genau deshalb lohnt es sich, den Wechsel zu Komponenten als Workflow-Migration zu behandeln und nicht als kosmetische Reparatur. Der eigentliche Gewinn ist nicht, „Mojangs Sprache“ besonders brav zu sprechen. Der eigentliche Gewinn ist, weniger Zeit an still brechenden Items zu verlieren.</p>
+
+<h2>Wo unsere Tools die meiste Reibung entfernen</h2>
+<p>Die Seite ersetzt das Komponentensystem nicht, aber sie nimmt euch den unerquicklichsten Teil davon ab: jede Zeile exakt auswendig zu kennen, während ihr eigentlich nur ein brauchbares Item bauen wollt. Genau dafür ist der <a href="/custom-item-builder/">Custom Item Builder</a> da. Ihr wählt ein Basis-Item, einen Namen, Lore, eine versteckte Kennung oder einen Modell-Hook, und das Tool baut daraus eine saubere Struktur für die Zielversion.</p>
+<p>Der <a href="/resource-pack-generator/">Resource-Pack-Generator</a> übernimmt dann den visuellen Teil. Wenn das Item ein eigenes Modell oder eine eigene Textur braucht, startet ihr nicht wieder bei null in einer Wand aus JSON. Der <a href="/custom-villager-trades/">Villager-Trades-Builder</a> und der <a href="/custom-potions/">Trank-Generator</a> setzen dieselbe Idee fort: Die mühsame Syntax wird von der Oberfläche getragen, damit eure Energie bei Item-Design, Gameplay-Rolle und Welteinbindung bleibt.</p>
+
+<h2>Eine praktische Migrationsreihenfolge, die weniger Nerven kostet</h2>
+<p>Wenn ihr ein älteres Projekt habt, ist der beste Reflex nicht, alles an einem Abend neu zu schreiben. Fangt mit den Items an, die am häufigsten im Spielumlauf sind: Währungen, Ausweise, Quest-Items, Verbrauchsgegenstände, wiederkehrende Belohnungen. Dort ist das funktionale Risiko am größten.</p>
+<ol>
+    <li>Listet die existierenden Items auf und markiert, welche noch alte NBT-Gewohnheiten benutzen.</li>
+    <li>Hebt die Items hervor, deren visuelle Identität wichtig ist: Modell, Textur, Lore, Name, Farbe.</li>
+    <li>Baut ein sauberes Beispiel im Builder neu, statt eine alte, kaum lesbare Befehlszeile notdürftig zu flicken.</li>
+    <li>Testet das Item im Inventar, auf dem Boden, in Trades und in Belohnungsketten, bevor ihr eine ganze Familie ähnlicher Items migriert.</li>
+    <li>Dokumentiert das neue Schema direkt beim Umbau, damit ihr drei Wochen später nicht dieselbe Verwirrung neu erzeugt.</li>
+</ol>
+<p>Das wirkt zunächst langsamer, vermeidet aber die klassische Falle: sehr viele Items schnell umzuschreiben und danach mehrere Tage zu verlieren, weil die Hälfte nicht mehr so erscheint wie geplant.</p>
+
+<h2>Typische Fehler beim Wechsel von NBT zu Komponenten</h2>
+<ul>
+    <li>Weiterhin Tutorials vor 1.20.5 zu kopieren, ohne die echte Serverversion zu prüfen.</li>
+    <li>Alte NBT-Gewohnheiten und moderne Syntax halbfertig in derselben Befehlszeile zu mischen.</li>
+    <li>Zu glauben, ein Item sei automatisch korrekt, nur weil es ungefähr wie das richtige Item aussieht.</li>
+    <li><code>custom_model_data</code> als reine Dekoration zu behandeln, statt es sauber mit Pack und restlicher Pipeline abzugleichen.</li>
+    <li>Riesige Befehle komplett per Hand umzuschreiben, obwohl ein visueller Builder längst eine saubere Ausgangsbasis liefern kann.</li>
+</ul>
+
+<h2>Praktisches Fazit</h2>
+<p>Der Wechsel von Item-NBT zu Komponenten fühlt sich zuerst wie schlechte Nachricht an, weil er Gewohnheiten zerstört, die in der Community fast selbstverständlich geworden waren. Sobald die Umstellung aber sitzt, ist das moderne System stabiler, expliziter und langfristig leichter wartbar. Für kleine RP-Server bedeutet das weniger verlorene Zeit an driftenden Befehlen. Für größere Projekte bedeutet es eine lesbarere Item-Pipeline, die sich leichter im Team teilen lässt.</p>
+<p>Das eigentliche Ziel ist nicht, jeden Komponentennamen wie ein Vokabelheft auswendig zu lernen. Das Ziel ist, eine Methode aufzubauen: visuelle Logik, Gameplay-Logik und versteckte Marker zu trennen und dann dort, wo es sinnvoll ist, die Syntax von Tools erzeugen zu lassen. Genau an diesem Punkt wird die Migration beherrschbar statt einschüchternd.</p>
+
+<h2>FAQ</h2>
+<div class="faq-section">
+    <h3>Haben Komponenten NBT in Minecraft komplett ersetzt?</h3>
+    <p>Nein. NBT existiert im Spiel weiterhin, aber für moderne Item-Befehle ist Item-NBT nicht mehr die zentrale Sprache. Für Content-Creator liegt der große Bruch vor allem darin, wie Items gebaut, vergeben und gepflegt werden.</p>
+</div>
+<div class="faq-section">
+    <h3>Muss ich alle alten Items sofort neu schreiben?</h3>
+    <p>Nicht unbedingt. Beginnt mit den Items, die oft im Umlauf sind oder deren visuelle Identität wirklich wichtig ist. Währungen, Quest-Items und wiederkehrende Belohnungen bringen meist den schnellsten Nutzen.</p>
+</div>
+<div class="faq-section">
+    <h3>Funktionieren alte Texture Packs automatisch nicht mehr?</h3>
+    <p>Nicht immer. Aber nur weil ein altes Pack noch lädt, heißt das nicht, dass seine Item-Pipeline gesund ist. Sobald ihr an Commands, Modellen oder einem aktuellen Serverworkflow arbeitet, ist das Verständnis der Komponenten deutlich verlässlicher als alte Workarounds.</p>
+</div>
+<div class="faq-section">
+    <h3>Gibt es CustomModelData in diesem neuen System noch?</h3>
+    <p>Ja, aber seine Rolle sitzt jetzt in einem moderneren Ökosystem, in dem <code>custom_model_data</code>, <code>item_model</code> und Item Definitions je nach Version und Projektstil sauberer zusammenspielen können.</p>
+</div>
+<div class="faq-section">
+    <h3>Wann lohnt sich ein Builder mehr als ein handgeschriebener Befehl?</h3>
+    <p>Sobald das Item mehr ist als ein schneller Test. Wenn die Logik sauber bleiben, an andere weitergegeben oder später erneut verwendet werden soll, spart ein visueller Builder viel Zeit und verhindert viele stille Fehler.</p>
 </div>
     </article>
 </main>
