@@ -168,9 +168,12 @@
                         <p>Moderne Items trennen Rendering und Logik sauber: <code>item_model</code> verweist auf die Kunst, während <code>custom_model_data</code> Float-, String-, Flag- und Color-Slots zusammen tragen kann.</p>
                         <div class="tool-form-grid">
                             <div class="tool-field" style="grid-column: 1 / -1;">
-                                <label for="ci-item-model">item_model-Pfad</label>
-                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
-                                <p class="tool-helper">Verwenden Sie einen vollständigen Pfad wie <code>cubeinsquare:item/path_here</code>. Lassen Sie es leer, wenn Sie nur eine versteckte ID benötigen.</p>
+                                <label for="ci-item-model">item_model Pfad</label>
+                                <div class="input-with-clear">
+                                    <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                    <button type="button" class="input-clear-btn" id="ci-clear-model" aria-label="Clear" title="Clear">×</button>
+                                </div>
+                                <p class="tool-helper">Geben Sie den vollständigen Pfad an, zum Beispiel <code>cubeinsquare:item/path_here</code>. Leer lassen, wenn Sie nur die versteckte ID ohne visuelles Modell benötigen.</p>
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-float">Float-Slot 0</label>
@@ -182,7 +185,10 @@
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-color">Color-Slot 0</label>
-                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                <div class="tool-color-grid">
+                                    <input id="ci-modern-color-picker" type="color" value="#5da9ff">
+                                    <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                </div>
                             </div>
                             <div class="tool-check">
                                 <input id="ci-modern-flag" type="checkbox">

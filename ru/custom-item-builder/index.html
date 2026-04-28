@@ -169,7 +169,10 @@
                         <div class="tool-form-grid">
                             <div class="tool-field" style="grid-column: 1 / -1;">
                                 <label for="ci-item-model">Путь item_model</label>
-                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                <div class="input-with-clear">
+                                    <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                    <button type="button" class="input-clear-btn" id="ci-clear-model" aria-label="Clear" title="Clear">×</button>
+                                </div>
                                 <p class="tool-helper">Укажите полный путь, например <code>cubeinsquare:item/path_here</code>. Оставьте пустым, если вам нужен только скрытый ID без визуальной модели.</p>
                             </div>
                             <div class="tool-field">
@@ -182,7 +185,10 @@
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-color">Color слот 0</label>
-                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                <div class="tool-color-grid">
+                                    <input id="ci-modern-color-picker" type="color" value="#5da9ff">
+                                    <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                </div>
                             </div>
                             <div class="tool-check">
                                 <input id="ci-modern-flag" type="checkbox">

@@ -8,6 +8,208 @@
         }
     }
 
+    const lang = (document.documentElement.lang || 'ru').toLowerCase().split('-')[0];
+    const stringsByLang = {
+        en: {
+            unnamed: 'Unnamed custom item',
+            items: (count) => `item${count === 1 ? '' : 's'}`,
+            versionLegacy: 'Before 1.20.5',
+            versionCurrent: '1.20.5-1.21.3',
+            versionModern: '1.21.4+',
+            copyModern: 'This version can carry a visible model route, a readable hidden ID, and richer custom_model_data slots at the same time.',
+            copyLegacy: 'This version keeps the command compact and useful for older packs, older quest rewards, and legacy server utilities.',
+            summary: (version, length) => `Version: ${version}. Command length: ${length} characters.`,
+            labels: {
+                version: 'Version',
+                baseItem: 'Base item',
+                hiddenId: 'Hidden item id',
+                itemModel: 'item_model',
+                floatSlot: 'Float slot 0',
+                stringSlot: 'String slot 0',
+                flagSlot: 'Flag slot 0',
+                colorSlot: 'Color slot 0',
+                numericCmd: 'Numeric CMD'
+            },
+            exampleLegacy: {
+                version: 'legacy',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Guild archive pass',
+                lore: 'Stamped for the old city archive.\nUse the hidden ID in logic, not the title.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '2047',
+                itemModel: '',
+                modernFloat: '',
+                modernString: '',
+                modernColor: '',
+                modernFlag: false
+            },
+            exampleModern: {
+                version: 'modern',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Guild archive pass',
+                lore: 'Stamped for the old city archive.\nVisible art and hidden logic finally live in separate lanes.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '',
+                itemModel: 'cubeinsquare:item/paper/guild_pass',
+                modernFloat: '2047',
+                modernString: 'guild_pass',
+                modernColor: '#5da9ff',
+                modernFlag: true
+            }
+        },
+        ru: {
+            unnamed: 'Безымянный кастомный предмет',
+            items: (count) => `предмет${count === 1 ? '' : 'ов'}`,
+            versionLegacy: 'До 1.20.5',
+            versionCurrent: '1.20.5-1.21.3',
+            versionModern: '1.21.4+',
+            copyModern: 'Эта версия позволяет одновременно хранить путь к визуальной модели, читаемый скрытый ID и богатые слоты custom_model_data.',
+            copyLegacy: 'Эта версия оставляет команду компактной и полезной для старых паков, старых квестов и утилит серверов.',
+            summary: (version, length) => `Версия: ${version}. Длина: ${length} символов.`,
+            labels: {
+                version: 'Версия',
+                baseItem: 'Базовый предмет',
+                hiddenId: 'Скрытый ID',
+                itemModel: 'item_model',
+                floatSlot: 'Float слот 0',
+                stringSlot: 'String слот 0',
+                flagSlot: 'Flag слот 0',
+                colorSlot: 'Color слот 0',
+                numericCmd: 'Числовой CMD'
+            },
+            exampleLegacy: {
+                version: 'legacy',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Пропуск в архив гильдии',
+                lore: 'Штамп старого городского архива.\nИспользуйте скрытый ID в логике, а не название.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '2047',
+                itemModel: '',
+                modernFloat: '',
+                modernString: '',
+                modernColor: '',
+                modernFlag: false
+            },
+            exampleModern: {
+                version: 'modern',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Пропуск в архив гильдии',
+                lore: 'Штамп старого городского архива.\nВидимый арт и скрытая логика теперь живут отдельно.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '',
+                itemModel: 'cubeinsquare:item/paper/guild_pass',
+                modernFloat: '2047',
+                modernString: 'guild_pass',
+                modernColor: '#5da9ff',
+                modernFlag: true
+            }
+        },
+        de: {
+            unnamed: 'Unbenanntes Item',
+            items: (count) => `Item${count === 1 ? '' : 's'}`,
+            versionLegacy: 'Vor 1.20.5',
+            versionCurrent: '1.20.5-1.21.3',
+            versionModern: '1.21.4+',
+            copyModern: 'Diese Version kann gleichzeitig eine visuelle Modellroute, eine lesbare versteckte ID und reichhaltige custom_model_data-Slots tragen.',
+            copyLegacy: 'Diese Version hält den Befehl kompakt und nützlich für ältere Packs, ältere Quest-Belohnungen und alte Server-Tools.',
+            summary: (version, length) => `Version: ${version}. Länge: ${length} Zeichen.`,
+            labels: {
+                version: 'Version',
+                baseItem: 'Basis-Item',
+                hiddenId: 'Versteckte ID',
+                itemModel: 'item_model',
+                floatSlot: 'Float-Slot 0',
+                stringSlot: 'String-Slot 0',
+                flagSlot: 'Flag-Slot 0',
+                colorSlot: 'Color-Slot 0',
+                numericCmd: 'Numerische CMD'
+            },
+            exampleLegacy: {
+                version: 'legacy',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Gildenarchivpass',
+                lore: 'Gestempelt für das alte Stadtarchiv.\nVerwenden Sie die versteckte ID für Logik, nicht den Namen.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '2047',
+                itemModel: '',
+                modernFloat: '',
+                modernString: '',
+                modernColor: '',
+                modernFlag: false
+            },
+            exampleModern: {
+                version: 'modern',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Gildenarchivpass',
+                lore: 'Gestempelt für das alte Stadtarchiv.\nSichtbare Kunst und versteckte Logik sind endlich getrennt.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '',
+                itemModel: 'cubeinsquare:item/paper/guild_pass',
+                modernFloat: '2047',
+                modernString: 'guild_pass',
+                modernColor: '#5da9ff',
+                modernFlag: true
+            }
+        },
+        fr: {
+            unnamed: 'Objet personnalisé sans nom',
+            items: (count) => `objet${count === 1 ? '' : 's'}`,
+            versionLegacy: 'Avant 1.20.5',
+            versionCurrent: '1.20.5-1.21.3',
+            versionModern: '1.21.4+',
+            copyModern: 'Cette version peut transporter simultanément une route de modèle visible, un ID caché lisible et des slots custom_model_data enrichis.',
+            copyLegacy: 'Cette version garde la commande compacte pour les anciens packs, anciennes récompenses et vieux utilitaires de serveur.',
+            summary: (version, length) => `Version : ${version}. Longueur : ${length} caractères.`,
+            labels: {
+                version: 'Version',
+                baseItem: 'Objet de base',
+                hiddenId: 'ID caché',
+                itemModel: 'item_model',
+                floatSlot: 'Slot Float 0',
+                stringSlot: 'Slot String 0',
+                flagSlot: 'Slot Flag 0',
+                colorSlot: 'Slot Color 0',
+                numericCmd: 'CMD numérique'
+            },
+            exampleLegacy: {
+                version: 'legacy',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Laissez-passer d’archives',
+                lore: 'Tamponné pour les anciennes archives de la ville.\nUtilisez l’ID caché dans vos scripts, pas le nom.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '2047',
+                itemModel: '',
+                modernFloat: '',
+                modernString: '',
+                modernColor: '',
+                modernFlag: false
+            },
+            exampleModern: {
+                version: 'modern',
+                baseItem: 'paper',
+                count: '1',
+                name: 'Laissez-passer d’archives',
+                lore: 'Tamponné pour les anciennes archives de la ville.\nL’art visible et la logique cachée ont enfin des chemins séparés.',
+                hiddenId: 'rp.guild.pass',
+                numericCmd: '',
+                itemModel: 'cubeinsquare:item/paper/guild_pass',
+                modernFloat: '2047',
+                modernString: 'guild_pass',
+                modernColor: '#5da9ff',
+                modernFlag: true
+            }
+        }
+    };
+
+    const text = stringsByLang[lang] || stringsByLang.en;
+
     const refs = {
         form: root.querySelector('#itemBuilderForm'),
         example: root.querySelector('#loadItemExampleButton'),
@@ -21,52 +223,10 @@
         previewCopy: root.querySelector('#itemPreviewCopy'),
         previewChips: root.querySelector('#itemPreviewChips'),
         modernGroup: root.querySelector('[data-version-group="modern"]'),
-        legacyGroup: root.querySelector('[data-version-group="legacy"]')
-    };
-
-    const examples = {
-        legacy: {
-            version: 'legacy',
-            baseItem: 'paper',
-            count: '1',
-            name: 'Guild archive pass',
-            lore: 'Stamped for the old city archive.\nUse the hidden ID in logic, not the title.',
-            hiddenId: 'rp.guild.pass',
-            numericCmd: '2047',
-            itemModel: '',
-            modernFloat: '',
-            modernString: '',
-            modernColor: '',
-            modernFlag: false
-        },
-        current: {
-            version: 'current',
-            baseItem: 'paper',
-            count: '1',
-            name: 'Guild archive pass',
-            lore: 'Stamped for the old city archive.\nUse the hidden ID in logic, not the title.',
-            hiddenId: 'rp.guild.pass',
-            numericCmd: '2047',
-            itemModel: '',
-            modernFloat: '',
-            modernString: '',
-            modernColor: '',
-            modernFlag: false
-        },
-        modern: {
-            version: 'modern',
-            baseItem: 'paper',
-            count: '1',
-            name: 'Guild archive pass',
-            lore: 'Stamped for the old city archive.\nVisible art and hidden logic finally live in separate lanes.',
-            hiddenId: 'rp.guild.pass',
-            numericCmd: '',
-            itemModel: 'cubeinsquare:item/paper/guild_pass',
-            modernFloat: '2047',
-            modernString: 'guild_pass',
-            modernColor: '#5da9ff',
-            modernFlag: true
-        }
+        legacyGroup: root.querySelector('[data-version-group="legacy"]'),
+        clearModelBtn: root.querySelector('#ci-clear-model'),
+        colorPicker: root.querySelector('#ci-modern-color-picker'),
+        colorHex: root.querySelector('#ci-modern-color')
     };
 
     const fieldMap = {
@@ -155,9 +315,9 @@
     }
 
     function versionLabel(version) {
-        if (version === 'legacy') return 'Before 1.20.5';
-        if (version === 'current') return '1.20.5-1.21.3';
-        return '1.21.4+';
+        if (version === 'legacy') return text.versionLegacy;
+        if (version === 'current') return text.versionCurrent;
+        return text.versionModern;
     }
 
     function buildLegacyCommand(state) {
@@ -219,32 +379,29 @@
 
     function buildChips(state) {
         const chips = [
-            { label: 'Version', value: versionLabel(state.version) },
-            { label: 'Base item', value: state.baseItem }
+            { label: text.labels.version, value: versionLabel(state.version) },
+            { label: text.labels.baseItem, value: state.baseItem }
         ];
 
-        if (state.hiddenId) chips.push({ label: 'Hidden item id', value: state.hiddenId });
+        if (state.hiddenId) chips.push({ label: text.labels.hiddenId, value: state.hiddenId });
 
         if (state.version === 'modern') {
-            if (state.itemModel) chips.push({ label: 'item_model', value: state.itemModel });
-            if (state.modernFloat !== '') chips.push({ label: 'Float slot 0', value: String(state.modernFloat) });
-            if (state.modernString) chips.push({ label: 'String slot 0', value: state.modernString });
-            if (state.modernFlag) chips.push({ label: 'Flag slot 0', value: 'true' });
-            if (state.modernColor) chips.push({ label: 'Color slot 0', value: state.modernColor });
+            if (state.itemModel) chips.push({ label: text.labels.itemModel, value: state.itemModel });
+            if (state.modernFloat !== '') chips.push({ label: text.labels.floatSlot, value: String(state.modernFloat) });
+            if (state.modernString) chips.push({ label: text.labels.stringSlot, value: state.modernString });
+            if (state.modernFlag) chips.push({ label: text.labels.flagSlot, value: 'true' });
+            if (state.modernColor) chips.push({ label: text.labels.colorSlot, value: state.modernColor });
         } else if (state.numericCmd > 0) {
-            chips.push({ label: 'Numeric CMD', value: String(state.numericCmd) });
+            chips.push({ label: text.labels.numericCmd, value: String(state.numericCmd) });
         }
 
         return chips;
     }
 
     function updatePreview(state, command) {
-        refs.previewName.textContent = state.name || 'Unnamed custom item';
-        refs.previewMeta.textContent = `${versionLabel(state.version)} | ${state.baseItem} | ${state.count} item${state.count === 1 ? '' : 's'}`;
-        refs.previewCopy.textContent =
-            state.version === 'modern'
-                ? 'This version can carry a visible model route, a readable hidden ID, and richer custom_model_data slots at the same time.'
-                : 'This version keeps the command compact and useful for older packs, older quest rewards, and legacy server utilities.';
+        refs.previewName.textContent = state.name || text.unnamed;
+        refs.previewMeta.textContent = `${versionLabel(state.version)} | ${state.baseItem} | ${state.count} ${text.items(state.count)}`;
+        refs.previewCopy.textContent = state.version === 'modern' ? text.copyModern : text.copyLegacy;
 
         refs.previewChips.innerHTML = '';
         buildChips(state).forEach((chipData) => {
@@ -255,20 +412,27 @@
         });
 
         refs.output.value = command;
-        refs.summary.textContent = `Version: ${versionLabel(state.version)}. Command length: ${command.length} characters.`;
+        refs.summary.textContent = text.summary(versionLabel(state.version), command.length);
     }
 
     function updateVersionUi(state) {
         const modern = state.version === 'modern';
         refs.modernGroup.hidden = !modern;
         refs.legacyGroup.hidden = modern;
+    }
 
-        refs.versionNote.textContent = modern
-            ? 'Use 1.21.4+ when you want item_model, readable string states, float slots, flag slots, or color slots inside custom_model_data.'
-            : 'Use 1.20.5-1.21.3 or legacy mode when you mainly need a compact give command with a visible name, lore, a hidden item ID, and one numeric CustomModelData value.';
+    function updateColorFields() {
+        if (!refs.colorPicker || !refs.colorHex) return;
+        const raw = String(refs.colorHex.value || '').trim();
+        const valid = raw.match(/^#?([0-9a-fA-F]{6})$/);
+        if (valid) {
+            const hex = `#${valid[1].toLowerCase()}`;
+            refs.colorPicker.value = hex;
+        }
     }
 
     function updateAll() {
+        updateColorFields();
         const state = getState();
         updateVersionUi(state);
         updatePreview(state, buildCommand(state));
@@ -324,22 +488,44 @@
         });
     }
 
-    refs.form.addEventListener('input', updateAll);
+    refs.form.addEventListener('input', (event) => {
+        if (event.target === refs.colorPicker) {
+            refs.colorHex.value = refs.colorPicker.value;
+        }
+        if (event.target === refs.colorHex) {
+            const match = String(refs.colorHex.value || '').trim().match(/^#?([0-9a-fA-F]{6})$/);
+            if (match) {
+                refs.colorPicker.value = `#${match[1].toLowerCase()}`;
+            }
+        }
+        updateAll();
+    });
     refs.form.addEventListener('change', updateAll);
+
+    if (refs.clearModelBtn) {
+        refs.clearModelBtn.addEventListener('click', () => {
+            const modelInput = root.querySelector('#ci-item-model');
+            if (modelInput) {
+                modelInput.value = '';
+                updateAll();
+            }
+        });
+    }
 
     refs.example.addEventListener('click', () => {
         const version = fieldValue('ci-version', 'modern');
-        fillForm(examples[version] || examples.modern);
+        const exampleData = version === 'modern' ? text.exampleModern : text.exampleLegacy;
+        fillForm(exampleData);
         trackEvent('custom_item_example_load', { version });
     });
 
     refs.reset.addEventListener('click', () => {
         refs.form.reset();
-        fillForm(examples.modern);
+        fillForm(text.exampleModern);
     });
 
     refs.copy.dataset.defaultLabel = refs.copy.textContent;
     refs.copy.addEventListener('click', copyCommand);
 
-    fillForm(examples.modern);
+    fillForm(text.exampleModern);
 })();

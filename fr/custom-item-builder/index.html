@@ -169,8 +169,11 @@
                         <div class="tool-form-grid">
                             <div class="tool-field" style="grid-column: 1 / -1;">
                                 <label for="ci-item-model">Chemin item_model</label>
-                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
-                                <p class="tool-helper">Utilisez un chemin complet, comme <code>cubeinsquare:item/chemin_ici</code>. Laissez vide si vous n'avez besoin que d'un ID caché sans modèle visuel séparé.</p>
+                                <div class="input-with-clear">
+                                    <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                    <button type="button" class="input-clear-btn" id="ci-clear-model" aria-label="Clear" title="Clear">×</button>
+                                </div>
+                                <p class="tool-helper">Indiquez le chemin complet, par exemple <code>cubeinsquare:item/path_here</code>. Laissez vide si vous n'avez besoin que de l'ID caché sans modèle visuel.</p>
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-float">Slot Float 0</label>
@@ -182,7 +185,10 @@
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-color">Slot Color 0</label>
-                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                <div class="tool-color-grid">
+                                    <input id="ci-modern-color-picker" type="color" value="#5da9ff">
+                                    <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                </div>
                             </div>
                             <div class="tool-check">
                                 <input id="ci-modern-flag" type="checkbox">

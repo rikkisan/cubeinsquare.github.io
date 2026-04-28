@@ -147,8 +147,11 @@
                         <div class="tool-form-grid">
                             <div class="tool-field" style="grid-column: 1 / -1;">
                                 <label for="ci-item-model">item_model path</label>
-                                <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
-                                <p class="tool-helper">Use a full model path like <code>your_namespace:item/path_here</code>. Leave it empty if you only need hidden identity and not a separate visual route yet.</p>
+                                <div class="input-with-clear">
+                                    <input id="ci-item-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass">
+                                    <button type="button" class="input-clear-btn" id="ci-clear-model" aria-label="Clear" title="Clear">×</button>
+                                </div>
+                                <p class="tool-helper">Provide the full namespace route. Leave empty if you only want the hidden ID without a visual model.</p>
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-float">Float slot 0</label>
@@ -160,7 +163,10 @@
                             </div>
                             <div class="tool-field">
                                 <label for="ci-modern-color">Color slot 0</label>
-                                <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                <div class="tool-color-grid">
+                                    <input id="ci-modern-color-picker" type="color" value="#5da9ff">
+                                    <input id="ci-modern-color" type="text" placeholder="#5da9ff">
+                                </div>
                             </div>
                             <div class="tool-check">
                                 <input id="ci-modern-flag" type="checkbox">
