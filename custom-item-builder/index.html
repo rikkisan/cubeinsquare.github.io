@@ -23,6 +23,88 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <link rel="stylesheet" href="/assets/villager-trades.css">
     <link rel="stylesheet" href="/assets/custom-item-builder.css">
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "alternateName": "Kub v kvadrate",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "url": "https://cubeinsquare.com/about/",
+        "contactType": "editorial support",
+        "availableLanguage": ["ru", "en", "fr", "de"]
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cubeinsquare.com/custom-item-builder/#app",
+      "name": "Minecraft Custom Item Builder",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://cubeinsquare.com/custom-item-builder/",
+      "description": "Build version-aware Minecraft /give commands for custom items with lore, hidden IDs, item_model, and custom_model_data slots.",
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://cubeinsquare.com/custom-item-builder/#webpage",
+      "url": "https://cubeinsquare.com/custom-item-builder/",
+      "name": "Minecraft Custom Item Builder | Cube in Square",
+      "description": "Build version-aware Minecraft give commands for custom items with lore, hidden IDs, item_model, and custom_model_data slots.",
+      "isPartOf": {
+        "@id": "https://cubeinsquare.com/#website"
+      },
+      "about": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://cubeinsquare.com/custom-item-builder/#app"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/custom-item-builder/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://cubeinsquare.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Minecraft Custom Item Builder",
+          "item": "https://cubeinsquare.com/custom-item-builder/"
+        }
+      ]
+    }
+  ]
+}
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
@@ -73,7 +155,7 @@
             <input type="text" name="q" placeholder="Search the site...">
             <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
         </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/custom-item-builder/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/custom-item-builder/">FR</a><a href="/de/custom-item-builder/">DE</a></div>
+        <div class="language-switch" aria-label="Language"><a href="/ru/custom-item-builder/">RU</a><a class="is-active" href="/custom-item-builder/">EN</a><a href="/fr/custom-item-builder/">FR</a><a href="/de/custom-item-builder/">DE</a></div>
     </div>
 </div>
 
@@ -239,6 +321,118 @@
         <option value="name_tag"></option>
         <option value="potion"></option>
     </datalist>
+
+    <section class="page-section">
+        <h2 class="section-title">How to build a custom item without turning it into mystery data</h2>
+        <p class="section-intro">A custom item usually has to do three jobs at once. It needs to look right in the inventory, it needs to carry a hidden identity the server can trust, and it needs to survive command copying across different Minecraft versions. That is why this builder separates the visible name, the hidden item ID, and the rendering hook instead of pretending one field should do everything.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Choose the base item for feel, not only for art</h3>
+                <p>A paper pass feels different from a book, a clock, or a carrot on a stick. The base item still controls animation, stackability, and some player expectations, so it is worth deciding that first instead of treating it as a random placeholder.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Use the visible name for players</h3>
+                <p>The visible name is where you can be dramatic, poetic, faction-specific, or quest-specific. This is the layer the player actually reads, so it should communicate tone and meaning immediately.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Use the hidden ID for logic</h3>
+                <p>The hidden ID is the part your quests, scripts, admin checks, and reward chains can trust. Keep it boring and stable. A player-facing title can change. A hidden ID should not need to.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Let the version picker protect you</h3>
+                <p>The builder keeps old syntax compact and only opens the richer component fields when the selected version can actually use them. That saves you from writing one giant command and then discovering half of it belongs to another generation of Minecraft.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Four practical item patterns</h2>
+        <p class="section-intro">Most RP and server items fall into a few repeatable families. Once you know which family you are building, the field choices stop feeling arbitrary.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Currency or stamped token</h3>
+                <p>Use a readable hidden ID, keep the visible name short, and do not rely on lore alone for validation. A fancy title is easy to fake; a hidden logic marker is not. If the item also has a special model, let the art sit in <code>item_model</code> or the matching CustomModelData path.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Quest pass or permit</h3>
+                <p>These items usually need a clean title, one or two lore lines, and a hidden ID that says what the item grants access to. If the pass belongs to a chapter or faction, that detail belongs in hidden data too, not only in the lore.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Relic or lore prop</h3>
+                <p>These are where the visible name and lore can carry more atmosphere. You still want the item to stay machine-readable, but a relic is also one of the few places where writing style matters as much as the raw command.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Trade reward or shop stock</h3>
+                <p>If the item is going into villager trades, focus on repeatability. The command should stay stable, the hidden ID should stay predictable, and the art hook should not depend on somebody remembering which random number meant what six weeks ago.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A simple workflow that keeps the item readable</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Pick the version before touching the item fields</h3>
+                <p>That immediately tells you whether you are building around old numeric CustomModelData or around modern components like <code>item_model</code>, strings, flags, and color slots. It is much easier to stay clean if the command era is decided first.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Name the hidden item before the visible one</h3>
+                <p>It sounds backwards, but it keeps the logic stable. Once you know the item is really <code>rp.guild.pass</code> or <code>quest.chapter2.sealed_note</code>, you can be expressive with the visible title without losing the structure.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Attach the art hook last</h3>
+                <p>The rendering layer should support the item concept, not define it. If you add the model path after the identity is settled, the whole command stays easier to debug and easier to reuse later in trades, loot, or scripted rewards.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Test the command before wiring it into bigger systems</h3>
+                <p>Spawn the item once, check the visible text, then check the pack model, and only after that drop it into a villager trade, quest chain, or crate reward. That order saves a surprising amount of time.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Common mistakes this page helps you avoid</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>One number doing every job</h3>
+                <p>Old workflows often treated one CustomModelData number as art hook, hidden identity, documentation label, and admin memory aid all at once. That works until the item list gets large and nobody remembers what <code>2047</code> was supposed to mean.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Putting logic into the visible title</h3>
+                <p>If an item only validates by name or lore, players can often imitate it. A readable hidden ID gives you a cleaner and more trustworthy place to store the logic-facing identity.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Copying a command into the wrong syntax era</h3>
+                <p>The item can look conceptually correct and still fail because it was copied in legacy form into a component-based environment, or the other way around. The version switch is there to keep that mistake visible.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Designing the reward item after the trade or quest is already wired</h3>
+                <p>That usually creates more rewrites than necessary. It is easier to stabilize the item first, then let villagers, quests, and loot systems point at the final command.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>When should I use the Custom Item Builder instead of the villager page?</h3>
+                <p>Use this page when the item itself is the hard part. Use the villager page when the merchant structure is the hard part. In practice, many people design the item here first, then carry the final values into the trade.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Do I always need item_model on 1.21.4+?</h3>
+                <p>No. You only need it when the item should render through a specific model route. Some server items only need a hidden ID and visible text, especially if the art layer is still temporary.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Should the hidden ID be numeric or readable?</h3>
+                <p>Readable wins most of the time. A string like <code>rp.guild.pass</code> is easier to document, search, and debug than a number that only makes sense to the person who created it.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What should I do after the command works?</h3>
+                <p>Usually one of three things: wire the PNG and model in the pack generator, place the item into a villager trade, or reuse the same hidden ID pattern in quests and rewards so your systems stay consistent.</p>
+            </article>
+        </div>
+    </section>
 </main>
 
 <footer class="site-footer">
