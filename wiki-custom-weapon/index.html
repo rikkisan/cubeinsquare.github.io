@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/wiki-custom-weapon/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,23 +181,118 @@
     <a class="article-back" href="/wiki/">← All articles</a>
     <section class="page-hero"><h1>Step-by-step: Creating unique weapons with custom attributes</h1><p class="page-lead">Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.</p></section>
     <article>
-        <h2>Beyond standard swords</h2>
-<p>Vanilla Minecraft only offers a few weapon tiers like iron, diamond, and netherite. If you are running an RPG server, you need custom weapons with unique stats. You might need a dagger that attacks blazingly fast but deals little damage, or a massive heavy hammer that is slow but devastating. With modern commands, you can turn any item into a deadly weapon.</p>
-<h2>Setting weapon attributes</h2>
-<p>In Minecraft, weapon stats are modified using the <code>attribute_modifiers</code> component. This allows you to override the base damage and attack speed of any item. For example, you can give a stick the attack damage of a Netherite Sword!</p>
+        <h2>Unique weapons start with identity, not with a damage number</h2>
+<p>When people first decide to make custom weapons in Minecraft, they often jump straight to “how do I give this item more damage?” That question matters, but it is not the best starting point. A good custom weapon is not only a stat block. It is a role. It has a rhythm, a silhouette, and a place in your server economy or combat design.</p>
+<p>A dagger, a ritual knife, a rusted cleaver, a guild spear, and a mechanical hammer might all be “melee weapons,” but they do not need to feel the same. One should hit quickly and lightly. Another should punish mistakes but swing slowly. Another may be mostly a roleplay prop until a quest turns it into a real combat item. That means the best custom weapon workflow always combines three layers: combat stats, visual identity, and clean item logic.</p>
+
+<h2>Choose the weapon fantasy before you touch attributes</h2>
+<p>The easiest way to create bland weapons is to think only in damage numbers. Before you edit any component, define what the weapon is meant to feel like.</p>
+
+<table class="compact-table">
+    <thead>
+        <tr><th>Weapon type</th><th>Expected feeling</th><th>Typical stat direction</th><th>Visual idea</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Dagger</td><td>Fast, light, pressure-based</td><td>Lower damage, higher attack speed</td><td>Small blade, sharp silhouette</td></tr>
+        <tr><td>Longsword</td><td>Balanced and readable</td><td>Moderate damage, moderate speed</td><td>Clean weapon profile players recognize instantly</td></tr>
+        <tr><td>War hammer</td><td>Heavy, punishing, slow</td><td>Higher damage, lower attack speed</td><td>Chunky head, short brutal proportions</td></tr>
+        <tr><td>Ritual staff</td><td>Hybrid or symbolic</td><td>Maybe light melee stats, stronger visual identity</td><td>Custom model matters as much as combat value</td></tr>
+    </tbody>
+</table>
+
+<p>This first decision prevents a lot of rework later. If you know whether the weapon is meant to pressure, burst, or simply exist as a setting prop, you make better choices for its base item, model, name, and balance.</p>
+
+<h2>The base item matters more than people expect</h2>
+<p>The vanilla item underneath your custom weapon still affects how the weapon behaves in inventories and in moment-to-moment use. Items with durability feel more natural as real equipment. Paper, sticks, or tokens can still become weapons technically, but they often need more extra work to feel convincing.</p>
 <ul>
-    <li><strong>Attack Damage:</strong> Determines how many hearts the weapon takes away. Uses <code>minecraft:generic.attack_damage</code>.</li>
-    <li><strong>Attack Speed:</strong> Determines the cooldown between swings. Uses <code>minecraft:generic.attack_speed</code>.</li>
+    <li><strong>Use swords or tools</strong> when you want the weapon to behave like combat gear immediately.</li>
+    <li><strong>Use unusual base items</strong> when the item is mostly a prop, a cursed relic, or something intentionally strange.</li>
+    <li><strong>Think about stacking</strong> before you commit. A weapon that stacks like ordinary paper usually feels wrong unless that oddness is deliberate.</li>
 </ul>
-<h2>Using our Generators</h2>
-<p>You can package your custom weapon textures and models easily using our <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Once you have the visual part ready (by assigning it a CustomModelData ID), you can use command builders to attach the exact damage and speed attributes.</p>
-<p>For the best player experience, always pair custom stats with a custom texture using CustomModelData, so players can easily distinguish the heavy hammer from a standard iron sword.</p>
+<p>This is also where RP and gameplay start to overlap. A sacred knife and a guild hammer can both be combat items, but they should not accidentally share the same inventory feeling just because no one thought about the base item early enough.</p>
+
+<h2>The stat layer: damage, speed, durability, and role clarity</h2>
+<p>In modern Minecraft workflows, weapon feel usually comes from attribute modifiers. The two values that matter first are attack damage and attack speed:</p>
+<ul>
+    <li><strong>Attack damage</strong> changes how hard each hit lands.</li>
+    <li><strong>Attack speed</strong> changes how quickly the player can swing again.</li>
+</ul>
+<p>If you start from a non-weapon base item, you may also want to think about durability. A ritual feather that can suddenly hit like a battleaxe may still need a <code>max_damage</code> style layer if you want it to behave like gear rather than like an infinitely reusable trinket.</p>
+
+<p>Here is the kind of attribute structure you are aiming for conceptually when building a slower, heavier weapon:</p>
+<pre><code>attribute_modifiers = {
+  modifiers: [
+    {
+      id: "guild_hammer_damage",
+      type: "minecraft:generic.attack_damage",
+      amount: 9,
+      operation: "add_value",
+      slot: "mainhand"
+    },
+    {
+      id: "guild_hammer_speed",
+      type: "minecraft:generic.attack_speed",
+      amount: -2.8,
+      operation: "add_value",
+      slot: "mainhand"
+    }
+  ],
+  show_in_tooltip: true
+}</code></pre>
+<p>The exact command wrapper around that block can vary by version, which is why the safest workflow is not “memorize one magic line forever,” but “separate display, identity, and stat logic clearly enough that you can adapt the wrapper when needed.”</p>
+
+<h2>Custom stats should be paired with a readable visual identity</h2>
+<p>A weapon that hits differently should also read differently. If two items share the same texture, name shape, and silhouette, players will keep confusing them no matter how elegant your backend logic is. This is where the resource-pack side becomes as important as the numbers.</p>
+<p>Use the <a href='/resource-pack-generator/'>Resource Pack Generator</a> to package the art cleanly and connect it to the correct model hook. A heavy hammer, fast dagger, faction spear, or cursed blade should be visually readable before the player ever notices its stats. That readability matters in inventories, in hotbars, and especially in roleplay scenes where weapons are part of character identity, not just combat throughput.</p>
+
+<h2>What our tools can already handle cleanly</h2>
+<p>Today the site already helps a lot with the shell around the weapon, even if some combat-specific attribute tweaking may still be finalized in the command layer afterwards.</p>
+<ul>
+    <li><strong><a href='/custom-item-builder/'>Custom Item Builder</a></strong> is great for the item shell: visible name, lore, hidden item ID, version-aware give syntax, and model hooks.</li>
+    <li><strong><a href='/resource-pack-generator/'>Resource Pack Generator</a></strong> handles the pack-facing side so the weapon actually looks unique.</li>
+    <li><strong><a href='/custom-villager-trades/'>Villager Trades</a></strong> becomes useful once that weapon should enter shops, quest rewards, or faction economies.</li>
+</ul>
+<p>In other words, our tools already remove most of the annoying repetition even when your final combat tuning still needs an extra attribute layer in the command itself.</p>
+
+<h2>A practical workflow for making a custom weapon</h2>
+<ol>
+    <li><strong>Define the role.</strong> Decide whether the weapon is fast, heavy, ceremonial, rare, disposable, or progression-gated.</li>
+    <li><strong>Choose the base item.</strong> Pick something whose stack behavior and inventory feel match the role.</li>
+    <li><strong>Build the visual.</strong> Create or import the model and texture, then package them through the <a href='/resource-pack-generator/'>Resource Pack Generator</a>.</li>
+    <li><strong>Create the item shell.</strong> In the <a href='/custom-item-builder/'>Custom Item Builder</a>, set the visible name, lore, hidden ID, and model hook.</li>
+    <li><strong>Add the combat layer.</strong> Apply the attribute modifier structure that fits your version and intended balance.</li>
+    <li><strong>Test in real use.</strong> Do not stop at a creative-mode swing. Test in hotbar, inventory, RP scenes, and any real reward flow that will deliver the weapon.</li>
+</ol>
+
+<h2>The most common custom weapon mistakes</h2>
+<ul>
+    <li><strong>Only changing damage.</strong> A weapon with high damage but no thought behind speed, readability, or delivery still feels shallow.</li>
+    <li><strong>Ignoring the base item.</strong> The wrong vanilla base can make a custom weapon feel awkward even if the stats are fine.</li>
+    <li><strong>Forgetting the visual layer.</strong> If the weapon still looks like a default item, players will not read it as special.</li>
+    <li><strong>Overdesigning numbers without testing.</strong> The spreadsheet version of a weapon and the in-game feeling of a weapon are not always the same thing.</li>
+    <li><strong>Losing track of version syntax.</strong> The stat idea may be right while the wrapper command is wrong for the version you are actually running.</li>
+</ul>
+
 <h2>Frequently Asked Questions</h2>
 <div class='faq-section'>
-    <h3>Can I make an item that isn't a sword deal damage?</h3>
-    <p>Yes! By applying the <code>attribute_modifiers</code> component, you can make items like a carrot on a stick, a feather, or a piece of dirt deal 100 attack damage.</p>
-    <h3>Will custom damage weapons break durability?</h3>
-    <p>If the base item is a tool or weapon, it will lose durability as normal. If you apply attack damage to a non-tool item (like a feather), it will not have durability unless you also add the <code>max_damage</code> component to it.</p>
+    <h3>Can I make a non-sword item deal damage?</h3>
+    <p>Yes. Attribute modifiers can make almost any base item function like a weapon. The question is less “can I” and more “does that base item fit the fantasy and handling I want?”</p>
+</div>
+<div class='faq-section'>
+    <h3>Will a custom-damage item lose durability?</h3>
+    <p>If the base item already uses durability, it will normally behave like equipment. If the base item is something simple like paper or a feather, you need an additional durability-style layer if you want it to behave like breakable gear.</p>
+</div>
+<div class='faq-section'>
+    <h3>Do I need a custom model for every unique weapon?</h3>
+    <p>No, but it helps a lot. If two weapons are supposed to feel different, giving them distinct silhouettes and textures dramatically improves usability and roleplay readability.</p>
+</div>
+<div class='faq-section'>
+    <h3>Should I balance weapons only with damage numbers?</h3>
+    <p>No. Attack speed, durability, rarity, delivery method, and visual readability all influence how powerful a weapon feels in practice.</p>
+</div>
+<div class='faq-section'>
+    <h3>Can I still use the builder even if I finalize attributes manually?</h3>
+    <p>Absolutely. The builder still saves time on naming, lore, hidden IDs, model hooks, and version-aware item structure. That alone removes a lot of repetitive work.</p>
 </div>
     </article>
 </main>

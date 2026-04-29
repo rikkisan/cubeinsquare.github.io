@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/de/wiki-custom-weapon/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,16 +181,118 @@
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero"><h1>Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen</h1><p class="page-lead">Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.</p></section>
     <article>
-        <h2>Mehr als Standard-Schwerter</h2>
-<p>Vanilla Minecraft bietet nur wenige Waffenstufen. Für einen RPG-Server brauchst du individuelle Waffen: einen schnellen Dolch oder einen langsamen, verheerenden Hammer.</p>
-<h2>Waffenattribute einstellen</h2>
-<p>Waffenwerte werden mit der <code>attribute_modifiers</code>-Komponente geändert. Damit kannst du den Grundschaden und die Angriffsgeschwindigkeit jedes Items überschreiben. So kann auch ein Stock massiven Schaden anrichten!</p>
-<h2>Visuelles und Logik verbinden</h2>
-<p>Du kannst die Texturen deiner neuen Waffe mit unserem <a href='/resource-pack-generator/'>Resource Pack Generator</a> verpacken. Verbinde immer benutzerdefinierte Werte mit einer eigenen Textur über CustomModelData.</p>
-<h2>Häufig gestellte Fragen (FAQ)</h2>
+        <h2>Eine einzigartige Waffe beginnt mit Identität, nicht mit einer Schadenszahl</h2>
+<p>Wenn Menschen zum ersten Mal benutzerdefinierte Waffen bauen wollen, lautet die erste Frage oft: „Wie gebe ich diesem Item mehr Schaden?“ Das ist wichtig, aber nicht der beste Startpunkt. Eine gute Custom-Waffe ist nicht nur ein Wert. Sie ist eine Rolle, ein Rhythmus, eine Silhouette und ein Teil der Welt oder der Serverökonomie.</p>
+<p>Ein Dolch, ein Ritualmesser, ein rostiger Spalter, ein Gildenspeer und ein mechanischer Hammer können alle Nahkampfwaffen sein, ohne sich gleich anfühlen zu müssen. Das eine Ding soll schnell Druck machen, das nächste langsam und brutal treffen, ein drittes lebt vielleicht erst einmal als RP-Relikt, bevor es wirklich zur Waffe wird. Deshalb braucht eine starke Waffe immer drei Ebenen: Kampfdaten, visuelle Identität und saubere Item-Logik.</p>
+
+<h2>Lege den Waffen-Archetyp fest, bevor du Attribute anfasst</h2>
+<p>Der schnellste Weg zu einer langweiligen Waffe ist, nur auf Schadenswerte zu schauen. Vor jedem Befehl sollte klar sein, welches Gefühl die Waffe erzeugen soll.</p>
+
+<table class="compact-table">
+    <thead>
+        <tr><th>Waffentyp</th><th>Gewünschtes Gefühl</th><th>Typische Stat-Richtung</th><th>Visuelle Idee</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Dolch</td><td>Schnell, leicht, druckvoll</td><td>Weniger Schaden, mehr Angriffsgeschwindigkeit</td><td>Kleine Klinge, scharfe Silhouette</td></tr>
+        <tr><td>Langschwert</td><td>Ausgewogen und sofort lesbar</td><td>Mittlerer Schaden, mittlere Geschwindigkeit</td><td>Klares klassisches Waffenprofil</td></tr>
+        <tr><td>Kriegshammer</td><td>Schwer, langsam, bestrafend</td><td>Mehr Schaden, weniger Geschwindigkeit</td><td>Massiver Kopf, brutale Proportionen</td></tr>
+        <tr><td>Ritualstab</td><td>Hybrid oder symbolisch</td><td>Vielleicht schwächer als Nahkampfwaffe, stärker als Identitätsobjekt</td><td>Das Modell ist so wichtig wie die Werte</td></tr>
+    </tbody>
+</table>
+
+<p>Diese frühe Entscheidung spart später viel Arbeit. Wer weiß, ob ein Gegenstand Tempo, Wucht oder eher eine rituelle Aura tragen soll, trifft automatisch bessere Entscheidungen bei Basisitem, Modell, Name und Balance.</p>
+
+<h2>Das Vanilla-Basisitem ist wichtiger, als es aussieht</h2>
+<p>Unter jeder Custom-Waffe steckt immer noch ein normales Minecraft-Item. Und dieses Item beeinflusst, wie sich die Waffe im Inventar und in der Hand anfühlt. Basisgegenstände mit Haltbarkeit wirken natürlicher als richtige Ausrüstung. Papier, Sticks oder andere ungewöhnliche Dinge lassen sich zwar ebenfalls zu Waffen machen, brauchen aber meist mehr Zusatzlogik, um überzeugend zu wirken.</p>
+<ul>
+    <li><strong>Schwerter und Werkzeuge</strong> sind ideal, wenn die Waffe sich sofort wie Ausrüstung anfühlen soll.</li>
+    <li><strong>Ungewöhnliche Basisitems</strong> funktionieren gut für verfluchte Relikte, magische Symbole oder absichtlich seltsame Waffenideen.</li>
+    <li><strong>Stack-Verhalten zählt.</strong> Eine Waffe, die sich wie gewöhnliches Papier stapelt, wirkt fast immer falsch, wenn das nicht bewusst gewollt ist.</li>
+</ul>
+<p>Hier treffen RP und Gameplay besonders stark aufeinander. Zwei Gegenstände können beide Schaden machen und trotzdem völlig unterschiedliche Präsenz haben müssen.</p>
+
+<h2>Die Stat-Schicht: Schaden, Geschwindigkeit, Haltbarkeit und Rollen-Klarheit</h2>
+<p>In modernen Versionen entsteht das Gefühl einer Waffe vor allem durch Attribut-Modifikatoren. Die beiden ersten Werte, die wirklich zählen, sind Angriffsschaden und Angriffsgeschwindigkeit:</p>
+<ul>
+    <li><strong>Attack damage</strong> bestimmt, wie hart ein Treffer einschlägt.</li>
+    <li><strong>Attack speed</strong> bestimmt, wie schnell der nächste Schlag folgen kann.</li>
+</ul>
+<p>Wenn du nicht mit einer klassischen Waffenbasis arbeitest, solltest du auch an Haltbarkeit denken. Eine rituelle Feder, die plötzlich wie ein Hammer zuschlägt, braucht eventuell noch eine zusätzliche Haltbarkeitslogik, wenn sie sich wie echte Ausrüstung verhalten soll.</p>
+
+<p>Eine typische Struktur für eine schwere, langsame Waffe sieht konzeptionell etwa so aus:</p>
+<pre><code>attribute_modifiers = {
+  modifiers: [
+    {
+      id: "guild_hammer_damage",
+      type: "minecraft:generic.attack_damage",
+      amount: 9,
+      operation: "add_value",
+      slot: "mainhand"
+    },
+    {
+      id: "guild_hammer_speed",
+      type: "minecraft:generic.attack_speed",
+      amount: -2.8,
+      operation: "add_value",
+      slot: "mainhand"
+    }
+  ],
+  show_in_tooltip: true
+}</code></pre>
+<p>Die exakte Befehlshülle darum herum hängt von der Version ab. Deshalb ist es sicherer, nicht eine einzige magische Zeile auswendig zu lernen, sondern klar zu trennen: Wo endet die Item-Hülle, wo beginnt die visuelle Ebene, und wo sitzt die eigentliche Kampflogik?</p>
+
+<h2>Custom-Stats brauchen eine klar lesbare visuelle Identität</h2>
+<p>Eine Waffe, die anders zuschlägt, sollte auch anders aussehen. Wenn zwei Gegenstände dieselbe Textur, eine ähnliche Silhouette und fast denselben Namen teilen, werden Spieler sie ständig verwechseln, egal wie sauber die interne Logik ist. Darum ist die Resource-Pack-Seite hier genauso wichtig wie die Zahlen.</p>
+<p>Der <a href='/de/resource-pack-generator/'>Resource Pack Generator</a> hilft dabei, Modell und Textur sauber zu verpacken. Ein schneller Dolch, ein schwerer Hammer, ein Fraktionsspeer oder eine verfluchte Klinge sollten bereits im Hotbar und Inventar lesbar verschieden wirken. Gerade für RP-Server ist das fast genauso wichtig wie die eigentliche Kampfbalance.</p>
+
+<h2>Was unsere Tools heute schon sauber übernehmen</h2>
+<p>Die Website deckt bereits einen großen Teil der Waffen-Hülle ab, selbst wenn das feine Austarieren der Kampfattribute am Ende manchmal noch direkt in der finalen Befehlsschicht landet.</p>
+<ul>
+    <li><strong><a href='/de/custom-item-builder/'>Custom Item Builder</a></strong> ist stark für sichtbaren Namen, Lore, Hidden IDs, versionsbewusste Give-Struktur und Modell-Hooks.</li>
+    <li><strong><a href='/de/resource-pack-generator/'>Resource Pack Generator</a></strong> übernimmt die Pack-Seite, damit die Waffe auch visuell einzigartig wird.</li>
+    <li><strong><a href='/de/custom-villager-trades/'>Villager-Trades</a></strong> sind nützlich, sobald die Waffe in Shops, Belohnungen oder Fraktionsökonomien auftauchen soll.</li>
+</ul>
+<p>Selbst wenn die endgültige Schadens- und Geschwindigkeitsfeinheit später noch manuell ergänzt wird, nimmt die Seite bereits den nervigsten Teil der Wiederholungsarbeit ab.</p>
+
+<h2>Ein praktischer Workflow für eine benutzerdefinierte Waffe</h2>
+<ol>
+    <li><strong>Lege die Rolle fest.</strong> Soll die Waffe schnell, schwer, selten, rituell oder progression-gebunden sein?</li>
+    <li><strong>Wähle das Basisitem.</strong> Inventarverhalten und Handgefühl sollten zur Rolle passen.</li>
+    <li><strong>Baue die visuelle Ebene.</strong> Modell und Textur laufen anschließend durch den <a href='/de/resource-pack-generator/'>Resource Pack Generator</a>.</li>
+    <li><strong>Erzeuge die Item-Hülle.</strong> Im <a href='/de/custom-item-builder/'>Custom Item Builder</a> setzt du Namen, Lore, Hidden ID und Modell-Hook.</li>
+    <li><strong>Ergänze die Kampfattribute.</strong> Füge die Attribut-Modifikatoren passend zur Zielversion und zur gewünschten Balance hinzu.</li>
+    <li><strong>Teste im echten Nutzungskontext.</strong> Nicht nur ein Schlag im Kreativmodus, sondern auch Inventar, Hotbar, RP-Szenen und der tatsächliche Belohnungsweg zählen.</li>
+</ol>
+
+<h2>Die häufigsten Fehler</h2>
+<ul>
+    <li><strong>Nur den Schaden zu ändern.</strong> Eine Waffe mit großer Zahl, aber ohne Gedanken zu Geschwindigkeit, Lesbarkeit oder Verteilung, fühlt sich trotzdem flach an.</li>
+    <li><strong>Das Basisitem zu ignorieren.</strong> Eine schlechte Vanilla-Basis kann das Gefühl ruinieren, selbst wenn die Zahlen stimmen.</li>
+    <li><strong>Die visuelle Ebene zu vergessen.</strong> Wenn die Waffe wie ein Standard-Item aussieht, wird sie selten als besonders wahrgenommen.</li>
+    <li><strong>Nur auf dem Papier zu balancieren.</strong> Saubere Zahlen bedeuten nicht automatisch gutes Ingame-Gefühl.</li>
+    <li><strong>Die Versionssyntax aus dem Blick zu verlieren.</strong> Die Waffenidee kann richtig sein, während die konkrete Befehlsform nicht zur realen Version passt.</li>
+</ul>
+
+<h2>Häufig gestellte Fragen</h2>
 <div class='faq-section'>
-    <h3>Kann ein normales Item Schaden verursachen?</h3>
-    <p>Ja! Mit <code>attribute_modifiers</code> kannst du einen Stock oder eine Feder zur tödlichsten Waffe im Spiel machen.</p>
+    <h3>Kann ein Item, das keine klassische Waffe ist, trotzdem Schaden machen?</h3>
+    <p>Ja. Mit Attribut-Modifikatoren kann fast jede Basis offensiv werden. Die wichtigere Frage ist, ob diese Basis wirklich zum gewünschten Waffen-Gefühl passt.</p>
+</div>
+<div class='faq-section'>
+    <h3>Wird eine Custom-Waffe Haltbarkeit verlieren?</h3>
+    <p>Wenn das Basisitem bereits mit Haltbarkeit arbeitet, verhält es sich normalerweise wie Ausrüstung. Bei einfachen Basen wie Papier oder Federn braucht es oft eine zusätzliche Logik, wenn du dasselbe Gefühl erzeugen willst.</p>
+</div>
+<div class='faq-section'>
+    <h3>Braucht jede besondere Waffe ein eigenes Modell?</h3>
+    <p>Nicht zwingend, aber es hilft enorm. Eine eigene Silhouette und Textur verbessern sowohl die Bedienbarkeit als auch die RP-Lesbarkeit stark.</p>
+</div>
+<div class='faq-section'>
+    <h3>Sollte ich Waffen nur über den Schadenswert balancieren?</h3>
+    <p>Nein. Angriffsgeschwindigkeit, Haltbarkeit, Seltenheit, Beschaffungsweg und visuelle Klarheit beeinflussen die tatsächliche Wahrnehmung ebenso stark.</p>
+</div>
+<div class='faq-section'>
+    <h3>Hat der Builder noch Sinn, wenn ich Attribute später per Hand ergänze?</h3>
+    <p>Ja. Er spart dir bereits viel Arbeit bei Name, Lore, Hidden ID, Modell-Hook und versionsabhängiger Item-Struktur.</p>
 </div>
     </article>
 </main>

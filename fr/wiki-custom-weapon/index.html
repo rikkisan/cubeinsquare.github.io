@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/fr/wiki-custom-weapon/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,16 +181,118 @@
     <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
     <section class="page-hero"><h1>Guide pas à pas : Créer des armes uniques avec des attributs personnalisés</h1><p class="page-lead">Découvrez comment générer des armes avec des dégâts, une vitesse et des modèles visuels spécifiques dans Minecraft.</p></section>
     <article>
-        <h2>Au-delà des épées standards</h2>
-<p>Minecraft Vanilla n'offre que quelques niveaux d'armes. Pour un serveur RPG, il vous faut des armes uniques : une dague rapide mais faible, ou un marteau lent mais dévastateur.</p>
-<h2>Définir les attributs de l'arme</h2>
-<p>Les statistiques sont modifiées via le composant <code>attribute_modifiers</code>, permettant de remplacer les dégâts et la vitesse d'attaque de base de n'importe quel objet. Même un bâton peut faire de gros dégâts !</p>
-<h2>Lier le visuel et la logique</h2>
-<p>Vous pouvez emballer les textures de votre arme en utilisant notre <a href='/resource-pack-generator/'>Générateur de Resource Pack</a>. Associez toujours des statistiques personnalisées à une texture unique via CustomModelData.</p>
-<h2>Foire Aux Questions (FAQ)</h2>
+        <h2>Une arme unique commence par une identite, pas par un simple chiffre de degats</h2>
+<p>Quand on decide de creer des armes personnalisees dans Minecraft, la premiere tentation est souvent de demander: “comment lui donner plus de degats ?” La question est legitime, mais ce n'est pas le meilleur point de depart. Une bonne arme custom n'est pas seulement un nombre. C'est un role, un rythme, une silhouette et une place dans l'economie ou dans les scenes du serveur.</p>
+<p>Une dague, un couteau rituel, un couperet rouille, une lance de guilde ou un marteau mecanique peuvent tous etre des armes de melee, sans devoir se ressembler. L'un doit frapper vite, l'autre doit peser lourd, un troisieme peut d'abord vivre comme prop narratif avant de devenir une vraie arme. Un bon workflow d'arme personnalisee combine donc trois couches: les statistiques de combat, l'identite visuelle et une logique d'objet propre.</p>
+
+<h2>Choisis l'archetype avant de toucher aux attributs</h2>
+<p>Le chemin le plus rapide vers une arme fade consiste a penser uniquement en degats. Avant toute commande, decide plutot ce que l'arme doit faire ressentir.</p>
+
+<table class="compact-table">
+    <thead>
+        <tr><th>Type d'arme</th><th>Sensation voulue</th><th>Direction de stats</th><th>Idee visuelle</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Dague</td><td>Rapide, legere, agressive</td><td>Moins de degats, plus de vitesse</td><td>Petite lame, silhouette nerveuse</td></tr>
+        <tr><td>Epee longue</td><td>Equilibree et lisible</td><td>Degats moyens, vitesse moyenne</td><td>Profil classique facile a reconnaitre</td></tr>
+        <tr><td>Marteau de guerre</td><td>Lourd, lent, punitif</td><td>Plus de degats, moins de vitesse</td><td>Tete massive, proportions brutales</td></tr>
+        <tr><td>Baton rituel</td><td>Hybride ou symbolique</td><td>Parfois faible en melee, fort en identite</td><td>Le modele compte autant que la statistique</td></tr>
+    </tbody>
+</table>
+
+<p>Ce premier choix evite une grande partie du retravail. Si vous savez deja si l'objet doit mettre la pression, punir lentement ou exister surtout comme piece de roleplay, les decisions sur la base vanilla, le modele et les attributs deviennent beaucoup plus coherentes.</p>
+
+<h2>L'objet vanilla de base compte plus qu'on ne le croit</h2>
+<p>Sous votre arme custom, il reste toujours un objet Minecraft classique. Et cet objet influence la sensation en inventaire et en main. Les bases avec durabilite se comportent plus naturellement comme de l'equipement. Le papier, les sticks ou d'autres objets etranges peuvent aussi devenir des armes, mais ils demandent souvent plus de travail pour sembler credibles.</p>
+<ul>
+    <li><strong>Les epees et outils</strong> sont pratiques si vous voulez une arme qui se lise tout de suite comme une arme.</li>
+    <li><strong>Les bases atypiques</strong> marchent bien pour une relique maudite, un symbole magique ou un objet volontairement bizarre.</li>
+    <li><strong>La stackabilite compte.</strong> Une arme qui s'empile comme du papier banal parait souvent fausse, sauf si cette etrangete est voulue.</li>
+</ul>
+<p>C'est ici que roleplay et gameplay se croisent vraiment. Deux objets peuvent tous deux faire des degats, tout en devant offrir des sensations tres differentes.</p>
+
+<h2>La couche de stats: degats, vitesse, durabilite et clarte du role</h2>
+<p>Dans les versions modernes, la sensation d'une arme vient surtout des modificateurs d'attributs. Les deux premieres valeurs a regarder sont les degats d'attaque et la vitesse d'attaque :</p>
+<ul>
+    <li><strong>Attack damage</strong> decide de la violence de chaque coup.</li>
+    <li><strong>Attack speed</strong> decide de la vitesse a laquelle le joueur peut recommencer.</li>
+</ul>
+<p>Si vous partez d'un objet qui n'est pas une vraie base d'equipement, pensez aussi a la durabilite. Une plume rituelle capable de frapper comme un marteau peut avoir besoin d'une couche supplementaire si vous voulez qu'elle se comporte comme du materiel et non comme un talisman infini.</p>
+
+<p>Voici la forme generale d'un bloc d'attributs pour une arme lente et lourde :</p>
+<pre><code>attribute_modifiers = {
+  modifiers: [
+    {
+      id: "guild_hammer_damage",
+      type: "minecraft:generic.attack_damage",
+      amount: 9,
+      operation: "add_value",
+      slot: "mainhand"
+    },
+    {
+      id: "guild_hammer_speed",
+      type: "minecraft:generic.attack_speed",
+      amount: -2.8,
+      operation: "add_value",
+      slot: "mainhand"
+    }
+  ],
+  show_in_tooltip: true
+}</code></pre>
+<p>La commande exacte autour de cette structure varie selon les versions. Le plus sain n'est donc pas de memoriser une seule ligne magique, mais de separer clairement: la coque de l'objet, le visuel et la couche de combat.</p>
+
+<h2>Des stats custom ont besoin d'une identite visuelle lisible</h2>
+<p>Une arme qui frappe differemment devrait aussi se lire differemment. Si deux objets se ressemblent trop en texture, en nom et en silhouette, les joueurs les confondront meme si leur logique interne est parfaite. C'est la que le resource pack devient aussi important que les chiffres.</p>
+<p>Le <a href='/fr/resource-pack-generator/'>generateur de resource pack</a> vous aide a assembler proprement la texture et le modele. Une dague rapide, un marteau lourd, une lance de faction ou une lame maudite doivent se distinguer avant meme le premier coup porte. Cette lisibilite compte autant pour le combat que pour le roleplay.</p>
+
+<h2>Ce que nos outils prennent deja en charge proprement</h2>
+<p>Aujourd'hui, le site gere deja tres bien la coque de l'arme, meme si un ajustement fin des attributs peut encore finir dans la commande elle-meme.</p>
+<ul>
+    <li><strong><a href='/fr/custom-item-builder/'>Custom item builder</a></strong> est parfait pour le nom, le lore, l'ID cache, la syntaxe selon la version et les hooks de modele.</li>
+    <li><strong><a href='/fr/resource-pack-generator/'>Le generateur de resource pack</a></strong> s'occupe de la partie visuelle et de l'emballage du pack.</li>
+    <li><strong><a href='/fr/custom-villager-trades/'>Les echanges de villageois</a></strong> deviennent utiles des que l'arme entre dans une boutique, une recompense ou une economie de serveur.</li>
+</ul>
+<p>Autrement dit, meme si la couche finale de degats et de vitesse se termine encore dans la commande, la partie la plus repetitive et la plus irritante est deja retiree par l'interface.</p>
+
+<h2>Un workflow pratique pour creer une arme custom</h2>
+<ol>
+    <li><strong>Definissez le role.</strong> L'arme doit-elle etre rapide, lourde, rare, ceremonielle, jetable ?</li>
+    <li><strong>Choisissez l'objet de base.</strong> Sa logique d'inventaire et sa sensation en main doivent coller au role.</li>
+    <li><strong>Preparez le visuel.</strong> Modele et texture passent ensuite dans le <a href='/fr/resource-pack-generator/'>generateur de resource pack</a>.</li>
+    <li><strong>Construisez la coque de l'objet.</strong> Dans le <a href='/fr/custom-item-builder/'>custom item builder</a>, reglez le nom, le lore, l'ID cache et le hook de modele.</li>
+    <li><strong>Ajoutez la couche de combat.</strong> Appliquez les modificateurs d'attributs adaptes a votre version et a votre balance.</li>
+    <li><strong>Testez dans des conditions reelles.</strong> Pas seulement un swing en creatif, mais aussi l'inventaire, la hotbar, les scenes RP et la vraie methode d'obtention.</li>
+</ol>
+
+<h2>Les erreurs les plus frequentes</h2>
+<ul>
+    <li><strong>Ne changer que les degats.</strong> Une arme a gros chiffre mais sans travail sur la vitesse, la lisibilite ou la distribution reste plate.</li>
+    <li><strong>Ignorer l'objet de base.</strong> Une mauvaise base vanilla peut casser la sensation meme si les stats paraissent correctes.</li>
+    <li><strong>Oublier la couche visuelle.</strong> Si l'objet ressemble encore a un item vanilla banal, il ne sera pas ressenti comme special.</li>
+    <li><strong>Balancer uniquement sur papier.</strong> Une belle theorie ne garantit pas une bonne sensation en jeu.</li>
+    <li><strong>Perdre de vue la version cible.</strong> L'idee de l'arme peut etre juste alors que la commande enveloppe ne l'est pas.</li>
+</ul>
+
+<h2>Foire Aux Questions</h2>
 <div class='faq-section'>
-    <h3>Un objet ordinaire peut-il infliger des dégâts ?</h3>
-    <p>Oui ! En ajoutant des <code>attribute_modifiers</code>, une plume peut infliger 100 points de dégâts.</p>
+    <h3>Un objet qui n'est pas une epee peut-il infliger des degats ?</h3>
+    <p>Oui. Les modificateurs d'attributs permettent a presque n'importe quelle base de devenir offensive. La vraie question est surtout de savoir si cette base correspond a la sensation voulue.</p>
+</div>
+<div class='faq-section'>
+    <h3>Une arme custom va-t-elle se casser ?</h3>
+    <p>Si l'objet de base fonctionne deja avec la durabilite, il se comportera naturellement comme de l'equipement. Sinon, il faut parfois ajouter une couche supplementaire pour reproduire ce comportement.</p>
+</div>
+<div class='faq-section'>
+    <h3>Faut-il un modele unique pour chaque arme speciale ?</h3>
+    <p>Ce n'est pas obligatoire, mais c'est fortement recommande. Une silhouette et une texture distinctes ameliorent enormement la lisibilite et le roleplay.</p>
+</div>
+<div class='faq-section'>
+    <h3>Peut-on equilibrer une arme uniquement avec ses degats ?</h3>
+    <p>Non. La vitesse, la durabilite, la rarete, la facon de l'obtenir et sa lecture visuelle influencent tout autant la perception de puissance.</p>
+</div>
+<div class='faq-section'>
+    <h3>Le builder reste-t-il utile si les attributs sont encore ajustes a la main ?</h3>
+    <p>Oui. Il retire deja une grosse partie du travail repetitif autour du nom, du lore, des IDs et des hooks de modele.</p>
 </div>
     </article>
 </main>
