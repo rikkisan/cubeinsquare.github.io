@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/de/wiki-blockbench-custom-model/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,17 +181,105 @@
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero"><h1>Wie man ein Custom Model Data-Modell zu einem Item hinzufügt</h1><p class="page-lead">Erfahre, wie du ein 3D-Blockbench-Modell mithilfe von Custom Model Data an ein Vanilla-Minecraft-Item bindest.</p></section>
     <article>
-        <h2>Von Blockbench zu Minecraft</h2>
-<p>Du hast ein 3D-Modell in Blockbench entworfen und als JSON exportiert. Wie sorgst du nun dafür, dass es im Spiel erscheint? Ohne Mods ermöglicht Minecraft, dass Resource Packs das Aussehen eines Items ändern.</p>
-<h2>Die Resource Pack-Struktur</h2>
-<p>Dein JSON-Modell gehört in <code>assets/minecraft/models/item/</code>. Du musst jedoch ein Vanilla-Item überschreiben, damit es auf dein neues Modell verweist. Hier kommt Custom Model Data ins Spiel.</p>
-<p>Nutze einfach unseren <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Lade dein Modell hoch, weise ihm eine CustomModelData-ID zu, und der Generator erledigt den Rest.</p>
-<h2>Das Item spawnen</h2>
-<p>Öffne den <a href='/custom-item-builder/'>Custom Item Builder</a>, gib dieselbe CustomModelData-ID ein und kopiere den <code>/give</code>-Befehl.</p>
-<h2>Häufig gestellte Fragen (FAQ)</h2>
+        <h2>Was ein Blockbench-Modell wirklich zu einem benutzbaren Minecraft-Item macht</h2>
+<p>Wenn man mit Blockbench startet, wirkt es leicht so, als sei der schwierigste Teil geschafft, sobald das Modell exportiert wurde. In Wirklichkeit ist diese JSON-Datei nur das erste Glied in einer kleinen Kette. Das Spiel muss immer noch wissen, <em>wo</em> es das Modell findet, <em>welches</em> Vanilla-Item es verwenden soll und <em>welcher Befehl</em> dem Spieler am Ende genau diese Variante gibt.</p>
+<p>Genau an dieser Stelle verlieren viele RP- oder Serverprojekte unnötig Zeit. Man will nicht nur eine hübsche Datei im Ordner. Man will ein echtes Ingame-Ergebnis: einen Passierschein, ein Grimoire, einen Schlüssel, eine Waffe, ein Abzeichen oder ein Quest-Item, das die richtige Logik behält und gleichzeitig passend aussieht.</p>
+
+<h2>Die vier Schichten einer Custom-Model-Pipeline</h2>
+<table class="compact-table">
+    <thead>
+        <tr><th>Schicht</th><th>Aufgabe</th><th>Was kaputtgeht, wenn sie fehlt</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>3D-Quelle</td><td>Das in Blockbench gebaute Modell.</td><td>Es gibt nichts, was angezeigt werden kann.</td></tr>
+        <tr><td>Resource Pack</td><td>Das Pack legt JSON und Texturen in die richtige Struktur.</td><td>Minecraft findet Modell oder Textur nicht.</td></tr>
+        <tr><td>Item-Identität</td><td>Custom Model Data oder die neue Item-Logik verbindet Item und Darstellung.</td><td>Das Item bleibt visuell vanilla.</td></tr>
+        <tr><td>Give-Befehl</td><td>Der Spieler erhält das Item mit der richtigen Kennung.</td><td>Das Pack funktioniert, aber das vergebene Item nicht.</td></tr>
+    </tbody>
+</table>
+<p>Diese Trennung ist wichtig, weil sie erklärt, warum "ich habe doch aus Blockbench exportiert" nie allein ausreicht. Modell, Pack und Befehl müssen technisch dieselbe Geschichte erzählen.</p>
+
+<h2>Starte in Blockbench, aber denke über Blockbench hinaus</h2>
+<p>Blockbench ist ideal, um Formen zu bauen, Würfel zu setzen und Proportionen zu prüfen. In dem Moment, in dem das Modell in einen echten Server oder ein echtes Pack wandern soll, muss man aber weiterdenken: Welches Vanilla-Item ist die Basis? Ist das Ding ein Inventarobjekt, ein Dekoprop, eine Quest-Belohnung, eine Währung oder eine Waffe?</p>
+<p>Diese Entscheidung beeinflusst den Rest der Pipeline. Ein stackbares Item braucht oft eine andere Basis als ein Gegenstand, der vor allem in der Hand gut lesbar sein soll. Ein Objekt, das später in Villager-Trades oder Quest-Kommandos landet, sollte außerdem leicht zu identifizieren und zu verteilen sein.</p>
+
+<h2>Wähle das richtige Vanilla-Item, bevor du alles verdrahtest</h2>
+<p>Viele Leute nehmen einfach irgendein Item und biegen die Struktur später wieder gerade. Das ist einer der schnellsten Wege, unnötig Zeit zu verbrennen. Entscheide deshalb früh, welche Rolle das Item im Projekt spielt.</p>
+<ul>
+    <li>Papier, Feder oder Buch eignen sich gut für Pässe, Verträge, Grimoiren oder Tickets.</li>
+    <li>Ein Nugget, Kristall oder simples Material passt oft besser für Währungen oder spezielle Ressourcen.</li>
+    <li>Schwert oder Axt sind logisch, wenn das Objekt klar als Waffe gelesen werden soll.</li>
+</ul>
+<p>Diese Wahl ist nicht nur ein optischer Geschmackspunkt. Sie reduziert auch Kollisionen zwischen mehreren Custom-Items, die ohne klares System denselben Vanilla-Grundgegenstand wiederverwenden.</p>
+
+<h2>Wo das Modell im Pack lebt</h2>
+<p>Deine JSON-Datei muss sauber im Resource Pack liegen. In neueren Versionen hat sich die Item-Logik deutlich weiterentwickelt, aber die Grundidee bleibt gleich: Minecraft muss Modell und Textur zuverlässig an der richtigen Stelle finden.</p>
+<p>Wenn du das ständige Neuverpacken nach jeder Kleinigkeit vermeiden willst, ist der bequemste Weg der <a href='/de/resource-pack-generator/'>Resource Pack Generator</a>. Dort lädst du Modell und Textur hoch, verbindest sie mit dem richtigen Item und bekommst eine saubere Struktur, statt die Ordner jedes Mal wieder manuell zusammenzusetzen.</p>
+<p>Genau hier lohnt sich auch ein prüfender Blick auf Dateinamen und Pfade. Ein großer Teil aller "mein Modell taucht nicht auf"-Probleme kommt einfach von einer Diskrepanz zwischen JSON-Namen, Texturpfad und dem, was das Pack tatsächlich erwartet.</p>
+
+<h2>Wie Custom Model Data das Item mit dem Modell verbindet</h2>
+<p>Der entscheidende Umschalter ist die Identität des Items. Für den Spieler sieht man einen Pass, ein Totem oder ein Buch. Für Minecraft bleibt es ein Vanilla-Item mit zusätzlicher Information, die sagt: "zeige jetzt dieses Modell statt der Standarddarstellung".</p>
+<p>Ein einfacher moderner Befehl für einen personalisierten Gildenpass sieht zum Beispiel so aus:</p>
+<pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
+<p>Zeile für Zeile bedeutet das:</p>
+<ul>
+    <li><code>minecraft:paper</code> ist das Vanilla-Basisitem.</li>
+    <li><code>minecraft:custom_name</code> ändert den sichtbaren Namen des Papiers.</li>
+    <li><code>minecraft:custom_model_data=2047</code> weist das Spiel an, genau die visuelle Variante mit dieser Kennung zu benutzen.</li>
+</ul>
+<p>Wenn die Zahl im Pack und die Zahl im Give-Befehl nicht übereinstimmen, bekommst du am Ende nur ein normales Papier mit schickem Namen, aber ohne das gewünschte Modell.</p>
+
+<h2>Ein praktischer Workflow vom Modell bis zum Item im Spiel</h2>
+<ol>
+    <li>Baue das Modell in Blockbench und exportiere eine saubere JSON-Datei.</li>
+    <li>Bereite die Textur so vor, dass sie in Minecraft lesbar bleibt.</li>
+    <li>Importiere Modell und Textur in den <a href='/de/resource-pack-generator/'>Resource Pack Generator</a>, um die korrekte Struktur zu erzeugen.</li>
+    <li>Lege eine Modellkennung fest, die in eurem Projekt konsistent bleibt.</li>
+    <li>Öffne danach den <a href='/de/custom-item-builder/'>Custom Item Builder</a> und generiere den passenden <code>/give</code>-Befehl mit exakt derselben Kennung.</li>
+    <li>Teste das Item im Spiel und passe Silhouette, Name oder Textur bei Bedarf an.</li>
+</ol>
+<p>Dieses Hin und Her zwischen Modell, Pack und Befehl ist normal. Sobald die Pipeline aber sauber steht, werden Iterationen viel schneller und deutlich weniger nervig.</p>
+
+<h2>Was am häufigsten schiefgeht</h2>
+<ul>
+    <li>Das Modell wurde korrekt exportiert, aber die Textur zeigt auf den falschen Pfad.</li>
+    <li>Das Pack erwartet eine andere Custom-Model-Data-Zahl als der Give-Befehl verwendet.</li>
+    <li>Das gewählte Vanilla-Basisitem stimmt nicht mehr mit der Pack-Logik überein.</li>
+    <li>Das Modell ist zu komplex oder zu dunkel und wirkt im Inventar unlesbar.</li>
+    <li>Die Datei aus Blockbench ist in Ordnung, aber das Pack wurde nach einer Änderung nicht sauber neu gebaut.</li>
+</ul>
+<p>Die meisten dieser Fehler sind nicht "fortgeschritten". Sie entstehen einfach dadurch, dass die Pipeline zwischen mehreren manuellen Schritten auseinanderfällt.</p>
+
+<h2>Wo unsere Tools die meiste Reibung herausnehmen</h2>
+<p>Das Ziel ist nicht, Blockbench zu ersetzen. Das Ziel ist, die repetitiven Teile rund um Blockbench abzufangen: Pack neu bauen, ID erneut verdrahten, Befehl umschreiben, Struktur kontrollieren, Item noch einmal ausgeben, wieder von vorne anfangen.</p>
+<p>Auf dieser Website greifen die Bausteine bewusst ineinander:</p>
+<ul>
+    <li>Der Resource Pack Generator kümmert sich um Struktur und Zusammenbau.</li>
+    <li>Der Custom Item Builder erzeugt den Give-Befehl passend zur Spielversion.</li>
+    <li>Weitere Tools übernehmen danach, wenn das Item in Quests, Villager-Trades oder RP-Systeme eingebunden werden soll.</li>
+</ul>
+<p>Genau dadurch wird aus einem isolierten hübschen Modell ein Gegenstand, der in einem echten Server oder Content-Pack tatsächlich benutzbar ist.</p>
+
+<h2>Häufig gestellte Fragen</h2>
 <div class='faq-section'>
-    <h3>Brauchen Spieler Mods, um die Modelle zu sehen?</h3>
-    <p>Nein! CustomModelData ist ein reines Vanilla-Feature. Die Spieler müssen nur dein Resource Pack herunterladen.</p>
+    <h3>Brauchen Spieler Mods, um das Modell zu sehen?</h3>
+    <p>Nein. Wenn Resource Pack und Item-Logik zur Serverversion passen, reicht das Pack selbst vollkommen aus.</p>
+</div>
+<div class='faq-section'>
+    <h3>Muss ich nach Blockbench alles von Hand als JSON weiterbearbeiten?</h3>
+    <p>Nicht unbedingt. Ein exportiertes Modell-JSON bleibt natürlich Teil des Prozesses, aber die mühsamen Teile liegen meist eher bei Pack-Struktur und Give-Befehl. Genau dort helfen unsere Tools.</p>
+</div>
+<div class='faq-section'>
+    <h3>Kann ich dasselbe Vanilla-Item für viele Custom-Items benutzen?</h3>
+    <p>Ja, solange du ein klares System für Werte und Namen beibehältst. Das eigentliche Problem ist selten die gemeinsame Basis, sondern ungeordnete Kennungen.</p>
+</div>
+<div class='faq-section'>
+    <h3>Warum erscheint mein Item mit dem richtigen Namen, aber ohne das richtige Modell?</h3>
+    <p>Dann stimmt sehr wahrscheinlich die Kennung im Give-Befehl nicht mit der Kennung im Pack überein, oder das Pack ist nicht korrekt geladen beziehungsweise aktualisiert.</p>
+</div>
+<div class='faq-section'>
+    <h3>Was ist der schnellste Weg, ein Modell im Spiel zu testen?</h3>
+    <p>Exportiere aus Blockbench, baue das Pack mit dem Generator und gib das Item über den Custom Item Builder aus. Das ist der kürzeste Weg, um Sichtbarkeit, Struktur und Befehl gleichzeitig zu prüfen.</p>
 </div>
     </article>
 </main>

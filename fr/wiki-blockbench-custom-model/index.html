@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/fr/wiki-blockbench-custom-model/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,17 +181,105 @@
     <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
     <section class="page-hero"><h1>Comment ajouter un modèle Custom Model Data à un objet</h1><p class="page-lead">Apprenez à lier un modèle 3D Blockbench à un objet Minecraft classique en utilisant le Custom Model Data et nos outils.</p></section>
     <article>
-        <h2>De Blockbench à Minecraft</h2>
-<p>Vous avez créé un modèle 3D dans Blockbench et exporté le JSON. Comment le faire apparaître dans le jeu ? Sans mods, Minecraft permet de remplacer les visuels d'un objet.</p>
-<h2>La structure du Resource Pack</h2>
-<p>Votre modèle JSON va dans <code>assets/minecraft/models/item/</code>. Mais vous devez modifier un objet vanilla pour qu'il pointe vers votre nouveau modèle grâce au Custom Model Data.</p>
-<p>Utilisez notre <a href='/resource-pack-generator/'>Générateur de Resource Pack</a>. Téléchargez votre modèle, attribuez-lui un ID CustomModelData, et le générateur fait le reste.</p>
-<h2>Obtenir l'objet en jeu</h2>
-<p>Ouvrez le <a href='/custom-item-builder/'>Générateur d'objets</a>, tapez le même ID CustomModelData et copiez la commande <code>/give</code>. C'est aussi simple que ça !</p>
-<h2>Foire Aux Questions (FAQ)</h2>
+        <h2>Ce qui transforme vraiment un modele Blockbench en objet jouable dans Minecraft</h2>
+<p>Quand on debute avec Blockbench, on a facilement l'impression que le plus dur est derriere soi une fois le modele exporte. En realite, ce JSON n'est que la premiere piece d'un petit pipeline. Le jeu doit encore savoir <em>ou</em> trouver ce modele, <em>quel</em> objet vanilla doit l'utiliser et <em>quelle commande</em> donnera au joueur la bonne variante.</p>
+<p>C'est exactement la partie qui fait perdre du temps a beaucoup de projets RP. On ne veut pas juste un joli fichier dans un dossier. On veut un vrai resultat en jeu: un laissez-passer, un grimoire, une clef, une arme, un badge ou un objet de quete qui garde sa logique tout en affichant le bon visuel.</p>
+
+<h2>Les quatre couches d'un pipeline de modele personnalise</h2>
+<table class="compact-table">
+    <thead>
+        <tr><th>Couche</th><th>Role</th><th>Ce qui casse si elle manque</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Source 3D</td><td>Le modele cree dans Blockbench.</td><td>Vous n'avez rien a afficher.</td></tr>
+        <tr><td>Resource pack</td><td>Le pack place le JSON et les textures dans la bonne structure.</td><td>Minecraft ne trouve pas le modele ou la texture.</td></tr>
+        <tr><td>Identite de l'objet</td><td>CustomModelData ou la nouvelle logique d'item relie l'objet au bon visuel.</td><td>L'objet reste visuellement vanilla.</td></tr>
+        <tr><td>Commande de give</td><td>Le joueur recoit l'objet avec la bonne valeur.</td><td>Le pack fonctionne, mais pas l'objet donne en jeu.</td></tr>
+    </tbody>
+</table>
+<p>Cette separation est importante, parce qu'elle explique pourquoi "j'ai exporte depuis Blockbench" ne suffit jamais tout seul. Le modele, le pack et la commande doivent raconter la meme histoire technique.</p>
+
+<h2>Commence dans Blockbench, mais ne t'arrete pas a Blockbench mentalement</h2>
+<p>Blockbench est parfait pour sculpter la forme, poser les cubes et verifier les proportions. Mais au moment ou vous preparez un objet pour un serveur ou un pack live, il faut deja penser a la suite: quel item vanilla va servir de base ? Est-ce un objet d'inventaire, un accessoire decoratif, une recompense de quete, une monnaie ou un prop de roleplay ?</p>
+<p>Le choix influence tout le reste. Un objet qui doit etre empile peut preferer une base tres simple. Un accessoire tenu en main peut demander une autre silhouette. Un item destine a des commandes de PNJ ou a des echanges avec des villageois doit surtout rester facile a identifier et a distribuer.</p>
+
+<h2>Choisir le bon objet vanilla avant de tout brancher</h2>
+<p>Beaucoup de debutants prennent le premier objet venu, puis recablent tout plus tard. C'est l'une des facons les plus frustrantes de perdre du temps. Avant meme de lier le modele, decidez a quoi sert l'objet dans votre workflow.</p>
+<ul>
+    <li>Un papier, une plume ou un livre conviennent bien aux permis, contrats, grimoires et tickets.</li>
+    <li>Une pepite, un cristal ou un objet simple fonctionne bien pour une monnaie ou une ressource speciale.</li>
+    <li>Une epee ou une hache reste logique si l'objet doit se lire comme une arme sans ambiguite.</li>
+</ul>
+<p>Ce choix n'est pas qu'esthetique. Il evite aussi les collisions entre plusieurs objets customs qui reutilisent le meme item de base sans vraie raison.</p>
+
+<h2>Ou le modele vit dans le pack</h2>
+<p>Votre modele JSON doit etre range proprement dans le resource pack. Sur les versions recentes, la logique d'items a beaucoup evolue, mais l'idee reste la meme: Minecraft doit pouvoir retrouver votre modele et ses textures sans interpretation hasardeuse.</p>
+<p>Si vous preferez eviter la reemballage manuelle a chaque iteration, le plus confortable est d'utiliser le <a href='/fr/resource-pack-generator/'>generateur de resource pack</a>. Vous chargez le modele et la texture, vous reliez l'item, et l'outil produit une structure propre au lieu de vous laisser recoller les dossiers a la main encore et encore.</p>
+<p>C'est aussi le bon moment pour verifier les noms de fichiers. Une grande partie des erreurs "mon modele n'apparait pas" viennent tout simplement d'un decalage entre le nom du JSON, le chemin de la texture et ce que le pack attend reellement.</p>
+
+<h2>Comment Custom Model Data relie l'objet a son modele</h2>
+<p>La bascule cle, c'est l'identite de l'objet. Cote joueur, vous voyez un passe, un totem ou un livre. Cote jeu, Minecraft voit un objet vanilla accompagne d'une information supplementaire qui lui dit: "affiche maintenant tel modele au lieu du rendu standard".</p>
+<p>Voici un exemple simple de commande moderne qui donne un laissez-passer visuellement personnalise :</p>
+<pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
+<p>Ligne par ligne, la logique est la suivante :</p>
+<ul>
+    <li><code>minecraft:paper</code> est l'objet vanilla de base.</li>
+    <li><code>minecraft:custom_name</code> change le nom visible du papier.</li>
+    <li><code>minecraft:custom_model_data=2047</code> dit au jeu d'utiliser la variante visuelle branchee a cette valeur.</li>
+</ul>
+<p>Si la valeur du pack et la valeur de la commande ne correspondent pas, vous obtiendrez un papier normal avec un joli nom... mais pas le bon modele.</p>
+
+<h2>Un workflow pratique du modele jusqu'a l'objet en jeu</h2>
+<ol>
+    <li>Modelez l'objet dans Blockbench et exportez un JSON propre.</li>
+    <li>Preparez ou nettoyez la texture pour qu'elle reste lisible dans Minecraft.</li>
+    <li>Importez le tout dans le <a href='/fr/resource-pack-generator/'>generateur de resource pack</a> pour obtenir la bonne structure.</li>
+    <li>Choisissez un identifiant de modele coherent avec votre organisation d'objets.</li>
+    <li>Ouvrez ensuite le <a href='/fr/custom-item-builder/'>custom item builder</a> pour generer la commande <code>/give</code> qui porte exactement la meme valeur.</li>
+    <li>Testez l'objet en jeu, puis ajustez la silhouette, le nom ou la texture si besoin.</li>
+</ol>
+<p>Ce petit aller-retour entre visuel, pack et commande est normal. La bonne nouvelle, c'est qu'une fois le pipeline pose proprement, les iterations deviennent beaucoup plus rapides.</p>
+
+<h2>Ce qui casse le plus souvent</h2>
+<ul>
+    <li>Le modele est bien exporte, mais la texture utilise un mauvais chemin.</li>
+    <li>Le pack attend une valeur de CustomModelData differente de celle de la commande <code>/give</code>.</li>
+    <li>L'objet vanilla choisi au depart n'est plus le meme que celui reference dans la logique du pack.</li>
+    <li>Le modele est trop complexe ou trop sombre pour rester lisible dans l'inventaire.</li>
+    <li>Le JSON Blockbench fonctionne, mais le pack n'a pas ete reemballe proprement apres une modification.</li>
+</ul>
+<p>La plupart de ces erreurs ne sont pas "avancees". Elles viennent surtout d'un pipeline casse entre plusieurs etapes qui ont ete gerees a la main sans filet.</p>
+
+<h2>Ou nos outils retirent le plus de friction</h2>
+<p>Le but n'est pas de remplacer Blockbench. Le but est de retirer les parties repetitives autour de Blockbench: refaire un pack, reconnecter un ID, reecrire une commande, reverifier la structure, redonner l'objet, recommencer.</p>
+<p>Sur ce site, les pieces se completent naturellement :</p>
+<ul>
+    <li>le generateur de resource pack gere la structure et l'assemblage,</li>
+    <li>le custom item builder produit la commande coherente avec la version du jeu,</li>
+    <li>les autres outils prennent ensuite le relais si l'objet doit finir dans une quete, un commerce de villageois ou une progression RP.</li>
+</ul>
+<p>C'est ce qui transforme un joli modele isole en element utilisable dans un vrai serveur ou dans un vrai pack de contenu.</p>
+
+<h2>Foire Aux Questions</h2>
 <div class='faq-section'>
-    <h3>Les joueurs ont-ils besoin de mods ?</h3>
-    <p>Non ! CustomModelData est une fonctionnalité vanilla ajoutée dans Minecraft 1.14. Les joueurs ont juste besoin du Resource Pack.</p>
+    <h3>Les joueurs ont-ils besoin de mods pour voir le modele ?</h3>
+    <p>Non. Si vous utilisez un resource pack correct et une logique d'item compatible avec la version du serveur, les joueurs n'ont besoin que du pack lui-meme.</p>
+</div>
+<div class='faq-section'>
+    <h3>Faut-il absolument ecrire le JSON a la main apres Blockbench ?</h3>
+    <p>Pas forcement. Vous aurez toujours un modele JSON exporte, mais la partie la plus penible est surtout l'organisation du pack et la commande de give. C'est justement ce que nos outils simplifient.</p>
+</div>
+<div class='faq-section'>
+    <h3>Puis-je reutiliser le meme item vanilla pour beaucoup d'objets ?</h3>
+    <p>Oui, tant que vous gardez des valeurs distinctes et un systeme de nommage clair. Le vrai danger n'est pas le partage de base, c'est le chaos dans les identifiants.</p>
+</div>
+<div class='faq-section'>
+    <h3>Pourquoi mon objet apparait-il avec son nom custom mais sans le bon modele ?</h3>
+    <p>Dans ce cas, le plus probable est que la valeur de Custom Model Data dans la commande ne corresponde pas a celle attendue par le pack, ou que le pack ne soit pas charge correctement.</p>
+</div>
+<div class='faq-section'>
+    <h3>Quel est le chemin le plus rapide pour tester un modele en jeu ?</h3>
+    <p>Exportez depuis Blockbench, assemblez le pack avec le generateur, puis donnez l'objet via le custom item builder. C'est le chemin le plus court pour verifier si le visuel, la structure et la commande sont bien alignes.</p>
 </div>
     </article>
 </main>
