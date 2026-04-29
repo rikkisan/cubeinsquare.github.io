@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/wiki-custom-item-no-json/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,25 +181,130 @@
     <a class="article-back" href="/wiki/">← All articles</a>
     <section class="page-hero"><h1>How to create a custom item in Minecraft 1.20.5+ without JSON</h1><p class="page-lead">Learn how to easily build custom items using the new Data Components in Minecraft 1.21.4+ without manually writing JSON files.</p></section>
     <article>
-        <h2>The problem with JSON and modern Minecraft</h2>
-<p>For years, creating custom items meant digging through NBT tags and JSON files. With the release of Minecraft 1.20.5 and the transition to 1.21.4+, the game shifted from NBT to Data Components. While this makes the game run better, it has left many server admins confused by the new syntax. Before 1.20.5, item data was a loose dictionary of tags. Now, components act as rigid, structured arrays. This means that a single typo or misplaced bracket completely invalidates your command block or server plugin script.</p>
-<h2>Why Components scare creators</h2>
-<p>Old NBT looked like this: <code>{CustomModelData:1}</code>. The new component system looks like this: <code>[minecraft:custom_model_data=1]</code>. It seems simple at first glance. However, when you start adding custom lore, specific item names, and custom states, the brackets and quotes become an absolute nightmare to format manually. For example, assigning a colored name now requires escaping JSON strings inside a component array.</p>
-<h2>Creating items visually with our tools</h2>
-<p>Instead of guessing where a comma goes, you can use our <a href='/custom-item-builder/'>Custom Item Builder</a>. You just type your item name, paste your lore, and set your Custom Model Data. The tool automatically generates the exact <code>/give</code> command for the version you select.</p>
-<ul>
-    <li><strong>No syntax errors:</strong> The builder ensures your quotes and brackets are perfectly balanced, eliminating chat errors.</li>
-    <li><strong>Version switching:</strong> Easily toggle between legacy NBT (1.20.4 and below) and modern Components (1.20.5+) to see how the command changes.</li>
-    <li><strong>Fast iteration:</strong> Tweak your item and copy the new command instantly without opening a code editor.</li>
-</ul>
-<p>Stop wasting hours debugging JSON arrays. Use the visual builder and get back to actually playing and managing your server!</p>
-<h2>Frequently Asked Questions</h2>
-<div class='faq-section'>
-    <h3>What changed in Minecraft 1.20.5 regarding items?</h3>
-    <p>Mojang removed traditional NBT item tags and replaced them with structured Data Components. This changed the syntax used in /give commands from curly brackets {} to square brackets [].</p>
-    <h3>Do I need to learn JSON to use CustomModelData?</h3>
-    <p>No! By using tools like the <a href='/resource-pack-generator/'>Resource Pack Generator</a> and our Custom Item Builder, the JSON files and component syntaxes are generated automatically for you.</p>
-</div>
+        <h2>“Without JSON” does not mean “without logic”</h2>
+        <p>When people say they want to create a custom item “without JSON”, they usually do not mean they want magic. They mean they do not want to hand-write the most fragile part of the workflow. Modern Minecraft items can carry visible text, hidden identity, model hooks, potion behavior, custom attributes, and version-specific syntax. That is a lot to keep inside one hand-written command, especially if you are also building the resource pack side at the same time.</p>
+        <p>Since Minecraft 1.20.5, the move from old NBT item syntax to Data Components made this even more intimidating. The logic of custom items is still learnable, but the punctuation burden got heavier. You now need the right wrapper, the right component names, the right quotes, and the right version mode before the game will even accept the line. That is why a visual builder matters. It does not remove the structure of the item. It removes the need to type every fragile piece by hand.</p>
+
+        <h2>What a custom item actually needs</h2>
+        <p>Before you generate anything, it helps to think of a custom item as four layers instead of one giant command:</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Layer</th>
+                    <th>What it controls</th>
+                    <th>Typical example</th>
+                    <th>Why it matters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Base item</td>
+                    <td>The vanilla item the game still recognizes</td>
+                    <td><code>minecraft:paper</code>, <code>minecraft:iron_sword</code></td>
+                    <td>The game still needs a real item underneath the custom look.</td>
+                </tr>
+                <tr>
+                    <td>Visible identity</td>
+                    <td>Name and lore players actually read</td>
+                    <td>“Guild Pass”, “Emergency Ration”</td>
+                    <td>This is what gives the item flavor and readability.</td>
+                </tr>
+                <tr>
+                    <td>Hidden identity</td>
+                    <td>An ID or marker used by your server logic</td>
+                    <td><code>quest_pass</code>, <code>rp_currency_tier_1</code></td>
+                    <td>Prevents two pretty items from being indistinguishable to your systems.</td>
+                </tr>
+                <tr>
+                    <td>Visual hook</td>
+                    <td>Model or texture connection</td>
+                    <td><code>custom_model_data</code>, <code>item_model</code></td>
+                    <td>Links the command side to the resource pack side.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Step-by-step: building one useful item</h2>
+        <p>Imagine you want a guild pass for an RP server. You do not need to start with a giant command. Start with the role the item plays.</p>
+        <ol>
+            <li><strong>Pick the base item.</strong> Paper is often a good starting point for passes, notes, contracts, and letters because it is visually neutral and easy to replace with a model later.</li>
+            <li><strong>Set the visible name.</strong> Give players a readable name that tells them what the object is at a glance.</li>
+            <li><strong>Add lore only if it helps.</strong> Lore should clarify function, mood, or ownership, not become a wall of decorative text.</li>
+            <li><strong>Assign a hidden identity.</strong> If the server needs to distinguish this pass from ordinary paper, give it a reliable internal marker.</li>
+            <li><strong>Add the visual hook.</strong> This is where a model ID or item model reference connects the command to the pack.</li>
+            <li><strong>Test it in game.</strong> Check inventory readability, floor appearance, and whether the item still behaves as expected when given through commands or trades.</li>
+        </ol>
+
+        <h2>A generated command is still a real command</h2>
+        <p>Using a builder does not mean the command becomes fake or “less technical”. It means the structure is assembled for you in a safer order. A modern item command generated from the builder might look like this:</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
+        <p>You could absolutely type that by hand. The question is whether that is a good use of your attention when you are also deciding the name, the lore, the model, the hidden ID, the pack mapping, and the server logic around it. For most teams, it is not.</p>
+
+        <h2>How the builder connects to the resource pack</h2>
+        <p>A custom item only feels complete when the command side and the visual side agree. If your builder output points to one model hook and your pack expects another, the item can spawn correctly but still look like ordinary paper or an ordinary sword. That is why the <a href='/custom-item-builder/'>Custom Item Builder</a> and the <a href='/resource-pack-generator/'>Resource Pack Generator</a> make sense together.</p>
+        <p>The builder handles the command-facing identity. The pack generator handles the model and texture structure. Once both sides agree, your item becomes repeatable. You can put it in villager trades, quest rewards, loot chains, or command blocks without rebuilding the logic from scratch every time.</p>
+
+        <h2>Version differences matter more than most beginners expect</h2>
+        <p>Many “I just want a custom item” problems are actually version problems in disguise. The workflow changes depending on what the server expects.</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>What changes</th>
+                    <th>What beginners usually break</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Before 1.20.5</td>
+                    <td>Classic item NBT</td>
+                    <td>Trying to paste modern component syntax into a legacy server.</td>
+                </tr>
+                <tr>
+                    <td>1.20.5–1.21.3</td>
+                    <td>Data Components replace item NBT</td>
+                    <td>Keeping old curly-brace habits or mixing both systems.</td>
+                </tr>
+                <tr>
+                    <td>1.21.4+</td>
+                    <td>Same component world, but more modern pack and item-model flows matter</td>
+                    <td>Forgetting that command syntax and pack structure must evolve together.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Common mistakes when people try to avoid JSON on their own</h2>
+        <ul>
+            <li><strong>They avoid JSON, but still hand-write fragile commands.</strong> That removes file editing but keeps all the punctuation risk.</li>
+            <li><strong>They give the item a pretty name but no hidden identity.</strong> Later the server cannot reliably distinguish one custom paper from another.</li>
+            <li><strong>They build the visual model first and the command second.</strong> Then the pack and the command drift apart.</li>
+            <li><strong>They test only in chat.</strong> Large or detailed items often belong in command blocks once the string grows.</li>
+            <li><strong>They skip version selection.</strong> The item can look perfect in theory and still fail because it was generated for the wrong syntax era.</li>
+        </ul>
+
+        <h2>Why this is especially useful for RP and no-mod servers</h2>
+        <p>No-mod servers rely on items carrying meaning without extra client installs. A coin, a contract, a relic, a medical dose, a cult token, or a class item all need to feel different from the vanilla base item without demanding a modpack from every player. That is exactly where builder-based workflows shine. They keep the experience browser-first and player-friendly while still letting the server team organize items cleanly behind the scenes.</p>
+        <p>Instead of forcing every teammate to remember component syntax, you build a repeatable process. Someone can make the art. Someone can decide the role of the item. Someone can configure the command. The final result is still a normal Minecraft command, but you no longer pay for that result in preventable syntax mistakes.</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class='faq-section'>
+            <h3>Do I need to learn JSON to use CustomModelData?</h3>
+            <p>No. It helps to understand the idea behind your item, but you do not need to hand-write JSON files or full component syntax just to create a usable custom item. That is exactly what the builder is there to simplify.</p>
+
+            <h3>What changed in Minecraft 1.20.5 regarding items?</h3>
+            <p>Mojang replaced traditional item NBT with Data Components. The command structure changed, so many older item tutorials now show the wrong syntax for modern servers.</p>
+
+            <h3>Can I still use this workflow if I only want a renamed item?</h3>
+            <p>Yes. In fact, that is a good place to start. A renamed item is a small test case that helps you understand the modern flow before you add models, lore, or hidden logic.</p>
+
+            <h3>What if I want the item to have a custom texture too?</h3>
+            <p>Then pair the <a href='/custom-item-builder/'>Custom Item Builder</a> with the <a href='/resource-pack-generator/'>Resource Pack Generator</a>. One side handles the command identity, the other handles the pack structure.</p>
+
+            <h3>Is “without JSON” only for beginners?</h3>
+            <p>No. Even experienced server builders benefit from faster iteration, cleaner version switching, and fewer punctuation mistakes. The goal is not to avoid understanding. The goal is to spend your effort on design instead of syntax cleanup.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

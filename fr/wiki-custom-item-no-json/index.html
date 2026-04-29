@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,17 +181,130 @@
     <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
     <section class="page-hero"><h1>Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON</h1><p class="page-lead">Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.</p></section>
     <article>
-        <h2>Le problème avec JSON et Minecraft moderne</h2>
-<p>Pendant des années, créer des objets impliquait de manipuler des tags NBT et du JSON. Avec Minecraft 1.20.5 et 1.21.4+, le jeu est passé du NBT aux Composants de Données. Cela améliore les performances, mais la syntaxe effraie de nombreux créateurs. Une simple erreur de crochet casse désormais tout le script.</p>
-<h2>Création d'objets visuelle</h2>
-<p>Au lieu de deviner où va une virgule, utilisez notre <a href='/custom-item-builder/'>Générateur d'objets</a>. Tapez le nom, collez le lore et définissez le Custom Model Data. L'outil génère la commande <code>/give</code> exacte.</p>
-<h2>Foire Aux Questions (FAQ)</h2>
-<div class='faq-section'>
-    <h3>Qu'est-ce qui a changé dans la 1.20.5 ?</h3>
-    <p>Le NBT a été remplacé par des composants de données. Les commandes utilisent maintenant des crochets [] au lieu d'accolades {}.</p>
-    <h3>Dois-je apprendre le JSON ?</h3>
-    <p>Non ! Avec le <a href='/resource-pack-generator/'>Générateur de Resource Pack</a>, la syntaxe complexe est générée pour vous automatiquement.</p>
-</div>
+        <h2>“Sans JSON” ne veut pas dire “sans logique”</h2>
+        <p>Quand quelqu'un dit qu'il veut créer un objet personnalisé “sans JSON”, cela ne signifie pas qu'il espère un miracle sans structure. En général, cela veut simplement dire qu'il ne veut pas taper à la main la partie la plus fragile du processus. Un item moderne peut porter un nom visible, une lore, un identifiant caché, un hook de modèle, des effets, des attributs et parfois une logique serveur complète. Tout cela peut être écrit à la main, mais plus l'objet est riche, plus il devient facile de le casser avec un seul crochet ou une seule citation mal placée.</p>
+        <p>Depuis Minecraft 1.20.5, ce ressenti est encore plus fort. L'ancien NBT des objets a laissé la place aux composants de données, et même une commande simple demande maintenant plus de précision. “Sans JSON”, dans un bon workflow, signifie donc plutôt “sans souffrir ligne par ligne sur chaque symbole” que “sans structure du tout”.</p>
+
+        <h2>De quoi un objet personnalisé est-il réellement composé ?</h2>
+        <p>Il est souvent plus utile de penser un objet comme un assemblage de couches plutôt que comme une seule commande géante :</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Couche</th>
+                    <th>Ce qu'elle contrôle</th>
+                    <th>Exemple</th>
+                    <th>Pourquoi elle compte</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Objet de base</td>
+                    <td>L'item vanilla sous la surface</td>
+                    <td><code>minecraft:paper</code>, <code>minecraft:iron_sword</code></td>
+                    <td>Le jeu doit toujours savoir ce que l'objet est techniquement.</td>
+                </tr>
+                <tr>
+                    <td>Identité visible</td>
+                    <td>Nom et lore lisibles par le joueur</td>
+                    <td>“Guild Pass”, “Contrat scellé”</td>
+                    <td>C'est ce qui rend l'objet compréhensible et vivant.</td>
+                </tr>
+                <tr>
+                    <td>Identité cachée</td>
+                    <td>ID ou marqueur pour la logique serveur</td>
+                    <td><code>quest_pass</code>, <code>rp_currency_tier_1</code></td>
+                    <td>Évite de confondre deux jolis objets qui n'ont pas la même fonction.</td>
+                </tr>
+                <tr>
+                    <td>Hook visuel</td>
+                    <td>Lien vers modèle ou texture</td>
+                    <td><code>custom_model_data</code>, <code>item_model</code></td>
+                    <td>Relie la commande au resource pack.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Étape par étape : construire un objet utile</h2>
+        <p>Imaginons que vous vouliez créer un laissez-passer de guilde pour un serveur RP. Il n'est pas nécessaire de commencer par une commande monstrueuse. Commencez par le rôle de l'objet.</p>
+        <ol>
+            <li><strong>Choisissez un objet de base.</strong> Le papier marche très bien pour les passes, billets, lettres et contrats, car il est neutre et facile à remplacer visuellement plus tard.</li>
+            <li><strong>Définissez le nom visible.</strong> Le joueur doit comprendre d'un coup d'oeil ce qu'il a dans la main.</li>
+            <li><strong>Ajoutez de la lore seulement si elle aide.</strong> Tout objet n'a pas besoin d'un mur de texte.</li>
+            <li><strong>Attribuez une identité cachée.</strong> Si le serveur doit distinguer ce pass d'un simple papier, mieux vaut le faire explicitement.</li>
+            <li><strong>Reliez l'objet à un hook visuel.</strong> C'est ici que la connexion vers la texture ou le modèle apparaît.</li>
+            <li><strong>Testez l'objet en jeu.</strong> Regardez son rendu en inventaire, au sol et dans le contexte réel où il sera utilisé.</li>
+        </ol>
+
+        <h2>Une commande générée reste une vraie commande</h2>
+        <p>Le fait qu'un builder assemble la ligne ne rend pas la commande “moins réelle”. Elle reste une commande Minecraft normale, simplement construite dans un ordre plus sûr. Une sortie moderne pour un pass simple peut ressembler à ceci :</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
+        <p>Bien sûr, vous pourriez taper cela à la main. La vraie question est plutôt : est-ce une bonne utilisation de votre attention quand vous êtes aussi en train de choisir le sens de l'objet, de dessiner sa texture, de relier le pack et de décider de sa place dans le serveur ? La plupart du temps, non.</p>
+
+        <h2>Comment le builder se connecte au resource pack</h2>
+        <p>Un objet personnalisé ne devient vraiment cohérent que lorsque la partie commande et la partie visuelle racontent la même chose. Si la commande pointe vers un hook de modèle et que le pack en attend un autre, l'objet peut être donné correctement tout en ressemblant encore à du papier ou à une épée vanilla. C'est pour cela que le <a href='/custom-item-builder/'>Custom Item Builder</a> et le <a href='/resource-pack-generator/'>Resource Pack Generator</a> sont particulièrement utiles ensemble.</p>
+        <p>Le builder porte l'identité de commande. Le générateur de pack gère la structure des modèles et des textures. Lorsque les deux côtés sont alignés, l'objet peut être réutilisé proprement dans des trades, des récompenses, des quêtes ou des blocs de commande sans repartir de zéro à chaque fois.</p>
+
+        <h2>Les différences de version comptent plus qu'on ne le pense</h2>
+        <p>Beaucoup de problèmes du type “je veux juste un custom item” sont en réalité des problèmes de version.</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Ce qui change</th>
+                    <th>Ce que les débutants cassent souvent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Avant 1.20.5</td>
+                    <td>NBT d'objet classique</td>
+                    <td>Coller de la syntaxe de composants dans un serveur legacy.</td>
+                </tr>
+                <tr>
+                    <td>1.20.5–1.21.3</td>
+                    <td>Les composants de données remplacent le NBT des objets</td>
+                    <td>Continuer à penser en accolades et en vieux snippets.</td>
+                </tr>
+                <tr>
+                    <td>1.21.4+</td>
+                    <td>Même monde de composants, mais avec des workflows de modèles encore plus modernes</td>
+                    <td>Oublier que la commande et la structure du pack doivent évoluer ensemble.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Erreurs courantes quand on improvise “sans JSON”</h2>
+        <ul>
+            <li><strong>Ne pas écrire de fichier JSON, mais continuer à écrire des commandes fragiles à la main.</strong></li>
+            <li><strong>Donner un joli nom à l'objet sans lui donner une identité cachée.</strong></li>
+            <li><strong>Construire d'abord l'art visuel puis réfléchir à la commande ensuite.</strong></li>
+            <li><strong>Tout tester uniquement dans le chat alors que les grosses commandes devraient déjà vivre dans un bloc de commande.</strong></li>
+            <li><strong>Oublier le sélecteur de version et s'étonner qu'une commande presque correcte ne fonctionne pas.</strong></li>
+        </ul>
+
+        <h2>Pourquoi c'est particulièrement utile pour les serveurs RP et no-mod</h2>
+        <p>Un serveur no-mod a besoin d'objets qui transportent du sens sans exiger l'installation d'un modpack. Monnaies, lettres, reliques, doses médicales, jetons, passes ou trophées de quête doivent ressembler à de vrais objets du monde, pas à du simple remplissage renommé. C'est exactement là qu'un workflow centré sur un builder devient précieux : le site et le serveur restent accessibles pour les joueurs, tandis que l'équipe garde une structure interne propre.</p>
+        <p>Au lieu d'obliger chaque membre de l'équipe à mémoriser toute la grammaire des composants, vous obtenez un processus répétable. Une personne fait l'art, une autre pense la mécanique, une autre assemble la commande. Le résultat reste un objet Minecraft normal, mais sans le chaos des fautes de ponctuation faites à la main.</p>
+
+        <h2>FAQ</h2>
+        <div class='faq-section'>
+            <h3>Dois-je connaître le JSON pour utiliser CustomModelData ?</h3>
+            <p>Non. Comprendre l'idée de l'objet aide, mais il n'est pas nécessaire d'écrire des fichiers JSON ou toute la syntaxe de composants à la main pour obtenir un objet fonctionnel.</p>
+
+            <h3>Qu'est-ce qui a changé dans Minecraft 1.20.5 pour les objets ?</h3>
+            <p>Mojang a remplacé l'ancien NBT des objets par des composants de données. À cause de cela, beaucoup d'anciens tutoriels utilisent maintenant une syntaxe dépassée pour les serveurs modernes.</p>
+
+            <h3>Puis-je utiliser ce workflow si je veux seulement un objet renommé ?</h3>
+            <p>Oui, et c'est même un très bon point de départ. Un simple objet renommé permet de comprendre le flux moderne avant d'ajouter modèle, lore ou logique cachée.</p>
+
+            <h3>Et si je veux aussi une texture personnalisée ?</h3>
+            <p>Dans ce cas, combinez le <a href='/custom-item-builder/'>Custom Item Builder</a> avec le <a href='/resource-pack-generator/'>Resource Pack Generator</a>. L'un gère l'identité de commande, l'autre la structure du pack.</p>
+
+            <h3>Le mode “sans JSON” est-il seulement pour les débutants ?</h3>
+            <p>Non. Même des créateurs expérimentés gagnent du temps avec une itération plus sûre et plus rapide. L'objectif n'est pas d'éviter la compréhension, mais d'investir votre attention dans le design plutôt que dans la ponctuation.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

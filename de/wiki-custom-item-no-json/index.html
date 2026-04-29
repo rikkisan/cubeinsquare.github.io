@@ -71,7 +71,7 @@
       "url": "https://cubeinsquare.com/de/wiki-custom-item-no-json/",
       "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
       "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
+      "dateModified": "2026-04-29"
     },
     {
       "@type": "WebPage",
@@ -181,17 +181,130 @@
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero"><h1>Benutzerdefiniertes Item in Minecraft 1.20.5+ ohne JSON erstellen</h1><p class="page-lead">Erfahre, wie du benutzerdefinierte Items mit den neuen Datenkomponenten in Minecraft 1.21.4+ erstellst, ohne JSON manuell zu schreiben.</p></section>
     <article>
-        <h2>Das Problem mit JSON und dem modernen Minecraft</h2>
-<p>Jahrelang bedeutete das Erstellen von Items das Wühlen in NBT-Tags und JSON-Dateien. Mit Minecraft 1.20.5 und 1.21.4+ wechselte das Spiel von NBT zu Datenkomponenten. Das verbessert die Leistung, verwirrt aber viele Server-Admins. Eine fehlende Klammer ruiniert jetzt den ganzen Befehl.</p>
-<h2>Items visuell erstellen</h2>
-<p>Anstatt zu raten, wo ein Komma fehlt, nutze unseren <a href='/custom-item-builder/'>Custom Item Builder</a>. Gib den Namen ein, füge Lore hinzu und setze die Custom Model Data. Das Tool generiert den exakten <code>/give</code>-Befehl.</p>
-<h2>Häufig gestellte Fragen (FAQ)</h2>
-<div class='faq-section'>
-    <h3>Was hat sich in 1.20.5 geändert?</h3>
-    <p>NBT wurde durch Datenkomponenten ersetzt. Befehle verwenden nun eckige Klammern [] statt geschweifter {}.</p>
-    <h3>Muss ich JSON lernen?</h3>
-    <p>Nein! Mit dem <a href='/resource-pack-generator/'>Resource Pack Generator</a> übernehmen wir die gesamte Syntax für dich.</p>
-</div>
+        <h2>„Ohne JSON“ heißt nicht „ohne Logik“</h2>
+        <p>Wenn Leute sagen, sie wollen ein benutzerdefiniertes Item „ohne JSON“ bauen, meinen sie meistens nicht, dass das Spiel plötzlich ohne Struktur arbeiten soll. Sie meinen, dass sie nicht jeden empfindlichen Teil des Workflows von Hand tippen möchten. Ein modernes Minecraft-Item kann sichtbaren Namen, Lore, versteckte Kennung, Modellverknüpfung, Werte, Effekte und zusätzliche Serverlogik tragen. All das lässt sich manuell schreiben, aber mit jeder weiteren Ebene wächst das Risiko, alles mit einer Klammer oder einem einzigen Zitat zu zerstören.</p>
+        <p>Seit Minecraft 1.20.5 ist das noch deutlicher geworden. Das alte Item-NBT wurde von Datenkomponenten abgelöst, und selbst einfache Befehle verlangen jetzt mehr Präzision. „Ohne JSON“ bedeutet in einem sinnvollen Workflow also nicht „ohne Struktur“, sondern „ohne jeden fragilen Teil selbst eintippen zu müssen“.</p>
+
+        <h2>Woraus ein benutzerdefiniertes Item wirklich besteht</h2>
+        <p>Hilfreicher als eine riesige Befehlszeile ist oft ein vierteiliges Modell:</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Ebene</th>
+                    <th>Steuert</th>
+                    <th>Beispiel</th>
+                    <th>Warum sie wichtig ist</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Basis-Item</td>
+                    <td>Das Vanilla-Item unter der Oberfläche</td>
+                    <td><code>minecraft:paper</code>, <code>minecraft:iron_sword</code></td>
+                    <td>Das Spiel muss weiterhin wissen, was der Gegenstand technisch ist.</td>
+                </tr>
+                <tr>
+                    <td>Sichtbare Identität</td>
+                    <td>Name und Lore für Spielerinnen und Spieler</td>
+                    <td>„Guild Pass“, „Versiegelter Vertrag“</td>
+                    <td>Sie macht das Item lesbar und atmosphärisch.</td>
+                </tr>
+                <tr>
+                    <td>Versteckte Identität</td>
+                    <td>ID oder Marker für Serverlogik</td>
+                    <td><code>quest_pass</code>, <code>rp_currency_tier_1</code></td>
+                    <td>So werden zwei hübsche Items nicht logisch verwechselt.</td>
+                </tr>
+                <tr>
+                    <td>Visueller Hook</td>
+                    <td>Verknüpfung zu Modell oder Textur</td>
+                    <td><code>custom_model_data</code>, <code>item_model</code></td>
+                    <td>Hier treffen Befehl und Resource Pack zusammen.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Schritt für Schritt ein nützliches Item bauen</h2>
+        <p>Nehmen wir an, du willst einen Gildenpass für einen RP-Server erstellen. Du musst nicht mit einer monströsen Befehlszeile anfangen. Beginne mit der Rolle des Items.</p>
+        <ol>
+            <li><strong>Wähle ein Basis-Item.</strong> Papier ist für Ausweise, Briefe, Verträge und Tickets oft ideal, weil es neutral wirkt und sich später leicht visuell ersetzen lässt.</li>
+            <li><strong>Vergib einen sichtbaren Namen.</strong> Spieler sollen auf einen Blick erkennen, was sie in der Hand halten.</li>
+            <li><strong>Füge Lore nur hinzu, wenn sie hilft.</strong> Nicht jedes Item braucht eine Textwand.</li>
+            <li><strong>Lege eine versteckte Kennung fest.</strong> Wenn der Server den Pass von normalem Papier unterscheiden muss, sollte das klar markiert sein.</li>
+            <li><strong>Verbinde das Item mit einem visuellen Hook.</strong> Hier entsteht die Brücke zu Modell oder Textur.</li>
+            <li><strong>Teste das Item im Spiel.</strong> Schau, wie es im Inventar, am Boden und im echten Nutzungskontext wirkt.</li>
+        </ol>
+
+        <h2>Ein generierter Befehl bleibt ein echter Befehl</h2>
+        <p>Nur weil ein Builder die Zeile zusammensetzt, wird sie nicht „unecht“. Sie ist weiterhin ein ganz normaler Minecraft-Befehl, nur in einer sicheren Reihenfolge aufgebaut. Eine moderne Ausgabe für einen einfachen Pass kann zum Beispiel so aussehen:</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
+        <p>Natürlich ließe sich das von Hand schreiben. Die eigentliche Frage ist nur: Ist das eine gute Nutzung deiner Aufmerksamkeit, wenn du gleichzeitig noch die Rolle des Items, die Textur, die Pack-Verbindung und die Serverlogik definierst? In den meisten Fällen nicht.</p>
+
+        <h2>Wie der Builder mit dem Resource Pack zusammenspielt</h2>
+        <p>Ein benutzerdefiniertes Item fühlt sich erst dann vollständig an, wenn die Befehlsseite und die visuelle Seite dieselbe Sprache sprechen. Wenn der Befehl auf einen Modell-Hook zeigt, das Pack aber einen anderen erwartet, kann das Item korrekt gegeben werden und trotzdem wie normales Papier oder ein normales Schwert aussehen. Genau deshalb passen der <a href='/custom-item-builder/'>Custom Item Builder</a> und der <a href='/resource-pack-generator/'>Resource Pack Generator</a> so gut zusammen.</p>
+        <p>Der Builder trägt die Befehlsidentität. Der Pack-Generator strukturiert Modelle und Texturen. Stimmen beide überein, lässt sich das Item zuverlässig in Trades, Belohnungen, Questketten oder Befehlsblöcken wiederverwenden, ohne jedes Mal alles neu zusammenzusetzen.</p>
+
+        <h2>Versionsunterschiede sind wichtiger, als viele Einsteiger denken</h2>
+        <p>Viele Probleme mit „ich will doch nur ein Custom Item“ sind in Wahrheit Versionsprobleme.</p>
+
+        <table class="compact-table">
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Was sich ändert</th>
+                    <th>Was oft kaputtgeht</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Vor 1.20.5</td>
+                    <td>Klassisches Item-NBT</td>
+                    <td>Moderne Komponenten-Syntax wird in einen Legacy-Server kopiert.</td>
+                </tr>
+                <tr>
+                    <td>1.20.5–1.21.3</td>
+                    <td>Datenkomponenten ersetzen Item-NBT</td>
+                    <td>Alte Gewohnheiten mit geschweiften Klammern werden weitergeschleppt.</td>
+                </tr>
+                <tr>
+                    <td>1.21.4+</td>
+                    <td>Dasselbe Komponenten-System, aber engere Verbindung zu neueren Item-Model-Workflows</td>
+                    <td>Befehl und Pack-Struktur entwickeln sich nicht gemeinsam weiter.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Typische Fehler, wenn man „ohne JSON“ allein improvisiert</h2>
+        <ul>
+            <li><strong>Keine JSON-Datei schreiben, aber trotzdem zerbrechliche Commands von Hand bauen.</strong></li>
+            <li><strong>Einem Item einen hübschen Namen geben, aber keine versteckte Identität.</strong></li>
+            <li><strong>Zuerst das Aussehen bauen und erst später an den Befehl denken.</strong></li>
+            <li><strong>Alles nur im Chat testen, obwohl große Befehle längst in einen Befehlsblock gehören.</strong></li>
+            <li><strong>Die Version nicht festlegen und sich dann wundern, warum ein fast richtiger Befehl scheitert.</strong></li>
+        </ul>
+
+        <h2>Warum das für RP- und No-Mod-Server besonders hilfreich ist</h2>
+        <p>No-Mod-Server brauchen Items, die Bedeutung transportieren, ohne dass jeder Spieler eine Mod installieren muss. Währungen, Briefe, Relikte, medizinische Dosen, Kultmarken, Ausweise oder Questtrophäen sollen wie echte Objekte der Welt wirken und nicht wie umbenannter Füllstoff. Gerade dort spielt ein Builder-zentrierter Workflow seine Stärke aus: Der Server bleibt für Spieler zugänglich, und das Team bekommt trotzdem eine saubere interne Struktur.</p>
+        <p>Statt jedes Teammitglied die komplette Komponenten-Grammatik auswendig lernen zu lassen, baut ihr einen wiederholbaren Prozess auf. Eine Person macht die Art. Eine andere denkt die Spielmechanik aus. Eine dritte setzt den Befehl zusammen. Das Endprodukt bleibt ein normaler Minecraft-Gegenstand, aber ohne das übliche Chaos der manuellen Syntaxarbeit.</p>
+
+        <h2>FAQ</h2>
+        <div class='faq-section'>
+            <h3>Muss ich JSON kennen, um CustomModelData zu verwenden?</h3>
+            <p>Nein. Es hilft, die Idee hinter dem Item zu verstehen, aber du musst weder JSON-Dateien noch die komplette Komponenten-Syntax von Hand schreiben, um ein funktionierendes Custom Item zu bauen.</p>
+
+            <h3>Was hat sich in Minecraft 1.20.5 bei Items geändert?</h3>
+            <p>Mojang hat das klassische Item-NBT durch Datenkomponenten ersetzt. Dadurch verwenden viele ältere Tutorials für moderne Server inzwischen die falsche Syntax.</p>
+
+            <h3>Kann ich diesen Workflow auch nutzen, wenn ich nur ein umbenanntes Item will?</h3>
+            <p>Ja, und das ist sogar ein guter Startpunkt. Ein umbenanntes Item ist ein kleiner Test, mit dem du den modernen Flow verstehst, bevor du Modell, Lore oder versteckte Logik ergänzt.</p>
+
+            <h3>Was mache ich, wenn das Item auch eine eigene Textur haben soll?</h3>
+            <p>Dann kombinierst du den <a href='/custom-item-builder/'>Custom Item Builder</a> mit dem <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Einer kümmert sich um die Befehlsidentität, der andere um die Pack-Struktur.</p>
+
+            <h3>Ist „ohne JSON“ nur etwas für Anfänger?</h3>
+            <p>Nein. Auch erfahrene Serverbauer profitieren davon, schneller und sauberer zu iterieren, statt Zeit an manuelle Satzzeichenfehler zu verlieren. Das Ziel ist nicht weniger Verständnis, sondern bessere Aufmerksamkeit für Design und Logik.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
