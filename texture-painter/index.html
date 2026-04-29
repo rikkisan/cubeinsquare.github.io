@@ -207,6 +207,140 @@
             </section>
         </div>
     </section>
+
+    <section class="page-section">
+        <h2 class="section-title">How to think about item icons versus block faces</h2>
+        <p class="section-intro">The same brush can paint both, but the design logic is different. Inventory icons need to read in a tiny slot. Block textures need to repeat in the world without looking broken from edge to edge.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Inventory icons need silhouette first</h3>
+                <p>If the overall shape is muddy, more detail usually makes the item worse, not better. Strong edges, one clear focal area, and readable contrast matter more than micro-decoration at <code>16x16</code>.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Block faces need rhythm and tiling</h3>
+                <p>Once a texture repeats on a wall, floor, or machine shell, every edge decision becomes visible. That is why this page is good for testing whether corners, highlights, and central noise still behave when the face repeats many times.</p>
+            </article>
+            <article class="resource-card">
+                <h3>High resolutions are not always an upgrade</h3>
+                <p><code>64x64</code> and <code>128x128</code> give you room, but they also ask for discipline. If the rest of the pack is not built for that density, a high-resolution texture can feel out of place faster than it feels impressive.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A practical workflow from blank canvas to pack-ready PNG</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Pick the canvas size for the real destination</h3>
+                <p>Choose the size based on where the texture will live, not just on how much detail you want to draw. A small inventory icon and a large ceremonial wall block should not automatically start from the same resolution.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Block the big shapes first</h3>
+                <p>Even for stylized Minecraft art, it helps to establish the silhouette or light pattern before you chase little details. The fastest textures are usually the ones where the first pass already says what the object is.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Use the navigator before the canvas feels huge</h3>
+                <p>On larger sizes it is easier to stay oriented if you zoom and pan with intent instead of drifting. The navigator, mouse wheel zoom, and undo controls are there to keep the workspace comfortable when the canvas stops fitting in one glance.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Export only when the texture still reads at normal size</h3>
+                <p>A texture can look beautiful at massive zoom and still fail in the actual game. Before export, zoom back out, check the contrast and edges, and only then move it into the pack generator.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Common mistakes this page helps catch</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Painting detail before readability</h3>
+                <p>This is the classic trap. If the icon or face does not already read from a distance, more tiny marks usually make it noisier instead of smarter.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Making block edges too specific</h3>
+                <p>Some edges look good once and terrible when repeated. A few minutes in the painter with the full face visible often reveals that faster than exporting, packing, and reopening the world.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Overcommitting to 128x128</h3>
+                <p>Large textures can be worth it, but only when the whole pack wants that density. If you only upscale one or two files, they can feel disconnected from the rest of the project.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Pixel-art techniques worth practicing here</h2>
+        <p class="section-intro">This painter is simple on purpose, which makes it a good place to practice core pixel-art discipline instead of leaning on fancy filters. A Minecraft texture usually benefits from restraint: clearer clusters, cleaner light logic, and stronger decisions about what the eye should notice first.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Think in clusters, not isolated pixels</h3>
+                <p>One stray highlight pixel can be useful, but a good texture usually reads through connected groups of tone. If a stone face, fruit icon, or metal emblem is made from random single pixels, it often feels crunchy instead of deliberate. Working here at different zoom levels makes that obvious very quickly.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Choose one light logic and stay loyal to it</h3>
+                <p>If the top edge says “light from above left” and the lower corner says “light from straight ahead,” the texture starts to wobble. Even stylized Minecraft textures feel more confident when highlights and shadows agree on where the light is coming from.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Save your highest contrast for the focal point</h3>
+                <p>Everywhere-high contrast makes a texture noisy. A gem center, blade edge, rune, label, or ridge usually deserves the sharpest contrast, while supporting areas can stay calmer. This matters especially for icons, where the eye needs one fast answer about what the object is.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Let material language stay consistent</h3>
+                <p>Wood grain, cloth shading, polished metal, oxidized copper, magical glow, and carved stone all want different rhythms. If every material uses the same noise pattern, the texture becomes harder to believe. This page is a good place to test whether a texture still feels like the material you meant it to be.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">A review pass before you send the PNG into a pack</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Zoom out to normal play distance</h3>
+                <p>If the texture only feels good when you are staring at it at 24x or 32x, it still needs work. Inventory icons should survive being tiny. Block faces should survive being part of a larger wall, path, altar, or machine shell.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Check tiling edges on repeated block faces</h3>
+                <p>A corner that looks dramatic once can become a distracting ladder pattern when the block repeats. Before export, look at the edges with the same suspicion you would bring to a repeating wallpaper pattern.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Ask whether resolution is doing real work</h3>
+                <p>Sometimes a texture grows to <code>64x64</code> or <code>128x128</code> because it feels luxurious, not because the design needs it. If the extra size is not improving shape, material, or readability, that resolution may just be making the pack heavier and the workflow slower.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Look for one thing to simplify</h3>
+                <p>Many textures improve when you remove rather than add. One extra shadow cluster, one noisy border, or one repeated highlight can often be the thing that turns a solid texture into a crowded one.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quick FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Should I use this page for blocks or items?</h3>
+                <p>Both. The tool is intentionally simple enough for single PNG work, so the real question is what kind of reading problem you are solving: icon clarity or tiling stability.</p>
+            </article>
+            <article class="resource-card">
+                <h3>When should I use the block template button?</h3>
+                <p>Use it when you want a vanilla-style starting face instead of a dead blank square. It gives you a quick lighting pattern and a few starter variations so you can move directly into editing.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What size is best for an inventory icon?</h3>
+                <p><code>16x16</code> is still the safest answer for vanilla readability, and <code>32x32</code> is often enough if you want a slightly richer look without leaving the Minecraft feel.</p>
+            </article>
+            <article class="resource-card">
+                <h3>What should I do after export?</h3>
+                <p>Take the PNG into the resource-pack generator, assign it to the correct item or block slot, and let that tool build the actual pack structure around the art you just painted.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Should I begin from a blank canvas or a template?</h3>
+                <p>Start blank when the texture idea is already clear in your head. Start from the block template when you want a fast vanilla-style lighting base and would rather edit a living texture than invent one from pure emptiness.</p>
+            </article>
+            <article class="resource-card">
+                <h3>How do I know when an icon has enough detail?</h3>
+                <p>Usually when one glance tells you what it is and the second glance rewards you with a little extra. If the first glance is already confused, the texture does not need more detail yet; it needs better structure.</p>
+            </article>
+        </div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
