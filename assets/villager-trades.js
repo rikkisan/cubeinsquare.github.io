@@ -321,10 +321,10 @@
                     <label>${text.priceMultiplier}</label>
                     <input data-field="price-multiplier" type="number" min="0" max="10" step="0.05" value="${values.priceMultiplier || 0}">
                 </div>
-                <div class="tool-check">
+                <label class="tool-check">
                     <input data-field="reward-exp" type="checkbox" ${values.rewardExp ? 'checked' : ''}>
-                    <label>${text.rewardExp}</label>
-                </div>
+                    <span>${text.rewardExp}</span>
+                </label>
             </div>
         `;
         tradeList.appendChild(card);

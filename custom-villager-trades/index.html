@@ -269,9 +269,9 @@
                 </div>
             </div>
             <div class="tool-check-grid">
-                <div class="tool-check"><input id="vt-no-ai" type="checkbox" checked><label for="vt-no-ai">NoAI</label></div>
-                <div class="tool-check"><input id="vt-invulnerable" type="checkbox"><label for="vt-invulnerable">Invulnerable</label></div>
-                <div class="tool-check"><input id="vt-silent" type="checkbox"><label for="vt-silent">Silent</label></div>
+                <label class="tool-check" for="vt-no-ai"><input id="vt-no-ai" type="checkbox" checked><span>NoAI</span></label>
+                <label class="tool-check" for="vt-invulnerable"><input id="vt-invulnerable" type="checkbox"><span>Invulnerable</span></label>
+                <label class="tool-check" for="vt-silent"><input id="vt-silent" type="checkbox"><span>Silent</span></label>
             </div>
         </form>
 
@@ -375,6 +375,25 @@
             <article class="resource-card">
                 <h3>What should I test first in game?</h3>
                 <p>Test whether the villager summons, whether every trade appears, and whether the reward item arrives exactly as expected. Once those three things are stable, economy tuning becomes much easier.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Example merchant roles worth building carefully</h2>
+        <p class="section-intro">A good villager is rarely just a random seller. The strongest trade setups feel like a role in the world, and that role changes how you should think about price, stock, and reward structure.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Archive clerk or guild quartermaster</h3>
+                <p>This kind of merchant usually sells permits, stamped notes, passes, and faction supplies. It benefits from clean naming, stable hidden item IDs, and moderate stock limits so players treat the shop as infrastructure instead of infinite vending.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Rare specialist</h3>
+                <p>A rare enchanter, occult librarian, relic appraiser, or black-market trader often needs stricter max uses and a more intentional second ingredient. The point is not only to sell an item, but to make the trade feel like access to a narrow system.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Quest exchange NPC</h3>
+                <p>These merchants work best when the input item already carries hidden logic from the item builder. That way the NPC is validating a real token, receipt, or drop, not just a renamed placeholder the player could fake with an anvil.</p>
             </article>
         </div>
     </section>

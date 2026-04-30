@@ -33,7 +33,8 @@
 }
 
 .tool-field label,
-.tool-check label {
+.tool-check label,
+.tool-check span {
     color: var(--text-dim);
     font-size: 0.92rem;
     font-weight: 700;
@@ -71,15 +72,30 @@
     display: flex;
     align-items: center;
     gap: 9px;
+    width: 100%;
     padding: 10px 12px;
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 8px;
     background: rgba(15, 23, 42, 0.42);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.tool-check:hover,
+.tool-check:focus-within {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(96, 165, 250, 0.28);
+}
+
+.tool-check span {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .tool-check input {
     width: 16px;
     height: 16px;
+    flex: 0 0 auto;
     accent-color: var(--accent);
 }
 
