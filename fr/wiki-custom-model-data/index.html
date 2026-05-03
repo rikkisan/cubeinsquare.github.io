@@ -213,6 +213,7 @@
         <h2>Qu’est-ce que CustomModelData ?</h2><p>Ajouté dans Minecraft 1.14, CustomModelData permet aux créateurs de packs d’associer différentes textures ou modèles 3D à un objet vanilla avec des identifiants numériques.</p>
         <ul><li>Sans tags, une épée en fer ressemble à l’épée vanilla normale.</li><li>Avec <code>CustomModelData: 1</code>, elle peut ressembler à un katana.</li><li>Avec <code>CustomModelData: 2</code>, elle peut être rendue comme une tronçonneuse 3D.</li></ul>
         <p>Pour le serveur et les mécaniques du jeu, cela reste une épée en fer. Seule l’apparence côté client change.</p>
+        <p>Si vous voulez utiliser CustomModelData sans tout brancher à la main, la combinaison pratique du site est la suivante : le <a href="/fr/resource-pack-generator/">générateur de packs de ressources</a> pour la partie visuelle et le <a href="/fr/custom-item-builder/">constructeur d’objets personnalisés</a> pour la commande.</p>
         <h2>Comment ça marche</h2><p>Le pack de ressources utilise des overrides de modèles d’objets. Le modèle de base indique au jeu de charger un autre modèle quand une valeur CustomModelData précise est présente.</p>
 <pre><code>{
   "parent": "item/handheld",

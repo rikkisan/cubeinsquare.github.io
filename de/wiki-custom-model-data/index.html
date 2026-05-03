@@ -213,6 +213,7 @@
         <h2>Was ist CustomModelData?</h2><p>CustomModelData wurde in Minecraft 1.14 hinzugefügt und erlaubt Pack-Erstellern, unterschiedliche Texturen oder 3D-Modelle über Zahlen-IDs an ein Vanilla-Item zu hängen.</p>
         <ul><li>Ohne Tags sieht ein Eisenschwert wie das normale Vanilla-Schwert aus.</li><li>Mit <code>CustomModelData: 1</code> kann es wie ein Katana aussehen.</li><li>Mit <code>CustomModelData: 2</code> kann es als 3D-Kettensäge gerendert werden.</li></ul>
         <p>Für Server und Spielmechanik bleibt es ein Eisenschwert. Nur die visuelle Hülle auf Client-Seite ändert sich.</p>
+        <p>Wenn du CustomModelData nutzen willst, ohne alles von Hand zu verdrahten, ist die praktische Kombination auf der Seite so: der <a href="/de/resource-pack-generator/">Resource-Pack-Generator</a> kümmert sich um die visuelle Seite, und der <a href="/de/custom-item-builder/">Custom-Item-Builder</a> hilft dir beim Befehls-Teil.</p>
         <h2>So funktioniert es</h2><p>Das Resource-Pack nutzt Item-Modell-Overrides. Das Basismodell weist das Spiel an, ein anderes Modell zu laden, wenn ein bestimmter CustomModelData-Wert vorhanden ist.</p>
 <pre><code>{
   "parent": "item/handheld",
