@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Конструктор item_model для Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Собирайте JSON item definitions для Minecraft 1.21.4+ с ветками model, select, range_dispatch и condition.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/item-model-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/item-model-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/item-model-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/item-model-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/item-model-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/item-model-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Конструктор item_model для Minecraft | Cube in Square">
+    <meta property="og:description" content="Собирайте JSON item definitions для Minecraft 1.21.4+ с ветками model, select, range_dispatch и condition.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/item-model-builder/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Конструктор item_model для Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Собирайте JSON item definitions для Minecraft 1.21.4+ с ветками model, select, range_dispatch и condition.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/villager-trades.css">
+    <link rel="stylesheet" href="/assets/item-model-builder.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cubeinsquare.com/ru/item-model-builder/#app",
+      "name": "Конструктор item_model для Minecraft",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://cubeinsquare.com/ru/item-model-builder/",
+      "description": "Собирайте JSON item definitions для Minecraft 1.21.4+ с ветками model, select, range_dispatch и condition.",
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/ru/item-model-builder/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://cubeinsquare.com/ru/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Конструктор item_model для Minecraft",
+          "item": "https://cubeinsquare.com/ru/item-model-builder/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#general-wiki">Общие статьи</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/ru/wiki/#resource-pack-paths">Структура ресурс-пака</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Генератор ресурс-паков Minecraft</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/wiki-resource-pack-generator/">Как использовать генератор</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/ru/wiki/#other-tools-wiki">Другие инструменты</a>
+                        <div class="mega-sublist">
+                            <a href="/ru/tools/">Каталог инструментов</a><a href="/ru/wiki-skin-editor/">Редактор скинов</a><a href="/ru/wiki-texture-painter/">Редактор текстур</a><a href="/ru/wiki-custom-potions/">Кастомные зелья</a>
+                            <a href="/ru/wiki-custom-villager-trades/">Торги жителей</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Как один предмет превращается в десятки моделей без модов.</span></a>
+                    <a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Гайд по генератору</strong><span>Пошаговая инструкция по созданию ZIP-пака.</span></a>
+                    <a class="mega-card" href="/ru/wiki-skin-editor/"><strong>Гайд по скинам</strong><span>Как рисовать по атласу и по 3D-модели вместе.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/ru/tools/">Инструменты</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/ru/resource-pack-generator/">Генератор ресурс-паков Minecraft</a>
+                    <a href="/ru/skin-editor/">Редактор скинов Minecraft</a>
+                    <a href="/ru/texture-painter/">Редактор текстур</a>
+                    <a href="/ru/custom-villager-trades/">Кастомные торги жителей</a>
+                    <a href="/ru/custom-potions/">Кастомные зелья</a>
+                    <a href="/ru/tool-coming-soon/">Будущие инструменты</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисование по атласу и прямо по 3D-модели игрока.</span></a>
+                    <a class="mega-card" href="/ru/texture-painter/"><strong>Редактор текстур</strong><span>Холст для PNG-текстур предметов и блоков с экспортом.</span></a>
+                    <a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и 3D-предпросмотр.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/about/">О проекте</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/ru/about/">Куб в квадрате</a>
+                <a href="/ru/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/ru/wiki/" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/item-model-builder/">EN</a><a class="is-active" href="/ru/item-model-builder/">RU</a><a href="/fr/item-model-builder/">FR</a><a href="/de/item-model-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell">
+    <section class="page-hero">
+        <h1>Конструктор item_model для Minecraft</h1>
+        <p class="page-lead">Собирайте новые item definition-файлы для <code>assets/&lt;namespace&gt;/items/</code>. Выберите тип ветвления, задайте fallback, добавьте cases и скопируйте JSON в пак без ручного скелета.</p>
+    </section>
+    
+    <section class="page-section tool-layout">
+        <div class="tool-primary-column">
+            <div class="tool-panel">
+                <div class="tool-button-row">
+                    <a class="tool-button" href="/ru/wiki-item-model-builder/">Читать гайд</a>
+                    <a class="tool-button tool-button-secondary" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Настройка definition</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="imb-mode">Режим definition</label>
+                        <select id="imb-mode">
+                            <option value="model">Прямая model</option>
+                            <option value="select">select</option>
+                            <option value="range_dispatch">range_dispatch</option>
+                            <option value="condition">condition</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-namespace">Namespace</label>
+                        <input id="imb-namespace" type="text" value="cubeinsquare">
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-file">Путь definition</label>
+                        <input id="imb-file" type="text" value="paper/guild_pass">
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-fallback">Fallback model</label>
+                        <input id="imb-fallback" type="text" value="minecraft:item/paper">
+                    </div>
+                    <div class="tool-field" data-imb-property-field>
+                        <label for="imb-property">Свойство</label>
+                        <select id="imb-property"></select>
+                    </div>
+                    <div class="tool-field" data-imb-index-field hidden>
+                        <label for="imb-index">Индекс CustomModelData</label>
+                        <input id="imb-index" type="number" min="0" value="0">
+                    </div>
+                </div>
+                <section class="imb-branch-section">
+                    <div class="section-heading">
+                        <h3>Ветки</h3>
+                        <button class="tool-button tool-button-secondary" id="imb-add-case" type="button">Добавить ветку</button>
+                    </div>
+                    <div id="imb-branch-list" class="imb-branch-list"></div>
+                </section>
+                <div class="tool-button-row">
+                    <button class="tool-button" id="imb-load-example" type="button">Загрузить пример</button>
+                    <button class="tool-button tool-button-secondary" id="imb-reset" type="button">Сбросить</button>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Сгенерированный item definition</h2>
+                <p class="tool-summary" id="imb-summary"></p>
+                <textarea id="imb-output" class="command-output" readonly></textarea>
+                <div class="tool-button-row">
+                    <button class="tool-button" id="imb-copy" type="button" data-copied-label="Скопировано">Скопировать JSON</button>
+                </div>
+            </div>
+        </div>
+        <aside class="tool-secondary-column">
+            <div class="tool-panel">
+                <h2>Что это закрывает</h2>
+                <ul class="item-builder-help"><li>Убирает рутину с ручным каркасом model/select/range_dispatch.</li><li>Помогает держать папку items и логику веток читаемыми для команды.</li><li>Даёт быстро проверить одну definition перед большой миграцией пака.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Практический workflow</h2>
+                <p>Используйте конструктор, когда пути моделей уже понятны и осталось собрать ветвление. Если сами текстуры и модели ещё не упакованы, сначала доведите визуальную часть в генераторе ресурс-паков.</p>
+            </div>
+        </aside>
+    </section>
+</main>
+<footer class="site-footer">
+    <span>Куб в квадрате</span>
+    <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
+</footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/item-model-builder.js"></script>
+</body>
+</html>

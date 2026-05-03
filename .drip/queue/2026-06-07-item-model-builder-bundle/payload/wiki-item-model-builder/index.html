@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to build item definitions for Minecraft 1.21.4+ | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn when to use model, select, range_dispatch, and condition in Minecraft item definitions and how the item model builder speeds the process up.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to build item definitions for Minecraft 1.21.4+ | Cube in Square">
+    <meta property="og:description" content="Learn when to use model, select, range_dispatch, and condition in Minecraft item definitions and how the item model builder speeds the process up.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-item-model-builder/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How to build item definitions for Minecraft 1.21.4+ | Cube in Square">
+    <meta name="twitter:description" content="Learn when to use model, select, range_dispatch, and condition in Minecraft item definitions and how the item model builder speeds the process up.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://cubeinsquare.com/wiki-item-model-builder/#article",
+      "headline": "How to build item definitions for Minecraft 1.21.4+",
+      "name": "How to build item definitions for Minecraft 1.21.4+",
+      "description": "Learn when to use model, select, range_dispatch, and condition in Minecraft item definitions and how the item model builder speeds the process up.",
+      "author": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://cubeinsquare.com/wiki-item-model-builder/#webpage"
+      },
+      "inLanguage": "en",
+      "url": "https://cubeinsquare.com/wiki-item-model-builder/",
+      "image": [
+        "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+      ],
+      "datePublished": "2026-06-07",
+      "dateModified": "2026-06-07"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/wiki-item-model-builder/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wiki",
+          "item": "https://cubeinsquare.com/wiki/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How to build item definitions for Minecraft 1.21.4+",
+          "item": "https://cubeinsquare.com/wiki-item-model-builder/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/wiki-custom-model-data/">CustomModelData</a><a href="/wiki-resource-pack-structure/">Resource pack structure</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/wiki-resource-pack-generator/">How to use the generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a><a href="/skin-editor/">Minecraft Skin Editor</a><a href="/texture-painter/">Texture painter</a><a href="/custom-villager-trades/">Custom villager trades</a><a href="/custom-potions/">Custom potions</a><a href="/tool-coming-soon/">Upcoming tools</a></div>
+                <div class="mega-feature"><a class="mega-card" href="/texture-painter/"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a><a class="mega-card" href="/skin-editor/"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a><a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/about/">Cube in Square</a><a href="/privacy-policy/">Privacy Policy</a></div></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="/wiki-item-model-builder/">EN</a><a href="/ru/wiki-item-model-builder/">RU</a><a href="/fr/wiki-item-model-builder/">FR</a><a href="/de/wiki-item-model-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>How to build item definitions for Minecraft 1.21.4+</h1>
+        <p class="page-lead">The hard part of the new items folder is not the file itself. It is remembering which branch type matches the problem in front of you. This guide is here to keep that choice small and deliberate.</p>
+    </section>
+    <article>
+<div class="tool-button-row">
+    <a class="tool-button" href="/item-model-builder/">Open item model builder</a>
+    <a class="tool-button tool-button-secondary" href="/resource-pack-generator/">Open pack generator</a>
+</div>
+<h2>Why item definitions exist now</h2><div class="article-block">Minecraft 1.21.4 moved item rendering logic into dedicated files under <code>assets/&lt;namespace&gt;/items/</code>. That means the old instinct of stuffing everything into overrides is no longer the clean path.</div><div class="article-block">The new system is more explicit: one file can be a direct model, a select tree, a range-based dispatch, or a condition check. The upside is clarity. The downside is that hand-writing the wrapper gets repetitive very quickly.</div><h2>Pick the branch that matches the decision</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Branch</th><th>Use it when</th><th>Typical example</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>You only need one fixed model.</td><td>A plain custom paper pass.</td></tr><tr><td><code>minecraft:select</code></td><td>One property chooses between named branches.</td><td>Different custom_model_data string states.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>A number crosses thresholds.</td><td>Damage stages or charge levels.</td></tr><tr><td><code>minecraft:condition</code></td><td>The model depends on true/false state.</td><td>Selected item, using item, damaged item.</td></tr></tbody></table></div><h2>Practical workflow</h2><div class="article-block"><ol><li>Decide the file path you want inside <code>items/</code>.</li><li>Choose the smallest branch type that explains the logic.</li><li>Set a fallback first, then add branches.</li><li>Copy the generated JSON and test the item in game before you duplicate the pattern across ten more definitions.</li></ol></div><h2>Common mistakes</h2><div class="article-block"><ul><li>Using <code>select</code> when a direct <code>model</code> file would do.</li><li>Forgetting a fallback model, which leaves the file harder to reason about later.</li><li>Mixing string-style and numeric-style expectations inside the same definition.</li><li>Naming the file and the model path so differently that the team can no longer guess what belongs to what.</li></ul></div><h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Do I always need select for CustomModelData?</h3><p>No. If the item only has one fixed look, a direct model file is simpler. Use select when the same definition must branch into multiple appearances.</p><h3>When is range_dispatch better than select?</h3><p>When the decision is numeric and ordered: damage, cooldown, charge, or threshold-like values.</p><h3>Why start with the fallback?</h3><p>Because the fallback is the default reading of the item. Once that anchor is correct, every extra branch becomes easier to judge.</p><h3>Can I still keep item commands separate from the model file?</h3><p>Yes. That separation is one of the main strengths of the new system. The builder just handles the visual definition side.</p><h3>Where does this connect to the rest of the site?</h3><p>Use the item model builder for the definition JSON, the custom item builder for /give commands, and the resource-pack generator when the visual files still need to be packed.</p></div></div></article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

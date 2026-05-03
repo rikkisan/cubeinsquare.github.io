@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Warum euer Server einen Custom-Item-Katalog braucht | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie ein lokales Item-Register doppelte IDs, widersprüchliche Pack-Hooks und Team-Verwirrung verhindert, sobald Sonderitems zahlreicher werden.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-custom-item-catalog/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-item-catalog/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-item-catalog/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-catalog/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-catalog/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-catalog/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Warum euer Server einen Custom-Item-Katalog braucht | Cube in Square">
+    <meta property="og:description" content="Wie ein lokales Item-Register doppelte IDs, widersprüchliche Pack-Hooks und Team-Verwirrung verhindert, sobald Sonderitems zahlreicher werden.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-custom-item-catalog/">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Warum euer Server einen Custom-Item-Katalog braucht | Cube in Square">
+    <meta name="twitter:description" content="Wie ein lokales Item-Register doppelte IDs, widersprüchliche Pack-Hooks und Team-Verwirrung verhindert, sobald Sonderitems zahlreicher werden.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://cubeinsquare.com/de/wiki-custom-item-catalog/#article",
+      "headline": "Warum euer Server einen Custom-Item-Katalog braucht",
+      "name": "Warum euer Server einen Custom-Item-Katalog braucht",
+      "description": "Wie ein lokales Item-Register doppelte IDs, widersprüchliche Pack-Hooks und Team-Verwirrung verhindert, sobald Sonderitems zahlreicher werden.",
+      "author": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://cubeinsquare.com/de/wiki-custom-item-catalog/#webpage"
+      },
+      "inLanguage": "de",
+      "url": "https://cubeinsquare.com/de/wiki-custom-item-catalog/",
+      "image": [
+        "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+      ],
+      "datePublished": "2026-07-05",
+      "dateModified": "2026-07-05"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/de/wiki-custom-item-catalog/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/de/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wiki",
+          "item": "https://cubeinsquare.com/de/wiki/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Warum euer Server einen Custom-Item-Katalog braucht",
+          "item": "https://cubeinsquare.com/de/wiki-custom-item-catalog/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#general-wiki">Erst einmal hier</a><div class="mega-sublist"><a href="/de/wiki-custom-model-data/">CustomModelData</a><a href="/de/wiki-resource-pack-structure/">Pack-Struktur</a><a href="/de/privacy-policy/">Datenschutzerklärung</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#resource-pack-generator-wiki">Pack-Workflow</a><div class="mega-sublist"><a href="/de/wiki-resource-pack-generator/">Pack-Generator</a><a href="/de/wiki-skin-editor/">Skin-Editor</a><a href="/de/wiki-texture-painter/">Textur-Editor</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#advanced-rp-guides">Server-Systeme</a><div class="mega-sublist"><a href="/de/wiki-mechanism-plugin/">Mechanism Plugin</a><a href="/de/wiki-headhunter-plugin/">HeadHunter Plugin</a><a href="/de/wiki-darkmage-plugin/">DarkMage Plugin</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="/de/wiki-resource-pack-generator/"><strong>Pack-Generator</strong><span>Von PNGs und Modellen bis zu einem brauchbaren ZIP.</span></a><a class="mega-card" href="/de/wiki-skin-editor/"><strong>Skin-Editor</strong><span>Atlas und 3D-Modell gemeinsam bemalen.</span></a><a class="mega-card" href="/de/wiki-mechanism-plugin/"><strong>Mechanism Plugin</strong><span>Technische Progression, Wartung und ritualisierte Maschinen.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="/de/resource-pack-generator/">Minecraft Resource-Pack-Generator</a><a href="/de/skin-editor/">Minecraft Skin-Editor</a><a href="/de/texture-painter/">Textur-Editor</a><a href="/de/custom-villager-trades/">Benutzerdefinierter Dorfbewohner-Handel</a><a href="/de/custom-potions/">Custom-Potions</a><a href="/de/tool-coming-soon/">Kommende Werkzeuge</a></div>
+                <div class="mega-feature"><a class="mega-card" href="/de/texture-painter/"><strong>Textur-Editor</strong><span>Leinwand wählen, PNG malen und in den Pack-Workflow schicken.</span></a><a class="mega-card" href="/de/skin-editor/"><strong>Skin-Editor</strong><span>Auf dem Atlas oder direkt auf dem 3D-Spielermodell zeichnen.</span></a><a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, Blöcke, Rüstung, CustomModelData und Vorschau.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/de/about/">Cube in Square</a><a href="/de/privacy-policy/">Datenschutzerklärung</a></div></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/wiki-custom-item-catalog/">EN</a><a href="/ru/wiki-custom-item-catalog/">RU</a><a href="/fr/wiki-custom-item-catalog/">FR</a><a class="is-active" href="/de/wiki-custom-item-catalog/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Warum euer Server einen Custom-Item-Katalog braucht</h1>
+        <p class="page-lead">Ein Item-Katalog ist nicht der glamouröseste Teil des Projekts, aber er spart früh Zeit, sobald auf dem Server mehr als nur ein paar Requisiten, Verträge, Währungen oder Reliquien existieren.</p>
+    </section>
+    <article>
+<div class="tool-button-row">
+    <a class="tool-button" href="/de/custom-item-catalog/">Custom-Item-Katalog öffnen</a>
+    <a class="tool-button tool-button-secondary" href="/de/custom-item-builder/">Custom-Item-Builder öffnen</a>
+</div>
+<h2>Der Moment, in dem Tabellen entstehen</h2><div class="article-block">Die meisten Server starten nicht mit einem formalen Register. Sie starten mit ein paar Sonderitems, ein paar Modell-Hooks und dem Versprechen, dass sich alle schon erinnern werden. Genau dieses Versprechen kippt meistens zuerst.</div><div class="article-block">Ein Katalog löst kein Schönheitsproblem. Er löst ein Gedächtnisproblem. Jedes Item bekommt eine stabile Zeile: interne ID, Anzeigename, Basisitem, Modell-Hook, Version, Tags und Notizen.</div><h2>Was in den Katalog gehört</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Feld</th><th>Welche Frage es beantwortet</th><th>Warum es zählt</th></tr></thead><tbody><tr><td>Interne ID</td><td>Wie das Team das Item logisch erkennt.</td><td>Verhindert, dass zwei verschiedene Items dieselbe versteckte Identität teilen.</td></tr><tr><td>Basisitem</td><td>Welches Vanilla-Item darunterliegt.</td><td>Hilfreich für schnelle Prüfungen und die Pack-Seite.</td></tr><tr><td>Visueller Hook</td><td>Welcher item_model- oder CustomModelData-Zweig verbunden ist.</td><td>Hält die visuelle Seite nachvollziehbar.</td></tr><tr><td>Tags und Notizen</td><td>Wofür das Item gedacht ist.</td><td>Bewahrt den Katalog davor, eine kontextlose Liste zu werden.</td></tr></tbody></table></div><h2>Namensregeln, die gut altern</h2><div class="article-block"><ul><li>Haltet einen stabilen Stil für interne IDs.</li><li>Lasst Anzeigenamen atmosphärisch sein, aber interne IDs lesbar.</li><li>Legt Konflikte und Sonderregeln direkt beim Item ab statt im Chatverlauf.</li></ul></div><h2>Warum Exporte wichtig sind</h2><div class="article-block">Ein Export macht aus einer Browserliste Team-Infrastruktur. JSON ist gut für maschinenlesbare Snapshots, CSV für Sortierung, Markdown für Dokumentation und Planungs-Threads.</div><div class="article-block">Selbst wenn der Katalog lokal beginnt, verhindert der Export, dass er in einem einzigen Browserprofil stecken bleibt.</div><h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Ist das nur für große Server sinnvoll?</h3><p>Nein. Der Nutzen beginnt erstaunlich früh, meist in dem Moment, in dem Sonderitems zahlreicher werden als das Team bequem im Kopf behalten kann.</p><h3>Müssen Anzeigename und interne ID identisch sein?</h3><p>Nein. Der Anzeigename darf thematisch bleiben. Die interne ID sollte für das Team stabil und gut lesbar sein.</p><h3>Warum nicht dauerhaft bei Tabellen bleiben?</h3><p>Das geht, aber ein eigener Katalog fängt Dubletten schneller ab und passt besser zum restlichen Workflow der Seite.</p><h3>Ersetzt der Katalog den Custom-Item-Builder?</h3><p>Nein. Der Katalog organisiert. Der Builder erzeugt weiterhin die Befehle.</p><h3>Hilft das auch bei Pack-Migrationen?</h3><p>Ja. Wenn Basisitem und visueller Hook jedes Items festgehalten sind, wird die Pack-Migration deutlich ruhiger.</p></div></div></article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

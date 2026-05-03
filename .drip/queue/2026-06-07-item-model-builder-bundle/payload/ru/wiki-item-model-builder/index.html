@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как собирать item definitions для Minecraft 1.21.4+ | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Разбираем, когда использовать model, select, range_dispatch и condition в новых item definitions и как конструктор ускоряет этот шаг.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как собирать item definitions для Minecraft 1.21.4+ | Cube in Square">
+    <meta property="og:description" content="Разбираем, когда использовать model, select, range_dispatch и condition в новых item definitions и как конструктор ускоряет этот шаг.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-item-model-builder/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Как собирать item definitions для Minecraft 1.21.4+ | Cube in Square">
+    <meta name="twitter:description" content="Разбираем, когда использовать model, select, range_dispatch и condition в новых item definitions и как конструктор ускоряет этот шаг.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://cubeinsquare.com/ru/wiki-item-model-builder/#article",
+      "headline": "Как собирать item definitions для Minecraft 1.21.4+",
+      "name": "Как собирать item definitions для Minecraft 1.21.4+",
+      "description": "Разбираем, когда использовать model, select, range_dispatch и condition в новых item definitions и как конструктор ускоряет этот шаг.",
+      "author": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://cubeinsquare.com/ru/wiki-item-model-builder/#webpage"
+      },
+      "inLanguage": "ru",
+      "url": "https://cubeinsquare.com/ru/wiki-item-model-builder/",
+      "image": [
+        "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+      ],
+      "datePublished": "2026-06-07",
+      "dateModified": "2026-06-07"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/ru/wiki-item-model-builder/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Wiki",
+          "item": "https://cubeinsquare.com/ru/wiki/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Как собирать item definitions для Minecraft 1.21.4+",
+          "item": "https://cubeinsquare.com/ru/wiki-item-model-builder/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/ru/wiki/#general-wiki">С чего начать</a><div class="mega-sublist"><a href="/ru/wiki-custom-model-data/">CustomModelData</a><a href="/ru/wiki-resource-pack-structure/">Структура ресурс-пака</a><a href="/ru/privacy-policy/">Политика конфиденциальности</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/ru/wiki/#resource-pack-generator-wiki">Работа с паком</a><div class="mega-sublist"><a href="/ru/wiki-resource-pack-generator/">Генератор паков</a><a href="/ru/wiki-skin-editor/">Редактор скинов</a><a href="/ru/wiki-texture-painter/">Редактор текстур</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/ru/wiki/#advanced-rp-guides">Серверные системы</a><div class="mega-sublist"><a href="/ru/wiki-mechanism-plugin/">Mechanism Plugin</a><a href="/ru/wiki-headhunter-plugin/">HeadHunter Plugin</a><a href="/ru/wiki-darkmage-plugin/">DarkMage Plugin</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="/ru/wiki-resource-pack-generator/"><strong>Генератор паков</strong><span>Пошаговый путь от текстур и моделей до готового ZIP.</span></a><a class="mega-card" href="/ru/wiki-skin-editor/"><strong>Редактор скинов</strong><span>Как рисовать по атласу и по 3D-модели вместе.</span></a><a class="mega-card" href="/ru/wiki-mechanism-plugin/"><strong>Mechanism Plugin</strong><span>Инженерная прогрессия, обслуживание и ритуальная техника.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="/ru/resource-pack-generator/">Генератор ресурс-паков Minecraft</a><a href="/ru/skin-editor/">Редактор скинов Minecraft</a><a href="/ru/texture-painter/">Редактор текстур</a><a href="/ru/custom-villager-trades/">Кастомные торги жителей</a><a href="/ru/custom-potions/">Кастомные зелья</a><a href="/ru/tool-coming-soon/">Будущие инструменты</a></div>
+                <div class="mega-feature"><a class="mega-card" href="/ru/texture-painter/"><strong>Редактор текстур</strong><span>Выберите холст, нарисуйте PNG и отправьте его в pack workflow.</span></a><a class="mega-card" href="/ru/skin-editor/"><strong>Редактор скинов</strong><span>Рисуйте по атласу или прямо по 3D-модели игрока.</span></a><a class="mega-card" href="/ru/resource-pack-generator/"><strong>Генератор паков</strong><span>Предметы, блоки, броня, CustomModelData и предпросмотр.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/ru/about/">Cube in Square</a><a href="/ru/privacy-policy/">Политика конфиденциальности</a></div></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/wiki-item-model-builder/">EN</a><a class="is-active" href="/ru/wiki-item-model-builder/">RU</a><a href="/fr/wiki-item-model-builder/">FR</a><a href="/de/wiki-item-model-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Как собирать item definitions для Minecraft 1.21.4+</h1>
+        <p class="page-lead">Сложность новой папки items не в том, что файл большой. Сложность в том, чтобы каждый раз выбрать правильный тип ветвления. Этот гайд как раз про этот выбор.</p>
+    </section>
+    <article>
+<div class="tool-button-row">
+    <a class="tool-button" href="/ru/item-model-builder/">Открыть конструктор item_model</a>
+    <a class="tool-button tool-button-secondary" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
+</div>
+<h2>Зачем вообще появились item definitions</h2><div class="article-block">Minecraft 1.21.4 вынес логику отрисовки предметов в отдельные файлы <code>assets/&lt;namespace&gt;/items/</code>. То есть старое чувство “сейчас всё впихну в overrides” больше не даёт чистый результат.</div><div class="article-block">Новая система стала честнее: один файл может быть прямой model, select-деревом, range_dispatch по порогам или условным condition. Плюс в ясности, минус в том, что ручной каркас быстро надоедает.</div><h2>Подбирайте ветку под саму задачу</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Ветка</th><th>Когда подходит</th><th>Типичный пример</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>Нужна одна фиксированная модель.</td><td>Пропуск на базе paper.</td></tr><tr><td><code>minecraft:select</code></td><td>Одно свойство выбирает между именованными ветками.</td><td>Строковые состояния custom_model_data.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>Число пересекает пороги.</td><td>Стадии урона или заряд.</td></tr><tr><td><code>minecraft:condition</code></td><td>Модель зависит от true/false.</td><td>Выбранный предмет или использование предмета.</td></tr></tbody></table></div><h2>Практический workflow</h2><div class="article-block"><ol><li>Сначала определите путь файла внутри <code>items/</code>.</li><li>Выберите самый маленький тип ветвления, который реально объясняет логику.</li><li>Сначала настройте fallback, потом добавляйте ветки.</li><li>Скопируйте JSON и проверьте предмет в игре до того, как размножать паттерн по всему паку.</li></ol></div><h2>Типичные ошибки</h2><div class="article-block"><ul><li>Брать <code>select</code> там, где хватило бы обычной <code>model</code>.</li><li>Забывать fallback и потом терять базовое чтение файла.</li><li>Смешивать ожидания строковых и числовых значений в одной definition.</li><li>Называть файл и model path так по-разному, что команда уже не понимает, что к чему относится.</li></ul></div><h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Нужен ли select всегда, если речь про CustomModelData?</h3><p>Нет. Если у предмета только один внешний вид, обычный model-файл проще. Select нужен, когда один definition должен ветвиться на несколько обликов.</p><h3>Когда range_dispatch лучше, чем select?</h3><p>Когда решение числовое и упорядоченное: урон, кулдаун, заряд или любое пороговое значение.</p><h3>Почему начинать с fallback?</h3><p>Потому что fallback — это базовое чтение предмета. Когда оно правильно, все остальные ветки уже легче оценивать.</p><h3>Можно ли держать item-команду отдельно от model-файла?</h3><p>Да, и это одна из сильных сторон новой системы. Конструктор отвечает только за визуальную definition-сторону.</p><h3>Как это связано с остальным сайтом?</h3><p>Item model builder собирает definition JSON, custom item builder — /give-команду, а resource-pack generator помогает упаковать визуальные файлы.</p></div></div></article>
+</main>
+<footer class="site-footer">
+    <span>Куб в квадрате</span>
+    <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
+</footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

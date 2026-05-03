@@ -1,0 +1,10 @@
+# Publish item model builder bundle
+
+Release date: 2026-06-07
+
+Includes:
+- /item-model-builder/
+- /wiki-item-model-builder/
+- localized EN/RU/FR/DE pages
+- updated assets/site.js for global discovery
+- updated sitemap.xml

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Constructeur item_model pour Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assemblez le JSON des item definitions Minecraft 1.21.4+ avec les branches model, select, range_dispatch et condition.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/item-model-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/item-model-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/item-model-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/item-model-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/item-model-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/item-model-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Constructeur item_model pour Minecraft | Cube in Square">
+    <meta property="og:description" content="Assemblez le JSON des item definitions Minecraft 1.21.4+ avec les branches model, select, range_dispatch et condition.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/item-model-builder/">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Constructeur item_model pour Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Assemblez le JSON des item definitions Minecraft 1.21.4+ avec les branches model, select, range_dispatch et condition.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/villager-trades.css">
+    <link rel="stylesheet" href="/assets/item-model-builder.css">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://cubeinsquare.com/#organization",
+      "name": "Cube in Square",
+      "url": "https://cubeinsquare.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://cubeinsquare.com/assets/server-icon.png"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://cubeinsquare.com/fr/item-model-builder/#app",
+      "name": "Constructeur item_model pour Minecraft",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "url": "https://cubeinsquare.com/fr/item-model-builder/",
+      "description": "Assemblez le JSON des item definitions Minecraft 1.21.4+ avec les branches model, select, range_dispatch et condition.",
+      "publisher": {
+        "@id": "https://cubeinsquare.com/#organization"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cubeinsquare.com/fr/item-model-builder/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://cubeinsquare.com/fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://cubeinsquare.com/fr/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Constructeur item_model pour Minecraft",
+          "item": "https://cubeinsquare.com/fr/item-model-builder/"
+        }
+      ]
+    }
+  ]
+}</script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/fr/wiki/#general-wiki">Articles généraux</a>
+                        <div class="mega-sublist">
+                            <a href="/fr/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/fr/wiki/#resource-pack-paths">Structure du pack de ressources</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/fr/wiki/#resource-pack-generator-wiki">Générateur de packs de ressources Minecraft</a>
+                        <div class="mega-sublist">
+                            <a href="/fr/wiki-resource-pack-generator/">Utiliser le générateur</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/fr/wiki/#other-tools-wiki">Autres outils</a>
+                        <div class="mega-sublist">
+                            <a href="/fr/tools/">Catalogue des outils</a><a href="/fr/wiki-skin-editor/">Éditeur de skins</a><a href="/fr/wiki-texture-painter/">Éditeur de textures</a><a href="/fr/wiki-custom-potions/">Potions personnalisées</a>
+                            <a href="/fr/wiki-custom-villager-trades/">Échanges de villageois</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/fr/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Comment un objet devient plusieurs modèles sans mods.</span></a>
+                    <a class="mega-card" href="/fr/wiki-resource-pack-generator/"><strong>Guide du générateur</strong><span>Workflow étape par étape pour créer un pack.</span></a>
+                    <a class="mega-card" href="/fr/wiki-skin-editor/"><strong>Guide skin editor</strong><span>Comment peindre l’atlas et le modèle 3D ensemble.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/fr/resource-pack-generator/">Générateur de packs de ressources Minecraft</a>
+                    <a href="/fr/skin-editor/">Éditeur de skins Minecraft</a>
+                    <a href="/fr/texture-painter/">Éditeur de textures</a>
+                    <a href="/fr/custom-villager-trades/">Échanges personnalisés de villageois</a>
+                    <a href="/fr/custom-potions/">Potions personnalisées</a>
+                    <a href="/fr/tool-coming-soon/">Outils à venir</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/fr/skin-editor/"><strong>Skin editor</strong><span>Dessinez sur l’atlas ou directement sur le modèle 3D.</span></a>
+                    <a class="mega-card" href="/fr/texture-painter/"><strong>Texture painter</strong><span>Choisissez un canevas PNG et envoyez-le dans votre workflow de pack.</span></a>
+                    <a class="mega-card" href="/fr/resource-pack-generator/"><strong>Générateur de pack</strong><span>Objets, blocs, armures, CustomModelData et aperçu.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/fr/about/">Projet</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/fr/about/">Cube in Square</a>
+                <a href="/fr/privacy-policy/">Politique de confidentialité</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/fr/wiki/" method="get">
+            <input type="text" name="q" placeholder="Rechercher sur le site...">
+            <button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/item-model-builder/">EN</a><a href="/ru/item-model-builder/">RU</a><a class="is-active" href="/fr/item-model-builder/">FR</a><a href="/de/item-model-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell">
+    <section class="page-hero">
+        <h1>Constructeur item_model pour Minecraft</h1>
+        <p class="page-lead">Construisez les nouveaux fichiers <code>assets/&lt;namespace&gt;/items/</code>. Choisissez la branche, définissez le fallback, ajoutez les cases puis copiez le JSON sans retaper toute l’ossature.</p>
+    </section>
+    
+    <section class="page-section tool-layout">
+        <div class="tool-primary-column">
+            <div class="tool-panel">
+                <div class="tool-button-row">
+                    <a class="tool-button" href="/fr/wiki-item-model-builder/">Lire le guide</a>
+                    <a class="tool-button tool-button-secondary" href="/fr/resource-pack-generator/">Ouvrir le générateur de pack</a>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Réglages de la definition</h2>
+                <div class="tool-form-grid">
+                    <div class="tool-field">
+                        <label for="imb-mode">Mode de definition</label>
+                        <select id="imb-mode">
+                            <option value="model">Model direct</option>
+                            <option value="select">select</option>
+                            <option value="range_dispatch">range_dispatch</option>
+                            <option value="condition">condition</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-namespace">Namespace</label>
+                        <input id="imb-namespace" type="text" value="cubeinsquare">
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-file">Chemin de definition</label>
+                        <input id="imb-file" type="text" value="paper/guild_pass">
+                    </div>
+                    <div class="tool-field">
+                        <label for="imb-fallback">Modèle fallback</label>
+                        <input id="imb-fallback" type="text" value="minecraft:item/paper">
+                    </div>
+                    <div class="tool-field" data-imb-property-field>
+                        <label for="imb-property">Propriété</label>
+                        <select id="imb-property"></select>
+                    </div>
+                    <div class="tool-field" data-imb-index-field hidden>
+                        <label for="imb-index">Index CustomModelData</label>
+                        <input id="imb-index" type="number" min="0" value="0">
+                    </div>
+                </div>
+                <section class="imb-branch-section">
+                    <div class="section-heading">
+                        <h3>Branches</h3>
+                        <button class="tool-button tool-button-secondary" id="imb-add-case" type="button">Ajouter une branche</button>
+                    </div>
+                    <div id="imb-branch-list" class="imb-branch-list"></div>
+                </section>
+                <div class="tool-button-row">
+                    <button class="tool-button" id="imb-load-example" type="button">Charger un exemple</button>
+                    <button class="tool-button tool-button-secondary" id="imb-reset" type="button">Réinitialiser</button>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Item definition générée</h2>
+                <p class="tool-summary" id="imb-summary"></p>
+                <textarea id="imb-output" class="command-output" readonly></textarea>
+                <div class="tool-button-row">
+                    <button class="tool-button" id="imb-copy" type="button" data-copied-label="Copié">Copier le JSON</button>
+                </div>
+            </div>
+        </div>
+        <aside class="tool-secondary-column">
+            <div class="tool-panel">
+                <h2>Ce que cela résout</h2>
+                <ul class="item-builder-help"><li>Évite d’écrire à la main l’enveloppe model/select/range_dispatch.</li><li>Garde le dossier items et la logique de branches lisibles pour toute l’équipe.</li><li>Permet de tester une definition avant une migration de pack plus large.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Workflow pratique</h2>
+                <p>Utilisez ce builder quand les chemins de modèles sont déjà décidés et qu’il reste surtout la logique de branchement. Si la partie visuelle n’est pas encore emballée, terminez-la d’abord dans le générateur de pack.</p>
+            </div>
+        </aside>
+    </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/item-model-builder.js"></script>
+</body>
+</html>

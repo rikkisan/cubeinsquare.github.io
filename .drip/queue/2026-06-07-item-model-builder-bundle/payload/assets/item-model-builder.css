@@ -1,0 +1,9 @@
+
+.tool-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,0.85fr);gap:24px}
+.tool-primary-column,.tool-secondary-column{display:grid;gap:24px;align-content:start}
+.imb-branch-section{display:grid;gap:14px;margin-top:18px}
+.section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.imb-branch-list{display:grid;gap:14px}
+.imb-branch-card{border:1px solid rgba(116,161,255,.22);background:rgba(18,24,48,.74);border-radius:16px;padding:16px;display:grid;gap:14px}
+.imb-branch-actions{display:flex;justify-content:flex-end}
+@media (max-width: 980px){.tool-layout{grid-template-columns:1fr}}
