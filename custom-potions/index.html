@@ -244,7 +244,16 @@
                         <input id="pp-name" type="text" placeholder="Watcher's Draught">
                     </div>
                     <div class="tool-field">
-                        <label for="pp-custom-model-data">CustomModelData</label>
+                        <div class="tool-label-with-help">
+                            <label for="pp-custom-model-data">CustomModelData</label>
+                            <div class="field-help" tabindex="0" aria-label="What is CustomModelData?">
+                                <span class="field-help-trigger" aria-hidden="true">?</span>
+                                <div class="field-help-popover">
+                                    <p>Model ID from your resource pack. It changes the look, not the potion effect.</p>
+                                    <a href="/wiki-custom-model-data/">Read the article</a>
+                                </div>
+                            </div>
+                        </div>
                         <input id="pp-custom-model-data" type="number" min="0" value="0">
                     </div>
                     <div class="tool-field" style="grid-column: 1 / -1;">

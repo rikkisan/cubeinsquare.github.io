@@ -254,7 +254,16 @@
                         <input id="pp-name" type="text" placeholder="Draught de veille">
                     </div>
                     <div class="tool-field">
-                        <label for="pp-custom-model-data">CustomModelData</label>
+                        <div class="tool-label-with-help">
+                            <label for="pp-custom-model-data">CustomModelData</label>
+                            <div class="field-help" tabindex="0" aria-label="Qu'est-ce que le CustomModelData ?">
+                                <span class="field-help-trigger" aria-hidden="true">?</span>
+                                <div class="field-help-popover">
+                                    <p>ID de modèle dans votre resource pack. Il change l'apparence, pas l'effet de la potion.</p>
+                                    <a href="/fr/wiki-custom-model-data/">Lire l’article</a>
+                                </div>
+                            </div>
+                        </div>
                         <input id="pp-custom-model-data" type="number" min="0" value="0">
                     </div>
                     <div class="tool-field" style="grid-column: 1 / -1;">

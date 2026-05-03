@@ -254,7 +254,16 @@
                         <input id="pp-name" type="text" placeholder="Зелье дозорного">
                     </div>
                     <div class="tool-field">
-                        <label for="pp-custom-model-data">CustomModelData</label>
+                        <div class="tool-label-with-help">
+                            <label for="pp-custom-model-data">CustomModelData</label>
+                            <div class="field-help" tabindex="0" aria-label="Что такое CustomModelData?">
+                                <span class="field-help-trigger" aria-hidden="true">?</span>
+                                <div class="field-help-popover">
+                                    <p>ID модели из ресурспака. Меняет внешний вид, а не эффект зелья.</p>
+                                    <a href="/ru/wiki-custom-model-data/">Читать статью</a>
+                                </div>
+                            </div>
+                        </div>
                         <input id="pp-custom-model-data" type="number" min="0" value="0">
                     </div>
                     <div class="tool-field" style="grid-column: 1 / -1;">

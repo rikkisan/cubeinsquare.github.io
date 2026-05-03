@@ -254,7 +254,16 @@
                         <input id="pp-name" type="text" placeholder="Trank des Wächters">
                     </div>
                     <div class="tool-field">
-                        <label for="pp-custom-model-data">CustomModelData</label>
+                        <div class="tool-label-with-help">
+                            <label for="pp-custom-model-data">CustomModelData</label>
+                            <div class="field-help" tabindex="0" aria-label="Was ist CustomModelData?">
+                                <span class="field-help-trigger" aria-hidden="true">?</span>
+                                <div class="field-help-popover">
+                                    <p>Modell-ID aus deinem Resource Pack. Sie ändert das Aussehen, nicht den Trankeffekt.</p>
+                                    <a href="/de/wiki-custom-model-data/">Artikel lesen</a>
+                                </div>
+                            </div>
+                        </div>
                         <input id="pp-custom-model-data" type="number" min="0" value="0">
                     </div>
                     <div class="tool-field" style="grid-column: 1 / -1;">
