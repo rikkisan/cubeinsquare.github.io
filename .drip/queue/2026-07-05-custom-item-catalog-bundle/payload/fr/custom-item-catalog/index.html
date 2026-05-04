@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Catalogue d’objets custom Minecraft</h1>
-        <p class="page-lead">C’est la couche d’organisation entre “on a quelques items sympas” et “on en a maintenant trente et plus personne ne sait quel papier fait quoi”.</p>
+        <h1>Minecraft Custom Item Catalog</h1>
+        <p class="page-lead">C’est la couche de planification entre "on a quelques objets sympas" et "on a maintenant trente identifiants et plus personne ne sait quel papier correspond à quoi". Gardez un registre local, recherchez-le, exportez-le et arrêtez de deviner.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -176,15 +176,15 @@
             <div class="tool-panel">
                 <h2>Entrée du catalogue</h2>
                 <div class="tool-form-grid">
-                    <div class="tool-field"><label for="cic-id">Internal ID</label><input id="cic-id" type="text" placeholder="guild_pass"></div>
-                    <div class="tool-field"><label for="cic-name">Nom visible</label><input id="cic-name" type="text" placeholder="Guild pass"></div>
+                    <div class="tool-field"><label for="cic-id">ID interne</label><input id="cic-id" type="text" placeholder="guild_pass"></div>
+                    <div class="tool-field"><label for="cic-name">Nom affiché</label><input id="cic-name" type="text" placeholder="Guild pass"></div>
                     <div class="tool-field"><label for="cic-base">Objet de base</label><input id="cic-base" type="text" placeholder="paper"></div>
                     <div class="tool-field"><label for="cic-version">Version</label><select id="cic-version"><option value="legacy">Before 1.20.5</option><option value="current">1.20.5-1.21.3</option><option value="modern">1.21.4+</option></select></div>
                     <div class="tool-field"><label for="cic-hidden">ID caché</label><input id="cic-hidden" type="text" placeholder="quest.pass.guild"></div>
                     <div class="tool-field"><label for="cic-model">item_model</label><input id="cic-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass"></div>
                     <div class="tool-field"><label for="cic-cmd">CustomModelData</label><input id="cic-cmd" type="text" placeholder="2047 / guild_pass"></div>
                     <div class="tool-field"><label for="cic-tags">Tags</label><input id="cic-tags" type="text" placeholder="guild, pass, quest"></div>
-                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-notes">Notes</label><textarea id="cic-notes" rows="4" placeholder="Ce qu’il faut retenir sur cet objet."></textarea></div>
+                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-notes">Notes</label><textarea id="cic-notes" rows="4" placeholder="What matters about this item?"></textarea></div>
                 </div>
                 <div class="tool-button-row">
                     <button class="tool-button" id="cic-save" type="button">Enregistrer</button>
@@ -194,21 +194,32 @@
             </div>
             <div class="tool-panel">
                 <div class="tool-form-grid">
-                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-search">Rechercher dans le catalogue</label><input id="cic-search" type="text" placeholder="ID, nom, tags..."></div>
+                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-search">Rechercher dans le catalogue</label><input id="cic-search" type="text" placeholder="ID, name, tags..."></div>
                 </div>
                 <div class="tool-button-row">
+                    <button class="tool-button tool-button-secondary" id="cic-import-json" type="button">Importer JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-json" type="button">Exporter JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-csv" type="button">Exporter CSV</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-md" type="button">Exporter Markdown</button>
+                    <button class="tool-button tool-button-secondary" id="cic-clear" type="button">Vider le catalogue</button>
                 </div>
+                <input id="cic-import-file" type="file" accept=".json,application/json" hidden>
                 <div class="catalog-summary-grid" id="cic-stats"></div>
                 <div class="catalog-entry-list" id="cic-list"></div>
             </div>
         </div>
         <aside class="tool-secondary-column">
+            <div class="tool-panel catalog-browser-note">
+                <h2>Stocké dans ce navigateur</h2>
+                <p>Utilisez-le comme registre local pendant que vous posez IDs, hooks visuels et notes. Exportez en JSON ou CSV quand il faut partager le plan avec l’équipe.</p>
+            </div>
             <div class="tool-panel">
                 <h2>Pourquoi garder un catalogue ?</h2>
-                <ul class="item-builder-help"><li>Les IDs cachés en doublon se détectent avant de devenir des bugs de quête.</li><li>Objet de base, nom visible et hook de modèle restent lisibles au même endroit.</li><li>L’export donne à l’équipe quelque chose de plus utile que des captures d’écran.</li></ul>
+                <ul class="item-builder-help"><li>Les IDs cachés en double se repèrent avant de devenir des bugs de quête.</li><li>Objet de base, nom affiché et hook visuel restent lisibles au même endroit.</li><li>L’export donne au reste de l’équipe quelque chose de plus utile que des captures.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Les premiers champs utiles</h2>
+                <ul class="item-builder-help"><li>Commencez par un ID interne, un ID caché et l’objet de base.</li><li>Ajoutez ensuite item_model ou CustomModelData selon la version visée.</li><li>Gardez les notes pour les règles de quête, la propriété d’un PNJ ou les rappels côté pack.</li></ul>
             </div>
         </aside>
     </section>

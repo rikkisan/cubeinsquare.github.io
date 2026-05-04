@@ -121,7 +121,7 @@
 <main class="page-shell">
     <section class="page-hero">
         <h1>Minecraft Item Model Builder</h1>
-        <p class="page-lead">Build the new item definition files that live in <code>assets/&lt;namespace&gt;/items/</code>. Choose the branch type, wire the fallback, add cases, then copy the JSON into your pack without hand-writing the fragile skeleton.</p>
+        <p class="page-lead">Build the new item definition files that live in assets/<namespace>/items/. Choose the branch type, wire the fallback, add the cases, and copy the JSON into your pack without hand-writing the fragile wrapper every time.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -130,6 +130,16 @@
                 <div class="tool-button-row">
                     <a class="tool-button" href="/wiki-item-model-builder/">Read guide</a>
                     <a class="tool-button tool-button-secondary" href="/resource-pack-generator/">Open pack generator</a>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Quick starts</h2>
+                <p class="tool-summary">Load a starter pattern, then swap the file paths and values to match your real pack.</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button" type="button" data-imb-example="singleProp">Single display model</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="stateSwitch">Selected state</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Charge stages</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="handContext">Main-hand context</button>
                 </div>
             </div>
             <div class="tool-panel">
@@ -165,6 +175,11 @@
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
                 </div>
+                <p class="tool-summary" id="imb-mode-note"></p>
+                <div class="tool-note-card">
+                    <strong id="imb-path-preview"></strong>
+                    <span>This is the exact JSON path you will create inside the pack.</span>
+                </div>
                 <section class="imb-branch-section">
                     <div class="section-heading">
                         <h3>Branches</h3>
@@ -188,12 +203,12 @@
         </div>
         <aside class="tool-secondary-column">
             <div class="tool-panel">
-                <h2>What this solves</h2>
-                <ul class="item-builder-help"><li>Stop hand-writing the model/select/range_dispatch wrapper every time.</li><li>Keep the items folder and the pack-side branch logic readable for the whole team.</li><li>Prototype one item definition before you commit to a larger pack migration.</li></ul>
+                <h2>Where this helps</h2>
+                <ul class="item-builder-help"><li>Stop hand-writing the model/select/range_dispatch wrapper every time.</li><li>Keep the items folder readable for the whole team instead of hiding logic inside scattered notes.</li><li>Prototype one item definition before you commit to a larger migration.</li></ul>
             </div>
             <div class="tool-panel">
-                <h2>Practical workflow</h2>
-                <p>Use the builder when you already know the model paths and want the branch logic next. If the textures and models still need to be packaged, finish the visual side in the resource-pack generator first.</p>
+                <h2>Before export</h2>
+                <ul class="item-builder-help"><li>Confirm the model paths already exist in your resource pack.</li><li>Keep fallback models vanilla-safe so missing branches do not show purple-black errors.</li><li>If the branch keys come from custom_model_data, match the correct index and slot strategy in the item command.</li></ul>
             </div>
         </aside>
     </section>

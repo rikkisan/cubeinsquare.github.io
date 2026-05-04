@@ -1,6 +1,9 @@
-
 .tool-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.8fr);gap:24px}
 .tool-primary-column,.tool-secondary-column{display:grid;gap:24px;align-content:start}
+.planner-preset-grid{display:flex;flex-wrap:wrap;gap:10px}
+.planner-mode-note{margin-top:14px}
+.tool-chip-button{padding:10px 14px;border-radius:999px;border:1px solid rgba(116,161,255,.24);background:rgba(65,115,222,.12);color:#e8efff;font:inherit;font-weight:600;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.tool-chip-button:hover,.tool-chip-button:focus-visible{background:rgba(65,115,222,.2);border-color:rgba(116,161,255,.36);transform:translateY(-1px)}
 .planner-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);gap:18px}
 .planner-canvas-frame{border:1px solid rgba(116,161,255,.18);border-radius:18px;background:linear-gradient(180deg,rgba(13,19,39,.96),rgba(8,12,24,.92));padding:18px;min-height:420px}
 .planner-canvas-frame canvas{width:100%;height:auto;display:block;image-rendering:pixelated}

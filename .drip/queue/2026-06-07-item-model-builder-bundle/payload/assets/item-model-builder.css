@@ -1,6 +1,11 @@
-
 .tool-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,0.85fr);gap:24px}
 .tool-primary-column,.tool-secondary-column{display:grid;gap:24px;align-content:start}
+.tool-chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.tool-chip-button{padding:10px 14px;border-radius:999px;border:1px solid rgba(116,161,255,.24);background:rgba(65,115,222,.12);color:#e8efff;font:inherit;font-weight:600;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.tool-chip-button:hover,.tool-chip-button:focus-visible{background:rgba(65,115,222,.2);border-color:rgba(116,161,255,.36);transform:translateY(-1px)}
+.tool-note-card{margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid rgba(116,161,255,.2);background:rgba(18,24,48,.62);display:grid;gap:6px}
+.tool-note-card strong{font-size:15px;color:#edf3ff}
+.tool-note-card span{font-size:14px;color:#9eb0d4}
 .imb-branch-section{display:grid;gap:14px;margin-top:18px}
 .section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .imb-branch-list{display:grid;gap:14px}

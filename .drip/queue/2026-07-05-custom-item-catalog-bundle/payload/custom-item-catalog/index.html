@@ -121,7 +121,7 @@
 <main class="page-shell">
     <section class="page-hero">
         <h1>Minecraft Custom Item Catalog</h1>
-        <p class="page-lead">This is the planning layer between “we have a few cool items” and “we now have thirty identifiers and nobody remembers which paper is which”. Build a local catalog, search it, export it, and stop guessing.</p>
+        <p class="page-lead">This is the planning layer between "we have a few cool items" and "we now have thirty identifiers and nobody remembers which paper is which". Keep a local registry, search it, export it, and stop guessing.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -156,18 +156,29 @@
                     <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-search">Search catalog</label><input id="cic-search" type="text" placeholder="ID, name, tags..."></div>
                 </div>
                 <div class="tool-button-row">
+                    <button class="tool-button tool-button-secondary" id="cic-import-json" type="button">Import JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-json" type="button">Export JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-csv" type="button">Export CSV</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-md" type="button">Export Markdown</button>
+                    <button class="tool-button tool-button-secondary" id="cic-clear" type="button">Clear catalog</button>
                 </div>
+                <input id="cic-import-file" type="file" accept=".json,application/json" hidden>
                 <div class="catalog-summary-grid" id="cic-stats"></div>
                 <div class="catalog-entry-list" id="cic-list"></div>
             </div>
         </div>
         <aside class="tool-secondary-column">
+            <div class="tool-panel catalog-browser-note">
+                <h2>Stored in this browser</h2>
+                <p>Use this as a local working registry while you sketch IDs, hooks, and notes. Export JSON or CSV when you want to hand the plan to the rest of the team.</p>
+            </div>
             <div class="tool-panel">
                 <h2>Why keep a catalog?</h2>
-                <ul class="item-builder-help"><li>Duplicate hidden IDs are easier to catch before they become quest bugs.</li><li>Base item, display name, and model hook stay readable in one place.</li><li>The export gives the rest of the team something more useful than screenshots.</li></ul>
+                <ul class="item-builder-help"><li>Duplicate hidden IDs are easier to catch before they become quest bugs.</li><li>Base item, display name, and visual hook stay readable in one place.</li><li>The export gives the rest of the team something more useful than screenshots.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Good first fields</h2>
+                <ul class="item-builder-help"><li>Start with an internal ID, hidden ID, and base item.</li><li>Then add either item_model or CustomModelData depending on the version you ship.</li><li>Use notes for quest rules, NPC ownership, or pack-side reminders that will matter again later.</li></ul>
             </div>
         </aside>
     </section>

@@ -137,7 +137,14 @@
                 <div class="tool-form-grid">
                     <div class="tool-field"><label for="cdp-mode">Mode</label><select id="cdp-mode"><option value="filled_circle">Filled circle</option><option value="outline_circle">Outline circle</option><option value="ring">Thick ring</option><option value="arch">Arch</option><option value="dome_profile">Dome profile</option></select></div>
                     <div class="tool-field"><label for="cdp-radius">Radius</label><input id="cdp-radius" type="number" min="1" max="64" value="8"></div>
-                    <div class="tool-field"><label for="cdp-thickness">Thickness</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                    <div class="tool-field" data-cdp-thickness-field><label for="cdp-thickness">Thickness</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                </div>
+                <p class="tool-summary planner-mode-note" id="cdp-mode-note"></p>
+                <div class="planner-preset-grid">
+                    <button class="tool-chip-button" type="button" data-cdp-preset="town">Town square</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="ring">Ritual ring</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="cap">Watchtower cap</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="arch">Gate arch</button>
                 </div>
             </div>
             <div class="tool-panel">
@@ -148,6 +155,7 @@
                 </div>
                 <div class="tool-button-row">
                     <button class="tool-button" id="cdp-copy" type="button" data-copied-label="Copied">Copy plan</button>
+                    <button class="tool-button tool-button-secondary" id="cdp-copy-stack" type="button" data-copied-label="Copied" hidden>Copy stack</button>
                 </div>
                 <div class="catalog-summary-grid" id="cdp-stats"></div>
                 <div class="planner-stack-list" id="cdp-stack"></div>
@@ -156,7 +164,11 @@
         <aside class="tool-secondary-column">
             <div class="tool-panel">
                 <h2>When this planner is enough</h2>
-                <ul class="item-builder-help"><li>Round plazas, towers, ritual rings, wells, and stage footprints.</li><li>Dome caps where you mostly care about each radius layer instead of a full sphere shell.</li><li>Arches and ring outlines that need a fast readable plan, not a heavy 3D build sheet.</li></ul>
+                <ul class="item-builder-help"><li>Round plazas, towers, wells, and ritual rings.</li><li>Dome caps where you mostly care about each radius layer instead of a full 3D shell.</li><li>Arches and ring outlines that need a fast readable plan, not a heavy build sheet.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>When to switch to the sphere generator</h2>
+                <ul class="item-builder-help"><li>When the build needs a full hollow or solid sphere shell.</li><li>When you want every slice instead of only the footprint or dome profile.</li><li>When the circle turns into a larger structure and you need a full block count across layers.</li></ul>
             </div>
         </aside>
     </section>

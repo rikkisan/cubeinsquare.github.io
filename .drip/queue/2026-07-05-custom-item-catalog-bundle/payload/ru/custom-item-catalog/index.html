@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Каталог кастомных предметов Minecraft</h1>
-        <p class="page-lead">Это тот планировочный слой между “у нас есть пара прикольных предметов” и “у нас уже тридцать идентификаторов, и никто не помнит, какая paper за что отвечает”.</p>
+        <h1>Minecraft Custom Item Catalog</h1>
+        <p class="page-lead">Это слой планирования между "у нас есть пара крутых предметов" и "у нас уже тридцать идентификаторов, и никто не помнит, какая бумажка за что отвечает". Ведите локальный каталог, ищите по нему, выгружайте его и перестаньте гадать.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -170,13 +170,13 @@
             <div class="tool-panel">
                 <div class="tool-button-row">
                     <a class="tool-button" href="/ru/wiki-custom-item-catalog/">Читать гайд</a>
-                    <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть builder</a>
+                    <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть конструктор</a>
                 </div>
             </div>
             <div class="tool-panel">
                 <h2>Запись каталога</h2>
                 <div class="tool-form-grid">
-                    <div class="tool-field"><label for="cic-id">Internal ID</label><input id="cic-id" type="text" placeholder="guild_pass"></div>
+                    <div class="tool-field"><label for="cic-id">Внутренний ID</label><input id="cic-id" type="text" placeholder="guild_pass"></div>
                     <div class="tool-field"><label for="cic-name">Отображаемое имя</label><input id="cic-name" type="text" placeholder="Guild pass"></div>
                     <div class="tool-field"><label for="cic-base">Базовый предмет</label><input id="cic-base" type="text" placeholder="paper"></div>
                     <div class="tool-field"><label for="cic-version">Версия</label><select id="cic-version"><option value="legacy">Before 1.20.5</option><option value="current">1.20.5-1.21.3</option><option value="modern">1.21.4+</option></select></div>
@@ -184,7 +184,7 @@
                     <div class="tool-field"><label for="cic-model">item_model</label><input id="cic-model" type="text" placeholder="cubeinsquare:item/paper/guild_pass"></div>
                     <div class="tool-field"><label for="cic-cmd">CustomModelData</label><input id="cic-cmd" type="text" placeholder="2047 / guild_pass"></div>
                     <div class="tool-field"><label for="cic-tags">Теги</label><input id="cic-tags" type="text" placeholder="guild, pass, quest"></div>
-                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-notes">Заметки</label><textarea id="cic-notes" rows="4" placeholder="Что важно помнить об этом предмете?"></textarea></div>
+                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-notes">Заметки</label><textarea id="cic-notes" rows="4" placeholder="What matters about this item?"></textarea></div>
                 </div>
                 <div class="tool-button-row">
                     <button class="tool-button" id="cic-save" type="button">Сохранить запись</button>
@@ -194,21 +194,32 @@
             </div>
             <div class="tool-panel">
                 <div class="tool-form-grid">
-                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-search">Поиск по каталогу</label><input id="cic-search" type="text" placeholder="ID, имя, теги..."></div>
+                    <div class="tool-field" style="grid-column:1 / -1;"><label for="cic-search">Поиск по каталогу</label><input id="cic-search" type="text" placeholder="ID, name, tags..."></div>
                 </div>
                 <div class="tool-button-row">
+                    <button class="tool-button tool-button-secondary" id="cic-import-json" type="button">Импорт JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-json" type="button">Экспорт JSON</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-csv" type="button">Экспорт CSV</button>
                     <button class="tool-button tool-button-secondary" id="cic-export-md" type="button">Экспорт Markdown</button>
+                    <button class="tool-button tool-button-secondary" id="cic-clear" type="button">Очистить каталог</button>
                 </div>
+                <input id="cic-import-file" type="file" accept=".json,application/json" hidden>
                 <div class="catalog-summary-grid" id="cic-stats"></div>
                 <div class="catalog-entry-list" id="cic-list"></div>
             </div>
         </div>
         <aside class="tool-secondary-column">
+            <div class="tool-panel catalog-browser-note">
+                <h2>Хранится в этом браузере</h2>
+                <p>Используйте это как локальный рабочий реестр, пока набрасываете ID, визуальные хуки и заметки. Когда надо передать план команде, выгружайте JSON или CSV.</p>
+            </div>
             <div class="tool-panel">
-                <h2>Зачем вообще каталог?</h2>
-                <ul class="item-builder-help"><li>Дубли скрытых ID легче ловить до того, как они превращаются в баги квестов.</li><li>Базовый предмет, имя и model-хук остаются читаемыми в одном месте.</li><li>Экспорт даёт команде что-то полезнее, чем просто скриншоты.</li></ul>
+                <h2>Зачем вести каталог?</h2>
+                <ul class="item-builder-help"><li>Дубли скрытых ID проще поймать до того, как они станут квестовыми багами.</li><li>Базовый предмет, отображаемое имя и визуальный хук лежат в одном читаемом месте.</li><li>Экспорт даёт команде что-то полезнее, чем разрозненные скриншоты.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>С чего лучше начать</h2>
+                <ul class="item-builder-help"><li>Сначала заполняйте внутренний ID, скрытый ID и базовый предмет.</li><li>Потом добавляйте item_model или CustomModelData в зависимости от версии.</li><li>Заметки используйте для квестовой логики, владельцев NPC и pack-side напоминаний, которые потом снова пригодятся.</li></ul>
             </div>
         </aside>
     </section>

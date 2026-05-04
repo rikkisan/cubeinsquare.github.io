@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Планировщик кругов и куполов Minecraft</h1>
-        <p class="page-lead">Используйте это тогда, когда полный генератор сфер уже слишком тяжёлый. Сначала поймайте отпечаток, проверьте толщину кольца и прочитайте профиль купола до того, как строить его в мире.</p>
+        <h1>Minecraft Circle &amp; Dome Planner</h1>
+        <p class="page-lead">Используйте это, когда полный генератор сфер уже избыточен. Сначала зафиксируйте отпечаток, проверьте толщину кольца и прочитайте профиль купола до того, как начнёте ставить блоки в мире.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -174,11 +174,18 @@
                 </div>
             </div>
             <div class="tool-panel">
-                <h2>Управление формой</h2>
+                <h2>Настройки формы</h2>
                 <div class="tool-form-grid">
-                    <div class="tool-field"><label for="cdp-mode">Режим</label><select id="cdp-mode"><option value="filled_circle">Заполненный круг</option><option value="outline_circle">Контур круга</option><option value="ring">Толстое кольцо</option><option value="arch">Арка</option><option value="dome_profile">Профиль купола</option></select></div>
+                    <div class="tool-field"><label for="cdp-mode">Режим</label><select id="cdp-mode"><option value="filled_circle">Filled circle</option><option value="outline_circle">Outline circle</option><option value="ring">Thick ring</option><option value="arch">Arch</option><option value="dome_profile">Dome profile</option></select></div>
                     <div class="tool-field"><label for="cdp-radius">Радиус</label><input id="cdp-radius" type="number" min="1" max="64" value="8"></div>
-                    <div class="tool-field"><label for="cdp-thickness">Толщина</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                    <div class="tool-field" data-cdp-thickness-field><label for="cdp-thickness">Толщина</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                </div>
+                <p class="tool-summary planner-mode-note" id="cdp-mode-note"></p>
+                <div class="planner-preset-grid">
+                    <button class="tool-chip-button" type="button" data-cdp-preset="town">Городская площадь</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="ring">Ритуальное кольцо</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="cap">Колпак башни</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="arch">Арка ворот</button>
                 </div>
             </div>
             <div class="tool-panel">
@@ -189,6 +196,7 @@
                 </div>
                 <div class="tool-button-row">
                     <button class="tool-button" id="cdp-copy" type="button" data-copied-label="Скопировано">Скопировать план</button>
+                    <button class="tool-button tool-button-secondary" id="cdp-copy-stack" type="button" data-copied-label="Скопировано" hidden>Скопировать стек</button>
                 </div>
                 <div class="catalog-summary-grid" id="cdp-stats"></div>
                 <div class="planner-stack-list" id="cdp-stack"></div>
@@ -196,8 +204,12 @@
         </div>
         <aside class="tool-secondary-column">
             <div class="tool-panel">
-                <h2>Когда этого уже достаточно</h2>
-                <ul class="item-builder-help"><li>Круглые площади, башни, ритуальные кольца, колодцы и сценические отпечатки.</li><li>Купольные крышки, где важнее радиус каждого слоя, чем полный сферический shell.</li><li>Арки и кольцевые контуры, которым нужен быстрый читаемый план, а не тяжёлая 3D-раскладка.</li></ul>
+                <h2>Когда этого достаточно</h2>
+                <ul class="item-builder-help"><li>Круглые площади, башни, колодцы и ритуальные кольца.</li><li>Купольные колпаки, где важнее радиус каждого слоя, чем полная 3D-оболочка.</li><li>Арки и контуры колец, где нужен быстрый читаемый план, а не тяжёлый build sheet.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Когда пора переключаться на генератор сфер</h2>
+                <ul class="item-builder-help"><li>Когда нужна полноценная полая или цельная сфера.</li><li>Когда вам нужны все срезы, а не только отпечаток или профиль купола.</li><li>Когда круг превращается в большую конструкцию и нужен полный подсчёт блоков по слоям.</li></ul>
             </div>
         </aside>
     </section>

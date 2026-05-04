@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Planificateur de cercles et dômes Minecraft</h1>
-        <p class="page-lead">Utilisez ce planificateur quand le générateur de sphères complet est trop lourd pour la tâche. Fixez d’abord l’empreinte, vérifiez l’épaisseur de l’anneau et lisez le profil du dôme avant de poser les blocs.</p>
+        <h1>Minecraft Circle &amp; Dome Planner</h1>
+        <p class="page-lead">Utilisez cet outil quand le générateur de sphères complet est déjà trop lourd. Fixez d’abord l’empreinte, vérifiez l’épaisseur de l’anneau et lisez le profil du dôme avant de poser les blocs dans le monde.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -176,19 +176,27 @@
             <div class="tool-panel">
                 <h2>Contrôles de forme</h2>
                 <div class="tool-form-grid">
-                    <div class="tool-field"><label for="cdp-mode">Mode</label><select id="cdp-mode"><option value="filled_circle">Cercle plein</option><option value="outline_circle">Contour de cercle</option><option value="ring">Anneau épais</option><option value="arch">Arche</option><option value="dome_profile">Profil de dôme</option></select></div>
+                    <div class="tool-field"><label for="cdp-mode">Mode</label><select id="cdp-mode"><option value="filled_circle">Filled circle</option><option value="outline_circle">Outline circle</option><option value="ring">Thick ring</option><option value="arch">Arch</option><option value="dome_profile">Dome profile</option></select></div>
                     <div class="tool-field"><label for="cdp-radius">Rayon</label><input id="cdp-radius" type="number" min="1" max="64" value="8"></div>
-                    <div class="tool-field"><label for="cdp-thickness">Épaisseur</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                    <div class="tool-field" data-cdp-thickness-field><label for="cdp-thickness">Épaisseur</label><input id="cdp-thickness" type="number" min="1" max="12" value="2"></div>
+                </div>
+                <p class="tool-summary planner-mode-note" id="cdp-mode-note"></p>
+                <div class="planner-preset-grid">
+                    <button class="tool-chip-button" type="button" data-cdp-preset="town">Place ronde</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="ring">Anneau rituel</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="cap">Toit de tour</button>
+                    <button class="tool-chip-button" type="button" data-cdp-preset="arch">Arche de porte</button>
                 </div>
             </div>
             <div class="tool-panel">
-                <h2>Plan courant</h2>
+                <h2>Plan actuel</h2>
                 <div class="planner-grid">
                     <div class="planner-canvas-frame"><canvas id="cdp-canvas" width="600" height="600"></canvas></div>
                     <pre id="cdp-output" class="sphere-text-output"></pre>
                 </div>
                 <div class="tool-button-row">
                     <button class="tool-button" id="cdp-copy" type="button" data-copied-label="Copié">Copier le plan</button>
+                    <button class="tool-button tool-button-secondary" id="cdp-copy-stack" type="button" data-copied-label="Copié" hidden>Copier la pile</button>
                 </div>
                 <div class="catalog-summary-grid" id="cdp-stats"></div>
                 <div class="planner-stack-list" id="cdp-stack"></div>
@@ -196,8 +204,12 @@
         </div>
         <aside class="tool-secondary-column">
             <div class="tool-panel">
-                <h2>Quand ce planificateur suffit</h2>
-                <ul class="item-builder-help"><li>Places rondes, tours, anneaux rituels, puits et empreintes de scène.</li><li>Coiffes de dôme où le rayon de chaque couche compte plus qu’une sphère complète.</li><li>Arches et contours d’anneaux qui ont besoin d’un plan lisible, pas d’une grosse fiche 3D.</li></ul>
+                <h2>Quand cet outil suffit</h2>
+                <ul class="item-builder-help"><li>Places rondes, tours, puits et anneaux rituels.</li><li>Caps de dôme où l’on veut surtout lire chaque rayon de couche.</li><li>Arches et contours d’anneaux qui demandent un plan rapide et lisible.</li></ul>
+            </div>
+            <div class="tool-panel">
+                <h2>Quand passer au générateur de sphères</h2>
+                <ul class="item-builder-help"><li>Quand la construction demande une sphère pleine ou creuse complète.</li><li>Quand vous voulez toutes les tranches au lieu de la seule empreinte ou du profil.</li><li>Quand le cercle devient une structure plus large et qu’il faut un vrai comptage couche par couche.</li></ul>
             </div>
         </aside>
     </section>

@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Constructeur item_model pour Minecraft</h1>
-        <p class="page-lead">Construisez les nouveaux fichiers <code>assets/&lt;namespace&gt;/items/</code>. Choisissez la branche, définissez le fallback, ajoutez les cases puis copiez le JSON sans retaper toute l’ossature.</p>
+        <h1>Minecraft Item Model Builder</h1>
+        <p class="page-lead">Assemblez les nouveaux fichiers item definition dans assets/<namespace>/items/. Choisissez le type de branche, fixez le fallback, ajoutez les cas et copiez le JSON sans reconstruire la structure fragile à la main.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -170,16 +170,26 @@
             <div class="tool-panel">
                 <div class="tool-button-row">
                     <a class="tool-button" href="/fr/wiki-item-model-builder/">Lire le guide</a>
-                    <a class="tool-button tool-button-secondary" href="/fr/resource-pack-generator/">Ouvrir le générateur de pack</a>
+                    <a class="tool-button tool-button-secondary" href="/fr/resource-pack-generator/">Ouvrir le générateur</a>
                 </div>
             </div>
             <div class="tool-panel">
-                <h2>Réglages de la definition</h2>
+                <h2>Démarrages rapides</h2>
+                <p class="tool-summary">Chargez un modèle de départ puis remplacez les chemins et valeurs par ceux de votre pack.</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button" type="button" data-imb-example="singleProp">Une seule apparence</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="stateSwitch">État selected</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Étapes de charge</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="handContext">Contexte main</button>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Configuration de la definition</h2>
                 <div class="tool-form-grid">
                     <div class="tool-field">
                         <label for="imb-mode">Mode de definition</label>
                         <select id="imb-mode">
-                            <option value="model">Model direct</option>
+                            <option value="model">Direct model</option>
                             <option value="select">select</option>
                             <option value="range_dispatch">range_dispatch</option>
                             <option value="condition">condition</option>
@@ -190,7 +200,7 @@
                         <input id="imb-namespace" type="text" value="cubeinsquare">
                     </div>
                     <div class="tool-field">
-                        <label for="imb-file">Chemin de definition</label>
+                        <label for="imb-file">Chemin de la definition</label>
                         <input id="imb-file" type="text" value="paper/guild_pass">
                     </div>
                     <div class="tool-field">
@@ -205,6 +215,11 @@
                         <label for="imb-index">Index CustomModelData</label>
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
+                </div>
+                <p class="tool-summary" id="imb-mode-note"></p>
+                <div class="tool-note-card">
+                    <strong id="imb-path-preview"></strong>
+                    <span>Ceci est le chemin exact du JSON à créer dans le pack.</span>
                 </div>
                 <section class="imb-branch-section">
                     <div class="section-heading">
@@ -229,12 +244,12 @@
         </div>
         <aside class="tool-secondary-column">
             <div class="tool-panel">
-                <h2>Ce que cela résout</h2>
-                <ul class="item-builder-help"><li>Évite d’écrire à la main l’enveloppe model/select/range_dispatch.</li><li>Garde le dossier items et la logique de branches lisibles pour toute l’équipe.</li><li>Permet de tester une definition avant une migration de pack plus large.</li></ul>
+                <h2>Pourquoi l’utiliser</h2>
+                <ul class="item-builder-help"><li>Ne réécrivez plus la structure model/select/range_dispatch à chaque fois.</li><li>Gardez le dossier items lisible pour toute l’équipe.</li><li>Testez une definition avant de lancer une migration plus large du pack.</li></ul>
             </div>
             <div class="tool-panel">
-                <h2>Workflow pratique</h2>
-                <p>Utilisez ce builder quand les chemins de modèles sont déjà décidés et qu’il reste surtout la logique de branchement. Si la partie visuelle n’est pas encore emballée, terminez-la d’abord dans le générateur de pack.</p>
+                <h2>Avant l’export</h2>
+                <ul class="item-builder-help"><li>Vérifiez que les chemins de modèles existent déjà dans le resource pack.</li><li>Gardez un fallback sûr pour éviter les erreurs visuelles si une branche manque.</li><li>Si la logique dépend de custom_model_data, vérifiez l’index et la stratégie de slot côté commande.</li></ul>
             </div>
         </aside>
     </section>

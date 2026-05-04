@@ -161,8 +161,8 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>Конструктор item_model для Minecraft</h1>
-        <p class="page-lead">Собирайте новые item definition-файлы для <code>assets/&lt;namespace&gt;/items/</code>. Выберите тип ветвления, задайте fallback, добавьте cases и скопируйте JSON в пак без ручного скелета.</p>
+        <h1>Minecraft Item Model Builder</h1>
+        <p class="page-lead">Собирайте новые item definition JSON-файлы в assets/<namespace>/items/. Выберите тип ветвления, настройте fallback, добавьте кейсы и заберите готовый JSON без ручной сборки хрупкого каркаса.</p>
     </section>
     
     <section class="page-section tool-layout">
@@ -170,7 +170,17 @@
             <div class="tool-panel">
                 <div class="tool-button-row">
                     <a class="tool-button" href="/ru/wiki-item-model-builder/">Читать гайд</a>
-                    <a class="tool-button tool-button-secondary" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
+                    <a class="tool-button tool-button-secondary" href="/ru/resource-pack-generator/">Открыть генератор пака</a>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Быстрые старты</h2>
+                <p class="tool-summary">Загрузите стартовый паттерн, а потом просто замените пути и значения под свой пак.</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button" type="button" data-imb-example="singleProp">Одна модель</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="stateSwitch">Состояние selected</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Стадии заряда</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="handContext">Контекст руки</button>
                 </div>
             </div>
             <div class="tool-panel">
@@ -179,7 +189,7 @@
                     <div class="tool-field">
                         <label for="imb-mode">Режим definition</label>
                         <select id="imb-mode">
-                            <option value="model">Прямая model</option>
+                            <option value="model">Direct model</option>
                             <option value="select">select</option>
                             <option value="range_dispatch">range_dispatch</option>
                             <option value="condition">condition</option>
@@ -194,7 +204,7 @@
                         <input id="imb-file" type="text" value="paper/guild_pass">
                     </div>
                     <div class="tool-field">
-                        <label for="imb-fallback">Fallback model</label>
+                        <label for="imb-fallback">Fallback-модель</label>
                         <input id="imb-fallback" type="text" value="minecraft:item/paper">
                     </div>
                     <div class="tool-field" data-imb-property-field>
@@ -205,6 +215,11 @@
                         <label for="imb-index">Индекс CustomModelData</label>
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
+                </div>
+                <p class="tool-summary" id="imb-mode-note"></p>
+                <div class="tool-note-card">
+                    <strong id="imb-path-preview"></strong>
+                    <span>Именно по этому пути нужно сохранить JSON внутри пака.</span>
                 </div>
                 <section class="imb-branch-section">
                     <div class="section-heading">
@@ -219,7 +234,7 @@
                 </div>
             </div>
             <div class="tool-panel">
-                <h2>Сгенерированный item definition</h2>
+                <h2>Готовый item definition</h2>
                 <p class="tool-summary" id="imb-summary"></p>
                 <textarea id="imb-output" class="command-output" readonly></textarea>
                 <div class="tool-button-row">
@@ -229,12 +244,12 @@
         </div>
         <aside class="tool-secondary-column">
             <div class="tool-panel">
-                <h2>Что это закрывает</h2>
-                <ul class="item-builder-help"><li>Убирает рутину с ручным каркасом model/select/range_dispatch.</li><li>Помогает держать папку items и логику веток читаемыми для команды.</li><li>Даёт быстро проверить одну definition перед большой миграцией пака.</li></ul>
+                <h2>Где это помогает</h2>
+                <ul class="item-builder-help"><li>Больше не нужно вручную собирать model/select/range_dispatch обёртку каждый раз.</li><li>Папка items остаётся читаемой для всей команды, а не живёт в случайных заметках.</li><li>Можно быстро собрать одну definition перед более крупной миграцией пака.</li></ul>
             </div>
             <div class="tool-panel">
-                <h2>Практический workflow</h2>
-                <p>Используйте конструктор, когда пути моделей уже понятны и осталось собрать ветвление. Если сами текстуры и модели ещё не упакованы, сначала доведите визуальную часть в генераторе ресурс-паков.</p>
+                <h2>Перед экспортом</h2>
+                <ul class="item-builder-help"><li>Проверьте, что пути к моделям уже существуют в ресурспаке.</li><li>Держите fallback безопасным, чтобы при пропущенной ветке не увидеть фиолетово-чёрную ошибку.</li><li>Если ветка завязана на custom_model_data, сверьте нужный индекс и слот со стороной команды предмета.</li></ul>
             </div>
         </aside>
     </section>

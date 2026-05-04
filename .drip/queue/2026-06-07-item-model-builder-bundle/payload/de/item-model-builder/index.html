@@ -161,25 +161,35 @@
 </div>
 <main class="page-shell">
     <section class="page-hero">
-        <h1>item_model-Builder für Minecraft</h1>
-        <p class="page-lead">Baue die neuen Dateien unter <code>assets/&lt;namespace&gt;/items/</code>. Wähle den Zweigtyp, setze das Fallback, füge Fälle hinzu und kopiere das JSON ohne das fehleranfällige Grundgerüst per Hand.</p>
+        <h1>Minecraft Item Model Builder</h1>
+        <p class="page-lead">Baue die neuen Item-Definition-Dateien in assets/<namespace>/items/. Wähle den Verzweigungstyp, setze das Fallback, füge Fälle hinzu und kopiere den JSON-Block, ohne das fragile Grundgerüst jedes Mal per Hand zu schreiben.</p>
     </section>
     
     <section class="page-section tool-layout">
         <div class="tool-primary-column">
             <div class="tool-panel">
                 <div class="tool-button-row">
-                    <a class="tool-button" href="/de/wiki-item-model-builder/">Anleitung lesen</a>
+                    <a class="tool-button" href="/de/wiki-item-model-builder/">Guide lesen</a>
                     <a class="tool-button tool-button-secondary" href="/de/resource-pack-generator/">Pack-Generator öffnen</a>
+                </div>
+            </div>
+            <div class="tool-panel">
+                <h2>Schnellstarts</h2>
+                <p class="tool-summary">Lade ein Startmuster und tausche danach nur Pfade und Werte gegen deine echten Daten aus.</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button" type="button" data-imb-example="singleProp">Ein festes Modell</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="stateSwitch">Selected-Zustand</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Ladestufen</button>
+                    <button class="tool-chip-button" type="button" data-imb-example="handContext">Hand-Kontext</button>
                 </div>
             </div>
             <div class="tool-panel">
                 <h2>Definition einrichten</h2>
                 <div class="tool-form-grid">
                     <div class="tool-field">
-                        <label for="imb-mode">Definition-Modus</label>
+                        <label for="imb-mode">Definitionsmodus</label>
                         <select id="imb-mode">
-                            <option value="model">Direktes model</option>
+                            <option value="model">Direct model</option>
                             <option value="select">select</option>
                             <option value="range_dispatch">range_dispatch</option>
                             <option value="condition">condition</option>
@@ -206,6 +216,11 @@
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
                 </div>
+                <p class="tool-summary" id="imb-mode-note"></p>
+                <div class="tool-note-card">
+                    <strong id="imb-path-preview"></strong>
+                    <span>Genau an diesem Pfad legst du die JSON-Datei im Pack ab.</span>
+                </div>
                 <section class="imb-branch-section">
                     <div class="section-heading">
                         <h3>Zweige</h3>
@@ -219,7 +234,7 @@
                 </div>
             </div>
             <div class="tool-panel">
-                <h2>Erzeugte Item-Definition</h2>
+                <h2>Generierte Item-Definition</h2>
                 <p class="tool-summary" id="imb-summary"></p>
                 <textarea id="imb-output" class="command-output" readonly></textarea>
                 <div class="tool-button-row">
@@ -230,11 +245,11 @@
         <aside class="tool-secondary-column">
             <div class="tool-panel">
                 <h2>Wofür es gut ist</h2>
-                <ul class="item-builder-help"><li>Nimmt dir das manuelle model/select/range_dispatch-Grundgerüst ab.</li><li>Hält den items-Ordner und die Verzweigungslogik für das Team lesbar.</li><li>Hilft beim schnellen Test einer Definition vor einer größeren Pack-Migration.</li></ul>
+                <ul class="item-builder-help"><li>Die model/select/range_dispatch-Hülle muss nicht mehr jedes Mal neu geschrieben werden.</li><li>Der items-Ordner bleibt für das ganze Team lesbar.</li><li>Du kannst eine Definition testen, bevor du eine größere Pack-Migration angehst.</li></ul>
             </div>
             <div class="tool-panel">
-                <h2>Praktischer Workflow</h2>
-                <p>Nutze den Builder, wenn die Modellpfade schon feststehen und jetzt die Verzweigung gebaut werden muss. Wenn die visuelle Seite noch nicht sauber verpackt ist, erledige das zuerst im Pack-Generator.</p>
+                <h2>Vor dem Export</h2>
+                <ul class="item-builder-help"><li>Prüfe, dass die Modellpfade im Resource-Pack schon existieren.</li><li>Nutze ein sicheres Fallback, damit fehlende Zweige keine violett-schwarzen Fehler zeigen.</li><li>Wenn die Logik von custom_model_data abhängt, prüfe Index und Slot-Strategie auf der Befehlsseite.</li></ul>
             </div>
         </aside>
     </section>
