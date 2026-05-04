@@ -172,9 +172,13 @@
     </section>
 
     <article>
+        <h2>Why custom potions matter on a real server</h2>
+        <p>A custom potion is one of the quickest ways to make a reward feel authored instead of generic. The same bottle can become a healer’s draught, a dangerous experiment, a ritual catalyst, or a faction-only combat flask. That is why a potion tool matters: the object is small, but it often carries a surprising amount of story, balance, and version-specific syntax.</p>
+        <p>The builder is useful because it keeps all of those layers on one page. You decide what the bottle does, how it looks, how much of the effect is visible to the player, and which Minecraft syntax branch the final command needs.</p>
         <h2>What the tool builds</h2>
         <p>The builder outputs a ready <code>/give</code> command for <code>potion</code>, <code>splash_potion</code>, and <code>lingering_potion</code>. On one page you configure the base potion, extra effects, bottle color, lore, <code>CustomModelData</code>, and the syntax that matches your server version.</p>
-
+        <h2>Think of a custom potion as four layers</h2>
+        <table class="compact-table"><thead><tr><th>Layer</th><th>Question it answers</th><th>Typical examples</th></tr></thead><tbody><tr><td>Bottle type</td><td>How is the item delivered?</td><td>Drinkable, splash, lingering</td></tr><tr><td>Effect package</td><td>What does it do?</td><td>Swiftness, debuffs, mixed utility</td></tr><tr><td>Presentation</td><td>How should it feel?</td><td>Color, lore, custom name</td></tr><tr><td>Visual hook</td><td>Does it need a custom icon or model?</td><td>CustomModelData with a pack-side asset</td></tr></tbody></table>
         <h2>Base potion and custom effects</h2>
         <p>The base potion field accepts vanilla IDs such as <code>swiftness</code>, <code>long_regeneration</code>, or <code>strong_healing</code>. That gives the bottle its built-in foundation, while the <code>custom effects</code> block adds precise tuning for duration, level, particles, icon, and <code>ambient</code>.</p>
 <pre><code>potion_contents={
@@ -184,43 +188,19 @@
   ],
   custom_color:7173375
 }</code></pre>
-
+        <p>This matters because many good RP potions are not purely vanilla and not purely custom either. They often start from a normal potion identity and then get one or two precise changes that make them fit the server’s fiction.</p>
         <h2>Version split</h2>
         <p>Since Minecraft 1.20.5, items use Data Components. In practice that gives custom potions two common formats:</p>
-        <ul>
-            <li><strong>1.20.5+</strong> uses square brackets with <code>potion_contents</code>, plus <code>item_name</code>, <code>lore</code>, and <code>custom_model_data</code>.</li>
-            <li><strong>Before 1.20.5</strong> uses NBT tags such as <code>Potion</code>, <code>CustomPotionEffects</code>, <code>CustomPotionColor</code>, and the old <code>display</code> block.</li>
-        </ul>
+        <ul><li><strong>1.20.5+</strong> uses square brackets with <code>potion_contents</code>, plus <code>item_name</code>, <code>lore</code>, and <code>custom_model_data</code>.</li><li><strong>Before 1.20.5</strong> uses NBT tags such as <code>Potion</code>, <code>CustomPotionEffects</code>, <code>CustomPotionColor</code>, and the old <code>display</code> block.</li></ul>
 <pre><code>/give @p minecraft:potion[potion_contents={potion:"minecraft:healing"}] 1
 /give @p minecraft:potion{Potion:"minecraft:healing"} 1</code></pre>
-
-        <h2>Why legacy is trickier</h2>
-        <p>Old potion effects are stored through numeric IDs. The tool hides that translation step: you pick readable effect names like <code>speed</code> and <code>slow_falling</code>, and the builder injects the matching legacy values when they are supported.</p>
-
-        <h2>Color, lore, and presentation</h2>
-        <p>The same mechanical effect package can feel completely different depending on presentation. Bottle color changes the silhouette in inventory, lore adds narrative context, and <code>CustomModelData</code> lets you connect the potion to a special model or icon in your resource pack.</p>
-        <ul>
-            <li>A toxic-green concentrate with warning text in the lore.</li>
-            <li>A golden holy elixir with a rare visual style.</li>
-            <li>A faction-specific potion tied to a unique <code>CustomModelData</code> item model.</li>
-        </ul>
-
-        <h2>How to use the builder</h2>
-        <ol>
-            <li>Choose the syntax that matches your server version.</li>
-            <li>Pick the bottle type and a base potion if you need one.</li>
-            <li>Add one or more <code>custom effects</code> with duration and level.</li>
-            <li>Optionally enable bottle color, lore, and <code>CustomModelData</code>.</li>
-            <li>Copy the finished <code>/give</code> command into console or a command block.</li>
-        </ol>
-
-        <h2>Practical ideas</h2>
-        <ul>
-            <li>Quest bottles that grant a short utility buff before a scene.</li>
-            <li>Faction combat flasks with signature colors and lore.</li>
-            <li>Dangerous alchemy shop samples with a dramatic name, heavy debuff, and rare model.</li>
-            <li>Lingering bottles for arena or ritual events where the cloud must stay on location.</li>
-        </ul>
+        <p>The builder helps here because most broken potion commands are not bad ideas. They are copied syntax from the wrong era of Minecraft.</p>
+        <h2>Why legacy is trickier</h2><p>Old potion effects are stored through numeric IDs. The tool hides that translation step: you pick readable effect names like <code>speed</code> and <code>slow_falling</code>, and the builder injects the matching legacy values when they are supported.</p>
+        <h2>Color, lore, and presentation</h2><p>The same mechanical effect package can feel completely different depending on presentation. Bottle color changes the silhouette in inventory, lore adds narrative context, and <code>CustomModelData</code> lets you connect the potion to a special model or icon in your resource pack.</p><ul><li>A toxic-green concentrate with warning text in the lore.</li><li>A golden holy elixir with a rare visual style.</li><li>A faction-specific potion tied to a unique <code>CustomModelData</code> item model.</li></ul>
+        <h2>How to use the builder calmly</h2><ol><li>Choose the syntax that matches your server version.</li><li>Pick the bottle type and a base potion if you need one.</li><li>Add one or more <code>custom effects</code> with duration and level.</li><li>Decide whether the bottle needs a custom name, lore, and color.</li><li>Only then add <code>CustomModelData</code> if the pack actually has a matching visual hook.</li><li>Copy the finished <code>/give</code> command into console or a command block.</li></ol>
+        <h2>Practical ideas</h2><ul><li>Quest bottles that grant a short utility buff before a scene.</li><li>Faction combat flasks with signature colors and lore.</li><li>Dangerous alchemy shop samples with a dramatic name, heavy debuff, and rare model.</li><li>Lingering bottles for arena or ritual events where the cloud must stay on location.</li></ul>
+        <h2>Common mistakes</h2><ul><li>Mixing legacy syntax with component syntax in one command.</li><li>Adding CustomModelData even though the pack has no matching visual asset yet.</li><li>Overloading one bottle with too many effects and losing readability.</li><li>Ignoring lore and color, then wondering why the potion still feels like a generic vanilla bottle.</li><li>Testing only in chat when the command really belongs in a command block.</li></ul>
+        <h2>FAQ</h2><div class="faq-section"><h3>Do I need a resource pack for every custom potion?</h3><p>No. You only need a pack when the bottle should look different from vanilla.</p><h3>Can one potion mix a base potion and custom effects?</h3><p>Yes. That is often the cleanest way to create a recognizable bottle with one or two special twists.</p><h3>When should I use splash or lingering instead of a normal potion?</h3><p>When the delivery method is part of the scene: area denial, event clouds, ritual zones, or throwable support items.</p><h3>Does CustomModelData change the effect?</h3><p>No. It changes the visual hook. The effect package still comes from the potion data itself.</p><h3>What if I only want a quick colored bottle with lore?</h3><p>The builder is still useful. You do not need the most advanced fields to get a bottle that feels authored.</p></div>
     </article>
 </main>
 
