@@ -210,7 +210,14 @@
     <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
     <section class="page-hero"><h1>Minecraft-CustomModelData-Guide: Was es ist und wie es funktioniert</h1><p class="page-lead">CustomModelData ermöglicht Resource-Packs, viele verschiedene Texturen und Modelle für ein einzelnes Vanilla-Item zu zeigen, ohne Mods zu installieren.</p></section>
     <!-- article-cta -->
-    <div class="article-cta-panel"><p class="article-cta-title">Willst du CustomModelData nicht nur lesen, sondern direkt benutzen?</p><p class="article-cta-text">Baue die visuelle Seite im Pack-Generator und erstelle danach den Item-Befehl im Custom Item Builder.</p><div class="tool-button-row"><a class="tool-button" href="/de/resource-pack-generator/">Pack-Generator ?ffnen</a><a class="tool-button tool-button-secondary" href="/de/custom-item-builder/">Item-Builder ?ffnen</a></div></div>
+    <div class="article-cta-panel">
+        <p class="article-cta-title">Willst du von der Theorie zu einem wirklich nutzbaren Item springen?</p>
+        <p class="article-cta-text">Baue die visuelle Seite im Pack-Generator und setze Befehl plus Logik danach im Custom Item Builder zusammen. So lassen sich Aussehen und Serververhalten ohne Handsalat am saubersten testen.</p>
+        <div class="tool-button-row">
+            <a class="tool-button" href="/de/resource-pack-generator/">Pack-Generator öffnen</a>
+            <a class="tool-button tool-button-secondary" href="/de/custom-item-builder/">Item-Builder öffnen</a>
+        </div>
+    </div>
     <!-- /article-cta -->
     <article>
         <h2>Was ist CustomModelData?</h2><p>CustomModelData wurde in Minecraft 1.14 hinzugefügt und erlaubt Pack-Erstellern, unterschiedliche Texturen oder 3D-Modelle über Zahlen-IDs an ein Vanilla-Item zu hängen.</p>
@@ -230,6 +237,72 @@
         <h3>Vor 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
         <h3>1.20.5 und neuer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
         <p>Der Minecraft Resource-Pack-Generator berücksichtigt diese Umstellung, wenn er give-Befehle für deine Custom-Items zeigt.</p>
+    
+<!-- cmd-expansion:start -->
+        <h2>Warum CustomModelData auch nach Components relevant bleibt</h2>
+        <p>Wer vom großen Umstieg auf Data Components hört, bekommt leicht das Gefühl, CustomModelData gehöre vor allem in die alte Minecraft-Welt. In der Praxis ist das Kernproblem aber noch da. Ein einzelnes Vanilla-Item muss weiterhin zu Pass, Relikt, Währung, Quest-Hinweis, Shop-Bestand oder ungewöhnlicher Waffe werden können. Genau dafür bleibt CustomModelData einer der saubersten Brückenpfeiler zwischen Spielidee und Resource-Pack-Art.</p>
+        <p>Verändert hat sich weniger die Aufgabe selbst als der Workflow darum herum. Ältere Setups wollten aus einer einzigen Zahl gleichzeitig Art-Hook, versteckte Logik, Dokumentation und Team-Gedächtnis machen. Moderne Setups werden stärker, wenn diese Rollen getrennt sind. Das Pack entscheidet über das Aussehen. Der Befehl und die versteckten Daten entscheiden darüber, was der Server glauben soll. Sobald man in diesen Schichten denkt, fühlt sich CustomModelData nicht mehr wie obskures Zusatzwissen an, sondern wie ein nützlicher Vertrag zwischen Bild und Logik.</p>
+
+        <h2>Ein praktischer Workflow: von der Art zum spielbaren Item</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Mit dem visuellen Plan beginnen</h3>
+                <p>Zuerst sollte klar sein, wie das Item in Hand oder Inventar eigentlich aussehen soll. Wenn ein eigenes Icon, eine Textur oder ein 3D-Modell nötig ist, startet das im Resource Pack. Der Pack-Generator ist hier hilfreich, weil er Ordnerstruktur und JSON-Verkabelung baut, ohne dass jede Datei per Hand verbunden werden muss.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Danach eine stabile versteckte Identität vergeben</h3>
+                <p>Für einen echten Server reicht der visuelle Hook fast nie allein. Pass, Token, Vertrag oder Relikt brauchen meist zusätzlich eine versteckte ID, die Quests, Händler und Skripte sauber lesen können. Genau hier ist der Custom Item Builder hilfreich: Die Befehlsseite bleibt lesbar und fällt nicht in eine rätselhafte Zahl zusammen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Syntax passend zur Minecraft-Version wählen</h3>
+                <p>Vor 1.20.5 lebten Item-Daten im älteren NBT-Stil. Danach wechselten sie in Komponenten, und in 1.21.4+ kann die visuelle Schicht mit neuen Modellrouten und erweiterten custom_model_data-Slots noch stärker werden. Wenn die Version falsch gewählt wird, ist die Item-Idee vielleicht richtig und der Befehl scheitert trotzdem.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Das Item testen, bevor es in größere Systeme wandert</h3>
+                <p>Das Item einmal spawnen, den sichtbaren Text prüfen, das Pack-Rendering prüfen und erst danach in Villager-Trades, Quest-Belohnungen, Kisten oder Skripte einhängen. Diese Reihenfolge verhindert, dass drei Systeme gleichzeitig debuggt werden, obwohl der eigentliche Fehler noch im Item selbst sitzt.</p>
+            </article>
+        </div>
+
+        <h2>Häufige Fehler rund um CustomModelData</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Eine Zahl soll plötzlich das ganze System tragen</h3>
+                <p>Der klassische Fehler besteht darin, von einer einzigen CustomModelData-Zahl zu verlangen, dass sie Art-Route, versteckte Logik, Dokumentation und Team-Erinnerung zugleich ist. Das skaliert schlecht. Sobald die Item-Bibliothek wächst, weiß niemand mehr, wofür die alten Zahlen überhaupt standen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Den Befehl bauen, bevor die visuelle Route wirklich steht</h3>
+                <p>Ein Item lässt sich viel leichter debuggen, wenn Modellpfad, Art-Absicht und Fallback schon entschieden sind. Sonst kann der Befehl technisch korrekt sein, während der Spieler immer noch das falsche Icon sieht — und plötzlich scheint “CustomModelData kaputt”, obwohl das Problem im Pack liegt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Beispiele über verschiedene Syntax-Epochen hinweg kopieren</h3>
+                <p>Viele Forenbeispiele stammen noch aus älteren Befehlsgenerationen. Wird Legacy-NBT in eine Komponentenwelt kopiert oder moderne Syntax in eine ältere Umgebung, bricht der Befehl, obwohl die zugrunde liegende Idee vollkommen legitim bleibt. Genau deshalb hilft ein visueller Builder: Er hält die Befehlsära sichtbar.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Zu glauben, CustomModelData allein genüge auch für Server-Validierung</h3>
+                <p>CustomModelData spricht in erster Linie über Darstellung. Ein echter RP-Server braucht oft zusätzlich versteckte IDs, lesbare Namen und Hilfsdaten für Skripte. Die stärksten Setups lassen das Pack die Optik tragen und die Serverlogik die Validierung.</p>
+            </article>
+        </div>
+
+        <h2>Kurzes FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Brauche ich in neuen Minecraft-Versionen noch CustomModelData?</h3>
+                <p>Ja, sobald ein einziges Vanilla-Item in mehrere unterschiedliche Looks verzweigen soll. Die Syntax außen herum hat sich geändert, aber das visuelle Grundproblem existiert weiterhin.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Welches praktische Tool-Paar auf der Seite hilft dabei am meisten?</h3>
+                <p>Der Resource-Pack-Generator übernimmt die visuelle Seite, und der Custom Item Builder übernimmt Befehl plus versteckte Item-Logik. Zusammen decken sie den häufigsten echten Workflow ab.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Ist das nur für Waffen interessant?</h3>
+                <p>Nein. Es ist genauso nützlich für Pässe, Gildenabzeichen, Währungen, Briefe, Relikte, Quest-Props, Tokens, dekoratives Essen oder Händler-Bestand. Waffen sind nur die leichtesten Beispiele zum Wiedererkennen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Was prüfe ich zuerst, wenn das Item falsch aussieht?</h3>
+                <p>Den Pack-Pfad, die Modellverlinkung, die Syntax für die richtige Version und ob der richtige Wert überhaupt wirklich am Item hängt. Oft ist die Idee völlig okay, aber eine dieser Brücken ist nicht verbunden.</p>
+            </article>
+        </div>
+<!-- cmd-expansion:end -->
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

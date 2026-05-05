@@ -210,7 +210,14 @@
     <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
     <section class="page-hero"><h1>Guide Minecraft sur le CustomModelData : définition et fonctionnement</h1><p class="page-lead">CustomModelData permet aux packs de ressources Minecraft d’afficher plusieurs textures et modèles pour un seul objet vanilla, sans installer de mods.</p></section>
     <!-- article-cta -->
-    <div class="article-cta-panel"><p class="article-cta-title">Envie d?utiliser CustomModelData au lieu de seulement le lire ?</p><p class="article-cta-text">Construisez la partie visuelle dans le g?n?rateur de packs, puis g?n?rez la commande de l?objet dans le constructeur d?objets.</p><div class="tool-button-row"><a class="tool-button" href="/fr/resource-pack-generator/">Ouvrir le g?n?rateur de packs</a><a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Ouvrir le constructeur d?objets</a></div></div>
+    <div class="article-cta-panel">
+        <p class="article-cta-title">Envie de passer de l’article à un objet vraiment utilisable ?</p>
+        <p class="article-cta-text">Construisez la partie visuelle dans le générateur de packs, puis assemblez la commande et la logique dans le constructeur d’objets. C’est le chemin le plus simple pour tester à la fois l’apparence et le comportement serveur.</p>
+        <div class="tool-button-row">
+            <a class="tool-button" href="/fr/resource-pack-generator/">Ouvrir le générateur de packs</a>
+            <a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Ouvrir le constructeur d’objets</a>
+        </div>
+    </div>
     <!-- /article-cta -->
     <article>
         <h2>Qu’est-ce que CustomModelData ?</h2><p>Ajouté dans Minecraft 1.14, CustomModelData permet aux créateurs de packs d’associer différentes textures ou modèles 3D à un objet vanilla avec des identifiants numériques.</p>
@@ -230,6 +237,72 @@
         <h3>Avant 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
         <h3>1.20.5 et plus récent</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
         <p>Le générateur de packs de ressources Minecraft tient compte de ce changement quand il affiche les commandes give pour vos objets personnalisés.</p>
+    
+<!-- cmd-expansion:start -->
+        <h2>Pourquoi CustomModelData reste important même après les composants</h2>
+        <p>Quand on entend parler du grand basculement vers les Data Components, il est facile d’imaginer que CustomModelData appartient surtout au vieux Minecraft. En pratique, le problème visuel n’a jamais disparu. Un seul objet vanilla doit encore pouvoir devenir un laissez-passer, une relique, une monnaie, une preuve de quête, un stock de boutique ou une arme inhabituelle. CustomModelData reste donc l’un des ponts les plus propres entre ce besoin de gameplay et la couche artistique du resource pack.</p>
+        <p>Ce qui a changé, ce n’est pas l’idée de base, mais l’écosystème autour. Les anciens workflows demandaient souvent à un seul nombre de porter l’art, l’identité logique, la documentation et même la mémoire de l’équipe. Les setups modernes sont plus solides quand les rôles sont séparés. Le pack décide de l’apparence. La commande et les données cachées décident de ce à quoi le serveur fait confiance. Une fois cette séparation comprise, CustomModelData cesse d’être un “truc obscure” et devient un contrat clair entre image et logique.</p>
+
+        <h2>Un workflow pratique: de l’art à l’objet réellement jouable</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Commencer par le plan visuel</h3>
+                <p>Il faut d’abord savoir ce que l’objet doit montrer dans la main ou l’inventaire du joueur. Si l’item a besoin d’une icône, d’une texture ou d’un modèle 3D spécifique, cela commence dans le pack. Le générateur de packs est utile ici parce qu’il construit les dossiers et la plomberie JSON sans vous obliger à recâbler chaque fichier à la main.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Donner ensuite une identité cachée stable</h3>
+                <p>Pour un vrai serveur, le crochet visuel seul ne suffit presque jamais. Un permis, un jeton, un contrat ou une relique ont souvent besoin d’un ID caché que les quêtes, marchands et scripts peuvent lire sans ambiguïté. C’est là que le Custom Item Builder devient pratique: la logique de commande reste lisible au lieu de s’effondrer dans un nombre mystérieux.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Choisir la bonne syntaxe pour la bonne version</h3>
+                <p>Avant la 1.20.5, les données d’objets vivaient dans l’ancien monde NBT. Ensuite elles ont migré vers les composants, et en 1.21.4+ la couche visuelle peut devenir encore plus riche grâce aux nouvelles routes de modèles et aux slots étendus de custom_model_data. Si la version n’est pas la bonne, l’idée de l’objet peut être correcte et la commande échouer quand même.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Tester l’objet avant de le brancher à de gros systèmes</h3>
+                <p>Faites apparaître l’objet une première fois, vérifiez le nom, vérifiez le rendu du resource pack, puis seulement après connectez-le à des échanges, des récompenses de quête, du loot ou des scripts. Cet ordre évite de déboguer trois systèmes en même temps quand le vrai problème est encore juste l’item lui-même.</p>
+            </article>
+        </div>
+
+        <h2>Erreurs fréquentes autour de CustomModelData</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Demander à un seul nombre de devenir tout le système</h3>
+                <p>L’erreur classique consiste à faire porter à une seule valeur CustomModelData la route visuelle, l’identité cachée, la convention de documentation et l’aide-mémoire de l’équipe. Cela casse mal dès que la bibliothèque d’objets grandit et que plus personne ne sait ce que signifiait l’ancien nombre.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Construire la commande avant que la route visuelle n’existe vraiment</h3>
+                <p>Un objet est beaucoup plus facile à déboguer quand le chemin de modèle, l’intention artistique et le fallback sont déjà décidés. Sinon, la commande peut fonctionner techniquement alors que le joueur voit toujours la mauvaise icône — et l’on croit à tort que “CustomModelData est cassé”.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Copier des exemples entre différentes époques de syntaxe</h3>
+                <p>Une grande partie des exemples de forums appartiennent encore à des générations de commandes plus anciennes. Si vous collez du NBT legacy dans un environnement à composants, ou l’inverse, la commande casse même si l’idée générale reste bonne. C’est l’une des raisons pour lesquelles un builder visuel aide tant: il garde l’époque de syntaxe visible.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Penser que CustomModelData suffit à lui seul pour la confiance côté serveur</h3>
+                <p>CustomModelData parle d’abord de rendu. Un vrai serveur RP a souvent aussi besoin d’IDs cachés, de noms lisibles et de données auxiliaires pour les scripts. Les meilleurs setups laissent l’apparence au pack et la validation à la logique serveur.</p>
+            </article>
+        </div>
+
+        <h2>FAQ rapide</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Faut-il encore CustomModelData dans les nouvelles versions?</h3>
+                <p>Oui, dès qu’un même objet vanilla doit se ramifier en plusieurs apparences. La syntaxe autour a changé, mais le problème visuel de base n’a pas disparu.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Quel est le duo pratique sur ce site pour travailler avec lui?</h3>
+                <p>Le générateur de packs s’occupe de la partie visuelle, et le constructeur d’objets personnalisés s’occupe de la commande et de la logique cachée. Ensemble, ils couvrent le workflow le plus fréquent.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Est-ce que cela sert seulement pour les armes?</h3>
+                <p>Non. C’est tout aussi utile pour des permis, badges de guilde, monnaies, lettres, reliques, props de quête, jetons, nourriture décorative ou stock de marchands. Les armes sont simplement les exemples les plus faciles à reconnaître.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Que vérifier d’abord si l’objet ne s’affiche pas correctement?</h3>
+                <p>Le chemin dans le pack, le lien vers le modèle, la syntaxe adaptée à la bonne version et la valeur effectivement attachée à l’objet. Dans beaucoup de cas, l’idée est bonne, mais l’un de ces ponts n’est tout simplement pas relié.</p>
+            </article>
+        </div>
+<!-- cmd-expansion:end -->
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
