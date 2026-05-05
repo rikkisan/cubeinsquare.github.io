@@ -307,6 +307,108 @@
             <div class="tool-summary" id="villagerSummary"></div>
         </section>
     </section>
+<!-- localized-tool-polish:start -->
+
+    <section class="page-section">
+        <h2 class="section-title">Warum einen Trade-Generator nutzen statt den Summon per Hand zu schreiben</h2>
+        <p class="section-intro">Dorfbewohner-Befehle werden lange fragil, bevor sie wirklich interessant werden. Einen einzelnen Handel kann man noch mit der Hand tippen. Aber sobald ein NPC einen Namen, mehrere Angebote, Limits, eigene Belohnungen und Versionsabhängigkeit bekommt, ist das kein angenehmes Copy-Paste mehr. Der Generator hilft, weil er die Struktur sichtbar hält, während ihr noch über die eigentliche Rolle des Händlers nachdenkt.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Händler für echte Server, nicht nur für Testwelten</h3>
+                <p>Bibliothekar mit Pässen, Quartiermeister mit Vorräten, seltener Alchemist, Schwarzmarkt oder Quest-NPC: In all diesen Fällen ist das Item nur die Hälfte der Arbeit. Der Rest ist Beruf, Biome-Flair, Preislogik, Stock-Limit und die Frage, ob der Befehl im echten Server-Workflow stabil bleibt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Nützlich für Währungen, Pässe und Quest-Loops</h3>
+                <p>Genau in Trades werden Custom Items spielbar. Ein Token wird zur Belohnung, eine RP-Währung zu einem stabilen Tauschobjekt und ein Quest-Drop zu einem wiederholbaren Ablauf. Der Generator ist hilfreich, weil er all diese Entscheidungen an einem sichtbaren Ort hält.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Der Versionsschalter ist hier keine Dekoration</h3>
+                <p>Die drei Modi existieren, weil sich die Item-Struktur in Trades verändert hat. Ein Dorfbewohner kann im Tool korrekt aussehen und trotzdem im Spiel scheitern, wenn Belohnung oder Kosten für die falsche Befehlsgeneration serialisiert wurden.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Ein ruhiger Workflow zum Bauen eines Dorfbewohners</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Erst die Rolle, dann der Preis</h3>
+                <p>Wer ist dieser NPC: ein normaler Versorger, ein seltener Spezialist, ein Quest-Makler oder ein verkleideter Admin-Helfer? Sobald die Rolle klar ist, lassen sich Beruf, Name und Limits viel sauberer setzen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Erst das Belohnungs-Item bauen</h3>
+                <p>Das verkaufte Item ist das emotionale Zentrum des Handels. Wenn klar ist, was der Spieler wirklich bekommt, werden Emerald-Kosten, zweiter Input und Max Uses viel weniger beliebig.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Max Uses sind Teil des Designs</h3>
+                <p>Unendlicher Vorrat und knapper Vorrat erzeugen völlig andere Ökonomien. Ein dekorativer Händler darf ewig leben. Ein Progressionshändler, Event-Shop oder seltener Handwerker fühlt sich oft mit härteren Limits besser an.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Summon erst kopieren, wenn die Version stimmt</h3>
+                <p>Das Befehlsfeld ist die Ziellinie, nicht der Start. Wer zu früh kopiert und erst danach den Syntaxmodus wechselt, testet schnell die falsche Zeichenkette und verliert Zeit an einem Problem, das gar keines war.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Warum Trade-Befehle am häufigsten scheitern</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Zu lange Befehle im normalen Chat</h3>
+                <p>Das ist banal, aber häufig. Komplexe Händler überschreiten die praktische Chat-Grenze schnell, besonders wenn Belohnungs-Items Namen, Lore und Zusatzlogik tragen. Wenn die Seite sagt, dass ein Command Block nötig ist, spart das Befolgen viel unnötige Verwirrung.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Belohnungs-Items wurden für die falsche Syntax-Ära gebaut</h3>
+                <p>Selbst wenn die Felder des Dorfbewohners stimmen, kann das eigentliche Item den Fehler verursachen. Das sieht man besonders bei Custom Names, Lore, CustomModelData oder modernen Komponenten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Die Ökonomie erst balancieren, nachdem der NPC schon existiert</h3>
+                <p>Sobald ein Händler live auf dem Server steht, ist eine Änderung oft nerviger als eine saubere Planung von Anfang an. Es hilft, früh zu entscheiden, ob dieser NPC ein Sink, eine Quelle, eine Abkürzung oder ein seltener Spezialist ist.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Kurzes FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Warum gibt es hier drei Versionswahlen?</h3>
+                <p>Weil sich die interne Item-Struktur in Trades geändert hat. Ältere Befehle basieren auf Legacy-NBT, neuere Versionen erwarten komponentenbasierte Syntax. Der Generator trennt diese Wege, damit ihr nicht jedes Angebot im Kopf übersetzen müsst.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Kann ich das für RP-Händler nutzen und nicht nur für Vanilla-Merchants?</h3>
+                <p>Ja, genau dafür ist es besonders stark. Benannte NPCs mit eigenen Belohnungen und kontrolliertem Stock profitieren viel mehr von diesem Tool als von einem alten Forum-Beispiel.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Sollte ich das Belohnungs-Item lieber zuerst anderswo bauen?</h3>
+                <p>Meistens ja. Wenn das verkaufte Item viel Display- oder Komponentenarbeit braucht, ist es oft leichter, es erst im Custom Item Builder fertigzustellen und dann die finalen Werte hier einzusetzen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Was sollte ich zuerst im Spiel testen?</h3>
+                <p>Drei Dinge: Erscheint der Dorfbewohner, sind alle Angebote sichtbar und kommt das Belohnungs-Item exakt wie geplant an. Sobald das stabil ist, wird das Balancing deutlich leichter.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Händlerrollen, die man besonders sauber bauen sollte</h2>
+        <p class="section-intro">Ein guter Dorfbewohner ist fast nie nur ein zufälliger Verkäufer. Die stärksten Trade-Setups fühlen sich wie eine echte Rolle in der Welt an, und diese Rolle verändert, wie ihr über Preis, Stock und Belohnung nachdenken solltet.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Archivschreiber oder Gilden-Quartiermeister</h3>
+                <p>Solche NPCs verkaufen Pässe, gestempelte Notizen, Zutrittsobjekte und Fraktionsbedarf. Sie profitieren von klaren Namen, stabilen versteckten IDs und moderaten Limits, damit der Laden wie Infrastruktur und nicht wie ein endloser Automat wirkt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Seltener Spezialist</h3>
+                <p>Ein seltener Verzauberer, okkulter Bibliothekar, Reliktgutachter oder Schwarzmarkthändler gewinnt oft durch strengere Limits und einen absichtsvolleren zweiten Input. Es geht nicht nur ums Item, sondern um das Gefühl von Zugang zu einem engen System.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Quest-Tausch-NPC</h3>
+                <p>Diese Händler funktionieren am besten, wenn das Eingangs-Item bereits eine versteckte Logik aus dem Builder trägt. Dann prüft der NPC einen echten Token, Beleg oder Drop und nicht nur einen mit dem Amboss umbenannten Platzhalter.</p>
+            </article>
+        </div>
+    </section>
+<!-- localized-tool-polish:end -->
 </main>
 
 <datalist id="villagerItemSuggestions">

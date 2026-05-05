@@ -261,6 +261,120 @@
         <option value="name_tag"></option>
         <option value="potion"></option>
     </datalist>
+<!-- localized-tool-polish:start -->
+
+    <section class="page-section">
+        <h2 class="section-title">Comment construire un objet custom sans le transformer en paquet de données opaque</h2>
+        <p class="section-intro">Un objet personnalisé doit souvent faire trois choses à la fois. Il doit avoir la bonne apparence dans l'inventaire, porter une identité cachée fiable pour le serveur, et survivre au copier-coller entre différentes générations de Minecraft. C'est pour cela que ce builder sépare le nom visible, l'ID caché et le crochet visuel au lieu de faire semblant qu'un seul champ devrait tout porter.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Choisissez l'objet de base pour sa sensation, pas seulement pour son art</h3>
+                <p>Un pass en papier ne se ressent pas comme un livre, une horloge ou une carotte sur un bâton. L'objet de base contrôle encore l'animation, le stack et certaines attentes du joueur, donc il vaut la peine d'être décidé en premier.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Le nom visible est pour le joueur</h3>
+                <p>C'est ici que vous pouvez être dramatique, poétique, factionnel ou très lié à une quête. C'est la couche que le joueur lit réellement, donc elle doit communiquer rapidement le ton et le sens.</p>
+            </article>
+            <article class="resource-card">
+                <h3>L'ID caché est pour la logique</h3>
+                <p>L'ID caché est ce à quoi vos quêtes, scripts, vérifications admin et chaînes de récompense peuvent faire confiance. Gardez-le stable et un peu ennuyeux. Le titre visible peut changer; l'identité logique devrait rarement en avoir besoin.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Laissez le sélecteur de version vous protéger</h3>
+                <p>Le builder garde l'ancienne syntaxe compacte et n'ouvre les champs de composants riches que lorsque la version choisie peut réellement les utiliser. Cela évite d'écrire une énorme commande puis de découvrir qu'une partie appartient à une autre époque de Minecraft.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Quatre familles d'objets très pratiques</h2>
+        <p class="section-intro">La plupart des objets RP ou serveur retombent dans quelques familles répétables. Dès que vous savez à quelle famille appartient l'objet courant, le choix des champs cesse de sembler arbitraire.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Monnaie ou jeton estampillé</h3>
+                <p>Ici, un ID caché lisible, un nom visible court et une validation qui ne repose pas uniquement sur le lore sont précieux. Un beau titre se copie facilement; un marqueur logique caché est beaucoup plus fiable. Si l'objet a aussi une apparence spéciale, l'art peut vivre dans <code>item_model</code> ou dans le bon hook CustomModelData.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Pass, permis ou autorisation</h3>
+                <p>Ces objets ont souvent besoin d'un titre propre, d'une ou deux lignes de lore et d'un ID caché qui dit à quoi l'objet donne accès. Si cet accès dépend d'une faction ou d'un chapitre, cela mérite aussi d'exister dans les données cachées.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Relique ou prop narratif</h3>
+                <p>Ici, le nom visible et le lore peuvent porter plus d'atmosphère. L'objet doit toujours rester lisible par la machine, mais une relique est l'un des rares cas où le style du texte compte autant que la commande brute.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Récompense de commerce ou stock de boutique</h3>
+                <p>Si l'objet part ensuite dans les échanges, misez sur la répétabilité. La commande doit rester stable, l'ID caché prévisible, et le hook visuel ne doit pas dépendre d'un numéro aléatoire que personne ne saura relire plus tard.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Un workflow simple pour garder l'objet lisible</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Choisissez la version avant de toucher aux champs</h3>
+                <p>Vous saurez immédiatement si vous travaillez autour de l'ancien CustomModelData numérique ou autour des composants modernes comme <code>item_model</code>, les chaînes, les flags et les couleurs. Cela garde la commande beaucoup plus propre.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Nommez l'objet caché avant le nom visible</h3>
+                <p>Cela paraît contre-intuitif, mais la logique devient plus stable. Une fois que vous savez que l'objet est vraiment <code>rp.guild.pass</code> ou <code>quest.chapter2.sealed_note</code>, vous pouvez vous permettre un titre visible plus expressif sans perdre la structure.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Ajoutez le hook visuel en dernier</h3>
+                <p>La couche de rendu doit soutenir l'idée de l'objet, pas la définir à elle seule. Quand le chemin de modèle arrive après l'identité, la commande reste plus facile à déboguer et à réutiliser dans les échanges, le loot ou les récompenses scriptées.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Testez la commande avant de la brancher à de plus gros systèmes</h3>
+                <p>Faites apparaître l'objet une fois, vérifiez le texte visible, vérifiez ensuite l'art du pack, puis seulement après placez-le dans un villageois, une quête ou un coffre. Cet ordre économise beaucoup de temps.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Erreurs fréquentes que cette page aide à éviter</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Un seul nombre qui essaie de tout faire</h3>
+                <p>Les vieux workflows demandaient souvent à un seul numéro CustomModelData de faire office de hook visuel, d'identité cachée, de documentation et de repère mental. Cela fonctionne jusqu'au jour où la liste d'objets grossit et où plus personne ne sait ce que <code>2047</code> était censé signifier.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Mettre la logique dans le titre visible</h3>
+                <p>Si un objet ne se valide que par son nom ou son lore, un joueur peut souvent l'imiter. Un ID caché lisible donne un endroit beaucoup plus propre et fiable pour stocker l'identité logique.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Copier une commande dans la mauvaise époque de syntaxe</h3>
+                <p>Un objet peut être conceptuellement correct et échouer quand même simplement parce qu'une forme legacy a été collée dans un environnement à composants, ou l'inverse. Le sélecteur de version rend cette erreur visible.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Concevoir la récompense après avoir déjà câblé le commerce ou la quête</h3>
+                <p>Cela crée souvent plus de réécritures qu'il n'en faut. Il est plus simple de stabiliser l'objet d'abord, puis de faire pointer les villageois, les quêtes et les systèmes de loot vers la commande finale.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">FAQ rapide</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Quand utiliser le Custom Item Builder au lieu de la page des villageois?</h3>
+                <p>Quand la partie difficile est l'objet lui-même. La page des villageois devient plus utile lorsque la structure du marchand est le vrai problème. En pratique, beaucoup de gens conçoivent l'objet ici puis reportent les valeurs finales dans l'échange.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Ai-je toujours besoin de item_model en 1.21.4+?</h3>
+                <p>Non. Il n'est nécessaire que si l'objet doit se rendre via une route de modèle précise. Certains objets serveur n'ont besoin que d'un ID caché et d'un texte visible, surtout si la couche artistique reste provisoire.</p>
+            </article>
+            <article class="resource-card">
+                <h3>L'ID caché doit-il être numérique ou lisible?</h3>
+                <p>Lisible gagne presque toujours. Une chaîne comme <code>rp.guild.pass</code> est plus facile à documenter, rechercher et déboguer qu'un numéro qui n'a de sens que pour la personne qui l'a créé.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Que faire après qu'une commande fonctionne?</h3>
+                <p>Souvent l'une de ces trois choses: brancher le PNG et le modèle dans le pack generator, insérer l'objet dans un échange de villageois, ou réutiliser le même schéma d'ID cachés dans les quêtes et récompenses pour garder vos systèmes cohérents.</p>
+            </article>
+        </div>
+    </section>
+<!-- localized-tool-polish:end -->
 </main>
 
 <footer class="site-footer">

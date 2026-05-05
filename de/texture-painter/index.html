@@ -207,6 +207,142 @@
             </section>
         </div>
     </section>
+<!-- localized-tool-polish:start -->
+
+    <section class="page-section">
+        <h2 class="section-title">Wie man über Item-Icons und Blockflächen unterschiedlich nachdenkt</h2>
+        <p class="section-intro">Der Pinsel ist derselbe, aber die Leselogik ist eine andere. Ein Inventory-Icon muss in einem winzigen Slot sofort funktionieren. Eine Blocktextur muss sich in der Welt wiederholen können, ohne an jeder Kante auseinanderzufallen.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Inventory-Icons brauchen zuerst eine Silhouette</h3>
+                <p>Wenn die Gesamtform matschig ist, macht mehr Detail das Item meistens schlechter statt besser. Bei <code>16x16</code> sind klare Kanten, ein Fokuspunkt und lesbarer Kontrast wichtiger als Mikro-Deko.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Blockflächen leben von Rhythmus und Tiling</h3>
+                <p>Sobald eine Textur auf Wand, Boden oder Maschinengehäuse wiederholt wird, wird jede Kantenentscheidung sichtbar. Deshalb ist diese Seite gut, um zu prüfen, ob Ecken, Glanzpunkte und zentrales Rauschen beim Wiederholen noch stabil wirken.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Hohe Auflösung ist nicht automatisch ein Upgrade</h3>
+                <p><code>64x64</code> und <code>128x128</code> geben mehr Raum, fordern aber auch mehr Disziplin. Wenn der restliche Pack diese Dichte nicht trägt, fühlt sich eine große Textur schneller fremd als beeindruckend an.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Praktischer Workflow vom leeren Canvas zum packfertigen PNG</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Die Leinwandgröße nach dem echten Ziel wählen</h3>
+                <p>Die Auflösung sollte davon abhängen, wo die Textur später im Spiel lebt, nicht nur davon, wie viel Detail ihr zeichnen wollt. Ein kleines Inventar-Icon und ein großer Zeremonialblock müssen nicht mit derselben Größe starten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Zuerst die großen Formen blocken</h3>
+                <p>Selbst für stilisierte Minecraft-Art hilft es, zuerst Silhouette oder großen Lichtplan zu setzen. Die schnellsten Texturen sind oft die, bei denen schon der erste Durchgang sagt, was das Objekt überhaupt ist.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Den Navigator benutzen, bevor die Leinwand riesig wird</h3>
+                <p>Bei größeren Größen bleibt man besser orientiert, wenn Zoom und Verschieben absichtlich genutzt werden. Navigator und Mausrad sind hier genau dafür da, den Workspace angenehm zu halten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Erst exportieren, wenn die Textur auch normal gelesen werden kann</h3>
+                <p>Eine Textur kann bei starkem Zoom wunderschön aussehen und im echten Spiel trotzdem scheitern. Vor dem Export lohnt sich immer ein Schritt zurück, um Kontrast und Form noch einmal ehrlich zu prüfen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Häufige Fehler, die diese Seite gut sichtbar macht</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Detail vor Lesbarkeit malen</h3>
+                <p>Das ist die klassische Falle. Wenn ein Icon oder eine Blockfläche aus der Distanz schon nicht lesbar ist, machen zusätzliche kleine Spuren das Ergebnis meistens nur unruhiger.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Blockkanten zu spezifisch machen</h3>
+                <p>Manche Kanten sehen einmal großartig aus und beim Wiederholen schrecklich. Ein paar Minuten im Painter mit der ganzen Fläche sichtbar decken das oft schneller auf als Export, Packbau und Neustart der Welt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Sich zu früh in 128x128 verlieben</h3>
+                <p>Große Texturen können sinnvoll sein, aber nur wenn der ganze Pack diese Dichte will. Wenn nur ein oder zwei Dateien so groß werden, wirken sie oft losgelöst vom restlichen Projekt.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Pixel-Art-Techniken, die man hier gut trainieren kann</h2>
+        <p class="section-intro">Dieser Painter ist absichtlich schlicht, und genau das macht ihn zu einem guten Ort für Kern-Disziplin statt Filter-Tricks. Minecraft-Texturen gewinnen fast immer durch Zurückhaltung: stärkere Cluster, klarere Lichtlogik und bessere Entscheidungen darüber, wohin der Blick zuerst gehen soll.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>In Clustern denken, nicht in Einzelpixeln</h3>
+                <p>Ein einzelner Highlight-Pixel kann nützlich sein, aber gute Texturen lesen sich meist über verbundene Tonflächen. Wenn Stein, Obst, Metall oder Emblem nur aus zufälligen Einzeldots bestehen, wirkt das Ergebnis oft krümelig statt absichtlich.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Eine Lichtlogik wählen und ihr treu bleiben</h3>
+                <p>Wenn die Oberkante „Licht von links oben“ erzählt und die Unterkante etwas völlig anderes, beginnt die Textur zu wackeln. Selbst sehr stilisierte Minecraft-Texturen wirken sicherer, wenn Schatten und Highlights dieselbe Lichtidee teilen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Den stärksten Kontrast für den Fokus aufheben</h3>
+                <p>Kontrast überall macht eine Textur laut. Edelsteinmitte, Klingenkante, Rune, Etikett oder wichtige Rippe verdienen meistens den stärksten Sprung. Gerade bei Icons ist das entscheidend, damit das Auge schnell eine Antwort bekommt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Jedes Material soll dieselbe Welt sprechen, aber nicht dieselbe Sprache</h3>
+                <p>Holz, Stoff, poliertes Metall, oxidiertes Kupfer, magisches Leuchten und geschnitzter Stein brauchen unterschiedliche Rhythmen. Wenn alle Materialien mit demselben Rauschmuster gebaut werden, fällt es schwerer, der Textur zu glauben.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Ein Review-Durchgang, bevor das PNG in den Pack geht</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Auf normale Spiel-Distanz herauszoomen</h3>
+                <p>Wenn die Textur nur bei 24x oder 32x gut aussieht, braucht sie noch Arbeit. Inventory-Icons müssen klein bestehen. Blockflächen müssen als Teil einer Wand, eines Altars, eines Bodens oder eines Gehäuses funktionieren.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wiederholungskanten misstrauisch prüfen</h3>
+                <p>Eine dramatische Ecke kann beim Wiederholen schnell zu einem nervigen Leiter-Muster werden. Vor dem Export lohnt es sich, die Kanten so skeptisch zu betrachten wie ein wiederholtes Tapetenmuster.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Fragen, ob die Auflösung echte Arbeit leistet</h3>
+                <p>Manche Texturen wachsen auf <code>64x64</code> oder <code>128x128</code>, nur weil das luxuriös wirkt. Wenn die zusätzliche Größe weder Form noch Material noch Lesbarkeit verbessert, macht sie den Pack meist nur schwerer und den Workflow langsamer.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Eine Sache suchen, die man noch vereinfachen kann</h3>
+                <p>Viele Texturen werden besser, wenn man etwas wegnimmt statt etwas hinzufügt. Eine zu laute Kante, ein überflüssiger Schatten-Cluster oder ein wiederholtes Highlight kann reichen, um eine gute Textur unnötig voll wirken zu lassen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Kurzes FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Sollte ich diese Seite für Blöcke oder für Items verwenden?</h3>
+                <p>Für beides. Das Tool ist bewusst schlicht genug für einzelne PNGs; die wichtigere Frage ist also, ob ihr gerade Icon-Lesbarkeit oder Tiling-Stabilität lösen wollt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wann lohnt sich die Block-Template-Taste?</h3>
+                <p>Wenn ihr lieber mit einer lebendigen Vanilla-Startfläche beginnt als mit einem toten leeren Quadrat. Das Template liefert einen schnellen Lichtplan und erste Variation, die ihr sofort weiterbearbeiten könnt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Welche Größe ist am sichersten für ein Inventory-Icon?</h3>
+                <p><code>16x16</code> bleibt die verlässlichste Antwort für Vanilla-Lesbarkeit. <code>32x32</code> reicht oft, wenn ihr etwas mehr Fülle wollt, ohne das Minecraft-Gefühl zu verlassen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Was sollte ich nach dem Export tun?</h3>
+                <p>Nehmt das PNG in den Resource-Pack-Generator, weist es dem richtigen Item- oder Block-Slot zu und lasst dort die tatsächliche Pack-Struktur um eure Textur herum bauen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Mit leerer Leinwand oder lieber mit einem Template beginnen?</h3>
+                <p>Leer starten ist gut, wenn die Idee schon klar im Kopf sitzt. Ein Template ist besser, wenn ihr lieber eine lebendige Basis im Vanilla-Lichtstil bearbeitet, statt aus dem Nichts anzufangen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wie merke ich, wann ein Icon genug Detail hat?</h3>
+                <p>Meist dann, wenn ein Blick sofort sagt, was es ist, und der zweite Blick nur noch eine kleine Belohnung oben drauf gibt. Wenn schon der erste Blick verwirrt, braucht das Icon keine neuen Details, sondern eine bessere Struktur.</p>
+            </article>
+        </div>
+    </section>
+<!-- localized-tool-polish:end -->
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutz</a></footer>

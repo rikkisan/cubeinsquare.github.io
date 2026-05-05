@@ -261,6 +261,120 @@
         <option value="name_tag"></option>
         <option value="potion"></option>
     </datalist>
+<!-- localized-tool-polish:start -->
+
+    <section class="page-section">
+        <h2 class="section-title">Wie man ein Custom Item baut, ohne es in undurchsichtige Mysteriendaten zu verwandeln</h2>
+        <p class="section-intro">Ein Custom Item muss fast immer drei Aufgaben zugleich erfüllen. Es soll im Inventar richtig aussehen, eine versteckte Identität tragen, der der Server vertrauen kann, und es soll Copy-Paste zwischen verschiedenen Minecraft-Generationen überleben. Genau deshalb trennt dieser Builder sichtbaren Namen, versteckte ID und visuellen Hook, statt so zu tun, als müsste ein einziges Feld alles leisten.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Das Basis-Item nach Gefühl wählen, nicht nur nach Art</h3>
+                <p>Ein Pass aus Papier fühlt sich anders an als ein Buch, eine Uhr oder eine Karotte am Stock. Das Basis-Item steuert noch immer Animation, Stackbarkeit und Spielererwartung, deshalb lohnt es sich, diese Entscheidung zuerst zu treffen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Der sichtbare Name ist für den Spieler</h3>
+                <p>Hier darf der Text dramatisch, poetisch, fraktionsspezifisch oder questbezogen werden. Das ist die Ebene, die der Spieler wirklich liest, also sollte sie Ton und Sinn schnell transportieren.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Die versteckte ID ist für die Logik</h3>
+                <p>Die versteckte ID ist der Teil, dem Quests, Skripte, Admin-Checks und Belohnungsketten vertrauen können. Sie darf langweilig und stabil sein. Ein sichtbarer Titel kann sich ändern; eine Logik-ID sollte das möglichst nicht müssen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Der Versionsschalter soll euch schützen</h3>
+                <p>Der Builder hält alte Syntax kompakt und öffnet die reicheren Komponentenfelder nur dann, wenn die gewählte Version sie wirklich versteht. Das verhindert riesige Befehle, von denen sich später die Hälfte als Syntax aus einer anderen Minecraft-Ära entpuppt.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Vier praktische Item-Familien</h2>
+        <p class="section-intro">Die meisten RP- und Server-Items landen in einigen wiederkehrenden Familien. Sobald klar ist, zu welcher Familie das aktuelle Item gehört, wirken die Feldentscheidungen nicht mehr zufällig.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Währung oder geprägter Token</h3>
+                <p>Hier sind eine lesbare versteckte ID, ein kurzer sichtbarer Name und keine reine Lore-Validierung wichtig. Ein hübscher Titel lässt sich fälschen; ein versteckter Logikmarker viel schlechter. Wenn das Item außerdem ein spezielles Modell hat, darf die Art sauber in <code>item_model</code> oder im passenden CustomModelData-Hook wohnen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Pass, Erlaubnis oder Permit</h3>
+                <p>Solche Items brauchen meist einen klaren Titel, ein bis zwei Lore-Zeilen und eine versteckte ID, die sagt, wozu der Gegenstand Zugang gewährt. Wenn Kapitel oder Fraktion dazugehören, gehört diese Information am besten ebenfalls in die versteckten Daten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Relikt oder Lore-Prop</h3>
+                <p>Hier dürfen sichtbarer Name und Lore mehr Atmosphäre tragen. Das Item soll trotzdem maschinenlesbar bleiben, aber Relikte sind einer der seltenen Fälle, in denen der Schreibton genauso wichtig sein kann wie der rohe Befehl.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Trade-Belohnung oder Shop-Bestand</h3>
+                <p>Wenn das Item in Trades wandert, wird Wiederholbarkeit entscheidend. Der Befehl soll stabil bleiben, die versteckte ID vorhersehbar und der visuelle Hook nicht an einer Zufallszahl hängen, die in sechs Wochen niemand mehr versteht.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Ein einfacher Workflow, der das Item lesbar hält</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Die Version wählen, bevor ihr an die Felder geht</h3>
+                <p>So ist sofort klar, ob ihr um altes numerisches CustomModelData oder um moderne Komponenten wie <code>item_model</code>, Strings, Flags und Farbschlitze herum baut. Das hält die ganze Struktur deutlich sauberer.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Erst die versteckte Identität benennen, dann den sichtbaren Titel</h3>
+                <p>Das klingt rückwärts, hält aber die Logik stabil. Wenn klar ist, dass das Item wirklich <code>rp.guild.pass</code> oder <code>quest.chapter2.sealed_note</code> ist, kann der sichtbare Titel expressiv werden, ohne die Struktur zu verlieren.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Den visuellen Hook zuletzt setzen</h3>
+                <p>Die Rendering-Schicht soll die Idee des Items unterstützen, nicht allein definieren. Wenn der Modellpfad erst nach der Identität kommt, bleibt der Befehl leichter debuggbar und später einfacher in Trades, Loot oder Quests wiederverwendbar.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Den Befehl testen, bevor er in größere Systeme wandert</h3>
+                <p>Einmal das Item spawnen, sichtbaren Text prüfen, dann das Pack-Modell prüfen und erst danach den Gegenstand in Händler, Quests oder Belohnungslogik hängen. Diese Reihenfolge spart erstaunlich viel Zeit.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Häufige Fehler, die diese Seite sichtbar macht</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Eine Zahl soll plötzlich alles tragen</h3>
+                <p>Ältere Workflows ließen eine einzige CustomModelData-Zahl gleichzeitig Art-Hook, versteckte Logik, Dokumentation und Admin-Gedächtnisstütze sein. Das funktioniert nur so lange, bis die Item-Liste wächst und niemand mehr weiß, wofür <code>2047</code> stand.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Logik in den sichtbaren Titel packen</h3>
+                <p>Wenn ein Item nur über Namen oder Lore validiert, lässt es sich oft nachahmen. Eine lesbare versteckte ID bietet einen viel saubereren und vertrauenswürdigeren Ort für die systemseitige Identität.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Einen Befehl in die falsche Syntax-Ära kopieren</h3>
+                <p>Ein Item kann konzeptionell korrekt sein und trotzdem scheitern, weil eine Legacy-Form in einer Komponentenwelt landet oder umgekehrt. Der Versionsschalter ist da, um genau diese Art Fehler sichtbar zu halten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Das Belohnungs-Item erst nach dem Trade oder der Quest entwerfen</h3>
+                <p>Dadurch entstehen meist mehr Umschreibungen als nötig. Es ist einfacher, zuerst das Item zu stabilisieren und dann Händler, Quests und Loot-Systeme auf den finalen Befehl zeigen zu lassen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Kurzes FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Wann sollte ich den Custom Item Builder statt der Villager-Seite benutzen?</h3>
+                <p>Wenn das eigentliche Item der schwierige Teil ist. Die Villager-Seite wird stärker, wenn die Struktur des Händlers die eigentliche Hürde ist. In der Praxis bauen viele das Item zuerst hier und tragen die Werte danach in Trades ein.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Brauche ich in 1.21.4+ immer item_model?</h3>
+                <p>Nein. Es ist nur nötig, wenn das Item über eine bestimmte Modellroute gerendert werden soll. Manche Server-Items brauchen nur versteckte ID und sichtbaren Text, gerade wenn die Art-Schicht noch provisorisch ist.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Soll die versteckte ID numerisch oder lesbar sein?</h3>
+                <p>Lesbar gewinnt fast immer. Eine Zeichenkette wie <code>rp.guild.pass</code> lässt sich leichter dokumentieren, durchsuchen und debuggen als eine Zahl, die nur für ihre Erstellerin Sinn ergibt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Was sollte ich tun, nachdem der Befehl funktioniert?</h3>
+                <p>Meist eines von drei Dingen: PNG und Modell im Pack-Generator verdrahten, das Item in einen Villager-Trade setzen oder dasselbe Schema versteckter IDs in Quests und Belohnungen weiterverwenden, damit eure Systeme konsistent bleiben.</p>
+            </article>
+        </div>
+    </section>
+<!-- localized-tool-polish:end -->
 </main>
 
 <footer class="site-footer">
