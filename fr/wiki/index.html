@@ -66,10 +66,9 @@
 
 <main class="page-shell wiki-docs-shell">
     <section class="page-hero">
-        <h1>Wiki Minecraft sur les packs de ressources et les outils</h1>
-        <p class="page-lead">Une bibliothèque de travail pour celles et ceux qui montent des resource packs, des objets RP, des marchands, des textures et des skins. La colonne de gauche sert de rayonnage rapide, la partie de droite rassemble les articles et les résumés utiles.</p>
+        <h1>Wiki des resource packs Minecraft et des outils</h1>
+        <p class="page-lead">Une bibliothèque de travail pour créer des resource packs, objets RP, marchands, textures et skins. À gauche, la carte des sujets ; à droite, les guides eux-mêmes, pour aller vite vers le bon chemin sans se perdre dans des conseils éclatés.</p>
     </section>
-
     <section class="wiki-layout">
         <aside class="wiki-sidebar">
             <div class="wiki-sidebar-card">
@@ -78,7 +77,7 @@
                     <div class="wiki-sidebar-group">
                         <h2>Commencer ici</h2>
                         <a href="/fr/wiki-custom-model-data/">Qu’est-ce que CustomModelData ?</a>
-                        <a href="/fr/wiki-resource-pack-structure/">Structure du pack</a>
+                        <a href="/fr/wiki-resource-pack-structure/">Structure du pack de ressources</a>
                         <a href="/fr/privacy-policy/">Politique de confidentialité</a>
                     </div>
                     <div class="wiki-sidebar-group">
@@ -93,6 +92,15 @@
                         <a href="/fr/wiki-custom-villager-trades/">Échanges de villageois</a>
                     </div>
                     <div class="wiki-sidebar-group">
+                        <h2>Guides pratiques</h2>
+                        <a href="/fr/wiki-custom-item-no-json/">Objet sans JSON</a>
+                        <a href="/fr/wiki-custom-weapon/">Armes uniques</a>
+                        <a href="/fr/wiki-blockbench-custom-model/">Modèle personnalisé</a>
+                        <a href="/fr/wiki-components-vs-nbt/">Composants au lieu de NBT</a>
+                        <a href="/fr/wiki-give-command-not-working/">Pourquoi /give ne fonctionne pas ?</a>
+                        <a href="/fr/wiki-complex-command-blocks/">Commandes complexes</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
                         <h2>Systèmes de serveur</h2>
                         <a href="/fr/wiki-rp-economy-custom-data/">Économie RP avec custom_data</a>
                         <a href="/fr/wiki-armorhide-mod/">Mod ArmorHide</a>
@@ -103,168 +111,102 @@
                 </div>
             </div>
         </aside>
-
         <div class="wiki-main">
+            <section class="page-section" id="wiki-start-here">
+                <h2 class="section-title">Comment utiliser cette bibliothèque</h2>
+                <p>Le plus utile est de traiter ce wiki comme une carte, pas comme un tas d’articles. Certaines pages expliquent les concepts eux-mêmes, comme CustomModelData ou le passage aux composants après la 1.20.5. D’autres sont des guides pratiques qui vous emmènent d’une idée jusqu’à une commande, un ZIP ou un PNJ fonctionnel.</p>
+                <p>Le but n’est pas de noyer les gens sous la documentation. Le but est de donner le chemin le plus court entre un problème concret et le bon outil ou le bon guide.</p>
+            </section>
             <section class="page-section" id="general-wiki">
                 <h2 class="section-title">Commencer ici</h2>
-                <p class="section-intro">Ces articles posent les bases les plus utiles: comprendre ce que change vraiment CustomModelData, savoir où vont les fichiers dans un pack et garder sous la main les règles pratiques du site.</p>
+                <p class="section-intro">Ces pages remettent tout sur des rails : ce que fait vraiment CustomModelData, où vivent les fichiers dans un pack et quelles règles de base du site sont utiles avant les premiers imports.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-cmd">
-                        <p class="wiki-card-kicker">Concept de base</p>
-                        <h3>Qu’est-ce que CustomModelData et comment ça marche ?</h3>
-                        <p>Comment un objet vanilla devient un katana, une chope, un jeton, un accessoire de quête ou n’importe quel autre modèle sans mods côté client.</p>
-                        <a class="resource-link" href="/fr/wiki-custom-model-data/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-structure">
-                        <p class="wiki-card-kicker">Référence</p>
-                        <h3>Structure du pack de ressources</h3>
-                        <p>Une carte rapide des dossiers <code>textures</code>, <code>models</code>, <code>blockstates</code> et des noms de fichiers qui reviennent sans cesse.</p>
-                        <a class="resource-link" href="/fr/wiki-resource-pack-structure/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-privacy">
-                        <p class="wiki-card-kicker">Politique</p>
-                        <h3>Politique de confidentialité</h3>
-                        <p>Comment le site gère les cookies, Google AdSense, les workflows locaux dans le navigateur et les réglages de confidentialité.</p>
-                        <a class="resource-link" href="/fr/privacy-policy/">Ouvrir la politique</a>
-                    </article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Concept de base</p><h3>Qu’est-ce que CustomModelData et comment ça marche ?</h3><p>Comment un seul item vanilla peut devenir une katana, une chope, un jeton, un prop de quête ou n’importe quel autre modèle sans mods client.</p><a class="resource-link" href="/fr/wiki-custom-model-data/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Référence</p><h3>Structure du pack de ressources</h3><p>Une carte rapide des dossiers <code>textures</code>, <code>models</code>, <code>blockstates</code> et des noms de fichiers qu’on finit toujours par chercher à la main.</p><a class="resource-link" href="/fr/wiki-resource-pack-structure/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Politique</p><h3>Politique de confidentialité</h3><p>Comment le site gère les cookies, Google AdSense, le travail local dans le navigateur et les préférences de confidentialité.</p><a class="resource-link" href="/fr/privacy-policy/">Ouvrir la politique</a></article>
                 </div>
             </section>
-
+            <section class="page-section" id="quick-paths">
+                <h2 class="section-title">Chemins rapides dans la bibliothèque</h2>
+                <table class="compact-table">
+                    <thead><tr><th>Si vous avez besoin de...</th><th>Commencez ici</th><th>Puis continuez avec</th></tr></thead>
+                    <tbody>
+                        <tr><td>Un objet personnalisé avec une commande give moderne</td><td><a href="/fr/wiki-custom-item-no-json/">Créer un objet sans JSON</a></td><td><a href="/fr/custom-item-builder/">Constructeur d’objets personnalisés</a></td></tr>
+                        <tr><td>Un hook visuel ou un modèle d’item</td><td><a href="/fr/wiki-blockbench-custom-model/">Tutoriel modèle personnalisé</a></td><td><a href="/fr/resource-pack-generator/">Générateur de packs</a></td></tr>
+                        <tr><td>Un marchand ou PNJ de quête</td><td><a href="/fr/wiki-custom-villager-trades/">Guide des échanges de villageois</a></td><td><a href="/fr/custom-villager-trades/">Outil des échanges</a></td></tr>
+                        <tr><td>Une potion-récompense ou un objet alchimique</td><td><a href="/fr/wiki-custom-potions/">Guide des potions personnalisées</a></td><td><a href="/fr/custom-potions/">Constructeur de potions</a></td></tr>
+                        <tr><td>Un skin ou un workflow de texture</td><td><a href="/fr/wiki-skin-editor/">Éditeur de skins</a> ou <a href="/fr/wiki-texture-painter/">Éditeur de textures</a></td><td><a href="/fr/skin-editor/">Éditeur de skins</a> et <a href="/fr/texture-painter/">Éditeur de textures</a></td></tr>
+                    </tbody>
+                </table>
+            </section>
             <section class="page-section" id="resource-pack-generator-wiki">
                 <h2 class="section-title">Workflow du pack</h2>
-                <p class="section-intro">C’est la boucle pratique: peindre un PNG, monter une texture, vérifier un rendu, générer un pack et revenir en jeu sans refaire tout le JSON à la main.</p>
+                <p class="section-intro">Ici se trouve le cycle de travail normal : peindre un PNG, préparer le modèle, vérifier l’aperçu, exporter le pack et ne pas se perdre entre l’idée et le jeu.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-generator">
-                        <p class="wiki-card-kicker">Guide d’outil</p>
-                        <h3>Comment utiliser le générateur de packs de ressources</h3>
-                        <p>Choisir une version, ajouter objets, blocs et armures, importer des textures, prévisualiser le résultat et télécharger un ZIP réellement prêt à l’emploi.</p>
-                        <a class="resource-link" href="/fr/wiki-resource-pack-generator/">Lire le guide</a>
-                    </article>
-                    <article class="resource-card" id="article-skin">
-                        <p class="wiki-card-kicker">Guide d’éditeur</p>
-                        <h3>Éditeur de skins</h3>
-                        <p>Comment fonctionne l’atlas 64x64, à quoi sert la couche externe et pourquoi peindre directement sur le modèle aide pour les manches, les chapeaux, les bottes et les faces cachées.</p>
-                        <a class="resource-link" href="/fr/wiki-skin-editor/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-texture">
-                        <p class="wiki-card-kicker">Guide d’éditeur</p>
-                        <h3>Éditeur de textures</h3>
-                        <p>Comment la taille d’une texture change la lisibilité, la densité de détail et la charge de travail, puis comment récupérer un PNG net pour votre pack.</p>
-                        <a class="resource-link" href="/fr/wiki-texture-painter/">Lire l’article</a>
-                    </article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Guide d’outil</p><h3>Comment utiliser le générateur de packs de ressources</h3><p>Choisir la version, ajouter des objets, blocs et armures, importer les textures, vérifier le résultat et télécharger un ZIP qu’on n’aura pas à reconstruire à la main.</p><a class="resource-link" href="/fr/wiki-resource-pack-generator/">Lire le guide</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Guide d’éditeur</p><h3>Éditeur de skins</h3><p>Comment fonctionne l’atlas 64x64, à quoi sert la couche externe et pourquoi peindre directement sur le modèle 3D aide pour les manches, bottes et zones cachées.</p><a class="resource-link" href="/fr/wiki-skin-editor/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Guide d’éditeur</p><h3>Éditeur de textures</h3><p>Comment la taille de texture influence lisibilité, détail et charge de travail, puis comment réinjecter le PNG dans le workflow du pack sans perdre sa netteté.</p><a class="resource-link" href="/fr/wiki-texture-painter/">Lire l’article</a></article>
                 </div>
             </section>
-
             <section class="page-section" id="other-tools-wiki">
                 <h2 class="section-title">Outils de gameplay</h2>
-                <p class="section-intro">Ces guides concernent les objets qui doivent fonctionner proprement dans les commandes, les récompenses, les commerces et les routines RP, pas seulement être jolis dans un inventaire.</p>
+                <p class="section-intro">Ici se trouvent les guides pour les outils qui doivent être beaux, mais aussi utiles en commande, en récompense, en cycle économique et en scène RP.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-potions">
-                        <p class="wiki-card-kicker">Constructeur de commandes</p>
-                        <h3>Potions personnalisées</h3>
-                        <p>Comment construire une potion avec <code>potion_contents</code>, des effets personnalisés, une couleur de bouteille, du lore, du CustomModelData et une commande give adaptée à la bonne version.</p>
-                        <a class="resource-link" href="/fr/wiki-custom-potions/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-villagers">
-                        <p class="wiki-card-kicker">Constructeur de commandes</p>
-                        <h3>Échanges personnalisés de villageois</h3>
-                        <p>Comment Offers, Recipes, prix, récompenses, limites, CustomModelData et commandes summon se combinent quand un marchand doit vraiment servir un système.</p>
-                        <a class="resource-link" href="/fr/wiki-custom-villager-trades/">Lire l’article</a>
-                    </article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Constructeur de commandes</p><h3>Potions personnalisées</h3><p>Comment construire une potion avec <code>potion_contents</code>, effets personnalisés, couleur de bouteille, lore, CustomModelData et commande give adaptée à la bonne version.</p><a class="resource-link" href="/fr/wiki-custom-potions/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Constructeur de commandes</p><h3>Échanges personnalisés de villageois</h3><p>Comment fonctionnent Offers, Recipes, prix, récompenses, limites, CustomModelData et la commande summon lorsqu’un marchand doit faire partie d’un vrai système.</p><a class="resource-link" href="/fr/wiki-custom-villager-trades/">Lire l’article</a></article>
                 </div>
             </section>
-
-            
             <section class="page-section" id="how-to-guides">
                 <h2 class="section-title">Guides pratiques</h2>
-                <p class="section-intro">Ces guides répondent à des questions spécifiques sur les commandes et mécanismes modernes de Minecraft.</p>
+                <p class="section-intro">Ces articles répondent aux questions les plus fréquentes et rendent le workflow Minecraft moderne plus abordable, sans fouiller dans du code brut au hasard.</p>
                 <div class="resource-grid">
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Guide Objet</p>
-                        <h3>Créer un objet personnalisé sans JSON</h3>
-                        <p>Créez des objets sans connaître les composants JSON.</p>
-                        <a class="resource-link" href="/fr/wiki-custom-item-no-json/">Lire l'article</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Guide Objet</p>
-                        <h3>Créer des armes uniques</h3>
-                        <p>Définition d'attributs personnalisés pour des armes.</p>
-                        <a class="resource-link" href="/fr/wiki-custom-weapon/">Lire l'article</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Guide Visuel</p>
-                        <h3>Ajouter un modèle Custom Model Data</h3>
-                        <p>Lier un modèle 3D à un objet dans un resource pack.</p>
-                        <a class="resource-link" href="/fr/wiki-blockbench-custom-model/">Lire l'article</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Mécaniques</p>
-                        <h3>Composants au lieu de NBT</h3>
-                        <p>Comprendre le changement dans les versions modernes.</p>
-                        <a class="resource-link" href="/fr/wiki-components-vs-nbt/">Lire l'article</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Dépannage</p>
-                        <h3>Pourquoi votre commande /give ne fonctionne pas ?</h3>
-                        <p>Corrigez facilement les erreurs de syntaxe.</p>
-                        <a class="resource-link" href="/fr/wiki-give-command-not-working/">Lire l'article</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Blocs de commande</p>
-                        <h3>Générer des commandes complexes</h3>
-                        <p>Générateurs visuels pour créateurs de cartes.</p>
-                        <a class="resource-link" href="/fr/wiki-complex-command-blocks/">Lire l'article</a>
-                    </article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Création d’objets</p><h3>Créer un objet personnalisé sans JSON</h3><p>Le chemin pratique à travers le système de composants si la syntaxe manuelle semble encore hostile.</p><a class="resource-link" href="/fr/wiki-custom-item-no-json/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Objets de combat</p><h3>Créer des armes uniques</h3><p>Comment faire tenir ensemble l’apparence, la commande et les paramètres de gameplay sans perdre la lisibilité de l’objet.</p><a class="resource-link" href="/fr/wiki-custom-weapon/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Modèles et pack</p><h3>Ajouter un modèle personnalisé à un objet</h3><p>Le pipeline de Blockbench jusqu’au hook de pack et à l’objet fonctionnel en jeu.</p><a class="resource-link" href="/fr/wiki-blockbench-custom-model/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Migration de version</p><h3>Composants au lieu de NBT</h3><p>Ce qui a vraiment changé après la 1.20.5 et pourquoi les anciens conseils cassent justement là où tout semblait encore presque pareil.</p><a class="resource-link" href="/fr/wiki-components-vs-nbt/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Débogage de commandes</p><h3>Pourquoi votre /give ne fonctionne pas ?</h3><p>Les erreurs de syntaxe les plus courantes, le mélange des époques Minecraft et le chemin le plus court vers une commande à nouveau valide.</p><a class="resource-link" href="/fr/wiki-give-command-not-working/">Lire l’article</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Command blocks</p><h3>Générer des commandes complexes en quelques clics</h3><p>Quand le chat ne suffit plus et pourquoi un builder vous économise ici le plus de nerfs.</p><a class="resource-link" href="/fr/wiki-complex-command-blocks/">Lire l’article</a></article>
                 </div>
             </section>
-
             <section class="page-section" id="advanced-rp-guides">
                 <h2 class="section-title">Systèmes de serveur et plugins</h2>
-                <p class="section-intro">C’est ici que le wiki ressemble moins à une boîte à outils et plus à des notes de terrain venues d’un vrai serveur RP: économie, rituels, progression, classes et pression sociale.</p>
+                <p class="section-intro">Ici commence le vrai niveau serveur : économie, mods, plugins et toutes les mécaniques qui soutiennent le monde non seulement visuellement, mais aussi comme système vivant.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-economy">
-                        <p class="wiki-card-kicker">Guide avancé</p>
-                        <h3>Économie RP avec custom_data</h3>
-                        <p>Comment empêcher les faux billets, laissez-passer et jetons d’entrer dans votre économie de villageois quand la monnaie est un vrai objet RP.</p>
-                        <a class="resource-link" href="/fr/wiki-rp-economy-custom-data/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-armorhide">
-                        <p class="wiki-card-kicker">Article de mod</p>
-                        <h3>Mod ArmorHide</h3>
-                        <p>Pourquoi l'armure visible casse discrètement les bonnes scènes de procès, de rituel et de négociation, et comment ce besoin a produit l'un des premiers vrais releases du projet.</p>
-                        <a class="resource-link" href="/fr/wiki-armorhide-mod/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-mechanism">
-                        <p class="wiki-card-kicker">Article de plugin</p>
-                        <h3>Mechanism Plugin</h3>
-                        <p>Un guide compact sur la progression technique autour du Gear Heart, de l’oxydation, de l’entretien, de la surchauffe et des machines rituelles sur Paper.</p>
-                        <a class="resource-link" href="/fr/wiki-mechanism-plugin/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-headhunter">
-                        <p class="wiki-card-kicker">Article de plugin</p>
-                        <h3>HeadHunter Plugin</h3>
-                        <p>Comment la progression par trophées, les capacités de monstres et le risque de perte créent une boucle de chasse qui reste ancrée dans la survie et ses conséquences.</p>
-                        <a class="resource-link" href="/fr/wiki-headhunter-plugin/">Lire l’article</a>
-                    </article>
-                    <article class="resource-card" id="article-darkmage">
-                        <p class="wiki-card-kicker">Article de plugin</p>
-                        <h3>DarkMage Plugin</h3>
-                        <p>Un guide sur le coût sanguin de la magie, les bouteilles, la pression rituelle et la façon dont la magie noire devient un levier social plutôt qu’un simple catalogue de sorts.</p>
-                        <a class="resource-link" href="/fr/wiki-darkmage-plugin/">Lire l’article</a>
-                    </article>
+                    <article class="resource-card"><h3>Économie RP avec custom_data</h3><p>Comment empêcher les faux billets, laissez-passer et jetons d’entrer dans votre boucle monétaire.</p><a class="resource-link" href="/fr/wiki-rp-economy-custom-data/">Lire l’article</a></article>
+                    <article class="resource-card"><h3>Mod ArmorHide</h3><p>Pourquoi cacher l’armure est devenu important pour les scènes de rôle, et comment cette douleur a mené à un mod réellement publié.</p><a class="resource-link" href="/fr/wiki-armorhide-mod/">Lire l’article</a></article>
+                    <article class="resource-card"><h3>Mechanism Plugin</h3><p>Un système de serveur né de concepts de joueurs vivants, pas d’une liste sèche de mécaniques.</p><a class="resource-link" href="/fr/wiki-mechanism-plugin/">Lire l’article</a></article>
+                    <article class="resource-card"><h3>HeadHunter Plugin</h3><p>Un plugin qui transforme la chasse aux créatures et l’acquisition de pouvoirs en une couche RP à part entière.</p><a class="resource-link" href="/fr/wiki-headhunter-plugin/">Lire l’article</a></article>
+                    <article class="resource-card"><h3>DarkMage Plugin</h3><p>Un exemple de système de magie noire né d’une idée de joueur devenue vraie mécanique de serveur.</p><a class="resource-link" href="/fr/wiki-darkmage-plugin/">Lire l’article</a></article>
                 </div>
             </section>
-
+            <section class="page-section" id="why-wiki-matters">
+                <h2 class="section-title">Pourquoi il faut des guides à côté des outils</h2>
+                <p>Un générateur peut sortir une ligne de texte, mais il ne choisit pas la forme de votre workflow à votre place. Le wiki existe pour expliquer pourquoi le sélecteur de version compte, quand il faut un builder, quand il faut un fichier de pack et pourquoi les mêmes erreurs reviennent dans des outils Minecraft très différents.</p>
+                <p>Il garde aussi les outils honnêtes. Quand le guide et l’interface se contredisent, cela se voit vite. Quand ils se renforcent mutuellement, le trajet de la confusion au résultat final devient plus court et plus calme.</p>
+            </section>
+            <section class="page-section" id="wiki-faq">
+                <h2 class="section-title">FAQ</h2>
+                <div class="faq-section">
+                    <h3>Faut-il lire le wiki avant d’ouvrir un outil ?</h3>
+                    <p>Seulement si le workflow est nouveau pour vous. Si les pièces vous sont déjà familières, ouvrez directement l’outil et revenez au guide quand une zone devient floue.</p>
+                    <h3>Ces pages sont-elles seulement théoriques ?</h3>
+                    <p>Non. Les meilleures pages doivent se terminer par une action réelle : une commande valide, un export de pack, un workflow de peinture ou une configuration serveur.</p>
+                    <h3>Et si je ne m’intéresse qu’à une seule version de Minecraft ?</h3>
+                    <p>Aucun problème. Les guides signalent clairement les coupures de version pour que vous puissiez ignorer tout ce qui ne concerne pas votre serveur.</p>
+                    <h3>Pourquoi resource packs, objets, échanges et potions sont-ils dans la même bibliothèque ?</h3>
+                    <p>Parce que sur un vrai serveur, ils se croisent sans cesse. Un seul marchand peut demander à la fois une icône de pack, une commande give et une bonne structure summon.</p>
+                    <h3>Où aller si je veux le chemin le plus court vers l’action ?</h3>
+                    <p>Regardez le tableau de chemins rapides ci-dessus. Il relie le problème au guide et à l’outil qui le résolvent généralement le plus vite.</p>
+                </div>
+            </section>
             <section class="page-section" id="resource-pack-paths">
                 <h2 class="section-title">Référence des chemins</h2>
-                <p class="section-intro">Quand il ne vous faut qu’un nom de dossier et un exemple de fichier, cette table va plus vite qu’un long détour par un guide complet.</p>
                 <table class="compact-table">
-                    <tr><th>Type</th><th>Chemin du pack</th><th>Exemple</th></tr>
+                    <tr><th>Type</th><th>Chemin du pack</th><th>Exemple de nom</th></tr>
                     <tr><td>Objet</td><td><code>assets/minecraft/textures/item</code></td><td><div class="copy-example"><code>diamond_sword.png</code><button class="copy-button" type="button" data-copy-text="diamond_sword.png" data-copy-label="Copier" data-copy-copied-label="Copié">Copier</button></div></td></tr>
                     <tr><td>Bloc</td><td><code>assets/minecraft/textures/block</code></td><td><div class="copy-example"><code>oak_planks.png</code><button class="copy-button" type="button" data-copy-text="oak_planks.png" data-copy-label="Copier" data-copy-copied-label="Copié">Copier</button></div></td></tr>
                     <tr><td>Modèle d’objet</td><td><code>assets/minecraft/models/item</code></td><td><div class="copy-example"><code>custom_diamond_sword_1.json</code><button class="copy-button" type="button" data-copy-text="custom_diamond_sword_1.json" data-copy-label="Copier" data-copy-copied-label="Copié">Copier</button></div></td></tr>
                     <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Copier" data-copy-copied-label="Copié">Copier</button></div></td></tr>
-                    <tr><td>Couches d’armure</td><td><code>assets/minecraft/textures/models/armor</code></td><td><div class="copy-example"><code>diamond_layer_1.png</code><button class="copy-button" type="button" data-copy-text="diamond_layer_1.png" data-copy-label="Copier" data-copy-copied-label="Copié">Copier</button></div></td></tr>
                 </table>
             </section>
         </div>

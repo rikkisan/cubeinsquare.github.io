@@ -207,16 +207,61 @@
         <div class="language-switch" aria-label="Language"><a href="/ru/wiki-resource-pack-generator/">RU</a><a href="/wiki-resource-pack-generator/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-resource-pack-generator/">DE</a></div>
     </div>
 </div><main class="page-shell wiki-article">
-    <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
-    <section class="page-hero"><h1>Guide du générateur de packs de ressources Minecraft</h1><p class="page-lead">Créez un pack de ressources Minecraft directement dans le navigateur. Importez des textures PNG, choisissez ce qu’elles remplacent, prévisualisez le résultat et téléchargez un ZIP prêt.</p></section>
-    <div class="tool-button-row"><a class="tool-button" href="/fr/resource-pack-generator/">Ouvrir le générateur</a></div>
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Guide du générateur de packs de ressources Minecraft</h1>
+        <p class="page-lead">Le générateur de packs de ressources n’est pas utile seulement parce qu’il fabrique un ZIP dans le navigateur. Il enlève surtout la routine qui casse souvent un workflow Minecraft bien avant que la texture n’arrive vraiment en jeu.</p>
+        <a class="resource-link" href="/fr/resource-pack-generator/">Ouvrir le générateur</a>
+    </section>
     <article>
-        <h2>1. Nommez le pack</h2><p>Saisissez un nom de pack en haut. Il sera utilisé dans <code>pack.mcmeta</code> et comme nom du ZIP téléchargé.</p>
-        <h2>2. Choisissez la version du serveur</h2><p>Le sélecteur de version contrôle si les commandes give utilisent l’ancienne syntaxe NBT ou la nouvelle syntaxe Data Components 1.20.5+.</p>
-        <h2>3. Ajoutez des objets</h2><p>Open the Objets tab, enter a vanilla item ID, upload a PNG texture, and optionally enter a CustomModelData number for a custom variant.</p>
-        <h2>4. Ajoutez des blocs</h2><p>Open the Blocs tab to replace a block texture or build a cube from separate top, bottom, front, back, and side textures.</p>
-        <h2>5. Ajoutez une armure</h2><p>L’onglet Armure permet de remplacer les couches d’armure et les icônes d’inventaire des matériaux courants de Minecraft.</p>
-        <h2>6. Prévisualisez et téléchargez</h2><p>Utilisez le bouton d’aperçu pour vérifier blocs, objets et armures. Cliquez ensuite sur Télécharger le pack de ressources pour générer le ZIP localement dans votre navigateur.</p>
+        <h2>À quoi ce générateur sert vraiment</h2>
+        <p>Il aide surtout quand le PNG est déjà presque prêt, mais que reconstruire à la main la structure du pack, les modèles, les blockstates et les noms de fichiers devient insupportable. C’est un bon outil pour la phase où l’idée et le visuel existent déjà, mais où l’emballage et l’export commencent à voler l’énergie du projet.</p>
+        <p>Il est aussi très pratique en équipe : moins de risques d’oublier un dossier, de laisser un nom provisoire ou de produire une archive mal structurée. Même sur un petit pack, une couche d’export stable enlève plus de friction qu’on ne l’imagine.</p>
+        <h2>Décidez d’abord quel type d’asset vous emballez</h2>
+        <table class="compact-table">
+            <thead><tr><th>Type d’asset</th><th>Quand choisir ce mode</th><th>Étape suivante la plus fréquente</th></tr></thead>
+            <tbody>
+                <tr><td>Objet</td><td>Si vous voulez un nouveau look pour une arme, une chope, un jeton, un prop ou un item de quête</td><td>Vers le constructeur d’objets ou les échanges de villageois</td></tr>
+                <tr><td>Bloc</td><td>Si vous remplacez une face, plusieurs faces ou un cube complet pour une construction</td><td>Vers un test en jeu pour le contraste et la silhouette</td></tr>
+                <tr><td>Armure</td><td>Si un set doit avoir sa propre identité visuelle tout en gardant la logique vanilla</td><td>Vers les tests de skins, de costumes et de scènes</td></tr>
+            </tbody>
+        </table>
+        <h2>1. Donnez un nom au pack</h2>
+        <p>Entrez le nom du futur pack en haut. Il sera utilisé dans <code>pack.mcmeta</code> et dans le nom du ZIP téléchargé. Cela semble secondaire, mais un nom clair réduit énormément le chaos quand plusieurs variantes commencent à circuler dans un salon Discord ou dans un dossier partagé.</p>
+        <h2>2. Choisissez la version du serveur</h2>
+        <p>Le sélecteur de version ne change pas seulement l’interface. Il prépare aussi la couche de commandes, qui utilisera soit l’ancien NBT, soit les Data Components modernes après la 1.20.5. Les textures peuvent rester valides plus largement que la syntaxe des commandes, donc mieux vaut ne pas traiter ce choix comme un détail.</p>
+        <h2>3. Ajoutez des objets</h2>
+        <p>Dans l’onglet objets, vous entrez un ID vanilla, vous importez un PNG et vous pouvez ajouter un CustomModelData pour une variante spécifique. C’est le chemin habituel pour les props narratifs, les armes, les notes, les jetons, les laissez-passer et d’autres objets décoratifs.</p>
+        <p>Si l’objet doit ensuite recevoir une commande, ne considérez pas le pack comme la tâche entière. Le hook visuel appartient ici ; la commande give finale appartient en général au constructeur d’objets personnalisés.</p>
+        <h2>4. Ajoutez des blocs</h2>
+        <p>L’onglet blocs permet de remplacer une texture unique ou de construire un cube avec des faces distinctes pour le haut, le bas, l’avant, l’arrière et les côtés. À cette étape, le travail devient souvent plus calme, parce qu’on cesse de porter mentalement la structure du pack à la main.</p>
+        <h2>5. Ajoutez des armures</h2>
+        <p>L’onglet armures permet de remplacer les couches et les icônes d’inventaire des matériaux vanilla. C’est très utile quand un serveur veut une identité visuelle propre sans casser toute la logique de l’équipement sous-jacent.</p>
+        <h2>6. Vérifiez l’aperçu puis téléchargez</h2>
+        <p>Utilisez l’aperçu pour vérifier objets, blocs et armures, puis téléchargez le ZIP final. Cette étape compte plus qu’elle n’en a l’air : c’est là que l’on voit le plus souvent une face permutée, une silhouette trop faible, une texture trop sombre ou un nom de fichier qui devait être « corrigé plus tard ».</p>
+        <h2>Erreurs fréquentes</h2>
+        <ul>
+            <li>Importer l’art avant d’avoir décidé si le problème relève d’un objet, d’un bloc ou d’une armure.</li>
+            <li>Traiter le sélecteur de version comme facultatif alors que la couche commande en dépend ensuite.</li>
+            <li>Configurer le CustomModelData dans le pack, puis oublier de le relier du côté commande.</li>
+            <li>Sauter l’aperçu et découvrir les faces mélangées seulement après export.</li>
+            <li>Attendre du générateur qu’il construise aussi la commande give, alors que cette partie vit sur une autre page.</li>
+        </ul>
+        <h2>Quand passer à un autre outil</h2>
+        <p>Passez à l’éditeur de textures si le PNG doit encore être peint. Passez au constructeur d’objets personnalisés si le visuel est prêt et qu’il faut maintenant une commande <code>/give</code> compatible avec la version. Passez aux échanges de villageois ou aux potions personnalisées si l’asset devient une récompense, un article de boutique ou un élément de gameplay.</p>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Faut-il connaître toute la structure des dossiers avant d’utiliser l’outil ?</h3>
+            <p>Non. C’est justement une des raisons principales d’utiliser le générateur : il fournit une couche d’export propre sans vous forcer à reconstruire la même arborescence à la main à chaque fois.</p>
+            <h3>Peut-on l’utiliser si la texture a déjà été peinte ailleurs ?</h3>
+            <p>Oui. Le générateur fonctionne très bien comme étape d’emballage, même si le PNG vient d’un autre éditeur.</p>
+            <h3>Remplace-t-il le constructeur d’objets personnalisés ?</h3>
+            <p>Non. Le générateur s’occupe du côté pack. Le constructeur s’occupe du côté commande.</p>
+            <h3>CustomModelData ne sert-il qu’aux armes ?</h3>
+            <p>Pas du tout. Il fonctionne tout aussi bien pour des notes, jetons, chopes, monnaies, objets de quête et bien d’autres choses.</p>
+            <h3>Pourquoi vérifier l’aperçu si le ZIP peut être régénéré facilement ?</h3>
+            <p>Parce que l’aperçu attrape les erreurs structurelles tant que le contexte est encore frais et avant que le pack ne parte plus loin dans le workflow.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

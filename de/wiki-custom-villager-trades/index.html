@@ -174,70 +174,83 @@
 </div>
 
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
     <section class="page-hero">
-        <h1>Minecraft-Dorfbewohner-Handels-Guide</h1>
-        <p class="page-lead">Ein benutzerdefinierter Dorfbewohner kann einen einfachen Handel in einen Story-Shop verwandeln: Pässe, Quest-Items, einzigartige Waffen, Schlüssel, Dokumente und Belohnungen ohne Mods.</p>
-        <a class="resource-link" href="/de/custom-villager-trades/">Builder öffnen</a>
+        <h1>Guide zum Dorfbewohner-Handel in Minecraft</h1>
+        <p class="page-lead">Ein benutzerdefinierter Dorfbewohner ist eine saubere Möglichkeit, Austausch in die Welt einzubauen: Laden, Quest-Archivar, Schmied, Kontrollposten oder NPC, der eine Belohnung gegen erzählerische Währung verkauft.</p>
+        <a class="resource-link" href="/de/custom-villager-trades/">Werkzeug öffnen</a>
     </section>
-
     <article>
-        <h2>Was das Werkzeug macht</h2>
-        <p>Der Builder erzeugt einen langen <code>/summon minecraft:villager</code> Befehl. Der Befehl definiert Aussehen und Verhalten des Dorfbewohners und fügt dann einen <code>Offers</code> Block mit einer Liste von <code>Recipes</code>.</p>
-
-        <h2>Hauptstruktur</h2>
-        <p>Jeder Handel hat mindestens zwei Item-Stacks: <code>buy</code> and <code>sell</code>. Wenn der Preis zwei Items nutzt, enthält der Befehl auch <code>buyB</code>.</p>
-<pre><code>Offers:{
-  Recipes:[
-    {
-      buy:{id:"minecraft:emerald",count:8},
-      sell:{id:"minecraft:paper",count:1},
-      maxUses:999999
-    }
-  ]
-}</code></pre>
-
-        <h2>Minecraft-Versionen</h2>
-        <p>Der Builder zeigt jetzt drei Versionen, weil sich die Itemsprache nicht nur einmal, sondern zweimal verandert hat. Minecraft 1.20.5 hat Item-Daten zu Data Components verschoben, und Minecraft 1.21.4 hat den modernen Stil noch einmal nachgeschliffen, besonders bei <code>custom_model_data</code>.</p>
+        <h2>Warum benutzerdefinierte Dorfbewohner auf Story-Servern wichtig sind</h2>
+        <p>Ein Händler hat einen großen Vorteil: Er hält den Tausch innerhalb der Welt. Spieler sehen kein abstraktes Menü, sondern eine Figur mit Ort, Rolle und Grund, genau diesen Gegenstand anzubieten. Wenn die Inszenierung zählt, fühlt sich so ein NPC wie Teil der Umgebung an und nicht wie ein verkleideter Button.</p>
+        <p>Das Werkzeug lohnt sich, weil summon-Befehle sehr schnell lang und unangenehm werden. Sobald mehrere Items, Limits, CustomModelData oder ein zweiter Preis dazukommen, frisst Handsyntax viel zu viel Aufmerksamkeit.</p>
+        <h2>Was das Werkzeug tut</h2>
+        <p>Der Builder erzeugt einen langen <code>/summon minecraft:villager</code>-Befehl. Darin werden Aussehen und Verhalten des NPC gesetzt, danach kommt ein <code>Offers</code>-Block mit einer Liste von <code>Recipes</code>.</p>
+        <h2>Grundstruktur</h2>
+        <p>Jeder Handel hat mindestens zwei Item-Stacks: <code>buy</code> und <code>sell</code>. Wenn der Preis aus zwei Gegenständen besteht, kommt zusätzlich <code>buyB</code> dazu.</p>
+        <h2>Die drei Versionsmodi sind nicht nur Dekoration</h2>
+        <p>Der Builder zeigt drei Versionszweige, weil sich die Item-Syntax zweimal verändert hat, nicht nur einmal. Minecraft 1.20.5 hat Items auf Data Components umgestellt, und 1.21.4 hat den modernen Stil für manche Felder wie <code>custom_model_data</code> noch einmal verfeinert.</p>
         <ul>
-            <li><strong>1.21.4+</strong> nutzt weiterhin <code>count</code> und <code>components</code>, aber einige Component-Werte sind strukturierter geworden. In diesem Tool merkt man das vor allem an <code>minecraft:custom_model_data</code>.</li>
-            <li><strong>1.20.5-1.21.3</strong> nutzt bereits <code>count</code> und <code>components</code>, aber noch die einfachere fruhere Components-Schreibweise.</li>
-            <li><strong>Vor 1.20.5</strong> nutzt <code>Count</code> und das alte <code>tag</code>-Compound mit klassischer NBT-Struktur.</li>
+            <li><strong>1.21.4+</strong> nutzt weiterhin <code>count</code> und <code>components</code>, aber manche Payloads werden etwas formaler. Hier merkt man das vor allem an <code>minecraft:custom_model_data</code>.</li>
+            <li><strong>1.20.5–1.21.3</strong> lebt bereits in <code>count</code> und <code>components</code>, aber noch im früheren modernen Stil.</li>
+            <li><strong>Vor 1.20.5</strong> nutzt <code>Count</code> und das alte <code>tag</code>-Compound mit legacy NBT-Item-Stacks.</li>
         </ul>
-        <p>Die drei Optionen sind also nicht nur Deko. Sie verandern, wie der Builder <code>buy</code>, <code>buyB</code> und <code>sell</code> im summon-Befehl serialisiert. Der kleine Helfer fur den Befehlsblock zeigt dieselbe Versionslogik vor allem aus Klarheitsgrunden, obwohl sich der reine <code>/give</code>-Befehl deutlich weniger verandert als die Item-Stacks im Handels-Teil.</p>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
-{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
-{id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
-
-        <h2>Dorfbewohner-Felder</h2>
+        <p>Diese drei Modi entscheiden also wirklich, wie <code>buy</code>, <code>buyB</code> und <code>sell</code> im summon-Befehl serialisiert werden. Der Command-Block-Helfer spiegelt dieselbe Trennung vor allem aus Klarheitsgründen, auch wenn sich der einfache <code>/give</code> für einen Command Block viel weniger ändert als der komplette Händler-Payload.</p>
+        <h2>Felder des Dorfbewohners</h2>
         <ul>
-            <li><strong>Beruf</strong> steuert Kleidung und Arbeitsstil des Dorfbewohners.</li>
-            <li><strong>Biomtyp</strong> ändert die visuelle Variante: Ebene, Wüste, Taiga, Sumpf und mehr.</li>
-            <li><strong>Stufe</strong> ändert das Abzeichen am Gürtel des Dorfbewohners.</li>
-            <li><strong>NoAI</strong> hält den Dorfbewohner an Ort und Stelle, nützlich für NPC-Shops auf Servern.</li>
-            <li><strong>Unverwundbar</strong> schützt den Händler vor versehentlichem Schaden.</li>
+            <li><strong>Profession</strong> legt Beruf und Kleidung fest.</li>
+            <li><strong>Biome type</strong> verändert die optische Variante: plains, desert, taiga, swamp und weitere.</li>
+            <li><strong>Level</strong> beeinflusst das Abzeichen am Gürtel.</li>
+            <li><strong>NoAI</strong> hält einen stationären NPC an Ort und Stelle.</li>
+            <li><strong>Invulnerable</strong> schützt ihn vor versehentlichem Schaden.</li>
         </ul>
-
-        <h2>Handelsfelder</h2>
+        <h2>Felder des Handels</h2>
         <ul>
-            <li><strong>Kaufgegenstand</strong> ist der Hauptpreis, zum Beispiel <code>emerald</code>.</li>
-            <li><strong>Zweiter Kaufgegenstand</strong> ist ein optionaler Zusatzpreis, zum Beispiel <code>diamond</code> or a quest item.</li>
-            <li><strong>Verkaufsgegenstand</strong> ist die Belohnung, die der Spieler erhält.</li>
-            <li><strong>CustomModelData</strong> lässt den Dorfbewohner ein Item mit eigenem Resource-Pack-Modell verkaufen.</li>
-            <li><strong>Maximale Nutzungen</strong> steuert, wie oft der Handel genutzt werden kann.</li>
+            <li><strong>Buy item</strong> ist der Hauptpreis, zum Beispiel <code>emerald</code>.</li>
+            <li><strong>Second buy item</strong> ist ein Zusatzpreis wie Diamant, Token oder Questobjekt.</li>
+            <li><strong>Sell item</strong> ist die Belohnung für den Spieler.</li>
+            <li><strong>CustomModelData</strong> ermöglicht verkaufte Items mit besonderem Modell oder Icon aus dem Resource Pack.</li>
+            <li><strong>Max uses</strong> definiert das Nutzungslimit des Handels.</li>
         </ul>
-
-        <h2>Verwendung auf einem Server</h2>
-        <p>Kopiere den erzeugten Befehl in einen Befehlsblock oder eine Operator-Konsole.</p>
-        <p><strong>Wichtig:</strong> wenn der Befehl länger als <code>256</code> Zeichen ist, brauchst du einen Befehlsblock. Der Minecraft-Chat kann lange summon-Befehle abschneiden.</p>
-
+        <h2>Wie man das auf einem echten Server nutzt</h2>
+        <ol>
+            <li>Wähle zuerst den Syntaxmodus passend zur Serverversion.</li>
+            <li>Lege dann die Identität des NPC fest: Beruf, Biom, Level und ob er sich bewegen darf.</li>
+            <li>Baue eine einzige Handelszeile komplett, bevor du das Muster auf mehrere Zeilen überträgst.</li>
+            <li>Teste den summon-Befehl einmal im Spiel, bevor du ihn an andere weitergibst oder in Dateien versteckst.</li>
+            <li>Wenn die Länge schon den Chat überfordert, wechsle sofort in einen Command Block.</li>
+        </ol>
+        <h2>Verwendung auf dem Server</h2>
+        <p>Kopiere den generierten Befehl in die Operator-Konsole oder in einen Command Block.</p>
+        <p><strong>Wichtig:</strong> Wenn der summon-Befehl länger als <code>256</code> Zeichen ist, nimm direkt einen Command Block. Minecraft-Chat schneidet lange Konstruktionen schneller ab, als man denkt.</p>
         <h2>Praktische Ideen</h2>
         <ul>
-            <li>Ein Passhändler, der Quest-Marken annimmt.</li>
-            <li>Ein NPC-Schmied, der CustomModelData-Waffen verkauft.</li>
-            <li>Ein Archivar, der gefundene Dokumente gegen Hinweise tauscht.</li>
-            <li>Ein Fraktionshändler mit Items hinter Story-Währung.</li>
+            <li>Ein Passhändler, der Quest-Tokens annimmt.</li>
+            <li>Ein Schmied, der Waffen mit CustomModelData verkauft.</li>
+            <li>Ein Archivar, der gefundene Dokumente gegen neue Hinweise tauscht.</li>
+            <li>Ein Fraktionshändler mit Gegenständen, die an erzählerische Währung gebunden sind.</li>
         </ul>
+        <h2>Häufige Fehler</h2>
+        <ul>
+            <li>Den falschen Versionsmodus wählen und dann die Handelslogik beschuldigen, obwohl in Wahrheit die Item-Syntax falsch ist.</li>
+            <li>Gleich fünf Handelszeilen zu testen, statt zuerst eine einzige sauber zu beweisen.</li>
+            <li>NoAI bei einem stationären NPC auszuschalten und ihm dann über den ganzen Markt hinterherzulaufen.</li>
+            <li>Zu vergessen, dass lange summon-Befehle in einen Command Block gehören.</li>
+            <li>CustomModelData für verkaufte Items zu nutzen, ohne zu prüfen, ob der visuelle Hook auf Pack-Seite überhaupt existiert.</li>
+        </ul>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Muss ich summon-Syntax kennen, um das zu benutzen?</h3>
+            <p>Nein. Es hilft, die Struktur wiederzuerkennen, aber der Builder existiert gerade deshalb, damit du nicht jede Klammer per Hand zusammensetzen musst.</p>
+            <h3>Kann ein Dorfbewohner custom aussehende Gegenstände verkaufen?</h3>
+            <p>Ja. Das ist eine der nützlichsten Kombinationen: mechanisch ein normales Item, visuell aber eine besondere Belohnung aus dem Resource Pack.</p>
+            <h3>Warum nicht einfach einen Plugin-Shop verwenden?</h3>
+            <p>Weil ein Dorfbewohner den Tausch in der Welt hält und sich besser für Szenen eignet, in denen der Verkäufer selbst Teil der Geschichte ist.</p>
+            <h3>Wann brauche ich buyB?</h3>
+            <p>Wenn der Preis aus einem zweiten Bestandteil bestehen soll: Gemme, Token, Story-Item oder besondere Erlaubnis zusätzlich zur Hauptwährung.</p>
+            <h3>Wie testet man am sichersten?</h3>
+            <p>Erst einen einzigen Dorfbewohner mit einem einzigen Handel spawnen, den Kauf einmal durchspielen und erst danach dasselbe Muster zu einem größeren Shop ausbauen.</p>
+        </div>
     </article>
 </main>
 

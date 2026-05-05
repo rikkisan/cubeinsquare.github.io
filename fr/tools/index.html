@@ -106,10 +106,134 @@
         <div class="language-switch" aria-label="Language"><a href="/ru/tools/">RU</a><a href="/tools/">EN</a><a class="is-active" href="#">FR</a><a href="/de/tools/">DE</a></div>
     </div>
 </div><main class="page-shell">
-    <section class="page-hero"><h1>Outils</h1><p class="page-lead">Une collection d’outils légers dans le navigateur pour créer des packs de ressources Minecraft. Le générateur, le skin editor, le texture painter, les échanges de villageois et les potions personnalisées sont déjà disponibles. La feuille de route garde les sphères, les cercles, le map art et la palette pixel-art.</p></section>
-    <section class="page-section" id="available-tools"><h2 class="section-title">Disponible maintenant</h2><div class="resource-grid"><article class="resource-card"><h3>Générateur de packs de ressources Minecraft <span class="status-pill">prêt</span></h3><p>Créez un pack ZIP avec textures d’objets, textures de blocs, armures, CustomModelData, blockstates et aperçu 3D.</p><a class="resource-link" href="/fr/resource-pack-generator/">Ouvrir le générateur</a></article><article class="resource-card"><h3>Minecraft Skin Editor <span class="status-pill">prêt</span></h3><p>Peignez un atlas 64x64 classique, dessinez directement sur le modèle 3D du joueur, importez un PNG et exportez le skin final.</p><a class="resource-link" href="/fr/skin-editor/">Ouvrir l’éditeur</a></article><article class="resource-card"><h3>Texture painter <span class="status-pill">nouveau</span></h3><p>Choisissez la taille du canevas, dessinez une texture PNG pour objet ou bloc dans le navigateur, puis envoyez-la dans le générateur.</p><a class="resource-link" href="/fr/texture-painter/">Ouvrir l’éditeur</a></article><article class="resource-card"><h3>Échanges personnalisés de villageois <span class="status-pill">prêt</span></h3><p>Créez des échanges de villageois avec objets demandés, récompenses, CustomModelData, limites, XP et commande summon prête.</p><a class="resource-link" href="/fr/custom-villager-trades/">Ouvrir le constructeur</a></article><article class="resource-card"><h3>Potions personnalisées <span class="status-pill">prêt</span></h3><p>Créez des commandes pour <code>potion</code>, <code>splash_potion</code> et <code>lingering_potion</code> avec effets, couleur, lore, CustomModelData et syntaxe selon la version.</p><a class="resource-link" href="/fr/custom-potions/">Ouvrir le générateur</a></article></div></section>
-    <section class="page-section" id="upcoming-tools"><h2 class="section-title">Prochains candidats</h2><div class="resource-grid"><article class="resource-card"><h3>Générateur de sphères et de cercles <span class="status-pill">bientôt</span></h3><p>Repères simples pour construire cercles, dômes, sphères et autres formes arrondies.</p></article><article class="resource-card"><h3>Créateur de map art <span class="status-pill">bientôt</span></h3><p>Préparation des compositions map art avec taille, palette de blocs et base de plan plus claire.</p></article><article class="resource-card"><h3>Palette pixel-art <span class="status-pill">bientôt</span></h3><p>Réglages rapides des couleurs, de l’opacité et de la palette pour les textures 16x16, 32x32 et 64x64.</p></article></div></section>
-    <section class="page-section" id="support-tools"><h2 class="section-title">Soutenir le projet</h2><div class="resource-grid"><article class="resource-card"><h3>Patreon <span class="status-pill">soutien</span></h3><p>Si ces outils vous font gagner du temps, vous pouvez soutenir Cube in Square sur Patreon. Cela nous aide à livrer de nouveaux éditeurs, guides et outils serveur sans alourdir le site.</p><a class="resource-link" href="https://www.patreon.com/c/Cubeinaquare?vanity=user" target="_blank" rel="noopener noreferrer">Ouvrir Patreon</a></article></div></section>
+    <section class="page-hero">
+        <h1>Outils</h1>
+        <p class="page-lead">Une collection d’outils navigateur pour le workflow Minecraft : resource packs, objets personnalisés, skins, textures, villageois et potions. Ici, on ne fait pas seulement des commandes ou des ZIP : on trouve aussi le bon point de départ selon la tâche réelle.</p>
+    </section>
+
+    <section class="page-section" id="available-tools">
+        <h2 class="section-title">Disponible maintenant</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Générateur de packs de ressources Minecraft <span class="status-pill">prêt</span></h3>
+                <p>Crée un pack ZIP avec textures d’objets, textures de blocs, armures, CustomModelData, blockstates et aperçu 3D.</p>
+                <a class="resource-link" href="/fr/resource-pack-generator/">Ouvrir le générateur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Constructeur d’objets personnalisés <span class="status-pill">nouveau</span></h3>
+                <p>Assemble des commandes <code>/give</code> selon la version avec nom visible, lore, ID caché, <code>item_model</code> et slots modernes <code>custom_model_data</code>.</p>
+                <a class="resource-link" href="/fr/custom-item-builder/">Ouvrir le constructeur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Éditeur de skins Minecraft <span class="status-pill">prêt</span></h3>
+                <p>Permet de peindre l’atlas 64x64 classique, de dessiner directement sur le modèle 3D du joueur et d’exporter le PNG final.</p>
+                <a class="resource-link" href="/fr/skin-editor/">Ouvrir l’éditeur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Éditeur de textures <span class="status-pill">nouveau</span></h3>
+                <p>Un canevas pour textures PNG d’objets et de blocs : on choisit la taille, on peint dans le navigateur, puis on renvoie le résultat vers le workflow du pack.</p>
+                <a class="resource-link" href="/fr/texture-painter/">Ouvrir l’éditeur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Échanges personnalisés de villageois <span class="status-pill">prêt</span></h3>
+                <p>Crée des villageois avec objets d’achat, récompenses, CustomModelData, limites, XP et commande summon prête à l’emploi.</p>
+                <a class="resource-link" href="/fr/custom-villager-trades/">Ouvrir le constructeur</a>
+            </article>
+            <article class="resource-card">
+                <h3>Potions personnalisées <span class="status-pill">prêt</span></h3>
+                <p>Crée des commandes pour <code>potion</code>, <code>splash_potion</code> et <code>lingering_potion</code> avec effets, couleur, lore et syntaxe adaptée à la version.</p>
+                <a class="resource-link" href="/fr/custom-potions/">Ouvrir le constructeur</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section" id="choose-tool">
+        <h2 class="section-title">Quel outil ouvrir en premier&nbsp;?</h2>
+        <p>Si vous savez déjà quel résultat vous voulez obtenir, le premier outil devient beaucoup plus évident. Certaines pages génèrent la partie commande, d’autres s’occupent du visuel, et d’autres encore servent à préparer le brouillon avant même que Minecraft ne voie le fichier.</p>
+        <table class="compact-table">
+            <thead>
+                <tr><th>Besoin</th><th>Meilleur point de départ</th><th>Pourquoi ici</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Un objet personnalisé avec lore, identité et commande give</td><td>Constructeur d’objets personnalisés</td><td>Il prend en charge la partie commande et garde la syntaxe lisible selon la version.</td></tr>
+                <tr><td>Une texture, une icône ou une face de bloc à peindre</td><td>Éditeur de textures</td><td>On peut produire le PNG avant de l’emballer dans un resource pack.</td></tr>
+                <tr><td>Un pack ZIP complet avec objets, blocs ou armures</td><td>Générateur de packs de ressources</td><td>Il assemble la structure finale du pack et la couche d’export.</td></tr>
+                <tr><td>Un marchand ou PNJ de quête avec achat et vente</td><td>Échanges de villageois</td><td>Il est spécialisé dans les longues commandes summon et les piles d’objets selon la version.</td></tr>
+                <tr><td>Une potion-récompense, un échantillon alchimique ou une fiole d’événement</td><td>Potions personnalisées</td><td>Il réunit type de bouteille, potion contents, effets, lore et couleur au même endroit.</td></tr>
+                <tr><td>Un skin de joueur ou un concept cosmétique</td><td>Éditeur de skins</td><td>Il permet de travailler l’atlas et le modèle 3D ensemble.</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="page-section" id="workflows">
+        <h2 class="section-title">Workflows typiques</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Objet narratif</h3>
+                <p>Peignez l’icône dans l’éditeur de textures, emballez-la dans le générateur de packs, puis créez la commande <code>/give</code> finale dans le constructeur d’objets personnalisés.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Marchand ou PNJ</h3>
+                <p>Définissez d’abord l’objet vendu, puis passez aux échanges de villageois quand la récompense, le prix et les limites d’usage sont clairs.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Potion avec style visuel</h3>
+                <p>Assemblez la mécanique dans les potions personnalisées, puis reliez la bouteille à un visuel spécial via CustomModelData si le pack en a besoin.</p>
+            </article>
+        </div>
+        <p>Les outils restent volontairement compacts, mais ils ne vivent pas chacun dans leur coin. Un vrai projet passe presque toujours par deux ou trois pages, et c’est précisément pour cela qu’ils sont réunis ici au lieu d’être dispersés dans des générateurs sans lien.</p>
+    </section>
+
+    <section class="page-section" id="why-together">
+        <h2 class="section-title">Pourquoi ces outils vivent ensemble</h2>
+        <p>Un workflow de resource pack ne se résume presque jamais à une seule action. Une épée personnalisée peut commencer par un PNG peint, devenir un hook de modèle, puis une commande give, avant de finir dans un échange de villageois ou une récompense de quête. Une potion suit souvent la même logique : mécanique, lore, couleur, silhouette en inventaire et place dans le récit forment un seul ensemble.</p>
+        <p>Garder ces étapes sous le même toit compte. Les guides peuvent expliquer le même chemin que les outils attendent réellement, et le site reste centré sur des besoins concrets de créateurs Minecraft, au lieu de devenir une simple liste d’utilitaires déconnectés.</p>
+    </section>
+
+    <section class="page-section" id="upcoming-tools">
+        <h2 class="section-title">Prochains candidats</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Planificateur de sphères et de cercles <span class="status-pill">bientôt</span></h3>
+                <p>Des repères simples pour construire des cercles, dômes, sphères et autres formes arrondies.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Constructeur de map art <span class="status-pill">bientôt</span></h3>
+                <p>Préparer des compositions de map art avec la bonne taille, une palette de blocs claire et un meilleur point de départ.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Palette de pixel art <span class="status-pill">bientôt</span></h3>
+                <p>Des aides rapides pour les couleurs, l’opacité et les nuances des textures 16x16, 32x32 et 64x64.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tools-faq">
+        <h2 class="section-title">FAQ</h2>
+        <div class="faq-section">
+            <h3>Faut-il tous les outils pour chaque projet&nbsp;?</h3>
+            <p>Non. La plupart des tâches commencent dans un seul outil et ne s’élargissent que plus tard. Une petite boutique de villageois et un grand pack de reliques n’ont pas du tout la même ampleur.</p>
+            <h3>Et si je ne veux que des commandes, pas des textures&nbsp;?</h3>
+            <p>Commencez par le constructeur d’objets personnalisés, les échanges de villageois ou les potions personnalisées. La partie visuelle n’est utile que si l’objet doit sortir du look vanilla.</p>
+            <h3>Et si mes textures sont déjà prêtes&nbsp;?</h3>
+            <p>Dans ce cas, vous pouvez aller directement au générateur de packs de ressources et utiliser l’éditeur de textures comme simple espace de brouillon.</p>
+            <h3>Pourquoi les sélecteurs de version apparaissent-ils dans plusieurs outils&nbsp;?</h3>
+            <p>Parce que Minecraft a changé plusieurs fois la syntaxe des items. Le site garde ces différences visibles pour que l’export corresponde à votre serveur réel, pas à un vieux tutoriel trouvé ailleurs.</p>
+            <h3>Où aller si j’ai d’abord besoin de contexte&nbsp;?</h3>
+            <p>Dans le wiki. Les guides pratiques expliquent les pièces du workflow avant la génération des commandes ou des fichiers de pack.</p>
+        </div>
+    </section>
+
+    <section class="page-section" id="support-tools">
+        <h2 class="section-title">Soutenir le projet</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Patreon <span class="status-pill">soutien</span></h3>
+                <p>Si ces outils vous font gagner du temps, vous pouvez soutenir Cube in Square sur Patreon. Cela nous aide à livrer de nouveaux éditeurs, guides et outils serveur sans alourdir le site.</p>
+                <a class="resource-link" href="https://www.patreon.com/c/Cubeinaquare?vanity=user" target="_blank" rel="noopener noreferrer">Ouvrir Patreon</a>
+            </article>
+        </div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
     <script src="/assets/site.js"></script>

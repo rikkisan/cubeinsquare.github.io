@@ -207,16 +207,61 @@
         <div class="language-switch" aria-label="Language"><a href="/ru/wiki-resource-pack-generator/">RU</a><a href="/wiki-resource-pack-generator/">EN</a><a href="/fr/wiki-resource-pack-generator/">FR</a><a class="is-active" href="#">DE</a></div>
     </div>
 </div><main class="page-shell wiki-article">
-    <a class="article-back" href="/de/wiki/">← Alle Artikel</a>
-    <section class="page-hero"><h1>Anleitung für den Minecraft Resource-Pack-Generator</h1><p class="page-lead">Erstelle ein Minecraft Resource-Pack direkt im Browser. Lade PNG-Texturen hoch, wähle, was sie ersetzen, prüfe die Vorschau und lade ein fertiges ZIP herunter.</p></section>
-    <div class="tool-button-row"><a class="tool-button" href="/de/resource-pack-generator/">Generator öffnen</a></div>
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Guide zum Minecraft-Resource-Pack-Generator</h1>
+        <p class="page-lead">Der Resource-Pack-Generator ist nicht nur deshalb nützlich, weil er im Browser ein ZIP baut. Er nimmt vor allem jene Routinearbeit weg, an der ein sauberer Minecraft-Workflow oft schon scheitert, bevor die Textur überhaupt im Spiel ankommt.</p>
+        <a class="resource-link" href="/de/resource-pack-generator/">Generator öffnen</a>
+    </section>
     <article>
-        <h2>1. Pack benennen</h2><p>Gib oben einen Pack-Namen ein. Er wird in <code>pack.mcmeta</code> und als Name des heruntergeladenen ZIPs verwendet.</p>
-        <h2>2. Serverversion wählen</h2><p>Der Versionswähler steuert, ob give-Befehle alte NBT-Syntax oder die neue Data-Components-Syntax ab 1.20.5 nutzen.</p>
-        <h2>3. Items hinzufügen</h2><p>Öffne den Items-Tab, gib eine Vanilla-Item-ID ein, lade eine PNG-Textur hoch und optional eine CustomModelData-Nummer für eine Variante.</p>
-        <h2>4. Blöcke hinzufügen</h2><p>Öffne den Blöcke-Tab, um eine Blocktextur zu ersetzen oder einen Würfel aus separaten Oben-, Unten-, Vorder-, Rück- und Seitentexturen zu bauen.</p>
-        <h2>5. Rüstung hinzufügen</h2><p>Im Rüstungs-Tab ersetzt du Rüstungsebenen und Inventar-Icons für gängige Minecraft-Rüstungsmaterialien.</p>
-        <h2>6. Vorschau und Download</h2><p>Nutze den Vorschau-Button, um Blöcke, Items und Rüstung zu prüfen. Klicke dann auf Resource-Pack herunterladen, um das ZIP lokal im Browser zu erzeugen.</p>
+        <h2>Wofür dieser Generator wirklich gut ist</h2>
+        <p>Am meisten hilft er, wenn das PNG im Grunde schon fertig ist, aber niemand Lust hat, Pack-Struktur, Modelle, blockstates und Dateinamen wieder und wieder per Hand zusammenzusetzen. Das ist genau die Phase, in der Idee und Bild schon da sind, aber Verpackung und Export anfangen, das Projekt auszubremsen.</p>
+        <p>Gerade in Teams ist das wertvoll: weniger Chance auf vergessene Ordner, provisorische Namen oder Archive mit kaputter Struktur. Selbst ein kleines Pack profitiert von einer ruhigen Exportebene stärker, als es auf den ersten Blick aussieht.</p>
+        <h2>Entscheide zuerst, welche Art Asset du verpackst</h2>
+        <table class="compact-table">
+            <thead><tr><th>Asset-Typ</th><th>Wann du das wählst</th><th>Wohin es oft danach geht</th></tr></thead>
+            <tbody>
+                <tr><td>Item</td><td>Wenn ein neues Aussehen für Waffe, Becher, Token, Prop oder Quest-Objekt gebraucht wird</td><td>Zum Custom-Item-Builder oder zum Dorfbewohner-Handel</td></tr>
+                <tr><td>Block</td><td>Wenn du eine Fläche, mehrere Flächen oder einen ganzen Würfel für Builds ersetzt</td><td>In einen Ingame-Test für Kontrast und Silhouette</td></tr>
+                <tr><td>Rüstung</td><td>Wenn ein Set eine eigene visuelle Identität braucht, aber vanilla-logisch bleiben soll</td><td>Zu Tests mit Skins, Kostümen und Szenen</td></tr>
+            </tbody>
+        </table>
+        <h2>1. Gib dem Pack einen Namen</h2>
+        <p>Trage oben den zukünftigen Pack-Namen ein. Er landet in <code>pack.mcmeta</code> und im Namen der ZIP-Datei. Das wirkt klein, reduziert aber sehr viel Chaos, sobald mehrere Varianten desselben Pakets in Discord oder einem gemeinsamen Ordner herumfliegen.</p>
+        <h2>2. Wähle die Serverversion</h2>
+        <p>Der Versionsschalter beeinflusst nicht nur das Interface. Er bereitet auch die Befehlsebene vor, die entweder mit altem NBT oder mit modernen Data Components ab 1.20.5 arbeitet. Texturen können breiter kompatibel sein als die spätere Command-Syntax – genau deshalb sollte man diese Wahl nicht als Nebensache behandeln.</p>
+        <h2>3. Füge Items hinzu</h2>
+        <p>Im Item-Tab gibst du eine Vanilla-ID ein, lädst ein PNG hoch und kannst bei Bedarf ein CustomModelData für eine spezielle Variante setzen. Das ist der übliche Weg für Story-Props, Waffen, Notizen, Token, Pässe und andere dekorative Gegenstände.</p>
+        <p>Wenn das Item später einen Befehl braucht, ist das Pack nicht die ganze Aufgabe. Der visuelle Hook gehört hier hin, der finale Give-Befehl meist in den Custom-Item-Builder.</p>
+        <h2>4. Füge Blöcke hinzu</h2>
+        <p>Im Block-Tab kannst du entweder eine einzelne Blocktextur ersetzen oder einen Würfel aus separaten Ober-, Unter-, Vorder-, Rück- und Seitenflächen zusammenbauen. Genau hier wird die Arbeit oft ruhiger, weil du nicht mehr selbst im Kopf tragen musst, wo jede einzelne Fläche im Pack landet.</p>
+        <h2>5. Füge Rüstung hinzu</h2>
+        <p>Der Rüstungs-Tab erlaubt es, Layer und Inventar-Icons klassischer Vanilla-Materialien zu ersetzen. Das ist besonders nützlich, wenn ein Server eine eigene visuelle Identität will, ohne die zugrunde liegende Spielmechanik komplett umzubauen.</p>
+        <h2>6. Vorschau prüfen und herunterladen</h2>
+        <p>Prüfe Items, Blöcke und Rüstung in der Vorschau und lade anschließend das ZIP herunter. Dieser Schritt ist wichtiger, als er klingt: Genau dort werden vertauschte Flächen, schwache Silhouetten, zu dunkle Texturen oder Dateinamen sichtbar, die eigentlich „später noch umbenannt“ werden sollten.</p>
+        <h2>Häufige Fehler</h2>
+        <ul>
+            <li>Art hochladen, bevor klar ist, ob es ein Item-, Block- oder Rüstungsproblem ist.</li>
+            <li>Den Versionsschalter ignorieren, obwohl die Befehlsebene später davon abhängt.</li>
+            <li>CustomModelData im Pack anlegen, aber den Hook auf der Command-Seite vergessen.</li>
+            <li>Die Vorschau überspringen und vertauschte Flächen erst nach dem Export bemerken.</li>
+            <li>Vom Generator erwarten, dass er auch den Give-Befehl baut, obwohl das auf eine andere Seite gehört.</li>
+        </ul>
+        <h2>Wann du zu anderen Werkzeugen wechselst</h2>
+        <p>Wechsle in den Textur-Editor, wenn das PNG noch gemalt werden muss. Wechsle in den Custom-Item-Builder, wenn das Bild fertig ist und jetzt ein versionsabhängiger <code>/give</code>-Befehl gebraucht wird. Wechsle zu Dorfbewohner-Handel oder Custom-Potions, wenn der Asset nicht nur visuell existiert, sondern Teil einer Belohnung, eines Shops oder einer Spielmechanik werden soll.</p>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Muss ich die komplette Ordnerstruktur kennen, bevor ich das benutze?</h3>
+            <p>Nein. Genau das ist einer der Hauptgründe, den Generator zu verwenden: Er liefert eine saubere Exportebene, ohne dass du den gleichen Ordnerbaum jedes Mal neu von Hand bauen musst.</p>
+            <h3>Kann ich ihn auch nutzen, wenn die Textur woanders gemalt wurde?</h3>
+            <p>Ja. Der Generator funktioniert sehr gut als Verpackungsstufe, selbst wenn das PNG aus einem anderen Editor stammt.</p>
+            <h3>Ersetzt er den Custom-Item-Builder?</h3>
+            <p>Nein. Der Generator kümmert sich um die Pack-Seite. Der Builder kümmert sich um die Befehlsseite.</p>
+            <h3>Ist CustomModelData nur für Waffen gedacht?</h3>
+            <p>Überhaupt nicht. Es eignet sich genauso für Notizen, Token, Becher, Währungen, Quest-Gegenstände und viele andere Dinge.</p>
+            <h3>Warum Vorschau prüfen, wenn das ZIP schnell neu gebaut werden kann?</h3>
+            <p>Weil die Vorschau Strukturfehler erkennt, solange der Kontext noch frisch ist und bevor das Pack im Team oder auf dem Server weitergereicht wird.</p>
+        </div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

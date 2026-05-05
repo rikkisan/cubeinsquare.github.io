@@ -174,19 +174,30 @@
 </div>
 
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
     <section class="page-hero">
-        <h1>Guide des potions Minecraft</h1>
-        <p class="page-lead">Une potion personnalisée permet de distribuer un objet narratif sans mods : élixir de soin, fiole de faction, flacon rituel, bouteille d’événement ou dangereux échantillon d’alchimie.</p>
-        <a class="resource-link" href="/fr/custom-potions/">Ouvrir le générateur</a>
+        <h1>Guide des potions personnalisées Minecraft</h1>
+        <p class="page-lead">Une potion personnalisée est une manière propre d’offrir un objet marquant sans mods : remède de scénario, élixir rare, buff de faction, fiole rituelle ou échantillon dangereux pour un événement.</p>
+        <a class="resource-link" href="/fr/custom-potions/">Ouvrir le constructeur</a>
     </section>
-
     <article>
+        <h2>Pourquoi les potions personnalisées comptent sur un vrai serveur</h2>
+        <p>La potion est l’un des moyens les plus rapides de transformer une récompense banale en objet avec une vraie identité. Une seule bouteille peut devenir un remède, une expérience instable, un catalyseur rituel, une fiole de combat ou un objet que les joueurs gardent autant pour son ton que pour ses chiffres.</p>
+        <p>C’est précisément pour cela qu’un outil dédié a du sens. L’objet est petit, mais il concentre souvent mécanique, fiction, équilibre et syntaxe propre à la version de Minecraft.</p>
         <h2>Ce que construit l’outil</h2>
-        <p>Le générateur produit une commande <code>/give</code> prête pour <code>potion</code>, <code>splash_potion</code> et <code>lingering_potion</code>. Sur une seule page, vous configurez la potion de base, les effets supplémentaires, la couleur, le lore, <code>CustomModelData</code> et la syntaxe adaptée à votre version de serveur.</p>
-
-        <h2>Potion de base et effets personnalisés</h2>
-        <p>Le champ de potion de base accepte des ID vanilla tels que <code>swiftness</code>, <code>long_regeneration</code> ou <code>strong_healing</code>. Cela crée la base standard, tandis que le bloc <code>custom effects</code> ajoute la durée, le niveau, les particules, l’icône et le mode <code>ambient</code>.</p>
+        <p>Le constructeur génère une commande <code>/give</code> prête pour <code>potion</code>, <code>splash_potion</code> et <code>lingering_potion</code>. Sur une seule page, vous configurez la base, les effets supplémentaires, la couleur de la bouteille, le lore, le <code>CustomModelData</code> et la syntaxe qui correspond à la version du serveur.</p>
+        <h2>Il est pratique de voir une potion personnalisée comme quatre couches</h2>
+        <table class="compact-table">
+            <thead><tr><th>Couche</th><th>Question qu’elle résout</th><th>Exemples typiques</th></tr></thead>
+            <tbody>
+                <tr><td>Type de bouteille</td><td>Comment l’objet est-il utilisé ?</td><td>Bue, jetable, persistante</td></tr>
+                <tr><td>Paquet d’effets</td><td>Que fait-elle ?</td><td>Vitesse, debuff, utilité mixte</td></tr>
+                <tr><td>Présentation</td><td>Quelle sensation doit-elle produire ?</td><td>Couleur, lore, nom</td></tr>
+                <tr><td>Hook visuel</td><td>A-t-elle besoin d’une icône ou d’un modèle ?</td><td>CustomModelData et asset du pack</td></tr>
+            </tbody>
+        </table>
+        <h2>Potion de base et custom effects</h2>
+        <p>Le champ de potion de base accepte des ID vanilla comme <code>swiftness</code>, <code>long_regeneration</code> ou <code>strong_healing</code>. Cela donne une fondation connue, puis le bloc <code>custom effects</code> ajoute la précision : durée, niveau, particules, icône et mode <code>ambient</code>.</p>
 <pre><code>potion_contents={
   potion:"minecraft:swiftness",
   custom_effects:[
@@ -194,43 +205,62 @@
   ],
   custom_color:7173375
 }</code></pre>
-
-        <h2>Deux formats selon la version</h2>
-        <p>Depuis Minecraft 1.20.5, les objets utilisent Data Components. En pratique, cela donne deux formats courants pour les potions personnalisées :</p>
+        <p>Cela compte parce que beaucoup de bonnes potions RP ne sont ni purement vanilla ni totalement custom. Elles partent d’une base reconnaissable et gagnent ensuite un ou deux détails très précis qui les rendent cohérentes avec votre monde.</p>
+        <h2>Différence entre les versions</h2>
+        <p>Depuis Minecraft 1.20.5, les items sont passés aux Data Components. En pratique, les potions personnalisées ont maintenant deux formats principaux :</p>
         <ul>
             <li><strong>1.20.5+</strong> utilise des crochets avec <code>potion_contents</code>, ainsi que <code>item_name</code>, <code>lore</code> et <code>custom_model_data</code>.</li>
-            <li><strong>Avant 1.20.5</strong> utilise les tags NBT <code>Potion</code>, <code>CustomPotionEffects</code>, <code>CustomPotionColor</code> et l’ancien bloc <code>display</code>.</li>
+            <li><strong>Avant 1.20.5</strong> utilise les tags NBT comme <code>Potion</code>, <code>CustomPotionEffects</code>, <code>CustomPotionColor</code> et l’ancien bloc <code>display</code>.</li>
         </ul>
 <pre><code>/give @p minecraft:potion[potion_contents={potion:"minecraft:healing"}] 1
 /give @p minecraft:potion{Potion:"minecraft:healing"} 1</code></pre>
-
-        <h2>Pourquoi le mode legacy demande plus de travail</h2>
-        <p>Dans l’ancien format, les effets de potion passent par des ID numériques. Le générateur masque cette étape : vous choisissez des noms lisibles comme <code>speed</code> ou <code>slow_falling</code>, puis l’outil injecte les valeurs legacy lorsqu’elles existent.</p>
-
+        <p>C’est pour cela que l’outil aide autant : la plupart des commandes cassées ne viennent pas d’une mauvaise idée, mais d’une syntaxe copiée depuis la mauvaise époque de Minecraft.</p>
+        <h2>Pourquoi le legacy est plus délicat</h2>
+        <p>Dans l’ancien format, les effets passent par des ID numériques. Le constructeur masque cette corvée : vous choisissez des noms lisibles comme <code>speed</code> ou <code>slow_falling</code>, et l’outil injecte les bonnes valeurs legacy là où elles existent encore.</p>
         <h2>Couleur, lore et mise en scène</h2>
-        <p>Le même paquet d’effets peut raconter une histoire très différente selon la présentation. La couleur de la fiole modifie la silhouette dans l’inventaire, le lore ajoute du contexte narratif, et <code>CustomModelData</code> vous permet de relier la potion à un modèle ou une icône particulière de votre resource pack.</p>
+        <p>Un même paquet d’effets peut produire une sensation complètement différente selon la présentation. La couleur de la bouteille change sa silhouette en inventaire, le lore ajoute un contexte, et le <code>CustomModelData</code> relie la potion à une icône ou un modèle spécial du resource pack.</p>
         <ul>
-            <li>Un concentré vert toxique avec avertissement dans le lore.</li>
+            <li>Un concentré vert toxique avec un avertissement dans le lore.</li>
             <li>Un élixir sacré doré avec un style visuel rare.</li>
-            <li>Une potion de faction reliée à un modèle unique via <code>CustomModelData</code>.</li>
+            <li>Une potion de faction reliée à un <code>CustomModelData</code> propre au serveur RP.</li>
         </ul>
-
-        <h2>Comment utiliser le générateur</h2>
+        <h2>Comment utiliser le constructeur sans se compliquer la vie</h2>
         <ol>
-            <li>Choisissez la syntaxe adaptée à votre version de serveur.</li>
-            <li>Sélectionnez le type de fiole et une potion de base si nécessaire.</li>
-            <li>Ajoutez un ou plusieurs <code>effets personnalisés</code> avec durée et niveau.</li>
-            <li>Activez si besoin la couleur, le lore et <code>CustomModelData</code>.</li>
-            <li>Copiez la commande <code>/give</code> finale dans la console ou un bloc de commande.</li>
+            <li>Choisissez la syntaxe adaptée à la version du serveur.</li>
+            <li>Définissez le type de bouteille et une potion de base si nécessaire.</li>
+            <li>Ajoutez un ou plusieurs <code>custom effects</code> avec durée et niveau.</li>
+            <li>Décidez si le nom, le lore et la couleur doivent porter une vraie intention.</li>
+            <li>N’ajoutez le <code>CustomModelData</code> qu’une fois certain que le pack possède déjà le hook visuel correspondant.</li>
+            <li>Copiez la commande <code>/give</code> finale dans la console ou un command block.</li>
         </ol>
-
-        <h2>Idées concrètes</h2>
+        <h2>Idées pratiques</h2>
         <ul>
-            <li>Des fioles de quête offrant un bref bonus utilitaire avant une scène.</li>
-            <li>Des flacons de combat de faction avec couleurs et lore distinctifs.</li>
-            <li>Des échantillons d’alchimie dangereux avec nom dramatique, malus lourd et modèle rare.</li>
+            <li>Des fioles de quête qui donnent un buff utilitaire court avant une scène.</li>
+            <li>Des flacons de combat de faction avec couleur et lore signature.</li>
+            <li>Des échantillons alchimiques dangereux avec nom dramatique, gros debuff et modèle rare.</li>
             <li>Des bouteilles persistantes pour arènes ou rituels où le nuage doit rester sur place.</li>
         </ul>
+        <h2>Erreurs fréquentes</h2>
+        <ul>
+            <li>Mélanger syntaxe legacy et syntaxe components dans une seule commande.</li>
+            <li>Ajouter CustomModelData alors que le pack n’a pas encore d’asset visuel correspondant.</li>
+            <li>Empiler trop d’effets dans une seule bouteille et perdre la lisibilité de l’objet.</li>
+            <li>Négliger lore et couleur, puis se demander pourquoi la potion ressemble encore à une bouteille vanilla générique.</li>
+            <li>Tester uniquement dans le chat alors que la commande mérite déjà un command block.</li>
+        </ul>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Faut-il un resource pack pour chaque potion personnalisée ?</h3>
+            <p>Non. Il n’en faut un que si la bouteille doit avoir un aspect différent du vanilla.</p>
+            <h3>Peut-on mélanger potion de base et custom effects ?</h3>
+            <p>Oui. C’est souvent la manière la plus propre d’avoir une base reconnaissable avec un ou deux détours spéciaux.</p>
+            <h3>Quand choisir splash ou lingering plutôt qu’une potion normale ?</h3>
+            <p>Quand le mode d’utilisation fait partie de la scène : zone d’effet, cercle rituel, lancer de combat ou nuage persistant.</p>
+            <h3>Le CustomModelData change-t-il l’effet ?</h3>
+            <p>Non. Il change le hook visuel. Les effets restent portés par les données de la potion elle-même.</p>
+            <h3>Et si je veux juste une bouteille colorée avec du lore ?</h3>
+            <p>Le constructeur reste utile. Pour qu’un item paraisse vraiment pensé, il n’est pas nécessaire d’utiliser immédiatement les champs les plus complexes.</p>
+        </div>
     </article>
 </main>
 

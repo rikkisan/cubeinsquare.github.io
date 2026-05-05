@@ -67,7 +67,7 @@
 <main class="page-shell wiki-docs-shell">
     <section class="page-hero">
         <h1>Вики по ресурс-пакам Minecraft и инструментам</h1>
-        <p class="page-lead">Рабочая библиотека для тех, кто собирает ресурс-паки, RP-предметы, торговцев, текстуры и скины. Слева — список материалов, справа — сами разборы, чтобы можно было быстро выбрать нужную тему и не тонуть в разрозненных советах.</p>
+        <p class="page-lead">Рабочая библиотека для тех, кто собирает ресурс-паки, RP-предметы, торговцев, текстуры и скины. Слева — карта материалов, справа — сами разборы, чтобы было проще выбрать нужную тему и сразу пойти дальше по воркфлоу.</p>
     </section>
 
     <section class="wiki-layout">
@@ -93,6 +93,15 @@
                         <a href="/ru/wiki-custom-villager-trades/">Торги жителей</a>
                     </div>
                     <div class="wiki-sidebar-group">
+                        <h2>Обучающие гайды</h2>
+                        <a href="/ru/wiki-custom-item-no-json/">Предмет без JSON</a>
+                        <a href="/ru/wiki-custom-weapon/">Уникальное оружие</a>
+                        <a href="/ru/wiki-blockbench-custom-model/">Кастомная модель</a>
+                        <a href="/ru/wiki-components-vs-nbt/">Компоненты вместо NBT</a>
+                        <a href="/ru/wiki-give-command-not-working/">Почему /give не работает?</a>
+                        <a href="/ru/wiki-complex-command-blocks/">Сложные команды</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
                         <h2>Серверные системы</h2>
                         <a href="/ru/wiki-rp-economy-custom-data/">RP-экономика с custom_data</a>
                         <a href="/ru/wiki-armorhide-mod/">Мод ArmorHide</a>
@@ -105,48 +114,70 @@
         </aside>
 
         <div class="wiki-main">
+            <section class="page-section" id="wiki-start-here">
+                <h2 class="section-title">Как пользоваться этой библиотекой</h2>
+                <p>Лучше всего относиться к вики как к карте, а не как к свалке разрозненных статей. Одни страницы объясняют сами концепции вроде CustomModelData или перехода на компоненты после 1.20.5. Другие — это практические гайды, которые помогают быстро перейти от идеи к рабочей команде, ZIP-паку или NPC в мире.</p>
+                <p>Цель не в том, чтобы утопить человека в документации. Цель — дать самый короткий полезный путь от реальной проблемы к правильному инструменту или разбору.</p>
+            </section>
+
             <section class="page-section" id="general-wiki">
                 <h2 class="section-title">С чего начать</h2>
-                <p class="section-intro">Эти материалы быстрее всего ставят всё на рельсы: что именно делает CustomModelData, где должны лежать файлы внутри пака и какие практические правила сайта полезно знать ещё до загрузок и публикации.</p>
+                <p class="section-intro">Эти материалы быстрее всего ставят всё на рельсы: что именно делает CustomModelData, где лежат файлы внутри пакета и какие базовые правила сайта полезно знать до первых загрузок и публикации.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-cmd">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Базовая концепция</p>
                         <h3>Что такое CustomModelData и как это работает?</h3>
                         <p>Как один ванильный предмет превращается в катану, кружку, жетон, квестовый проп или любую другую модель без клиентских модов.</p>
                         <a class="resource-link" href="/ru/wiki-custom-model-data/">Читать статью</a>
                     </article>
-                    <article class="resource-card" id="article-structure">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Справочник</p>
                         <h3>Структура ресурс-пака</h3>
                         <p>Быстрая карта папок <code>textures</code>, <code>models</code>, <code>blockstates</code> и тех имён файлов, которые чаще всего приходится искать вручную.</p>
                         <a class="resource-link" href="/ru/wiki-resource-pack-structure/">Читать статью</a>
                     </article>
-                    <article class="resource-card" id="article-privacy">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Политика</p>
                         <h3>Политика конфиденциальности</h3>
-                        <p>Как на сайте устроены cookies, реклама Google AdSense, локальная работа в браузере и пользовательские настройки приватности.</p>
+                        <p>Как на сайте устроены cookies, Google AdSense, локальная работа в браузере и пользовательские настройки приватности.</p>
                         <a class="resource-link" href="/ru/privacy-policy/">Открыть политику</a>
                     </article>
                 </div>
+            </section>
+
+            <section class="page-section" id="quick-paths">
+                <h2 class="section-title">Быстрые маршруты по библиотеке</h2>
+                <table class="compact-table">
+                    <thead>
+                        <tr><th>Если нужно...</th><th>Начать здесь</th><th>Потом перейти в</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Кастомный предмет с современной give-командой</td><td><a href="/ru/wiki-custom-item-no-json/">Предмет без JSON</a></td><td><a href="/ru/custom-item-builder/">Конструктор кастомных предметов</a></td></tr>
+                        <tr><td>Визуальный хук или модель предмета</td><td><a href="/ru/wiki-blockbench-custom-model/">Гайд по кастомной модели</a></td><td><a href="/ru/resource-pack-generator/">Генератор ресурс-паков</a></td></tr>
+                        <tr><td>Лавочник или квестовый NPC</td><td><a href="/ru/wiki-custom-villager-trades/">Гайд по торгам жителей</a></td><td><a href="/ru/custom-villager-trades/">Инструмент торгов</a></td></tr>
+                        <tr><td>Зелье-награда или алхимический предмет</td><td><a href="/ru/wiki-custom-potions/">Гайд по кастомным зельям</a></td><td><a href="/ru/custom-potions/">Конструктор зелий</a></td></tr>
+                        <tr><td>Скин или текстурный воркфлоу</td><td><a href="/ru/wiki-skin-editor/">Редактор скинов</a> или <a href="/ru/wiki-texture-painter/">Редактор текстур</a></td><td><a href="/ru/skin-editor/">Редактор скинов</a> и <a href="/ru/texture-painter/">Редактор текстур</a></td></tr>
+                    </tbody>
+                </table>
             </section>
 
             <section class="page-section" id="resource-pack-generator-wiki">
                 <h2 class="section-title">Работа с паком</h2>
                 <p class="section-intro">Здесь лежит обычный рабочий круг: нарисовать PNG, собрать модель, проверить превью, выгрузить pack и не потеряться в рутине между идеей и игрой.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-generator">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Гайд по инструменту</p>
                         <h3>Как использовать генератор ресурс-паков Minecraft</h3>
                         <p>Выбрать версию, добавить предметы, блоки и броню, загрузить текстуры, проверить результат и скачать ZIP, который потом не придётся пересобирать вручную.</p>
                         <a class="resource-link" href="/ru/wiki-resource-pack-generator/">Читать гайд</a>
                     </article>
-                    <article class="resource-card" id="article-skin">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Гайд по редактору</p>
                         <h3>Редактор скинов</h3>
-                        <p>Как устроен классический атлас 64x64, зачем нужен внешний слой и почему рисование прямо по 3D-модели помогает с рукавами, шляпами, ботинками и скрытыми сторонами.</p>
+                        <p>Как устроен атлас 64x64, зачем нужен внешний слой и почему рисование по 3D-модели помогает со скрытыми сторонами, рукавами и шляпами.</p>
                         <a class="resource-link" href="/ru/wiki-skin-editor/">Читать статью</a>
                     </article>
-                    <article class="resource-card" id="article-texture">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Гайд по редактору</p>
                         <h3>Редактор текстур</h3>
                         <p>Как размер текстуры влияет на читаемость, детализацию и объём работы, и как потом без потери резкости отправить PNG в pack workflow.</p>
@@ -157,15 +188,15 @@
 
             <section class="page-section" id="other-tools-wiki">
                 <h2 class="section-title">Игровые инструменты</h2>
-                <p class="section-intro">Здесь собраны гайды по тем штукам, которые должны работать не только красиво, но и практично: в командах, наградах, торговых циклах и RP-сценариях.</p>
+                <p class="section-intro">Здесь собраны гайды по тем вещам, которые должны работать не только красиво, но и практично: в командах, наградах, торговых циклах и RP-сценариях.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-potions">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Конструктор команд</p>
                         <h3>Кастомные зелья</h3>
                         <p>Как собрать зелье с <code>potion_contents</code>, собственными эффектами, цветом бутылки, lore, CustomModelData и корректной give-командой под нужную версию.</p>
                         <a class="resource-link" href="/ru/wiki-custom-potions/">Читать статью</a>
                     </article>
-                    <article class="resource-card" id="article-villagers">
+                    <article class="resource-card">
                         <p class="wiki-card-kicker">Конструктор команд</p>
                         <h3>Кастомные торги жителей</h3>
                         <p>Как работают Offers, Recipes, цены, награды, лимиты, CustomModelData и summon-команда, если торговец должен быть частью реальной системы, а не случайной витриной.</p>
@@ -174,97 +205,61 @@
                 </div>
             </section>
 
-            
             <section class="page-section" id="how-to-guides">
                 <h2 class="section-title">Обучающие гайды</h2>
-                <p class="section-intro">Эти статьи закроют вопросы новичков и помогут разобраться с современными механиками и генераторами команд без копания в коде.</p>
+                <p class="section-intro">Эти статьи закрывают частые вопросы новичков и помогают спокойно перейти в современный Minecraft-воркфлоу без копания в коде наугад.</p>
                 <div class="resource-grid">
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Создание предметов</p>
-                        <h3>Как создать предмет без знания JSON</h3>
-                        <p>Фокус на обновленную систему компонентов, которая многих пугает.</p>
-                        <a class="resource-link" href="/ru/wiki-custom-item-no-json/">Читать статью</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Оружие и броня</p>
-                        <h3>Пошаговое руководство: создание уникального оружия</h3>
-                        <p>Как прописать урон, скорость атаки и эффекты через визуальный интерфейс.</p>
-                        <a class="resource-link" href="/ru/wiki-custom-weapon/">Читать статью</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Модели</p>
-                        <h3>Как добавить кастомную модель предмету</h3>
-                        <p>О том, как связать визуальную часть из Blockbench с логикой через билдeр.</p>
-                        <a class="resource-link" href="/ru/wiki-blockbench-custom-model/">Читать статью</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Теория</p>
-                        <h3>Компоненты вместо NBT</h3>
-                        <p>Объяснение разницы и того, как инструмент упрощает этот переход.</p>
-                        <a class="resource-link" href="/ru/wiki-components-vs-nbt/">Читать статью</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Ошибки</p>
-                        <h3>Почему ваш /give не работает?</h3>
-                        <p>Разбор типичных ошибок в синтаксисе команд и их исправление.</p>
-                        <a class="resource-link" href="/ru/wiki-give-command-not-working/">Читать статью</a>
-                    </article>
-                    <article class="resource-card">
-                        <p class="wiki-card-kicker">Командные блоки</p>
-                        <h3>Сложные команды для командных блоков за пару кликов</h3>
-                        <p>Генерация через наш сайт вместо ручного написания.</p>
-                        <a class="resource-link" href="/ru/wiki-complex-command-blocks/">Читать статью</a>
-                    </article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Создание предметов</p><h3>Как создать предмет без знания JSON</h3><p>Практический путь через новую систему компонентов, если ручной синтаксис всё ещё кажется враждебным.</p><a class="resource-link" href="/ru/wiki-custom-item-no-json/">Читать статью</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Боевые предметы</p><h3>Пошаговое руководство: создание уникального оружия</h3><p>Как свести вместе внешний вид, командную часть и игровые параметры, не потеряв читаемость предмета.</p><a class="resource-link" href="/ru/wiki-custom-weapon/">Читать статью</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Модели и пак</p><h3>Как добавить кастомную модель предмету</h3><p>Пайплайн от Blockbench до pack-хука и рабочего предмета в игре.</p><a class="resource-link" href="/ru/wiki-blockbench-custom-model/">Читать статью</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Миграция версий</p><h3>Компоненты вместо NBT</h3><p>Что реально изменилось после 1.20.5 и почему старые советы ломаются именно там, где кажется, что всё почти одинаково.</p><a class="resource-link" href="/ru/wiki-components-vs-nbt/">Читать статью</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Отладка команд</p><h3>Почему ваш /give не работает?</h3><p>Частые синтаксические ошибки, смешение эпох Minecraft и самый короткий путь обратно к рабочей команде.</p><a class="resource-link" href="/ru/wiki-give-command-not-working/">Читать статью</a></article>
+                    <article class="resource-card"><p class="wiki-card-kicker">Командные блоки</p><h3>Сложные команды для командных блоков за пару кликов</h3><p>Когда чат уже не тянет длину команды и почему builder экономит здесь больше всего нервов.</p><a class="resource-link" href="/ru/wiki-complex-command-blocks/">Читать статью</a></article>
                 </div>
             </section>
 
             <section class="page-section" id="advanced-rp-guides">
                 <h2 class="section-title">Серверные системы и плагины</h2>
-                <p class="section-intro">Тут вики уже становится не просто набором форм, а полкой с заметками из живого RP-проекта: экономика, ритуалы, классы, прогрессия и механики, которые действительно давят на выбор игрока.</p>
+                <p class="section-intro">Здесь уже начинается слой живого сервера: экономика, моды, плагины и те механики, которые держат мир не только визуально, но и системно.</p>
                 <div class="resource-grid">
-                    <article class="resource-card" id="article-economy">
-                        <p class="wiki-card-kicker">Продвинутый гайд</p>
-                        <h3>RP-экономика с custom_data</h3>
-                        <p>Как не дать поддельным распискам, пропускам и жетонам просачиваться в экономику на жителях, если валюта у вас — это реальный предмет, а не просто спам изумрудами.</p>
-                        <a class="resource-link" href="/ru/wiki-rp-economy-custom-data/">Читать статью</a>
-                    </article>
-                    <article class="resource-card" id="article-armorhide">
-                        <p class="wiki-card-kicker">Статья о моде</p>
-                        <h3>Мод ArmorHide</h3>
-                        <p>Почему видимая броня тихо ломает хорошие сцены суда, ритуалов и переговоров, и как скрытие брони стало одним из первых реальных релизов проекта.</p>
-                        <a class="resource-link" href="/ru/wiki-armorhide-mod/">Читать статью</a>
-                    </article>
-                    <article class="resource-card" id="article-mechanism">
-                        <p class="wiki-card-kicker">Статья о плагине</p>
-                        <h3>Mechanism Plugin</h3>
-                        <p>Краткий разбор инженерной прогрессии вокруг Gear Heart, окисления, обслуживания, перегруза и ритуальной техники на сервере Paper без модов.</p>
-                        <a class="resource-link" href="/ru/wiki-mechanism-plugin/">Читать статью</a>
-                    </article>
-                    <article class="resource-card" id="article-headhunter">
-                        <p class="wiki-card-kicker">Статья о плагине</p>
-                        <h3>HeadHunter Plugin</h3>
-                        <p>Как трофейная прогрессия, способности мобов и риск потерь собираются в охотничью петлю, которая всё ещё держится на выживании и последствиях.</p>
-                        <a class="resource-link" href="/ru/wiki-headhunter-plugin/">Читать статью</a>
-                    </article>
-                    <article class="resource-card" id="article-darkmage">
-                        <p class="wiki-card-kicker">Статья о плагине</p>
-                        <h3>DarkMage Plugin</h3>
-                        <p>Гайд по кровавой цене магии, бутылкам, ритуальному давлению и тому, как тёмная магия становится социальной силой, а не просто ещё одним набором спеллов.</p>
-                        <a class="resource-link" href="/ru/wiki-darkmage-plugin/">Читать статью</a>
-                    </article>
+                    <article class="resource-card"><h3>RP-экономика с custom_data</h3><p>Как не пустить поддельные записки, пропуска и жетоны в валютный цикл через custom_data.</p><a class="resource-link" href="/ru/wiki-rp-economy-custom-data/">Читать статью</a></article>
+                    <article class="resource-card"><h3>Мод ArmorHide</h3><p>Почему скрытие брони оказалось важным для ролевых сцен и как из этой боли вырос отдельный shipped-мод.</p><a class="resource-link" href="/ru/wiki-armorhide-mod/">Читать статью</a></article>
+                    <article class="resource-card"><h3>Mechanism Plugin</h3><p>Серверная система механизмов, которая выросла из живых концептов игроков, а не из сухого набора механик.</p><a class="resource-link" href="/ru/wiki-mechanism-plugin/">Читать статью</a></article>
+                    <article class="resource-card"><h3>HeadHunter Plugin</h3><p>Плагин, который превращает охоту на существ и сбор способностей в собственный RP-слой.</p><a class="resource-link" href="/ru/wiki-headhunter-plugin/">Читать статью</a></article>
+                    <article class="resource-card"><h3>DarkMage Plugin</h3><p>Система тёмной магии как пример того, как идея игрока дорастает до полноценной серверной механики.</p><a class="resource-link" href="/ru/wiki-darkmage-plugin/">Читать статью</a></article>
+                </div>
+            </section>
+
+            <section class="page-section" id="why-wiki-matters">
+                <h2 class="section-title">Почему рядом с инструментами вообще нужны гайды</h2>
+                <p>Генератор может выдать строку текста, но он не решает за вас форму воркфлоу. Вики нужна, чтобы объяснить, почему важен переключатель версий, когда задача требует builder, а когда уже pack-файл, и почему одни и те же ошибки повторяются в совершенно разных частях Minecraft-пайплайна.</p>
+                <p>Она ещё и держит инструменты честными. Когда гайд и интерфейс расходятся, это быстро видно. Когда они поддерживают друг друга, путь от замешательства до готового результата становится короче и спокойнее.</p>
+            </section>
+
+            <section class="page-section" id="wiki-faq">
+                <h2 class="section-title">FAQ</h2>
+                <div class="faq-section">
+                    <h3>Нужно ли сначала читать вики, а уже потом открывать инструмент?</h3>
+                    <p>Только если сам воркфлоу для вас новый. Если уже понятны движущие части, можно сразу идти в тулзу и возвращаться к статье только там, где появится путаница.</p>
+                    <h3>Эти материалы — только теория?</h3>
+                    <p>Нет. Сильные страницы здесь должны заканчиваться действием: рабочей командой, экспортом пака, пайплайном рисования или серверной настройкой.</p>
+                    <h3>Что если меня интересует только одна версия Minecraft?</h3>
+                    <p>Это нормально. Гайды специально подсвечивают развилки между версиями, чтобы вы могли спокойно игнорировать ветки, которые к вашему серверу не относятся.</p>
+                    <h3>Почему ресурс-паки, предметы, торги и зелья лежат в одной библиотеке?</h3>
+                    <p>Потому что на живом сервере они постоянно пересекаются. Один торговец может одновременно требовать паковую иконку, give-команду и правильную summon-структуру.</p>
+                    <h3>Куда идти, если нужен самый короткий путь к действию?</h3>
+                    <p>Смотрите на таблицу быстрых маршрутов выше. Она ведёт от проблемы к тому гайду и инструменту, которые обычно решают её быстрее всего.</p>
                 </div>
             </section>
 
             <section class="page-section" id="resource-pack-paths">
                 <h2 class="section-title">Шпаргалка путей</h2>
-                <p class="section-intro">Когда нужен только быстрый ответ по папке и имени файла, эта таблица экономит время лучше любого длинного гайда.</p>
                 <table class="compact-table">
                     <tr><th>Тип</th><th>Путь в паке</th><th>Пример имени</th></tr>
                     <tr><td>Предмет</td><td><code>assets/minecraft/textures/item</code></td><td><div class="copy-example"><code>diamond_sword.png</code><button class="copy-button" type="button" data-copy-text="diamond_sword.png" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
                     <tr><td>Блок</td><td><code>assets/minecraft/textures/block</code></td><td><div class="copy-example"><code>oak_planks.png</code><button class="copy-button" type="button" data-copy-text="oak_planks.png" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
                     <tr><td>Модель предмета</td><td><code>assets/minecraft/models/item</code></td><td><div class="copy-example"><code>custom_diamond_sword_1.json</code><button class="copy-button" type="button" data-copy-text="custom_diamond_sword_1.json" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
-                    <tr><td>Состояние блока</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
-                    <tr><td>Слои брони</td><td><code>assets/minecraft/textures/models/armor</code></td><td><div class="copy-example"><code>diamond_layer_1.png</code><button class="copy-button" type="button" data-copy-text="diamond_layer_1.png" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
+                    <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Копировать" data-copy-copied-label="Готово">Копировать</button></div></td></tr>
                 </table>
             </section>
         </div>

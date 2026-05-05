@@ -174,70 +174,83 @@
 </div>
 
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/fr/wiki/">← Tous les articles</a>
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
     <section class="page-hero">
         <h1>Guide des échanges de villageois Minecraft</h1>
-        <p class="page-lead">Un villageois personnalisé peut transformer un échange simple en boutique narrative : laissez-passer, objets de quête, armes uniques, clés, documents et récompenses sans mods.</p>
-        <a class="resource-link" href="/fr/custom-villager-trades/">Ouvrir le constructeur</a>
+        <p class="page-lead">Un villageois personnalisé est une manière très propre d’intégrer un échange dans le monde : boutique, archiviste de quête, forgeron, gardien de poste ou PNJ qui vend une récompense contre une monnaie scénarisée.</p>
+        <a class="resource-link" href="/fr/custom-villager-trades/">Ouvrir l’outil</a>
     </section>
-
     <article>
+        <h2>Pourquoi les villageois personnalisés comptent sur un serveur narratif</h2>
+        <p>Le marchand a un avantage énorme : il garde l’échange à l’intérieur du monde. Le joueur ne voit pas un simple menu abstrait, mais un personnage avec un lieu, une fonction et une raison de vendre précisément cet objet. Quand la mise en scène compte, ce type de PNJ paraît faire partie du décor vivant au lieu de ressembler à un bouton déguisé.</p>
+        <p>L’outil existe parce qu’une commande summon devient vite longue et agaçante à construire à la main. Dès qu’on ajoute plusieurs objets, des limites, du CustomModelData ou un second prix, la syntaxe manuelle commence à voler trop d’attention.</p>
         <h2>Ce que fait l’outil</h2>
-        <p>Le générateur crée une longue commande <code>/summon minecraft:villager</code> La commande définit l’apparence et le comportement du villageois, puis ajoute un bloc <code>Offers</code> avec une liste de <code>Recipes</code>.</p>
-
+        <p>Le constructeur génère une longue commande <code>/summon minecraft:villager</code>. Elle définit l’apparence et le comportement du PNJ, puis ajoute un bloc <code>Offers</code> avec une liste de <code>Recipes</code>.</p>
         <h2>Structure principale</h2>
-        <p>Chaque échange possède au moins deux piles d’objets : <code>buy</code> and <code>sell</code>. Si le prix utilise deux objets, la commande inclut aussi <code>buyB</code>.</p>
-<pre><code>Offers:{
-  Recipes:[
-    {
-      buy:{id:"minecraft:emerald",count:8},
-      sell:{id:"minecraft:paper",count:1},
-      maxUses:999999
-    }
-  ]
-}</code></pre>
-
-        <h2>Versions de Minecraft</h2>
-        <p>Le constructeur affiche maintenant trois choix parce que la syntaxe des objets a changé deux fois. Minecraft 1.20.5 a déplacé les données vers les Data Components, puis Minecraft 1.21.4 a encore affiné le format moderne, surtout autour de <code>custom_model_data</code>.</p>
+        <p>Chaque échange possède au minimum deux piles d’objets : <code>buy</code> et <code>sell</code>. Si le prix utilise deux objets, la commande ajoute aussi <code>buyB</code>.</p>
+        <h2>Les trois modes de version ne sont pas décoratifs</h2>
+        <p>Le constructeur affiche trois choix parce que la syntaxe des items a changé deux fois, pas une seule. Minecraft 1.20.5 a déplacé les items vers les Data Components, puis 1.21.4 a encore affiné le format moderne pour certains champs comme <code>custom_model_data</code>.</p>
         <ul>
-            <li><strong>1.21.4+</strong> utilise toujours <code>count</code> et <code>components</code>, mais certaines valeurs de composants sont devenues plus structurées. Ici, cela se voit surtout sur <code>minecraft:custom_model_data</code>.</li>
-            <li><strong>1.20.5-1.21.3</strong> utilise deja <code>count</code> et <code>components</code>, mais avec la forme plus simple du debut de la periode Components.</li>
-            <li><strong>Avant 1.20.5</strong> utilise <code>Count</code> et l'ancien compose <code>tag</code> avec la structure NBT classique.</li>
+            <li><strong>1.21.4+</strong> utilise toujours <code>count</code> et <code>components</code>, mais certaines structures deviennent un peu plus formelles. Ici, cela se voit surtout sur l’écriture de <code>minecraft:custom_model_data</code>.</li>
+            <li><strong>1.20.5-1.21.3</strong> utilise déjà <code>count</code> et <code>components</code>, mais garde le premier style moderne.</li>
+            <li><strong>Avant 1.20.5</strong> utilise <code>Count</code> et l’ancien <code>tag</code> avec les item stacks NBT legacy.</li>
         </ul>
-        <p>Ces trois choix ne sont donc pas decoratifs. Ils changent la facon dont le constructeur serialise <code>buy</code>, <code>buyB</code> et <code>sell</code> dans la commande summon. Le petit helper pour le bloc de commande reprend les memes versions surtout pour la clarte, meme si la commande <code>/give</code> elle-meme varie beaucoup moins que la structure des piles d'objets.</p>
-<pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
-{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
-{id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>
-
+        <p>Autrement dit, ces trois modes décident réellement comment <code>buy</code>, <code>buyB</code> et <code>sell</code> seront sérialisés dans la commande summon. Le helper du command block reflète la même séparation surtout pour rester clair, même si le simple <code>/give</code> du bloc change beaucoup moins que le payload complet du villageois.</p>
         <h2>Champs du villageois</h2>
         <ul>
-            <li><strong>Profession</strong> contrôle la tenue du villageois et son style de métier.</li>
-            <li><strong>Type de biome</strong> change la variante visuelle : plaines, désert, taïga, marais, etc.</li>
-            <li><strong>Niveau</strong> change le badge affiché sur la ceinture du villageois.</li>
-            <li><strong>NoAI</strong> garde le villageois en place, pratique pour les boutiques de PNJ sur serveur.</li>
-            <li><strong>Invulnérable</strong> protège le marchand des dégâts accidentels.</li>
+            <li><strong>Profession</strong> règle le métier et la tenue du villageois.</li>
+            <li><strong>Biome type</strong> change sa variante visuelle : plains, desert, taiga, swamp, etc.</li>
+            <li><strong>Level</strong> influence l’insigne visible à la ceinture.</li>
+            <li><strong>NoAI</strong> garde le PNJ en place si c’est une boutique fixe.</li>
+            <li><strong>Invulnerable</strong> le protège des dégâts accidentels.</li>
         </ul>
-
         <h2>Champs d’échange</h2>
         <ul>
-            <li><strong>Objet demandé</strong> est le prix principal, par exemple <code>emerald</code>.</li>
-            <li><strong>Deuxième objet demandé</strong> est un prix supplémentaire optionnel, par exemple <code>diamond</code> or a quest item.</li>
-            <li><strong>Objet vendu</strong> est la récompense reçue par le joueur.</li>
-            <li><strong>CustomModelData</strong> permet au villageois de vendre un objet avec un modèle personnalisé du pack.</li>
-            <li><strong>Utilisations max</strong> contrôle combien de fois l’échange peut être utilisé.</li>
+            <li><strong>Buy item</strong> est le prix principal, par exemple <code>emerald</code>.</li>
+            <li><strong>Second buy item</strong> est un prix additionnel : diamant, jeton ou objet de quête.</li>
+            <li><strong>Sell item</strong> est la récompense reçue par le joueur.</li>
+            <li><strong>CustomModelData</strong> permet de vendre un objet avec un modèle ou une icône particulière issus du pack.</li>
+            <li><strong>Max uses</strong> définit la limite d’utilisation de l’échange.</li>
         </ul>
-
-        <h2>Utilisation sur un serveur</h2>
-        <p>Copiez la commande générée dans un bloc de commande ou une console opérateur.</p>
-        <p><strong>Important :</strong> si la commande dépasse <code>256</code> caractères, il faut un bloc de commande. Le chat Minecraft peut couper les longues commandes summon.</p>
-
+        <h2>Comment l’utiliser sur un vrai serveur</h2>
+        <ol>
+            <li>Choisissez d’abord le mode de syntaxe correspondant à votre version.</li>
+            <li>Fixez ensuite l’identité du PNJ : profession, biome, niveau et mobilité.</li>
+            <li>Construisez une seule ligne d’échange complètement avant de dupliquer le schéma.</li>
+            <li>Testez la commande summon une fois en jeu avant de la transmettre à l’équipe ou de l’enfouir dans des fichiers.</li>
+            <li>Si la longueur dépasse déjà ce qui reste confortable dans le chat, passez immédiatement par un command block.</li>
+        </ol>
+        <h2>Utilisation sur le serveur</h2>
+        <p>Copiez la commande générée dans la console opérateur ou dans un command block.</p>
+        <p><strong>Important :</strong> si la commande summon dépasse <code>256</code> caractères, utilisez directement un command block. Le chat de Minecraft coupe les longues constructions beaucoup plus vite qu’on ne le souhaiterait.</p>
         <h2>Idées pratiques</h2>
         <ul>
             <li>Un vendeur de laissez-passer qui accepte des jetons de quête.</li>
-            <li>Un forgeron PNJ qui vend des armes CustomModelData.</li>
-            <li>Un archiviste qui échange des documents trouvés contre des indices.</li>
-            <li>Un marchand de faction avec des objets débloqués par une monnaie narrative.</li>
+            <li>Un forgeron qui vend des armes liées à CustomModelData.</li>
+            <li>Un archiviste qui échange des documents trouvés contre de nouveaux indices.</li>
+            <li>Un marchand de faction avec objets verrouillés derrière une monnaie scénarisée.</li>
         </ul>
+        <h2>Erreurs fréquentes</h2>
+        <ul>
+            <li>Choisir le mauvais mode de version puis accuser la logique d’échange alors que le vrai problème est la syntaxe des items.</li>
+            <li>Tester cinq échanges d’un coup au lieu de valider une seule ligne d’abord.</li>
+            <li>Laisser NoAI désactivé sur un PNJ fixe puis courir après lui dans tout le marché.</li>
+            <li>Oublier que les longues commandes summon doivent vivre dans un command block.</li>
+            <li>Utiliser CustomModelData sur les objets vendus sans vérifier que le hook visuel existe vraiment côté pack.</li>
+        </ul>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Faut-il connaître la syntaxe summon pour utiliser cet outil ?</h3>
+            <p>Non. Il est utile de reconnaître la structure, mais le constructeur existe justement pour éviter d’assembler chaque crochet à la main.</p>
+            <h3>Un villageois peut-il vendre des objets avec un look personnalisé ?</h3>
+            <p>Oui. C’est l’une des combinaisons les plus utiles : un item stack vanilla sur le plan mécanique, mais une récompense visuellement spéciale grâce au pack.</p>
+            <h3>Pourquoi ne pas utiliser simplement une boutique de plugin ?</h3>
+            <p>Parce qu’un villageois garde l’échange dans le monde et fonctionne mieux quand le vendeur lui-même fait partie de la fiction.</p>
+            <h3>Quand faut-il utiliser buyB ?</h3>
+            <p>Quand le prix doit contenir un deuxième ingrédient : gemme, jeton, objet d’histoire ou autorisation spéciale en plus de la monnaie principale.</p>
+            <h3>Quelle est la stratégie de test la plus sûre ?</h3>
+            <p>Faire apparaître un seul villageois avec un seul échange, acheter une fois l’objet, puis seulement ensuite étendre le même schéma à une boutique complète.</p>
+        </div>
     </article>
 </main>
 
