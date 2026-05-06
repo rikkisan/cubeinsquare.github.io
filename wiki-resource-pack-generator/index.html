@@ -213,7 +213,43 @@
         <h2>6. Preview and download</h2><p>Use the preview button to check blocks, items, and armor. Then click Download Resource Pack to generate the ZIP locally in your browser. This preview step matters more than it sounds. The pack that looks “probably fine” at thumbnail scale is often the one that ships with one swapped face, a weak silhouette, or a filename you meant to rename later.</p>
         <h2>Common mistakes</h2><ul><li>Uploading art before deciding whether it is an item, block, or armor problem.</li><li>Treating the version selector as optional even though the command side will depend on it later.</li><li>Using CustomModelData visually in the pack but forgetting to connect it on the command side.</li><li>Skipping the preview and only noticing mismatched faces or icons after export.</li><li>Assuming the generator should also author the item command when that job belongs in a different tool.</li></ul>
         <h2>When to switch tools</h2><p>Switch to Texture Painter when the PNG still needs to be made. Switch to Custom Item Builder when the asset is ready and now needs a version-aware <code>/give</code> command. Switch to Villager Trades or Custom Potions when the final item is not just a pack asset but part of a reward, shop, or gameplay delivery system.</p>
-        <h2>FAQ</h2><div class="faq-section"><h3>Do I need to understand the whole folder structure before using this?</h3><p>No. That is one of the main reasons the generator is useful. It gives you a clean export layer without making you manually rebuild the same folder tree every time.</p><h3>Can I use it if I already painted the texture elsewhere?</h3><p>Yes. The generator works well as the packaging stage even if the PNG came from another editor.</p><h3>Does this replace the Custom Item Builder?</h3><p>No. The generator handles the pack side. The builder handles the command side.</p><h3>Is CustomModelData only for weapons?</h3><p>Not at all. It can power notes, passes, cups, props, currency, quest items, and almost any custom-looking item.</p><h3>Why preview before download if the ZIP is cheap to regenerate?</h3><p>Because previewing catches structural mistakes while the context is still fresh, before the pack gets passed to someone else or copied into a server workflow.</p></div>
+        <h2>FAQ</h2><div class="faq-section">
+    <details class="faq-item" open>
+        <summary>
+            <span class="faq-question">Do I need to understand the whole folder structure before using this?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>No. That is one of the main reasons the generator is useful. It gives you a clean export layer without making you manually rebuild the same folder tree every time.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Can I use it if I already painted the texture elsewhere?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Yes. The generator works well as the packaging stage even if the PNG came from another editor.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Does this replace the Custom Item Builder?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>No. The generator handles the pack side. The builder handles the command side.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Is CustomModelData only for weapons?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Not at all. It can power notes, passes, cups, props, currency, quest items, and almost any custom-looking item.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Why preview before download if the ZIP is cheap to regenerate?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Because previewing catches structural mistakes while the context is still fresh, before the pack gets passed to someone else or copied into a server workflow.</p></div>
+    </details>
+</div>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

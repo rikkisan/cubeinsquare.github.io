@@ -197,7 +197,43 @@
         <h2>Using it on a server</h2><p>Copy the generated command into a command block or an operator console.</p><p><strong>Important:</strong> if the command is longer than <code>256</code> characters, use a command block. Minecraft chat can cut off longer summon commands.</p>
         <h2>Practical ideas</h2><ul><li>A pass vendor that accepts quest tokens.</li><li>An NPC blacksmith that sells CustomModelData weapons.</li><li>An archivist that exchanges found documents for clues.</li><li>A faction trader with items locked behind story currency.</li></ul>
         <h2>Common mistakes</h2><ul><li>Picking the wrong version mode and blaming the trade logic when the real problem is item syntax.</li><li>Testing five trades at once instead of proving one row first.</li><li>Leaving NoAI off for a stationary NPC and then chasing the villager around the build.</li><li>Forgetting that long summon commands belong in command blocks.</li><li>Using CustomModelData on sold items without confirming the pack-side visual hook exists.</li></ul>
-        <h2>FAQ</h2><div class="faq-section"><h3>Do I need to know summon syntax to use this tool?</h3><p>No. It helps to recognize the structure, but the builder exists so you do not have to manually assemble every bracket.</p><h3>Can a villager sell custom-looking items?</h3><p>Yes. That is one of the most useful combinations: a normal item stack mechanically, but a custom-looking reward visually through the pack.</p><h3>Why not just use a plugin shop?</h3><p>Because villagers keep the exchange inside the world and work well for scenes where the seller is part of the fiction.</p><h3>When should I use buyB?</h3><p>When the price needs a second ingredient: a gem, a pass, a token, or a story item in addition to the main currency.</p><h3>What is the safest testing strategy?</h3><p>Spawn the villager alone with one trade first, buy the item once, and only then scale the same pattern into a larger NPC shop.</p></div>
+        <h2>FAQ</h2><div class="faq-section">
+    <details class="faq-item" open>
+        <summary>
+            <span class="faq-question">Do I need to know summon syntax to use this tool?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>No. It helps to recognize the structure, but the builder exists so you do not have to manually assemble every bracket.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Can a villager sell custom-looking items?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Yes. That is one of the most useful combinations: a normal item stack mechanically, but a custom-looking reward visually through the pack.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">Why not just use a plugin shop?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Because villagers keep the exchange inside the world and work well for scenes where the seller is part of the fiction.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">When should I use buyB?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>When the price needs a second ingredient: a gem, a pass, a token, or a story item in addition to the main currency.</p></div>
+    </details>
+    <details class="faq-item">
+        <summary>
+            <span class="faq-question">What is the safest testing strategy?</span>
+            <span class="faq-toggle" aria-hidden="true"></span>
+        </summary>
+        <div class="faq-answer"><p>Spawn the villager alone with one trade first, buy the item once, and only then scale the same pattern into a larger NPC shop.</p></div>
+    </details>
+</div>
     </article>
 </main>
 
