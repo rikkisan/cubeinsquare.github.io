@@ -381,6 +381,99 @@
         });
     }
 
+    function initProjectModsSection() {
+        const path = window.location.pathname.toLowerCase();
+        const isHome = /^(?:\/(?:ru|fr|de))?\/?$/.test(path);
+        const isAbout = /^(?:\/(?:ru|fr|de))?\/about(?:\/|\.html)?$/.test(path);
+        if (!isHome && !isAbout) return;
+
+        if (document.querySelector('[data-project-mods-section="true"]')) return;
+
+        const locale = getLocaleInfo().lang;
+        const copy = {
+            en: {
+                title: 'Public releases from the project',
+                intro: 'Some pains outgrew a guide and became standalone releases. These mods come from the same RP workflow problems that shaped the rest of the site.',
+                armorTitle: 'ArmorHide',
+                armorBody: 'When a scene needs faces, outfits, and readable silhouettes, visible armor can flatten the whole mood. ArmorHide lets the danger stay on the table without turning everyone into walking netherite blocks.',
+                chestTitle: 'Chest Helper',
+                chestBody: 'Long sessions turn storage rooms into a memory test. Chest Helper remembers opened containers and turns scattered chest walls into a searchable item list you can actually navigate.',
+                articleLabel: 'Read article',
+                modLabel: 'Open on Modrinth'
+            },
+            ru: {
+                title: 'Публичные релизы проекта',
+                intro: 'Некоторые боли не закончились гайдом и выросли в отдельные релизы. Эти моды появились из тех же ролевых и серверных задач, из которых выросли и инструменты сайта.',
+                armorTitle: 'ArmorHide',
+                armorBody: 'Когда сцене нужны лица, костюмы и читаемые силуэты, видимая броня легко убивает весь момент. ArmorHide оставляет опасность на месте, но не превращает всех в ходячие незеритовые болванки.',
+                chestTitle: 'Chest Helper',
+                chestBody: 'Длинные сессии быстро превращают склад в проверку памяти. Chest Helper запоминает уже открытые контейнеры и собирает стены сундуков в список вещей с нормальным поиском.',
+                articleLabel: 'Читать статью',
+                modLabel: 'Открыть на Modrinth'
+            },
+            fr: {
+                title: 'Sorties publiques du projet',
+                intro: 'Certaines douleurs de workflow ont dépassé le stade du guide et sont devenues de vraies sorties publiques. Ces mods viennent des mêmes problèmes RP et serveur que les outils du site.',
+                armorTitle: 'ArmorHide',
+                armorBody: 'Quand une scène a besoin de visages, de tenues et de silhouettes lisibles, l’armure visible casse vite l’ambiance. ArmorHide laisse le danger en place sans transformer tout le monde en statues de netherite.',
+                chestTitle: 'Chest Helper',
+                chestBody: 'Les longues sessions transforment vite le stockage en test de mémoire. Chest Helper retient les conteneurs déjà ouverts et change les murs de coffres en liste d’objets consultable.',
+                articleLabel: 'Lire l’article',
+                modLabel: 'Ouvrir sur Modrinth'
+            },
+            de: {
+                title: 'Öffentliche Releases aus dem Projekt',
+                intro: 'Manche Probleme endeten nicht bei einem Guide und wurden zu eigenen Releases. Diese Mods stammen aus denselben RP- und Server-Schmerzen wie auch die Werkzeuge der Website.',
+                armorTitle: 'ArmorHide',
+                armorBody: 'Wenn eine Szene Gesichter, Outfits und lesbare Silhouetten braucht, zerstört sichtbare Rüstung schnell die ganze Stimmung. ArmorHide lässt die Gefahr bestehen, ohne alle zu laufenden Netherite-Blöcken zu machen.',
+                chestTitle: 'Chest Helper',
+                chestBody: 'Lange Sessions machen Lagerräume schnell zu einem Gedächtnistest. Chest Helper merkt sich bereits geöffnete Container und verwandelt verstreute Truhenwände in eine durchsuchbare Inventarliste.',
+                articleLabel: 'Artikel lesen',
+                modLabel: 'Auf Modrinth öffnen'
+            }
+        }[locale] || {
+            title: 'Public releases from the project',
+            intro: 'Some pains outgrew a guide and became standalone releases. These mods come from the same RP workflow problems that shaped the rest of the site.',
+            armorTitle: 'ArmorHide',
+            armorBody: 'When a scene needs faces, outfits, and readable silhouettes, visible armor can flatten the whole mood. ArmorHide lets the danger stay on the table without turning everyone into walking netherite blocks.',
+            chestTitle: 'Chest Helper',
+            chestBody: 'Long sessions turn storage rooms into a memory test. Chest Helper remembers opened containers and turns scattered chest walls into a searchable item list you can actually navigate.',
+            articleLabel: 'Read article',
+            modLabel: 'Open on Modrinth'
+        };
+
+        const targetSection = Array.from(document.querySelectorAll('main .page-section')).find((section) => section.querySelector('.server-slideshow'));
+        if (!targetSection || !targetSection.parentNode) return;
+
+        const section = document.createElement('section');
+        section.className = 'page-section';
+        section.dataset.projectModsSection = 'true';
+        section.innerHTML = `
+            <h2 class="section-title">${copy.title}</h2>
+            <p class="section-intro">${copy.intro}</p>
+            <div class="resource-grid">
+                <article class="resource-card">
+                    <h3>${copy.armorTitle}</h3>
+                    <p>${copy.armorBody}</p>
+                    <div class="tool-button-row">
+                        <a class="resource-link" href="${withPrefix('/wiki-armorhide-mod/')}">${copy.articleLabel}</a>
+                        <a class="resource-link resource-link-secondary" href="https://modrinth.com/mod/armorhide-mod" target="_blank" rel="noopener noreferrer">${copy.modLabel}</a>
+                    </div>
+                </article>
+                <article class="resource-card">
+                    <h3>${copy.chestTitle}</h3>
+                    <p>${copy.chestBody}</p>
+                    <div class="tool-button-row">
+                        <a class="resource-link" href="${withPrefix('/wiki-chest-helper-mod/')}">${copy.articleLabel}</a>
+                        <a class="resource-link resource-link-secondary" href="https://modrinth.com/mod/chest-helper" target="_blank" rel="noopener noreferrer">${copy.modLabel}</a>
+                    </div>
+                </article>
+            </div>
+        `;
+
+        targetSection.parentNode.insertBefore(section, targetSection);
+    }
+
     function getDesignToggleCopy() {
         const locale = getLocaleInfo().lang;
         return ({
@@ -611,6 +704,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
         initProjectSupportLinks();
+        initProjectModsSection();
         initDesignToggle();
         initReadableFontToggle();
         initCopyButtons();
