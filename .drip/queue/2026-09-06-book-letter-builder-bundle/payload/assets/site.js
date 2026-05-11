@@ -794,37 +794,37 @@
     }
 
 
-    function initNotificationBuilderLinks() {
+    function initBookLetterBuilderLinks() {
         const locale = getLocaleInfo().lang;
         const labels = {
             en: {
-                toolLabel: 'Notification builder',
-                guideLabel: 'Notification builder guide',
-                featureTitle: 'Notification builder',
-                featureDesc: 'Build title, actionbar, tellraw, and sequence commands for scenes, warnings, and quest beats.'
+                toolLabel: 'Book & letter builder',
+                guideLabel: 'Book & letter guide',
+                featureTitle: 'Book & letter builder',
+                featureDesc: 'Create written books, letters, contracts, and readable give commands page by page.'
             },
             ru: {
-                toolLabel: 'Конструктор уведомлений',
-                guideLabel: 'Гайд по уведомлениям',
-                featureTitle: 'Конструктор уведомлений',
-                featureDesc: 'Собирает title, actionbar, tellraw и последовательности для сцен, тревог и квестовых ударов.'
+                toolLabel: 'Конструктор книг и писем',
+                guideLabel: 'Гайд по книгам и письмам',
+                featureTitle: 'Конструктор книг и писем',
+                featureDesc: 'Собирает письма, книги, контракты и команды выдачи по страницам.'
             },
             fr: {
-                toolLabel: 'Constructeur de notifications',
-                guideLabel: 'Guide des notifications',
-                featureTitle: 'Constructeur de notifications',
-                featureDesc: 'Crée des title, actionbar, tellraw et séquences pour scènes, alertes et quêtes.'
+                toolLabel: 'Constructeur de livres et lettres',
+                guideLabel: 'Guide des livres et lettres',
+                featureTitle: 'Constructeur de livres et lettres',
+                featureDesc: 'Crée des livres, lettres, contrats et commandes /give page par page.'
             },
             de: {
-                toolLabel: 'Benachrichtigungs-Builder',
-                guideLabel: 'Benachrichtigungs-Anleitung',
-                featureTitle: 'Benachrichtigungs-Builder',
-                featureDesc: 'Erstellt Title, Actionbar, Tellraw und Sequenzen für Szenen, Warnungen und Questbeats.'
+                toolLabel: 'Buch- und Brief-Builder',
+                guideLabel: 'Buch- und Brief-Anleitung',
+                featureTitle: 'Buch- und Brief-Builder',
+                featureDesc: 'Erstellt Bücher, Briefe, Verträge und Give-Befehle Seite für Seite.'
             }
         };
         const copy = labels[locale] || labels.en;
-        const toolHref = withPrefix('/notification-builder/');
-        const guideHref = withPrefix('/wiki-notification-builder/');
+        const toolHref = withPrefix('/book-letter-builder/');
+        const guideHref = withPrefix('/wiki-book-letter-builder/');
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             if (list.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
@@ -1035,7 +1035,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
         initProjectSupportLinks();
-        initNotificationBuilderLinks();
+        initBookLetterBuilderLinks();
         initDesignToggle();
         initReadableFontToggle();
         initCopyButtons();

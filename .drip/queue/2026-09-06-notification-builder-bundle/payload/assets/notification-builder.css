@@ -1,6 +1,0 @@
-.notification-layout-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.tool-panel-inner{padding:0;border:none;background:transparent;box-shadow:none}
-.tool-field-wide{grid-column:1/-1}
-.toggle-row{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid rgba(116,161,255,.18);background:rgba(18,24,48,.56);font-weight:600;color:#e8efff;cursor:pointer}
-.toggle-row input{margin:0}
-@media (max-width: 760px){.notification-layout-split{grid-template-columns:1fr}}

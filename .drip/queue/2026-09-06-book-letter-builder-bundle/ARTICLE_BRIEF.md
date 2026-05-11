@@ -1,10 +1,10 @@
-# Publish notification builder bundle
+# Publish book and letter builder bundle
 
 Release date: 2026-09-06
 
 Includes:
-- /notification-builder/
-- /wiki-notification-builder/
+- /book-letter-builder/
+- /wiki-book-letter-builder/
 - localized EN/RU/FR/DE pages
 - updated assets/site.js for global discovery
 - updated sitemap.xml

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Constructeur de livres et lettres Minecraft | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/fr/book-letter-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/book-letter-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/book-letter-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/book-letter-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/book-letter-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/book-letter-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Constructeur de livres et lettres Minecraft | Cube in Square">
+  <meta property="og:description" content="Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.">
+  <meta property="og:url" content="https://cubeinsquare.com/fr/book-letter-builder/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Constructeur de livres et lettres Minecraft | Cube in Square">
+  <meta name="twitter:description" content="Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/book-letter-builder.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+      <a class="site-icon-link" href="/fr" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+      <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a></div>
+      <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a></div>
+      <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+      <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Recherche sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+      <div class="language-switch" aria-label="Language"><a class="" href="/book-letter-builder/">EN</a><a class="" href="/ru/book-letter-builder/">RU</a><a class="is-active" href="/fr/book-letter-builder/">FR</a><a class="" href="/de/book-letter-builder/">DE</a></div>
+    </div>
+  </div>
+<main class="page-shell">
+  <section class="page-hero">
+    <h1>Constructeur de livres et lettres Minecraft</h1>
+    <p class="page-lead">Créez des lettres, contrats, journaux et notes rituelles sans lutter à la main contre les tableaux de pages et le JSON. Écrivez page par page, choisissez la syntaxe, puis copiez une commande adaptée à votre version serveur.</p>
+  </section>
+  <section class="page-section tool-layout">
+    <div class="tool-primary-column">
+      <div class="tool-panel">
+        <div class="tool-button-row">
+          <a class="tool-button" href="/fr/wiki-book-letter-builder/">Lire le guide</a>
+          <a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Ouvrir le constructeur d’objets</a>
+        </div>
+      </div>
+      <div class="tool-panel">
+        <h2>Démarrages rapides</h2>
+        <p class="tool-summary">Chargez un brouillon puis réécrivez les pages pour votre monde, votre faction ou votre quête.</p>
+        <div class="tool-chip-row"><button class="tool-chip-button" type="button" data-blb-preset="letter">Lettre</button><button class="tool-chip-button" type="button" data-blb-preset="quest">Avis de quête</button><button class="tool-chip-button" type="button" data-blb-preset="contract">Contrat</button><button class="tool-chip-button" type="button" data-blb-preset="diary">Page de journal</button></div>
+      </div>
+      <div class="tool-panel">
+        <h2>Réglage du livre</h2>
+        <div class="tool-form-grid">
+          <div class="tool-field">
+            <label for="blb-version">Mode de syntaxe</label>
+            <select id="blb-version"><option value="modern">1.20.5+ Components</option><option value="legacy">Avant 1.20.5 NBT</option></select>
+          </div>
+          <div class="tool-field">
+            <label for="blb-type">Objet généré</label>
+            <select id="blb-type">
+              <option value="signed">Livre écrit</option>
+              <option value="writable">Livre et plume</option>
+            </select>
+          </div>
+          <div class="tool-field">
+            <label for="blb-title">Titre du livre</label>
+            <input id="blb-title" type="text">
+          </div>
+          <div class="tool-field">
+            <label for="blb-author">Auteur</label>
+            <input id="blb-author" type="text">
+          </div>
+          <div class="tool-field">
+            <label for="blb-generation">Génération</label>
+            <select id="blb-generation"><option value="original">Original</option><option value="copy_of_original">Copie de l’original</option><option value="copy_of_copy">Copie d’une copie</option><option value="tattered">Usé</option></select>
+          </div>
+          <div class="tool-field">
+            <label for="blb-target">Cible de la commande</label>
+            <input id="blb-target" type="text" value="@p">
+          </div>
+        </div>
+        <p class="tool-summary" id="blb-version-note"></p>
+      </div>
+      <div class="tool-panel">
+        <div class="section-heading">
+          <h2>Pages</h2>
+          <button class="tool-button tool-button-secondary" type="button" id="blb-add-page">Ajouter une page</button>
+        </div>
+        <div id="blb-pages" class="blb-pages"></div>
+        <p class="tool-summary">Gardez assez d’air sur chaque page pour l’interface Minecraft. Une page peut porter un battement de scène, un indice ou un bloc d’instructions propre.</p>
+      </div>
+      <div class="tool-panel">
+        <h2>Commande /give générée</h2>
+        <p class="tool-summary" id="blb-summary"></p>
+        <textarea id="blb-output" class="command-output" readonly></textarea>
+        <div class="tool-button-row">
+          <button class="tool-button" type="button" id="blb-copy">Copier la commande</button>
+        </div>
+      </div>
+    </div>
+    <aside class="tool-secondary-column">
+      <div class="tool-panel">
+        <h2>Où cela aide</h2>
+        <ul class="item-builder-help"><li>Lettres, convocations, notes de témoin et documents de quête qui doivent exister comme vrais objets.</li><li>Contrats, instructions rituelles et livres que les joueurs doivent garder et relire.</li><li>Texte d’ambiance ou d’information qui mérite l’inventaire plutôt qu’une longue chaîne tellraw.</li></ul>
+      </div>
+      <div class="tool-panel">
+        <h2>Avant export</h2>
+        <ul class="item-builder-help"><li>Si l’objet doit avoir une forte identité visuelle, reliez-le ensuite à CustomModelData et à une icône de pack.</li><li>Préférez des pages courtes pour les lettres et des piles plus longues pour journaux ou contrats.</li><li>Si le livre est du lore signé, le champ auteur doit porter du sens lui aussi.</li></ul>
+      </div>
+    </aside>
+  </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script>window.CUBE_BOOK_BUILDER_COPY={"copiedButton":"Copié","pageLabel":"Page","removePage":"Retirer","versionNotes":{"modern":"Le mode moderne convient aux serveurs déjà passés aux components. La commande utilisera written_book_content.","legacy":"Le mode legacy est prévu pour les anciens serveurs qui attendent encore les tags NBT et les tableaux de pages."},"versionNames":{"modern":"1.20.5+ Components","legacy":"Avant 1.20.5 NBT"},"summaryPattern":"{count} page(s) préparée(s). Syntaxe : {mode}.","exampleData":{"letter":{"version":"modern","type":"signed","title":"Lettre du quai","author":"Maître du port","generation":"original","target":"@p","pages":["À la première personne qui trouvera cette note,\n\nn’allumez pas le phare ouest cette nuit.","Après la tombée du jour, l’eau répond autrement.\n\nBrûlez cette lettre après lecture."]},"quest":{"version":"modern","type":"signed","title":"Demande d’archives","author":"Intendance","generation":"original","target":"@p","pages":["Mise à jour de quête:\n\nrécupérez le registre scellé dans la salle d’archives.","Ne brisez pas la cire rouge.\nRapportez-le fermé."]},"contract":{"version":"modern","type":"signed","title":"Contrat de passage","author":"Office de guilde","generation":"copy_of_original","target":"@p","pages":["Ce contrat autorise un passage par la porte est à l’aube.","Le paiement est dû à l’arrivée.\nNul si le sceau est brisé."]},"diary":{"version":"legacy","type":"signed","title":"Notes de terrain","author":"S. Vale","generation":"original","target":"@p","pages":["Le bosquet a répondu à la troisième cloche.\nLes racines ont bougé avant le vent."]}}};</script>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/book-letter-builder.js"></script>
+</body>
+</html>

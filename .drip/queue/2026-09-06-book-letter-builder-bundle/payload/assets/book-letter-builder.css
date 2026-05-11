@@ -1,0 +1,5 @@
+.blb-pages{display:grid;gap:16px}
+.blb-page-card{display:grid;gap:10px;padding:16px;border:1px solid rgba(116,161,255,.2);background:rgba(18,24,48,.72);border-radius:16px}
+.blb-page-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.blb-page-header strong{font-size:15px;color:#eef3ff}
+.blb-page-card textarea{min-height:180px;resize:vertical}
