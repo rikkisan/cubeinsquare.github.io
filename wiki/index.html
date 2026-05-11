@@ -46,9 +46,10 @@
                 <div class="mega-list mega-list-tree">
                     <div class="mega-group"><a class="mega-group-title" href="/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/wiki-custom-model-data/">CustomModelData</a><a href="/wiki/#resource-pack-paths">Resource pack structure</a></div></div>
                     <div class="mega-group"><a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/wiki-resource-pack-generator/">How to use the generator</a></div></div>
-                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-custom-item-no-json/">Custom item builder</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#project-mods">Project mods</a><div class="mega-sublist"><a href="/wiki-armorhide-mod/">ArmorHide</a><a href="/wiki-chest-helper-mod/">Chest Helper</a></div></div>
                 </div>
-                <div class="mega-feature"><a class="mega-card" href="/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+                <div class="mega-feature"><a class="mega-card" href="/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/wiki-armorhide-mod/"><strong>ArmorHide note</strong><span>Why readable skins still matter on dangerous RP servers.</span></a></div>
             </div>
         </div>
         <div class="steam-nav-menu">
@@ -66,7 +67,15 @@
 <main class="page-shell">
     <section class="page-hero">
         <h1>Minecraft Resource Pack Wiki and Tool Guides</h1>
-        <p class="page-lead">Minecraft resource pack guides, CustomModelData explainers, and walkthroughs for the generator, skin editor, texture painter, potions, and villager trade tools.</p>
+        <p class="page-lead">Minecraft resource pack guides, CustomModelData explainers, practical tool walkthroughs, and project-side mod notes for servers that care about visuals, workflow, and long-lived roleplay worlds.</p>
+    </section>
+    <section class="page-section" id="how-to-use-this-wiki">
+        <h2 class="section-title">How to use this library</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Start from the pain point</h3><p>If the problem is visual, begin with the skin editor, texture painter, or resource-pack generator. If the problem is commands, item identity, or server syntax, begin with the custom item, potion, or villager trade guides.</p><a class="resource-link" href="/tools/">Open tools catalog</a></article>
+            <article class="resource-card"><h3>Use articles as bridges, not homework</h3><p>The strongest pages here exist to shorten trial and error. Read just enough to understand what changed, what usually breaks first, and which tool will save time on the next step.</p><a class="resource-link" href="/wiki-components-vs-nbt/">Read a migration guide</a></article>
+            <article class="resource-card"><h3>Follow the same workflow the project uses</h3><p>Cube in Square grew out of a live RP server, so these guides are written around real friction: making props readable, keeping commands sane, and making shared worlds easier to stage and maintain.</p><a class="resource-link" href="/about/">See the project story</a></article>
+        </div>
     </section>
     <section class="page-section" id="general-wiki">
         <h2 class="section-title">General Articles</h2>
@@ -83,6 +92,7 @@
     <section class="page-section" id="other-tools-wiki">
         <h2 class="section-title">Other Tools</h2>
         <div class="resource-grid">
+            <article class="resource-card"><h3>Custom item builder</h3><p>How to build modern give commands, attach identity, hook items into a pack, and stop hand-editing every JSON-like snippet from scratch.</p><a class="resource-link" href="/wiki-custom-item-no-json/">Read article</a></article>
             <article class="resource-card"><h3>Skin editor</h3><p>How the classic 64x64 layout works, what the overlay layer is for, and why painting directly on the model helps with sleeves, hats, and boots.</p><a class="resource-link" href="/wiki-skin-editor/">Read article</a></article>
             <article class="resource-card"><h3>Texture painter</h3><p>How texture size changes detail, workload, and readability, and how to move exported PNGs into the resource-pack generator.</p><a class="resource-link" href="/wiki-texture-painter/">Read article</a></article>
             <article class="resource-card"><h3>Custom potions</h3><p>How to build a potion with potion contents, custom effects, bottle color, lore, CustomModelData, and a give command for the right Minecraft version.</p><a class="resource-link" href="/wiki-custom-potions/">Read article</a></article>
@@ -95,6 +105,14 @@
             <article class="resource-card"><h3>RP economy with custom_data</h3><p>How to stop forged notes, passes, and tokens from slipping into your villager economy.</p><a class="resource-link" href="/wiki-rp-economy-custom-data/">Read article</a></article>
             <article class="resource-card"><h3>Migrating packs to 1.21.4</h3><p>A practical checklist for moving old NBT-heavy pack workflows into the modern component format.</p><a class="resource-link" href="/wiki-resource-pack-migration-1-21-4/">Read article</a></article>
             <article class="resource-card"><h3>Smart potions with potion_contents</h3><p>How to build modern 1.21.4 potion items with cleaner contents, color, and identity.</p><a class="resource-link" href="/wiki-smart-potion-contents-1-21-4/">Read article</a></article>
+        </div>
+    </section>
+    <section class="page-section" id="project-mods">
+        <h2 class="section-title">Project Mods</h2>
+        <p class="section-intro">Some project pain points turned into browser tools. Others turned into released mods. These pages belong here on purpose: they show the same workflow from a different angle, where the problem is not generating a command but keeping scenes readable or shared storage usable on a long-running world.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>ArmorHide</h3><p>Why hiding visible armor matters for courtrooms, rituals, diplomacy, and any scene where a skin should stay readable without making the world safe.</p><a class="resource-link" href="/wiki-armorhide-mod/">Read article</a></article>
+            <article class="resource-card"><h3>Chest Helper</h3><p>Why remembering opened containers matters once a base becomes a pantry, archive, costume room, supply chest wall, and prop warehouse at the same time.</p><a class="resource-link" href="/wiki-chest-helper-mod/">Read article</a></article>
         </div>
     </section>
     <section class="page-section" id="resource-pack-paths">
