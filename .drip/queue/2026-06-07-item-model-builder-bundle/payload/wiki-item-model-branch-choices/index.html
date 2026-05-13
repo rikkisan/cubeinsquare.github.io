@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select, range_dispatch, or condition? Choosing the Right Minecraft Item Definition Branch | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical decision guide for Minecraft 1.21.4+ item definitions so you can choose model, select, range_dispatch, or condition without overbuilding the JSON.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="select, range_dispatch, or condition? Choosing the Right Minecraft Item Definition Branch | Cube in Square">
+    <meta property="og:description" content="How to choose the smallest useful branch for Minecraft 1.21.4+ item definitions before the JSON gets heavier than the item itself.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="select, range_dispatch, or condition? Choosing the Right Minecraft Item Definition Branch | Cube in Square">
+    <meta name="twitter:description" content="A practical branch-choice guide for model, select, range_dispatch, and condition in Minecraft item definitions.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="is-active" href="/wiki-item-model-branch-choices/">EN</a><a href="/ru/wiki-item-model-branch-choices/">RU</a><a href="/fr/wiki-item-model-branch-choices/">FR</a><a href="/de/wiki-item-model-branch-choices/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>select, range_dispatch, or condition?</h1>
+        <p class="page-lead">The hardest part of Minecraft 1.21.4+ item definitions is usually not typing the JSON. It is deciding which branch type actually matches the way the item changes. Once that choice is clean, the file gets smaller and the rest of the team can still read it a week later.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/item-model-builder/">Open item model builder</a><a class="tool-button tool-button-secondary" href="/wiki-item-model-builder/">Read the main guide</a></div>
+<h2>Think in signals before syntax</h2>
+<div class="article-block">Before choosing a branch type, ask a simpler question: does the item always look the same, switch between named states, move through numeric thresholds, or react to a yes-or-no condition? Once the answer is honest, the JSON usually gets much calmer too.</div>
+<div class="article-block">This is why so many new definitions feel heavier than they should. People reach for the most flexible branch first, not the smallest one that actually matches the behavior. Flexibility sounds safe, but it often leaves a larger tree than the item needs.</div>
+<h2>Quick decision table</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Use this</th><th>When it fits best</th><th>Typical example</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>The item has one fixed visual identity.</td><td>A guild pass, prop book, or single relic icon.</td></tr><tr><td><code>minecraft:select</code></td><td>The item switches between named states.</td><td>Sealed, awakened, broken, cursed.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>A number crosses clear thresholds.</td><td>Charge stages, durability bands, progress levels.</td></tr><tr><td><code>minecraft:condition</code></td><td>The result depends on true or false.</td><td>Selected in hand, using item, damaged, or not.</td></tr></tbody></table></div>
+<h2>Three easy wording tests</h2>
+<div class="article-block"><ul><li>If you describe the change with words like <em>ritual</em>, <em>spent</em>, or <em>active</em>, you probably want <code>select</code>.</li><li>If you describe the change with numbers like 0-25-50-75, you probably want <code>range_dispatch</code>.</li><li>If the item is either doing something or not doing it, <code>condition</code> is usually enough.</li></ul></div>
+<h2>Examples that clarify the choice fast</h2>
+<div class="article-block"><h3>1. A relic with story states</h3><p>If the relic is <em>sealed</em>, <em>glowing</em>, or <em>cracked</em>, those are named states. That is a clean <code>select</code> case.</p><h3>2. A staff that changes as it charges</h3><p>If the staff moves through four visual charge bands, this is a <code>range_dispatch</code> problem because the shift happens over thresholds.</p><h3>3. A map that changes only while selected</h3><p>If the alternate look appears only when the player is actively holding or using it, a simple <code>condition</code> branch usually keeps the definition smaller and calmer.</p></div>
+<h2>Common overengineering mistakes</h2>
+<div class="article-block"><ul><li>Using <code>select</code> for a single fixed prop because the branch structure feels future-proof.</li><li>Using <code>range_dispatch</code> when the real change is not numeric but named.</li><li>Turning a binary state into too many branches and making debugging harder than the item deserves.</li><li>Forgetting that a good fallback model is part of readability, not just a safety net.</li></ul></div>
+<h2>Where the builder helps most</h2>
+<div class="article-block">The item model builder is strongest when the decision is almost clear but the wrapper is still annoying. It lets you pick the branch, keep the fallback visible, add cases in a controlled order, and copy the finished JSON into the pack without rebuilding the outer structure from memory.</div>
+<div class="article-block">That makes it especially useful during migrations. You can prototype one definition, see whether the branch really matches the behavior, and only then copy the pattern across a larger item family.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Do I always need branching in 1.21.4+?</h3><p>No. Many items are still just one direct model file. Branches only matter when the appearance really changes.</p><h3>Can one item use both named states and numeric stages?</h3><p>Yes, but that is exactly when you should slow down and choose the simplest outer branch first instead of stacking everything into the first draft.</p><h3>Should I decide the branch before the texture exists?</h3><p>Usually yes. The visual file can come later, but the logic question of how the item changes is worth answering early.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

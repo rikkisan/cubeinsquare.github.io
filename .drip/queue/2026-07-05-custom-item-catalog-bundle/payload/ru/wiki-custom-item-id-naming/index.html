@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как называть кастомные предметы без дублей | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Практическая схема именования кастомных предметов Minecraft, чтобы hidden ID, визуальные хуки и заметки команды не разваливались по мере роста сервера.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как называть кастомные предметы без дублей | Cube in Square">
+    <meta property="og:description" content="Спокойный подход к именованию кастомных предметов, hidden ID и визуальных хуков до того, как библиотека превратится в шум.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Как называть кастомные предметы без дублей | Cube in Square">
+    <meta name="twitter:description" content="Спокойный подход к именованию кастомных предметов, hidden ID и визуальных хуков до того, как библиотека превратится в шум.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-custom-item-id-naming/">EN</a><a class="is-active" href="/ru/wiki-custom-item-id-naming/">RU</a><a href="/fr/wiki-custom-item-id-naming/">FR</a><a href="/de/wiki-custom-item-id-naming/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Как называть кастомные предметы в Minecraft, чтобы сервер не утонул в дублирующихся ID</h1>
+        <p class="page-lead">Хаос вокруг кастомных предметов обычно начинается не с самой команды. Он начинается в тот момент, когда три человека называют один и тот же тип объекта тремя разными способами, а конфликт всплывает только после того, как на него уже завязаны награды, скрипты и текстуры.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/ru/custom-item-catalog/">Открыть каталог предметов</a><a class="tool-button tool-button-secondary" href="/ru/wiki-custom-item-catalog/">Читать основной гайд</a></div>
+<h2>Сначала роль предмета, потом красивое имя</h2>
+<div class="article-block">Игроки видят атмосферное название. Команде нужен стабильный технический идентификатор. Внутренний ID должен отвечать на скучный, но жизненно важный вопрос: что это за объект внутри проекта, независимо от его лоровой формулировки. Поэтому артефакт может называться relic_sun_seal, даже если игрок видит Печать четвёртых врат.</div>
+<div class="article-block">Самое полезное правило — сознательно разделять видимое имя и системное имя. Заголовок может быть художественным. Hidden ID лучше держать спокойным, точным и пригодным для людей, которых не было в исходном обсуждении дизайна.</div>
+<h2>Схема именования, которая переживает рост</h2>
+<div class="article-block">Рабочая формула — категория + семейство + вариант. Например: currency_bone_token, quest_marshal_writ, relic_storm_core, prop_court_seal. Смысл не в красоте, а в том, чтобы взгляд сразу понимал, на какую полку положить объект.</div>
+<div class="article-block">Когда такая схема уже есть, предупреждения о дублях становятся полезнее. Вы видите не просто две случайные строки, а то, что два предмета лезут в один и тот же слот внутри одного семейства.</div>
+<h2>Где визуальный хук должен совпадать</h2>
+<div class="article-block">Визуальный хук не обязан повторять весь внутренний ID, но он должен быть узнаваемым. Если предмет называется relic_storm_core, то item_model или CMD-заметка не должны прятаться за чужим шорткатом. Достаточно частичного эха: storm_core, relic/storm_core, ritual/storm_core.</div>
+<div class="article-block">Особенно это важно на стадии паков. Когда каталог говорит одно, а путь к модели другое, команда тратит время только на то, чтобы доказать, что это вообще один и тот же объект.</div>
+<h2>Минимальные поля для именования</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Поле</th><th>На какой вопрос отвечает</th><th>Хороший признак</th></tr></thead><tbody><tr><td>Internal ID</td><td>Что это за объект на языке системы?</td><td>Стабилен и легко ищется.</td></tr><tr><td>Visible name</td><td>Что видит игрок?</td><td>Читаемый и атмосферный.</td></tr><tr><td>Visual hook</td><td>Какая модель или иконка к нему привязана?</td><td>Связь можно быстро проследить.</td></tr><tr><td>Notes</td><td>Что делает его особенным?</td><td>Хватает, чтобы не гадать потом.</td></tr></tbody></table></div>
+<div class="article-block">Вам не нужна огромная бюрократия. Нужно ровно столько полей, чтобы предмет переживал передачу между людьми.</div>
+<h2>Частые ошибки</h2>
+<div class="article-block"><ul><li>Называть предмет только по внешнему виду, так что после редизайна ID теряет смысл.</li><li>Использовать сокращения, понятные одному человеку.</li><li>Оставлять один hidden ID на несколько прототипов, потому что различие кажется временным.</li><li>Менять стиль именования посреди контентной линии и не помечать старое семейство.</li></ul></div>
+<div class="article-block">Все эти ошибки кажутся мелкими в первый день и дорогими на двадцатый.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Нужно ли, чтобы видимое имя и ID совпадали?</h3><p>Иногда это удобно, но не обязательно. Совпадение — плюс, а не правило.</p><h3>Когда структуры уже слишком много?</h3><p>Если ID всё ещё читается одним взглядом, скорее всего всё нормально. Если строка превращается в абзац, её пора сократить.</p><h3>Может ли семейство делить один visual hook?</h3><p>Да, если это осознанное решение. Каталог должен показывать общие хуки явно, а не случайно.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

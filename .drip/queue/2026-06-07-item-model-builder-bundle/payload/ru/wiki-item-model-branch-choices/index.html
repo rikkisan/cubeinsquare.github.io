@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>select, range_dispatch или condition? Как выбрать правильную ветку item definition | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Практический гайд по выбору model, select, range_dispatch и condition в item definition для Minecraft 1.21.4+.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="select, range_dispatch или condition? Как выбрать правильную ветку item definition | Cube in Square">
+    <meta property="og:description" content="Как понять, когда нужен model, select, range_dispatch или condition, прежде чем item definition разрастётся сильнее самого предмета.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="select, range_dispatch или condition? Как выбрать правильную ветку item definition | Cube in Square">
+    <meta name="twitter:description" content="Короткий практический разбор выбора ветки для item definition в Minecraft 1.21.4+.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-item-model-branch-choices/">EN</a><a class="is-active" href="/ru/wiki-item-model-branch-choices/">RU</a><a href="/fr/wiki-item-model-branch-choices/">FR</a><a href="/de/wiki-item-model-branch-choices/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>select, range_dispatch или condition?</h1>
+        <p class="page-lead">Самая сложная часть новых item definition — не JSON сам по себе, а выбор правильной ветки. Как только это решение честное, файл сразу становится короче и спокойнее для команды.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/ru/item-model-builder/">Открыть item model builder</a><a class="tool-button tool-button-secondary" href="/ru/wiki-item-model-builder/">Читать основной гайд</a></div>
+<h2>Сначала думайте о сигнале, а не о синтаксисе</h2>
+<div class="article-block">Прежде чем выбирать ветку, задайте простой вопрос: предмет всегда выглядит одинаково, переключается между именованными состояниями, проходит числовые пороги или реагирует на условие да/нет? Именно это, а не длина JSON, должно решать структуру.</div>
+<div class="article-block">Многие definition становятся тяжелее, чем нужно, потому что автор сразу тянется к самой гибкой ветке. Гибкость звучит безопасно, но чаще всего это просто лишнее дерево там, где предмету хватило бы куда более простой логики.</div>
+<h2>Быстрая таблица выбора</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Ветка</th><th>Когда подходит</th><th>Типичный случай</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>У предмета один постоянный вид.</td><td>Проп, пропуск, реликт без состояний.</td></tr><tr><td><code>minecraft:select</code></td><td>Есть именованные состояния.</td><td>sealed, awakened, broken, cursed.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>Есть числовые пороги.</td><td>Заряд, прогресс, полосы прочности.</td></tr><tr><td><code>minecraft:condition</code></td><td>Есть логика true/false.</td><td>Выбран предмет, используется, поврежден или нет.</td></tr></tbody></table></div>
+<h2>Три словесных теста</h2>
+<div class="article-block"><ul><li>Если вы описываете смену вида словами вроде <em>ритуальный</em>, <em>сломанный</em>, <em>активный</em>, это почти всегда <code>select</code>.</li><li>Если вы мыслите порогами 0-25-50-75, это обычно <code>range_dispatch</code>.</li><li>Если предмет либо в состоянии, либо нет — скорее всего хватит <code>condition</code>.</li></ul></div>
+<h2>Три примера, которые быстро расставляют всё по местам</h2>
+<div class="article-block"><h3>1. Реликт с сюжетными состояниями</h3><p>Если у реликта есть состояния sealed, glowing и cracked, это именованные ветки. Значит, логичнее всего идти в <code>select</code>.</p><h3>2. Посох, который набирает заряд</h3><p>Если внешний вид меняется по ступеням заряда, это уже история про числовые пороги и <code>range_dispatch</code>.</p><h3>3. Карта, которая меняется только в руках</h3><p>Если альтернативный вид нужен только когда предмет выбран или используется, чаще всего достаточно <code>condition</code>.</p></div>
+<h2>Где чаще всего переусложняют</h2>
+<div class="article-block"><ul><li>Берут <code>select</code> для предмета, которому хватило бы одного <code>model</code>.</li><li>Используют <code>range_dispatch</code> там, где состояние на самом деле именованное, а не числовое.</li><li>Раздувают бинарную логику на много ветвей и делают дебаг тяжелее, чем сам предмет.</li><li>Забывают, что fallback — это не только защита, но и часть читаемости файла.</li></ul></div>
+<h2>Чем тут помогает builder</h2>
+<div class="article-block">Item model builder особенно полезен в момент, когда решение почти понятно, а вот обертку вручную собирать уже не хочется. Он позволяет выбрать ветку, сразу удержать fallback на виду, добавить кейсы в правильном порядке и быстро проверить, не стала ли структура слишком тяжелой.</div>
+<div class="article-block">Это особенно ценно при миграциях: можно спокойно собрать один definition, убедиться, что ветка подобрана правильно, и только потом переносить тот же паттерн на семейство предметов.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>В 1.21.4+ всегда нужен branching?</h3><p>Нет. Очень многим предметам всё ещё хватает одного прямого <code>model</code>.</p><h3>Можно ли сочетать именованные состояния и числовые стадии?</h3><p>Да, но тогда особенно важно сначала выбрать самый простой внешний уровень логики, а не наслаивать всё подряд в первый черновик.</p><h3>Стоит ли решать ветку до текстуры?</h3><p>Обычно да. Визуал может прийти позже, а вот принцип смены вида лучше понять заранее.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

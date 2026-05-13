@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment nommer des objets custom sans doublons | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un système pratique de nommage pour les objets custom Minecraft afin que les hidden IDs, hooks visuels et notes d’équipe restent lisibles quand le serveur grandit.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Comment nommer des objets custom sans doublons | Cube in Square">
+    <meta property="og:description" content="Une méthode calme pour nommer des objets custom, leurs IDs cachés et leurs hooks visuels avant que la bibliothèque ne devienne du bruit.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Comment nommer des objets custom sans doublons | Cube in Square">
+    <meta name="twitter:description" content="Une méthode calme pour nommer des objets custom, leurs IDs cachés et leurs hooks visuels avant que la bibliothèque ne devienne du bruit.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-custom-item-id-naming/">EN</a><a href="/ru/wiki-custom-item-id-naming/">RU</a><a class="is-active" href="/fr/wiki-custom-item-id-naming/">FR</a><a href="/de/wiki-custom-item-id-naming/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Comment nommer des objets custom Minecraft sans noyer le serveur sous les doublons d’ID</h1>
+        <p class="page-lead">Le chaos des objets custom ne commence presque jamais par la commande. Il commence quand trois personnes nomment le même type d’objet de trois façons différentes et que la collision n’apparaît qu’une fois les récompenses, scripts et textures déjà branchés dessus.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/fr/custom-item-catalog/">Ouvrir le catalogue</a><a class="tool-button tool-button-secondary" href="/fr/wiki-custom-item-catalog/">Lire le guide principal</a></div>
+<h2>Commencez par la fonction, pas par le nom poétique</h2>
+<div class="article-block">Les joueurs voient un nom immersif. L’équipe a besoin d’un identifiant stable. L’ID interne doit répondre à une question simple: qu’est-ce que cet objet dans le projet, indépendamment du wording de lore. Un artefact peut donc s’appeler relic_sun_seal même si les joueurs lisent Sceau de la Quatrième Porte.</div>
+<div class="article-block">La règle la plus utile consiste à séparer volontairement le nom visible et le nom système. Le titre peut rester élégant. Le hidden ID, lui, doit rester calme, précis et lisible pour quelqu’un qui n’a pas participé à la discussion d’origine.</div>
+<h2>Un schéma de nommage qui survit à la croissance</h2>
+<div class="article-block">Une formule robuste est catégorie + famille + variante. Par exemple: currency_bone_token, quest_marshal_writ, relic_storm_core, prop_court_seal. L’idée n’est pas la beauté. L’idée est que l’œil voie immédiatement sur quelle étagère ranger l’objet.</div>
+<div class="article-block">Une fois ce schéma en place, les alertes de doublons deviennent beaucoup plus utiles. On ne voit plus deux lignes arbitraires mais deux objets qui se battent pour le même emplacement dans la même famille.</div>
+<h2>Quand le hook visuel doit faire écho</h2>
+<div class="article-block">Le hook visuel n’a pas besoin de répéter tout l’ID interne, mais il doit rester reconnaissable. Si l’objet s’appelle relic_storm_core, le chemin item_model ou la note CMD ne devrait pas se cacher derrière une abréviation sans lien. Un simple écho suffit: storm_core, relic/storm_core, ritual/storm_core.</div>
+<div class="article-block">Cela compte particulièrement pendant le travail de pack. Si le catalogue dit une chose et le chemin de modèle une autre, l’équipe perd du temps à prouver qu’il s’agit bien du même objet.</div>
+<h2>Les champs minimums à garder</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Champ</th><th>Question</th><th>Bon signe</th></tr></thead><tbody><tr><td>Internal ID</td><td>Quel est cet objet pour le système?</td><td>Stable et facile à rechercher.</td></tr><tr><td>Visible name</td><td>Que voit le joueur?</td><td>Immersif et lisible.</td></tr><tr><td>Visual hook</td><td>Quelle icône ou quel modèle lui correspond?</td><td>Traçable sans friction.</td></tr><tr><td>Notes</td><td>Qu’est-ce qui le rend spécial?</td><td>Assez clair pour éviter de deviner plus tard.</td></tr></tbody></table></div>
+<div class="article-block">Vous n’avez pas besoin d’une bureaucratie énorme. Vous avez besoin d’assez de structure pour qu’un objet survive à un passage de main.</div>
+<h2>Erreurs fréquentes</h2>
+<div class="article-block"><ul><li>Nommer uniquement selon l’apparence, au point que l’ID devient inutile après un redesign.</li><li>Utiliser des abréviations qu’une seule personne comprend.</li><li>Laisser plusieurs prototypes partager le même hidden ID parce que la différence semble temporaire.</li><li>Changer de style de nommage au milieu d’une série de contenu sans marquer l’ancienne famille.</li></ul></div>
+<div class="article-block">Ces erreurs paraissent modestes au début et coûteuses quelques semaines plus tard.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Le nom visible et l’ID doivent-ils être identiques?</h3><p>Pas forcément. C’est pratique parfois, mais ce n’est pas une obligation.</p><h3>À partir de quand la structure devient-elle trop lourde?</h3><p>Si l’ID se lit encore d’un coup d’œil, c’est probablement bon. S’il ressemble à un paragraphe, il faut le réduire.</p><h3>Une famille peut-elle partager un même hook visuel?</h3><p>Oui, si c’est assumé. Le catalogue doit rendre ce partage visible, pas accidentel.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

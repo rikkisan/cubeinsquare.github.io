@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to Name Custom Minecraft Items Without Duplicates | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical naming system for custom Minecraft items so hidden IDs, visual hooks, and team notes stay readable as your server grows.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Name Custom Minecraft Items Without Duplicates | Cube in Square">
+    <meta property="og:description" content="A calm naming workflow for custom items, hidden IDs, and visual hooks before the library turns into noise.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How to Name Custom Minecraft Items Without Duplicates | Cube in Square">
+    <meta name="twitter:description" content="A calm naming workflow for custom items, hidden IDs, and visual hooks before the library turns into noise.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="is-active" href="/wiki-custom-item-id-naming/">EN</a><a href="/ru/wiki-custom-item-id-naming/">RU</a><a href="/fr/wiki-custom-item-id-naming/">FR</a><a href="/de/wiki-custom-item-id-naming/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>How to name custom Minecraft items so your server does not drown in duplicate IDs</h1>
+        <p class="page-lead">Most custom-item chaos does not start with the command. It starts when three people name the same kind of object in three different styles and everyone only notices the collision after rewards, scripts, and textures already depend on it.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/custom-item-catalog/">Open item catalog</a><a class="tool-button tool-button-secondary" href="/wiki-custom-item-catalog/">Read the main guide</a></div>
+<h2>Start with the job, not the cool name</h2>
+<div class="article-block">Players can see poetic names. Your team needs stable names. An internal ID should answer a boring but vital question: what is this object in the project, independent from its lore wording. That is why a relic can still be called relic_sun_seal even if players only see Sun Seal of the Fourth Gate.</div>
+<div class="article-block">Let the visible title stay immersive. Let the hidden ID stay precise, searchable, and useful to someone who joined the project later.</div>
+<h2>A pattern that survives growth</h2>
+<div class="article-block">A practical pattern is category + family + variant. For example: currency_bone_token, quest_marshal_writ, relic_storm_core, prop_court_seal. The goal is not beauty. The goal is that the eye instantly knows what shelf the item belongs on.</div>
+<div class="article-block">Once the pattern exists, duplicate warnings become informative instead of mysterious. You stop seeing random collisions and start seeing two objects fighting over the same slot in the same family.</div>
+<h2>Where visual hooks should echo the ID</h2>
+<div class="article-block">A visual hook does not need to repeat the entire internal ID, but it should still be recognizable. If the item is relic_storm_core, then the item_model or CMD note should not hide behind a completely unrelated shorthand. A partial echo is enough: storm_core, relic/storm_core, or ritual/storm_core.</div>
+<div class="article-block">This matters most during pack work. If the catalog says one thing and the model path says another, the team wastes time proving that two names are actually the same object.</div>
+<h2>Minimum naming fields</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Field</th><th>Question</th><th>Good sign</th></tr></thead><tbody><tr><td>Internal ID</td><td>What is this object in system language?</td><td>Stable and searchable.</td></tr><tr><td>Visible name</td><td>What do players see?</td><td>Immersive and readable.</td></tr><tr><td>Visual hook</td><td>Which model or icon belongs to it?</td><td>Clearly traceable.</td></tr><tr><td>Notes</td><td>What makes this one special?</td><td>Enough to avoid future guesswork.</td></tr></tbody></table></div>
+<div class="article-block">You do not need giant bureaucracy. You just need enough structure that the same object survives a handoff.</div>
+<h2>Common mistakes</h2>
+<div class="article-block"><ul><li>Naming by appearance only, so the ID becomes useless after one redesign.</li><li>Using abbreviations that only one teammate understands.</li><li>Letting multiple prototypes keep the same hidden ID because the difference feels temporary.</li><li>Changing naming style halfway through a content arc without marking the old family.</li></ul></div>
+<div class="article-block">These mistakes feel harmless on day one and expensive on day twenty.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Should visible names and IDs ever match exactly?</h3><p>Sometimes, but they do not need to. Matching is convenient, not required.</p><h3>How much structure is too much?</h3><p>If people can still read the ID in one glance, it is probably fine. If the ID becomes a paragraph, cut it back.</p><h3>Can one item family share one visual hook?</h3><p>Yes, if that decision is explicit. The catalog should make shared hooks visible, not accidental.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

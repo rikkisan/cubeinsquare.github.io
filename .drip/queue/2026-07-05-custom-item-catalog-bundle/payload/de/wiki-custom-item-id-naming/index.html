@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom-Items ohne doppelte IDs benennen | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ein praktisches Benennungssystem für Custom-Items in Minecraft, damit hidden IDs, Visual Hooks und Teamnotizen auch auf wachsenden Servern lesbar bleiben.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-id-naming/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Custom-Items ohne doppelte IDs benennen | Cube in Square">
+    <meta property="og:description" content="Ein ruhiger Leitfaden für Internal IDs, Visual Hooks und klare Namensmuster, bevor die Item-Bibliothek unlesbar wird.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-custom-item-id-naming/">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Custom-Items ohne doppelte IDs benennen | Cube in Square">
+    <meta name="twitter:description" content="Ein ruhiger Leitfaden für Internal IDs, Visual Hooks und klare Namensmuster, bevor die Item-Bibliothek unlesbar wird.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de/" aria-label="Start" title="Start"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-custom-item-id-naming/">EN</a><a href="/ru/wiki-custom-item-id-naming/">RU</a><a href="/fr/wiki-custom-item-id-naming/">FR</a><a class="is-active" href="/de/wiki-custom-item-id-naming/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Wie man Custom-Items in Minecraft benennt, ohne im Chaos aus doppelten IDs zu versinken</h1>
+        <p class="page-lead">Chaos bei Custom-Items beginnt fast nie mit der eigentlichen /give-Struktur. Es beginnt dann, wenn drei Leute denselben Objekttyp auf drei verschiedene Arten benennen und der Konflikt erst auffällt, wenn Belohnungen, Skripte und Texturen schon daran hängen.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/de/custom-item-catalog/">Custom-Item-Katalog öffnen</a><a class="tool-button tool-button-secondary" href="/de/wiki-custom-item-catalog/">Hauptguide lesen</a></div>
+<h2>Erst die Aufgabe benennen, dann den hübschen Namen</h2>
+<div class="article-block">Spieler sehen einen atmosphärischen Namen. Das Team braucht eine stabile technische Identität. Eine Internal ID sollte eine einfache Frage beantworten: Was ist dieses Objekt im Projektsystem, unabhängig von seiner Lore-Formulierung? Deshalb kann ein Artefakt ruhig relic_sun_seal heißen, auch wenn Spieler nur Sonnensiegel des vierten Tores lesen.</div>
+<div class="article-block">Die hilfreichste Regel ist, sichtbaren Namen und Systemnamen bewusst zu trennen. Der Titel darf immersiv sein. Die hidden ID sollte ruhig, präzise und auch für Leute lesbar sein, die beim ursprünglichen Designgespräch nicht dabei waren.</div>
+<h2>Ein Benennungsmuster, das Wachstum überlebt</h2>
+<div class="article-block">Eine robuste Formel ist Kategorie + Familie + Variante. Zum Beispiel: currency_bone_token, quest_marshal_writ, relic_storm_core, prop_court_seal. Es geht nicht um Eleganz. Es geht darum, dass das Auge sofort erkennt, in welches Regal das Objekt gehört.</div>
+<div class="article-block">Sobald dieses Muster steht, werden Duplicate-Warnungen viel nützlicher. Ihr seht dann nicht bloß zwei zufällige Zeilen, sondern zwei Objekte, die denselben Slot derselben Familie beanspruchen.</div>
+<h2>Wo der Visual Hook mitschwingen sollte</h2>
+<div class="article-block">Der Visual Hook muss nicht die komplette Internal ID wiederholen, aber er sollte wiedererkennbar sein. Wenn das Item relic_storm_core heißt, sollte der item_model-Pfad oder CMD-Hinweis nicht hinter einer völlig fremden Kurzform verschwinden. Ein Teil-Echo reicht: storm_core, relic/storm_core, ritual/storm_core.</div>
+<div class="article-block">Gerade bei Pack-Arbeit spart das Zeit. Wenn Katalog und Modellpfad unterschiedliche Sprachen sprechen, verbringt das Team unnötig viel Zeit damit, dieselbe Sache zweimal zu identifizieren.</div>
+<h2>Die minimale Feldstruktur</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Feld</th><th>Welche Frage beantwortet es?</th><th>Gutes Zeichen</th></tr></thead><tbody><tr><td>Internal ID</td><td>Was ist das Objekt im System?</td><td>Stabil und gut suchbar.</td></tr><tr><td>Visible name</td><td>Was sehen Spieler?</td><td>Immersiv und lesbar.</td></tr><tr><td>Visual hook</td><td>Welches Modell oder Icon gehört dazu?</td><td>Ohne Reibung nachvollziehbar.</td></tr><tr><td>Notes</td><td>Was macht dieses Item besonders?</td><td>Genug Kontext, damit später nicht geraten werden muss.</td></tr></tbody></table></div>
+<div class="article-block">Ihr braucht keine riesige Bürokratie. Ihr braucht nur genug Struktur, damit ein Item eine Übergabe überlebt.</div>
+<h2>Häufige Fehler</h2>
+<div class="article-block"><ul><li>Nur nach Aussehen benennen, sodass die ID nach einem Redesign wertlos wird.</li><li>Abkürzungen verwenden, die nur eine Person versteht.</li><li>Mehrere Prototypen denselben hidden ID teilen lassen, weil der Unterschied nur vorläufig wirkt.</li><li>Mitten in einer Content-Linie den Benennungsstil wechseln, ohne die alte Familie zu markieren.</li></ul></div>
+<div class="article-block">Diese Fehler wirken früh harmlos und später teuer.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Müssen sichtbarer Name und ID exakt gleich sein?</h3><p>Nicht unbedingt. Es kann praktisch sein, ist aber keine Pflicht.</p><h3>Wann ist die Struktur zu schwer?</h3><p>Wenn die ID noch in einem Blick lesbar ist, ist sie meist okay. Wenn sie wie ein Absatz wirkt, sollte sie kürzer werden.</p><h3>Kann eine Familie denselben Visual Hook teilen?</h3><p>Ja, solange das bewusst dokumentiert ist. Der Katalog sollte geteilte Hooks sichtbar machen, nicht zufällig verstecken.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

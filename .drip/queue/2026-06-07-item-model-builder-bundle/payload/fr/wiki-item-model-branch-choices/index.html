@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>select, range_dispatch ou condition ? Choisir la bonne branche d'item definition | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Un guide pratique pour choisir model, select, range_dispatch ou condition dans les item definitions de Minecraft 1.21.4+.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="select, range_dispatch ou condition ? Choisir la bonne branche d'item definition | Cube in Square">
+    <meta property="og:description" content="Comment choisir la plus petite branche utile avant qu'une item definition devienne plus lourde que l'objet lui-même.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="select, range_dispatch ou condition ? Choisir la bonne branche d'item definition | Cube in Square">
+    <meta name="twitter:description" content="Guide pratique pour choisir la bonne branche dans une item definition Minecraft 1.21.4+.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-item-model-branch-choices/">EN</a><a href="/ru/wiki-item-model-branch-choices/">RU</a><a class="is-active" href="/fr/wiki-item-model-branch-choices/">FR</a><a href="/de/wiki-item-model-branch-choices/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>select, range_dispatch ou condition ?</h1>
+        <p class="page-lead">Dans les nouvelles item definitions, le plus difficile n'est souvent pas le JSON. Le vrai choix, c'est la branche qui correspond honnêtement à la façon dont l'objet change. Une fois cette décision prise, le fichier devient beaucoup plus lisible.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/fr/item-model-builder/">Ouvrir le builder</a><a class="tool-button tool-button-secondary" href="/fr/wiki-item-model-builder/">Lire le guide principal</a></div>
+<h2>Pensez d'abord au signal</h2>
+<div class="article-block">Avant de choisir une branche, demandez-vous si l'objet garde toujours le même rendu, s'il passe entre des états nommés, s'il franchit des seuils numériques, ou s'il réagit à une condition vrai/faux. Cette réponse doit guider la structure.</div>
+<div class="article-block">Beaucoup de fichiers deviennent trop lourds parce que leur auteur choisit la branche la plus flexible avant de choisir la branche la plus juste. Cette flexibilité semble rassurante, mais elle crée souvent un arbre inutilement grand.</div>
+<h2>Tableau de décision rapide</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Branche</th><th>Quand l'utiliser</th><th>Exemple typique</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>L'objet a une seule identité visuelle.</td><td>Un laissez-passer, un prop, un livre unique.</td></tr><tr><td><code>minecraft:select</code></td><td>L'objet passe entre des états nommés.</td><td>sealed, awakened, broken, cursed.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>Le changement suit des seuils numériques.</td><td>Charge, progression, paliers d'usure.</td></tr><tr><td><code>minecraft:condition</code></td><td>Le résultat dépend d'un vrai/faux.</td><td>Objet sélectionné, utilisé, endommagé ou non.</td></tr></tbody></table></div>
+<h2>Trois tests très simples</h2>
+<div class="article-block"><ul><li>Si vous décrivez le changement avec des mots comme <em>rituel</em>, <em>cassé</em> ou <em>actif</em>, vous êtes probablement dans <code>select</code>.</li><li>Si vous pensez en seuils 0-25-50-75, vous êtes probablement dans <code>range_dispatch</code>.</li><li>Si l'objet fait quelque chose ou ne le fait pas, <code>condition</code> suffit souvent.</li></ul></div>
+<h2>Trois exemples qui clarifient tout</h2>
+<div class="article-block"><h3>1. Une relique avec des états narratifs</h3><p>Si la relique peut être sealed, glowing ou cracked, ce sont des états nommés. C'est donc un cas propre pour <code>select</code>.</p><h3>2. Un bâton qui se charge</h3><p>Si le rendu change par paliers de charge, il faut une logique numérique, donc <code>range_dispatch</code>.</p><h3>3. Une carte qui ne change qu'en main</h3><p>Si l'apparence alternative existe seulement lorsque l'objet est sélectionné ou utilisé, un simple <code>condition</code> suffit souvent.</p></div>
+<h2>Erreurs fréquentes</h2>
+<div class="article-block"><ul><li>Utiliser <code>select</code> pour un simple prop qui n'a besoin que d'un <code>model</code>.</li><li>Choisir <code>range_dispatch</code> alors que le changement réel est nommé, pas numérique.</li><li>Transformer un état binaire en arbre trop grand pour rien.</li><li>Oublier que le fallback n'est pas seulement une sécurité, mais aussi un point d'ancrage pour la lecture.</li></ul></div>
+<h2>Où le builder aide vraiment</h2>
+<div class="article-block">Le builder est surtout utile quand la logique est presque claire, mais que vous ne voulez plus reconstruire l'enveloppe JSON à la main. Il vous laisse choisir la branche, garder le fallback visible, ajouter les cas dans le bon ordre, puis copier un fichier propre dans le pack.</div>
+<div class="article-block">C'est particulièrement fort pendant une migration: vous construisez une seule definition, vous vérifiez que la bonne branche a été choisie, puis vous réutilisez le motif sur le reste des objets.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Ai-je toujours besoin de branches en 1.21.4+ ?</h3><p>Non. Beaucoup d'objets restent de simples fichiers <code>model</code>.</p><h3>Puis-je mélanger états nommés et seuils numériques ?</h3><p>Oui, mais c'est justement le moment où il faut choisir le niveau externe le plus simple avant d'empiler la logique.</p><h3>Faut-il décider la branche avant la texture ?</h3><p>Souvent oui. Le visuel peut venir après, mais la façon dont l'objet change mérite une réponse tôt.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>

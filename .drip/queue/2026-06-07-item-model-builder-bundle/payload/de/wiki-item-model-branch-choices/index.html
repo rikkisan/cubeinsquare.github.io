@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>select, range_dispatch oder condition? Die richtige Branch für item definitions wählen | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ein praktischer Leitfaden, wann model, select, range_dispatch oder condition in Minecraft-Item-Definitions sinnvoll sind.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-branch-choices/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="select, range_dispatch oder condition? Die richtige Branch für item definitions wählen | Cube in Square">
+    <meta property="og:description" content="Wie ihr die kleinste sinnvolle Branch wählt, bevor eine item definition schwerer wird als das Item selbst.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-item-model-branch-choices/">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="select, range_dispatch oder condition? Die richtige Branch für item definitions wählen | Cube in Square">
+    <meta name="twitter:description" content="Praktischer Leitfaden für model, select, range_dispatch und condition in Minecraft-Item-Definitions.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-item-model-branch-choices/">EN</a><a href="/ru/wiki-item-model-branch-choices/">RU</a><a href="/fr/wiki-item-model-branch-choices/">FR</a><a class="is-active" href="/de/wiki-item-model-branch-choices/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>select, range_dispatch oder condition?</h1>
+        <p class="page-lead">Bei neuen Item-Definitions ist oft nicht das JSON das Problem, sondern die falsche Branch. Sobald diese Entscheidung stimmt, wird die Datei kleiner und für das Team deutlich lesbarer.</p>
+    </section>
+    <article>
+<div class="tool-button-row"><a class="tool-button" href="/de/item-model-builder/">Item-Model-Builder öffnen</a><a class="tool-button tool-button-secondary" href="/de/wiki-item-model-builder/">Hauptguide lesen</a></div>
+<h2>Zuerst das Signal verstehen</h2>
+<div class="article-block">Bevor ihr eine Branch wählt, fragt euch: bleibt das Item immer gleich, wechselt es zwischen benannten Zuständen, läuft es über numerische Schwellen oder reagiert es auf ein Ja/Nein-Signal? Diese Antwort sollte die Struktur bestimmen.</div>
+<div class="article-block">Viele Definitions werden unnötig groß, weil sofort zur flexibelsten Branch gegriffen wird. Flexibel klingt sicher, ist aber oft nur schwerer lesbar als nötig.</div>
+<h2>Schnelle Entscheidungstabelle</h2>
+<div class="article-block"><table class="compact-table"><thead><tr><th>Branch</th><th>Dann benutzen</th><th>Typischer Fall</th></tr></thead><tbody><tr><td><code>minecraft:model</code></td><td>Das Item hat nur eine feste Optik.</td><td>Pass, Prop, einzelnes Relikt.</td></tr><tr><td><code>minecraft:select</code></td><td>Es gibt benannte Zustände.</td><td>sealed, awakened, broken, cursed.</td></tr><tr><td><code>minecraft:range_dispatch</code></td><td>Der Wechsel läuft über Zahlenstufen.</td><td>Ladung, Fortschritt, Schadensbänder.</td></tr><tr><td><code>minecraft:condition</code></td><td>Das Ergebnis ist wahr/falsch.</td><td>Ausgewählt, benutzt, beschädigt oder nicht.</td></tr></tbody></table></div>
+<h2>Drei kleine Sprachtests</h2>
+<div class="article-block"><ul><li>Wenn ihr den Wechsel mit Wörtern wie <em>ritual</em>, <em>broken</em> oder <em>active</em> beschreibt, seid ihr meist bei <code>select</code>.</li><li>Wenn ihr in Stufen wie 0-25-50-75 denkt, ist das oft <code>range_dispatch</code>.</li><li>Wenn das Item etwas tut oder nicht tut, reicht häufig <code>condition</code>.</li></ul></div>
+<h2>Drei Beispiele</h2>
+<div class="article-block"><h3>1. Relikt mit Story-Zuständen</h3><p>Wenn das Relikt sealed, glowing oder cracked sein kann, sind das benannte Zustände. Das spricht klar für <code>select</code>.</p><h3>2. Stab mit Ladephasen</h3><p>Wenn die Optik bei bestimmten Ladungsstufen kippt, ist das ein Fall für <code>range_dispatch</code>.</p><h3>3. Karte mit Hand-Kontext</h3><p>Wenn sich die Optik nur ändert, solange das Item aktiv in der Hand ist, reicht meist <code>condition</code>.</p></div>
+<h2>Häufige Überbauten</h2>
+<div class="article-block"><ul><li><code>select</code> benutzen, obwohl ein einfaches <code>model</code> genügt hätte.</li><li><code>range_dispatch</code> wählen, obwohl die Veränderung eigentlich benannt und nicht numerisch ist.</li><li>Eine binäre Logik unnötig in viele Zweige zerlegen.</li><li>Vergessen, dass ein guter Fallback auch der Lesbarkeit dient.</li></ul></div>
+<h2>Wobei der Builder hilft</h2>
+<div class="article-block">Der Builder ist am stärksten, wenn die Richtung fast klar ist, ihr aber die JSON-Hülle nicht jedes Mal neu schreiben wollt. Er hält den Fallback sichtbar, lässt Branches geordnet hinzufügen und macht schnelle Prototypen leichter.</div>
+<div class="article-block">Gerade bei Migrationen ist das angenehm: erst eine Definition sauber bauen, dann das Muster auf weitere Items übertragen.</div>
+<h2>FAQ</h2>
+<div class="article-block"><div class="faq-section"><h3>Brauche ich in 1.21.4+ immer Branches?</h3><p>Nein. Viele Items bleiben einfache <code>model</code>-Dateien.</p><h3>Kann ich benannte Zustände und Zahlenstufen kombinieren?</h3><p>Ja, aber dann lohnt es sich besonders, die einfachste äußere Branch zuerst zu wählen.</p><h3>Sollte die Branch vor der Textur feststehen?</h3><p>Meistens ja. Das Aussehen kann später kommen, die Änderungslogik sollte früh klar sein.</p></div></div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
+</body>
+</html>
