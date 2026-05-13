@@ -419,6 +419,7 @@
                               "wikiTitle": "Item model builder",
                               "wikiDesc": "When to use model, select, range_dispatch, or condition and how to wire them into the items folder cleanly.",
                               "wikiAction": "Read guide",
+                              "articleLabel": "Branch choice article",
                               "sidebarLabel": "Item model builder"
                     },
                     "ru": {
@@ -434,6 +435,7 @@
                               "wikiTitle": "Конструктор item_model",
                               "wikiDesc": "Когда использовать model, select, range_dispatch и condition и как аккуратно положить это в папку items.",
                               "wikiAction": "Читать гайд",
+                              "articleLabel": "Статья по выбору ветки",
                               "sidebarLabel": "Конструктор item_model"
                     },
                     "fr": {
@@ -449,6 +451,7 @@
                               "wikiTitle": "Constructeur item_model",
                               "wikiDesc": "Quand utiliser model, select, range_dispatch et condition, et comment les ranger proprement dans le dossier items.",
                               "wikiAction": "Lire le guide",
+                              "articleLabel": "Article de choix des branches",
                               "sidebarLabel": "Constructeur item_model"
                     },
                     "de": {
@@ -464,6 +467,7 @@
                               "wikiTitle": "item_model-Builder",
                               "wikiDesc": "Wann model, select, range_dispatch oder condition sinnvoll sind und wie die Datei sauber im items-Ordner landet.",
                               "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Artikel zur Branch-Wahl",
                               "sidebarLabel": "item_model-Builder"
                     }
           },
@@ -481,6 +485,7 @@
                               "wikiTitle": "Custom item catalog",
                               "wikiDesc": "How to keep IDs, display names, base items, and pack hooks readable once your server starts shipping more than ten items.",
                               "wikiAction": "Read guide",
+                              "articleLabel": "Naming guide",
                               "sidebarLabel": "Custom item catalog"
                     },
                     "ru": {
@@ -496,6 +501,7 @@
                               "wikiTitle": "Каталог кастомных предметов",
                               "wikiDesc": "Как не утонуть в ID, названиях, базовых предметах и pack-хуках, когда предметов становится много.",
                               "wikiAction": "Читать гайд",
+                              "articleLabel": "Гайд по именованию",
                               "sidebarLabel": "Каталог предметов"
                     },
                     "fr": {
@@ -511,6 +517,7 @@
                               "wikiTitle": "Catalogue d’objets custom",
                               "wikiDesc": "Comment garder des IDs, noms visibles, objets de base et hooks de pack lisibles quand votre serveur multiplie les items.",
                               "wikiAction": "Lire le guide",
+                              "articleLabel": "Guide de nommage",
                               "sidebarLabel": "Catalogue d’objets"
                     },
                     "de": {
@@ -526,6 +533,7 @@
                               "wikiTitle": "Katalog für Custom-Items",
                               "wikiDesc": "Wie ihr IDs, Anzeigenamen, Basisitems und Pack-Hooks lesbar haltet, sobald euer Server mehr als ein paar Sonderitems hat.",
                               "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Benennungsleitfaden",
                               "sidebarLabel": "Custom-Item-Katalog"
                     }
           }
@@ -549,11 +557,13 @@
           "itemModelBuilder": {
                     "path": "/item-model-builder/",
                     "guidePath": "/wiki-item-model-builder/",
+                    "articlePath": "/wiki-item-model-branch-choices/",
                     "sectionId": "how-to-guides"
           },
           "customItemCatalog": {
                     "path": "/custom-item-catalog/",
                     "guidePath": "/wiki-custom-item-catalog/",
+                    "articlePath": "/wiki-custom-item-id-naming/",
                     "sectionId": "how-to-guides"
           }
 };
@@ -563,6 +573,7 @@
                 key,
                 toolHref: withPrefix(meta[key].path),
                 guideHref: meta[key].guidePath ? withPrefix(meta[key].guidePath) : null,
+                articleHref: meta[key].articlePath ? withPrefix(meta[key].articlePath) : null,
                 sectionId: meta[key].sectionId || null,
                 ...copy
             };
@@ -600,6 +611,12 @@
                 link.href = tool.guideHref;
                 link.textContent = tool.guideLabel;
                 sublist.appendChild(link);
+                if (tool.articleHref && tool.articleLabel && !sublist.querySelector(`a[href="${tool.articleHref}"], a[href$="${tool.articleHref}"]`)) {
+                    const articleLink = document.createElement('a');
+                    articleLink.href = tool.articleHref;
+                    articleLink.textContent = tool.articleLabel;
+                    sublist.appendChild(articleLink);
+                }
             });
         });
 
@@ -632,6 +649,12 @@
                 link.href = tool.guideHref;
                 link.textContent = tool.sidebarLabel;
                 group.appendChild(link);
+                if (tool.articleHref && tool.articleLabel && !group.querySelector(`a[href="${tool.articleHref}"], a[href$="${tool.articleHref}"]`)) {
+                    const articleLink = document.createElement('a');
+                    articleLink.href = tool.articleHref;
+                    articleLink.textContent = tool.articleLabel;
+                    group.appendChild(articleLink);
+                }
             });
         }
 

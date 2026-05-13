@@ -801,7 +801,8 @@
                 toolLabel: 'Book & letter builder',
                 guideLabel: 'Book & letter guide',
                 featureTitle: 'Book & letter builder',
-                featureDesc: 'Create written books, letters, contracts, and readable give commands page by page.'
+                featureDesc: 'Create written books, letters, contracts, and readable give commands page by page.',
+                articleLabel: 'Readable books article'
             },
             ru: {
                 toolLabel: 'Конструктор книг и писем',
@@ -825,6 +826,7 @@
         const copy = labels[locale] || labels.en;
         const toolHref = withPrefix('/book-letter-builder/');
         const guideHref = withPrefix('/wiki-book-letter-builder/');
+        const articleHref = withPrefix('/wiki-readable-minecraft-books/');
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             if (list.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
@@ -852,7 +854,39 @@
             link.href = guideHref;
             link.textContent = copy.guideLabel;
             sublist.insertBefore(link, sublist.firstChild);
+            if (!sublist.querySelector(`a[href="${articleHref}"], a[href$="${articleHref}"]`)) {
+                const articleLink = document.createElement('a');
+                articleLink.href = articleHref;
+                articleLink.textContent = copy.articleLabel;
+                sublist.insertBefore(articleLink, link.nextSibling);
+            }
         });
+
+        const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
+        if (wikiSidebarNav) {
+            let group = wikiSidebarNav.querySelector('[data-generated-book-guides]');
+            if (!group) {
+                group = document.createElement('div');
+                group.className = 'wiki-sidebar-group';
+                group.setAttribute('data-generated-book-guides', 'true');
+                const heading = document.createElement('h2');
+                heading.textContent = locale === 'ru' ? 'Новые инструменты' : locale === 'fr' ? 'Nouveaux outils' : locale === 'de' ? 'Neue Werkzeuge' : 'New tools';
+                group.appendChild(heading);
+                wikiSidebarNav.appendChild(group);
+            }
+            if (!group.querySelector(`a[href="${guideHref}"], a[href$="${guideHref}"]`)) {
+                const link = document.createElement('a');
+                link.href = guideHref;
+                link.textContent = copy.guideLabel;
+                group.appendChild(link);
+            }
+            if (!group.querySelector(`a[href="${articleHref}"], a[href$="${articleHref}"]`)) {
+                const articleLink = document.createElement('a');
+                articleLink.href = articleHref;
+                articleLink.textContent = copy.articleLabel;
+                group.appendChild(articleLink);
+            }
+        }
     }
 
     function initDesignToggle() {
