@@ -2,13 +2,22 @@
 .tool-primary-column,.tool-secondary-column{display:grid;gap:24px;align-content:start}
 .tool-chip-row{display:flex;flex-wrap:wrap;gap:10px}
 .tool-chip-button{padding:10px 14px;border-radius:999px;border:1px solid rgba(116,161,255,.24);background:rgba(65,115,222,.12);color:#e8efff;font:inherit;font-weight:600;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
-.tool-chip-button:hover,.tool-chip-button:focus-visible{background:rgba(65,115,222,.2);border-color:rgba(116,161,255,.36);transform:translateY(-1px)}
+.tool-chip-button:hover,.tool-chip-button:focus-visible,.tool-chip-button.is-active{background:rgba(65,115,222,.2);border-color:rgba(116,161,255,.36);transform:translateY(-1px)}
+.imb-mode-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.imb-mode-card{padding:14px 16px;border-radius:18px;border:1px solid rgba(116,161,255,.22);background:rgba(18,24,48,.56);color:#e8efff;text-align:left;font:inherit;cursor:pointer;display:grid;gap:6px;transition:border-color .18s ease,background .18s ease,transform .18s ease,box-shadow .18s ease}
+.imb-mode-card strong{font-size:15px;line-height:1.3}
+.imb-mode-card span{font-size:13px;line-height:1.55;color:#a8b6d8}
+.imb-mode-card:hover,.imb-mode-card:focus-visible,.imb-mode-card.is-active{border-color:rgba(116,161,255,.44);background:rgba(36,54,107,.44);transform:translateY(-1px);box-shadow:0 12px 30px rgba(7,10,22,.18)}
 .tool-note-card{margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid rgba(116,161,255,.2);background:rgba(18,24,48,.62);display:grid;gap:6px}
 .tool-note-card strong{font-size:15px;color:#edf3ff}
 .tool-note-card span{font-size:14px;color:#9eb0d4}
+.imb-inline-hint,.imb-empty-state{margin-top:14px;padding:14px 16px;border-radius:16px;border:1px solid rgba(116,161,255,.18);background:rgba(14,20,40,.62);display:grid;gap:6px}
+.imb-inline-hint strong,.imb-empty-state strong{font-size:14px;color:#edf3ff}
+.imb-inline-hint span,.imb-empty-state span{font-size:13px;line-height:1.6;color:#a7b6d9}
 .imb-branch-section{display:grid;gap:14px;margin-top:18px}
 .section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .imb-branch-list{display:grid;gap:14px}
 .imb-branch-card{border:1px solid rgba(116,161,255,.22);background:rgba(18,24,48,.74);border-radius:16px;padding:16px;display:grid;gap:14px}
 .imb-branch-actions{display:flex;justify-content:flex-end}
 @media (max-width: 980px){.tool-layout{grid-template-columns:1fr}}
+@media (max-width: 640px){.imb-mode-map{grid-template-columns:1fr}}
