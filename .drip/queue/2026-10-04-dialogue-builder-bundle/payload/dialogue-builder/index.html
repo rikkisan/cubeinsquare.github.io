@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Dialogue Builder | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build NPC lines, narration, actionbars, and title beats for Minecraft scenes without hand-writing every tellraw object.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/dialogue-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/dialogue-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/dialogue-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/dialogue-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/dialogue-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/dialogue-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Minecraft Dialogue Builder | Cube in Square">
+  <meta property="og:description" content="Build NPC lines, narration, actionbars, and title beats for Minecraft scenes without hand-writing every tellraw object.">
+  <meta property="og:url" content="https://cubeinsquare.com/dialogue-builder/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Minecraft Dialogue Builder | Cube in Square">
+  <meta name="twitter:description" content="Build NPC lines, narration, actionbars, and title beats for Minecraft scenes without hand-writing every tellraw object.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/dialogue-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="is-active" href="/dialogue-builder/">EN</a><a class="" href="/ru/dialogue-builder/">RU</a><a class="" href="/fr/dialogue-builder/">FR</a><a class="" href="/de/dialogue-builder/">DE</a></div></div></div>
+<main class="page-shell">
+  <section class="page-hero">
+    <h1>Minecraft Dialogue Builder</h1>
+    <p class="page-lead">Draft short scene dialogue for trials, rituals, warnings, quest turns, and ambient narration. Choose the channel, keep the pacing readable, and copy commands that are ready to split into command blocks or datapack functions.</p>
+  </section>
+  <section class="page-section tool-layout">
+    <div class="tool-primary-column">
+      <div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/wiki-dialogue-builder/">Read guide</a><a class="tool-button tool-button-secondary" href="/book-letter-builder/">Open book & letter builder</a><a class="tool-button tool-button-secondary" href="/wiki-readable-minecraft-dialogue/">Dialogue pacing article</a></div></div>
+      <div class="tool-panel"><h2>Quick starts</h2><p class="tool-summary">Load a scene skeleton, then rewrite the voices for your world.</p><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-dg-preset="court">Courtroom</button><button class="tool-chip-button" type="button" data-dg-preset="quest">Quest turn</button><button class="tool-chip-button" type="button" data-dg-preset="ritual">Ritual</button><button class="tool-chip-button" type="button" data-dg-preset="duel">Duel</button></div></div>
+      <div class="tool-panel"><h2>Scene setup</h2><div class="tool-form-grid"><label class="tool-field"><span>Audience target</span><input id="dg-target" type="text" value="@a"></label><label class="tool-field"><span>Default speaker</span><input id="dg-speaker" type="text"></label><label class="tool-field"><span>Prefix style</span><select id="dg-prefix"><option value="colon">Speaker: line</option><option value="dash">Speaker - line</option><option value="none">No prefix</option></select></label><label class="tool-field"><span>Speaker color</span><select id="dg-speaker-color"><option value="white">White</option><option value="gold">Gold</option><option value="yellow">Yellow</option><option value="gray">Gray</option><option value="green">Green</option><option value="aqua">Aqua</option><option value="light_purple">Purple</option><option value="red">Red</option></select></label></div><p class="tool-summary">Tellraw handles spoken lines best. Titles and actionbars work better for short impact beats and system pressure.</p></div>
+      <div class="tool-panel"><div class="section-heading"><h2>Dialogue lines</h2><button class="tool-button tool-button-secondary" type="button" id="dg-add-line">Add line</button></div><div id="dg-lines" class="dg-lines"></div><p class="tool-summary">Keep each beat short enough to scan. If the player needs a full document, move that text into a book instead.</p></div>
+      <div class="tool-panel"><h2>Generated commands</h2><p class="tool-summary" id="dg-summary"></p><textarea id="dg-output" class="command-output" readonly></textarea><div class="tool-button-row"><button class="tool-button" type="button" id="dg-copy">Copy commands</button></div></div>
+    </div>
+    <aside class="tool-secondary-column">
+      <div class="tool-panel"><h2>Where this helps</h2><ul class="item-builder-help"><li>Trials, confrontations, ritual scenes, and faction briefings that need fast readable dialogue.</li><li>NPC guidance that should feel in-world instead of like a giant wall of narration.</li><li>Actionbar and title beats that add pressure without replacing spoken lines.</li></ul></div>
+      <div class="tool-panel"><h2>Before export</h2><ul class="item-builder-help"><li>Reserve titles for strong beats. If every line becomes a title, players stop reading them.</li><li>Use books for evidence, letters, contracts, and anything players should revisit later.</li><li>If the speaker matters as an object, pair the scene with named items, books, or props from the rest of the toolset.</li></ul></div>
+    </aside>
+  </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/dialogue-builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Minecraft Dialog-Builder | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Erstellt NPC-Zeilen, Erzählertext, Actionbars und Title-Momente für Minecraft, ohne jedes tellraw von Hand zu schreiben.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/de/dialogue-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/dialogue-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/dialogue-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/dialogue-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/dialogue-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/dialogue-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Minecraft Dialog-Builder | Cube in Square">
+  <meta property="og:description" content="Erstellt NPC-Zeilen, Erzählertext, Actionbars und Title-Momente für Minecraft, ohne jedes tellraw von Hand zu schreiben.">
+  <meta property="og:url" content="https://cubeinsquare.com/de/dialogue-builder/">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Minecraft Dialog-Builder | Cube in Square">
+  <meta name="twitter:description" content="Erstellt NPC-Zeilen, Erzählertext, Actionbars und Title-Momente für Minecraft, ohne jedes tellraw von Hand zu schreiben.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/dialogue-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/dialogue-builder/">EN</a><a class="" href="/ru/dialogue-builder/">RU</a><a class="" href="/fr/dialogue-builder/">FR</a><a class="is-active" href="/de/dialogue-builder/">DE</a></div></div></div>
+<main class="page-shell">
+  <section class="page-hero">
+    <h1>Minecraft Dialog-Builder</h1>
+    <p class="page-lead">Bereite kurze Szenenzeilen für Gerichte, Rituale, Warnungen, Quest-Wendungen oder atmosphärische Erzählertexte vor. Wähle den Kanal, halte den Lesefluss klar und kopiere Befehle, die du danach in Command-Blöcke oder Funktionen aufteilen kannst.</p>
+  </section>
+  <section class="page-section tool-layout">
+    <div class="tool-primary-column">
+      <div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/de/wiki-dialogue-builder/">Leitfaden lesen</a><a class="tool-button tool-button-secondary" href="/de/book-letter-builder/">Buch-Builder öffnen</a><a class="tool-button tool-button-secondary" href="/de/wiki-readable-minecraft-dialogue/">Artikel zum Dialogrhythmus</a></div></div>
+      <div class="tool-panel"><h2>Schnellstarts</h2><p class="tool-summary">Lade ein Szenengerüst und schreibe die Stimmen dann für deine Welt um.</p><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-dg-preset="court">Gericht</button><button class="tool-chip-button" type="button" data-dg-preset="quest">Quest</button><button class="tool-chip-button" type="button" data-dg-preset="ritual">Ritual</button><button class="tool-chip-button" type="button" data-dg-preset="duel">Duell</button></div></div>
+      <div class="tool-panel"><h2>Szenen-Setup</h2><div class="tool-form-grid"><label class="tool-field"><span>Ziel</span><input id="dg-target" type="text" value="@a"></label><label class="tool-field"><span>Standardsprecher</span><input id="dg-speaker" type="text"></label><label class="tool-field"><span>Präfixstil</span><select id="dg-prefix"><option value="colon">Name: Zeile</option><option value="dash">Name - Zeile</option><option value="none">Ohne Präfix</option></select></label><label class="tool-field"><span>Namensfarbe</span><select id="dg-speaker-color"><option value="white">Weiß</option><option value="gold">Gold</option><option value="yellow">Gelb</option><option value="gray">Grau</option><option value="green">Grün</option><option value="aqua">Aqua</option><option value="light_purple">Lila</option><option value="red">Rot</option></select></label></div><p class="tool-summary">Tellraw eignet sich am besten für lebendige Dialogzeilen. Titles und Actionbars funktionieren stärker für kurze Einschläge und Systemdruck.</p></div>
+      <div class="tool-panel"><div class="section-heading"><h2>Dialogzeilen</h2><button class="tool-button tool-button-secondary" type="button" id="dg-add-line">Zeile hinzufügen</button></div><div id="dg-lines" class="dg-lines"></div><p class="tool-summary">Halte jede Zeile kurz genug zum schnellen Lesen. Wenn Spieler ein richtiges Dokument brauchen, gehört der Text eher in ein Buch.</p></div>
+      <div class="tool-panel"><h2>Erzeugte Befehle</h2><p class="tool-summary" id="dg-summary"></p><textarea id="dg-output" class="command-output" readonly></textarea><div class="tool-button-row"><button class="tool-button" type="button" id="dg-copy">Befehle kopieren</button></div></div>
+    </div>
+    <aside class="tool-secondary-column">
+      <div class="tool-panel"><h2>Wo das hilft</h2><ul class="item-builder-help"><li>Gerichte, Konfrontationen, Rituale und Fraktions-Briefings mit schnell lesbaren Dialogzeilen.</li><li>NPC-Hinweise, die wie Teil der Welt wirken sollen statt wie eine Textwand.</li><li>Actionbar- und Title-Momente, die Druck aufbauen, ohne gesprochene Zeilen zu ersetzen.</li></ul></div>
+      <div class="tool-panel"><h2>Vor dem Export</h2><ul class="item-builder-help"><li>Spare Titles für starke Einschläge auf. Wenn jede Zeile ein Title wird, lesen Spieler sie nicht mehr.</li><li>Bücher sind besser für Beweise, Briefe, Verträge und alles, was später noch einmal gelesen werden soll.</li><li>Wenn das Objekt selbst wichtig ist, kombiniere die Szene mit benannten Items, Büchern oder Requisiten aus dem restlichen Toolset.</li></ul></div>
+    </aside>
+  </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/dialogue-builder.js"></script>
+</body>
+</html>

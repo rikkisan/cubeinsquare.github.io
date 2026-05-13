@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Конструктор диалогов Minecraft | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Собирает реплики NPC, narration, actionbar и title-моменты для сцен Minecraft без ручной возни с tellraw JSON.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/ru/dialogue-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/dialogue-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/dialogue-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/dialogue-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/dialogue-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/dialogue-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Конструктор диалогов Minecraft | Cube in Square">
+  <meta property="og:description" content="Собирает реплики NPC, narration, actionbar и title-моменты для сцен Minecraft без ручной возни с tellraw JSON.">
+  <meta property="og:url" content="https://cubeinsquare.com/ru/dialogue-builder/">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Конструктор диалогов Minecraft | Cube in Square">
+  <meta name="twitter:description" content="Собирает реплики NPC, narration, actionbar и title-моменты для сцен Minecraft без ручной возни с tellraw JSON.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/dialogue-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/dialogue-builder/">EN</a><a class="is-active" href="/ru/dialogue-builder/">RU</a><a class="" href="/fr/dialogue-builder/">FR</a><a class="" href="/de/dialogue-builder/">DE</a></div></div></div>
+<main class="page-shell">
+  <section class="page-hero">
+    <h1>Конструктор диалогов Minecraft</h1>
+    <p class="page-lead">Подготовьте короткие сценические реплики для суда, ритуала, предупреждения, квестового поворота или атмосферной narration. Выберите канал, удержите ритм чтения и скопируйте команды, которые потом легко разложить по командным блокам или функциям.</p>
+  </section>
+  <section class="page-section tool-layout">
+    <div class="tool-primary-column">
+      <div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/ru/wiki-dialogue-builder/">Читать гайд</a><a class="tool-button tool-button-secondary" href="/ru/book-letter-builder/">Открыть конструктор книг</a><a class="tool-button tool-button-secondary" href="/ru/wiki-readable-minecraft-dialogue/">Статья про ритм диалогов</a></div></div>
+      <div class="tool-panel"><h2>Быстрые заготовки</h2><p class="tool-summary">Загрузите каркас сцены, а потом перепишите голоса под свой мир.</p><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-dg-preset="court">Суд</button><button class="tool-chip-button" type="button" data-dg-preset="quest">Квест</button><button class="tool-chip-button" type="button" data-dg-preset="ritual">Ритуал</button><button class="tool-chip-button" type="button" data-dg-preset="duel">Дуэль</button></div></div>
+      <div class="tool-panel"><h2>Настройки сцены</h2><div class="tool-form-grid"><label class="tool-field"><span>Цель</span><input id="dg-target" type="text" value="@a"></label><label class="tool-field"><span>Спикер по умолчанию</span><input id="dg-speaker" type="text"></label><label class="tool-field"><span>Стиль префикса</span><select id="dg-prefix"><option value="colon">Имя: реплика</option><option value="dash">Имя - реплика</option><option value="none">Без префикса</option></select></label><label class="tool-field"><span>Цвет имени</span><select id="dg-speaker-color"><option value="white">Белый</option><option value="gold">Золотой</option><option value="yellow">Жёлтый</option><option value="gray">Серый</option><option value="green">Зелёный</option><option value="aqua">Бирюзовый</option><option value="light_purple">Фиолетовый</option><option value="red">Красный</option></select></label></div><p class="tool-summary">Tellraw лучше всего подходит для живых реплик. Title и actionbar сильнее работают как короткие ударные моменты и системное давление.</p></div>
+      <div class="tool-panel"><div class="section-heading"><h2>Линии диалога</h2><button class="tool-button tool-button-secondary" type="button" id="dg-add-line">Добавить линию</button></div><div id="dg-lines" class="dg-lines"></div><p class="tool-summary">Пусть каждая реплика остаётся короткой и читаемой. Если игроку нужен полноценный документ, перенесите текст в книгу.</p></div>
+      <div class="tool-panel"><h2>Готовые команды</h2><p class="tool-summary" id="dg-summary"></p><textarea id="dg-output" class="command-output" readonly></textarea><div class="tool-button-row"><button class="tool-button" type="button" id="dg-copy">Скопировать команды</button></div></div>
+    </div>
+    <aside class="tool-secondary-column">
+      <div class="tool-panel"><h2>Где это полезно</h2><ul class="item-builder-help"><li>Суды, конфронтации, ритуалы и фракционные брифинги, которым нужны быстрые читаемые реплики.</li><li>Подсказки от NPC, которые должны ощущаться частью мира, а не стеной narration.</li><li>Actionbar и title-моменты, которые добавляют давление, не заменяя разговор.</li></ul></div>
+      <div class="tool-panel"><h2>Перед экспортом</h2><ul class="item-builder-help"><li>Оставляйте title для сильных ударов. Если каждая строчка станет title, игроки перестанут их читать.</li><li>Книги лучше подходят для доказательств, писем, контрактов и всего, к чему нужно вернуться позже.</li><li>Если важен сам объект, свяжите сцену с именованными предметами, книгами или пропами из остального набора инструментов.</li></ul></div>
+    </aside>
+  </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/dialogue-builder.js"></script>
+</body>
+</html>

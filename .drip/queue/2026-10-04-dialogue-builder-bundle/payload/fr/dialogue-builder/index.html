@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Constructeur de dialogues Minecraft | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Crée des répliques de PNJ, de la narration, des actionbars et des moments en title pour Minecraft sans écrire chaque tellraw à la main.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/fr/dialogue-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/dialogue-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/dialogue-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/dialogue-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/dialogue-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/dialogue-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Constructeur de dialogues Minecraft | Cube in Square">
+  <meta property="og:description" content="Crée des répliques de PNJ, de la narration, des actionbars et des moments en title pour Minecraft sans écrire chaque tellraw à la main.">
+  <meta property="og:url" content="https://cubeinsquare.com/fr/dialogue-builder/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Constructeur de dialogues Minecraft | Cube in Square">
+  <meta name="twitter:description" content="Crée des répliques de PNJ, de la narration, des actionbars et des moments en title pour Minecraft sans écrire chaque tellraw à la main.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/dialogue-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/dialogue-builder/">EN</a><a class="" href="/ru/dialogue-builder/">RU</a><a class="is-active" href="/fr/dialogue-builder/">FR</a><a class="" href="/de/dialogue-builder/">DE</a></div></div></div>
+<main class="page-shell">
+  <section class="page-hero">
+    <h1>Constructeur de dialogues Minecraft</h1>
+    <p class="page-lead">Préparez des répliques courtes pour un procès, un rituel, un avertissement, un tournant de quête ou une narration d’ambiance. Choisissez le canal, gardez un rythme lisible et copiez des commandes prêtes à être réparties dans des command blocks ou des fonctions.</p>
+  </section>
+  <section class="page-section tool-layout">
+    <div class="tool-primary-column">
+      <div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/fr/wiki-dialogue-builder/">Lire le guide</a><a class="tool-button tool-button-secondary" href="/fr/book-letter-builder/">Ouvrir le constructeur de livres</a><a class="tool-button tool-button-secondary" href="/fr/wiki-readable-minecraft-dialogue/">Article sur le rythme du dialogue</a></div></div>
+      <div class="tool-panel"><h2>Démarrages rapides</h2><p class="tool-summary">Chargez un squelette de scène, puis réécrivez les voix pour votre monde.</p><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-dg-preset="court">Procès</button><button class="tool-chip-button" type="button" data-dg-preset="quest">Quête</button><button class="tool-chip-button" type="button" data-dg-preset="ritual">Rituel</button><button class="tool-chip-button" type="button" data-dg-preset="duel">Duel</button></div></div>
+      <div class="tool-panel"><h2>Réglages de la scène</h2><div class="tool-form-grid"><label class="tool-field"><span>Cible</span><input id="dg-target" type="text" value="@a"></label><label class="tool-field"><span>Intervenant par défaut</span><input id="dg-speaker" type="text"></label><label class="tool-field"><span>Style du préfixe</span><select id="dg-prefix"><option value="colon">Nom : réplique</option><option value="dash">Nom - réplique</option><option value="none">Sans préfixe</option></select></label><label class="tool-field"><span>Couleur du nom</span><select id="dg-speaker-color"><option value="white">Blanc</option><option value="gold">Or</option><option value="yellow">Jaune</option><option value="gray">Gris</option><option value="green">Vert</option><option value="aqua">Aqua</option><option value="light_purple">Violet</option><option value="red">Rouge</option></select></label></div><p class="tool-summary">Tellraw reste le meilleur choix pour les répliques vivantes. Les titles et actionbars sont plus forts pour les impacts courts et la pression système.</p></div>
+      <div class="tool-panel"><div class="section-heading"><h2>Lignes de dialogue</h2><button class="tool-button tool-button-secondary" type="button" id="dg-add-line">Ajouter une ligne</button></div><div id="dg-lines" class="dg-lines"></div><p class="tool-summary">Gardez chaque réplique assez courte pour être lue vite. Si le joueur a besoin d’un vrai document, passez plutôt par un livre.</p></div>
+      <div class="tool-panel"><h2>Commandes générées</h2><p class="tool-summary" id="dg-summary"></p><textarea id="dg-output" class="command-output" readonly></textarea><div class="tool-button-row"><button class="tool-button" type="button" id="dg-copy">Copier les commandes</button></div></div>
+    </div>
+    <aside class="tool-secondary-column">
+      <div class="tool-panel"><h2>Où cela aide</h2><ul class="item-builder-help"><li>Procès, confrontations, rituels et briefings de faction qui ont besoin de répliques rapides et lisibles.</li><li>Guidage de PNJ qui doit sembler appartenir au monde plutôt qu’à un mur de narration.</li><li>Moments en actionbar ou title qui ajoutent de la pression sans remplacer la parole.</li></ul></div>
+      <div class="tool-panel"><h2>Avant l’export</h2><ul class="item-builder-help"><li>Gardez les titles pour les gros impacts. Si chaque ligne devient un title, les joueurs cessent de les lire.</li><li>Les livres sont meilleurs pour les preuves, lettres, contrats et tout ce qu’on doit relire plus tard.</li><li>Si l’objet lui-même compte, reliez la scène à des items nommés, des livres ou des accessoires du reste du site.</li></ul></div>
+    </aside>
+  </section>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/dialogue-builder.js"></script>
+</body>
+</html>
