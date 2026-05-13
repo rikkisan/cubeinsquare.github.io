@@ -183,7 +183,7 @@ function buildHtml(article, locale) {
   
   newHtml = newHtml.replace(/<html lang=".*?">/g, '<html lang="' + locale.code + '">');
 
-  var backLabel = locale.code === 'ru' ? '← Все статьи' : locale.code === 'de' ? '← Alle Artikel' : locale.code === 'fr' ? '← Tous les articles' : '← All articles';
+  var backLabel = locale.code === 'ru' ? '&larr; Все статьи' : locale.code === 'de' ? '&larr; Alle Artikel' : locale.code === 'fr' ? '&larr; Tous les articles' : '&larr; All articles';
   var prefix = locale.code === 'en' ? '' : '/' + locale.code;
   
   var bodyRegex = /<main class="page-shell wiki-article">[\s\S]*?<\/main>/;

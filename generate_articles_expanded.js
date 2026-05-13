@@ -177,10 +177,10 @@ function buildHtml(article, locale) {
     de: 'de_DE'
   };
   var labelMap = {
-    en: { back: '← All articles', home: 'Home', wiki: 'Wiki' },
-    ru: { back: '← Все статьи', home: 'Главная', wiki: 'Вики' },
-    fr: { back: '← Tous les articles', home: 'Accueil', wiki: 'Wiki' },
-    de: { back: '← Alle Artikel', home: 'Startseite', wiki: 'Wiki' }
+    en: { back: '&larr; All articles', home: 'Home', wiki: 'Wiki' },
+    ru: { back: '&larr; Все статьи', home: 'Главная', wiki: 'Вики' },
+    fr: { back: '&larr; Tous les articles', home: 'Accueil', wiki: 'Wiki' },
+    de: { back: '&larr; Alle Artikel', home: 'Startseite', wiki: 'Wiki' }
   };
   var labels = labelMap[locale.code];
   var titleJson = content.title.replace(/"/g, '\\"');
@@ -279,7 +279,7 @@ function buildHtml(article, locale) {
   
   newHtml = newHtml.replace(/<html lang=".*?">/g, '<html lang="' + locale.code + '">');
 
-  var backLabel = locale.code === 'ru' ? '← Все статьи' : locale.code === 'de' ? '← Alle Artikel' : locale.code === 'fr' ? '← Tous les articles' : '← All articles';
+  var backLabel = locale.code === 'ru' ? '&larr; Все статьи' : locale.code === 'de' ? '&larr; Alle Artikel' : locale.code === 'fr' ? '&larr; Tous les articles' : '&larr; All articles';
   var prefix = locale.code === 'en' ? '' : '/' + locale.code;
   
   var bodyRegex = /<main class="page-shell wiki-article">[\s\S]*?<\/main>/;
