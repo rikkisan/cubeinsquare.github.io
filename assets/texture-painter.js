@@ -659,6 +659,7 @@
         elements.alpha.value = alpha;
         elements.alphaValue.textContent = `${alpha}%`;
         renderSimilarColors();
+        setTool('brush');
     }
 
     function drawLine(start, end) {
@@ -959,7 +960,7 @@
     }
 
     function bindKeyboardShortcuts() {
-        window.addEventListener('keydown', (event) => {
+        document.addEventListener('keydown', (event) => {
             if (!(event.ctrlKey || event.metaKey) || event.altKey) return;
             const active = document.activeElement;
             const tag = active ? active.tagName : '';
@@ -971,19 +972,19 @@
                 return;
             }
 
-            const key = String(event.key || '').toLowerCase();
-            if (key === 'z') {
+            const code = String(event.code || '');
+            if (code === 'KeyZ') {
                 event.preventDefault();
                 if (event.shiftKey) {
                     redo();
                 } else {
                     undo();
                 }
-            } else if (key === 'y') {
+            } else if (code === 'KeyY') {
                 event.preventDefault();
                 redo();
             }
-        });
+        }, true);
     }
 
     function bindControls() {
