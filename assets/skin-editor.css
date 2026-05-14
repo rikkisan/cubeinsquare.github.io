@@ -277,6 +277,37 @@
     min-height: 36px;
 }
 
+.skin-palette-field {
+    margin-top: 2px;
+}
+
+.skin-palette-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.page-shell[data-skin-editor] .skin-palette-head label {
+    justify-content: flex-start;
+}
+
+.skin-inline-action {
+    min-height: 34px;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.skin-palette-note {
+    margin: 8px 0 0;
+    color: var(--text-dim);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
 .skin-recent-color {
     width: 34px;
     height: 34px;

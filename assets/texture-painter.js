@@ -28,12 +28,48 @@
             colorAria: (hex, alpha) => `Farbe ${hex} mit ${alpha}% Deckkraft verwenden`
         }
     };
+    const PALETTE_TEXT = {
+        en: {
+            title: 'Palette from image',
+            action: 'Extract palette',
+            hint: 'Upload any reference image and keep its main colors close while you paint.',
+            empty: 'No extracted palette yet.',
+            ready: (count) => `${count} colors ready from the image.`,
+            invalid: 'Could not read colors from that image.'
+        },
+        ru: {
+            title: '\u041f\u0430\u043b\u0438\u0442\u0440\u0430 \u0438\u0437 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438',
+            action: '\u0412\u044b\u0442\u0430\u0449\u0438\u0442\u044c \u043f\u0430\u043b\u0438\u0442\u0440\u0443',
+            hint: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u043b\u044e\u0431\u0443\u044e \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443-\u0440\u0435\u0444\u0435\u0440\u0435\u043d\u0441, \u0447\u0442\u043e\u0431\u044b \u0434\u0435\u0440\u0436\u0430\u0442\u044c \u0435\u0451 \u043e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0446\u0432\u0435\u0442\u0430 \u0440\u044f\u0434\u043e\u043c.',
+            empty: '\u041f\u0430\u043b\u0438\u0442\u0440\u0430 \u0435\u0449\u0451 \u043d\u0435 \u0438\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0430.',
+            ready: (count) => `\u0413\u043e\u0442\u043e\u0432\u043e: ${count} \u0446\u0432\u0435\u0442.`,
+            invalid: '\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0446\u0432\u0435\u0442\u0430 \u0441 \u044d\u0442\u043e\u0439 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438.'
+        },
+        fr: {
+            title: 'Palette depuis une image',
+            action: 'Extraire la palette',
+            hint: 'Importez une image de r\u00e9f\u00e9rence pour garder ses couleurs principales sous la main pendant la peinture.',
+            empty: 'Aucune palette extraite pour le moment.',
+            ready: (count) => `${count} couleurs pr\u00eates depuis l\u2019image.`,
+            invalid: 'Impossible de lire les couleurs de cette image.'
+        },
+        de: {
+            title: 'Palette aus Bild',
+            action: 'Palette extrahieren',
+            hint: 'Lade ein Referenzbild hoch und halte seine wichtigsten Farben beim Zeichnen griffbereit.',
+            empty: 'Noch keine Palette extrahiert.',
+            ready: (count) => `${count} Farben aus dem Bild bereit.`,
+            invalid: 'Die Farben aus diesem Bild konnten nicht gelesen werden.'
+        }
+    };
     const text = UI_TEXT[UI_LANG] || UI_TEXT.en;
+    const paletteText = PALETTE_TEXT[UI_LANG] || PALETTE_TEXT.en;
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
         tool: 'brush',
         brushSize: 1,
+        extractedPalette: [],
         recentColors: [],
         painting: false,
         lastPoint: null,
@@ -99,6 +135,85 @@
 
     function rgbToHex(r, g, b) {
         return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    function colorDistance(first, second) {
+        return Math.sqrt(
+            ((first.r || 0) - (second.r || 0)) ** 2 +
+            ((first.g || 0) - (second.g || 0)) ** 2 +
+            ((first.b || 0) - (second.b || 0)) ** 2
+        );
+    }
+
+    function extractPaletteFromSource(source, options) {
+        const config = Object.assign({
+            maxColors: 8,
+            maxDimension: 48,
+            minAlpha: 24,
+            minDistance: 42
+        }, options || {});
+
+        const width = Number(source && source.width) || 0;
+        const height = Number(source && source.height) || 0;
+        if (!width || !height) return [];
+
+        const ratio = Math.min(1, config.maxDimension / Math.max(width, height));
+        const sampleWidth = Math.max(1, Math.round(width * ratio));
+        const sampleHeight = Math.max(1, Math.round(height * ratio));
+        const sampleCanvas = document.createElement('canvas');
+        sampleCanvas.width = sampleWidth;
+        sampleCanvas.height = sampleHeight;
+        const sampleCtx = sampleCanvas.getContext('2d', { willReadFrequently: true });
+        sampleCtx.imageSmoothingEnabled = true;
+        sampleCtx.clearRect(0, 0, sampleWidth, sampleHeight);
+        sampleCtx.drawImage(source, 0, 0, width, height, 0, 0, sampleWidth, sampleHeight);
+
+        const { data } = sampleCtx.getImageData(0, 0, sampleWidth, sampleHeight);
+        const buckets = new Map();
+
+        for (let index = 0; index < data.length; index += 4) {
+            const alpha = data[index + 3];
+            if (alpha < config.minAlpha) continue;
+
+            const red = data[index];
+            const green = data[index + 1];
+            const blue = data[index + 2];
+            const key = `${Math.round(red / 32)}|${Math.round(green / 32)}|${Math.round(blue / 32)}`;
+            const bucket = buckets.get(key) || { count: 0, red: 0, green: 0, blue: 0 };
+            bucket.count += 1;
+            bucket.red += red;
+            bucket.green += green;
+            bucket.blue += blue;
+            buckets.set(key, bucket);
+        }
+
+        const candidates = Array.from(buckets.values())
+            .sort((left, right) => right.count - left.count)
+            .map((bucket) => ({
+                r: bucket.red / bucket.count,
+                g: bucket.green / bucket.count,
+                b: bucket.blue / bucket.count
+            }));
+
+        const palette = [];
+        candidates.forEach((candidate) => {
+            if (palette.length >= config.maxColors) return;
+            if (palette.some((entry) => colorDistance(entry, candidate) < config.minDistance)) return;
+            palette.push(candidate);
+        });
+
+        if (palette.length < config.maxColors) {
+            candidates.forEach((candidate) => {
+                if (palette.length >= config.maxColors) return;
+                if (palette.some((entry) => colorDistance(entry, candidate) < 18)) return;
+                palette.push(candidate);
+            });
+        }
+
+        return palette.slice(0, config.maxColors).map((entry) => ({
+            hex: rgbToHex(entry.r, entry.g, entry.b),
+            alpha: 100
+        }));
     }
 
     function mixHex(hex, targetHex, amount) {
@@ -189,6 +304,26 @@
         renderColorButtons(elements.recentColors, state.recentColors);
     }
 
+    function updateExtractedPaletteHint(message) {
+        if (!elements.paletteHint) return;
+        elements.paletteHint.textContent = message || paletteText.hint;
+    }
+
+    function renderExtractedPalette() {
+        if (!elements.extractedColors) return;
+        renderColorButtons(elements.extractedColors, state.extractedPalette);
+    }
+
+    function setExtractedPalette(snapshots) {
+        state.extractedPalette = Array.isArray(snapshots) ? snapshots.slice(0, 8) : [];
+        renderExtractedPalette();
+        updateExtractedPaletteHint(
+            state.extractedPalette.length
+                ? paletteText.ready(state.extractedPalette.length)
+                : paletteText.empty
+        );
+    }
+
     function buildSimilarColorSnapshots() {
         const current = getCurrentColorSnapshot();
         const variants = [
@@ -225,6 +360,27 @@
             .concat(state.recentColors.filter((entry) => `${entry.hex}|${entry.alpha}` !== key))
             .slice(0, 10);
         renderRecentColors();
+    }
+
+    function ensurePaletteExtractor() {
+        if (!elements.similarColors || document.getElementById('texturePaletteUploadButton')) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'tool-field texture-palette-field';
+        wrapper.innerHTML = `
+            <div class="texture-palette-head">
+                <label>${paletteText.title}</label>
+                <button class="resource-link resource-link-secondary texture-inline-action" id="texturePaletteUploadButton" type="button">${paletteText.action}</button>
+            </div>
+            <input class="texture-hidden-input" id="texturePaletteFileInput" type="file" accept="image/*">
+            <p class="texture-palette-note" id="texturePaletteHint">${paletteText.empty}</p>
+            <div class="texture-recent-colors texture-extracted-colors" id="textureExtractedColors" aria-label="${paletteText.title}"></div>
+        `;
+
+        const targetField = elements.similarColors.closest('.tool-field');
+        if (targetField && targetField.parentNode) {
+            targetField.parentNode.insertBefore(wrapper, targetField.nextSibling);
+        }
     }
 
     function getStagePadding() {
@@ -726,6 +882,7 @@
                     pushUndoSnapshot();
                     textureCtx.clearRect(0, 0, state.size, state.size);
                     textureCtx.drawImage(image, 0, 0, image.width, image.height, 0, 0, state.size, state.size);
+                    setExtractedPalette(extractPaletteFromSource(image));
                     renderCanvas();
                     centerStageOnPixel(state.size / 2, state.size / 2);
                     if (window.CubeAnalytics) {
@@ -740,6 +897,38 @@
             };
             reader.readAsDataURL(file);
         });
+
+        if (elements.paletteUploadButton && elements.paletteFileInput) {
+            elements.paletteUploadButton.addEventListener('click', () => elements.paletteFileInput.click());
+            elements.paletteFileInput.addEventListener('change', () => {
+                const [file] = elements.paletteFileInput.files || [];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const image = new Image();
+                    image.onload = () => {
+                        const palette = extractPaletteFromSource(image);
+                        if (!palette.length) {
+                            updateExtractedPaletteHint(paletteText.invalid);
+                            return;
+                        }
+
+                        setExtractedPalette(palette);
+                        if (window.CubeAnalytics) {
+                            window.CubeAnalytics.track('texture_painter_palette_extract', {
+                                palette_size: palette.length,
+                                source_width: image.width,
+                                source_height: image.height
+                            });
+                        }
+                    };
+                    image.onerror = () => updateExtractedPaletteHint(paletteText.invalid);
+                    image.src = String(reader.result || '');
+                };
+                reader.readAsDataURL(file);
+            });
+        }
 
         elements.exportButton.addEventListener('click', () => {
             const link = document.createElement('a');
@@ -761,6 +950,7 @@
             pushUndoSnapshot();
             rememberPaintedColor();
             applyBlockTemplate();
+            setExtractedPalette(extractPaletteFromSource(textureCanvas));
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_block_template', {
                     texture_size: state.size
@@ -779,6 +969,7 @@
             textureCtx.fillRect(0, Math.floor(state.size / 2), state.size, Math.max(2, Math.floor(state.size / 4)));
             textureCtx.fillStyle = '#e2e8f0';
             textureCtx.fillRect(Math.floor(state.size / 4), Math.floor(state.size / 4), Math.floor(state.size / 2), Math.floor(state.size / 8));
+            setExtractedPalette(extractPaletteFromSource(textureCanvas));
             renderCanvas();
         });
     }
@@ -810,6 +1001,11 @@
         elements.starterButton = document.getElementById('textureStarterButton');
         elements.recentColors = document.getElementById('textureRecentColors');
         elements.similarColors = document.getElementById('textureSimilarColors');
+        ensurePaletteExtractor();
+        elements.paletteUploadButton = document.getElementById('texturePaletteUploadButton');
+        elements.paletteFileInput = document.getElementById('texturePaletteFileInput');
+        elements.paletteHint = document.getElementById('texturePaletteHint');
+        elements.extractedColors = document.getElementById('textureExtractedColors');
         elements.undoButton = document.getElementById('textureUndoButton');
         elements.undoQuickButton = document.getElementById('textureUndoQuickButton');
         elements.redoButton = document.getElementById('textureRedoButton');
@@ -834,6 +1030,7 @@
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         elements.zoom.value = String(state.zoom);
         renderSimilarColors();
+        updateExtractedPaletteHint(paletteText.empty);
         setTool('brush');
         renderCanvas();
         centerStageOnPixel(state.size / 2, state.size / 2);

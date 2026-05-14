@@ -109,11 +109,47 @@
             }
         }
     };
+    const PALETTE_TEXT = {
+        en: {
+            title: 'Palette from image',
+            action: 'Extract palette',
+            hint: 'Upload any reference image and keep its main colors nearby while you paint.',
+            empty: 'No extracted palette yet.',
+            ready: (count) => `${count} colors ready from the image.`,
+            invalid: 'Could not read colors from that image.'
+        },
+        ru: {
+            title: '\u041f\u0430\u043b\u0438\u0442\u0440\u0430 \u0438\u0437 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438',
+            action: '\u0412\u044b\u0442\u0430\u0449\u0438\u0442\u044c \u043f\u0430\u043b\u0438\u0442\u0440\u0443',
+            hint: '\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u043b\u044e\u0431\u0443\u044e \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0443-\u0440\u0435\u0444\u0435\u0440\u0435\u043d\u0441, \u0447\u0442\u043e\u0431\u044b \u0434\u0435\u0440\u0436\u0430\u0442\u044c \u0435\u0451 \u0433\u043b\u0430\u0432\u043d\u044b\u0435 \u0446\u0432\u0435\u0442\u0430 \u043f\u043e\u0434 \u0440\u0443\u043a\u043e\u0439.',
+            empty: '\u041f\u0430\u043b\u0438\u0442\u0440\u0430 \u0435\u0449\u0451 \u043d\u0435 \u0438\u0437\u0432\u043b\u0435\u0447\u0435\u043d\u0430.',
+            ready: (count) => `\u0413\u043e\u0442\u043e\u0432\u043e: ${count} \u0446\u0432\u0435\u0442.`,
+            invalid: '\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u0447\u0438\u0442\u0430\u0442\u044c \u0446\u0432\u0435\u0442\u0430 \u0441 \u044d\u0442\u043e\u0439 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0438.'
+        },
+        fr: {
+            title: 'Palette depuis une image',
+            action: 'Extraire la palette',
+            hint: 'Importez une image de r\u00e9f\u00e9rence pour garder ses couleurs principales sous la main pendant la peinture.',
+            empty: 'Aucune palette extraite pour le moment.',
+            ready: (count) => `${count} couleurs pr\u00eates depuis l\u2019image.`,
+            invalid: 'Impossible de lire les couleurs de cette image.'
+        },
+        de: {
+            title: 'Palette aus Bild',
+            action: 'Palette extrahieren',
+            hint: 'Lade ein Referenzbild hoch und halte seine wichtigsten Farben beim Zeichnen griffbereit.',
+            empty: 'Noch keine Palette extrahiert.',
+            ready: (count) => `${count} Farben aus dem Bild bereit.`,
+            invalid: 'Die Farben aus diesem Bild konnten nicht gelesen werden.'
+        }
+    };
+    const paletteText = PALETTE_TEXT[UI_LANG] || PALETTE_TEXT.en;
 
     const state = {
         tool: 'brush',
         paintLayer: 'base',
         modelType: 'wide',
+        extractedPalette: [],
         previewOrbiting: false,
         recentColors: [],
         hiddenParts: {
@@ -400,6 +436,85 @@
         return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
     }
 
+    function colorDistance(first, second) {
+        return Math.sqrt(
+            ((first.r || 0) - (second.r || 0)) ** 2 +
+            ((first.g || 0) - (second.g || 0)) ** 2 +
+            ((first.b || 0) - (second.b || 0)) ** 2
+        );
+    }
+
+    function extractPaletteFromSource(source, options) {
+        const config = Object.assign({
+            maxColors: 8,
+            maxDimension: 48,
+            minAlpha: 24,
+            minDistance: 42
+        }, options || {});
+
+        const width = Number(source && source.width) || 0;
+        const height = Number(source && source.height) || 0;
+        if (!width || !height) return [];
+
+        const ratio = Math.min(1, config.maxDimension / Math.max(width, height));
+        const sampleWidth = Math.max(1, Math.round(width * ratio));
+        const sampleHeight = Math.max(1, Math.round(height * ratio));
+        const sampleCanvas = document.createElement('canvas');
+        sampleCanvas.width = sampleWidth;
+        sampleCanvas.height = sampleHeight;
+        const sampleCtx = sampleCanvas.getContext('2d', { willReadFrequently: true });
+        sampleCtx.imageSmoothingEnabled = true;
+        sampleCtx.clearRect(0, 0, sampleWidth, sampleHeight);
+        sampleCtx.drawImage(source, 0, 0, width, height, 0, 0, sampleWidth, sampleHeight);
+
+        const { data } = sampleCtx.getImageData(0, 0, sampleWidth, sampleHeight);
+        const buckets = new Map();
+
+        for (let index = 0; index < data.length; index += 4) {
+            const alpha = data[index + 3];
+            if (alpha < config.minAlpha) continue;
+
+            const red = data[index];
+            const green = data[index + 1];
+            const blue = data[index + 2];
+            const key = `${Math.round(red / 32)}|${Math.round(green / 32)}|${Math.round(blue / 32)}`;
+            const bucket = buckets.get(key) || { count: 0, red: 0, green: 0, blue: 0 };
+            bucket.count += 1;
+            bucket.red += red;
+            bucket.green += green;
+            bucket.blue += blue;
+            buckets.set(key, bucket);
+        }
+
+        const candidates = Array.from(buckets.values())
+            .sort((left, right) => right.count - left.count)
+            .map((bucket) => ({
+                r: bucket.red / bucket.count,
+                g: bucket.green / bucket.count,
+                b: bucket.blue / bucket.count
+            }));
+
+        const palette = [];
+        candidates.forEach((candidate) => {
+            if (palette.length >= config.maxColors) return;
+            if (palette.some((entry) => colorDistance(entry, candidate) < config.minDistance)) return;
+            palette.push(candidate);
+        });
+
+        if (palette.length < config.maxColors) {
+            candidates.forEach((candidate) => {
+                if (palette.length >= config.maxColors) return;
+                if (palette.some((entry) => colorDistance(entry, candidate) < 18)) return;
+                palette.push(candidate);
+            });
+        }
+
+        return palette.slice(0, config.maxColors).map((entry) => ({
+            hex: rgbToHex(entry.r, entry.g, entry.b),
+            alpha: 100
+        }));
+    }
+
     function mixHex(hex, targetHex, amount) {
         const from = hexToRgb(hex);
         const to = hexToRgb(targetHex);
@@ -429,6 +544,26 @@
     function renderRecentColors() {
         if (!elements.recentColors) return;
         renderColorButtons(elements.recentColors, state.recentColors);
+    }
+
+    function updateExtractedPaletteHint(message) {
+        if (!elements.paletteHint) return;
+        elements.paletteHint.textContent = message || paletteText.hint;
+    }
+
+    function renderExtractedPalette() {
+        if (!elements.extractedColors) return;
+        renderColorButtons(elements.extractedColors, state.extractedPalette);
+    }
+
+    function setExtractedPalette(snapshots) {
+        state.extractedPalette = Array.isArray(snapshots) ? snapshots.slice(0, 8) : [];
+        renderExtractedPalette();
+        updateExtractedPaletteHint(
+            state.extractedPalette.length
+                ? paletteText.ready(state.extractedPalette.length)
+                : paletteText.empty
+        );
     }
 
     function buildSimilarColorSnapshots() {
@@ -467,6 +602,27 @@
             .concat(state.recentColors.filter((entry) => `${entry.hex}|${entry.alpha}` !== key))
             .slice(0, 10);
         renderRecentColors();
+    }
+
+    function ensurePaletteExtractor() {
+        if (!elements.similarColors || document.getElementById('skinPaletteUploadButton')) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'tool-field skin-palette-field';
+        wrapper.innerHTML = `
+            <div class="skin-palette-head">
+                <label>${paletteText.title}</label>
+                <button class="resource-link resource-link-secondary skin-inline-action" id="skinPaletteUploadButton" type="button">${paletteText.action}</button>
+            </div>
+            <input class="skin-hidden-input" id="skinPaletteFileInput" type="file" accept="image/*">
+            <p class="skin-palette-note" id="skinPaletteHint">${paletteText.empty}</p>
+            <div class="skin-recent-colors skin-extracted-colors" id="skinExtractedColors" aria-label="${paletteText.title}"></div>
+        `;
+
+        const targetField = elements.similarColors.closest('.tool-field');
+        if (targetField && targetField.parentNode) {
+            targetField.parentNode.insertBefore(wrapper, targetField.nextSibling);
+        }
     }
 
     function createHistorySnapshot() {
@@ -1861,6 +2017,7 @@
         }
 
         setModelType(image.height === 64 ? detectModelType() : 'wide', { track: false });
+        setExtractedPalette(extractPaletteFromSource(image));
         updateTexture();
     }
 
@@ -1900,6 +2057,38 @@
             };
             reader.readAsDataURL(file);
         });
+
+        if (elements.paletteUpload && elements.paletteFileInput) {
+            elements.paletteUpload.addEventListener('click', () => elements.paletteFileInput.click());
+            elements.paletteFileInput.addEventListener('change', () => {
+                const [file] = elements.paletteFileInput.files || [];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const image = new Image();
+                    image.onload = () => {
+                        const palette = extractPaletteFromSource(image);
+                        if (!palette.length) {
+                            updateExtractedPaletteHint(paletteText.invalid);
+                            return;
+                        }
+
+                        setExtractedPalette(palette);
+                        if (window.CubeAnalytics) {
+                            window.CubeAnalytics.track('skin_editor_palette_extract', {
+                                palette_size: palette.length,
+                                source_width: image.width,
+                                source_height: image.height
+                            });
+                        }
+                    };
+                    image.onerror = () => updateExtractedPaletteHint(paletteText.invalid);
+                    image.src = String(reader.result || '');
+                };
+                reader.readAsDataURL(file);
+            });
+        }
 
         elements.download.addEventListener('click', () => {
             const link = document.createElement('a');
@@ -2078,6 +2267,11 @@
         elements.modelValue = document.getElementById('skinModelValue');
         elements.recentColors = document.getElementById('skinRecentColors');
         elements.similarColors = document.getElementById('skinSimilarColors');
+        ensurePaletteExtractor();
+        elements.paletteUpload = document.getElementById('skinPaletteUploadButton');
+        elements.paletteFileInput = document.getElementById('skinPaletteFileInput');
+        elements.paletteHint = document.getElementById('skinPaletteHint');
+        elements.extractedColors = document.getElementById('skinExtractedColors');
         elements.previewCard = elements.preview ? elements.preview.closest('.skin-preview-card') : null;
         editorCanvas = document.getElementById('skinEditorCanvas');
         editorCtx = editorCanvas.getContext('2d');
@@ -2111,6 +2305,7 @@
         elements.alphaValue.textContent = `${elements.alpha.value}%`;
         updatePreviewZoomValue();
         renderSimilarColors();
+        updateExtractedPaletteHint(paletteText.empty);
 
         resetStarterSkin({ remember: false });
         renderAtlas();

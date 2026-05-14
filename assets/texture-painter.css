@@ -131,6 +131,32 @@
     min-height: 36px;
 }
 
+.texture-palette-field {
+    margin-top: 2px;
+}
+
+.texture-palette-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.texture-inline-action {
+    min-height: 34px;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    white-space: nowrap;
+}
+
+.texture-palette-note {
+    margin: 8px 0 0;
+    color: var(--text-dim);
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
 .texture-recent-color {
     width: 36px;
     height: 36px;
