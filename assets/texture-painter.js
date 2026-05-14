@@ -270,72 +270,84 @@
     }
 
     function applyBlockTemplate() {
+        const templateSize = 64;
+        const tileSize = 16;
         const base = String(elements.color.value || '#8b5cf6');
-        const light = mixHex(base, '#ffffff', 0.14);
-        const lighter = mixHex(base, '#ffffff', 0.28);
-        const lightest = mixHex(base, '#ffffff', 0.4);
-        const dark = mixHex(base, '#000000', 0.14);
-        const darker = mixHex(base, '#000000', 0.28);
+        const light = mixHex(base, '#ffffff', 0.12);
+        const lighter = mixHex(base, '#ffffff', 0.24);
+        const dark = mixHex(base, '#000000', 0.16);
+        const darker = mixHex(base, '#000000', 0.3);
         const deepest = mixHex(base, '#000000', 0.42);
-        const accent = mixHex(base, '#d1d5db', 0.18);
-        const size = state.size;
-        const border = Math.max(1, Math.round(size * 0.08));
-        const inset = Math.max(1, Math.round(size * 0.14));
-        const cell = Math.max(1, Math.round(size / 16));
+        const accent = mixHex(base, '#d1d5db', 0.16);
+        const renameWithDefault = shouldAutoRenameTextureFile();
 
-        function fillNormalized(rx, ry, rw, rh, color) {
-            const x = clamp(Math.round(size * rx), 0, size - 1);
-            const y = clamp(Math.round(size * ry), 0, size - 1);
-            const width = Math.max(1, Math.round(size * rw));
-            const height = Math.max(1, Math.round(size * rh));
-            fillRectPixels(x, y, Math.min(width, size - x), Math.min(height, size - y), color);
+        function fillTilePixels(originX, originY, localX, localY, width, height, color) {
+            fillRectPixels(originX + localX, originY + localY, width, height, color);
         }
 
-        function fillCells(cx, cy, cw, ch, color) {
-            const x = Math.min(size - 1, cx * cell);
-            const y = Math.min(size - 1, cy * cell);
-            const width = Math.max(1, Math.min(size - x, cw * cell));
-            const height = Math.max(1, Math.min(size - y, ch * cell));
-            fillRectPixels(x, y, width, height, color);
+        function drawTile(originX, originY, variant) {
+            fillTilePixels(originX, originY, 0, 0, tileSize, tileSize, base);
+
+            fillTilePixels(originX, originY, 0, 0, tileSize, 1, light);
+            fillTilePixels(originX, originY, 0, 0, 1, tileSize, light);
+            fillTilePixels(originX, originY, 0, tileSize - 1, tileSize, 1, dark);
+            fillTilePixels(originX, originY, tileSize - 1, 0, 1, tileSize, dark);
+
+            fillTilePixels(originX, originY, 1, 1, tileSize - 2, tileSize - 2, mixHex(base, '#ffffff', 0.04));
+            fillTilePixels(originX, originY, 4, 2, 4, 1, lighter);
+            fillTilePixels(originX, originY, 9, 3, 2, 1, light);
+            fillTilePixels(originX, originY, 3, 9, 3, 1, accent);
+            fillTilePixels(originX, originY, 10, 10, 2, 1, darker);
+
+            if (variant === 'top') {
+                fillTilePixels(originX, originY, 2, 2, 3, 2, lighter);
+                fillTilePixels(originX, originY, 10, 2, 2, 2, lighter);
+                fillTilePixels(originX, originY, 6, 7, 2, 2, dark);
+            } else if (variant === 'bottom') {
+                fillTilePixels(originX, originY, 3, 11, 4, 1, deepest);
+                fillTilePixels(originX, originY, 10, 10, 2, 2, darker);
+                fillTilePixels(originX, originY, 6, 5, 1, 2, dark);
+            } else if (variant === 'front') {
+                fillTilePixels(originX, originY, 2, 4, 3, 2, darker);
+                fillTilePixels(originX, originY, 3, 5, 1, 1, deepest);
+                fillTilePixels(originX, originY, 10, 6, 1, 2, light);
+            } else if (variant === 'back') {
+                fillTilePixels(originX, originY, 11, 4, 2, 2, darker);
+                fillTilePixels(originX, originY, 4, 11, 3, 1, dark);
+                fillTilePixels(originX, originY, 5, 5, 1, 2, light);
+            } else if (variant === 'left') {
+                fillTilePixels(originX, originY, 2, 2, 2, 3, darker);
+                fillTilePixels(originX, originY, 2, 10, 2, 1, dark);
+                fillTilePixels(originX, originY, 9, 7, 1, 1, lighter);
+            } else if (variant === 'right') {
+                fillTilePixels(originX, originY, 11, 3, 2, 3, darker);
+                fillTilePixels(originX, originY, 10, 10, 2, 1, dark);
+                fillTilePixels(originX, originY, 5, 6, 1, 1, lighter);
+            }
         }
 
-        textureCtx.clearRect(0, 0, size, size);
-        fillRectPixels(0, 0, size, size, base);
+        if (state.size !== templateSize) {
+            rebuildTextureCanvas(templateSize, false);
+            state.size = templateSize;
+            elements.canvasSize.value = String(templateSize);
+            if (renameWithDefault) {
+                syncTextureFileName(true);
+            }
+        }
 
-        fillRectPixels(0, 0, size, border, light);
-        fillRectPixels(0, 0, border, size, light);
-        fillRectPixels(0, size - border, size, border, dark);
-        fillRectPixels(size - border, 0, border, size, dark);
+        textureCtx.clearRect(0, 0, templateSize, templateSize);
 
-        fillRectPixels(inset, inset, size - inset * 2, size - inset * 2, mixHex(base, '#ffffff', 0.05));
-        fillNormalized(0.28, 0.08, 0.2, 0.08, lighter);
-        fillNormalized(0.54, 0.12, 0.12, 0.06, light);
-        fillNormalized(0.22, 0.56, 0.18, 0.08, accent);
-        fillNormalized(0.62, 0.42, 0.12, 0.08, accent);
-        fillNormalized(0.68, 0.7, 0.12, 0.08, dark);
-
-        fillCells(1, 1, 3, 2, darker);
-        fillCells(2, 2, 1, 1, deepest);
-        fillCells(3, 1, 1, 1, dark);
-
-        fillCells(1, 5, 2, 1, dark);
-        fillCells(2, 10, 2, 1, dark);
-        fillCells(9, 4, 1, 1, darker);
-        fillCells(11, 8, 2, 1, darker);
-        fillCells(12, 3, 1, 2, dark);
-
-        fillCells(6, 2, 1, 2, lightest);
-        fillCells(10, 5, 1, 1, lighter);
-        fillCells(7, 8, 1, 1, light);
-        fillCells(4, 11, 1, 1, lighter);
-        fillCells(12, 11, 1, 1, light);
-
-        drawPixelNoise(Math.max(border, cell * 5), Math.max(border, cell * 3), light);
-        drawPixelNoise(Math.max(border, cell * 8), Math.max(border, cell * 6), dark);
-        drawPixelNoise(Math.max(border, cell * 11), Math.max(border, cell * 9), accent);
+        drawTile(16, 0, 'top');
+        drawTile(0, 16, 'left');
+        drawTile(16, 16, 'front');
+        drawTile(32, 16, 'right');
+        drawTile(48, 16, 'back');
+        drawTile(16, 32, 'bottom');
 
         renderCanvas();
-        centerStageOnPixel(size / 2, size / 2);
+        setExtractedPalette(extractPaletteFromSource(textureCanvas));
+        setZoom(recommendedZoomForSize(templateSize), { x: templateSize / 2, y: templateSize / 2 });
+        centerStageOnPixel(templateSize / 2, templateSize / 2);
     }
 
     function renderColorButtons(container, snapshots) {
@@ -1054,7 +1066,6 @@
             pushUndoSnapshot();
             rememberPaintedColor();
             applyBlockTemplate();
-            setExtractedPalette(extractPaletteFromSource(textureCanvas));
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_block_template', {
                     texture_size: state.size
