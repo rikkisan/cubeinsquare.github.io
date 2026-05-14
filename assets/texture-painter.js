@@ -273,12 +273,31 @@
         const base = String(elements.color.value || '#8b5cf6');
         const light = mixHex(base, '#ffffff', 0.14);
         const lighter = mixHex(base, '#ffffff', 0.28);
+        const lightest = mixHex(base, '#ffffff', 0.4);
         const dark = mixHex(base, '#000000', 0.14);
         const darker = mixHex(base, '#000000', 0.28);
-        const accent = mixHex(base, '#d1d5db', 0.2);
+        const deepest = mixHex(base, '#000000', 0.42);
+        const accent = mixHex(base, '#d1d5db', 0.18);
         const size = state.size;
         const border = Math.max(1, Math.round(size * 0.08));
-        const inset = Math.max(1, Math.round(size * 0.18));
+        const inset = Math.max(1, Math.round(size * 0.14));
+        const cell = Math.max(1, Math.round(size / 16));
+
+        function fillNormalized(rx, ry, rw, rh, color) {
+            const x = clamp(Math.round(size * rx), 0, size - 1);
+            const y = clamp(Math.round(size * ry), 0, size - 1);
+            const width = Math.max(1, Math.round(size * rw));
+            const height = Math.max(1, Math.round(size * rh));
+            fillRectPixels(x, y, Math.min(width, size - x), Math.min(height, size - y), color);
+        }
+
+        function fillCells(cx, cy, cw, ch, color) {
+            const x = Math.min(size - 1, cx * cell);
+            const y = Math.min(size - 1, cy * cell);
+            const width = Math.max(1, Math.min(size - x, cw * cell));
+            const height = Math.max(1, Math.min(size - y, ch * cell));
+            fillRectPixels(x, y, width, height, color);
+        }
 
         textureCtx.clearRect(0, 0, size, size);
         fillRectPixels(0, 0, size, size, base);
@@ -288,28 +307,32 @@
         fillRectPixels(0, size - border, size, border, dark);
         fillRectPixels(size - border, 0, border, size, dark);
 
-        fillRectPixels(inset, inset, size - inset * 2, size - inset * 2, mixHex(base, '#ffffff', 0.06));
+        fillRectPixels(inset, inset, size - inset * 2, size - inset * 2, mixHex(base, '#ffffff', 0.05));
+        fillNormalized(0.28, 0.08, 0.2, 0.08, lighter);
+        fillNormalized(0.54, 0.12, 0.12, 0.06, light);
+        fillNormalized(0.22, 0.56, 0.18, 0.08, accent);
+        fillNormalized(0.62, 0.42, 0.12, 0.08, accent);
+        fillNormalized(0.68, 0.7, 0.12, 0.08, dark);
 
-        const seeds = [
-            [0.18, 0.22, light], [0.36, 0.14, lighter], [0.62, 0.2, lighter],
-            [0.22, 0.48, accent], [0.48, 0.42, dark], [0.72, 0.38, accent],
-            [0.14, 0.72, dark], [0.38, 0.68, lighter], [0.58, 0.74, accent], [0.78, 0.64, dark]
-        ];
+        fillCells(1, 1, 3, 2, darker);
+        fillCells(2, 2, 1, 1, deepest);
+        fillCells(3, 1, 1, 1, dark);
 
-        seeds.forEach(([rx, ry, color], index) => {
-            const x = Math.min(size - 2, Math.max(border, Math.round(size * rx)));
-            const y = Math.min(size - 2, Math.max(border, Math.round(size * ry)));
-            const width = index % 3 === 0 ? 2 : 1;
-            const height = index % 2 === 0 ? 1 : 2;
-            fillRectPixels(x, y, width, height, color);
-        });
+        fillCells(1, 5, 2, 1, dark);
+        fillCells(2, 10, 2, 1, dark);
+        fillCells(9, 4, 1, 1, darker);
+        fillCells(11, 8, 2, 1, darker);
+        fillCells(12, 3, 1, 2, dark);
 
-        const speckles = Math.max(6, Math.round(size * 0.18));
-        for (let index = 0; index < speckles; index += 1) {
-            const x = border + ((index * 7) % Math.max(1, size - border * 2));
-            const y = border + ((index * 11) % Math.max(1, size - border * 2));
-            drawPixelNoise(x, y, index % 2 === 0 ? dark : light);
-        }
+        fillCells(6, 2, 1, 2, lightest);
+        fillCells(10, 5, 1, 1, lighter);
+        fillCells(7, 8, 1, 1, light);
+        fillCells(4, 11, 1, 1, lighter);
+        fillCells(12, 11, 1, 1, light);
+
+        drawPixelNoise(Math.max(border, cell * 5), Math.max(border, cell * 3), light);
+        drawPixelNoise(Math.max(border, cell * 8), Math.max(border, cell * 6), dark);
+        drawPixelNoise(Math.max(border, cell * 11), Math.max(border, cell * 9), accent);
 
         renderCanvas();
         centerStageOnPixel(size / 2, size / 2);
