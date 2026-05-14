@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Texture Painter und PNG-Leinwand | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Male Minecraft-Item- und Blocktexturen im Browser, wähle die Leinwandgröße, erstelle Icons oder kachelbare Blockflächen, exportiere PNGs und baue daraus ein Pack.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/texture-painter/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/texture-painter/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/texture-painter/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/texture-painter/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/texture-painter/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/texture-painter/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Texture Painter und PNG-Leinwand | Cube in Square">
+    <meta property="og:description" content="Male Minecraft-Texturen im Browser, wähle die Leinwandgröße und exportiere fertige PNGs für dein Pack.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/texture-painter/">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Texture Painter und PNG-Leinwand | Cube in Square">
+    <meta name="twitter:description" content="Browserbasierter Texture Painter für Minecraft-Items, Inventaricons und Blockflächen mit Größen, Import und Export.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/texture-painter.css?v=20260523-preview">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/de/wiki-custom-model-data/">CustomModelData</a><a href="/de/wiki/#resource-pack-paths">Resource pack structure</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/de/wiki-resource-pack-generator/">How to use the generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/de/tools/">Tools catalog</a><a href="/de/wiki-skin-editor/">Skin editor</a><a href="/de/wiki-texture-painter/">Texture painter</a><a href="/de/wiki-custom-potions/">Custom potions</a><a href="/de/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="/de/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/de/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/de/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/de/tools/">Werkzeuge</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="/de/resource-pack-generator/">Minecraft Resource Pack Generator</a><a href="/de/skin-editor/">Minecraft Skin Editor</a><a href="/de/texture-painter/">Texture painter</a><a href="/de/custom-villager-trades/">Custom villager trades</a><a href="/de/custom-potions/">Custom potions</a><a href="/de/tool-coming-soon/">Upcoming tools</a></div>
+                <div class="mega-feature"><a class="mega-card" href="/de/texture-painter/"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a><a class="mega-card" href="/de/skin-editor/"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a><a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Project</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/de/about/">Cube in Square</a><a href="/de/privacy-policy/">Privacy Policy</a></div></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/texture-painter/">RU</a><a href="/texture-painter/">EN</a><a href="/fr/texture-painter/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-texture-painter>
+    <section class="page-hero">
+        <h1>Minecraft Texture Painter</h1>
+        <p class="page-lead">Male Item- und Blocktexturen direkt im Browser, wechsle zwischen <code>16x16</code>, <code>32x32</code>, <code>64x64</code> und <code>128x128</code>, erstelle Inventaricons oder kachelbare Blockflächen und sende die PNGs danach in den Resource-Pack-Generator.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/de/resource-pack-generator/">PNGs zu einem Pack machen</a>
+            <a class="resource-link resource-link-secondary" href="/de/wiki-texture-painter/">Texture-Guide lesen</a>
+        </div>
+    </section>
+
+    <section class="page-section texture-layout">
+        <aside class="texture-sidebar">
+            <section class="tool-panel">
+                <h2>Malwerkzeuge</h2>
+                <div class="texture-tool-grid">
+                    <button class="resource-link texture-tool-button is-active" type="button" data-texture-tool="brush"><span class="texture-tool-icon" aria-hidden="true">🖌</span><span>Pinsel</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="eraser"><span class="texture-tool-icon" aria-hidden="true">⌫</span><span>Radierer</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="picker"><span class="texture-tool-icon" aria-hidden="true">🎯</span><span>Pipette</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" type="button" data-texture-tool="zoom"><span class="texture-tool-icon" aria-hidden="true">🔍</span><span>Zoom</span></button>
+                </div>
+                <div class="texture-tool-grid texture-history-grid">
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureUndoQuickButton" type="button"><span class="texture-tool-icon" aria-hidden="true">↶</span><span>Rückgängig</span></button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureRedoQuickButton" type="button"><span class="texture-tool-icon" aria-hidden="true">↷</span><span>Wiederholen</span></button>
+                </div>
+                <div class="tool-field">
+                    <label for="textureColor">Farbe</label>
+                    <div class="texture-color-row">
+                        <input id="textureColor" type="color" value="#8b5cf6">
+                        <div class="tool-field">
+                                <label for="textureAlpha">Deckkraft</label>
+                            <input id="textureAlpha" type="range" min="0" max="100" value="100">
+                            <span class="row-toolbar-label" id="textureAlphaValue">100%</span>
+                        </div>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureRecentColors">Letzte Farben</label>
+                        <div class="texture-recent-colors" id="textureRecentColors" aria-label="Recent colors"></div>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureSimilarColors">Ähnliche Farbtöne</label>
+                        <div class="texture-recent-colors" id="textureSimilarColors" aria-label="Similar shades"></div>
+                    </div>
+                </div>
+                <div class="texture-compact-grid">
+                    <div class="tool-field">
+                        <label for="textureCanvasSize">Leinwandgröße</label>
+                        <select id="textureCanvasSize">
+                            <option value="16" selected>16 x 16</option>
+                            <option value="32">32 x 32</option>
+                            <option value="64">64 x 64</option>
+                            <option value="128">128 x 128</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureZoom">Zoom</label>
+                        <select id="textureZoom">
+                            <option value="6">6x</option>
+                            <option value="8">8x</option>
+                            <option value="12">12x</option>
+                            <option value="18" selected>18x</option>
+                            <option value="24">24x</option>
+                            <option value="32">32x</option>
+                        </select>
+                    </div>
+                    <div class="tool-field">
+                        <label for="textureBrushSize">Pinselgröße</label>
+                        <select id="textureBrushSize">
+                            <option value="1">1 px</option>
+                            <option value="2">2 px</option>
+                            <option value="3">3 px</option>
+                            <option value="4">4 px</option>
+                            <option value="6">6 px</option>
+                            <option value="8">8 px</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="texture-note">Use <strong>16x16</strong> for vanilla readability, <strong>32x32</strong> for a mild detail boost, <strong>64x64</strong> for richer art, and <strong>128x128</strong> only when the whole pack is built for high-resolution detail. Item icons usually need stronger silhouettes; block faces usually need cleaner tiling.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Dateien</h2>
+                <input class="texture-hidden-input" id="textureFileInput" type="file" accept=".png,image/png">
+                <div class="texture-tool-grid">
+                    <button class="resource-link texture-tool-button" id="textureUploadButton" type="button">PNG importieren</button>
+                    <button class="resource-link texture-tool-button" id="textureExportButton" type="button">PNG exportieren</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureBlockTemplateButton" type="button">Blockvorlage</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureStarterButton" type="button">Startmuster</button>
+                    <button class="resource-link resource-link-secondary texture-tool-button" id="textureClearButton" type="button">Leeren</button>
+                </div>
+                <p class="texture-file-note">Male jeweils nur eine Textur, exportiere das PNG und lege es danach mit dem Resource-Pack-Generator in die richtige Struktur. Die <strong>Blockvorlage</strong> öffnet ein sauberes <strong>64x64</strong>-Würfelblatt mit sechs <strong>16x16</strong>-Flächen: oben die Oberseite, in der Mitte vier Seitenflächen und unten die Unterseite. Die Hilfslinien bleiben im Editor sichtbar, werden aber nicht in das exportierte PNG eingebrannt.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Kurzstatus</h2>
+                <div class="texture-stats">
+                    <span class="texture-stat-pill">Leinwand: <strong id="textureCanvasSizeValue">16 x 16</strong></span>
+                    <span class="texture-stat-pill">Werkzeug: <strong id="textureToolValue">brush</strong></span>
+                    <span class="texture-stat-pill">Pinsel: <strong id="textureBrushValue">1px</strong></span>
+                </div>
+            </section>
+        </aside>
+
+        <div class="texture-workspace">
+            <section class="tool-panel">
+                <h2>Textur-Leinwand</h2>
+                <div class="texture-stage">
+                    <canvas id="textureEditorCanvas" width="288" height="288"></canvas>
+                </div>
+                <p class="texture-note">This canvas is intentionally simple: one PNG, one resolution, no hidden rescaling surprises. If it looks crisp here, it will stay crisp in the exported file.</p>
+            </section>
+            <section class="tool-panel">
+                <h2>What to draw here</h2>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Inventory icon</h3>
+                        <p>Keep the silhouette readable at a tiny size. Strong edges and clean contrast matter more than tiny decoration.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Block texture</h3>
+                        <p>Check the edges, the center contrast, and whether the face can tile without ugly seams when repeated in the world.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Pack-ready PNG</h3>
+                        <p>When the PNG is done, move it into the resource-pack generator and let that tool build the correct folder structure for you.</p>
+                    </article>
+                </div>
+            </section>
+            <section class="tool-panel">
+                <div class="texture-panel-head">
+                    <h2>Navigator</h2>
+                    <div class="texture-stage-actions">
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureUndoButton" type="button">Rückgängig</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureRedoButton" type="button">Wiederholen</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureZoomOutButton" type="button">-</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureZoomInButton" type="button">+</button>
+                        <button class="resource-link resource-link-secondary texture-tool-button" id="textureFitButton" type="button">Ansicht anpassen</button>
+                    </div>
+                </div>
+                <div class="texture-navigator-wrap">
+                    <canvas id="textureNavigatorCanvas" width="192" height="192"></canvas>
+                </div>
+                <p class="texture-note">Scroll the mouse wheel over the canvas to zoom toward the cursor. The <strong>Zoom</strong> tool, the <strong>+</strong>/<strong>-</strong> buttons, and the navigator give you more control, and <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Z</kbd> undoes the last stroke.</p>
+            </section>
+        </div>
+    </section>
+<!-- localized-tool-polish:start -->
+
+    <section class="page-section">
+        <h2 class="section-title">Wie man über Item-Icons und Blockflächen unterschiedlich nachdenkt</h2>
+        <p class="section-intro">Der Pinsel ist derselbe, aber die Leselogik ist eine andere. Ein Inventory-Icon muss in einem winzigen Slot sofort funktionieren. Eine Blocktextur muss sich in der Welt wiederholen können, ohne an jeder Kante auseinanderzufallen.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Inventory-Icons brauchen zuerst eine Silhouette</h3>
+                <p>Wenn die Gesamtform matschig ist, macht mehr Detail das Item meistens schlechter statt besser. Bei <code>16x16</code> sind klare Kanten, ein Fokuspunkt und lesbarer Kontrast wichtiger als Mikro-Deko.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Blockflächen leben von Rhythmus und Tiling</h3>
+                <p>Sobald eine Textur auf Wand, Boden oder Maschinengehäuse wiederholt wird, wird jede Kantenentscheidung sichtbar. Deshalb ist diese Seite gut, um zu prüfen, ob Ecken, Glanzpunkte und zentrales Rauschen beim Wiederholen noch stabil wirken.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Hohe Auflösung ist nicht automatisch ein Upgrade</h3>
+                <p><code>64x64</code> und <code>128x128</code> geben mehr Raum, fordern aber auch mehr Disziplin. Wenn der restliche Pack diese Dichte nicht trägt, fühlt sich eine große Textur schneller fremd als beeindruckend an.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Praktischer Workflow vom leeren Canvas zum packfertigen PNG</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Die Leinwandgröße nach dem echten Ziel wählen</h3>
+                <p>Die Auflösung sollte davon abhängen, wo die Textur später im Spiel lebt, nicht nur davon, wie viel Detail ihr zeichnen wollt. Ein kleines Inventar-Icon und ein großer Zeremonialblock müssen nicht mit derselben Größe starten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Zuerst die großen Formen blocken</h3>
+                <p>Selbst für stilisierte Minecraft-Art hilft es, zuerst Silhouette oder großen Lichtplan zu setzen. Die schnellsten Texturen sind oft die, bei denen schon der erste Durchgang sagt, was das Objekt überhaupt ist.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Den Navigator benutzen, bevor die Leinwand riesig wird</h3>
+                <p>Bei größeren Größen bleibt man besser orientiert, wenn Zoom und Verschieben absichtlich genutzt werden. Navigator und Mausrad sind hier genau dafür da, den Workspace angenehm zu halten.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Erst exportieren, wenn die Textur auch normal gelesen werden kann</h3>
+                <p>Eine Textur kann bei starkem Zoom wunderschön aussehen und im echten Spiel trotzdem scheitern. Vor dem Export lohnt sich immer ein Schritt zurück, um Kontrast und Form noch einmal ehrlich zu prüfen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Häufige Fehler, die diese Seite gut sichtbar macht</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Detail vor Lesbarkeit malen</h3>
+                <p>Das ist die klassische Falle. Wenn ein Icon oder eine Blockfläche aus der Distanz schon nicht lesbar ist, machen zusätzliche kleine Spuren das Ergebnis meistens nur unruhiger.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Blockkanten zu spezifisch machen</h3>
+                <p>Manche Kanten sehen einmal großartig aus und beim Wiederholen schrecklich. Ein paar Minuten im Painter mit der ganzen Fläche sichtbar decken das oft schneller auf als Export, Packbau und Neustart der Welt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Sich zu früh in 128x128 verlieben</h3>
+                <p>Große Texturen können sinnvoll sein, aber nur wenn der ganze Pack diese Dichte will. Wenn nur ein oder zwei Dateien so groß werden, wirken sie oft losgelöst vom restlichen Projekt.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Pixel-Art-Techniken, die man hier gut trainieren kann</h2>
+        <p class="section-intro">Dieser Painter ist absichtlich schlicht, und genau das macht ihn zu einem guten Ort für Kern-Disziplin statt Filter-Tricks. Minecraft-Texturen gewinnen fast immer durch Zurückhaltung: stärkere Cluster, klarere Lichtlogik und bessere Entscheidungen darüber, wohin der Blick zuerst gehen soll.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>In Clustern denken, nicht in Einzelpixeln</h3>
+                <p>Ein einzelner Highlight-Pixel kann nützlich sein, aber gute Texturen lesen sich meist über verbundene Tonflächen. Wenn Stein, Obst, Metall oder Emblem nur aus zufälligen Einzeldots bestehen, wirkt das Ergebnis oft krümelig statt absichtlich.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Eine Lichtlogik wählen und ihr treu bleiben</h3>
+                <p>Wenn die Oberkante „Licht von links oben“ erzählt und die Unterkante etwas völlig anderes, beginnt die Textur zu wackeln. Selbst sehr stilisierte Minecraft-Texturen wirken sicherer, wenn Schatten und Highlights dieselbe Lichtidee teilen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Den stärksten Kontrast für den Fokus aufheben</h3>
+                <p>Kontrast überall macht eine Textur laut. Edelsteinmitte, Klingenkante, Rune, Etikett oder wichtige Rippe verdienen meistens den stärksten Sprung. Gerade bei Icons ist das entscheidend, damit das Auge schnell eine Antwort bekommt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Jedes Material soll dieselbe Welt sprechen, aber nicht dieselbe Sprache</h3>
+                <p>Holz, Stoff, poliertes Metall, oxidiertes Kupfer, magisches Leuchten und geschnitzter Stein brauchen unterschiedliche Rhythmen. Wenn alle Materialien mit demselben Rauschmuster gebaut werden, fällt es schwerer, der Textur zu glauben.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Ein Review-Durchgang, bevor das PNG in den Pack geht</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Auf normale Spiel-Distanz herauszoomen</h3>
+                <p>Wenn die Textur nur bei 24x oder 32x gut aussieht, braucht sie noch Arbeit. Inventory-Icons müssen klein bestehen. Blockflächen müssen als Teil einer Wand, eines Altars, eines Bodens oder eines Gehäuses funktionieren.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wiederholungskanten misstrauisch prüfen</h3>
+                <p>Eine dramatische Ecke kann beim Wiederholen schnell zu einem nervigen Leiter-Muster werden. Vor dem Export lohnt es sich, die Kanten so skeptisch zu betrachten wie ein wiederholtes Tapetenmuster.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Fragen, ob die Auflösung echte Arbeit leistet</h3>
+                <p>Manche Texturen wachsen auf <code>64x64</code> oder <code>128x128</code>, nur weil das luxuriös wirkt. Wenn die zusätzliche Größe weder Form noch Material noch Lesbarkeit verbessert, macht sie den Pack meist nur schwerer und den Workflow langsamer.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Eine Sache suchen, die man noch vereinfachen kann</h3>
+                <p>Viele Texturen werden besser, wenn man etwas wegnimmt statt etwas hinzufügt. Eine zu laute Kante, ein überflüssiger Schatten-Cluster oder ein wiederholtes Highlight kann reichen, um eine gute Textur unnötig voll wirken zu lassen.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Kurzes FAQ</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Sollte ich diese Seite für Blöcke oder für Items verwenden?</h3>
+                <p>Für beides. Das Tool ist bewusst schlicht genug für einzelne PNGs; die wichtigere Frage ist also, ob ihr gerade Icon-Lesbarkeit oder Tiling-Stabilität lösen wollt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wann lohnt sich die Blockvorlage?</h3>
+                <p>Wenn du nicht nur eine einzelne Fläche, sondern einen ganzen Würfel planen willst. Die Taste öffnet sofort ein <code>64x64</code>-Layout mit sechs <code>16x16</code>-Feldern, damit Oberseite, Unterseite und Seitenflächen in einer Datei zusammenliegen, ohne dass Hilfsmarken in der finalen Textur landen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Welche Größe ist am sichersten für ein Inventory-Icon?</h3>
+                <p><code>16x16</code> bleibt die verlässlichste Antwort für Vanilla-Lesbarkeit. <code>32x32</code> reicht oft, wenn ihr etwas mehr Fülle wollt, ohne das Minecraft-Gefühl zu verlassen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Was sollte ich nach dem Export tun?</h3>
+                <p>Nehmt das PNG in den Resource-Pack-Generator, weist es dem richtigen Item- oder Block-Slot zu und lasst dort die tatsächliche Pack-Struktur um eure Textur herum bauen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Mit leerer Leinwand oder lieber mit einem Template beginnen?</h3>
+                <p>Leer starten ist gut, wenn du nur eine einzelne Fläche brauchst oder das Muster schon genau kennst. Ein Template ist besser, wenn der Block mehrere Seiten hat und du lieber direkt auf einer fertigen Würfel-Anordnung arbeitest, statt sie zuerst selbst aufzubauen.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wie merke ich, wann ein Icon genug Detail hat?</h3>
+                <p>Meist dann, wenn ein Blick sofort sagt, was es ist, und der zweite Blick nur noch eine kleine Belohnung oben drauf gibt. Wenn schon der erste Blick verwirrt, braucht das Icon keine neuen Details, sondern eine bessere Struktur.</p>
+            </article>
+        </div>
+    </section>
+<!-- localized-tool-polish:end -->
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutz</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/texture-painter.js?v=20260523-preview"></script>
+</body>
+</html>
