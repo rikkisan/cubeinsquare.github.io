@@ -64,6 +64,29 @@
     };
     const text = UI_TEXT[UI_LANG] || UI_TEXT.en;
     const paletteText = PALETTE_TEXT[UI_LANG] || PALETTE_TEXT.en;
+    const FILE_NAME_TEXT = {
+        en: {
+            label: 'Export file name',
+            placeholder: 'minecraft-texture-16',
+            hint: 'The .png extension is added automatically on export.'
+        },
+        ru: {
+            label: '\u0418\u043c\u044f \u0444\u0430\u0439\u043b\u0430 \u0434\u043b\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0430',
+            placeholder: 'minecraft-texture-16',
+            hint: '\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435 .png \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.'
+        },
+        fr: {
+            label: 'Nom du fichier export\u00e9',
+            placeholder: 'minecraft-texture-16',
+            hint: 'L\u2019extension .png est ajout\u00e9e automatiquement \u00e0 l\u2019export.'
+        },
+        de: {
+            label: 'Export-Dateiname',
+            placeholder: 'minecraft-texture-16',
+            hint: 'Die Endung .png wird beim Export automatisch angeh\u00e4ngt.'
+        }
+    };
+    const fileNameText = FILE_NAME_TEXT[UI_LANG] || FILE_NAME_TEXT.en;
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
@@ -135,6 +158,16 @@
 
     function rgbToHex(r, g, b) {
         return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
+    }
+
+    function sanitizeFileBaseName(value, fallback) {
+        const base = String(value || '')
+            .replace(/\.[^./\\]+$/, '')
+            .replace(/[<>:"/\\|?*\u0000-\u001F]/g, '')
+            .trim()
+            .replace(/\s+/g, ' ')
+            .replace(/[. ]+$/g, '');
+        return base || fallback;
     }
 
     function colorDistance(first, second) {
@@ -381,6 +414,46 @@
         if (targetField && targetField.parentNode) {
             targetField.parentNode.insertBefore(wrapper, targetField.nextSibling);
         }
+    }
+
+    function ensureFileNameField() {
+        if (!elements.fileInput || document.getElementById('textureFileNameInput')) return;
+        const panel = elements.fileInput.closest('.tool-panel');
+        const grid = panel ? panel.querySelector('.texture-tool-grid') : null;
+        if (!panel || !grid) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'tool-field texture-file-name-field';
+        wrapper.innerHTML = `
+            <label for="textureFileNameInput">${fileNameText.label}</label>
+            <input id="textureFileNameInput" type="text" autocomplete="off" placeholder="${fileNameText.placeholder}">
+            <p class="texture-file-note texture-file-name-note">${fileNameText.hint}</p>
+        `;
+        panel.insertBefore(wrapper, grid);
+    }
+
+    function getTextureDefaultBaseName(size) {
+        return `minecraft-texture-${Number(size || state.size || DEFAULT_SIZE)}`;
+    }
+
+    function shouldAutoRenameTextureFile() {
+        if (!elements.fileNameInput) return false;
+        const current = sanitizeFileBaseName(elements.fileNameInput.value, '');
+        return !current || /^minecraft-texture-\d+$/.test(current);
+    }
+
+    function syncTextureFileName(force) {
+        if (!elements.fileNameInput) return;
+        if (force || shouldAutoRenameTextureFile()) {
+            elements.fileNameInput.value = getTextureDefaultBaseName(state.size);
+        }
+    }
+
+    function getTextureExportBaseName() {
+        return sanitizeFileBaseName(
+            elements.fileNameInput ? elements.fileNameInput.value : '',
+            getTextureDefaultBaseName(state.size)
+        );
     }
 
     function getStagePadding() {
@@ -829,10 +902,14 @@
         elements.alpha.addEventListener('change', renderSimilarColors);
 
         elements.canvasSize.addEventListener('change', () => {
+            const renameWithDefault = shouldAutoRenameTextureFile();
             pushUndoSnapshot();
             const nextSize = clamp(Number(elements.canvasSize.value || DEFAULT_SIZE), 8, 256);
             rebuildTextureCanvas(nextSize, true);
             state.size = nextSize;
+            if (renameWithDefault) {
+                syncTextureFileName(true);
+            }
             setZoom(recommendedZoomForSize(nextSize), { x: nextSize / 2, y: nextSize / 2 });
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_resize', { texture_size: nextSize });
@@ -874,6 +951,10 @@
         elements.fileInput.addEventListener('change', () => {
             const [file] = elements.fileInput.files || [];
             if (!file) return;
+
+            if (elements.fileNameInput) {
+                elements.fileNameInput.value = sanitizeFileBaseName(file.name, getTextureDefaultBaseName(state.size));
+            }
 
             const reader = new FileReader();
             reader.onload = () => {
@@ -933,7 +1014,7 @@
         elements.exportButton.addEventListener('click', () => {
             const link = document.createElement('a');
             link.href = textureCanvas.toDataURL('image/png');
-            link.download = `minecraft-texture-${state.size}.png`;
+            link.download = `${getTextureExportBaseName()}.png`;
             link.click();
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_export', { texture_size: state.size });
@@ -994,6 +1075,8 @@
         elements.alphaValue = document.getElementById('textureAlphaValue');
         elements.brushSize = document.getElementById('textureBrushSize');
         elements.fileInput = document.getElementById('textureFileInput');
+        ensureFileNameField();
+        elements.fileNameInput = document.getElementById('textureFileNameInput');
         elements.uploadButton = document.getElementById('textureUploadButton');
         elements.exportButton = document.getElementById('textureExportButton');
         elements.blockTemplateButton = document.getElementById('textureBlockTemplateButton');
@@ -1031,6 +1114,7 @@
         elements.zoom.value = String(state.zoom);
         renderSimilarColors();
         updateExtractedPaletteHint(paletteText.empty);
+        syncTextureFileName(true);
         setTool('brush');
         renderCanvas();
         centerStageOnPixel(state.size / 2, state.size / 2);

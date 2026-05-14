@@ -144,6 +144,29 @@
         }
     };
     const paletteText = PALETTE_TEXT[UI_LANG] || PALETTE_TEXT.en;
+    const FILE_NAME_TEXT = {
+        en: {
+            label: 'Export file name',
+            placeholder: 'minecraft-skin',
+            hint: 'The .png extension is added automatically on export.'
+        },
+        ru: {
+            label: '\u0418\u043c\u044f \u0444\u0430\u0439\u043b\u0430 \u0434\u043b\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0430',
+            placeholder: 'minecraft-skin',
+            hint: '\u0420\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u0438\u0435 .png \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u0441\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.'
+        },
+        fr: {
+            label: 'Nom du fichier export\u00e9',
+            placeholder: 'minecraft-skin',
+            hint: 'L\u2019extension .png est ajout\u00e9e automatiquement \u00e0 l\u2019export.'
+        },
+        de: {
+            label: 'Export-Dateiname',
+            placeholder: 'minecraft-skin',
+            hint: 'Die Endung .png wird beim Export automatisch angeh\u00e4ngt.'
+        }
+    };
+    const fileNameText = FILE_NAME_TEXT[UI_LANG] || FILE_NAME_TEXT.en;
 
     const state = {
         tool: 'brush',
@@ -436,6 +459,16 @@
         return `#${[r, g, b].map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, '0')).join('')}`;
     }
 
+    function sanitizeFileBaseName(value, fallback) {
+        const base = String(value || '')
+            .replace(/\.[^./\\]+$/, '')
+            .replace(/[<>:"/\\|?*\u0000-\u001F]/g, '')
+            .trim()
+            .replace(/\s+/g, ' ')
+            .replace(/[. ]+$/g, '');
+        return base || fallback;
+    }
+
     function colorDistance(first, second) {
         return Math.sqrt(
             ((first.r || 0) - (second.r || 0)) ** 2 +
@@ -623,6 +656,26 @@
         if (targetField && targetField.parentNode) {
             targetField.parentNode.insertBefore(wrapper, targetField.nextSibling);
         }
+    }
+
+    function ensureFileNameField() {
+        if (!elements.fileInput || document.getElementById('skinFileNameInput')) return;
+        const panel = elements.fileInput.closest('.tool-panel');
+        const grid = panel ? panel.querySelector('.skin-tool-grid') : null;
+        if (!panel || !grid) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'tool-field skin-file-name-field';
+        wrapper.innerHTML = `
+            <label for="skinFileNameInput">${fileNameText.label}</label>
+            <input id="skinFileNameInput" type="text" autocomplete="off" placeholder="${fileNameText.placeholder}">
+            <p class="skin-file-note skin-file-name-note">${fileNameText.hint}</p>
+        `;
+        panel.insertBefore(wrapper, grid);
+    }
+
+    function getSkinExportBaseName() {
+        return sanitizeFileBaseName(elements.fileNameInput ? elements.fileNameInput.value : '', 'minecraft-skin');
     }
 
     function createHistorySnapshot() {
@@ -2034,6 +2087,10 @@
             const [file] = elements.fileInput.files || [];
             if (!file) return;
 
+             if (elements.fileNameInput) {
+                elements.fileNameInput.value = sanitizeFileBaseName(file.name, 'minecraft-skin');
+            }
+
             const reader = new FileReader();
             reader.onload = () => {
                 const image = new Image();
@@ -2093,7 +2150,7 @@
         elements.download.addEventListener('click', () => {
             const link = document.createElement('a');
             link.href = skinCanvas.toDataURL('image/png');
-            link.download = 'minecraft-skin.png';
+            link.download = `${getSkinExportBaseName()}.png`;
             link.click();
 
             if (window.CubeAnalytics) {
@@ -2260,6 +2317,8 @@
         elements.reset = document.getElementById('skinResetButton');
         elements.clear = document.getElementById('skinClearButton');
         elements.fileInput = document.getElementById('skinFileInput');
+        ensureFileNameField();
+        elements.fileNameInput = document.getElementById('skinFileNameInput');
         elements.dimensions = document.getElementById('skinDimensions');
         elements.layerValue = document.getElementById('skinLayerValue');
         elements.mode = document.getElementById('skinMode');
@@ -2306,6 +2365,9 @@
         updatePreviewZoomValue();
         renderSimilarColors();
         updateExtractedPaletteHint(paletteText.empty);
+        if (elements.fileNameInput) {
+            elements.fileNameInput.value = 'minecraft-skin';
+        }
 
         resetStarterSkin({ remember: false });
         renderAtlas();
