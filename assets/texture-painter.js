@@ -95,6 +95,14 @@
         extractedPalette: [],
         recentColors: [],
         painting: false,
+        panDragging: false,
+        suppressContextMenu: false,
+        panPointerId: null,
+        panStartClientX: 0,
+        panStartClientY: 0,
+        panStartScrollLeft: 0,
+        panStartScrollTop: 0,
+        panMoved: false,
         lastPoint: null,
         undoStack: [],
         redoStack: [],
@@ -547,7 +555,6 @@
     function createSnapshot() {
         return {
             size: state.size,
-            zoom: state.zoom,
             imageData: textureCtx.getImageData(0, 0, state.size, state.size)
         };
     }
@@ -578,6 +585,8 @@
 
     function restoreSnapshot(snapshot) {
         if (!snapshot) return;
+        const previousScrollLeft = elements.stage.scrollLeft;
+        const previousScrollTop = elements.stage.scrollTop;
 
         if (snapshot.size !== state.size) {
             rebuildTextureCanvas(snapshot.size, false);
@@ -587,10 +596,10 @@
 
         textureCtx.clearRect(0, 0, state.size, state.size);
         textureCtx.putImageData(snapshot.imageData, 0, 0);
-        state.zoom = normalizeZoomLevel(snapshot.zoom);
-        elements.zoom.value = String(state.zoom);
         renderCanvas();
-        centerStageOnPixel(state.size / 2, state.size / 2);
+        elements.stage.scrollLeft = clamp(previousScrollLeft, 0, Math.max(0, elements.stage.scrollWidth - elements.stage.clientWidth));
+        elements.stage.scrollTop = clamp(previousScrollTop, 0, Math.max(0, elements.stage.scrollHeight - elements.stage.clientHeight));
+        renderNavigator();
         updateHistoryButtons();
     }
 
@@ -795,14 +804,61 @@
         renderCanvas();
     }
 
+    function startPan(event) {
+        state.panDragging = true;
+        state.panPointerId = event.pointerId;
+        state.panStartClientX = event.clientX;
+        state.panStartClientY = event.clientY;
+        state.panStartScrollLeft = elements.stage.scrollLeft;
+        state.panStartScrollTop = elements.stage.scrollTop;
+        state.panMoved = false;
+        elements.stage.classList.add('is-panning');
+        editorCanvas.setPointerCapture(event.pointerId);
+    }
+
+    function updatePan(event) {
+        const dx = event.clientX - state.panStartClientX;
+        const dy = event.clientY - state.panStartClientY;
+        if (Math.abs(dx) > 2 || Math.abs(dy) > 2) {
+            state.panMoved = true;
+        }
+        elements.stage.scrollLeft = clamp(
+            state.panStartScrollLeft - dx,
+            0,
+            Math.max(0, elements.stage.scrollWidth - elements.stage.clientWidth)
+        );
+        elements.stage.scrollTop = clamp(
+            state.panStartScrollTop - dy,
+            0,
+            Math.max(0, elements.stage.scrollHeight - elements.stage.clientHeight)
+        );
+        renderNavigator();
+    }
+
+    function stopPan() {
+        if (!state.panDragging) return;
+        state.suppressContextMenu = state.panMoved;
+        state.panDragging = false;
+        state.panPointerId = null;
+        state.panMoved = false;
+        elements.stage.classList.remove('is-panning');
+    }
+
     function bindCanvasPainting() {
         editorCanvas.addEventListener('contextmenu', (event) => {
-            if (state.tool === 'zoom') {
+            if (state.suppressContextMenu || event.button === 2 || state.tool === 'zoom') {
                 event.preventDefault();
+                state.suppressContextMenu = false;
             }
         });
 
         editorCanvas.addEventListener('pointerdown', (event) => {
+            if (event.button === 2) {
+                event.preventDefault();
+                startPan(event);
+                return;
+            }
+
             const point = eventToPixel(event);
             if (!point) return;
 
@@ -826,6 +882,10 @@
         });
 
         editorCanvas.addEventListener('pointermove', (event) => {
+            if (state.panDragging && event.pointerId === state.panPointerId) {
+                updatePan(event);
+                return;
+            }
             if (!state.painting) return;
             paintPoint(eventToPixel(event));
         });
@@ -841,9 +901,19 @@
             state.lastPoint = null;
         };
 
-        editorCanvas.addEventListener('pointerup', stopPaint);
+        editorCanvas.addEventListener('pointerup', (event) => {
+            if (state.panDragging && event.pointerId === state.panPointerId) {
+                stopPan();
+            }
+            stopPaint();
+        });
         editorCanvas.addEventListener('pointerleave', stopPaint);
-        editorCanvas.addEventListener('pointercancel', stopPaint);
+        editorCanvas.addEventListener('pointercancel', (event) => {
+            if (state.panDragging && event.pointerId === state.panPointerId) {
+                stopPan();
+            }
+            stopPaint();
+        });
     }
 
     function setTool(tool) {
