@@ -161,3 +161,229 @@
 
   applyPreset('court');
 })();
+
+(() => {
+  const locale = (document.documentElement.lang || 'en').slice(0, 2);
+  const host = document.querySelector('.tool-primary-column');
+  if (!host || document.querySelector('[data-message-designer]')) return;
+
+  const copy = {
+    en: {
+      title: 'Message designer',
+      lead: 'Build one polished chat, title, subtitle, or actionbar message with multiple colored parts.',
+      target: 'Target',
+      channel: 'Channel',
+      fadeIn: 'Fade in',
+      stay: 'Stay',
+      fadeOut: 'Fade out',
+      text: 'Text',
+      color: 'Color',
+      style: 'Style',
+      hover: 'Hover text',
+      click: 'Click command',
+      optional: 'Optional',
+      output: 'Message command',
+      copy: 'Copy message',
+      copied: 'Copied',
+      presets: ['Server warning', 'Quest complete', 'Ritual begins', 'Court verdict'],
+      preview: 'Preview'
+    },
+    ru: {
+      title: 'Дизайнер сообщений',
+      lead: 'Соберите одно красивое сообщение в чат, title, subtitle или actionbar из нескольких цветных частей.',
+      target: 'Цель',
+      channel: 'Канал',
+      fadeIn: 'Появление',
+      stay: 'Держать',
+      fadeOut: 'Исчезание',
+      text: 'Текст',
+      color: 'Цвет',
+      style: 'Стиль',
+      hover: 'Текст при наведении',
+      click: 'Команда по клику',
+      optional: 'Необязательно',
+      output: 'Команда сообщения',
+      copy: 'Скопировать сообщение',
+      copied: 'Скопировано',
+      presets: ['Предупреждение сервера', 'Квест завершён', 'Ритуал начался', 'Вердикт суда'],
+      preview: 'Предпросмотр'
+    },
+    fr: {
+      title: 'Designer de messages',
+      lead: 'Créez un message de chat, title, subtitle ou actionbar avec plusieurs parties colorées.',
+      target: 'Cible',
+      channel: 'Canal',
+      fadeIn: 'Apparition',
+      stay: 'Durée',
+      fadeOut: 'Disparition',
+      text: 'Texte',
+      color: 'Couleur',
+      style: 'Style',
+      hover: 'Texte au survol',
+      click: 'Commande au clic',
+      optional: 'Optionnel',
+      output: 'Commande du message',
+      copy: 'Copier le message',
+      copied: 'Copié',
+      presets: ['Alerte serveur', 'Quête terminée', 'Rituel lancé', 'Verdict'],
+      preview: 'Aperçu'
+    },
+    de: {
+      title: 'Nachrichten-Designer',
+      lead: 'Erstelle eine schöne Chat-, Title-, Subtitle- oder Actionbar-Nachricht aus mehreren farbigen Teilen.',
+      target: 'Ziel',
+      channel: 'Kanal',
+      fadeIn: 'Einblenden',
+      stay: 'Dauer',
+      fadeOut: 'Ausblenden',
+      text: 'Text',
+      color: 'Farbe',
+      style: 'Stil',
+      hover: 'Hover-Text',
+      click: 'Klick-Befehl',
+      optional: 'Optional',
+      output: 'Nachrichtenbefehl',
+      copy: 'Nachricht kopieren',
+      copied: 'Kopiert',
+      presets: ['Serverwarnung', 'Quest abgeschlossen', 'Ritual beginnt', 'Urteil'],
+      preview: 'Vorschau'
+    }
+  }[locale] || {};
+
+  const presets = [
+    { channel: 'title', target: '@a', times: [10, 60, 20], hover: '', click: '', parts: [['WARNING', 'red', 'bold'], ['  Gate breach detected', 'gold', 'plain'], ['', 'white', 'plain']] },
+    { channel: 'actionbar', target: '@p', times: [5, 40, 10], hover: '', click: '', parts: [['Quest complete: ', 'green', 'bold'], ['The archive key is yours', 'aqua', 'plain'], ['', 'white', 'plain']] },
+    { channel: 'title', target: '@a', times: [20, 70, 20], hover: '', click: '', parts: [['The ritual ', 'light_purple', 'italic'], ['begins', 'dark_purple', 'bold'], ['', 'white', 'plain']] },
+    { channel: 'tellraw', target: '@a', times: [10, 60, 20], hover: 'Open the evidence chest', click: '/warp court', parts: [['Judge: ', 'gold', 'bold'], ['The verdict is final.', 'white', 'plain'], [' Court is dismissed.', 'gray', 'italic']] }
+  ];
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+  }
+
+  function options(items, selected) {
+    return items.map((item) => '<option value="' + item + '"' + (item === selected ? ' selected' : '') + '>' + item + '</option>').join('');
+  }
+
+  const panel = document.createElement('div');
+  panel.className = 'tool-panel message-designer';
+  panel.dataset.messageDesigner = 'true';
+  panel.innerHTML = `
+    <div class="section-heading"><div><h2>${copy.title}</h2><p class="tool-summary">${copy.lead}</p></div></div>
+    <div class="tool-chip-row">${copy.presets.map((label, index) => `<button class="tool-chip-button" type="button" data-md-preset="${index}">${label}</button>`).join('')}</div>
+    <div class="tool-form-grid message-designer-grid">
+      <label class="tool-field"><span>${copy.target}</span><input id="md-target" type="text" value="@a"></label>
+      <label class="tool-field"><span>${copy.channel}</span><select id="md-channel"><option value="tellraw">tellraw chat</option><option value="title">title</option><option value="subtitle">subtitle</option><option value="actionbar">actionbar</option></select></label>
+      <label class="tool-field"><span>${copy.fadeIn}</span><input id="md-fade-in" type="number" min="0" value="10"></label>
+      <label class="tool-field"><span>${copy.stay}</span><input id="md-stay" type="number" min="1" value="60"></label>
+      <label class="tool-field"><span>${copy.fadeOut}</span><input id="md-fade-out" type="number" min="0" value="20"></label>
+    </div>
+    <div class="message-part-list">
+      ${[0, 1, 2].map((index) => `
+        <div class="message-part" data-md-part="${index}">
+          <label class="tool-field"><span>${copy.text} ${index + 1}</span><input data-md-text type="text"></label>
+          <label class="tool-field"><span>${copy.color}</span><select data-md-color>${options(['white','gray','gold','yellow','green','aqua','blue','light_purple','dark_purple','red'], 'white')}</select></label>
+          <label class="tool-field"><span>${copy.style}</span><select data-md-style>${options(['plain','bold','italic','underlined'], 'plain')}</select></label>
+        </div>
+      `).join('')}
+    </div>
+    <div class="tool-form-grid">
+      <label class="tool-field"><span>${copy.hover} <small>${copy.optional}</small></span><input id="md-hover" type="text"></label>
+      <label class="tool-field"><span>${copy.click} <small>${copy.optional}</small></span><input id="md-click" type="text" placeholder="/warp spawn"></label>
+    </div>
+    <div class="message-preview-wrap"><p class="tool-summary">${copy.preview}</p><div id="md-preview" class="message-preview"></div></div>
+    <label class="tool-field"><span>${copy.output}</span><textarea id="md-output" class="command-output" readonly></textarea></label>
+    <div class="tool-button-row"><button id="md-copy" class="tool-button" type="button">${copy.copy}</button></div>
+  `;
+  const anchor = host.querySelector('.tool-panel:nth-of-type(3)') || host.firstElementChild;
+  host.insertBefore(panel, anchor ? anchor.nextSibling : null);
+
+  const target = panel.querySelector('#md-target');
+  const channel = panel.querySelector('#md-channel');
+  const fadeIn = panel.querySelector('#md-fade-in');
+  const stay = panel.querySelector('#md-stay');
+  const fadeOut = panel.querySelector('#md-fade-out');
+  const hover = panel.querySelector('#md-hover');
+  const click = panel.querySelector('#md-click');
+  const preview = panel.querySelector('#md-preview');
+  const output = panel.querySelector('#md-output');
+  const copyButton = panel.querySelector('#md-copy');
+
+  function componentFromPart(part, firstInteractive) {
+    const text = part.querySelector('[data-md-text]').value;
+    const color = part.querySelector('[data-md-color]').value;
+    const style = part.querySelector('[data-md-style]').value;
+    const component = { text, color };
+    if (style === 'bold') component.bold = true;
+    if (style === 'italic') component.italic = true;
+    if (style === 'underlined') component.underlined = true;
+    if (firstInteractive && hover.value.trim()) component.hoverEvent = { action: 'show_text', value: hover.value.trim() };
+    if (firstInteractive && click.value.trim()) component.clickEvent = { action: 'run_command', value: click.value.trim() };
+    return component;
+  }
+
+  function components() {
+    return Array.from(panel.querySelectorAll('.message-part'))
+      .filter((part) => part.querySelector('[data-md-text]').value.trim())
+      .map((part, index) => componentFromPart(part, index === 0));
+  }
+
+  function timesCommand() {
+    return '/title ' + (target.value.trim() || '@a') + ' times ' + Number(fadeIn.value || 0) + ' ' + Number(stay.value || 60) + ' ' + Number(fadeOut.value || 0);
+  }
+
+  function messageCommand() {
+    const payload = JSON.stringify(components().length ? components() : [{ text: '', color: 'white' }]);
+    if (channel.value === 'tellraw') return '/tellraw ' + (target.value.trim() || '@a') + ' ' + payload;
+    return timesCommand() + '\n/title ' + (target.value.trim() || '@a') + ' ' + channel.value + ' ' + payload;
+  }
+
+  function updatePreview() {
+    const parts = components();
+    preview.className = 'message-preview is-' + channel.value;
+    preview.innerHTML = parts.map((part) => {
+      const classes = ['mc-' + part.color];
+      if (part.bold) classes.push('is-bold');
+      if (part.italic) classes.push('is-italic');
+      if (part.underlined) classes.push('is-underlined');
+      return '<span class="' + classes.join(' ') + '">' + escapeHtml(part.text) + '</span>';
+    }).join('') || '&nbsp;';
+    output.value = messageCommand();
+  }
+
+  function applyPreset(index) {
+    const preset = presets[index] || presets[0];
+    target.value = preset.target;
+    channel.value = preset.channel;
+    fadeIn.value = preset.times[0];
+    stay.value = preset.times[1];
+    fadeOut.value = preset.times[2];
+    hover.value = preset.hover;
+    click.value = preset.click;
+    panel.querySelectorAll('.message-part').forEach((part, partIndex) => {
+      const data = preset.parts[partIndex] || ['', 'white', 'plain'];
+      part.querySelector('[data-md-text]').value = data[0];
+      part.querySelector('[data-md-color]').value = data[1];
+      part.querySelector('[data-md-style]').value = data[2];
+    });
+    panel.querySelectorAll('[data-md-preset]').forEach((button) => {
+      button.classList.toggle('is-active', Number(button.dataset.mdPreset) === index);
+    });
+    updatePreview();
+  }
+
+  panel.addEventListener('input', updatePreview);
+  panel.addEventListener('change', updatePreview);
+  panel.querySelectorAll('[data-md-preset]').forEach((button) => {
+    button.addEventListener('click', () => applyPreset(Number(button.dataset.mdPreset)));
+  });
+  copyButton.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(output.value);
+    const original = copyButton.textContent;
+    copyButton.textContent = copy.copied;
+    setTimeout(() => {
+      copyButton.textContent = original;
+    }, 1400);
+  });
+  applyPreset(0);
+})();
