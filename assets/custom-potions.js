@@ -153,6 +153,13 @@
     };
 
     const text = stringsByLang[lang] || stringsByLang.ru;
+    const COMMAND_BLOCK_CHAT_LIMIT = 256;
+    const commandBlockWarnings = {
+        ru: 'Если команда длиннее 256 символов, вставляйте её в командный блок или консоль, а не в чат.',
+        en: 'If the command is longer than 256 characters, paste it into a command block or console instead of chat.',
+        fr: 'Si la commande dépasse 256 caractères, collez-la dans un bloc de commande ou la console plutôt que dans le chat.',
+        de: 'Wenn der Befehl länger als 256 Zeichen ist, füge ihn in einen Befehlsblock oder die Konsole ein statt in den Chat.'
+    };
     const LEGACY_EFFECT_IDS = {
         speed: 1,
         slowness: 2,
@@ -448,6 +455,9 @@
         const result = buildCommand();
         references.output.value = result.command || text.empty;
         let summaryText = result.command ? text.summary(result.effectCount, result.command.length) : text.empty;
+        if (result.command && result.command.length > COMMAND_BLOCK_CHAT_LIMIT) {
+            summaryText += ` ${commandBlockWarnings[lang] || commandBlockWarnings.en}`;
+        }
         if (result.skipped.length) summaryText += ` ${text.skipped(result.skipped)}`;
         references.summary.textContent = summaryText;
         references.copyButton.textContent = text.copy;
