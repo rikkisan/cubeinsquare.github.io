@@ -185,6 +185,7 @@
       output: 'Message command',
       copy: 'Copy message',
       copied: 'Copied',
+      article: 'Announcement guide',
       presets: ['Server warning', 'Quest complete', 'Ritual begins', 'Court verdict'],
       preview: 'Preview'
     },
@@ -205,6 +206,7 @@
       output: 'Команда сообщения',
       copy: 'Скопировать сообщение',
       copied: 'Скопировано',
+      article: 'Гайд по объявлениям',
       presets: ['Предупреждение сервера', 'Квест завершён', 'Ритуал начался', 'Вердикт суда'],
       preview: 'Предпросмотр'
     },
@@ -225,6 +227,7 @@
       output: 'Commande du message',
       copy: 'Copier le message',
       copied: 'Copié',
+      article: 'Guide des annonces',
       presets: ['Alerte serveur', 'Quête terminée', 'Rituel lancé', 'Verdict'],
       preview: 'Aperçu'
     },
@@ -245,10 +248,18 @@
       output: 'Nachrichtenbefehl',
       copy: 'Nachricht kopieren',
       copied: 'Kopiert',
+      article: 'Ankündigungsleitfaden',
       presets: ['Serverwarnung', 'Quest abgeschlossen', 'Ritual beginnt', 'Urteil'],
       preview: 'Vorschau'
     }
   }[locale] || {};
+
+  const articleHref = {
+    en: '/wiki-minecraft-server-announcements/',
+    ru: '/ru/wiki-minecraft-server-announcements/',
+    fr: '/fr/wiki-minecraft-server-announcements/',
+    de: '/de/wiki-minecraft-server-announcements/'
+  }[locale] || '/wiki-minecraft-server-announcements/';
 
   const presets = [
     { channel: 'title', target: '@a', times: [10, 60, 20], hover: '', click: '', parts: [['WARNING', 'red', 'bold'], ['  Gate breach detected', 'gold', 'plain'], ['', 'white', 'plain']] },
@@ -270,6 +281,7 @@
   panel.dataset.messageDesigner = 'true';
   panel.innerHTML = `
     <div class="section-heading"><div><h2>${copy.title}</h2><p class="tool-summary">${copy.lead}</p></div></div>
+    <div class="tool-button-row"><a class="tool-button tool-button-secondary" href="${articleHref}">${copy.article}</a></div>
     <div class="tool-chip-row">${copy.presets.map((label, index) => `<button class="tool-chip-button" type="button" data-md-preset="${index}">${label}</button>`).join('')}</div>
     <div class="tool-form-grid message-designer-grid">
       <label class="tool-field"><span>${copy.target}</span><input id="md-target" type="text" value="@a"></label>

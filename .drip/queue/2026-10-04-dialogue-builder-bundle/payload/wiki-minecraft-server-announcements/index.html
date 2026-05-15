@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How to make Minecraft server announcements readable | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A practical guide to Minecraft tellraw, title, subtitle, and actionbar announcements that players can read during real server events.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-server-announcements/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to make Minecraft server announcements readable | Cube in Square">
+  <meta property="og:description" content="A practical guide to Minecraft tellraw, title, subtitle, and actionbar announcements that players can read during real server events.">
+  <meta property="og:url" content="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="How to make Minecraft server announcements readable | Cube in Square">
+  <meta name="twitter:description" content="A practical guide to Minecraft tellraw, title, subtitle, and actionbar announcements that players can read during real server events.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="is-active" href="/wiki-minecraft-server-announcements/">EN</a><a class="" href="/ru/wiki-minecraft-server-announcements/">RU</a><a class="" href="/fr/wiki-minecraft-server-announcements/">FR</a><a class="" href="/de/wiki-minecraft-server-announcements/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+  <article class="wiki-article">
+    <a class="back-link" href="/wiki/">&larr; All articles</a>
+    <h1>How to make Minecraft server announcements readable</h1>
+    <p class="page-lead">A server announcement has one job: make every player understand the same thing at the same moment. That sounds simple until the chat is moving, the event is loud, and half the players are already running somewhere. Good Minecraft announcements are short, placed in the right channel, and styled only enough to guide attention.</p>
+    <div class="tool-button-row"><a class="tool-button" href="/dialogue-builder/">Open Message Designer</a><a class="tool-button tool-button-secondary" href="/wiki-dialogue-builder/">Read command guide</a><a class="tool-button tool-button-secondary" href="/wiki-readable-minecraft-dialogue/">Dialogue pacing article</a></div>
+    <h2>Start with the channel, not the decoration</h2><div class="article-block">The channel decides how the message feels. Tellraw is good for announcements that can stay in chat history. Title is for rare dramatic beats. Subtitle supports the title, not a full paragraph. Actionbar is best for warnings, timers, and pressure that should not bury chat.</div><h2>Use color as structure</h2><div class="article-block">Color should help players parse the message quickly. Red can mark danger, gold can mark authority, aqua can mark objective information, and gray can carry secondary context. If every word is a different color, the announcement becomes decoration instead of communication.</div><h2>Keep big screen text short</h2><div class="article-block">A title should usually be a phrase, not a sentence. The player reads it while moving, fighting, or reacting to a scene. If a message needs detail, put the headline in title and the explanation in tellraw or a book.</div><h2>Use hover and click sparingly</h2><div class="article-block">Hover text and click commands are useful for optional context: opening a warp, showing a rule note, or linking the next command. They should never hide essential information, because many players will not stop to inspect them during an event.</div>
+    <h2>Message type</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Message type</th><th>Best channel</th><th>Why it works</th></tr></thead><tbody><tr><td>Server restart warning</td><td>actionbar + tellraw</td><td>Actionbar keeps pressure visible, tellraw leaves a record.</td></tr><tr><td>Quest complete</td><td>actionbar</td><td>Short reward feedback does not need chat spam.</td></tr><tr><td>Ritual begins</td><td>title + subtitle</td><td>The moment should feel heavy and shared.</td></tr><tr><td>Court verdict</td><td>title, then tellraw</td><td>The title lands the verdict; chat can carry the exact wording.</td></tr></tbody></table></div>
+    <h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Can I use title for every announcement?</h3><p>You can, but it gets noisy fast. Title works best when it stays rare.</p><h3>Are click events safe for commands?</h3><p>They are useful, but treat them as convenience. Players should understand the message even without clicking.</p><h3>Should I split long announcements?</h3><p>Yes. Use one short title or actionbar line, then follow with a readable tellraw line if detail matters.</p></div></div>
+  </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
