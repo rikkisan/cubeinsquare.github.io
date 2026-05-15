@@ -7,3 +7,5 @@ Release QA before publishing:
 - Smoke test generated commands in current Minecraft Java syntax.
 - Add navigation cards to tools and wiki hubs if the release script does not merge them automatically.
 - Check mobile layout and localized titles.
+
+- Countdown guide for bossbars with repeating command blocks and datapack functions

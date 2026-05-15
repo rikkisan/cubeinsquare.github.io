@@ -8,3 +8,5 @@ Includes:
 - localized EN/RU/FR/DE pages
 - updated assets/site.js for global discovery
 - updated sitemap.xml
+
+- Example article for quest books, contracts, faction letters, clues, and lore notes

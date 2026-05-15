@@ -8,3 +8,4 @@ Includes:
 - localized EN/RU/FR/DE pages
 - updated assets/site.js for global discovery
 - updated sitemap.xml
+- Build layout article for circles, domes, arenas, ritual floors, roads, and hubs

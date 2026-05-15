@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer un compte à rebours Minecraft avec bossbar et command blocks | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guide pratique pour un vrai compte à rebours bossbar Minecraft avec commandes de setup, command blocks répétitifs, scoreboard et fin propre.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-countdown/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Créer un compte à rebours Minecraft avec bossbar et command blocks | Cube in Square">
+  <meta property="og:description" content="Guide pratique pour un vrai compte à rebours bossbar Minecraft avec commandes de setup, command blocks répétitifs, scoreboard et fin propre.">
+  <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-countdown/">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Créer un compte à rebours Minecraft avec bossbar et command blocks | Cube in Square">
+  <meta name="twitter:description" content="Guide pratique pour un vrai compte à rebours bossbar Minecraft avec commandes de setup, command blocks répétitifs, scoreboard et fin propre.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/wiki-minecraft-bossbar-countdown/">EN</a><a class="" href="/ru/wiki-minecraft-bossbar-countdown/">RU</a><a class="is-active" href="/fr/wiki-minecraft-bossbar-countdown/">FR</a><a class="" href="/de/wiki-minecraft-bossbar-countdown/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+  <article class="wiki-article">
+    <a class="back-link" href="/fr/wiki/">&larr; Tous les articles</a>
+    <h1>Créer un compte à rebours Minecraft avec bossbar et command blocks</h1>
+    <p class="page-lead">Une bossbar peut afficher un minuteur, mais elle ne compte pas toute seule. La commande crée la barre, puis une couche de mise à jour doit modifier sa valeur : command block répétitif, chaîne de commandes ou fonction datapack.</p>
+    <div class="tool-button-row"><a class="tool-button" href="/fr/bossbar-builder/">Ouvrir Bossbar Builder</a><a class="tool-button tool-button-secondary" href="/fr/wiki-bossbar-builder/">Lire le guide bossbar</a></div>
+    <h2>Créez d’abord la bossbar</h2><div class="article-block">Ajoutez une bossbar nommée, puis définissez couleur, style, max, valeur et joueurs. Le builder prépare cette base proprement. Pour 60 secondes, mettez max à 60 et value à 60.</div><h2>Stockez le temps dans un scoreboard</h2><div class="article-block">Un objective scoreboard donne à Minecraft un nombre à décrémenter. Ce nombre peut ensuite être copié dans la valeur de la bossbar.</div><h2>Mettez la valeur à jour en boucle</h2><div class="article-block">Un command block répétitif ou une fonction datapack planifiée doit diminuer le temps et mettre à jour la bossbar. Une commande /bossbar statique ne suffit pas.</div><h2>Terminez proprement</h2><div class="article-block">À zéro, cachez ou supprimez la bossbar, lancez l’événement et arrêtez la boucle. Les anciennes barres rendent les scènes suivantes confuses.</div>
+    <h2>Étape</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Étape</th><th>Commande exemple</th><th>Rôle</th></tr></thead><tbody><tr><td>Créer l’objectif</td><td><code>/scoreboard objectives add event_timer dummy</code></td><td>Stocke le temps restant.</td></tr><tr><td>Définir le temps</td><td><code>/scoreboard players set #timer event_timer 60</code></td><td>Démarre à 60 secondes.</td></tr><tr><td>Afficher la barre</td><td><code>/bossbar set cube:event value 60</code></td><td>Valeur visible initiale.</td></tr><tr><td>Décrémenter</td><td><code>/scoreboard players remove #timer event_timer 1</code></td><td>Étape répétée.</td></tr><tr><td>Copier la valeur</td><td><code>/execute store result bossbar cube:event value run scoreboard players get #timer event_timer</code></td><td>Synchronise scoreboard et bossbar.</td></tr></tbody></table></div>
+    <h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Une commande suffit-elle pour un minuteur vivant ?</h3><p>Non. La barre se crée avec une commande, mais le compte à rebours demande des mises à jour répétées.</p><h3>Secondes ou ticks ?</h3><p>Les secondes sont plus simples en command blocks. Les ticks conviennent mieux aux datapacks.</p><h3>Que faire à zéro ?</h3><p>Lancez l’action finale puis cachez ou supprimez la barre.</p></div></div>
+  </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

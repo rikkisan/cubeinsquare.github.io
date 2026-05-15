@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Как сделать обратный отсчёт bossbar в Minecraft через командные блоки | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Гайд по настоящему bossbar-таймеру Minecraft: настройка шкалы, repeating command block, scoreboard и чистое завершение.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+  <meta name="author" content="Cube in Square">
+  <meta name="application-name" content="Cube in Square">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-countdown/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-countdown/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Как сделать обратный отсчёт bossbar в Minecraft через командные блоки | Cube in Square">
+  <meta property="og:description" content="Гайд по настоящему bossbar-таймеру Minecraft: настройка шкалы, repeating command block, scoreboard и чистое завершение.">
+  <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-countdown/">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Как сделать обратный отсчёт bossbar в Minecraft через командные блоки | Cube in Square">
+  <meta name="twitter:description" content="Гайд по настоящему bossbar-таймеру Minecraft: настройка шкалы, repeating command block, scoreboard и чистое завершение.">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/server-icon.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/wiki-minecraft-bossbar-countdown/">EN</a><a class="is-active" href="/ru/wiki-minecraft-bossbar-countdown/">RU</a><a class="" href="/fr/wiki-minecraft-bossbar-countdown/">FR</a><a class="" href="/de/wiki-minecraft-bossbar-countdown/">DE</a></div></div></div>
+<main class="page-shell wiki-article">
+  <article class="wiki-article">
+    <a class="back-link" href="/ru/wiki/">&larr; Все статьи</a>
+    <h1>Как сделать обратный отсчёт bossbar в Minecraft через командные блоки</h1>
+    <p class="page-lead">Bossbar может показывать таймер, но сама шкала не отсчитывает время. Команда настройки создаёт bar, а значение должен обновлять другой слой: повторяющийся командный блок, цепочка команд или datapack-функция.</p>
+    <div class="tool-button-row"><a class="tool-button" href="/ru/bossbar-builder/">Открыть Bossbar Builder</a><a class="tool-button tool-button-secondary" href="/ru/wiki-bossbar-builder/">Читать гайд по bossbar</a></div>
+    <h2>Сначала создайте bossbar</h2><div class="article-block">Добавьте именованную bossbar, задайте цвет, стиль, максимум, текущее значение и игроков. Builder делает эту настройку аккуратно. Для таймера на 60 секунд поставьте max 60 и value 60.</div><h2>Используйте scoreboard для состояния</h2><div class="article-block">Scoreboard objective хранит число, которое Minecraft будет уменьшать. Потом это число можно копировать в значение bossbar, чтобы видимая шкала была связана с реальным состоянием сервера.</div><h2>Обновляйте значение повтором</h2><div class="article-block">Repeating command block или scheduled datapack function должны уменьшать время и обновлять bossbar value. Одна статичная /bossbar-команда не делает живой отсчёт.</div><h2>Завершайте чисто</h2><div class="article-block">Когда таймер дошёл до нуля, спрячьте или удалите bossbar, запустите событие и остановите обновление. Старые висящие шкалы путают следующие сцены.</div>
+    <h2>Шаг</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Шаг</th><th>Пример команды</th><th>Зачем</th></tr></thead><tbody><tr><td>Создать objective</td><td><code>/scoreboard objectives add event_timer dummy</code></td><td>Хранит оставшееся время.</td></tr><tr><td>Задать время</td><td><code>/scoreboard players set #timer event_timer 60</code></td><td>Старт с 60 секунд.</td></tr><tr><td>Показать шкалу</td><td><code>/bossbar set cube:event value 60</code></td><td>Первое видимое значение.</td></tr><tr><td>Уменьшать</td><td><code>/scoreboard players remove #timer event_timer 1</code></td><td>Шаг повторяющегося обновления.</td></tr><tr><td>Скопировать значение</td><td><code>/execute store result bossbar cube:event value run scoreboard players get #timer event_timer</code></td><td>Синхронизирует scoreboard и bossbar.</td></tr></tbody></table></div>
+    <h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Можно ли сделать живой таймер одной командой?</h3><p>Нет. Создать шкалу можно одной командой, но отсчёт требует повторяющихся обновлений.</p><h3>Лучше секунды или тики?</h3><p>Секунды проще для command blocks. Тики удобнее, если событием уже управляет datapack.</p><h3>Что делать на нуле?</h3><p>Запустить итоговую команду, затем скрыть или удалить bar.</p></div></div>
+  </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
