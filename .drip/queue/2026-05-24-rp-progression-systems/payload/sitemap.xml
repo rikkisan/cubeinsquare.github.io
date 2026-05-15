@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki/</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-04-19</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/about/</loc>
@@ -63,18 +63,6 @@
   <url>
     <loc>https://cubeinsquare.com/wiki-texture-painter/</loc>
     <lastmod>2026-04-19</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-mechanism-plugin/</loc>
-    <lastmod>2026-04-24</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-headhunter-plugin/</loc>
-    <lastmod>2026-04-24</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-data-components-architecture/</loc>
-    <lastmod>2026-05-31</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/</loc>
@@ -225,6 +213,22 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/wiki-rp-economy-custom-data/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-resource-pack-migration-1-21-4/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/</loc>
+    <lastmod>2026-05-10</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-string-ids-custom-model-data/</loc>
+    <lastmod>2026-05-17</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/wiki-rp-progression-systems/</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
@@ -241,4 +245,5 @@
     <lastmod>2026-05-24</lastmod>
   </url>
 </urlset>
+
 
