@@ -160,6 +160,28 @@
         fr: 'Si la commande dépasse 256 caractères, collez-la dans un bloc de commande ou la console plutôt que dans le chat.',
         de: 'Wenn der Befehl länger als 256 Zeichen ist, füge ihn in einen Befehlsblock oder die Konsole ein statt in den Chat.'
     };
+    const commandBlockHelperText = {
+        ru: {
+            need: 'Нужен командный блок для длинной команды?',
+            copy: 'Скопировать команду блока',
+            copied: 'Скопировано'
+        },
+        en: {
+            need: 'Need a command block for this long command?',
+            copy: 'Copy command block command',
+            copied: 'Copied'
+        },
+        fr: {
+            need: 'Besoin d’un bloc de commande pour cette commande longue ?',
+            copy: 'Copier la commande du bloc',
+            copied: 'Copié'
+        },
+        de: {
+            need: 'Brauchst du einen Befehlsblock für diesen langen Befehl?',
+            copy: 'Befehlsblock-Befehl kopieren',
+            copied: 'Kopiert'
+        }
+    };
     const LEGACY_EFFECT_IDS = {
         speed: 1,
         slowness: 2,
@@ -212,6 +234,47 @@
         useColor: root.querySelector('#pp-use-color'),
         colorPicker: root.querySelector('#pp-color'),
         colorHex: root.querySelector('#pp-color-hex')
+    };
+    const commandBlockText = commandBlockHelperText[lang] || commandBlockHelperText.en;
+    const commandBlockHelper = document.createElement('div');
+    commandBlockHelper.className = 'potion-command-block-helper';
+    commandBlockHelper.hidden = true;
+    commandBlockHelper.innerHTML = `
+        <div class="potion-command-block-helper-head">
+            <span data-potion-command-block-label></span>
+            <button class="tool-button tool-button-secondary tool-button-compact" type="button" data-copy-potion-command-block></button>
+        </div>
+        <code class="potion-command-block-code" data-potion-command-block-output></code>
+    `;
+    references.summary.insertAdjacentElement('afterend', commandBlockHelper);
+    const commandBlockLabel = commandBlockHelper.querySelector('[data-potion-command-block-label]');
+    const commandBlockOutput = commandBlockHelper.querySelector('[data-potion-command-block-output]');
+    const commandBlockCopyButton = commandBlockHelper.querySelector('[data-copy-potion-command-block]');
+
+    function commandBlockGiveCommand() {
+        return fieldValue('pp-version', 'current') === 'legacy'
+            ? '/give @p command_block 1'
+            : '/give @p minecraft:command_block';
+    }
+
+    function updateCommandBlockHelper(commandLength) {
+        const shouldShow = commandLength > COMMAND_BLOCK_CHAT_LIMIT;
+        commandBlockHelper.hidden = !shouldShow;
+        if (!shouldShow) return;
+        commandBlockLabel.textContent = commandBlockText.need;
+        commandBlockCopyButton.textContent = commandBlockText.copy;
+        commandBlockOutput.textContent = commandBlockGiveCommand();
+    }
+
+    async function writeClipboard(value, fallbackElement) {
+        try {
+            await navigator.clipboard.writeText(value);
+        } catch (error) {
+            if (!fallbackElement) return;
+            fallbackElement.focus();
+            fallbackElement.select();
+            document.execCommand('copy');
+        }
     };
 
     function fieldValue(id, fallback) {
@@ -460,6 +523,7 @@
         }
         if (result.skipped.length) summaryText += ` ${text.skipped(result.skipped)}`;
         references.summary.textContent = summaryText;
+        updateCommandBlockHelper(result.command ? result.command.length : 0);
         references.copyButton.textContent = text.copy;
         fillPreview(result);
     }
@@ -497,13 +561,7 @@
     async function copyCommand() {
         const result = buildCommand();
         if (!result.command) return;
-        try {
-            await navigator.clipboard.writeText(result.command);
-        } catch (error) {
-            references.output.focus();
-            references.output.select();
-            document.execCommand('copy');
-        }
+        await writeClipboard(result.command, references.output);
         trackEvent('potion_command_copy', {
             syntax_version: fieldValue('pp-version', 'current'),
             item_type: fieldValue('pp-item-type', 'potion'),
@@ -515,6 +573,17 @@
         references.copyButton.textContent = text.copied;
         window.setTimeout(() => {
             references.copyButton.textContent = text.copy;
+        }, 1600);
+    }
+
+    async function copyCommandBlockCommand() {
+        await writeClipboard(commandBlockGiveCommand(), references.output);
+        trackEvent('potion_command_block_give_copy', {
+            syntax_version: fieldValue('pp-version', 'current')
+        });
+        commandBlockCopyButton.textContent = commandBlockText.copied;
+        window.setTimeout(() => {
+            commandBlockCopyButton.textContent = commandBlockText.copy;
         }, 1600);
     }
 
@@ -553,6 +622,7 @@
         if (event.target === references.exampleButton) loadExample();
         if (event.target === references.resetButton) resetTool();
         if (event.target === references.copyButton) copyCommand();
+        if (event.target === commandBlockCopyButton) copyCommandBlockCommand();
     });
 
     root.querySelector('#pp-add-effect-label').textContent = text.addEffect;
