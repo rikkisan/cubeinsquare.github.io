@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Генератор bossbar для Minecraft | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Собирайте команды bossbar для событий, фаз, таймеров, ритуалов и серверных предупреждений без ручной сборки каждой команды.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://cubeinsquare.com/ru/bossbar-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/bossbar-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/bossbar-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/bossbar-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/bossbar-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/bossbar-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Генератор bossbar для Minecraft | Cube in Square">
+  <meta property="og:description" content="Собирайте команды bossbar для событий, фаз, таймеров, ритуалов и серверных предупреждений без ручной сборки каждой команды.">
+  <meta property="og:url" content="https://cubeinsquare.com/ru/bossbar-builder/">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/bossbar-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
+<main class="page-shell bossbar-page" data-bossbar-builder>
+<section class="page-hero"><h1>Генератор bossbar для Minecraft</h1><p class="page-lead">Создавайте наборы команд bossbar для ролевых событий, рейдов, ритуалов, отсчётов и общих предупреждений сервера. Выберите ID, заголовок, цвет, стиль, игроков и прогресс, а затем скопируйте чистую последовательность для командных блоков или datapack-функций.</p></section>
+<section class="page-section tool-layout"><div class="tool-primary-column">
+<div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/ru/wiki-bossbar-builder/">Читать гайд</a><a class="tool-button tool-button-secondary" href="/ru/wiki-minecraft-bossbar-events/">Статья про event UI</a></div></div>
+<div class="tool-panel"><h2>Быстрые пресеты</h2><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-bb-preset="0">Заряд ритуала</button><button class="tool-chip-button" type="button" data-bb-preset="1">Фаза рейда</button><button class="tool-chip-button" type="button" data-bb-preset="2">Таймер эвакуации</button><button class="tool-chip-button" type="button" data-bb-preset="3">Фаза босса</button></div></div>
+<div class="tool-panel"><h2>Настройка bossbar</h2><div class="tool-form-grid">
+<label class="tool-field"><span>ID bossbar</span><input id="bb-id" value="cube:event"></label>
+<label class="tool-field"><span>Текст заголовка</span><input id="bb-title" value="Ritual charge"></label>
+<label class="tool-field"><span>Игроки</span><input id="bb-players" value="@a"></label>
+<label class="tool-field"><span>Цвет</span><select id="bb-color"><option>purple</option><option>blue</option><option>green</option><option>yellow</option><option>red</option><option>white</option></select></label>
+<label class="tool-field"><span>Стиль</span><select id="bb-style"><option>progress</option><option>notched_6</option><option>notched_10</option><option>notched_12</option><option>notched_20</option></select></label>
+<label class="tool-field"><span>Максимум</span><input id="bb-max" type="number" min="1" value="100"></label>
+<label class="tool-field"><span>Значение прогресса</span><input id="bb-value" type="number" min="0" value="65"></label>
+<label class="tool-checkline"><input id="bb-visible" type="checkbox" checked><span>Показывать игрокам</span></label>
+</div><p class="tool-summary">Bossbar лучше всего работает как состояние: опасность, заряд ритуала, фаза боя, время эвакуации или общее давление на сервере.</p></div>
+<div class="tool-panel"><h2>Готовые команды</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Скопировать команды</button></div></div>
+</div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+</main><footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer><script src="/assets/site.js"></script><script src="/assets/bossbar-builder.js"></script>
+</body></html>

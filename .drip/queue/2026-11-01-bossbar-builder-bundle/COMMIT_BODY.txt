@@ -1,0 +1,1 @@
+Adds the queued November 2026 Bossbar Builder release bundle with localized tool pages, a guide, a supporting event UI article, shared assets, and sitemap entries.

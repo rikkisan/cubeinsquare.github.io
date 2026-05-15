@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur de bossbar Minecraft | Cube in Square</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Créez des commandes bossbar Minecraft pour événements, phases, minuteurs, rituels et alertes serveur sans tout écrire à la main.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://cubeinsquare.com/fr/bossbar-builder/">
+  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/bossbar-builder/">
+  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/bossbar-builder/">
+  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/bossbar-builder/">
+  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/bossbar-builder/">
+  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/bossbar-builder/">
+  <meta property="og:site_name" content="Cube in Square">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Générateur de bossbar Minecraft | Cube in Square">
+  <meta property="og:description" content="Créez des commandes bossbar Minecraft pour événements, phases, minuteurs, rituels et alertes serveur sans tout écrire à la main.">
+  <meta property="og:url" content="https://cubeinsquare.com/fr/bossbar-builder/">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/bossbar-builder.css">
+</head>
+<body>
+<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
+<main class="page-shell bossbar-page" data-bossbar-builder>
+<section class="page-hero"><h1>Générateur de bossbar Minecraft</h1><p class="page-lead">Préparez des piles de commandes bossbar pour événements RP, raids, rituels, comptes à rebours et alertes serveur. Choisissez l’ID, le titre, la couleur, le style, les joueurs et la progression, puis copiez une séquence propre pour command blocks ou fonctions datapack.</p></section>
+<section class="page-section tool-layout"><div class="tool-primary-column">
+<div class="tool-panel"><div class="tool-button-row"><a class="tool-button" href="/fr/wiki-bossbar-builder/">Lire le guide</a><a class="tool-button tool-button-secondary" href="/fr/wiki-minecraft-bossbar-events/">Article sur l’UI d’événement</a></div></div>
+<div class="tool-panel"><h2>Préréglages rapides</h2><div class="tool-chip-row"><button class="tool-chip-button" type="button" data-bb-preset="0">Charge rituelle</button><button class="tool-chip-button" type="button" data-bb-preset="1">Phase de raid</button><button class="tool-chip-button" type="button" data-bb-preset="2">Minuteur évacuation</button><button class="tool-chip-button" type="button" data-bb-preset="3">Phase de boss</button></div></div>
+<div class="tool-panel"><h2>Réglages bossbar</h2><div class="tool-form-grid">
+<label class="tool-field"><span>ID de la bossbar</span><input id="bb-id" value="cube:event"></label>
+<label class="tool-field"><span>Titre affiché</span><input id="bb-title" value="Ritual charge"></label>
+<label class="tool-field"><span>Joueurs</span><input id="bb-players" value="@a"></label>
+<label class="tool-field"><span>Couleur</span><select id="bb-color"><option>purple</option><option>blue</option><option>green</option><option>yellow</option><option>red</option><option>white</option></select></label>
+<label class="tool-field"><span>Style</span><select id="bb-style"><option>progress</option><option>notched_6</option><option>notched_10</option><option>notched_12</option><option>notched_20</option></select></label>
+<label class="tool-field"><span>Valeur max</span><input id="bb-max" type="number" min="1" value="100"></label>
+<label class="tool-field"><span>Valeur de progression</span><input id="bb-value" type="number" min="0" value="65"></label>
+<label class="tool-checkline"><input id="bb-visible" type="checkbox" checked><span>Visible pour les joueurs</span></label>
+</div><p class="tool-summary">Une bossbar fonctionne mieux quand elle affiche un état : danger, charge rituelle, phase, temps d’évacuation ou pression publique du serveur.</p></div>
+<div class="tool-panel"><h2>Commandes générées</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Copier les commandes</button></div></div>
+</div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+</main><footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer><script src="/assets/site.js"></script><script src="/assets/bossbar-builder.js"></script>
+</body></html>
