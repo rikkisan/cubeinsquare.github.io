@@ -340,6 +340,66 @@
 
     <button class="generate-btn" id="generateBtn">📦 Télécharger le pack de ressources</button>
 </div>
+<main class="page-shell">
+    <section class="page-section">
+        <h2 class="section-title">Quand ce générateur est vraiment utile</h2>
+        <p class="section-intro">Cette page devient précieuse quand vous avez déjà un PNG clair, mais que vous ne voulez pas reconstruire les dossiers, réécrire le JSON et recompresser le ZIP à la main à chaque itération. Le générateur enlève surtout cette part répétitive du workflow.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Pas seulement pour des tests</h3>
+                <p>Si vous préparez des props pour un serveur RP, un petit set d'événement ou un pack thématique, l'outil est excellent pour transformer des textures dispersées en archive propre et utilisable dans Minecraft. Il garde le rythme entre l'idée visuelle, la cible vanilla et le test en jeu.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Très bon dans un workflow mixte</h3>
+                <p>Vous n'avez pas besoin de tout faire ici. Beaucoup de créateurs dessinent d'abord l'icône dans le texture painter, retravaillent ailleurs si besoin, puis reviennent ici pour lier le rendu à un item, un bloc ou une couche d'armure et exporter un ZIP propre.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Encore plus utile après 1.20.5+</h3>
+                <p>Les nouvelles versions pardonnent moins les vieux tutos approximatifs. Quand la structure du pack, la logique des modèles et les commandes commencent à diverger, un workflow navigateur cohérent apporte beaucoup plus de valeur qu'un vieux guide copié-collé.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Un chemin simple du PNG au pack final</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>1. Donnez au pack un vrai nom de projet</h3>
+                <p>Choisissez un nom qui restera compréhensible plus tard. C'est un détail, mais il aide beaucoup quand plusieurs archives vivent en parallèle pour une saison, une faction ou une bibliothèque d'objets.</p>
+            </article>
+            <article class="resource-card">
+                <h3>2. Commencez par le type de contenu</h3>
+                <p><strong>Items</strong> pour une icône ou un modèle porté par un objet vanilla. <strong>Blocks</strong> pour des faces ou des surfaces répétées. <strong>Armor</strong> pour les couches portables et leurs icônes. Décider cela tôt évite beaucoup de confusion plus tard.</p>
+            </article>
+            <article class="resource-card">
+                <h3>3. Gardez la cible vanilla stable</h3>
+                <p>Beaucoup de bugs viennent d'un changement de cible en plein milieu du travail. On change l'objet ou la texture, mais on oublie de corriger la commande, la note interne ou le reste du pack. Fixer cette base tôt rend tout le reste plus fiable.</p>
+            </article>
+            <article class="resource-card">
+                <h3>4. Vérifiez l'aperçu avant l'export</h3>
+                <p>Le preview 3D attrape vite les erreurs gênantes: face inversée, transparence ratée, silhouette trop faible ou texture qui paraît correcte en atlas mais s'effondre une fois placée en contexte.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">FAQ rapide</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Puis-je l'utiliser uniquement pour empaqueter?</h3>
+                <p>Oui. Si vos PNG sont déjà prêts, ce générateur fonctionne très bien comme étape d'assemblage: choisir la bonne cible, produire la structure et exporter un ZIP propre sans refaire les dossiers à la main.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Faut-il Blockbench avant cette étape?</h3>
+                <p>Pas forcément. Pour des remplacements de textures simples et un export propre, vous pouvez rester ici. Si le travail 3D devient plus poussé, Blockbench s'intègre très bien en amont.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Que faut-il ouvrir après si le pack sert au gameplay?</h3>
+                <p>Si le pack soutient une mécanique, la suite logique est souvent le <a href="/fr/custom-item-builder/">constructeur d'objets</a>, les <a href="/fr/custom-villager-trades/">échanges de villageois</a> ou le <a href="/fr/custom-potions/">générateur de potions</a>. Le pack gère la couche visuelle; ces outils gèrent la couche commande.</p>
+            </article>
+        </div>
+    </section>
+</main>
 <footer class="site-footer">
     <span>Cube in Square</span>
     <a href="/fr/privacy-policy/">Politique de confidentialité</a>

@@ -335,6 +335,64 @@
             </section>
         </div>
     </section>
+    <section class="page-section">
+        <h2 class="section-title">Quand ce générateur de potions est le plus utile</h2>
+        <p class="section-intro">Les commandes de potions cessent d'être simples dès que la bouteille doit porter autre chose qu'un effet brut: un nom, une lore, une couleur, un lien avec le resource pack ou une identité de récompense. Cet outil est surtout fait pour ce deuxième cas.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Objets de récompense</h3>
+                <p>Si la potion doit ressembler à un objet construit et non à un drop aléatoire, la force seule ne suffit pas. Le nom, la couleur, la lore et la propreté de la commande participent ensemble au résultat final.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Consommables RP</h3>
+                <p>Les toniques, poisons, boissons sociales et breuvages rituels gagnent beaucoup quand la couche visuelle et textuelle est déjà pensée dans la commande. Même un petit effet peut sembler important si l'objet a une vraie présence.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Commandes sensibles à la version</h3>
+                <p>La partie la plus agaçante n'est souvent pas la potion elle-même, mais l'écart entre le legacy NBT et les composants modernes. Le générateur aide justement à garder cette différence lisible avant de copier la commande finale.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Un workflow simple qui reste lisible après coup</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Commencez par le type de bouteille</h3>
+                <p>Normale, jetable ou persistante: mieux vaut le décider dès le début. Cela évite de concevoir mentalement un objet alors que la commande est en train d'en produire un autre.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Gardez la potion de base seulement si elle aide</h3>
+                <p>Parfois une base vanilla est pratique. Parfois il vaut mieux laisser ce champ vide et tout construire via les custom effects. L'outil est utile justement parce qu'il rend les deux approches propres.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Écrivez la lore pour un vrai lecteur</h3>
+                <p>Une bonne lore répond à une question par ligne: qu'est-ce que c'est, que fait l'objet, et pourquoi le joueur devrait-il s'y intéresser. Dès que le texte ressemble à une note d'admin, l'objet perd en présence.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Ensuite seulement, peaufinez couleur et effets</h3>
+                <p>La couleur de la fiole et la pile d'effets doivent renforcer une idée déjà claire, pas la remplacer. On gagne souvent en lisibilité en décidant d'abord le rôle, puis en affinant le rendu.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">FAQ rapide</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Faut-il une potion de base ou seulement des custom effects?</h3>
+                <p>Utilisez une base vanilla si vous voulez hériter d'une identité simple et connue. Si l'objet doit être entièrement personnalisé, il est souvent plus propre de tout piloter via les effets.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Cet outil sert-il seulement pour le combat?</h3>
+                <p>Non. Il fonctionne aussi très bien pour des potions sociales, des remèdes de quête, des ingrédients rituels ou des bouteilles de collection qui ont surtout besoin d'une identité lisible.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Quand faut-il ajouter CustomModelData?</h3>
+                <p>Ajoutez-le quand la fiole doit aussi être liée à un resource pack et avoir un rendu différent des potions normales. Si seul l'effet change, ce champ peut rester vide.</p>
+            </article>
+        </div>
+    </section>
 </main>
 
 <datalist id="potionBaseSuggestions">
