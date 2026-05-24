@@ -87,11 +87,63 @@
         }
     };
     const fileNameText = FILE_NAME_TEXT[UI_LANG] || FILE_NAME_TEXT.en;
+    const PREVIEW_TEXT = {
+        en: {
+            sectionTitle: 'Quick previews',
+            sectionIntro: 'Check how the current PNG reads as an item and as a block before you export it.',
+            inventoryTitle: 'Inventory slot',
+            inventoryCopy: 'A fast read test for icons and compact props.',
+            hotbarTitle: 'Hotbar',
+            hotbarCopy: 'Shows whether the texture still holds up at play distance.',
+            tileTitle: 'Tiled wall',
+            tileCopy: 'Useful for spotting seams, rhythm issues, and noisy repetition.',
+            cubeTitle: 'Block cube',
+            cubeCopy: 'When the block template is active, the preview reads top, front, and right faces from the cube sheet.'
+        },
+        ru: {
+            sectionTitle: 'Быстрый предпросмотр',
+            sectionIntro: 'Проверьте, как текущий PNG читается как предмет и как блок, ещё до экспорта.',
+            inventoryTitle: 'Слот инвентаря',
+            inventoryCopy: 'Быстрая проверка читаемости для иконок и компактных предметов.',
+            hotbarTitle: 'Хотбар',
+            hotbarCopy: 'Показывает, держится ли текстура на игровой дистанции.',
+            tileTitle: 'Повтор стены',
+            tileCopy: 'Помогает ловить швы, сбитый ритм и шумное повторение.',
+            cubeTitle: 'Куб блока',
+            cubeCopy: 'Если активен шаблон блока, предпросмотр читает верхнюю, переднюю и правую грани из развертки.'
+        },
+        fr: {
+            sectionTitle: 'Aperçus rapides',
+            sectionIntro: 'Vérifiez comment le PNG actuel se lit comme objet et comme bloc avant l’export.',
+            inventoryTitle: 'Slot d’inventaire',
+            inventoryCopy: 'Un test rapide de lisibilité pour les icônes et petits objets.',
+            hotbarTitle: 'Barre rapide',
+            hotbarCopy: 'Montre si la texture tient encore à distance de jeu.',
+            tileTitle: 'Mur répété',
+            tileCopy: 'Pratique pour repérer les coutures, le rythme cassé et les répétitions trop bruyantes.',
+            cubeTitle: 'Cube de bloc',
+            cubeCopy: 'Quand le modèle de bloc est actif, l’aperçu lit les faces du dessus, de face et de droite depuis la planche.'
+        },
+        de: {
+            sectionTitle: 'Schnelle Vorschau',
+            sectionIntro: 'Prüfe vor dem Export, wie das aktuelle PNG als Item und als Block wirkt.',
+            inventoryTitle: 'Inventar-Slot',
+            inventoryCopy: 'Ein schneller Lesbarkeitstest für Icons und kleine Props.',
+            hotbarTitle: 'Hotbar',
+            hotbarCopy: 'Zeigt, ob die Textur auch auf Spiel-Distanz noch funktioniert.',
+            tileTitle: 'Wand-Wiederholung',
+            tileCopy: 'Hilft dabei, Nähte, unruhigen Rhythmus und laute Wiederholungen zu sehen.',
+            cubeTitle: 'Blockwürfel',
+            cubeCopy: 'Wenn die Blockvorlage aktiv ist, liest die Vorschau Oberseite, Vorderseite und rechte Seite direkt aus der Würfel-Anordnung.'
+        }
+    };
+    const previewText = PREVIEW_TEXT[UI_LANG] || PREVIEW_TEXT.en;
     const state = {
         size: DEFAULT_SIZE,
         zoom: DEFAULT_ZOOM,
         tool: 'brush',
         brushSize: 1,
+        blockSheetMode: false,
         extractedPalette: [],
         recentColors: [],
         painting: false,
@@ -277,62 +329,63 @@
         textureCtx.fillRect(x, y, 1, 1);
     }
 
+    function getBlockSheetSlots() {
+        return [
+            { key: 'top', label: 'TOP', shortLabel: 'T', x: 16, y: 0 },
+            { key: 'left', label: 'LEFT', shortLabel: 'L', x: 0, y: 16 },
+            { key: 'front', label: 'FRONT', shortLabel: 'F', x: 16, y: 16 },
+            { key: 'right', label: 'RIGHT', shortLabel: 'R', x: 32, y: 16 },
+            { key: 'back', label: 'BACK', shortLabel: 'B', x: 48, y: 16 },
+            { key: 'bottom', label: 'BOTTOM', shortLabel: 'D', x: 16, y: 32 }
+        ];
+    }
+
+    function drawBlockSheetOverlay(ctx, scale, showLabels) {
+        if (!state.blockSheetMode || state.size !== 64) return;
+
+        ctx.save();
+        ctx.setLineDash([Math.max(scale * 0.7, 4), Math.max(scale * 0.45, 3)]);
+        ctx.lineWidth = Math.max(1, Math.min(2, scale * 0.12));
+
+        getBlockSheetSlots().forEach((slot) => {
+            const x = slot.x * scale;
+            const y = slot.y * scale;
+            const size = 16 * scale;
+
+            ctx.fillStyle = 'rgba(96, 165, 250, 0.08)';
+            ctx.fillRect(x, y, size, size);
+            ctx.strokeStyle = 'rgba(125, 211, 252, 0.58)';
+            ctx.strokeRect(x + 0.5, y + 0.5, size - 1, size - 1);
+
+            if (showLabels) {
+                const compact = scale < 10;
+                const textLabel = compact ? slot.shortLabel : slot.label;
+                const fontSize = compact ? Math.max(9, Math.floor(scale * 0.9)) : Math.max(10, Math.floor(scale * 0.62));
+                const paddingX = compact ? 3 : 5;
+                const paddingY = compact ? 2 : 3;
+
+                ctx.font = `700 ${fontSize}px Inter, system-ui, sans-serif`;
+                const metrics = ctx.measureText(textLabel);
+                const labelWidth = Math.ceil(metrics.width + paddingX * 2);
+                const labelHeight = fontSize + paddingY * 2;
+
+                ctx.setLineDash([]);
+                ctx.fillStyle = 'rgba(15, 23, 42, 0.86)';
+                ctx.fillRect(x + 2, y + 2, labelWidth, labelHeight);
+                ctx.strokeStyle = 'rgba(125, 211, 252, 0.3)';
+                ctx.strokeRect(x + 2.5, y + 2.5, labelWidth - 1, labelHeight - 1);
+                ctx.fillStyle = 'rgba(226, 232, 240, 0.95)';
+                ctx.fillText(textLabel, x + 2 + paddingX, y + 2 + labelHeight - paddingY - 1);
+                ctx.setLineDash([Math.max(scale * 0.7, 4), Math.max(scale * 0.45, 3)]);
+            }
+        });
+
+        ctx.restore();
+    }
+
     function applyBlockTemplate() {
         const templateSize = 64;
-        const tileSize = 16;
-        const base = String(elements.color.value || '#8b5cf6');
-        const light = mixHex(base, '#ffffff', 0.12);
-        const lighter = mixHex(base, '#ffffff', 0.24);
-        const dark = mixHex(base, '#000000', 0.16);
-        const darker = mixHex(base, '#000000', 0.3);
-        const deepest = mixHex(base, '#000000', 0.42);
-        const accent = mixHex(base, '#d1d5db', 0.16);
         const renameWithDefault = shouldAutoRenameTextureFile();
-
-        function fillTilePixels(originX, originY, localX, localY, width, height, color) {
-            fillRectPixels(originX + localX, originY + localY, width, height, color);
-        }
-
-        function drawTile(originX, originY, variant) {
-            fillTilePixels(originX, originY, 0, 0, tileSize, tileSize, base);
-
-            fillTilePixels(originX, originY, 0, 0, tileSize, 1, light);
-            fillTilePixels(originX, originY, 0, 0, 1, tileSize, light);
-            fillTilePixels(originX, originY, 0, tileSize - 1, tileSize, 1, dark);
-            fillTilePixels(originX, originY, tileSize - 1, 0, 1, tileSize, dark);
-
-            fillTilePixels(originX, originY, 1, 1, tileSize - 2, tileSize - 2, mixHex(base, '#ffffff', 0.04));
-            fillTilePixels(originX, originY, 4, 2, 4, 1, lighter);
-            fillTilePixels(originX, originY, 9, 3, 2, 1, light);
-            fillTilePixels(originX, originY, 3, 9, 3, 1, accent);
-            fillTilePixels(originX, originY, 10, 10, 2, 1, darker);
-
-            if (variant === 'top') {
-                fillTilePixels(originX, originY, 2, 2, 3, 2, lighter);
-                fillTilePixels(originX, originY, 10, 2, 2, 2, lighter);
-                fillTilePixels(originX, originY, 6, 7, 2, 2, dark);
-            } else if (variant === 'bottom') {
-                fillTilePixels(originX, originY, 3, 11, 4, 1, deepest);
-                fillTilePixels(originX, originY, 10, 10, 2, 2, darker);
-                fillTilePixels(originX, originY, 6, 5, 1, 2, dark);
-            } else if (variant === 'front') {
-                fillTilePixels(originX, originY, 2, 4, 3, 2, darker);
-                fillTilePixels(originX, originY, 3, 5, 1, 1, deepest);
-                fillTilePixels(originX, originY, 10, 6, 1, 2, light);
-            } else if (variant === 'back') {
-                fillTilePixels(originX, originY, 11, 4, 2, 2, darker);
-                fillTilePixels(originX, originY, 4, 11, 3, 1, dark);
-                fillTilePixels(originX, originY, 5, 5, 1, 2, light);
-            } else if (variant === 'left') {
-                fillTilePixels(originX, originY, 2, 2, 2, 3, darker);
-                fillTilePixels(originX, originY, 2, 10, 2, 1, dark);
-                fillTilePixels(originX, originY, 9, 7, 1, 1, lighter);
-            } else if (variant === 'right') {
-                fillTilePixels(originX, originY, 11, 3, 2, 3, darker);
-                fillTilePixels(originX, originY, 10, 10, 2, 1, dark);
-                fillTilePixels(originX, originY, 5, 6, 1, 1, lighter);
-            }
-        }
 
         if (state.size !== templateSize) {
             rebuildTextureCanvas(templateSize, false);
@@ -344,16 +397,10 @@
         }
 
         textureCtx.clearRect(0, 0, templateSize, templateSize);
-
-        drawTile(16, 0, 'top');
-        drawTile(0, 16, 'left');
-        drawTile(16, 16, 'front');
-        drawTile(32, 16, 'right');
-        drawTile(48, 16, 'back');
-        drawTile(16, 32, 'bottom');
+        state.blockSheetMode = true;
 
         renderCanvas();
-        setExtractedPalette(extractPaletteFromSource(textureCanvas));
+        setExtractedPalette([]);
         setZoom(recommendedZoomForSize(templateSize), { x: templateSize / 2, y: templateSize / 2 });
         centerStageOnPixel(templateSize / 2, templateSize / 2);
     }
@@ -475,6 +522,57 @@
         panel.insertBefore(wrapper, grid);
     }
 
+    function ensurePreviewPanel() {
+        if (!document.querySelector('[data-texture-painter]') || document.getElementById('texturePreviewPanel')) return;
+        const workspace = document.querySelector('.texture-workspace');
+        const firstPanel = workspace ? workspace.querySelector('.tool-panel') : null;
+        if (!workspace || !firstPanel) return;
+
+        const panel = document.createElement('section');
+        panel.className = 'tool-panel texture-preview-panel';
+        panel.id = 'texturePreviewPanel';
+        panel.innerHTML = `
+            <div class="texture-preview-head">
+                <div>
+                    <h2>${previewText.sectionTitle}</h2>
+                    <p class="texture-note">${previewText.sectionIntro}</p>
+                </div>
+            </div>
+            <div class="texture-preview-grid">
+                <article class="texture-preview-card">
+                    <h3>${previewText.inventoryTitle}</h3>
+                    <div class="texture-preview-surface texture-preview-surface--slot">
+                        <canvas id="textureInventoryPreviewCanvas" width="96" height="96"></canvas>
+                    </div>
+                    <p class="texture-note">${previewText.inventoryCopy}</p>
+                </article>
+                <article class="texture-preview-card">
+                    <h3>${previewText.hotbarTitle}</h3>
+                    <div class="texture-preview-surface texture-preview-surface--hotbar">
+                        <canvas id="textureHotbarPreviewCanvas" width="312" height="64"></canvas>
+                    </div>
+                    <p class="texture-note">${previewText.hotbarCopy}</p>
+                </article>
+                <article class="texture-preview-card">
+                    <h3>${previewText.tileTitle}</h3>
+                    <div class="texture-preview-surface texture-preview-surface--tile">
+                        <canvas id="textureTilePreviewCanvas" width="140" height="140"></canvas>
+                    </div>
+                    <p class="texture-note">${previewText.tileCopy}</p>
+                </article>
+                <article class="texture-preview-card">
+                    <h3>${previewText.cubeTitle}</h3>
+                    <div class="texture-preview-surface texture-preview-surface--cube">
+                        <canvas id="textureCubePreviewCanvas" width="180" height="140"></canvas>
+                    </div>
+                    <p class="texture-note">${previewText.cubeCopy}</p>
+                </article>
+            </div>
+        `;
+
+        firstPanel.insertAdjacentElement('afterend', panel);
+    }
+
     function getTextureDefaultBaseName(size) {
         return `minecraft-texture-${Number(size || state.size || DEFAULT_SIZE)}`;
     }
@@ -497,6 +595,180 @@
             elements.fileNameInput ? elements.fileNameInput.value : '',
             getTextureDefaultBaseName(state.size)
         );
+    }
+
+    function createPreviewCanvas(width, height) {
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        return canvas;
+    }
+
+    function extractPreviewRegion(source, x, y, size) {
+        const canvas = createPreviewCanvas(size, size);
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(source, x, y, size, size, 0, 0, size, size);
+        return canvas;
+    }
+
+    function getBlockSheetFaces() {
+        if (!state.blockSheetMode || state.size !== 64) return null;
+        return getBlockSheetSlots().reduce((faces, slot) => {
+            faces[slot.key] = extractPreviewRegion(textureCanvas, slot.x, slot.y, 16);
+            return faces;
+        }, {});
+    }
+
+    function getItemPreviewSource() {
+        const faces = getBlockSheetFaces();
+        return faces ? faces.front : textureCanvas;
+    }
+
+    function drawPreviewTexture(ctx, source, x, y, size) {
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(source, 0, 0, source.width, source.height, x, y, size, size);
+    }
+
+    function renderInventoryPreview() {
+        if (!elements.inventoryPreview) return;
+        const canvas = elements.inventoryPreview;
+        const ctx = canvas.getContext('2d');
+        const source = getItemPreviewSource();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#111827';
+        ctx.fillRect(16, 16, 64, 64);
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.28)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(16, 16, 64, 64);
+        drawPreviewTexture(ctx, source, 24, 24, 48);
+    }
+
+    function renderHotbarPreview() {
+        if (!elements.hotbarPreview) return;
+        const canvas = elements.hotbarPreview;
+        const ctx = canvas.getContext('2d');
+        const source = getItemPreviewSource();
+        const slot = 28;
+        const gap = 4;
+        const totalWidth = slot * 9 + gap * 8;
+        const startX = Math.round((canvas.width - totalWidth) / 2);
+        const y = 18;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.82)';
+        ctx.fillRect(startX - 8, y - 8, totalWidth + 16, slot + 16);
+
+        for (let index = 0; index < 9; index += 1) {
+            const x = startX + index * (slot + gap);
+            ctx.fillStyle = index === 4 ? '#1d4ed8' : '#111827';
+            ctx.fillRect(x, y, slot, slot);
+            ctx.strokeStyle = index === 4 ? 'rgba(191, 219, 254, 0.85)' : 'rgba(148, 163, 184, 0.24)';
+            ctx.lineWidth = index === 4 ? 2 : 1;
+            ctx.strokeRect(x + 0.5, y + 0.5, slot - 1, slot - 1);
+        }
+
+        drawPreviewTexture(ctx, source, startX + 4 * (slot + gap) + 6, y + 6, 16);
+    }
+
+    function renderTilePreview() {
+        if (!elements.tilePreview) return;
+        const canvas = elements.tilePreview;
+        const ctx = canvas.getContext('2d');
+        const faces = getBlockSheetFaces();
+        const source = faces ? faces.front : textureCanvas;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const tile = 28;
+        for (let y = 0; y < canvas.height; y += tile) {
+            for (let x = 0; x < canvas.width; x += tile) {
+                drawPreviewTexture(ctx, source, x, y, tile);
+            }
+        }
+    }
+
+    function drawIsoFace(ctx, source, a, b, c, d, shade) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.lineTo(c.x, c.y);
+        ctx.lineTo(d.x, d.y);
+        ctx.closePath();
+        ctx.clip();
+        ctx.transform((b.x - a.x) / 16, (b.y - a.y) / 16, (d.x - a.x) / 16, (d.y - a.y) / 16, a.x, a.y);
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(source, 0, 0, 16, 16);
+        if (shade) {
+            ctx.fillStyle = shade;
+            ctx.fillRect(0, 0, 16, 16);
+        }
+        ctx.restore();
+    }
+
+    function renderCubePreview() {
+        if (!elements.cubePreview) return;
+        const canvas = elements.cubePreview;
+        const ctx = canvas.getContext('2d');
+        const faces = getBlockSheetFaces();
+        const shared = textureCanvas;
+        const top = faces ? faces.top : shared;
+        const front = faces ? faces.front : shared;
+        const right = faces ? faces.right : shared;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#0f172a';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.65)';
+        ctx.beginPath();
+        ctx.ellipse(canvas.width / 2, 118, 46, 12, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        const topA = { x: 90, y: 20 };
+        const topB = { x: 132, y: 42 };
+        const topC = { x: 90, y: 64 };
+        const topD = { x: 48, y: 42 };
+        const frontA = topD;
+        const frontB = topC;
+        const frontC = { x: 90, y: 108 };
+        const frontD = { x: 48, y: 86 };
+        const rightA = topC;
+        const rightB = topB;
+        const rightC = { x: 132, y: 86 };
+        const rightD = { x: 90, y: 108 };
+
+        drawIsoFace(ctx, top, topA, topB, topC, topD, 'rgba(255,255,255,0.04)');
+        drawIsoFace(ctx, front, frontA, frontB, frontC, frontD, 'rgba(0,0,0,0.12)');
+        drawIsoFace(ctx, right, rightA, rightB, rightC, rightD, 'rgba(0,0,0,0.22)');
+
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.28)';
+        ctx.lineWidth = 1;
+        [
+            [topA, topB, topC, topD],
+            [frontA, frontB, frontC, frontD],
+            [rightA, rightB, rightC, rightD]
+        ].forEach((points) => {
+            ctx.beginPath();
+            ctx.moveTo(points[0].x, points[0].y);
+            for (let index = 1; index < points.length; index += 1) {
+                ctx.lineTo(points[index].x, points[index].y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        });
+    }
+
+    function renderTexturePreviews() {
+        renderInventoryPreview();
+        renderHotbarPreview();
+        renderTilePreview();
+        renderCubePreview();
     }
 
     function getStagePadding() {
@@ -555,6 +827,7 @@
     function createSnapshot() {
         return {
             size: state.size,
+            blockSheetMode: state.blockSheetMode,
             imageData: textureCtx.getImageData(0, 0, state.size, state.size)
         };
     }
@@ -593,6 +866,8 @@
             state.size = snapshot.size;
             elements.canvasSize.value = String(snapshot.size);
         }
+
+        state.blockSheetMode = Boolean(snapshot.blockSheetMode);
 
         textureCtx.clearRect(0, 0, state.size, state.size);
         textureCtx.putImageData(snapshot.imageData, 0, 0);
@@ -705,6 +980,7 @@
 
         navigatorCtx.imageSmoothingEnabled = false;
         navigatorCtx.drawImage(textureCanvas, 0, 0, width, height);
+        drawBlockSheetOverlay(navigatorCtx, width / state.size, false);
 
         const visible = getVisibleCanvasSize();
         const widthRatio = visible.width / Math.max(editorCanvas.width, 1);
@@ -753,12 +1029,15 @@
             }
         }
 
+        drawBlockSheetOverlay(editorCtx, state.zoom, true);
+
         elements.canvasSizeValue.textContent = `${state.size} x ${state.size}`;
         elements.toolValue.textContent = text.toolNames[state.tool] || state.tool;
         elements.brushValue.textContent = `${state.brushSize}px`;
         elements.stage.classList.toggle('is-zooming', state.zoom < ZOOM_LEVELS[ZOOM_LEVELS.length - 1]);
         elements.stage.classList.toggle('is-zoom-tool', state.tool === 'zoom');
         renderNavigator();
+        renderTexturePreviews();
     }
 
     function eventToPixel(event) {
@@ -1013,6 +1292,7 @@
             const nextSize = clamp(Number(elements.canvasSize.value || DEFAULT_SIZE), 8, 256);
             rebuildTextureCanvas(nextSize, true);
             state.size = nextSize;
+            state.blockSheetMode = false;
             if (renameWithDefault) {
                 syncTextureFileName(true);
             }
@@ -1069,6 +1349,7 @@
                     pushUndoSnapshot();
                     textureCtx.clearRect(0, 0, state.size, state.size);
                     textureCtx.drawImage(image, 0, 0, image.width, image.height, 0, 0, state.size, state.size);
+                    state.blockSheetMode = false;
                     setExtractedPalette(extractPaletteFromSource(image));
                     renderCanvas();
                     centerStageOnPixel(state.size / 2, state.size / 2);
@@ -1130,6 +1411,7 @@
         elements.clearButton.addEventListener('click', () => {
             pushUndoSnapshot();
             textureCtx.clearRect(0, 0, state.size, state.size);
+            state.blockSheetMode = false;
             renderCanvas();
         });
 
@@ -1147,6 +1429,7 @@
         elements.starterButton.addEventListener('click', () => {
             pushUndoSnapshot();
             textureCtx.clearRect(0, 0, state.size, state.size);
+            state.blockSheetMode = false;
             textureCtx.fillStyle = '#8b5cf6';
             textureCtx.fillRect(0, 0, state.size, state.size);
             textureCtx.fillStyle = '#c4b5fd';
@@ -1194,6 +1477,11 @@
         elements.paletteFileInput = document.getElementById('texturePaletteFileInput');
         elements.paletteHint = document.getElementById('texturePaletteHint');
         elements.extractedColors = document.getElementById('textureExtractedColors');
+        ensurePreviewPanel();
+        elements.inventoryPreview = document.getElementById('textureInventoryPreviewCanvas');
+        elements.hotbarPreview = document.getElementById('textureHotbarPreviewCanvas');
+        elements.tilePreview = document.getElementById('textureTilePreviewCanvas');
+        elements.cubePreview = document.getElementById('textureCubePreviewCanvas');
         elements.undoButton = document.getElementById('textureUndoButton');
         elements.undoQuickButton = document.getElementById('textureUndoQuickButton');
         elements.redoButton = document.getElementById('textureRedoButton');
