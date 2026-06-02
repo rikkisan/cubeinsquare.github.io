@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Minecraft Resource Pack Wiki, CMD Guides, and Tool Articles | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, and villager trades.">
+    <meta name="description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, villager trades, and modern component-era workflows.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -21,7 +21,7 @@
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Minecraft Resource Pack Wiki, CMD Guides, and Tool Articles | Cube in Square">
-    <meta property="og:description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, and villager trades.">
+    <meta property="og:description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, villager trades, and modern component-era workflows.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
@@ -29,7 +29,7 @@
     <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Minecraft Resource Pack Wiki, CMD Guides, and Tool Articles | Cube in Square">
-    <meta name="twitter:description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, and villager trades.">
+    <meta name="twitter:description" content="Minecraft wiki with resource pack guides, CustomModelData explainers, and articles for the generator, skin editor, texture painter, custom potions, villager trades, and modern component-era workflows.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -47,8 +47,10 @@
                     <div class="mega-group"><a class="mega-group-title" href="/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/wiki-custom-model-data/">CustomModelData</a><a href="/wiki/#resource-pack-paths">Resource pack structure</a></div></div>
                     <div class="mega-group"><a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/wiki-resource-pack-generator/">How to use the generator</a></div></div>
                     <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#advanced-rp-guides">Advanced RP and migration guides</a><div class="mega-sublist"><a href="/wiki-resource-pack-migration-1-21-4/">Migrating packs to 1.21.4</a><a href="/wiki-data-components-architecture/">Data Components architecture</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#rp-server-plugins-wiki">RP server plugins</a><div class="mega-sublist"><a href="/wiki-mechanism-plugin/">Mechanism Plugin</a><a href="/wiki-headhunter-plugin/">HeadHunter Plugin</a></div></div>
                 </div>
-                <div class="mega-feature"><a class="mega-card" href="/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+                <div class="mega-feature"><a class="mega-card" href="/wiki-data-components-architecture/"><strong>Data Components</strong><span>How Mojang split item meaning into explicit components instead of NBT blobs.</span></a><a class="mega-card" href="/wiki-resource-pack-migration-1-21-4/"><strong>Migration guide</strong><span>Why 1.20 habits break and how to rebuild your workflow for 1.21.4.</span></a><a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
             </div>
         </div>
         <div class="steam-nav-menu">
@@ -66,7 +68,7 @@
 <main class="page-shell">
     <section class="page-hero">
         <h1>Minecraft Resource Pack Wiki and Tool Guides</h1>
-        <p class="page-lead">Minecraft resource pack guides, CustomModelData explainers, and walkthroughs for the generator, skin editor, texture painter, potions, and villager trade tools.</p>
+        <p class="page-lead">Minecraft resource pack guides, CustomModelData explainers, and walkthroughs for the generator, skin editor, texture painter, potions, villager trade tools, and component-era item systems.</p>
     </section>
     <section class="page-section" id="general-wiki">
         <h2 class="section-title">General Articles</h2>
@@ -94,8 +96,14 @@
         <div class="resource-grid">
             <article class="resource-card"><h3>RP economy with custom_data</h3><p>How to stop forged notes, passes, and tokens from slipping into your villager economy.</p><a class="resource-link" href="/wiki-rp-economy-custom-data/">Read article</a></article>
             <article class="resource-card"><h3>Migrating packs to 1.21.4</h3><p>A practical checklist for moving old NBT-heavy pack workflows into the modern component format.</p><a class="resource-link" href="/wiki-resource-pack-migration-1-21-4/">Read article</a></article>
-            <article class="resource-card"><h3>Smart potions with potion_contents</h3><p>How to build modern 1.21.4 potion items with cleaner contents, color, and identity.</p><a class="resource-link" href="/wiki-smart-potion-contents-1-21-4/">Read article</a></article>
-            <article class="resource-card"><h3>String IDs for RP items</h3><p>Why readable item IDs scale better than mystery numbers when your server inventory grows.</p><a class="resource-link" href="/wiki-string-ids-custom-model-data/">Read article</a></article>
+            <article class="resource-card"><h3>Data Components architecture</h3><p>A deep explanation of how Mojang split visible text, hidden state, and model identity into explicit components.</p><a class="resource-link" href="/wiki-data-components-architecture/">Read article</a></article>
+        </div>
+    </section>
+    <section class="page-section" id="rp-server-plugins-wiki">
+        <h2 class="section-title">RP Server Plugins</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Mechanism Plugin</h3><p>A machine-body RP system with Gear Heart transformation, oxidation upkeep, copper metabolism, jetpacks, lasers, storm charge, and admin tuning.</p><a class="resource-link" href="/wiki-mechanism-plugin/">Read article</a></article>
+            <article class="resource-card"><h3>HeadHunter Plugin</h3><p>A progression system built around Hunter's Fang upgrades and dozens of creature powers, with deliberate restrictions and death-loss balancing.</p><a class="resource-link" href="/wiki-headhunter-plugin/">Read article</a></article>
         </div>
     </section>
     <section class="page-section" id="resource-pack-paths">
@@ -111,8 +119,7 @@
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
 <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
