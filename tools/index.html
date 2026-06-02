@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Tools | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lightweight online Minecraft tools: resource-pack generation, skin editing, texture painting, custom villager trades, custom potions, plus upcoming sphere, circle, map-art, and pixel-art helpers.">
+    <meta name="description" content="Browser tools for Minecraft resource packs, custom items, spheres, skins, textures, villager trades, and custom potions.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -13,23 +13,20 @@
     <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/tools/">
-    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/tools/">
     <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/tools/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/tools/">
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/tools/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/tools/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/tools/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tools | Cube in Square">
-    <meta property="og:description" content="Lightweight online Minecraft tools: resource-pack generation, skin editing, texture painting, custom villager trades, custom potions, plus upcoming sphere, circle, map-art, and pixel-art helpers.">
+    <meta property="og:description" content="Pack building, custom items, sphere planning, skins, textures, villager trades, and potions in one browser toolkit.">
     <meta property="og:url" content="https://cubeinsquare.com/tools/">
     <meta property="og:locale" content="en_US">
-    <meta property="og:locale:alternate" content="ru_RU">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Tools | Cube in Square">
-    <meta name="twitter:description" content="Lightweight online Minecraft tools: resource-pack generation, skin editing, texture painting, custom villager trades, custom potions, plus upcoming sphere, circle, map-art, and pixel-art helpers.">
+    <meta name="twitter:description" content="A practical browser toolkit for Minecraft pack work, custom items, and RP server workflows.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -42,77 +39,78 @@
         <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu">
             <a class="steam-nav-dropdown" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#general-wiki">General articles</a><div class="mega-sublist"><a href="/wiki-custom-model-data/">CustomModelData</a><a href="/wiki/#resource-pack-paths">Resource pack structure</a></div></div>
-                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a><div class="mega-sublist"><a href="/wiki-resource-pack-generator/">How to use the generator</a></div></div>
-                    <div class="mega-group"><a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a><div class="mega-sublist"><a href="/tools/">Tools catalog</a><a href="/wiki-skin-editor/">Skin editor</a><a href="/wiki-texture-painter/">Texture painter</a><a href="/wiki-custom-potions/">Custom potions</a><a href="/wiki-custom-villager-trades/">Villager trades</a></div></div>
-                </div>
-                <div class="mega-feature"><a class="mega-card" href="/wiki-texture-painter/"><strong>Texture painter guide</strong><span>How texture size changes detail, workload, and readability.</span></a><a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a><a class="mega-card" href="/wiki-skin-editor/"><strong>Skin editor guide</strong><span>How to paint the atlas and the player model together.</span></a></div>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/wiki/">Open wiki</a>
+                <a href="/wiki-custom-model-data/">CustomModelData</a>
+                <a href="/wiki-resource-pack-generator/">Pack generator guide</a>
             </div>
         </div>
         <div class="steam-nav-menu">
             <a class="steam-nav-dropdown is-active" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list"><a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a><a href="/custom-item-builder/">Custom item builder</a><a href="/skin-editor/">Minecraft Skin Editor</a><a href="/texture-painter/">Texture painter</a><a href="/custom-villager-trades/">Custom villager trades</a><a href="/custom-potions/">Custom potions</a><a href="/tool-coming-soon/">Upcoming tools</a></div>
-                <div class="mega-feature"><a class="mega-card" href="/custom-item-builder/"><strong>Custom item builder</strong><span>Assemble version-aware give commands with item_model, custom_data, lore, and CustomModelData.</span></a><a class="mega-card" href="/texture-painter/"><strong>Texture painter</strong><span>Choose a canvas size, paint a PNG, and send it into your pack workflow.</span></a><a class="mega-card" href="/skin-editor/"><strong>Skin editor</strong><span>Draw on the atlas or paint directly on the 3D player model.</span></a></div>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/resource-pack-generator/">Pack generator</a>
+                <a href="/custom-item-builder/">Custom item builder</a>
+                <a href="/sphere-generator/">Sphere generator</a>
+                <a href="/skin-editor/">Skin editor</a>
+                <a href="/texture-painter/">Texture painter</a>
+                <a href="/custom-villager-trades/">Villager trades</a>
+                <a href="/custom-potions/">Custom potions</a>
+                <a href="/tool-coming-soon/">Upcoming tools</a>
             </div>
         </div>
-        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/about/">Cube in Square</a><a href="/privacy-policy/">Privacy Policy</a></div></div>
-        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/tools/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/tools/">FR</a><a href="/de/tools/">DE</a></div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/about/">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/about/">About</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/wiki/" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a><a href="/ru/tools/">RU</a><a href="/fr/tools/">FR</a><a href="/de/tools/">DE</a></div>
     </div>
 </div>
+
 <main class="page-shell">
-    <section class="page-hero"><h1>Tools</h1><p class="page-lead">A collection of lightweight browser tools for building Minecraft content. The resource-pack generator, custom item builder, skin editor, texture painter, villager trades, and custom potions are live now. The next roadmap items are spheres, circles, map art, and a pixel-art palette.</p></section>
-    <section class="page-section" id="available-tools"><h2 class="section-title">Available Now</h2><div class="resource-grid"><article class="resource-card"><h3>Minecraft Resource Pack Generator <span class="status-pill">ready</span></h3><p>Build a ZIP pack with item textures, block textures, armor, CustomModelData, blockstates, and a 3D preview.</p><a class="resource-link" href="/resource-pack-generator/">Open generator</a></article><article class="resource-card"><h3>Custom item builder <span class="status-pill">new</span></h3><p>Assemble version-aware <code>/give</code> commands with visible names, lore, hidden item IDs, <code>item_model</code>, and modern <code>custom_model_data</code> slots.</p><a class="resource-link" href="/custom-item-builder/">Open builder</a></article><article class="resource-card"><h3>Minecraft Skin Editor <span class="status-pill">ready</span></h3><p>Paint a classic 64x64 skin atlas, draw directly on the 3D player model, import old PNG skins, and export the finished file.</p><a class="resource-link" href="/skin-editor/">Open editor</a></article><article class="resource-card"><h3>Texture painter <span class="status-pill">new</span></h3><p>Choose a canvas size, paint item or block textures in the browser, export PNGs, and hand them off to the generator.</p><a class="resource-link" href="/texture-painter/">Open painter</a></article><article class="resource-card"><h3>Custom villager trades <span class="status-pill">ready</span></h3><p>Build villager trades with buy items, rewards, CustomModelData, limits, XP, and a ready summon command.</p><a class="resource-link" href="/custom-villager-trades/">Open builder</a></article><article class="resource-card"><h3>Custom potions <span class="status-pill">ready</span></h3><p>Build commands for <code>potion</code>, <code>splash_potion</code>, and <code>lingering_potion</code> with effects, color, lore, CustomModelData, and version-aware syntax.</p><a class="resource-link" href="/custom-potions/">Open builder</a></article></div></section>
-    <section class="page-section" id="choose-tool"><h2 class="section-title">Which tool should you open first?</h2><p>If you already know the end result you want, choosing the first tool becomes much easier. Some pages exist to generate commands, some exist to build the visual layer, and some exist to do the draft work that should happen before Minecraft ever sees a file.</p><table class="compact-table"><thead><tr><th>Goal</th><th>Best starting tool</th><th>Why it belongs there</th></tr></thead><tbody><tr><td>A custom item with lore, identity, and a give command</td><td>Custom item builder</td><td>It owns the command side and keeps version-specific syntax readable.</td></tr><tr><td>A texture, icon, or block face that still needs to be painted</td><td>Texture painter</td><td>You can draft the PNG before packaging it into a resource pack.</td></tr><tr><td>A full resource pack ZIP with items, blocks, or armor</td><td>Resource Pack Generator</td><td>It assembles the final pack structure and export layer.</td></tr><tr><td>A shopkeeper or quest NPC with sell and buy rules</td><td>Custom villager trades</td><td>It specializes in long summon commands and version-aware item stacks.</td></tr><tr><td>A potion reward, alchemical sample, or event flask</td><td>Custom potions</td><td>It handles bottle type, potion contents, effects, lore, and color in one place.</td></tr><tr><td>A player skin or cosmetic concept</td><td>Skin Editor</td><td>It lets you work on the atlas and the 3D model together.</td></tr></tbody></table></section>
-    <section class="page-section" id="workflows"><h2 class="section-title">Typical workflows</h2><div class="resource-grid"><article class="resource-card"><h3>Story prop pipeline</h3><p>Paint the icon in Texture Painter, package it in the Resource Pack Generator, then create the final give command in the Custom Item Builder.</p></article><article class="resource-card"><h3>Shopkeeper pipeline</h3><p>Define the sell item first, then move into Villager Trades once you know the reward item, price, and usage limits.</p></article><article class="resource-card"><h3>Potion pipeline</h3><p>Use Custom Potions for the effect package, then link the bottle to a special visual style through CustomModelData if the pack needs it.</p></article></div><p>The tools are intentionally small, but they are not isolated. Most real projects bounce between two or three of them. That is the reason they live on one site instead of being split into unrelated one-page generators.</p></section>
-    <section class="page-section" id="why-together"><h2 class="section-title">Why these tools live together</h2><p>A resource-pack workflow is rarely just one action. A custom sword may start as a painted PNG, turn into a model hook, become a give command, and later end up inside a villager trade or quest reward. A potion may need its own lore, color, and inventory silhouette before it feels like part of a server instead of a generic bottle.</p><p>Keeping those steps under one roof matters. It means the guides can explain the same workflow the tools expect, and it means the site can stay focused on real Minecraft creator jobs instead of acting like a random list of disconnected utilities.</p></section>
-    <section class="page-section" id="upcoming-tools"><h2 class="section-title">Next Candidates</h2><div class="resource-grid"><article class="resource-card"><h3>Spheres and circles planner <span class="status-pill">soon</span></h3><p>Generate easy build references for circles, domes, spheres, and other rounded shapes.</p></article><article class="resource-card"><h3>Map art builder <span class="status-pill">soon</span></h3><p>Prepare map-art layouts with size planning, block palette choices, and a cleaner build starting point.</p></article><article class="resource-card"><h3>Pixel-art palette <span class="status-pill">soon</span></h3><p>Fast color, opacity, and palette helpers for 16x16, 32x32, and 64x64 texture work.</p></article></div></section>
-    <section class="page-section" id="tools-faq"><h2 class="section-title">FAQ</h2><div class="faq-section">
-    <details class="faq-item" open>
-        <summary>
-            <span class="faq-question">Do I need every tool for every project?</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="faq-answer"><p>No. Most jobs start in one place and only branch later. A quick villager shop and a full custom relic pack are very different workloads.</p></div>
-    </details>
-    <details class="faq-item">
-        <summary>
-            <span class="faq-question">What if I only care about commands, not textures?</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="faq-answer"><p>Start with the Custom Item Builder, Villager Trades, or Custom Potions. The visual side only matters if you want a non-vanilla look.</p></div>
-    </details>
-    <details class="faq-item">
-        <summary>
-            <span class="faq-question">What if I already have textures prepared?</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="faq-answer"><p>Then you can skip straight to the Resource Pack Generator and treat the painter as an optional drafting space.</p></div>
-    </details>
-    <details class="faq-item">
-        <summary>
-            <span class="faq-question">Why are there version selectors in multiple tools?</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="faq-answer"><p>Because Minecraft changed item syntax more than once. The site keeps those differences visible so the exported commands match the server you actually run.</p></div>
-    </details>
-    <details class="faq-item">
-        <summary>
-            <span class="faq-question">Where should I go if I need background before opening a tool?</span>
-            <span class="faq-toggle" aria-hidden="true"></span>
-        </summary>
-        <div class="faq-answer"><p>The wiki is the best starting point. The practical guides explain the moving parts before you begin generating commands or pack files.</p></div>
-    </details>
-</div></section>
-    <section class="page-section" id="support-tools"><h2 class="section-title">Support the project</h2><div class="resource-grid"><article class="resource-card"><h3>Patreon <span class="status-pill">support</span></h3><p>If these tools save you time, you can support Cube in Square on Patreon. That helps us keep shipping new editors, guides, and server-side tools without slowing the site down.</p><a class="resource-link" href="https://www.patreon.com/c/Cubeinaquare?vanity=user" target="_blank" rel="noopener noreferrer">Open Patreon</a></article></div></section>
+    <section class="page-hero">
+        <h1>Tools</h1>
+        <p class="page-lead">The live toolkit now covers the full no-mod workflow: pack generation, custom item commands, sphere planning, skin work, texture painting, villager trades, and potion setup. Use the tool that solves the immediate task, then move to the next step without leaving the site.</p>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Available now</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Minecraft Resource Pack Generator <span class="status-pill">ready</span></h3><p>Build ZIP packs with item textures, block textures, armor overrides, blockstates, and client-side previews.</p><a class="resource-link" href="/resource-pack-generator/">Open generator</a></article>
+            <article class="resource-card"><h3>Custom item builder <span class="status-pill">ready</span></h3><p>Assemble version-aware give commands with item names, lore, hidden IDs, item_model, custom_data, and modern CustomModelData slots.</p><a class="resource-link" href="/custom-item-builder/">Open builder</a></article>
+            <article class="resource-card"><h3>Sphere generator <span class="status-pill">new</span></h3><p>Plan circles, domes, hollow spheres, and solid spheres layer by layer before you place the first block.</p><a class="resource-link" href="/sphere-generator/">Open generator</a></article>
+            <article class="resource-card"><h3>Minecraft Skin Editor <span class="status-pill">ready</span></h3><p>Paint the classic 64x64 atlas, work directly on the player model, and export the finished skin as PNG.</p><a class="resource-link" href="/skin-editor/">Open editor</a></article>
+            <article class="resource-card"><h3>Texture painter <span class="status-pill">ready</span></h3><p>Choose a canvas size, paint a PNG for an item or block, and pass it straight into the pack workflow.</p><a class="resource-link" href="/texture-painter/">Open editor</a></article>
+            <article class="resource-card"><h3>Custom villager trades <span class="status-pill">ready</span></h3><p>Create villager trade chains with costs, rewards, limits, XP, and a summon command that respects version syntax.</p><a class="resource-link" href="/custom-villager-trades/">Open builder</a></article>
+            <article class="resource-card"><h3>Custom potions <span class="status-pill">ready</span></h3><p>Build give commands for potion, splash_potion, and lingering_potion with potion_contents, color, lore, and extra metadata.</p><a class="resource-link" href="/custom-potions/">Open builder</a></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="upcoming-tools">
+        <h2 class="section-title">Still in the queue</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Map art builder <span class="status-pill">soon</span></h3><p>Prepare map art layouts with block palette planning, scale control, and a cleaner starting grid.</p></article>
+            <article class="resource-card"><h3>Pixel-art palette <span class="status-pill">soon</span></h3><p>A quick helper for color choices, transparency, and palette decisions across 16x16, 32x32, and 64x64 textures.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="support-tools">
+        <h2 class="section-title">Support the project</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Patreon <span class="status-pill">support</span></h3><p>If these tools save you time, you can support Cube in Square on Patreon. That support helps us ship new editors, guides, and server-facing tools without turning the site into a bloated mess.</p><a class="resource-link" href="https://www.patreon.com/c/Cubeinaquare?vanity=user" target="_blank" rel="noopener noreferrer">Open Patreon</a></article>
+        </div>
+    </section>
 </main>
+
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-

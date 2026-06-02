@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers | Cube in Square">
+    <meta property="og:description" content="How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers | Cube in Square">
+    <meta name="twitter:description" content="How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">← All articles</a>
+    <section class="page-hero">
+        <h1>Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers</h1>
+        <p class="page-lead">A giant list of numbered CustomModelData values works for a while, and then one day nobody remembers whether 2047 was a relic ring, a sheriff badge, or an old test mug. String IDs solve the organizational problem even when the renderer still needs a model reference.</p>
+        <a class="resource-link" href="/resource-pack-generator/">Open resource-pack generator</a>
+    </section>
+    <article>
+        <h2>The problem with number-only systems</h2>
+        <p>Numbers are fine for rendering, but bad for memory. Staff documents turn into giant translation tables, old IDs get reused by mistake, and debugging a broken quest reward becomes slower than it should be.</p>
+        <h2>Keep a readable identity layer</h2>
+        <p>Even if the visual model pipeline still points to a number, your server workflow should also keep a string ID such as <code>rp.guard.badge_bronze</code> or <code>quest.chapter3.letter_mayor</code>. That string can live in <code>minecraft:custom_data</code> while the visible art keeps using <code>custom_model_data</code>.</p>
+        <h2>A safe combined pattern</h2>
+<pre><code>components:{
+  "minecraft:custom_model_data":2047,
+  "minecraft:custom_data":{
+    item_id:"rp.guard.badge_bronze",
+    issue:"capital_watch"
+  }
+}</code></pre>
+        <h2>Why this scales better</h2>
+        <ul><li>The art team can search readable IDs in docs.</li><li>Quest logic becomes easier to audit.</li><li>Old items are less likely to be confused with test assets.</li><li>Trades and rewards can validate the hidden string, not only the visible model.</li></ul>
+        <h2>Suggested naming strategy</h2>
+        <ul><li>Use namespaces by system: <code>rp.</code>, <code>quest.</code>, <code>shop.</code>, <code>faction.</code></li><li>Keep tokens readable and stable.</li><li>Avoid spaces and translated names in the hidden ID.</li><li>Let the visible text be local and pretty, and let the hidden ID stay boring.</li></ul>
+        <h2>Where the number still belongs</h2>
+        <p>The numeric model hook still matters for rendering and pack organization. The trick is not to throw it away, but to stop pretending that one integer should also be your only admin-friendly item identity.</p>
+        <h2>Recommended server workflow</h2>
+        <ol><li>Assign the art-facing model value.</li><li>Assign the logic-facing string ID.</li><li>Use the string ID in documentation, shops, and validation checks.</li><li>Keep the number mainly as a pack rendering detail.</li></ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft-Kugel-Generator Guide | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie man Kreise, Kuppeln, hohle Schalen und volle Kugeln in Minecraft plant, wie Radius und Durchmesser zusammenhängen und wie die Ebenen des Kugel-Generators gelesen werden.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-sphere-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft-Kugel-Generator Guide | Cube in Square">
+    <meta property="og:description" content="Praktischer Guide für Kreise, Kuppeln, hohle Kugeln und volle Kugeln mit Ebenenplanung in Minecraft.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-sphere-generator/">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft-Kugel-Generator Guide | Cube in Square">
+    <meta name="twitter:description" content="Wie man den Minecraft-Kugel-Generator benutzt und seine Ebenen in einen besseren Bauplan übersetzt.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get">
+            <input type="text" name="q" placeholder="Website durchsuchen...">
+            <button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/wiki-sphere-generator/">EN</a><a href="/ru/wiki-sphere-generator/">RU</a><a href="/fr/wiki-sphere-generator/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&lsaquo; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Minecraft-Kugel-Generator Guide</h1>
+        <p class="page-lead">Runde Builds wirken einfach, bis die Kurve plötzlich zu flach, zu eng oder leicht verschoben aussieht. Dieser Guide soll dafür sorgen, dass sich der Generator wie ein echtes Bauwerkzeug anfühlt und nicht nur wie ein hübsches Raster.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/de/sphere-generator/">Kugel-Generator öffnen</a>
+            <a class="resource-link resource-link-secondary" href="/de/tools/">Zurück zu den Werkzeugen</a>
+        </div>
+    </section>
+
+    <article>
+        <h2>Welches Problem der Generator wirklich löst</h2>
+        <p>Es geht nicht nur darum, Zeit zu sparen. Der Generator verhindert vor allem diesen typischen Moment, in dem man zwei oder drei Ebenen setzt, zurücktritt und merkt, dass die Kurve schon falsch wirkt. Das Tool zeigt Oberansicht, Frontansicht und die aktuelle Ebene, bevor überhaupt der erste Block liegt.</p>
+
+        <h2>Radius, Durchmesser und echte Größe</h2>
+        <p>Die wichtigste Steuerung ist der Radius, nicht der Durchmesser. Der Radius misst den Abstand von der Mitte bis zum Außenrand. Ein Radius von 7 ergibt deshalb einen Durchmesser von 15 Blöcken, weil die mittlere Säule nur einmal zählt. Genau hier entstehen die meisten Maßfehler.</p>
+        <p>Für echte Bauentscheidungen ist der Durchmesser die wichtigere Zahl. Radius ist die Eingabe. Durchmesser ist die Fläche, die das Bauwerk im Verhältnis zu Türmen, Wegen, Dächern oder Toren wirklich einnimmt.</p>
+
+        <h2>Welchen Modus sollte man wählen?</h2>
+        <table class="compact-table">
+            <tr><th>Modus</th><th>Gut für</th><th>Was sich ändert</th></tr>
+            <tr><td>Volle Kugel</td><td>Massive Formen, Kerne, Volumen zum Ausarbeiten</td><td>Alle inneren Ebenen werden gefüllt</td></tr>
+            <tr><td>Hohle Kugel</td><td>Kuppeln, Observatorien, Lampenschalen, Räume</td><td>Nur die äußere Schale bleibt</td></tr>
+            <tr><td>Obere Kuppel</td><td>Dächer, Kappen, Turmspitzen</td><td>Nur die obere Hälfte wird gebaut</td></tr>
+            <tr><td>Untere Kuppel</td><td>Schalen, Gruben, umgedrehte Dächer</td><td>Nur die untere Hälfte wird gebaut</td></tr>
+            <tr><td>Gefüllter Kreis</td><td>Böden, Plätze, Turmfundamente</td><td>Eine gefüllte flache Ebene</td></tr>
+            <tr><td>Umriss-Kreis</td><td>Ringe und Begrenzungslinien</td><td>Eine flache Ebene ohne Füllung</td></tr>
+        </table>
+
+        <h2>Voll oder hohl?</h2>
+        <p>Wenn der Innenraum wichtig ist, ist die hohle Version fast immer klüger. Sie spart Blöcke, lässt Platz für Licht und Treppen und wird schneller zu einem nutzbaren Raum. Eine volle Kugel ist eher dann sinnvoll, wenn die Masse selbst zählt oder wenn der Innenraum später aus dem Volumen herausgeschnitten werden soll.</p>
+        <p>Die Schalendicke deckt den Zwischenbereich ab. Eine einblockdicke Schale hält die Form leicht. Eine dickere Schale passt besser, wenn das Material schwer wirken soll oder wenn innen Fenster, Absätze oder Wanddetails Platz brauchen.</p>
+
+        <h2>Wie man die Ebenen liest</h2>
+        <p>Jede Ebene ist ein horizontaler Schnitt durch die Form. Meist baut man am sichersten mit der breitesten Ebene zuerst, weil sie sofort den Fußabdruck im Gelände setzt. Sobald dieser Ankerkreis steht, wird der Rest zu einem Rhythmus statt zu einem Rätsel.</p>
+        <p>Darum gibt es sowohl die visuelle Rasteransicht als auch den Textexport. Manche bauen lieber mit einer klaren Grafik auf dem zweiten Monitor. Andere wollen die Ebene in Notizen, Discord oder ein gemeinsames Planungsdokument kopieren.</p>
+
+        <h2>Warum die Silhouetten so wichtig sind</h2>
+        <p>Die meisten misslungenen Kugeln scheitern nicht an einer einzelnen Ebene. Sie scheitern daran, wie die Form insgesamt aus einer Richtung gelesen wird. Die Oberansicht sagt, ob der Grundriss noch rund wirkt. Die Frontansicht sagt, ob sich die Kurve mit sauberem Rhythmus nach oben schließt.</p>
+        <p>Wenn die Silhouette schon im Generator komisch wirkt, rettet die Blockversion sie fast nie. Genau dann sollte Radius, Schalendicke oder sogar der Modus geändert werden.</p>
+
+        <h2>Empfohlener Workflow</h2>
+        <ol>
+            <li>Den Radius nach dem wirklich verfügbaren Platz wählen.</li>
+            <li>Den Durchmesser mit umliegenden Bauten vergleichen.</li>
+            <li>Den passenden Modus wählen: Kugel, Schale, Kuppel oder Kreis.</li>
+            <li>Ober- und Frontansicht prüfen, bevor gebaut wird.</li>
+            <li>Wenn möglich mit der breitesten Ebene beginnen.</li>
+            <li>Danach die restlichen Ebenen per Liste oder Schieberegler abarbeiten.</li>
+        </ol>
+
+        <h2>Häufige Fehler</h2>
+        <ul>
+            <li>Im Kopf in Durchmesser denken, aber Radius verstellen.</li>
+            <li>Mit einer zufälligen Ebene statt mit der breitesten Start-Ebene beginnen.</li>
+            <li>Eine volle Kugel wählen, obwohl am Ende nur die Außenhaut sichtbar ist.</li>
+            <li>Eine schwache Kurve direkt im Bau retten wollen, statt zuerst den Plan zu ändern.</li>
+            <li>Nur von oben schauen und die Frontansicht ignorieren.</li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <h3>Von unten oder aus der Mitte anfangen?</h3>
+        <p>Wenn es geht, beginne mit der breitesten Ebene. Das ist der schnellste Weg, die Form sauber im Raum zu verankern.</p>
+
+        <h3>Wann ist eine hohle Kugel besser?</h3>
+        <p>Immer dann, wenn man hinein will, sie beleuchten will, sie dekorieren will oder einfach keine Blöcke auf unsichtbares Volumen verschwenden möchte.</p>
+
+        <h3>Kann man das Tool auch nur für Kreise nutzen?</h3>
+        <p>Ja. Gefüllte und umrissene Kreise sind schon allein nützlich für Böden, Türme, Plattformen, Brunnen und runde Räume.</p>
+
+        <h3>Wie merke ich, dass die Kugel zu groß wird?</h3>
+        <p>Sieh auf den Durchmesser und vergleiche ihn mit bestehenden Bezugspunkten in der Umgebung. Radius steuert. Durchmesser verrät die echte Größe.</p>
+
+        <h3>Wozu der Textexport, wenn es schon ein Raster gibt?</h3>
+        <p>Weil sich Text leichter teilen lässt. Er funktioniert in Notizen, Nachrichten und Planungsdokumenten, wenn mehrere Leute am Build arbeiten.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

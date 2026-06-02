@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по генератору сфер Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Как планировать круги, купола, полые оболочки и сплошные сферы в Minecraft, как радиус меняет диаметр и как читать слои генератора сфер.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-sphere-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-sphere-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Гайд по генератору сфер Minecraft | Cube in Square">
+    <meta property="og:description" content="Практический гайд по кругам, куполам, полым и сплошным сферам в Minecraft с послойным планированием.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-sphere-generator/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Гайд по генератору сфер Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Как пользоваться генератором сфер Minecraft и превращать его слои в удобный строительный план.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get">
+            <input type="text" name="q" placeholder="Поиск по сайту...">
+            <button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/wiki-sphere-generator/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-sphere-generator/">FR</a><a href="/de/wiki-sphere-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&lsaquo; Все статьи</a>
+    <section class="page-hero">
+        <h1>Гайд по генератору сфер Minecraft</h1>
+        <p class="page-lead">Круглые постройки кажутся простыми ровно до того момента, когда кривая начинает сплющиваться, ломаться или уезжать от центра. Этот гайд нужен затем, чтобы генератор сфер ощущался не как красивая сетка, а как нормальный строительный инструмент.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/ru/sphere-generator/">Открыть генератор сфер</a>
+            <a class="resource-link resource-link-secondary" href="/ru/tools/">Назад к инструментам</a>
+        </div>
+    </section>
+
+    <article>
+        <h2>Что именно решает генератор</h2>
+        <p>Смысл такого инструмента не только в экономии времени. Он спасает от обычной ситуации, когда вы поставили несколько слоёв в мире, отошли на шаг назад и внезапно увидели, что кривая уже ощущается неправильной. Генератор заранее показывает верхний силуэт, фронтальный силуэт и точный текущий слой до того, как вы вообще взяли блоки.</p>
+
+        <h2>Радиус, диаметр и реальный размер постройки</h2>
+        <p>Главный параметр в тулзе — это радиус, а не диаметр. Радиус измеряется от центра до внешнего края. Поэтому радиус 7 даёт диаметр 15 блоков: центральная колонка считается только один раз. Именно здесь чаще всего и происходят ошибки масштаба.</p>
+        <p>Планируя стройку, полезнее смотреть на диаметр как на число, которое описывает реальный след постройки в мире. Радиус — это удобный способ управлять формой. Диаметр — это то, сколько места она на самом деле займёт рядом с башней, дорогой, воротами или крышей.</p>
+
+        <h2>Какой режим выбрать</h2>
+        <table class="compact-table">
+            <tr><th>Режим</th><th>Для чего подходит</th><th>Что меняется</th></tr>
+            <tr><td>Сплошная сфера</td><td>Массивные формы, сердцевины, объёмы под резьбу</td><td>Заполняются все внутренние слои</td></tr>
+            <tr><td>Полая сфера</td><td>Купола, обсерватории, светильники, комнаты</td><td>Остаётся только наружная оболочка</td></tr>
+            <tr><td>Верхний купол</td><td>Крыши, колпаки, вершины башен</td><td>Строится только верхняя половина</td></tr>
+            <tr><td>Нижний купол</td><td>Чаши, ямы, перевёрнутые крыши</td><td>Строится только нижняя половина</td></tr>
+            <tr><td>Заполненный круг</td><td>Полы, площадки, основания башен</td><td>Один сплошной плоский слой</td></tr>
+            <tr><td>Контурный круг</td><td>Разметка периметра и кольца</td><td>Один плоский слой без заполнения</td></tr>
+        </table>
+
+        <h2>Сплошная или полая сфера?</h2>
+        <p>Если внутреннее пространство важно, почти всегда разумнее брать полую сферу. Она экономит блоки, оставляет место под свет, лестницы и декор, и её проще превращать в рабочее помещение. Сплошная сфера полезнее там, где сама масса формы важнее интерьера, или когда вы хотите позже вырезать внутренности вручную.</p>
+        <p>Толщина оболочки нужна как раз для промежуточного случая. Один блок держит форму лёгкой. Более толстая оболочка подходит, когда материал должен ощущаться тяжёлым или когда на внутренней стене должны появиться окна, уступы и декоративные уровни.</p>
+
+        <h2>Как читать слои</h2>
+        <p>Каждый слой — это один горизонтальный срез фигуры. Чаще всего удобнее начинать с самого широкого слоя: он сразу задаёт пятно постройки на земле. Когда этот якорный круг уже стоит, дальше всё превращается в понятный ритм: подняться или опуститься на уровень, сверить раскладку, повторить.</p>
+        <p>Поэтому генератор держит и графическую сетку, и текстовый экспорт. Кому-то удобнее видеть слой визуально на втором мониторе. Кому-то проще кинуть текст в заметки, Discord или общий документ с планом стройки.</p>
+
+        <h2>Почему важны верхний и фронтальный силуэты</h2>
+        <p>Плохая сфера обычно ломается не на одном конкретном слое. Она ломается тем, как читается целиком с одной из сторон. Верхний силуэт отвечает за ощущение круглого пятна. Фронтальный показывает, насколько мягко кривая поднимается и сужается по высоте.</p>
+        <p>Если уже в генераторе силуэт кажется странным, реальная стройка почти никогда это не исправляет. Значит, лучше поменять радиус, толщину или сам режим до того, как вы вложили время в блоки.</p>
+
+        <h2>Рекомендуемый путь работы</h2>
+        <ol>
+            <li>Сначала выберите радиус по тому месту, которое у вас реально есть.</li>
+            <li>Сверьте получившийся диаметр с соседними постройками.</li>
+            <li>Выберите режим: сфера, полая сфера, купол или круг.</li>
+            <li>Посмотрите верхний и фронтальный силуэты до начала стройки.</li>
+            <li>По возможности начните с самого широкого слоя.</li>
+            <li>Потом проходите остальные слои через список или слайдер.</li>
+        </ol>
+
+        <h2>Типичные ошибки</h2>
+        <ul>
+            <li>Мыслить диаметром, а двигать радиус.</li>
+            <li>Начинать с случайного слоя, а не с опорного широкого среза.</li>
+            <li>Строить сплошную сферу там, где зрителю всё равно видна только оболочка.</li>
+            <li>Пытаться чинить слабую кривую уже в мире, вместо того чтобы сначала поправить план.</li>
+            <li>Смотреть только на пятно сверху и игнорировать фронтальный силуэт.</li>
+        </ul>
+
+        <h2>FAQ</h2>
+        <h3>Начинать снизу или с середины?</h3>
+        <p>Если есть возможность, начинайте с самого широкого слоя. Так проще всего закрепить форму в мире и не уехать по центру.</p>
+
+        <h3>Когда полая сфера лучше сплошной?</h3>
+        <p>Почти всегда, когда внутрь нужно зайти, осветить её, украсить или просто не тратить лишние блоки на объём, которого никто не увидит.</p>
+
+        <h3>Можно ли использовать тулзу только для кругов?</h3>
+        <p>Да. Заполненный и контурный круг полезны сами по себе для полов, площадок, колодцев, башен и круглых комнат.</p>
+
+        <h3>Как понять, что сфера будет слишком большой?</h3>
+        <p>Смотрите на диаметр и сравнивайте его с уже существующими объектами вокруг. Радиус удобен для управления. Диаметр показывает реальную занятость пространства.</p>
+
+        <h3>Зачем текстовый экспорт, если уже есть сетка?</h3>
+        <p>Текст удобно кидать в заметки, сообщения и документы. Это полезно, если строите не в одиночку и хотите быстро передать следующий слой другому человеку.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

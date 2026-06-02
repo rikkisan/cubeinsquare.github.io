@@ -171,7 +171,7 @@
                 <div class="tool-button-row">
                     <a class="tool-button" href="/fr/wiki-item-model-builder/">Lire le guide</a>
                     <a class="tool-button tool-button-secondary" href="/fr/resource-pack-generator/">Ouvrir le générateur</a>
-                <a class="tool-button tool-button-secondary" href="/fr/wiki-item-model-branch-choices/">Article de choix des branches</a></div>
+                </div>
             </div>
             <div class="tool-panel">
                 <h2>Démarrages rapides</h2>
@@ -182,11 +182,6 @@
                     <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Étapes de charge</button>
                     <button class="tool-chip-button" type="button" data-imb-example="handContext">Contexte main</button>
                 </div>
-            </div>
-            <div class="tool-panel">
-                <h2 id="imb-mode-map-title"></h2>
-                <p class="tool-summary" id="imb-mode-map-summary"></p>
-                <div class="imb-mode-map" id="imb-mode-map"></div>
             </div>
             <div class="tool-panel">
                 <h2>Configuration de la definition</h2>
@@ -221,7 +216,6 @@
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
                 </div>
-                <div class="imb-inline-hint" id="imb-property-hint"></div>
                 <p class="tool-summary" id="imb-mode-note"></p>
                 <div class="tool-note-card">
                     <strong id="imb-path-preview"></strong>
@@ -233,7 +227,6 @@
                         <button class="tool-button tool-button-secondary" id="imb-add-case" type="button">Ajouter une branche</button>
                     </div>
                     <div id="imb-branch-list" class="imb-branch-list"></div>
-                    <div class="imb-empty-state" id="imb-branch-helper"></div>
                 </section>
                 <div class="tool-button-row">
                     <button class="tool-button" id="imb-load-example" type="button">Charger un exemple</button>
@@ -257,10 +250,6 @@
             <div class="tool-panel">
                 <h2>Avant l’export</h2>
                 <ul class="item-builder-help"><li>Vérifiez que les chemins de modèles existent déjà dans le resource pack.</li><li>Gardez un fallback sûr pour éviter les erreurs visuelles si une branche manque.</li><li>Si la logique dépend de custom_model_data, vérifiez l’index et la stratégie de slot côté commande.</li></ul>
-            </div>
-            <div class="tool-panel">
-                <h2 id="imb-next-steps-title"></h2>
-                <ul class="item-builder-help" id="imb-next-steps"></ul>
             </div>
         </aside>
     </section>

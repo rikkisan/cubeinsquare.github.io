@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Sphere Generator | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plan Minecraft circles, domes, hollow spheres, and solid spheres layer by layer in the browser, then copy the current slice as a clean build reference.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/sphere-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/sphere-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/sphere-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/sphere-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/sphere-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/sphere-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Sphere Generator | Cube in Square">
+    <meta property="og:description" content="Plan circles, domes, hollow spheres, and solid spheres layer by layer before you place blocks in Minecraft.">
+    <meta property="og:url" content="https://cubeinsquare.com/sphere-generator/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Sphere Generator | Cube in Square">
+    <meta name="twitter:description" content="Browser-based planner for Minecraft spheres, domes, and circles with layer-by-layer build references.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <link rel="stylesheet" href="/assets/sphere-generator.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/wiki/">Open wiki</a>
+                <a href="/wiki-custom-model-data/">CustomModelData</a>
+                <a href="/wiki-resource-pack-generator/">Pack generator guide</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/tools/">Tools</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/resource-pack-generator/">Pack generator</a>
+                <a href="/custom-item-builder/">Custom item builder</a>
+                <a href="/sphere-generator/">Sphere generator</a>
+                <a href="/skin-editor/">Skin editor</a>
+                <a href="/texture-painter/">Texture painter</a>
+                <a href="/custom-villager-trades/">Villager trades</a>
+                <a href="/custom-potions/">Custom potions</a>
+                <a href="/tool-coming-soon/">Upcoming tools</a>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/about/">Project</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/about/">About</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/wiki/" method="get">
+            <input type="text" name="q" placeholder="Search the site...">
+            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a><a href="/ru/sphere-generator/">RU</a><a href="/fr/sphere-generator/">FR</a><a href="/de/sphere-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell">
+    <section class="page-hero">
+        <h1>Minecraft Sphere Generator</h1>
+        <p class="page-lead">Plan solid spheres, hollow shells, domes, and circles before you place blocks in the world. Step through each layer, compare the silhouette from the top and the front, and copy the current slice as a clean build reference.</p>
+        <div class="soon-actions">
+            <a class="resource-link" href="/wiki-sphere-generator/">Read guide</a>
+            <a class="resource-link resource-link-secondary" href="/tools/">Back to tools</a>
+            <a class="resource-link resource-link-secondary" href="/resource-pack-generator/">Open pack generator</a>
+        </div>
+    </section>
+
+    <section class="page-section sphere-layout">
+        <aside class="sphere-sidebar">
+            <section class="tool-panel">
+                <h2>Shape and size</h2>
+                <div class="sphere-control-grid">
+                    <div class="tool-field">
+                        <label for="sphereShape">Build mode</label>
+                        <select id="sphereShape">
+                            <option value="solid_sphere" selected>Solid sphere</option>
+                            <option value="hollow_sphere">Hollow sphere</option>
+                            <option value="upper_dome">Upper dome</option>
+                            <option value="lower_dome">Lower dome</option>
+                            <option value="filled_circle">Filled circle</option>
+                            <option value="outline_circle">Outline circle</option>
+                        </select>
+                    </div>
+                    <div class="sphere-radius-row">
+                        <div class="tool-field">
+                            <label for="sphereRadiusRange">Radius</label>
+                            <input id="sphereRadiusRange" type="range" min="1" max="64" value="7">
+                        </div>
+                        <div class="tool-field">
+                            <label for="sphereRadiusNumber">Blocks</label>
+                            <input id="sphereRadiusNumber" type="number" min="1" max="64" value="7">
+                        </div>
+                    </div>
+                    <div class="tool-field" id="sphereThicknessField">
+                        <label for="sphereThickness">Shell thickness</label>
+                        <select id="sphereThickness">
+                            <option value="1" selected>1 block</option>
+                            <option value="2">2 blocks</option>
+                            <option value="3">3 blocks</option>
+                            <option value="4">4 blocks</option>
+                        </select>
+                    </div>
+                </div>
+                <p class="sphere-shape-note" id="sphereShapeNote">Use the solid sphere when you need a heavy volume, a buried chamber, or a clean base that you plan to carve later.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Layer browser</h2>
+                <div class="sphere-layer-controls">
+                    <button class="resource-link resource-link-secondary" id="spherePrevLayer" type="button">Previous</button>
+                    <div class="sphere-layer-label" id="sphereLayerLabel">Layer +0 - 0 blocks</div>
+                    <button class="resource-link resource-link-secondary" id="sphereNextLayer" type="button">Next</button>
+                </div>
+                <div class="sphere-control-grid">
+                    <div class="tool-field">
+                        <label for="sphereLayerRange">Layer slider</label>
+                        <input id="sphereLayerRange" type="range" min="0" max="0" value="0">
+                    </div>
+                    <div class="tool-field">
+                        <label for="sphereLayerSelect">Layer list</label>
+                        <select id="sphereLayerSelect"></select>
+                    </div>
+                </div>
+                <div class="sphere-layer-copy-grid">
+                    <button class="resource-link" id="sphereCopyCurrent" type="button" data-copied-label="Copied">Copy current layer</button>
+                    <button class="resource-link resource-link-secondary" id="sphereCopyAll" type="button" data-copied-label="Copied">Copy all layers</button>
+                </div>
+                <p class="sphere-helper-note">Copy the current layer while you build. Copy every layer when you want a full reference for yourself or another builder.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Build summary</h2>
+                <div class="sphere-stat-grid">
+                    <div class="sphere-stat-card"><strong id="sphereShapeValue">Solid sphere</strong><span>Current mode</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereRadiusValue">7</strong><span>Radius</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereDiameterValue">15 blocks</strong><span>Diameter</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereTotalBlocksValue">0</strong><span>Total blocks</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereLayerCountValue">0</strong><span>Build layers</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereWidestSpanValue">0 blocks</strong><span>Widest span</span></div>
+                    <div class="sphere-stat-card"><strong id="sphereCurrentLayerBlocksValue">0</strong><span>Blocks in layer</span></div>
+                </div>
+            </section>
+        </aside>
+
+        <div class="sphere-workspace">
+            <section class="tool-panel">
+                <h2>Silhouette previews</h2>
+                <div class="sphere-projection-grid">
+                    <div class="sphere-projection-card">
+                        <h3>Top view</h3>
+                        <div class="sphere-canvas-frame"><canvas id="sphereTopCanvas" width="320" height="320"></canvas></div>
+                    </div>
+                    <div class="sphere-projection-card">
+                        <h3>Front view</h3>
+                        <div class="sphere-canvas-frame"><canvas id="sphereFrontCanvas" width="320" height="320"></canvas></div>
+                    </div>
+                </div>
+                <p class="sphere-helper-note">The silhouettes answer the practical questions first: how wide the build will read from above, and whether the curve still feels clean from the front.</p>
+            </section>
+
+            <section class="tool-panel">
+                <h2>Current layer plan</h2>
+                <div class="sphere-layer-grid">
+                    <div class="sphere-layer-card">
+                        <h3>Block map</h3>
+                        <div class="sphere-canvas-frame"><canvas id="sphereLayerCanvas" width="640" height="640"></canvas></div>
+                    </div>
+                    <div class="sphere-layer-card">
+                        <h3>Text reference</h3>
+                        <pre class="sphere-text-output" id="sphereLayerText"></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tool-panel">
+                <h2>How to use the planner</h2>
+                <div class="sphere-help-grid">
+                    <article class="resource-card">
+                        <h3>Start from the widest layer</h3>
+                        <p>The widest slice gives you the footprint fastest. Once that ring feels right, moving up or down becomes much easier.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Use circles for flat foundations</h3>
+                        <p>The circle modes are useful on their own for floors, towers, wells, ritual zones, and any top-down round composition.</p>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Build hollow when the inside matters</h3>
+                        <p>If the outside silhouette is the goal, a hollow shell usually saves blocks and gives you room for lighting, stairs, and decoration.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/sphere-generator.js"></script>
+</body>
+</html>
+
+

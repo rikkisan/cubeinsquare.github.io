@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как строить RP-прогрессию на Paper-сервере без модов | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Практический гайд по RP-прогрессии в Minecraft: артефакты, обслуживание, ветки классов, ограничения и админские настройки без обязательных клиентских модов.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как строить RP-прогрессию без модов | Cube in Square">
+    <meta property="og:description" content="Артефакты, обслуживание, ветки развития, ограничения и админские страховки для Minecraft RP-сервера.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-rp-progression-systems/">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="На главную" title="На главную"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск">⌕</button></form>
+        <div class="language-switch" aria-label="Язык"><a href="/wiki-rp-progression-systems/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-rp-progression-systems/">FR</a><a href="/de/wiki-rp-progression-systems/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Как строить RP-прогрессию на Paper-сервере без модов</h1>
+        <p class="page-lead">Хорошая классовая система — это не просто список способностей. Это договор между игроком, миром и командой: кем персонаж может стать, сколько стоит удерживать силу и какие ручки есть у админов, если баланс начинает ехать.</p>
+    </section>
+    <article>
+        <h2>Начинайте с одного артефакта</h2>
+        <p>Самые понятные no-mod системы обычно держатся на одном предмете-якоре: клыке, механическом сердце, классовом жетоне, проклятой книге или реликтовом ядре. Этот предмет хранит состояние, показывает прогресс через лор и модель, а игроку не нужно помнить десять невидимых переключателей.</p>
+        <p>Команде тоже проще. Если что-то сломалось, вы смотрите на артефакт и его данные, а не ищете состояние по scoreboard, региону, командному блоку и старому сообщению в Discord.</p>
+        <h2>Силе нужна цена</h2>
+        <p>Постоянная бесплатная мощь быстро становится фоном. Живые системы обычно требуют топлива, зарядов, ремонта, охоты, ритуальных материалов, охлаждения или обслуживания. Это не наказание, а способ связать силу с миром.</p>
+        <h2>Путь должен читаться</h2>
+        <p>Игрок должен уметь объяснить следующий шаг одним предложением. Линейная ветка проще для первого сезона, ветвление сильнее раскрывает класс, а соседние узлы хорошо подходят для механизмов и ритуалов. Главное — не превращать прогрессию в таблицу, которую понимает только автор плагина.</p>
+        <h2>Ограничения делают класс запоминающимся</h2>
+        <p>Класс становится характерным, когда он умеет говорить "нет". Механизм боится воды, охотник рискует прогрессом при смерти, маг не носит тяжёлую броню, проклятая реликвия усиливается за цену. Такие ограничения дают ролевую форму и помогают балансу лучше, чем бесконечная правка цифр.</p>
+        <h2>Админские ручки нужны до запуска</h2>
+        <p>До первого публичного теста должны быть способы выдать артефакт, прочитать состояние, изменить уровень, сбросить кулдаун, отключить способность и аккуратно снять путь с игрока. Без этого любой баг превращается в срочную операцию на живом сервере.</p>
+        <h2>Свяжите прогрессию с ресурс-паком</h2>
+        <p>Система ощущается глубже, когда предмет меняется визуально: появляются трещины, символы, металл, цветовые сдвиги или новые детали. Визуальную часть удобно собирать через <a href="/ru/resource-pack-generator/">генератор ресурс-паков</a>, а командную — через <a href="/ru/custom-item-builder/">конструктор кастомных предметов</a>.</p>
+        <h2>FAQ</h2>
+        <div class="faq-accordion">
+            <details open><summary>Нужен ли мод для глубокой классовой системы?</summary><p>Нет. Моды расширяют возможности, но Paper-плагины, команды, кастомные предметы и ресурс-паки уже дают достаточно для сильной RP-прогрессии.</p></details>
+            <details><summary>Каждому классу нужен отдельный предмет?</summary><p>Не обязательно, но один предмет-якорь сильно упрощает состояние, визуал, выдачу и админскую поддержку.</p></details>
+            <details><summary>Какая ошибка самая опасная?</summary><p>Дать постоянную силу без цены, кулдаунов и админских ручек. Сначала это радует, потом ломает сезон.</p></details>
+        </div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

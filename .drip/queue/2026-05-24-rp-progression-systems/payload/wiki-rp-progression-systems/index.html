@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How to Build RP Progression Systems on a Paper Server Without Mods | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A practical guide to designing Minecraft RP progression systems with artifacts, upkeep loops, class restrictions, and admin controls on a mod-free Paper server.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-rp-progression-systems/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How to Build RP Progression Systems Without Mods | Cube in Square">
+    <meta property="og:description" content="Artifacts, upkeep, upgrade milestones, class limits, and admin safety rails for mod-free Minecraft RP progression.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-rp-progression-systems/">
+    <meta name="twitter:card" content="summary">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search">⌕</button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a><a href="/ru/wiki-rp-progression-systems/">RU</a><a href="/fr/wiki-rp-progression-systems/">FR</a><a href="/de/wiki-rp-progression-systems/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>How to Build RP Progression Systems on a Paper Server Without Mods</h1>
+        <p class="page-lead">A strong RP class system is not only a list of powers. It is a contract between the player, the world, and the staff team: what the character can become, what it costs to stay there, and what admins can tune when the fantasy starts bending the server.</p>
+    </section>
+    <article>
+        <h2>Start with one artifact, not ten hidden switches</h2>
+        <p>The cleanest no-mod progression systems usually begin with a single identity item: a fang, a gear heart, a class token, a cursed book, or a relic core. That item becomes the visible anchor for the character's path. It can store hidden state in <code>custom_data</code>, carry a readable name and lore, connect to a custom model, and give players one thing to understand instead of a scattered trail of commands.</p>
+        <p>This pattern also helps staff. When something breaks, you inspect the artifact and its state. You do not need to remember whether the upgrade lived in a scoreboard, a command block, a region flag, and a Discord note at the same time.</p>
+
+        <h2>Progression needs friction</h2>
+        <p>Permanent free power feels exciting for one week and then becomes background noise. The systems that survive a season usually include some kind of upkeep loop: fuel, charges, cooldowns, repair, corruption, oxidation, exhaustion, hunting trophies, ritual components, or social access. The point is not to punish the player. The point is to keep power connected to the world.</p>
+        <p>A mechanical class might require copper upkeep. A hunter path might require trophies from specific mobs. A magical book might need ink, sacrifice, or time near a ritual structure. These loops give other players reasons to interact with the class instead of treating it as private menu power.</p>
+
+        <h2>Make upgrade paths readable</h2>
+        <p>Players should be able to explain their next milestone in one sentence. A good path might be linear, branching, or adjacency-based, but it should never feel like a spreadsheet that only the plugin author understands. Use short upgrade names, visible lore, and a small number of meaningful choices.</p>
+        <ul>
+            <li><strong>Linear:</strong> safer for a first season, easy to balance, easy to teach.</li>
+            <li><strong>Branching:</strong> better for class identity, but needs stronger limits.</li>
+            <li><strong>Adjacency:</strong> great for mechanical or ritual systems, but it must have a clear visual map.</li>
+        </ul>
+
+        <h2>Restrictions are part of the fantasy</h2>
+        <p>A class becomes memorable when it says no. If every path can sprint, fly, heal, deal burst damage, and ignore danger, the system loses shape. Restrictions create identity: the machine fears water, the hunter loses progress on death, the mage cannot wear heavy armor, the cursed relic grows stronger at a cost.</p>
+        <p>Write restrictions as design rules, not as afterthoughts. They tell players how to roleplay the power and give staff a healthier balancing lever than simply reducing numbers after launch.</p>
+
+        <h2>Build admin controls before launch</h2>
+        <p>The first version should include safety rails. Staff need ways to inspect state, reset a broken item, disable an ability, tune costs, and remove a path from a player without destroying the whole inventory. If these controls do not exist before the first public test, every balance issue becomes emergency surgery.</p>
+        <p>At minimum, prepare commands or procedures for: granting the artifact, reading its state, changing its level, clearing cooldowns, disabling an ability, and logging major upgrades.</p>
+
+        <h2>Connect progression to your resource pack</h2>
+        <p>Progression feels deeper when the item changes visually. A first-stage relic can look plain, then gain cracks, symbols, metal parts, color shifts, or animated-looking accents as the path grows. You can build the visual side with the <a href="/resource-pack-generator/">resource-pack generator</a> and command-facing items with the <a href="/custom-item-builder/">custom item builder</a>.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-accordion">
+            <details open><summary>Do I need a mod for a deep class system?</summary><p>No. Mods can help, but Paper plugins, commands, custom items, resource packs, and careful design can already create a strong progression fantasy.</p></details>
+            <details><summary>Should every player path use a custom item?</summary><p>Not always, but one anchor item makes state, visuals, and admin support much easier to reason about.</p></details>
+            <details><summary>What is the biggest balancing mistake?</summary><p>Giving permanent power with no cost, no downtime, and no staff controls. It feels generous at first and becomes painful later.</p></details>
+        </div>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

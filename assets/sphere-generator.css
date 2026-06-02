@@ -1,0 +1,195 @@
+.sphere-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.sphere-sidebar,
+.sphere-workspace {
+    display: grid;
+    gap: 18px;
+    min-width: 0;
+}
+
+.sphere-control-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.sphere-radius-row,
+.sphere-layer-controls,
+.sphere-layer-copy-grid,
+.sphere-projection-grid,
+.sphere-help-grid,
+.sphere-stat-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.sphere-radius-row {
+    grid-template-columns: minmax(0, 1fr) 96px;
+    align-items: end;
+}
+
+.sphere-layer-controls {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+}
+
+.sphere-layer-copy-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sphere-projection-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sphere-projection-card,
+.sphere-layer-card {
+    display: grid;
+    gap: 10px;
+}
+
+.sphere-projection-card h3,
+.sphere-layer-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-strong);
+}
+
+.sphere-canvas-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background:
+        linear-gradient(45deg, rgba(15, 23, 42, 0.96) 25%, rgba(30, 41, 59, 0.94) 25%, rgba(30, 41, 59, 0.94) 50%, rgba(15, 23, 42, 0.96) 50%, rgba(15, 23, 42, 0.96) 75%, rgba(30, 41, 59, 0.94) 75%);
+    background-size: 18px 18px;
+}
+
+#sphereTopCanvas,
+#sphereFrontCanvas,
+#sphereLayerCanvas {
+    display: block;
+    max-width: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#sphereTopCanvas,
+#sphereFrontCanvas {
+    width: min(100%, 260px);
+    aspect-ratio: 1;
+}
+
+#sphereLayerCanvas {
+    width: min(100%, 560px);
+    aspect-ratio: 1;
+}
+
+.sphere-layer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+    gap: 16px;
+    align-items: start;
+}
+
+.sphere-text-output {
+    margin: 0;
+    min-height: 280px;
+    max-height: 520px;
+    overflow: auto;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    background: rgba(15, 23, 42, 0.64);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+.sphere-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sphere-stat-card {
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.5);
+}
+
+.sphere-stat-card strong,
+.sphere-stat-card span {
+    display: block;
+}
+
+.sphere-stat-card strong {
+    font-size: 1rem;
+    color: var(--text-strong);
+}
+
+.sphere-stat-card span {
+    margin-top: 4px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+}
+
+.sphere-shape-note,
+.sphere-helper-note {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.sphere-layer-label {
+    justify-self: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.56);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    color: var(--text-strong);
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.sphere-help-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sphere-help-grid .resource-card {
+    min-height: 100%;
+}
+
+@media (max-width: 980px) {
+    .sphere-layout,
+    .sphere-layer-grid,
+    .sphere-projection-grid,
+    .sphere-help-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sphere-radius-row,
+    .sphere-layer-copy-grid,
+    .sphere-stat-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .sphere-layer-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .sphere-layer-label {
+        grid-column: 1 / -1;
+        justify-self: stretch;
+        text-align: center;
+    }
+}

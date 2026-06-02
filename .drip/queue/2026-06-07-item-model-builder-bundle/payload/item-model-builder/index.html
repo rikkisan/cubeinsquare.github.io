@@ -130,7 +130,7 @@
                 <div class="tool-button-row">
                     <a class="tool-button" href="/wiki-item-model-builder/">Read guide</a>
                     <a class="tool-button tool-button-secondary" href="/resource-pack-generator/">Open pack generator</a>
-                <a class="tool-button tool-button-secondary" href="/wiki-item-model-branch-choices/">Branch choice article</a></div>
+                </div>
             </div>
             <div class="tool-panel">
                 <h2>Quick starts</h2>
@@ -141,11 +141,6 @@
                     <button class="tool-chip-button" type="button" data-imb-example="chargeStages">Charge stages</button>
                     <button class="tool-chip-button" type="button" data-imb-example="handContext">Main-hand context</button>
                 </div>
-            </div>
-            <div class="tool-panel">
-                <h2 id="imb-mode-map-title"></h2>
-                <p class="tool-summary" id="imb-mode-map-summary"></p>
-                <div class="imb-mode-map" id="imb-mode-map"></div>
             </div>
             <div class="tool-panel">
                 <h2>Definition setup</h2>
@@ -180,7 +175,6 @@
                         <input id="imb-index" type="number" min="0" value="0">
                     </div>
                 </div>
-                <div class="imb-inline-hint" id="imb-property-hint"></div>
                 <p class="tool-summary" id="imb-mode-note"></p>
                 <div class="tool-note-card">
                     <strong id="imb-path-preview"></strong>
@@ -192,7 +186,6 @@
                         <button class="tool-button tool-button-secondary" id="imb-add-case" type="button">Add branch</button>
                     </div>
                     <div id="imb-branch-list" class="imb-branch-list"></div>
-                    <div class="imb-empty-state" id="imb-branch-helper"></div>
                 </section>
                 <div class="tool-button-row">
                     <button class="tool-button" id="imb-load-example" type="button">Load example</button>
@@ -216,10 +209,6 @@
             <div class="tool-panel">
                 <h2>Before export</h2>
                 <ul class="item-builder-help"><li>Confirm the model paths already exist in your resource pack.</li><li>Keep fallback models vanilla-safe so missing branches do not show purple-black errors.</li><li>If the branch keys come from custom_model_data, match the correct index and slot strategy in the item command.</li></ul>
-            </div>
-            <div class="tool-panel">
-                <h2 id="imb-next-steps-title"></h2>
-                <ul class="item-builder-help" id="imb-next-steps"></ul>
             </div>
         </aside>
     </section>
