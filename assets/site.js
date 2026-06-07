@@ -243,102 +243,269 @@
     function initGlobalToolLinks() {
         const locale = getLocaleInfo().lang;
         const labels = {
-            en: {
-                itemTool: 'Custom item builder',
-                itemTitle: 'Custom item builder',
-                itemDesc: 'Assemble version-aware give commands with item_model, custom_data, lore, and CustomModelData.',
-                sphereTool: 'Sphere generator',
-                sphereTitle: 'Sphere generator',
-                sphereDesc: 'Plan circles, domes, hollow shells, and full spheres layer by layer before you build.',
-                skinTool: 'Minecraft Skin Editor',
-                skinGuide: 'Skin editor guide',
-                skinTitle: 'Skin editor',
-                skinDesc: 'Draw on the atlas or paint directly on the 3D player model.',
-                textureTool: 'Texture painter',
-                textureGuide: 'Texture painter guide',
-                textureTitle: 'Texture painter',
-                textureDesc: 'Choose a canvas size, paint a PNG, and send it into your pack workflow.'
-            },
-            ru: {
-                itemTool: 'Конструктор кастомных предметов',
-                itemTitle: 'Конструктор кастомных предметов',
-                itemDesc: 'Собирайте give-команды с item_model, custom_data, lore и современными слотами CustomModelData.',
-                sphereTool: 'Генератор сфер',
-                sphereTitle: 'Генератор сфер',
-                sphereDesc: 'Планируйте круги, купола, полые оболочки и сплошные сферы по слоям перед стройкой.',
-                skinTool: 'Редактор скинов Minecraft',
-                skinGuide: 'Гайд по редактору скинов',
-                skinTitle: 'Редактор скинов',
-                skinDesc: 'Рисуйте по атласу или прямо по 3D-модели игрока.',
-                textureTool: 'Редактор текстур',
-                textureGuide: 'Гайд по редактору текстур',
-                textureTitle: 'Редактор текстур',
-                textureDesc: 'Выберите холст, нарисуйте PNG и отправьте его в генератор ресурс-пака.'
-            },
-            fr: {
-                itemTool: 'Générateur d’objets personnalisés',
-                itemTitle: 'Générateur d’objets personnalisés',
-                itemDesc: 'Assemblez des commandes give avec item_model, custom_data, lore et les nouveaux slots de CustomModelData.',
-                sphereTool: 'Générateur de sphères',
-                sphereTitle: 'Générateur de sphères',
-                sphereDesc: 'Planifiez cercles, dômes, coques creuses et sphères pleines couche par couche avant de bâtir.',
-                skinTool: 'Éditeur de skins Minecraft',
-                skinGuide: 'Guide de l’éditeur de skins',
-                skinTitle: 'Éditeur de skins',
-                skinDesc: 'Dessinez sur l’atlas ou directement sur le modèle 3D du joueur.',
-                textureTool: 'Éditeur de textures',
-                textureGuide: 'Guide de l’éditeur de textures',
-                textureTitle: 'Éditeur de textures',
-                textureDesc: 'Choisissez un canevas, peignez un PNG, puis envoyez-le dans votre workflow de pack.'
-            },
-            de: {
-                itemTool: 'Custom-Item-Generator',
-                itemTitle: 'Custom-Item-Generator',
-                itemDesc: 'Baue give-Befehle mit item_model, custom_data, Lore und modernen CustomModelData-Slots.',
-                sphereTool: 'Kugel-Generator',
-                sphereTitle: 'Kugel-Generator',
-                sphereDesc: 'Plane Kreise, Kuppeln, hohle Schalen und volle Kugeln Ebene für Ebene vor dem Bauen.',
-                skinTool: 'Minecraft Skin-Editor',
-                skinGuide: 'Skin-Editor-Anleitung',
-                skinTitle: 'Skin-Editor',
-                skinDesc: 'Male auf dem Atlas oder direkt auf dem 3D-Spielermodell.',
-                textureTool: 'Textur-Editor',
-                textureGuide: 'Textur-Editor-Anleitung',
-                textureTitle: 'Textur-Editor',
-                textureDesc: 'Wähle eine Leinwandgröße, male ein PNG und sende es in deinen Pack-Workflow.'
-            }
-        };
-        const copy = labels[locale] || labels.en;
-        const tools = [
-            {
-                toolHref: withPrefix('/custom-item-builder/'),
-                toolLabel: copy.itemTool,
-                featureTitle: copy.itemTitle,
-                featureDesc: copy.itemDesc
-            },
-            {
-                toolHref: withPrefix('/sphere-generator/'),
-                toolLabel: copy.sphereTool,
-                featureTitle: copy.sphereTitle,
-                featureDesc: copy.sphereDesc
-            },
-            {
-                toolHref: withPrefix('/skin-editor/'),
-                guideHref: withPrefix('/wiki-skin-editor/'),
-                toolLabel: copy.skinTool,
-                guideLabel: copy.skinGuide,
-                featureTitle: copy.skinTitle,
-                featureDesc: copy.skinDesc
-            },
-            {
-                toolHref: withPrefix('/texture-painter/'),
-                guideHref: withPrefix('/wiki-texture-painter/'),
-                toolLabel: copy.textureTool,
-                guideLabel: copy.textureGuide,
-                featureTitle: copy.textureTitle,
-                featureDesc: copy.textureDesc
-            }
-        ];
+          "customItemBuilder": {
+                    "en": {
+                              "toolLabel": "Custom item builder",
+                              "featureTitle": "Custom item builder",
+                              "featureDesc": "Assemble version-aware give commands with item_model, custom_data, lore, and CustomModelData.",
+                              "catalogTitle": "Custom item builder",
+                              "catalogDesc": "Assemble version-aware /give commands with visible names, lore, hidden IDs, item_model, and modern custom_model_data slots.",
+                              "catalogAction": "Open builder",
+                              "catalogStatus": "ready"
+                    },
+                    "ru": {
+                              "toolLabel": "Конструктор кастомных предметов",
+                              "featureTitle": "Конструктор предметов",
+                              "featureDesc": "Собирает /give-команды с lore, item_model, custom_data и слотами CustomModelData.",
+                              "catalogTitle": "Конструктор кастомных предметов",
+                              "catalogDesc": "Собирайте /give-команды с именем, лором, скрытым ID, item_model и современными слотами custom_model_data.",
+                              "catalogAction": "Открыть конструктор",
+                              "catalogStatus": "готов"
+                    },
+                    "fr": {
+                              "toolLabel": "Constructeur d’objets custom",
+                              "featureTitle": "Constructeur d’objets",
+                              "featureDesc": "Assemble des commandes /give avec lore, item_model, custom_data et slots CustomModelData.",
+                              "catalogTitle": "Constructeur d’objets custom",
+                              "catalogDesc": "Assemblez des commandes /give avec nom visible, lore, ID caché, item_model et slots modernes custom_model_data.",
+                              "catalogAction": "Ouvrir l’outil",
+                              "catalogStatus": "prêt"
+                    },
+                    "de": {
+                              "toolLabel": "Custom-Item-Builder",
+                              "featureTitle": "Custom-Item-Builder",
+                              "featureDesc": "Erstellt /give-Befehle mit Lore, item_model, custom_data und CustomModelData-Slots.",
+                              "catalogTitle": "Custom-Item-Builder",
+                              "catalogDesc": "Erstelle /give-Befehle mit sichtbarem Namen, Lore, versteckter ID, item_model und modernen custom_model_data-Slots.",
+                              "catalogAction": "Builder öffnen",
+                              "catalogStatus": "bereit"
+                    }
+          },
+          "skinEditor": {
+                    "en": {
+                              "toolLabel": "Minecraft Skin Editor",
+                              "guideLabel": "Skin editor guide",
+                              "featureTitle": "Skin editor",
+                              "featureDesc": "Draw on the atlas or paint directly on the 3D player model.",
+                              "catalogTitle": "Minecraft Skin Editor",
+                              "catalogDesc": "Paint a classic skin atlas, edit the overlay layer, and work directly on the 3D player model.",
+                              "catalogAction": "Open editor",
+                              "catalogStatus": "ready",
+                              "wikiKicker": "Editor guide",
+                              "wikiTitle": "Skin editor",
+                              "wikiDesc": "How the classic 64x64 layout works, how the overlay layer behaves, and how to keep skins readable from a distance.",
+                              "wikiAction": "Read guide",
+                              "sidebarLabel": "Skin editor"
+                    },
+                    "ru": {
+                              "toolLabel": "Редактор скинов Minecraft",
+                              "guideLabel": "Гайд по редактору скинов",
+                              "featureTitle": "Редактор скинов",
+                              "featureDesc": "Рисуйте по атласу или сразу по 3D-модели игрока.",
+                              "catalogTitle": "Редактор скинов Minecraft",
+                              "catalogDesc": "Редактируйте классический атлас, слой одежды и сразу проверяйте результат на 3D-модели.",
+                              "catalogAction": "Открыть редактор",
+                              "catalogStatus": "готов",
+                              "wikiKicker": "Гайд по редактору",
+                              "wikiTitle": "Редактор скинов",
+                              "wikiDesc": "Как работает классический формат 64x64, слой одежды и читаемость скина на расстоянии.",
+                              "wikiAction": "Читать гайд",
+                              "sidebarLabel": "Редактор скинов"
+                    },
+                    "fr": {
+                              "toolLabel": "Éditeur de skins Minecraft",
+                              "guideLabel": "Guide de l’éditeur de skins",
+                              "featureTitle": "Éditeur de skins",
+                              "featureDesc": "Dessinez sur l’atlas ou directement sur le modèle 3D du joueur.",
+                              "catalogTitle": "Éditeur de skins Minecraft",
+                              "catalogDesc": "Peignez l’atlas classique, gérez la couche externe et vérifiez le rendu sur le modèle 3D.",
+                              "catalogAction": "Ouvrir l’éditeur",
+                              "catalogStatus": "prêt",
+                              "wikiKicker": "Guide éditeur",
+                              "wikiTitle": "Éditeur de skins",
+                              "wikiDesc": "Comment fonctionne la grille 64x64, la couche externe et la lisibilité du skin à distance.",
+                              "wikiAction": "Lire le guide",
+                              "sidebarLabel": "Éditeur de skins"
+                    },
+                    "de": {
+                              "toolLabel": "Minecraft Skin-Editor",
+                              "guideLabel": "Skin-Editor-Anleitung",
+                              "featureTitle": "Skin-Editor",
+                              "featureDesc": "Male auf dem Atlas oder direkt auf dem 3D-Spielermodell.",
+                              "catalogTitle": "Minecraft Skin-Editor",
+                              "catalogDesc": "Bearbeite den klassischen Atlas, die Außenschicht und prüfe das Ergebnis direkt am 3D-Modell.",
+                              "catalogAction": "Editor öffnen",
+                              "catalogStatus": "bereit",
+                              "wikiKicker": "Editor-Anleitung",
+                              "wikiTitle": "Skin-Editor",
+                              "wikiDesc": "Wie das 64x64-Layout, die Außenschicht und die Lesbarkeit eines Skins zusammenarbeiten.",
+                              "wikiAction": "Anleitung lesen",
+                              "sidebarLabel": "Skin-Editor"
+                    }
+          },
+          "texturePainter": {
+                    "en": {
+                              "toolLabel": "Texture painter",
+                              "guideLabel": "Texture painter guide",
+                              "featureTitle": "Texture painter",
+                              "featureDesc": "Choose a canvas size, paint a PNG, and send it into your pack workflow.",
+                              "catalogTitle": "Texture painter",
+                              "catalogDesc": "Paint item and block textures in the browser and export crisp PNGs for your pack.",
+                              "catalogAction": "Open painter",
+                              "catalogStatus": "ready",
+                              "wikiKicker": "Editor guide",
+                              "wikiTitle": "Texture painter",
+                              "wikiDesc": "How canvas size, contrast, and pixel clusters affect texture readability before you export a PNG.",
+                              "wikiAction": "Read guide",
+                              "sidebarLabel": "Texture painter"
+                    },
+                    "ru": {
+                              "toolLabel": "Редактор текстур",
+                              "guideLabel": "Гайд по редактору текстур",
+                              "featureTitle": "Редактор текстур",
+                              "featureDesc": "Выберите холст, нарисуйте PNG и отправьте его в работу с ресурс-паком.",
+                              "catalogTitle": "Редактор текстур",
+                              "catalogDesc": "Рисуйте предметные и блочные текстуры в браузере и экспортируйте чёткие PNG для пака.",
+                              "catalogAction": "Открыть редактор",
+                              "catalogStatus": "готов",
+                              "wikiKicker": "Гайд по редактору",
+                              "wikiTitle": "Редактор текстур",
+                              "wikiDesc": "Как размер холста, контраст и пиксельные кластеры влияют на читаемость текстуры до экспорта PNG.",
+                              "wikiAction": "Читать гайд",
+                              "sidebarLabel": "Редактор текстур"
+                    },
+                    "fr": {
+                              "toolLabel": "Éditeur de textures",
+                              "guideLabel": "Guide de l’éditeur de textures",
+                              "featureTitle": "Éditeur de textures",
+                              "featureDesc": "Choisissez un canevas, peignez un PNG et envoyez-le dans votre workflow de pack.",
+                              "catalogTitle": "Éditeur de textures",
+                              "catalogDesc": "Peignez des textures d’objets et de blocs dans le navigateur puis exportez des PNG nets pour votre pack.",
+                              "catalogAction": "Ouvrir l’éditeur",
+                              "catalogStatus": "prêt",
+                              "wikiKicker": "Guide éditeur",
+                              "wikiTitle": "Éditeur de textures",
+                              "wikiDesc": "Comment la taille du canevas, le contraste et les clusters de pixels changent la lisibilité avant l’export PNG.",
+                              "wikiAction": "Lire le guide",
+                              "sidebarLabel": "Éditeur de textures"
+                    },
+                    "de": {
+                              "toolLabel": "Textur-Editor",
+                              "guideLabel": "Textur-Editor-Anleitung",
+                              "featureTitle": "Textur-Editor",
+                              "featureDesc": "Wähle eine Leinwandgröße, male ein PNG und sende es in deinen Pack-Workflow.",
+                              "catalogTitle": "Textur-Editor",
+                              "catalogDesc": "Male Item- und Blocktexturen im Browser und exportiere scharfe PNGs für dein Pack.",
+                              "catalogAction": "Editor öffnen",
+                              "catalogStatus": "bereit",
+                              "wikiKicker": "Editor-Anleitung",
+                              "wikiTitle": "Textur-Editor",
+                              "wikiDesc": "Wie Leinwandgröße, Kontrast und Pixel-Cluster die Lesbarkeit einer Textur vor dem PNG-Export beeinflussen.",
+                              "wikiAction": "Anleitung lesen",
+                              "sidebarLabel": "Textur-Editor"
+                    }
+          },
+          "itemModelBuilder": {
+                    "en": {
+                              "toolLabel": "Item model builder",
+                              "guideLabel": "Item model builder guide",
+                              "featureTitle": "Item model builder",
+                              "featureDesc": "Build item definition JSON with model, select, range_dispatch, and condition branches.",
+                              "catalogTitle": "Item model builder",
+                              "catalogDesc": "Assemble 1.21.4+ item definition JSON with model, select, range_dispatch, and condition branches.",
+                              "catalogAction": "Open builder",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Builder guide",
+                              "wikiTitle": "Item model builder",
+                              "wikiDesc": "When to use model, select, range_dispatch, or condition and how to wire them into the items folder cleanly.",
+                              "wikiAction": "Read guide",
+                              "articleLabel": "Branch choice article",
+                              "sidebarLabel": "Item model builder"
+                    },
+                    "ru": {
+                              "toolLabel": "Конструктор item_model",
+                              "guideLabel": "Гайд по item_model",
+                              "featureTitle": "Конструктор item_model",
+                              "featureDesc": "Собирает JSON item definition с ветками model, select, range_dispatch и condition.",
+                              "catalogTitle": "Конструктор item_model",
+                              "catalogDesc": "Собирайте JSON для новых item definitions в 1.21.4+ с ветками model, select, range_dispatch и condition.",
+                              "catalogAction": "Открыть конструктор",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по конструктору",
+                              "wikiTitle": "Конструктор item_model",
+                              "wikiDesc": "Когда использовать model, select, range_dispatch и condition и как аккуратно положить это в папку items.",
+                              "wikiAction": "Читать гайд",
+                              "articleLabel": "Статья по выбору ветки",
+                              "sidebarLabel": "Конструктор item_model"
+                    },
+                    "fr": {
+                              "toolLabel": "Constructeur item_model",
+                              "guideLabel": "Guide du constructeur item_model",
+                              "featureTitle": "Constructeur item_model",
+                              "featureDesc": "Assemble du JSON item definition avec les branches model, select, range_dispatch et condition.",
+                              "catalogTitle": "Constructeur item_model",
+                              "catalogDesc": "Créez le JSON des item definitions 1.21.4+ avec model, select, range_dispatch et condition.",
+                              "catalogAction": "Ouvrir l’outil",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide builder",
+                              "wikiTitle": "Constructeur item_model",
+                              "wikiDesc": "Quand utiliser model, select, range_dispatch et condition, et comment les ranger proprement dans le dossier items.",
+                              "wikiAction": "Lire le guide",
+                              "articleLabel": "Article de choix des branches",
+                              "sidebarLabel": "Constructeur item_model"
+                    },
+                    "de": {
+                              "toolLabel": "item_model-Builder",
+                              "guideLabel": "item_model-Builder-Anleitung",
+                              "featureTitle": "item_model-Builder",
+                              "featureDesc": "Erstellt Item-Definition-JSON mit model-, select-, range_dispatch- und condition-Zweigen.",
+                              "catalogTitle": "item_model-Builder",
+                              "catalogDesc": "Erstelle 1.21.4+-Item-Definitionen mit model, select, range_dispatch und condition.",
+                              "catalogAction": "Builder öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Builder-Anleitung",
+                              "wikiTitle": "item_model-Builder",
+                              "wikiDesc": "Wann model, select, range_dispatch oder condition sinnvoll sind und wie die Datei sauber im items-Ordner landet.",
+                              "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Artikel zur Branch-Wahl",
+                              "sidebarLabel": "item_model-Builder"
+                    }
+          }
+};
+        const meta = {
+          "customItemBuilder": {
+                    "path": "/custom-item-builder/",
+                    "guidePath": null,
+                    "sectionId": null
+          },
+          "skinEditor": {
+                    "path": "/skin-editor/",
+                    "guidePath": "/wiki-skin-editor/",
+                    "sectionId": "resource-pack-generator-wiki"
+          },
+          "texturePainter": {
+                    "path": "/texture-painter/",
+                    "guidePath": "/wiki-texture-painter/",
+                    "sectionId": "resource-pack-generator-wiki"
+          },
+          "itemModelBuilder": {
+                    "path": "/item-model-builder/",
+                    "guidePath": "/wiki-item-model-builder/",
+                    "articlePath": "/wiki-item-model-branch-choices/",
+                    "sectionId": "how-to-guides"
+          }
+};
+        const tools = Object.keys(meta).map((key) => {
+            const copy = labels[key][locale] || labels[key].en || labels[key].ru || labels[key].fr || labels[key].de;
+            return {
+                key,
+                toolHref: withPrefix(meta[key].path),
+                guideHref: meta[key].guidePath ? withPrefix(meta[key].guidePath) : null,
+                articleHref: meta[key].articlePath ? withPrefix(meta[key].articlePath) : null,
+                sectionId: meta[key].sectionId || null,
+                ...copy
+            };
+        });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
@@ -353,6 +520,7 @@
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
             tools.slice().reverse().forEach((tool) => {
+                if (!tool.featureTitle || !tool.featureDesc) return;
                 if (feature.querySelector(`a[href="${tool.toolHref}"], a[href$="${tool.toolHref}"]`)) return;
                 const card = document.createElement('a');
                 card.className = 'mega-card';
@@ -364,15 +532,68 @@
 
         document.querySelectorAll('.mega-group-title[href*="#other-tools-wiki"]').forEach((title) => {
             const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
-            const potions = sublist ? Array.from(sublist.querySelectorAll('a')).find((item) => /(?:^|\/)wiki-custom-potions(?:\/|\.html)?$/i.test(item.getAttribute('href') || '')) : null;
             if (!sublist) return;
             tools.filter((tool) => tool.guideHref).forEach((tool) => {
                 if (sublist.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
                 const link = document.createElement('a');
                 link.href = tool.guideHref;
                 link.textContent = tool.guideLabel;
-                sublist.insertBefore(link, potions || sublist.firstChild);
+                sublist.appendChild(link);
+                if (tool.articleHref && tool.articleLabel && !sublist.querySelector(`a[href="${tool.articleHref}"], a[href$="${tool.articleHref}"]`)) {
+                    const articleLink = document.createElement('a');
+                    articleLink.href = tool.articleHref;
+                    articleLink.textContent = tool.articleLabel;
+                    sublist.appendChild(articleLink);
+                }
             });
+        });
+
+        const catalogGrid = document.querySelector('#available-tools .resource-grid');
+        if (catalogGrid) {
+            tools.slice().reverse().forEach((tool) => {
+                if (!tool.catalogTitle || catalogGrid.querySelector(`a[href="${tool.toolHref}"], a[href$="${tool.toolHref}"]`)) return;
+                const card = document.createElement('article');
+                card.className = 'resource-card';
+                card.innerHTML = `<h3>${tool.catalogTitle} <span class="status-pill">${tool.catalogStatus || ''}</span></h3><p>${tool.catalogDesc || ''}</p><a class="resource-link" href="${tool.toolHref}">${tool.catalogAction || 'Open'}</a>`;
+                catalogGrid.insertBefore(card, catalogGrid.firstChild);
+            });
+        }
+
+        const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
+        if (wikiSidebarNav) {
+            let group = wikiSidebarNav.querySelector('[data-generated-future-guides]');
+            if (!group) {
+                group = document.createElement('div');
+                group.className = 'wiki-sidebar-group';
+                group.setAttribute('data-generated-future-guides', 'true');
+                const heading = document.createElement('h2');
+                heading.textContent = locale === 'ru' ? 'Новые инструменты' : locale === 'fr' ? 'Nouveaux outils' : locale === 'de' ? 'Neue Werkzeuge' : 'New tools';
+                group.appendChild(heading);
+                wikiSidebarNav.appendChild(group);
+            }
+            tools.filter((tool) => tool.guideHref && tool.sidebarLabel).forEach((tool) => {
+                if (group.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
+                const link = document.createElement('a');
+                link.href = tool.guideHref;
+                link.textContent = tool.sidebarLabel;
+                group.appendChild(link);
+                if (tool.articleHref && tool.articleLabel && !group.querySelector(`a[href="${tool.articleHref}"], a[href$="${tool.articleHref}"]`)) {
+                    const articleLink = document.createElement('a');
+                    articleLink.href = tool.articleHref;
+                    articleLink.textContent = tool.articleLabel;
+                    group.appendChild(articleLink);
+                }
+            });
+        }
+
+        tools.forEach((tool) => {
+            if (!tool.guideHref || !tool.sectionId || !tool.wikiTitle) return;
+            const grid = document.querySelector(`#${tool.sectionId} .resource-grid`);
+            if (!grid || grid.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
+            const card = document.createElement('article');
+            card.className = 'resource-card';
+            card.innerHTML = `<p class="wiki-card-kicker">${tool.wikiKicker || ''}</p><h3>${tool.wikiTitle}</h3><p>${tool.wikiDesc || ''}</p><a class="resource-link" href="${tool.guideHref}">${tool.wikiAction || 'Read guide'}</a>`;
+            grid.appendChild(card);
         });
     }
 

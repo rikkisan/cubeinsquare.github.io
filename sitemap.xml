@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki/</loc>
-    <lastmod>2026-05-31</lastmod>
+    <lastmod>2026-04-19</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/about/</loc>
@@ -49,6 +49,10 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/wiki-resource-pack-structure/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/wiki-custom-villager-trades/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
@@ -65,18 +69,6 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/wiki-mechanism-plugin/</loc>
-    <lastmod>2026-04-24</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-headhunter-plugin/</loc>
-    <lastmod>2026-04-24</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-data-components-architecture/</loc>
-    <lastmod>2026-05-31</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/ru/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
@@ -87,6 +79,10 @@
   <url>
     <loc>https://cubeinsquare.com/ru/skin-editor/</loc>
     <lastmod>2026-04-22</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/texture-painter/</loc>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/tools/</loc>
@@ -121,6 +117,10 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/ru/wiki-resource-pack-structure/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-villager-trades/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
@@ -129,12 +129,28 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/ru/wiki-skin-editor/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-texture-painter/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/fr/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/resource-pack-generator/</loc>
     <lastmod>2026-04-19</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/skin-editor/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/texture-painter/</loc>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/tools/</loc>
@@ -169,6 +185,10 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/fr/wiki-resource-pack-structure/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-villager-trades/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
@@ -177,12 +197,28 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/fr/wiki-skin-editor/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-texture-painter/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/de/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/resource-pack-generator/</loc>
     <lastmod>2026-04-19</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/skin-editor/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/texture-painter/</loc>
+    <lastmod>2026-04-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/tools/</loc>
@@ -217,12 +253,265 @@
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/de/wiki-resource-pack-structure/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-villager-trades/</loc>
     <lastmod>2026-04-19</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-potions/</loc>
     <lastmod>2026-04-19</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-skin-editor/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-texture-painter/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-rp-economy-custom-data/</loc>
+    <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-armorhide-mod/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-rp-economy-custom-data/</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-armorhide-mod/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-rp-economy-custom-data/</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-armorhide-mod/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-rp-economy-custom-data/</loc>
+    <lastmod>2026-04-27</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-armorhide-mod/</loc>
+    <lastmod>2026-05-03</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-mechanism-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-mechanism-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-mechanism-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-mechanism-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-headhunter-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-headhunter-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-headhunter-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-headhunter-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-darkmage-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-darkmage-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-darkmage-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-darkmage-plugin/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+
+  <url>
+    <loc>https://cubeinsquare.com/custom-item-builder/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/custom-item-builder/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/custom-item-builder/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/custom-item-builder/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-custom-item-no-json/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-custom-item-no-json/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-custom-item-no-json/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-custom-item-no-json/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-custom-weapon/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-custom-weapon/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-custom-weapon/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-custom-weapon/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-blockbench-custom-model/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-blockbench-custom-model/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-blockbench-custom-model/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-blockbench-custom-model/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-components-vs-nbt/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-components-vs-nbt/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-components-vs-nbt/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-components-vs-nbt/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-give-command-not-working/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-give-command-not-working/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-give-command-not-working/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-give-command-not-working/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-complex-command-blocks/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-complex-command-blocks/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-complex-command-blocks/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-complex-command-blocks/</loc>
+    <lastmod>2026-04-28</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-item-model-builder/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-item-model-branch-choices/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-item-model-branch-choices/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-item-model-branch-choices/</loc>
+    <lastmod>2026-06-07</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-item-model-branch-choices/</loc>
+    <lastmod>2026-06-07</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-rp-progression-systems/</loc>
@@ -241,4 +530,6 @@
     <lastmod>2026-05-24</lastmod>
   </url>
 </urlset>
+
+
 
