@@ -470,6 +470,72 @@
                               "articleLabel": "Artikel zur Branch-Wahl",
                               "sidebarLabel": "item_model-Builder"
                     }
+          },
+          "customItemCatalog": {
+                    "en": {
+                              "toolLabel": "Custom item catalog",
+                              "guideLabel": "Custom item catalog guide",
+                              "featureTitle": "Custom item catalog",
+                              "featureDesc": "Track IDs, base items, visual hooks, and notes for your server-side item library.",
+                              "catalogTitle": "Custom item catalog",
+                              "catalogDesc": "Keep a local registry of hidden IDs, base items, item_model hooks, lore notes, and duplicate checks.",
+                              "catalogAction": "Open catalog",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Workflow guide",
+                              "wikiTitle": "Custom item catalog",
+                              "wikiDesc": "How to keep IDs, display names, base items, and pack hooks readable once your server starts shipping more than ten items.",
+                              "wikiAction": "Read guide",
+                              "articleLabel": "Naming guide",
+                              "sidebarLabel": "Custom item catalog"
+                    },
+                    "ru": {
+                              "toolLabel": "Каталог кастомных предметов",
+                              "guideLabel": "Гайд по каталогу предметов",
+                              "featureTitle": "Каталог предметов",
+                              "featureDesc": "Хранит ID, базовые предметы, визуальные хуки и заметки для вашей библиотеки вещей.",
+                              "catalogTitle": "Каталог кастомных предметов",
+                              "catalogDesc": "Ведите локальный реестр скрытых ID, базовых предметов, item_model-хуков, заметок и конфликтов.",
+                              "catalogAction": "Открыть каталог",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по workflow",
+                              "wikiTitle": "Каталог кастомных предметов",
+                              "wikiDesc": "Как не утонуть в ID, названиях, базовых предметах и pack-хуках, когда предметов становится много.",
+                              "wikiAction": "Читать гайд",
+                              "articleLabel": "Гайд по именованию",
+                              "sidebarLabel": "Каталог предметов"
+                    },
+                    "fr": {
+                              "toolLabel": "Catalogue d’objets custom",
+                              "guideLabel": "Guide du catalogue d’objets",
+                              "featureTitle": "Catalogue d’objets",
+                              "featureDesc": "Garde les IDs, objets de base, hooks visuels et notes de votre bibliothèque d’objets.",
+                              "catalogTitle": "Catalogue d’objets custom",
+                              "catalogDesc": "Gardez un registre local des IDs cachés, objets de base, hooks item_model, notes et conflits.",
+                              "catalogAction": "Ouvrir le catalogue",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide workflow",
+                              "wikiTitle": "Catalogue d’objets custom",
+                              "wikiDesc": "Comment garder des IDs, noms visibles, objets de base et hooks de pack lisibles quand votre serveur multiplie les items.",
+                              "wikiAction": "Lire le guide",
+                              "articleLabel": "Guide de nommage",
+                              "sidebarLabel": "Catalogue d’objets"
+                    },
+                    "de": {
+                              "toolLabel": "Katalog für Custom-Items",
+                              "guideLabel": "Anleitung zum Item-Katalog",
+                              "featureTitle": "Custom-Item-Katalog",
+                              "featureDesc": "Verwaltet IDs, Basisitems, visuelle Hooks und Notizen für eure Item-Bibliothek.",
+                              "catalogTitle": "Katalog für Custom-Items",
+                              "catalogDesc": "Pflege lokal versteckte IDs, Basisitems, item_model-Hooks, Notizen und Dublettenprüfungen.",
+                              "catalogAction": "Katalog öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Workflow-Anleitung",
+                              "wikiTitle": "Katalog für Custom-Items",
+                              "wikiDesc": "Wie ihr IDs, Anzeigenamen, Basisitems und Pack-Hooks lesbar haltet, sobald euer Server mehr als ein paar Sonderitems hat.",
+                              "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Benennungsleitfaden",
+                              "sidebarLabel": "Custom-Item-Katalog"
+                    }
           }
 };
         const meta = {
@@ -492,6 +558,12 @@
                     "path": "/item-model-builder/",
                     "guidePath": "/wiki-item-model-builder/",
                     "articlePath": "/wiki-item-model-branch-choices/",
+                    "sectionId": "how-to-guides"
+          },
+          "customItemCatalog": {
+                    "path": "/custom-item-catalog/",
+                    "guidePath": "/wiki-custom-item-catalog/",
+                    "articlePath": "/wiki-custom-item-id-naming/",
                     "sectionId": "how-to-guides"
           }
 };
