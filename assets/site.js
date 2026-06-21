@@ -536,6 +536,72 @@
                               "articleLabel": "Benennungsleitfaden",
                               "sidebarLabel": "Custom-Item-Katalog"
                     }
+          },
+          "circleDomePlanner": {
+                    "en": {
+                              "toolLabel": "Circle & dome planner",
+                              "guideLabel": "Circle & dome planner guide",
+                              "featureTitle": "Circle & dome planner",
+                              "featureDesc": "Plan circles, rings, arches, and dome profiles before you place the first block.",
+                              "catalogTitle": "Circle & dome planner",
+                              "catalogDesc": "Work out circles, thick rings, arches, and dome profiles in a lighter companion to the sphere generator.",
+                              "catalogAction": "Open planner",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Planning guide",
+                              "wikiTitle": "Circle & dome planner",
+                              "wikiDesc": "How to lock the footprint first, use a ring thickness intentionally, and switch from a 2D plan to a dome profile without guessing.",
+                              "wikiAction": "Read guide",
+                              "articleLabel": "Shape choice article",
+                              "sidebarLabel": "Circle & dome planner"
+                    },
+                    "ru": {
+                              "toolLabel": "Планировщик кругов и куполов",
+                              "guideLabel": "Гайд по кругам и куполам",
+                              "featureTitle": "Планировщик кругов и куполов",
+                              "featureDesc": "Помогает планировать круги, кольца, арки и купольные профили до первого блока.",
+                              "catalogTitle": "Планировщик кругов и куполов",
+                              "catalogDesc": "Лёгкий companion к генератору сфер для кругов, толстых колец, арок и профилей купола.",
+                              "catalogAction": "Открыть планировщик",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по планированию",
+                              "wikiTitle": "Планировщик кругов и куполов",
+                              "wikiDesc": "Как сначала поймать отпечаток, осознанно выбрать толщину кольца и перейти от 2D-плана к купольному профилю без угадывания.",
+                              "wikiAction": "Читать гайд",
+                              "articleLabel": "Статья по выбору формы",
+                              "sidebarLabel": "Круги и купола"
+                    },
+                    "fr": {
+                              "toolLabel": "Planificateur de cercles et dômes",
+                              "guideLabel": "Guide des cercles et dômes",
+                              "featureTitle": "Planificateur de cercles et dômes",
+                              "featureDesc": "Planifie cercles, anneaux, arches et profils de dôme avant de poser le premier bloc.",
+                              "catalogTitle": "Planificateur de cercles et dômes",
+                              "catalogDesc": "Un compagnon plus léger que le générateur de sphères pour cercles, anneaux épais, arches et profils de dôme.",
+                              "catalogAction": "Ouvrir le planificateur",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide de planification",
+                              "wikiTitle": "Planificateur de cercles et dômes",
+                              "wikiDesc": "Comment verrouiller l’empreinte d’abord, choisir l’épaisseur d’un anneau et passer d’un plan 2D à un profil de dôme sans improviser.",
+                              "wikiAction": "Lire le guide",
+                              "articleLabel": "Article sur le choix de la forme",
+                              "sidebarLabel": "Cercles et dômes"
+                    },
+                    "de": {
+                              "toolLabel": "Kreis- und Kuppelplaner",
+                              "guideLabel": "Kreis- und Kuppelplaner-Anleitung",
+                              "featureTitle": "Kreis- und Kuppelplaner",
+                              "featureDesc": "Plant Kreise, Ringe, Bögen und Kuppelprofile, bevor der erste Block gesetzt wird.",
+                              "catalogTitle": "Kreis- und Kuppelplaner",
+                              "catalogDesc": "Ein leichter Begleiter zum Kugelgenerator für Kreise, dicke Ringe, Bögen und Kuppelprofile.",
+                              "catalogAction": "Planer öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Planungs-Anleitung",
+                              "wikiTitle": "Kreis- und Kuppelplaner",
+                              "wikiDesc": "Wie ihr zuerst die Grundfläche festlegt, Ringstärke bewusst einsetzt und von einem 2D-Plan zu einem Kuppelprofil wechselt.",
+                              "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Artikel zur Formwahl",
+                              "sidebarLabel": "Kreise und Kuppeln"
+                    }
           }
 };
         const meta = {
@@ -565,6 +631,12 @@
                     "guidePath": "/wiki-custom-item-catalog/",
                     "articlePath": "/wiki-custom-item-id-naming/",
                     "sectionId": "how-to-guides"
+          },
+          "circleDomePlanner": {
+                    "path": "/circle-dome-planner/",
+                    "guidePath": "/wiki-circle-dome-planner/",
+                    "articlePath": "/wiki-round-build-shape-choice/",
+                    "sectionId": "resource-pack-generator-wiki"
           }
 };
         const tools = Object.keys(meta).map((key) => {
