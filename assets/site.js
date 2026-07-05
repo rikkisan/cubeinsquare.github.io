@@ -794,6 +794,80 @@
     }
 
 
+
+
+    function initDialogueBuilderLinks() {
+        const locale = getLocaleInfo().lang;
+        const labels = {
+            en: { toolLabel: 'Dialogue builder', guideLabel: 'Dialogue builder guide', featureTitle: 'Dialogue builder', featureDesc: 'Create tellraw lines, titles, subtitles, and actionbar beats for readable Minecraft scenes.', articleLabel: 'Readable dialogue article' },
+            ru: { toolLabel: 'Конструктор диалогов', guideLabel: 'Гайд по диалогам', featureTitle: 'Конструктор диалогов', featureDesc: 'Собирает tellraw, title и actionbar-реплики для сцен Minecraft.', articleLabel: 'Статья о читаемых диалогах' },
+            fr: { toolLabel: 'Constructeur de dialogues', guideLabel: 'Guide des dialogues', featureTitle: 'Constructeur de dialogues', featureDesc: 'Crée des répliques tellraw, titles et actionbars pour les scènes Minecraft.', articleLabel: 'Article sur les dialogues lisibles' },
+            de: { toolLabel: 'Dialog-Builder', guideLabel: 'Dialog-Anleitung', featureTitle: 'Dialog-Builder', featureDesc: 'Erstellt Tellraw-, Title- und Actionbar-Zeilen für lesbare Minecraft-Szenen.', articleLabel: 'Artikel zu lesbaren Dialogen' }
+        };
+        const copy = labels[locale] || labels.en;
+        const toolHref = withPrefix('/dialogue-builder/');
+        const guideHref = withPrefix('/wiki-dialogue-builder/');
+        const articleHref = withPrefix('/wiki-readable-minecraft-dialogue/');
+
+        document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
+            if (list.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
+            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
+            const link = document.createElement('a');
+            link.href = toolHref;
+            link.textContent = copy.toolLabel;
+            list.insertBefore(link, upcoming || null);
+        });
+
+        document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
+            if (feature.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
+            const card = document.createElement('a');
+            card.className = 'mega-card';
+            card.href = toolHref;
+            card.innerHTML = `<strong>${copy.featureTitle}</strong><span>${copy.featureDesc}</span>`;
+            feature.insertBefore(card, feature.firstChild);
+        });
+
+        document.querySelectorAll('.mega-group-title[href*="#other-tools-wiki"]').forEach((title) => {
+            const sublist = title.parentElement ? title.parentElement.querySelector('.mega-sublist') : null;
+            if (!sublist) return;
+            if (sublist.querySelector(`a[href="${guideHref}"], a[href$="${guideHref}"]`)) return;
+            const link = document.createElement('a');
+            link.href = guideHref;
+            link.textContent = copy.guideLabel;
+            sublist.insertBefore(link, sublist.firstChild);
+            if (!sublist.querySelector(`a[href="${articleHref}"], a[href$="${articleHref}"]`)) {
+                const articleLink = document.createElement('a');
+                articleLink.href = articleHref;
+                articleLink.textContent = copy.articleLabel;
+                sublist.insertBefore(articleLink, link.nextSibling);
+            }
+        });
+
+        const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
+        if (wikiSidebarNav) {
+            let group = wikiSidebarNav.querySelector('[data-generated-dialogue-guides]');
+            if (!group) {
+                group = document.createElement('div');
+                group.className = 'wiki-sidebar-group';
+                group.setAttribute('data-generated-dialogue-guides', 'true');
+                group.innerHTML = '<div class="wiki-sidebar-heading">Project dialogue</div><div class="wiki-sidebar-links"></div>';
+                const anchorGroup = wikiSidebarNav.querySelector('[data-generated-book-guides]');
+                wikiSidebarNav.insertBefore(group, anchorGroup ? anchorGroup.nextSibling : wikiSidebarNav.firstChild);
+            }
+            const links = group.querySelector('.wiki-sidebar-links');
+            if (links && !links.querySelector(`a[href="${guideHref}"], a[href$="${guideHref}"]`)) {
+                const guideLink = document.createElement('a');
+                guideLink.href = guideHref;
+                guideLink.textContent = copy.guideLabel;
+                links.appendChild(guideLink);
+                const articleLink = document.createElement('a');
+                articleLink.href = articleHref;
+                articleLink.textContent = copy.articleLabel;
+                links.appendChild(articleLink);
+            }
+        }
+    }
+
     function initBookLetterBuilderLinks() {
         const locale = getLocaleInfo().lang;
         const labels = {
@@ -1070,6 +1144,7 @@
         initGlobalToolLinks();
         initProjectSupportLinks();
         initBookLetterBuilderLinks();
+        initDialogueBuilderLinks();
         initDesignToggle();
         initReadableFontToggle();
         initCopyButtons();
