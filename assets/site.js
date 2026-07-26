@@ -590,6 +590,192 @@
                               "wikiAction": "Anleitung lesen",
                               "sidebarLabel": "Kreise und Kuppeln"
                     }
+          },
+          "bookLetterBuilder": {
+                    "en": {
+                              "toolLabel": "Book & letter builder",
+                              "guideLabel": "Book & letter builder guide",
+                              "featureTitle": "Book & letter builder",
+                              "featureDesc": "Build written books, letters, notes, contracts, and readable page layouts for Minecraft with modern and legacy give commands.",
+                              "catalogTitle": "Book & letter builder",
+                              "catalogDesc": "Build written books, letters, notes, contracts, and readable page layouts for Minecraft with modern and legacy give commands.",
+                              "catalogAction": "Open builder",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Builder guide",
+                              "wikiTitle": "Book & letter builder",
+                              "wikiDesc": "Build written books, letters, notes, contracts, and readable page layouts for Minecraft with modern and legacy give commands.",
+                              "wikiAction": "Read guide",
+                              "sidebarLabel": "Book & letter builder"
+                    },
+                    "ru": {
+                              "toolLabel": "Конструктор книг и писем",
+                              "guideLabel": "Гайд по книгам и письмам",
+                              "featureTitle": "Конструктор книг и писем",
+                              "featureDesc": "Собирайте written books, письма, записки, контракты и команды выдачи книг для новых и старых версий Minecraft.",
+                              "catalogTitle": "Конструктор книг и писем",
+                              "catalogDesc": "Собирайте written books, письма, записки, контракты и команды выдачи книг для новых и старых версий Minecraft.",
+                              "catalogAction": "Открыть конструктор",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по конструктору",
+                              "wikiTitle": "Конструктор книг и писем",
+                              "wikiDesc": "Собирайте written books, письма, записки, контракты и команды выдачи книг для новых и старых версий Minecraft.",
+                              "wikiAction": "Читать гайд",
+                              "sidebarLabel": "Конструктор книг и писем"
+                    },
+                    "fr": {
+                              "toolLabel": "Constructeur de livres et lettres",
+                              "guideLabel": "Guide du constructeur de livres et lettres",
+                              "featureTitle": "Constructeur de livres et lettres",
+                              "featureDesc": "Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.",
+                              "catalogTitle": "Constructeur de livres et lettres",
+                              "catalogDesc": "Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.",
+                              "catalogAction": "Ouvrir l’outil",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide builder",
+                              "wikiTitle": "Constructeur de livres et lettres",
+                              "wikiDesc": "Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.",
+                              "wikiAction": "Lire le guide",
+                              "sidebarLabel": "Constructeur de livres et lettres"
+                    },
+                    "de": {
+                              "toolLabel": "Buch- und Brief-Builder",
+                              "guideLabel": "Buch- und Brief-Builder-Anleitung",
+                              "featureTitle": "Buch- und Brief-Builder",
+                              "featureDesc": "Erstelle geschriebene Bücher, Briefe, Verträge und /give-Befehle für moderne und ältere Minecraft-Versionen.",
+                              "catalogTitle": "Buch- und Brief-Builder",
+                              "catalogDesc": "Erstelle geschriebene Bücher, Briefe, Verträge und /give-Befehle für moderne und ältere Minecraft-Versionen.",
+                              "catalogAction": "Builder öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Builder-Anleitung",
+                              "wikiTitle": "Buch- und Brief-Builder",
+                              "wikiDesc": "Erstelle geschriebene Bücher, Briefe, Verträge und /give-Befehle für moderne und ältere Minecraft-Versionen.",
+                              "wikiAction": "Anleitung lesen",
+                              "sidebarLabel": "Buch- und Brief-Builder"
+                    }
+          },
+          "dialogueBuilder": {
+                    "en": {
+                              "toolLabel": "Dialogue builder",
+                              "guideLabel": "Dialogue builder guide",
+                              "featureTitle": "Dialogue builder",
+                              "featureDesc": "Build NPC lines, narration, actionbars, and title beats for Minecraft scenes without hand-writing every tellraw object.",
+                              "catalogTitle": "Dialogue builder",
+                              "catalogDesc": "Build NPC lines, narration, actionbars, and title beats for Minecraft scenes without hand-writing every tellraw object.",
+                              "catalogAction": "Open builder",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Builder guide",
+                              "wikiTitle": "Dialogue builder",
+                              "wikiDesc": "Build tellraw lines, titles, subtitles, and actionbars for Minecraft scenes without losing readability or pacing.",
+                              "wikiAction": "Read guide",
+                              "sidebarLabel": "Dialogue builder"
+                    },
+                    "ru": {
+                              "toolLabel": "Конструктор диалогов",
+                              "guideLabel": "Гайд по конструктору диалогов",
+                              "featureTitle": "Конструктор диалогов",
+                              "featureDesc": "Собирает реплики NPC, narration, actionbar и title-моменты для сцен Minecraft без ручной возни с tellraw JSON.",
+                              "catalogTitle": "Конструктор диалогов",
+                              "catalogDesc": "Собирает реплики NPC, narration, actionbar и title-моменты для сцен Minecraft без ручной возни с tellraw JSON.",
+                              "catalogAction": "Открыть конструктор",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по конструктору",
+                              "wikiTitle": "Конструктор диалогов",
+                              "wikiDesc": "Собирайте tellraw-реплики, title, subtitle и actionbar для сцен Minecraft без потери читаемости и ритма.",
+                              "wikiAction": "Читать гайд",
+                              "sidebarLabel": "Конструктор диалогов"
+                    },
+                    "fr": {
+                              "toolLabel": "Constructeur de dialogues",
+                              "guideLabel": "Guide du constructeur de dialogues",
+                              "featureTitle": "Constructeur de dialogues",
+                              "featureDesc": "Crée des répliques de PNJ, de la narration, des actionbars et des moments en title pour Minecraft sans écrire chaque tellraw à la main.",
+                              "catalogTitle": "Constructeur de dialogues",
+                              "catalogDesc": "Crée des répliques de PNJ, de la narration, des actionbars et des moments en title pour Minecraft sans écrire chaque tellraw à la main.",
+                              "catalogAction": "Ouvrir l’outil",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide builder",
+                              "wikiTitle": "Constructeur de dialogues",
+                              "wikiDesc": "Créez des répliques tellraw, des titles, des subtitles et des actionbars pour vos scènes Minecraft sans perdre en lisibilité ni en rythme.",
+                              "wikiAction": "Lire le guide",
+                              "sidebarLabel": "Constructeur de dialogues"
+                    },
+                    "de": {
+                              "toolLabel": "Dialog-Builder",
+                              "guideLabel": "Dialog-Builder-Anleitung",
+                              "featureTitle": "Dialog-Builder",
+                              "featureDesc": "Erstellt NPC-Zeilen, Erzählertext, Actionbars und Title-Momente für Minecraft, ohne jedes tellraw von Hand zu schreiben.",
+                              "catalogTitle": "Dialog-Builder",
+                              "catalogDesc": "Erstellt NPC-Zeilen, Erzählertext, Actionbars und Title-Momente für Minecraft, ohne jedes tellraw von Hand zu schreiben.",
+                              "catalogAction": "Builder öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Builder-Anleitung",
+                              "wikiTitle": "Dialog-Builder",
+                              "wikiDesc": "Erstelle Tellraw-Zeilen, Titles, Subtitles und Actionbars für Minecraft-Szenen, ohne Lesbarkeit und Takt zu verlieren.",
+                              "wikiAction": "Anleitung lesen",
+                              "sidebarLabel": "Dialog-Builder"
+                    }
+          },
+          "bossbarBuilder": {
+                    "en": {
+                              "toolLabel": "Bossbar builder",
+                              "guideLabel": "Bossbar builder guide",
+                              "featureTitle": "Bossbar builder",
+                              "featureDesc": "Build Minecraft bossbar commands for events, phases, timers, rituals, and server alerts without hand-writing every command.",
+                              "catalogTitle": "Bossbar builder",
+                              "catalogDesc": "Build Minecraft bossbar commands for events, phases, timers, rituals, and server alerts without hand-writing every command.",
+                              "catalogAction": "Open builder",
+                              "catalogStatus": "new",
+                              "wikiKicker": "Builder guide",
+                              "wikiTitle": "Bossbar builder",
+                              "wikiDesc": "A practical guide to bossbar command structure, progress values, colors, and readable event pacing.",
+                              "wikiAction": "Read guide",
+                              "sidebarLabel": "Bossbar builder"
+                    },
+                    "ru": {
+                              "toolLabel": "Генератор bossbar",
+                              "guideLabel": "Гайд по bossbar",
+                              "featureTitle": "Генератор bossbar",
+                              "featureDesc": "Собирайте команды bossbar для событий, фаз, таймеров, ритуалов и серверных предупреждений без ручной сборки каждой команды.",
+                              "catalogTitle": "Генератор bossbar",
+                              "catalogDesc": "Собирайте команды bossbar для событий, фаз, таймеров, ритуалов и серверных предупреждений без ручной сборки каждой команды.",
+                              "catalogAction": "Открыть конструктор",
+                              "catalogStatus": "новое",
+                              "wikiKicker": "Гайд по конструктору",
+                              "wikiTitle": "Генератор bossbar",
+                              "wikiDesc": "Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий.",
+                              "wikiAction": "Читать гайд",
+                              "sidebarLabel": "Генератор bossbar"
+                    },
+                    "fr": {
+                              "toolLabel": "Générateur de bossbar",
+                              "guideLabel": "Guide du générateur de bossbar",
+                              "featureTitle": "Générateur de bossbar",
+                              "featureDesc": "Créez des commandes bossbar Minecraft pour événements, phases, minuteurs, rituels et alertes serveur sans tout écrire à la main.",
+                              "catalogTitle": "Générateur de bossbar",
+                              "catalogDesc": "Créez des commandes bossbar Minecraft pour événements, phases, minuteurs, rituels et alertes serveur sans tout écrire à la main.",
+                              "catalogAction": "Ouvrir l’outil",
+                              "catalogStatus": "nouveau",
+                              "wikiKicker": "Guide builder",
+                              "wikiTitle": "Générateur de bossbar",
+                              "wikiDesc": "Guide pratique sur les commandes bossbar, les valeurs de progression, les couleurs et le rythme lisible d’un événement.",
+                              "wikiAction": "Lire le guide",
+                              "sidebarLabel": "Générateur de bossbar"
+                    },
+                    "de": {
+                              "toolLabel": "Bossbar-Builder",
+                              "guideLabel": "Bossbar-Builder-Anleitung",
+                              "featureTitle": "Bossbar-Builder",
+                              "featureDesc": "Erstelle Minecraft-Bossbar-Befehle für Events, Phasen, Timer, Rituale und Serverwarnungen, ohne jede Zeile von Hand zu schreiben.",
+                              "catalogTitle": "Bossbar-Builder",
+                              "catalogDesc": "Erstelle Minecraft-Bossbar-Befehle für Events, Phasen, Timer, Rituale und Serverwarnungen, ohne jede Zeile von Hand zu schreiben.",
+                              "catalogAction": "Builder öffnen",
+                              "catalogStatus": "neu",
+                              "wikiKicker": "Builder-Anleitung",
+                              "wikiTitle": "Bossbar-Builder",
+                              "wikiDesc": "Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing.",
+                              "wikiAction": "Anleitung lesen",
+                              "sidebarLabel": "Bossbar-Builder"
+                    }
           }
 };
         const meta = {
@@ -622,6 +808,21 @@
                     "path": "/circle-dome-planner/",
                     "guidePath": "/wiki-circle-dome-planner/",
                     "sectionId": "resource-pack-generator-wiki"
+          },
+          "bookLetterBuilder": {
+                    "path": "/book-letter-builder/",
+                    "guidePath": "/wiki-book-letter-builder/",
+                    "sectionId": "how-to-guides"
+          },
+          "dialogueBuilder": {
+                    "path": "/dialogue-builder/",
+                    "guidePath": "/wiki-dialogue-builder/",
+                    "sectionId": "how-to-guides"
+          },
+          "bossbarBuilder": {
+                    "path": "/bossbar-builder/",
+                    "guidePath": "/wiki-bossbar-builder/",
+                    "sectionId": "how-to-guides"
           }
 };
         const tools = Object.keys(meta).map((key) => {
