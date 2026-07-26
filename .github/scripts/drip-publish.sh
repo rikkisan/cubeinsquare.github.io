@@ -9,7 +9,22 @@ if [[ ! -d "$QUEUE_ROOT" ]]; then
   exit 0
 fi
 
-next_release="$(find "$QUEUE_ROOT" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | sort | head -n 1 || true)"
+today="$(date -u +%Y-%m-%d)"
+next_release=""
+while IFS= read -r dir; do
+  folder="$(basename "$dir")"
+  release_date="${folder:0:10}"
+  if [[ ! "$release_date" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+    echo "Skipping folder without a valid date prefix: $folder"
+    continue
+  fi
+  if [[ "$release_date" > "$today" ]]; then
+    echo "Next release $folder is scheduled for $release_date, not due yet."
+    break
+  fi
+  next_release="$dir"
+  break
+done < <(find "$QUEUE_ROOT" -mindepth 1 -maxdepth 1 -type d ! -name '.*' | sort)
 
 if [[ -z "$next_release" ]]; then
   echo "No queued releases found."
