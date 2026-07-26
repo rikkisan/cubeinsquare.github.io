@@ -1,0 +1,75 @@
+# Rename to TOOL_META.js only if this bundle introduces a NEW tool.
+# Delete it otherwise. All four locales are required.
+#
+# Both sections declare the same tool key. It is spliced into the meta and
+# labels objects in assets/site.js -- never replace that file from a payload.
+
+@meta
+"myNewTool": {
+          "path": "/my-new-tool/",
+          "guidePath": "/wiki-my-new-tool/",
+          "sectionId": "how-to-guides"
+}
+@labels
+"myNewTool": {
+          "en": {
+                    "toolLabel": "My new tool",
+                    "guideLabel": "My new tool guide",
+                    "featureTitle": "My new tool",
+                    "featureDesc": "One sentence for the navbar feature card.",
+                    "catalogTitle": "My new tool",
+                    "catalogDesc": "One sentence for the tools catalog card.",
+                    "catalogAction": "Open tool",
+                    "catalogStatus": "new",
+                    "wikiKicker": "Builder guide",
+                    "wikiTitle": "My new tool",
+                    "wikiDesc": "One sentence for the wiki card.",
+                    "wikiAction": "Read guide",
+                    "sidebarLabel": "My new tool"
+          },
+          "ru": {
+                    "toolLabel": "Мой новый инструмент",
+                    "guideLabel": "Гайд по инструменту",
+                    "featureTitle": "Мой новый инструмент",
+                    "featureDesc": "Одно предложение для карточки в меню.",
+                    "catalogTitle": "Мой новый инструмент",
+                    "catalogDesc": "Одно предложение для каталога инструментов.",
+                    "catalogAction": "Открыть инструмент",
+                    "catalogStatus": "новое",
+                    "wikiKicker": "Гайд по конструктору",
+                    "wikiTitle": "Мой новый инструмент",
+                    "wikiDesc": "Одно предложение для карточки в вики.",
+                    "wikiAction": "Читать гайд",
+                    "sidebarLabel": "Мой новый инструмент"
+          },
+          "fr": {
+                    "toolLabel": "Mon nouvel outil",
+                    "guideLabel": "Guide de l’outil",
+                    "featureTitle": "Mon nouvel outil",
+                    "featureDesc": "Une phrase pour la carte du menu.",
+                    "catalogTitle": "Mon nouvel outil",
+                    "catalogDesc": "Une phrase pour le catalogue d’outils.",
+                    "catalogAction": "Ouvrir l’outil",
+                    "catalogStatus": "nouveau",
+                    "wikiKicker": "Guide builder",
+                    "wikiTitle": "Mon nouvel outil",
+                    "wikiDesc": "Une phrase pour la carte du wiki.",
+                    "wikiAction": "Lire le guide",
+                    "sidebarLabel": "Mon nouvel outil"
+          },
+          "de": {
+                    "toolLabel": "Mein neues Werkzeug",
+                    "guideLabel": "Anleitung zum Werkzeug",
+                    "featureTitle": "Mein neues Werkzeug",
+                    "featureDesc": "Ein Satz für die Karte im Menü.",
+                    "catalogTitle": "Mein neues Werkzeug",
+                    "catalogDesc": "Ein Satz für den Werkzeugkatalog.",
+                    "catalogAction": "Werkzeug öffnen",
+                    "catalogStatus": "neu",
+                    "wikiKicker": "Builder-Anleitung",
+                    "wikiTitle": "Mein neues Werkzeug",
+                    "wikiDesc": "Ein Satz für die Karte im Wiki.",
+                    "wikiAction": "Anleitung lesen",
+                    "sidebarLabel": "Mein neues Werkzeug"
+          }
+}

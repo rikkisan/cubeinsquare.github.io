@@ -1,51 +1,63 @@
 How to prepare one queued site release
 =====================================
 
-1. Copy this whole folder and rename it, for example:
-   `2026-04-23-new-wiki-article`
+1. Copy this whole folder into `.drip/queue/` and rename it with the date it
+   should go live, for example `2026-08-02-new-wiki-article`.
 
-2. Move the copied folder into:
-   `.drip/queue/`
+   That date is a **release date, not a sort key** — the publisher skips the
+   bundle until the date arrives.
 
-3. Put every file that should go live in:
-   `payload/`
+2. Put every file that should go live in `payload/`, mirroring the real site
+   paths exactly:
 
-4. Inside `payload/`, mirror the real site paths exactly.
+       payload/
+         wiki-new-article/index.html
+         ru/wiki-new-article/index.html
+         fr/wiki-new-article/index.html
+         de/wiki-new-article/index.html
+         wiki/index.html            <- hub page, if it needs a new link
+         ru/wiki/index.html
 
-Example:
+3. Set the commit subject in `COMMIT_TITLE.txt`, and optionally a longer
+   message in `COMMIT_BODY.txt`.
 
-    payload/
-      wiki-new-article.html
-      wiki.html
-      sitemap.xml
-      ru/
-        wiki-new-article.html
-        wiki.html
-      fr/
-        wiki-new-article.html
-      de/
-        wiki-new-article.html
+4. To remove files, list them one per line in `DELETE.txt`.
 
-5. Set the commit title in `COMMIT_TITLE.txt`
-6. Optionally add a longer message in `COMMIT_BODY.txt`
-7. If the release should delete files, list them one-per-line in `DELETE.txt`
+5. To stop this bundle from publishing without deleting it, drop a `HOLD`
+   file in the folder; the first line is shown as the reason.
+
+NEVER put these in payload/
+---------------------------
+
+    assets/site.js
+    sitemap.xml
+
+Validation will reject the bundle. These are shared files: bundles used to
+carry their own copies, and when several were prepared in parallel the last
+one published silently erased the others' menu entries and sitemap URLs.
+
+- The sitemap is regenerated automatically on every publish — do nothing.
+- A new tool's menu entry goes in `TOOL_META.js` (see DRIP_PUBLISHING.md),
+  which is spliced into the live file instead of replacing it.
+
+Remember that `/tools/` is a static page: a new tool also needs a
+`resource-card` added to `tools/index.html` and its ru/fr/de copies, and those
+belong in `payload/`.
+
+Check before you ship
+---------------------
+
+    bash .github/scripts/drip-validate.sh .drip/queue/<your-folder>
+
+Or run the whole thing without publishing — GitHub → Actions → Drip Publish →
+Run workflow → tick "dry run".
 
 How publishing works
 --------------------
 
-- GitHub Actions picks the first folder from `.drip/queue/` in alphabetical order.
-- It copies everything from `payload/` into the repo root.
-- It applies optional deletions from `DELETE.txt`.
-- It removes the processed queued folder.
-- It commits and pushes to `main`.
+Every Sunday, GitHub Actions takes the oldest bundle whose date has arrived,
+validates it, copies `payload/` over the site, merges any `TOOL_META.js` into
+the menu, regenerates `sitemap.xml`, logs the release in `PUBLISHED.md`,
+removes the queue folder, then commits and pushes to `main`.
 
-Recommended naming
-------------------
-
-Use sortable names such as:
-
-- `2026-04-23-wiki-privacy-update`
-- `2026-04-30-new-potions-article`
-- `2026-05-07-new-tool-landing`
-
-That way the queue always publishes in the order you expect.
+A bundle that fails validation is left in the queue and retried next run.
