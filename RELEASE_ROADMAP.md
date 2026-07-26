@@ -1,43 +1,41 @@
 # Cube in Square release roadmap
 
-This file tracks the scheduled drip releases that are currently present in `.drip/queue`.
-It is meant to separate real queued work from ideas that were discussed but are not yet in the repository.
+This file tracks the scheduled drip releases and their actual publish status.
+Updated 2026-07-26 after confirming every previously "queued" item below has
+already gone live; `.drip/queue/` is currently empty.
 
-## Current live/local status
+## Already live
 
-### Already live
+| Went live | What launched |
+| --- | --- |
+| 2026-05-03 | Minecraft 1.21.4 resource-pack migration guide (`/wiki-resource-pack-migration-1-21-4/`). |
+| 2026-05-17 | String IDs / CustomModelData guide (`/wiki-string-ids-custom-model-data/`). |
+| 2026-05-21 | Smart potion contents article (`/wiki-smart-potion-contents-1-21-4/`). |
+| 2026-05-31 | RP progression systems article, EN/RU/FR/DE (`/wiki-rp-progression-systems/`). |
+| 2026-06-02 | Sphere generator tool and guide, plus Data Components architecture guide. |
+| 2026-06-07 | Item Model Definitions Builder, guide, and supporting article. |
+| 2026-06-14 | Custom Item Catalog, guide, and supporting naming article. |
+| 2026-06-21 | Circle / ring / dome planner and supporting article. |
+| 2026-06-28 | Book / Letter Builder, guide, and readable books article. |
+| 2026-07-05 | Dialogue Builder, guide, and readable dialogue article. |
+| 2026-07-12 | Bossbar Builder, guide, and Minecraft event UI article. |
 
-- Texture painter: palette extraction from an uploaded image.
-- Texture painter and skin editor: custom export file names.
-- Earlier texture painter UI fixes that were already pushed before the latest canvas work.
-- Expanded wiki, tools, about, mod articles, and AdSense-facing content polish already committed to `main`.
+The texture painter preview bundle (palette extraction, export file naming,
+canvas layout/pan/undo fixes, block template as a cube side sheet) and the
+custom item builder tool are also live; see `git log -- assets/texture-painter.js`
+for the individual commits.
 
-### Local only, not live yet
-
-- Texture painter layout: tool panel moved closer to the left edge and the canvas area widened.
-- Texture painter canvas centering wrapper.
-- Texture painter right-click canvas panning restoration.
-- Texture painter undo/redo behavior focused on pixels rather than viewport jumps.
-- Resource-pack 3D preview: automatic item/block rotation removed locally.
-
-These local changes should be reviewed before publishing because the site is currently under AdSense review.
+Note: bossbar-builder, book-letter-builder, dialogue-builder, and
+circle-dome-planner published on the dates above instead of their originally
+queued dates (2026-11-01, 2026-09-06, 2026-10-04, 2026-08-02) because of a bug
+in `.github/scripts/drip-publish.sh` that ignored the date prefix on queue
+folders. That script now only publishes a folder whose date has arrived. The
+same incident also dropped these four tools from the Tools menu and
+`sitemap.xml` for a few weeks; both have since been fixed.
 
 ## Queued releases
 
-| Date | Queue folder | What launches | Status | Needs more work? |
-| --- | --- | --- | --- | --- |
-| 2026-05-03 | `2026-05-03-resource-pack-migration-1-21-4` | Minecraft 1.21.4 resource-pack migration guide. | Queued. | Quick QA before release. |
-| 2026-05-10 | `2026-05-10-smart-potion-contents-1-21-4` | Smart potion contents article plus sphere generator bundle. | Queued, with many added bundle files. | Bundle QA: navigation, sitemap, localized pages, and tool smoke test. |
-| 2026-05-17 | `2026-05-17-string-ids-custom-model-data` | String IDs / CustomModelData guide. | Queued. | Light polish and link check. |
-| 2026-05-23 | `2026-05-23-texture-preview-bundle` | Texture painter preview improvements prepared as a separate reviewable bundle. | Queued. | Keep out of live until AdSense review result unless it fixes a blocking bug. |
-| 2026-05-24 | `2026-05-24-rp-progression-systems` | RP progression systems article in EN / RU / FR / DE. | Payload added. | Needs final navigation QA before release. |
-| 2026-05-31 | `2026-05-31-data-components-architecture` | Data Components architecture guide. | Queued. | Quick QA and sitemap consistency check. |
-| 2026-06-07 | `2026-06-07-item-model-builder-bundle` | Item Model Definitions Builder, guide, and supporting article path. | Queued with local edits. | UX QA, localization check, export smoke test. |
-| 2026-07-05 | `2026-07-05-custom-item-catalog-bundle` | Custom Item Catalog, guide, and supporting naming article. | Queued with local edits. | Import/export QA, duplicate-warning checks, empty states. |
-| 2026-08-02 | `2026-08-02-circle-dome-planner-bundle` | Circle / ring / dome planner and supporting article. | Queued with local edits. | Presets, copy actions, mobile layout, and guide links. |
-| 2026-09-06 | `2026-09-06-book-letter-builder-bundle` | Book / Letter Builder, guide, and readable books article. | Queued. | Tool smoke test, navigation merge, and localized copy check. |
-| 2026-10-04 | `2026-10-04-dialogue-builder-bundle` | Dialogue Builder, guide, and readable dialogue article. | Queued. | Tool smoke test, navigation merge, and localized copy check. |
-| 2026-11-01 | `2026-11-01-bossbar-builder-bundle` | Bossbar Builder, guide, and Minecraft event UI article. | Queued. | Command syntax smoke test, navigation merge, sitemap check, and mobile layout QA. |
+None. `.drip/queue/` contains only `.gitkeep`.
 
 ## Discussed but not currently queued here
 
@@ -50,5 +48,5 @@ These may still be good future tools, but they are not present as `.drip/queue` 
 
 - Prefer documentation, queue cleanup, and future-release work.
 - Avoid large live-page restructuring unless it fixes a real bug.
-- Keep texture-painter live changes bundled and reviewed before publishing.
 - Do not add thin placeholder pages; every new release should include a tool or article with enough context, navigation, and sitemap coverage.
+- New drip bundles must not carry their own copy of `assets/site.js` or `sitemap.xml` in `payload/` — those are shared files and get updated in a separate commit.
