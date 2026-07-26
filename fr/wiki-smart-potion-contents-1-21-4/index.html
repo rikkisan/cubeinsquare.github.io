@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Potions personnalisées intelligentes dans Minecraft 1.21.4 : utiliser potion_contents | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comment construire des potions personnalisées plus intelligentes dans Minecraft 1.21.4 avec le composant potion_contents, les effets personnalisés, les noms et l’identité visuelle.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Potions personnalisées intelligentes dans Minecraft 1.21.4 : utiliser potion_contents | Cube in Square">
+    <meta property="og:description" content="Comment construire des potions personnalisées plus intelligentes dans Minecraft 1.21.4 avec le composant potion_contents, les effets personnalisés, les noms et l’identité visuelle.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Potions personnalisées intelligentes dans Minecraft 1.21.4 : utiliser potion_contents | Cube in Square">
+    <meta name="twitter:description" content="Comment construire des potions personnalisées plus intelligentes dans Minecraft 1.21.4 avec le composant potion_contents, les effets personnalisés, les noms et l’identité visuelle.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-smart-potion-contents-1-21-4/">RU</a><a href="/wiki-smart-potion-contents-1-21-4/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-smart-potion-contents-1-21-4/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Potions personnalisées intelligentes dans Minecraft 1.21.4 : utiliser potion_contents</h1>
+        <p class="page-lead">Le nouveau système de potions est l’un des exemples les plus clairs de l’utilité réelle de l’ère des components. Au lieu de tout entasser dans un seul vieux bloc NBT, l’objet indique désormais directement ce que doit contenir son payload de potion.</p>
+        <a class="resource-link" href="/fr/custom-potions/">Ouvrir le constructeur de potions</a>
+    </section>
+    <article>
+        <h2>Pourquoi <code>potion_contents</code> compte</h2>
+        <p>En 1.21.4, une potion personnalisée n’a plus besoin de ressembler à un objet NBT mystérieux. La partie importante du payload vit désormais dans un composant dédié qui décrit clairement la couleur de la potion, les effets personnalisés et l’entrée de potion de base quand vous en utilisez une.</p>
+        <h2>Forme type du composant</h2>
+<pre><code>minecraft:potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <h2>Ce qui rend une potion « intelligente »</h2>
+        <ul><li>La couleur correspond au rôle narratif de la potion dans le monde.</li><li>Le nom visible explique ce qu’est la potion en termes RP.</li><li>Les données cachées restent assez prévisibles pour que le staff puisse les maintenir.</li><li>L’infobulle ne noie pas les joueurs sous une structure d’administration brute.</li></ul>
+        <h2>Bons cas d’usage en RP</h2>
+        <ul><li>Teintures de médecin avec un léger speed et de la regeneration.</li><li>Élixirs d’enquêteur avec night vision et une courte invisibility.</li><li>Toniques de faction avec des couleurs de flacon différentes mais une logique de base partagée.</li><li>Breuvages de quête avec un nom lisible et un modèle personnalisé.</li></ul>
+        <h2>Combiner avec d’autres components</h2>
+        <p>Une potion intelligente combine généralement <code>minecraft:potion_contents</code> avec au moins un nom personnalisé, du lore, et parfois <code>minecraft:custom_model_data</code>. C’est ce qui transforme un objet purement mécanique en quelque chose qui semble pensé pour votre univers de serveur.</p>
+        <h2>Quand éviter la surenchère</h2>
+        <p>Si chaque potion a trop d’effets, trop de lore et trop de bruit visuel, les joueurs finissent par ne plus comprendre ce qu’ils boivent. Utilisez le système de components pour rendre les potions plus claires, pas plus chargées.</p>
+        <h2>Workflow dans le constructeur</h2>
+        <ol><li>Choisir le type de potion et la version cible.</li><li>Définir l’identité visible : nom, lore, modèle, style de flacon.</li><li>Composer les effets à l’intérieur de <code>potion_contents</code>.</li><li>Tester l’objet en jeu et vérifier la lisibilité de l’infobulle.</li></ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

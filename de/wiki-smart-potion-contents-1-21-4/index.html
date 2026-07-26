@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Intelligente Custom-Tränke in Minecraft 1.21.4: Arbeiten mit potion_contents | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Wie man in Minecraft 1.21.4 intelligentere Custom-Tränke baut: mit der potion_contents-Komponente, eigenen Effekten, Namen und visueller Identität.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Intelligente Custom-Tränke in Minecraft 1.21.4: Arbeiten mit potion_contents | Cube in Square">
+    <meta property="og:description" content="Wie man in Minecraft 1.21.4 intelligentere Custom-Tränke baut: mit der potion_contents-Komponente, eigenen Effekten, Namen und visueller Identität.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Intelligente Custom-Tränke in Minecraft 1.21.4: Arbeiten mit potion_contents | Cube in Square">
+    <meta name="twitter:description" content="Wie man in Minecraft 1.21.4 intelligentere Custom-Tränke baut: mit der potion_contents-Komponente, eigenen Effekten, Namen und visueller Identität.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-smart-potion-contents-1-21-4/">RU</a><a href="/wiki-smart-potion-contents-1-21-4/">EN</a><a href="/fr/wiki-smart-potion-contents-1-21-4/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Intelligente Custom-Tränke in Minecraft 1.21.4: Arbeiten mit potion_contents</h1>
+        <p class="page-lead">Das neue Tranksystem ist eines der klarsten Beispiele dafür, warum die Component-Ära wirklich nützlich ist. Statt alles in einen alten NBT-Klumpen zu zwingen, sagt das Item jetzt direkt, was sein Trank-Payload sein soll.</p>
+        <a class="resource-link" href="/de/custom-potions/">Potions-Builder öffnen</a>
+    </section>
+    <article>
+        <h2>Warum <code>potion_contents</code> wichtig ist</h2>
+        <p>In 1.21.4 muss sich ein Custom-Trank nicht mehr wie ein mysteriöses NBT-Objekt anfühlen. Der wichtige Teil des Payloads lebt jetzt in einer eigenen Komponente, die Trankfarbe, eigene Effekte und den Basistrank-Eintrag klar beschreibt, wenn einer verwendet wird.</p>
+        <h2>Typische Form der Komponente</h2>
+<pre><code>minecraft:potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <h2>Was einen Trank „intelligent“ macht</h2>
+        <ul><li>Die Farbe passt zur erzählerischen Rolle des Tranks in der Spielwelt.</li><li>Der sichtbare Name erklärt, was der Trank in RP-Begriffen ist.</li><li>Die versteckten Daten sind vorhersehbar genug, damit das Team sie pflegen kann.</li><li>Der Tooltip überflutet Spieler nicht mit roher Admin-Struktur.</li></ul>
+        <h2>Gute RP-Anwendungsfälle</h2>
+        <ul><li>Heiler-Tinkturen mit leichtem speed und regeneration.</li><li>Ermittler-Elixiere mit night vision und kurzer invisibility.</li><li>Fraktions-Tonika mit unterschiedlichen Flaschenfarben, aber gemeinsamer Basislogik.</li><li>Quest-exklusive Gebräue mit lesbarem Namen und eigenem Modell.</li></ul>
+        <h2>Kombination mit anderen Components</h2>
+        <p>Ein intelligenter Trank kombiniert <code>minecraft:potion_contents</code> meist mit mindestens einem eigenen Namen, Lore und manchmal <code>minecraft:custom_model_data</code>. Genau das macht aus einem rohen Mechanik-Item etwas, das sich für die eigene Serverwelt geschrieben anfühlt.</p>
+        <h2>Wann Überdesign vermieden werden sollte</h2>
+        <p>Wenn jeder Trank zu viele Effekte, zu viel Lore und zu viel visuellen Lärm hat, verstehen Spieler irgendwann nicht mehr, was sie trinken. Nutzt das Component-System, um Tränke klarer zu machen, nicht lauter.</p>
+        <h2>Workflow im Builder</h2>
+        <ol><li>Tranktyp und Zielversion wählen.</li><li>Die sichtbare Identität festlegen: Name, Lore, Modell, Flaschenstil.</li><li>Effekte innerhalb von <code>potion_contents</code> zusammenstellen.</li><li>Das Item im Spiel testen und die Lesbarkeit des Tooltips prüfen.</li></ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

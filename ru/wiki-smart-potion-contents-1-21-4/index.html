@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Умные кастомные зелья в Minecraft 1.21.4: работа с potion_contents | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Как собирать более умные кастомные зелья в Minecraft 1.21.4 через компонент potion_contents, кастомные эффекты, имена и визуальную идентичность.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Умные кастомные зелья в Minecraft 1.21.4: работа с potion_contents | Cube in Square">
+    <meta property="og:description" content="Как собирать более умные кастомные зелья в Minecraft 1.21.4 через компонент potion_contents, кастомные эффекты, имена и визуальную идентичность.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Умные кастомные зелья в Minecraft 1.21.4: работа с potion_contents | Cube in Square">
+    <meta name="twitter:description" content="Как собирать более умные кастомные зелья в Minecraft 1.21.4 через компонент potion_contents, кастомные эффекты, имена и визуальную идентичность.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-smart-potion-contents-1-21-4/">EN</a><a href="/fr/wiki-smart-potion-contents-1-21-4/">FR</a><a href="/de/wiki-smart-potion-contents-1-21-4/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Умные кастомные зелья в Minecraft 1.21.4: работа с potion_contents</h1>
+        <p class="page-lead">Новая система зелий — один из самых наглядных примеров того, зачем вообще нужна эра компонентов. Вместо того чтобы запихивать всё в один старый NBT-блок, предмет теперь сам явно говорит, что должно быть внутри его зелейного payload.</p>
+        <a class="resource-link" href="/ru/custom-potions/">Открыть конструктор зелий</a>
+    </section>
+    <article>
+        <h2>Почему <code>potion_contents</code> важен</h2>
+        <p>В 1.21.4 кастомное зелье больше не обязано выглядеть как загадочный NBT-объект. Важная часть payload теперь живёт в отдельном компоненте, который явно описывает цвет зелья, кастомные эффекты и базовую запись зелья, если она используется.</p>
+        <h2>Типичная форма компонента</h2>
+<pre><code>minecraft:potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <h2>Что делает зелье «умным»</h2>
+        <ul><li>Цвет соответствует роли зелья в истории мира.</li><li>Видимое название объясняет, что это за зелье в терминах RP.</li><li>Скрытые данные достаточно предсказуемы, чтобы их могла поддерживать команда.</li><li>Тултип не заваливает игрока сырой административной структурой.</li></ul>
+        <h2>Хорошие сценарии для RP</h2>
+        <ul><li>Медицинские настойки с лёгким speed и regeneration.</li><li>Эликсиры детектива с night vision и коротким invisibility.</li><li>Фракционные тоники с разным цветом бутылки, но общей базовой логикой.</li><li>Квестовые варева с читаемым именем и кастомной моделью.</li></ul>
+        <h2>Сочетание с другими компонентами</h2>
+        <p>Умное зелье обычно сочетает <code>minecraft:potion_contents</code> хотя бы с кастомным именем, lore, а иногда и с <code>minecraft:custom_model_data</code>. Именно это превращает сырой механический предмет в вещь, которая ощущается написанной специально для вашего сервера.</p>
+        <h2>Когда не стоит переусложнять</h2>
+        <p>Если у каждого зелья слишком много эффектов, слишком много lore и слишком много визуального шума, игроки перестают понимать, что они вообще пьют. Используйте систему компонентов, чтобы зелья становились чище, а не шумнее.</p>
+        <h2>Рабочий процесс в конструкторе</h2>
+        <ol><li>Выберите тип зелья и целевую версию.</li><li>Определите видимую идентичность: имя, lore, модель, стиль бутылки.</li><li>Соберите эффекты внутри <code>potion_contents</code>.</li><li>Проверьте предмет в игре и убедитесь, что тултип читается легко.</li></ol>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
