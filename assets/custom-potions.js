@@ -457,7 +457,13 @@
         if (potionContents.length) components.push(`potion_contents={${potionContents.join(',')}}`);
         if (name) components.push(`item_name=${jsonTextLiteral(name)}`);
         if (loreLines.length) components.push(`lore=[${loreLines.map(jsonTextLiteral).join(',')}]`);
-        if (customModelData > 0) components.push(`custom_model_data=${customModelData}`);
+        if (customModelData > 0) {
+            // 1.21.4 turned custom_model_data from a bare int into a record of
+            // typed lists, so the older form no longer parses there.
+            components.push(version === 'modern'
+                ? `custom_model_data={floats:[${customModelData}f]}`
+                : `custom_model_data=${customModelData}`);
+        }
 
         const suffix = components.length ? `[${components.join(',')}]` : '';
         return {

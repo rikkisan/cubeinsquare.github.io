@@ -48,6 +48,15 @@
     });
   }
 
+  // written_book_content.generation is an int 0-3, not the name of the tier.
+  // Emitting the name made every signed-book command fail to parse in game.
+  const GENERATION_IDS = { original: 0, copy_of_original: 1, copy_of_copy: 2, tattered: 3 };
+
+  function generationId() {
+    const value = generationInput.value || 'original';
+    return Object.prototype.hasOwnProperty.call(GENERATION_IDS, value) ? GENERATION_IDS[value] : 0;
+  }
+
   function modernCommand(pages) {
     const target = (targetInput.value || '@p').trim();
     const isSigned = typeInput.value === 'signed';
@@ -55,18 +64,29 @@
     if (!isSigned) {
       return '/give ' + target + ' ' + item + '[minecraft:writable_book_content={pages:[' + pages.map((page) => JSON.stringify({ raw: page })).join(',') + ']}] 1';
     }
-    return '/give ' + target + ' ' + item + '[written_book_content={title:"' + escapeText(titleInput.value || '') + '",author:"' + escapeText(authorInput.value || '') + '",generation:"' + (generationInput.value || 'original') + '",pages:[' + pages.map((page) => JSON.stringify({ raw: page })).join(',') + ']}] 1';
+    return '/give ' + target + ' ' + item + '[written_book_content={title:"' + escapeText(titleInput.value || '') + '",author:"' + escapeText(authorInput.value || '') + '",generation:' + generationId() + ',pages:[' + pages.map((page) => JSON.stringify({ raw: page })).join(',') + ']}] 1';
   }
 
   function legacyCommand(pages) {
     const target = (targetInput.value || '@p').trim();
     const isSigned = typeInput.value === 'signed';
     const item = isSigned ? 'minecraft:written_book' : 'minecraft:writable_book';
-    const pageArray = '[' + pages.map((page) => '"' + escapeText(page) + '"').join(',') + ']';
+
     if (!isSigned) {
-      return '/give ' + target + ' ' + item + '{pages:' + pageArray + '} 1';
+      // A book and quill stores its pages as plain strings.
+      const plainPages = '[' + pages.map((page) => '"' + escapeText(page) + '"').join(',') + ']';
+      return '/give ' + target + ' ' + item + '{pages:' + plainPages + '} 1';
     }
-    return '/give ' + target + ' ' + item + '{title:"' + escapeText(titleInput.value || '') + '",author:"' + escapeText(authorInput.value || '') + '",pages:' + pageArray + '} 1';
+
+    // A signed book stores each page as a JSON text component, so the page has
+    // to be wrapped rather than written as bare text.
+    const jsonPages = '[' + pages
+      .map((page) => "'" + JSON.stringify({ text: page }).replace(/'/g, "\\'") + "'")
+      .join(',') + ']';
+    return '/give ' + target + ' ' + item + '{title:"' + escapeText(titleInput.value || '')
+      + '",author:"' + escapeText(authorInput.value || '')
+      + '",generation:' + generationId()
+      + ',pages:' + jsonPages + '} 1';
   }
 
   function formatSummary(pageCount) {
