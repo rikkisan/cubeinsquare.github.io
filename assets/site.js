@@ -776,7 +776,69 @@
                               "wikiAction": "Anleitung lesen",
                               "sidebarLabel": "Bossbar-Builder"
                     }
+          },
+"datapackGenerator": {
+          "en": {
+                    "toolLabel": "Data pack generator",
+                    "guideLabel": "Data pack guide",
+                    "featureTitle": "Data pack generator",
+                    "featureDesc": "Build a ready-to-install pack with the right pack_format and the right 1.21+ folder names.",
+                    "catalogTitle": "Data pack generator",
+                    "catalogDesc": "Loot tables, recipes and advancements are files, not commands. This builds the folder that holds them, correct for your version.",
+                    "catalogAction": "Open generator",
+                    "catalogStatus": "new",
+                    "wikiKicker": "Concept guide",
+                    "wikiTitle": "Data packs vs commands",
+                    "wikiDesc": "Why loot tables and recipes cannot be made with a command, and the 1.21 folder rename that silently breaks packs.",
+                    "wikiAction": "Read guide",
+                    "sidebarLabel": "Data pack generator"
+          },
+          "ru": {
+                    "toolLabel": "Генератор датапаков",
+                    "guideLabel": "Гайд по датапакам",
+                    "featureTitle": "Генератор датапаков",
+                    "featureDesc": "Собирает готовый пак с правильным pack_format и правильными именами папок для 1.21+.",
+                    "catalogTitle": "Генератор датапаков",
+                    "catalogDesc": "Loot-таблицы, рецепты и ачивки — это файлы, а не команды. Инструмент собирает папку под них, корректную для вашей версии.",
+                    "catalogAction": "Открыть генератор",
+                    "catalogStatus": "новое",
+                    "wikiKicker": "Гайд по концепции",
+                    "wikiTitle": "Датапаки против команд",
+                    "wikiDesc": "Почему loot-таблицу и рецепт нельзя сделать командой, и переименование папок в 1.21, которое тихо ломает паки.",
+                    "wikiAction": "Читать гайд",
+                    "sidebarLabel": "Генератор датапаков"
+          },
+          "fr": {
+                    "toolLabel": "Générateur de data packs",
+                    "guideLabel": "Guide des data packs",
+                    "featureTitle": "Générateur de data packs",
+                    "featureDesc": "Crée un pack prêt à installer avec le bon pack_format et les bons noms de dossiers pour 1.21+.",
+                    "catalogTitle": "Générateur de data packs",
+                    "catalogDesc": "Les tables de butin, recettes et progrès sont des fichiers, pas des commandes. Cet outil construit le dossier qui les contient.",
+                    "catalogAction": "Ouvrir le générateur",
+                    "catalogStatus": "nouveau",
+                    "wikiKicker": "Guide conceptuel",
+                    "wikiTitle": "Data packs contre commandes",
+                    "wikiDesc": "Pourquoi une table de butin ne se crée pas avec une commande, et le renommage de dossiers en 1.21.",
+                    "wikiAction": "Lire le guide",
+                    "sidebarLabel": "Générateur de data packs"
+          },
+          "de": {
+                    "toolLabel": "Datapack-Generator",
+                    "guideLabel": "Datapack-Anleitung",
+                    "featureTitle": "Datapack-Generator",
+                    "featureDesc": "Erstellt ein installationsfertiges Pack mit korrektem pack_format und den richtigen Ordnernamen für 1.21+.",
+                    "catalogTitle": "Datapack-Generator",
+                    "catalogDesc": "Loot-Tabellen, Rezepte und Fortschritte sind Dateien, keine Befehle. Dieses Werkzeug baut den passenden Ordner dafür.",
+                    "catalogAction": "Generator öffnen",
+                    "catalogStatus": "neu",
+                    "wikiKicker": "Konzept-Anleitung",
+                    "wikiTitle": "Datapacks statt Befehle",
+                    "wikiDesc": "Warum sich Loot-Tabellen nicht per Befehl erstellen lassen, und die Ordner-Umbenennung in 1.21.",
+                    "wikiAction": "Anleitung lesen",
+                    "sidebarLabel": "Datapack-Generator"
           }
+}
 };
         const meta = {
           "customItemBuilder": {
@@ -823,7 +885,12 @@
                     "path": "/bossbar-builder/",
                     "guidePath": "/wiki-bossbar-builder/",
                     "sectionId": "how-to-guides"
-          }
+          },
+"datapackGenerator": {
+          "path": "/datapack-generator/",
+          "guidePath": "/wiki-datapack-generator/",
+          "sectionId": "how-to-guides"
+}
 };
         const tools = Object.keys(meta).map((key) => {
             const copy = labels[key][locale] || labels[key].en || labels[key].ru || labels[key].fr || labels[key].de;

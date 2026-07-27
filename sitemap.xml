@@ -30,11 +30,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/custom-potions/</loc>
-    <lastmod>2026-05-15</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/custom-villager-trades/</loc>
     <lastmod>2026-04-30</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/datapack-generator/</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/</loc>
@@ -831,6 +835,10 @@
   <url>
     <loc>https://cubeinsquare.com/wiki-data-components-architecture/</loc>
     <lastmod>2026-06-02</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-datapack-generator/</loc>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-dialogue-builder/</loc>
