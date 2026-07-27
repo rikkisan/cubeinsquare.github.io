@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Датапаки против команд: как на самом деле их устанавливать | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Почему loot-таблицу, рецепт и ачивку нельзя сделать командой, как выглядит папка датапака в 1.21+, какой pack_format брать и как установить и продиагностировать пак.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-datapack-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Датапаки против команд: как на самом деле их устанавливать | Cube in Square">
+    <meta property="og:description" content="Почему loot-таблицу и рецепт нельзя сделать командой, и что делать вместо этого.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-datapack-generator/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Датапаки против команд: как на самом деле их устанавливать | Cube in Square">
+    <meta name="twitter:description" content="Почему loot-таблицу и рецепт нельзя сделать командой, и что делать вместо этого.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/ru/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/ru/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-datapack-generator/#article",
+            "headline": "Датапаки против команд: как на самом деле их устанавливать",
+            "description": "Почему loot-таблицу, рецепт и ачивку нельзя сделать командой, как выглядит папка датапака в 1.21+ и как его установить и продиагностировать.",
+            "author": { "@id": "https://cubeinsquare.com/ru/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/ru/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-datapack-generator/#webpage" },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-datapack-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-datapack-generator/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-datapack-generator/",
+            "name": "Датапаки против команд: как на самом деле их устанавливать",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-datapack-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cubeinsquare.com/ru/" },
+                { "@type": "ListItem", "position": 2, "name": "Вики", "item": "https://cubeinsquare.com/ru/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Датапаки против команд", "item": "https://cubeinsquare.com/ru/wiki-datapack-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-datapack-generator/">EN</a><a href="/fr/wiki-datapack-generator/">FR</a><a href="/de/wiki-datapack-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Датапаки против команд: как на самом деле их устанавливать</h1>
+        <p class="page-lead">Почти каждый конструктор на этом сайте выдаёт команду, которую вы вставляете в чат. С loot-таблицами, рецептами и ачивками так не получится, и никакой команды для них не существует. Это файлы. Эта статья объясняет разницу, потому что именно на ней спотыкаются раньше, чем на чём-либо ещё.</p>
+        <a class="resource-link" href="/ru/datapack-generator/">Открыть генератор датапаков</a>
+    </section>
+
+    <article>
+        <h2>Команды /loottable не существует</h2>
+        <p>Если вы пользовались конструктором предметов или зелий, порядок знаком: заполнили форму, скопировали строку <code>/give</code>, вставили в чат, готово. Это работает, потому что предмет — вещь, которую игра может выдать прямо сейчас.</p>
+        <p>Loot-таблица — не вещь, которую держат в руках. Это <em>правило</em>: «когда сгенерируется вот этот сундук, кинь такие шансы». Рецепт — правило про сетку крафта. Ачивка — правило о том, когда что-то считается достигнутым. Правила должны существовать до момента, к которому применяются, поэтому игра читает их при загрузке из файлов на диске. Нет ни <code>/loottable</code>, ни <code>/recipe add</code>, ни какой-либо чат-команды, создающей их, — потому что к моменту, когда вы её наберёте, событие, которым она управляет, уже прошло.</p>
+        <p>Вся разница сводится к этому:</p>
+        <table class="compact-table">
+            <tr><th></th><th>Команды</th><th>Датапаки</th></tr>
+            <tr><td>Доставка</td><td>Вставить в чат или командный блок</td><td>Файлы в папке, которую загружает мир</td></tr>
+            <tr><td>Для чего</td><td>Разовые действия: выдать предмет, поставить bossbar, отправить сообщение</td><td>Постоянные правила: добыча, рецепты, ачивки, переиспользуемые функции</td></tr>
+            <tr><td>Когда срабатывает</td><td>Сразу</td><td>При загрузке мира или <code>/reload</code></td></tr>
+            <tr><td>Переживает рестарт</td><td>Только результат</td><td>Да, само правило сохраняется</td></tr>
+        </table>
+
+        <h2>Что такое датапак на самом деле</h2>
+        <p>Папка с файлом <code>pack.mcmeta</code> наверху и директорией <code>data</code> под ним. Это всё требование целиком. Minecraft принимает её и в архиве, и распакованной, а лежать она должна здесь:</p>
+        <pre><code>.minecraft/saves/&lt;мир&gt;/datapacks/&lt;ваш-пак&gt;/
+  pack.mcmeta
+  data/
+    harbor/
+      function/
+        load.mcfunction
+      loot_table/
+        example_chest.json
+    minecraft/
+      tags/function/
+        load.json</code></pre>
+        <p>Здесь появляются два пространства имён, и у них разные задачи. <code>harbor</code> — ваше: оно не даёт вашим файлам столкнуться с ванильными или с другим паком и становится частью каждого ID, например <code>harbor:load</code>. Пространство <code>minecraft</code> используется только для того, чтобы зацепиться за то, что ваниль уже определила, — поэтому тег загрузки лежит именно там, а не у вас.</p>
+
+        <h2>Переименование в 1.21, которое тихо ломает паки</h2>
+        <p>Этот пункт заслуживает отдельного раздела из-за того, как он падает. В 1.21 Mojang переименовали все директории с содержимым из множественного числа в единственное:</p>
+        <ul>
+            <li><code>functions</code> &rarr; <code>function</code></li>
+            <li><code>advancements</code> &rarr; <code>advancement</code></li>
+            <li><code>loot_tables</code> &rarr; <code>loot_table</code></li>
+            <li><code>recipes</code> &rarr; <code>recipe</code></li>
+            <li><code>predicates</code> &rarr; <code>predicate</code></li>
+            <li><code>item_modifiers</code> &rarr; <code>item_modifier</code></li>
+            <li><code>structures</code> &rarr; <code>structure</code></li>
+            <li><code>tags/functions</code> &rarr; <code>tags/function</code></li>
+        </ul>
+        <p>Падает это мерзко: пак со старыми именами на 1.21+ всё равно <strong>загружается</strong>. <code>/datapack list</code> показывает его включённым. Ошибок нет. Игра просто никогда не заглядывает в эти папки, поэтому ничего из написанного вами не выполняется. На этом теряют вечера — обычно повторяя туториал, написанный до 1.21.</p>
+        <p>Если пак включён и не делает вообще ничего, проверяйте сначала имена папок, а не JSON внутри них.</p>
+
+        <h2>pack_format — это замок версии, а не номер версии</h2>
+        <p>Число в <code>pack.mcmeta</code> говорит Minecraft, в каком формате данных написаны ваши файлы. Ошибётесь — пак пометят как несовместимый.</p>
+        <pre><code>{
+  "pack": {
+    "pack_format": 61,
+    "description": "Правила портового района"
+  }
+}</code></pre>
+        <table class="compact-table">
+            <tr><th>Версия Minecraft</th><th>Формат датапака</th></tr>
+            <tr><td>1.20 – 1.20.1</td><td>15</td></tr>
+            <tr><td>1.20.2</td><td>18</td></tr>
+            <tr><td>1.20.3 – 1.20.4</td><td>26</td></tr>
+            <tr><td>1.20.5 – 1.20.6</td><td>41</td></tr>
+            <tr><td>1.21 – 1.21.1</td><td>48</td></tr>
+            <tr><td>1.21.2 – 1.21.3</td><td>57</td></tr>
+            <tr><td>1.21.4</td><td>61</td></tr>
+            <tr><td>1.21.5</td><td>71</td></tr>
+            <tr><td>1.21.6</td><td>80</td></tr>
+            <tr><td>1.21.7 – 1.21.8</td><td>81</td></tr>
+        </table>
+        <p>Обратите внимание: это номера для <em>датапаков</em>. У ресурс-паков своя отдельная шкала, поэтому pack_format, скопированный из туториала по ресурс-пакам, здесь будет неверным.</p>
+
+        <h2>load и tick</h2>
+        <p>Два функциональных хука закрывают почти всё, что пак должен делать сам. Вы пишете файл <code>.mcfunction</code> — обычный текстовый файл, по одной команде на строку, без ведущего слэша — и затем направляете на него тег.</p>
+        <p><code>load</code> выполняется один раз при загрузке пака и снова при каждом <code>/reload</code>. Там настраивают скорборды, константы и стартовое состояние. <code>tick</code> выполняется двадцать раз в секунду, постоянно, пока пак включён. Это мощно и это самый простой способ угробить производительность сервера, поэтому берите его только тогда, когда что-то действительно надо проверять непрерывно.</p>
+        <p>Связывает их именно файл тега:</p>
+        <pre><code>// data/minecraft/tags/function/load.json
+{
+  "values": ["harbor:load"]
+}</code></pre>
+        <p>Без этого тега функция всё равно существует и её можно вызвать вручную через <code>/function harbor:load</code>, но сама она не запустится.</p>
+
+        <h2>Установка и проверка</h2>
+        <ol class="article-list">
+            <li>Положите папку пака или ZIP в <code>&lt;мир&gt;/datapacks/</code>. На сервере эта папка лежит рядом с <code>level.dat</code>.</li>
+            <li>Выполните в игре <code>/reload</code>. Перезапуск не нужен.</li>
+            <li>Выполните <code>/datapack list</code>. Ваш пак должен быть в списке включённых.</li>
+        </ol>
+        <p>Если его в этом списке нет — проблема структурная: неверный <code>pack_format</code>, кривой <code>pack.mcmeta</code> или лишний уровень папки из-за того, что архив собрали из родительской директории, а не из содержимого самого пака. Последнее встречается часто: <code>pack.mcmeta</code> должен лежать в корне архива, а не внутри ещё одной папки.</p>
+        <p>Если пак <em>в списке есть</em>, но ничего не происходит — структура в порядке, и проблема внутри: множественное число в именах папок на 1.21+, опечатка в пространстве имён внутри тега или JSON, который синтаксически валиден, но по форме не тот, что ждёт игра.</p>
+
+        <h2>Куда идти дальше</h2>
+        <p><a href="/ru/datapack-generator/">Генератор датапаков</a> собирает весь этот скелет за вас и сам переключает имена папок и <code>pack_format</code> при выборе версии, что убирает два самых частых способа ошибиться. Дальше <a href="/ru/wiki-resource-pack-structure/">справочник по структуре ресурс-пака</a> закрывает вторую половину экосистемы — ту, которая меняет внешний вид игры, а не её поведение.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

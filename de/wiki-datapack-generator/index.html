@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Datapacks statt Befehle: wie man eines wirklich installiert | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Warum sich Loot-Tabellen, Rezepte und Fortschritte nicht per Befehl erstellen lassen, wie ein Datapack-Ordner in 1.21+ aussieht, welches pack_format gilt und wie man ein Pack installiert und debuggt.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-datapack-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-datapack-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Datapacks statt Befehle: wie man eines wirklich installiert | Cube in Square">
+    <meta property="og:description" content="Warum sich Loot-Tabellen und Rezepte nicht per Befehl erstellen lassen, und was man stattdessen tut.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-datapack-generator/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Datapacks statt Befehle: wie man eines wirklich installiert | Cube in Square">
+    <meta name="twitter:description" content="Warum sich Loot-Tabellen und Rezepte nicht per Befehl erstellen lassen, und was man stattdessen tut.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/de/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/de/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/de/wiki-datapack-generator/#article",
+            "headline": "Datapacks statt Befehle: wie man eines wirklich installiert",
+            "description": "Warum sich Loot-Tabellen, Rezepte und Fortschritte nicht per Befehl erstellen lassen, wie ein Datapack-Ordner in 1.21+ aussieht und wie man ihn installiert und debuggt.",
+            "author": { "@id": "https://cubeinsquare.com/de/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/de/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/de/wiki-datapack-generator/#webpage" },
+            "inLanguage": "de",
+            "url": "https://cubeinsquare.com/de/wiki-datapack-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/de/wiki-datapack-generator/#webpage",
+            "url": "https://cubeinsquare.com/de/wiki-datapack-generator/",
+            "name": "Datapacks statt Befehle: wie man eines wirklich installiert",
+            "inLanguage": "de"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/wiki-datapack-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://cubeinsquare.com/de/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/de/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Datapacks statt Befehle", "item": "https://cubeinsquare.com/de/wiki-datapack-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-datapack-generator/">RU</a><a href="/wiki-datapack-generator/">EN</a><a href="/fr/wiki-datapack-generator/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Datapacks statt Befehle: wie man eines wirklich installiert</h1>
+        <p class="page-lead">Fast jeder Builder auf dieser Seite gibt dir einen Befehl, den du in den Chat einfügst. Loot-Tabellen, Rezepte und Fortschritte funktionieren so nicht, und es gibt keinen Befehl, der sie erzeugt. Es sind Dateien. Diese Seite erklärt den Unterschied, weil genau daran die meisten zuerst scheitern.</p>
+        <a class="resource-link" href="/de/datapack-generator/">Datapack-Generator öffnen</a>
+    </section>
+
+    <article>
+        <h2>Es gibt keinen /loottable-Befehl</h2>
+        <p>Wer hier den Item- oder Trank-Builder benutzt hat, kennt den Ablauf: Formular ausfüllen, eine <code>/give</code>-Zeile kopieren, in den Chat einfügen, fertig. Das klappt, weil ein Item ein Ding ist, das dir das Spiel sofort in die Hand geben kann.</p>
+        <p>Eine Loot-Tabelle ist kein Ding, das man hält. Sie ist eine <em>Regel</em>: „wenn diese Truhe generiert wird, würfle diese Chancen“. Ein Rezept ist eine Regel über das Handwerksraster. Ein Fortschritt ist eine Regel darüber, wann etwas als erreicht gilt. Regeln müssen existieren, bevor der Moment eintritt, für den sie gelten, deshalb liest das Spiel sie beim Laden aus Dateien auf der Festplatte. Es gibt weder <code>/loottable</code> noch <code>/recipe add</code> noch irgendeinen Chat-Befehl, der sie anlegt — denn bis du ihn tippen könntest, ist der Moment, den er regelt, längst vorbei.</p>
+        <p>Darauf läuft der ganze Unterschied hinaus:</p>
+        <table class="compact-table">
+            <tr><th></th><th>Befehle</th><th>Datapacks</th></tr>
+            <tr><td>Zustellung</td><td>In Chat oder Befehlsblock einfügen</td><td>Dateien in einem Ordner, den die Welt lädt</td></tr>
+            <tr><td>Gut für</td><td>Einmalige Aktionen: Item geben, Bossbar setzen, Nachricht senden</td><td>Dauerhafte Regeln: Loot, Rezepte, Fortschritte, wiederverwendbare Funktionen</td></tr>
+            <tr><td>Wirkt</td><td>Sofort</td><td>Beim Laden der Welt oder bei <code>/reload</code></td></tr>
+            <tr><td>Übersteht Neustart</td><td>Nur die Wirkung</td><td>Ja, die Regel selbst bleibt</td></tr>
+        </table>
+
+        <h2>Was ein Datapack wirklich ist</h2>
+        <p>Ein Ordner mit einer <code>pack.mcmeta</code> ganz oben und einem <code>data</code>-Verzeichnis darunter. Mehr wird nicht verlangt. Minecraft akzeptiert ihn gezippt oder entpackt, und er gehört hierhin:</p>
+        <pre><code>.minecraft/saves/&lt;Welt&gt;/datapacks/&lt;dein-pack&gt;/
+  pack.mcmeta
+  data/
+    harbor/
+      function/
+        load.mcfunction
+      loot_table/
+        example_chest.json
+    minecraft/
+      tags/function/
+        load.json</code></pre>
+        <p>Hier tauchen zwei Namensräume auf, und sie haben verschiedene Aufgaben. <code>harbor</code> ist deiner — er verhindert, dass deine Dateien mit Vanilla oder einem anderen Pack kollidieren, und wird Teil jeder ID, die du referenzierst, etwa <code>harbor:load</code>. Der <code>minecraft</code>-Namensraum dient nur dazu, sich an etwas anzuhängen, das Vanilla bereits definiert — deshalb liegt der Load-Tag dort und nicht in deinem.</p>
+
+        <h2>Die 1.21-Umbenennung, die Packs still zerlegt</h2>
+        <p>Dieser Punkt verdient einen eigenen Abschnitt, weil er auf besonders unangenehme Art scheitert. In 1.21 hat Mojang alle Inhaltsverzeichnisse vom Plural in den Singular umbenannt:</p>
+        <ul>
+            <li><code>functions</code> &rarr; <code>function</code></li>
+            <li><code>advancements</code> &rarr; <code>advancement</code></li>
+            <li><code>loot_tables</code> &rarr; <code>loot_table</code></li>
+            <li><code>recipes</code> &rarr; <code>recipe</code></li>
+            <li><code>predicates</code> &rarr; <code>predicate</code></li>
+            <li><code>item_modifiers</code> &rarr; <code>item_modifier</code></li>
+            <li><code>structures</code> &rarr; <code>structure</code></li>
+            <li><code>tags/functions</code> &rarr; <code>tags/function</code></li>
+        </ul>
+        <p>Das Fehlerbild ist übel: Ein Pack mit den alten Plural-Namen <strong>lädt</strong> auf 1.21+ trotzdem. <code>/datapack list</code> zeigt es als aktiviert. Keine Fehlermeldung. Das Spiel schaut schlicht nie in diese Ordner, also läuft nichts von dem, was du geschrieben hast. Damit verlieren Leute ganze Abende — meist während sie einer Anleitung von vor 1.21 folgen.</p>
+        <p>Wenn dein Pack aktiviert ist und einfach gar nichts tut, prüfe zuerst die Ordnernamen, bevor du am JSON darin debuggst.</p>
+
+        <h2>pack_format ist eine Versionssperre, keine Versionsnummer</h2>
+        <p>Die Zahl in <code>pack.mcmeta</code> sagt Minecraft, in welchem Datenformat deine Dateien geschrieben sind. Stimmt sie nicht, wird das Pack als inkompatibel markiert.</p>
+        <pre><code>{
+  "pack": {
+    "pack_format": 61,
+    "description": "Regeln des Hafenviertels"
+  }
+}</code></pre>
+        <table class="compact-table">
+            <tr><th>Minecraft-Version</th><th>Datapack-Format</th></tr>
+            <tr><td>1.20 – 1.20.1</td><td>15</td></tr>
+            <tr><td>1.20.2</td><td>18</td></tr>
+            <tr><td>1.20.3 – 1.20.4</td><td>26</td></tr>
+            <tr><td>1.20.5 – 1.20.6</td><td>41</td></tr>
+            <tr><td>1.21 – 1.21.1</td><td>48</td></tr>
+            <tr><td>1.21.2 – 1.21.3</td><td>57</td></tr>
+            <tr><td>1.21.4</td><td>61</td></tr>
+            <tr><td>1.21.5</td><td>71</td></tr>
+            <tr><td>1.21.6</td><td>80</td></tr>
+            <tr><td>1.21.7 – 1.21.8</td><td>81</td></tr>
+        </table>
+        <p>Beachte: Das sind die Nummern für <em>Datapacks</em>. Resource-Packs haben eine eigene Skala, ein aus einer Resource-Pack-Anleitung kopiertes pack_format ist hier also falsch.</p>
+
+        <h2>load und tick</h2>
+        <p>Zwei Funktions-Hooks decken das meiste ab, was ein Pack von allein tun muss. Du schreibst eine <code>.mcfunction</code>-Datei — reiner Text, ein Befehl pro Zeile, ohne führenden Schrägstrich — und richtest dann einen Tag darauf.</p>
+        <p><code>load</code> läuft einmal beim Laden des Packs und erneut bei jedem <code>/reload</code>. Dort richtet man Scoreboards, Konstanten und den Startzustand ein. <code>tick</code> läuft zwanzigmal pro Sekunde, dauerhaft, solange das Pack aktiv ist. Das ist mächtig und der einfachste Weg, die Serverleistung zu ruinieren — greif also nur dazu, wenn wirklich etwas laufend geprüft werden muss.</p>
+        <p>Die Verbindung stellt erst die Tag-Datei her:</p>
+        <pre><code>// data/minecraft/tags/function/load.json
+{
+  "values": ["harbor:load"]
+}</code></pre>
+        <p>Ohne diesen Tag existiert die Funktion zwar und lässt sich manuell mit <code>/function harbor:load</code> aufrufen, aber nichts startet sie für dich.</p>
+
+        <h2>Installieren und prüfen, ob es geklappt hat</h2>
+        <ol class="article-list">
+            <li>Lege den Pack-Ordner oder das ZIP nach <code>&lt;Welt&gt;/datapacks/</code>. Auf einem Server liegt dieser Ordner neben <code>level.dat</code>.</li>
+            <li>Führe im Spiel <code>/reload</code> aus. Ein Neustart ist nicht nötig.</li>
+            <li>Führe <code>/datapack list</code> aus. Dein Pack sollte in der Liste der aktivierten erscheinen.</li>
+        </ol>
+        <p>Fehlt es in dieser Liste, ist das Problem strukturell: ein falsches <code>pack_format</code>, eine fehlerhafte <code>pack.mcmeta</code> oder eine zusätzliche Ordnerebene, weil das ZIP aus dem übergeordneten Verzeichnis erstellt wurde statt aus dem Inhalt des Packs selbst. Letzteres passiert oft: <code>pack.mcmeta</code> muss ganz oben im Archiv liegen, nicht in einem weiteren Ordner.</p>
+        <p>Steht es <em>in</em> der Liste, passiert aber nichts, ist die Struktur in Ordnung und das Problem steckt darin: Plural-Ordnernamen auf 1.21+, ein Tippfehler im Namensraum innerhalb eines Tags, oder JSON, das als Text gültig ist, aber nicht die Form hat, die das Spiel erwartet.</p>
+
+        <h2>Wie es weitergeht</h2>
+        <p>Der <a href="/de/datapack-generator/">Datapack-Generator</a> baut dieses ganze Gerüst für dich und wechselt Ordnernamen und <code>pack_format</code> automatisch mit der gewählten Version, womit die zwei häufigsten Fehlerquellen wegfallen. Danach deckt die <a href="/de/wiki-resource-pack-structure/">Referenz zur Resource-Pack-Struktur</a> die andere Hälfte des Ökosystems ab — den Teil, der das Aussehen des Spiels ändert statt seines Verhaltens.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
