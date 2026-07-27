@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Как на самом деле разыгрываются loot-таблицы Minecraft | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Пулы, роллы, вес и number provider: почему вес — это не проценты, что определяет тип таблицы и почему на 1.21+ таблица в старой папке не срабатывает никогда.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-loot-table-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Как на самом деле разыгрываются loot-таблицы Minecraft | Cube in Square">
+    <meta property="og:description" content="Пулы, роллы, вес и number provider — включая то, почему вес это не проценты.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-loot-table-generator/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Как на самом деле разыгрываются loot-таблицы Minecraft | Cube in Square">
+    <meta name="twitter:description" content="Пулы, роллы, вес и number provider — включая то, почему вес это не проценты.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/ru/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/ru/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-loot-table-generator/#article",
+            "headline": "Как на самом деле разыгрываются loot-таблицы Minecraft",
+            "description": "Пулы, роллы, вес и number provider: почему вес это не проценты и что определяет тип таблицы.",
+            "author": { "@id": "https://cubeinsquare.com/ru/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/ru/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-loot-table-generator/#webpage" },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-loot-table-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-loot-table-generator/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-loot-table-generator/",
+            "name": "Как на самом деле разыгрываются loot-таблицы Minecraft",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-loot-table-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cubeinsquare.com/ru/" },
+                { "@type": "ListItem", "position": 2, "name": "Вики", "item": "https://cubeinsquare.com/ru/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Как разыгрываются loot-таблицы", "item": "https://cubeinsquare.com/ru/wiki-loot-table-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-loot-table-generator/">EN</a><a href="/fr/wiki-loot-table-generator/">FR</a><a href="/de/wiki-loot-table-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Как на самом деле разыгрываются loot-таблицы Minecraft</h1>
+        <p class="page-lead">Большинство loot-таблиц, которые «не работают», структурно в полном порядке. Просто шансы в них не те, что задумывал автор, — потому что вес означает не то, чем кажется. Здесь разобрано, как таблица реально вычисляется, в том же порядке, в каком это делает игра.</p>
+        <a class="resource-link" href="/ru/loot-table-generator/">Открыть генератор loot-таблиц</a>
+    </section>
+
+    <article>
+        <h2>Пулы разыгрываются независимо</h2>
+        <p>Loot-таблица содержит список пулов, и каждый обрабатывается отдельно. Это самое полезное, что о них стоит знать, потому что именно так выражается «всегда одно оружие, плюс два-три случайных припаса, плюс редкий шанс на что-то особенное» — три пула, а не один хитрый список.</p>
+        <p>Внутри пула <code>rolls</code> задаёт, сколько раз выбирать. Это может быть фиксированное число или диапазон:</p>
+        <pre><code>"rolls": 1
+
+"rolls": { "type": "minecraft:uniform", "min": 2, "max": 4 }</code></pre>
+        <p>Каждый ролл выбирает ровно одну запись из списка этого пула. Четыре ролла по пулу из трёх предметов вполне могут выдать один и тот же предмет четыре раза — роллы независимы, это не раздача карт без возврата.</p>
+
+        <h2>Вес — это доля, а не процент</h2>
+        <p>Именно здесь ошибается большинство. Вес — это не шанс из 100. Это доля от суммы всех весов в пуле.</p>
+        <pre><code>iron_ingot  вес 10
+gold_ingot  вес  5
+diamond     вес  1</code></pre>
+        <p>Сумма равна 16, значит железо выпадает 10/16 раз — примерно 62%, а не 10%. Добавьте четвёртую запись с весом 84, и железо упадёт до 10/100, хотя вы не трогали его число. Каждый вес в пуле относителен соседним, поэтому добавление одной записи молча переоценивает всё остальное в этом пуле.</p>
+        <p>Если нужен настоящий процент — это другой механизм: условие <code>random_chance</code> на записи.</p>
+        <pre><code>"conditions": [
+  { "condition": "minecraft:random_chance", "chance": 0.15 }
+]</code></pre>
+        <p>Вот это честные 15%, вычисляемые независимо от веса. Сочетаются они так, что стоит быть внимательным: запись сначала должна выиграть взвешенный выбор, и только потом сработает бросок на 15%.</p>
+
+        <h2>Количество — отдельный шаг от выбора</h2>
+        <p>Выбор того, <em>какой</em> предмет выпадет, и выбор того, <em>сколько</em> их будет, — разные операции. Размер стака задаёт функция, применяемая уже после выбора записи:</p>
+        <pre><code>{
+  "type": "minecraft:item",
+  "name": "minecraft:iron_ingot",
+  "weight": 10,
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
+    }
+  ]
+}</code></pre>
+        <p>Без <code>set_count</code> вы получите ровно одну штуку. Объект под <code>count</code> — это <em>number provider</em>, та же конструкция, что используется в <code>rolls</code>. Разобравшись один раз, вы закрываете оба случая.</p>
+
+        <h2>Тип таблицы — это контракт, а не подпись</h2>
+        <p><code>type</code> в начале файла объявляет, в каком контексте таблица разыгрывается, и игра держит вас за слово. У таблицы <code>minecraft:chest</code> нет ни убийцы, ни жертвы, поэтому условие, спрашивающее про погибшее существо, там не просто бесполезно — оно делает таблицу невалидной для этого контекста.</p>
+        <table class="compact-table">
+            <tr><th>Тип</th><th>Когда разыгрывается</th></tr>
+            <tr><td><code>minecraft:chest</code></td><td>Генерируется сундук в структуре или вызвана <code>/loot</code></td></tr>
+            <tr><td><code>minecraft:entity</code></td><td>Погибает моб</td></tr>
+            <tr><td><code>minecraft:block</code></td><td>Ломается блок</td></tr>
+            <tr><td><code>minecraft:fishing</code></td><td>Что-то поймано на удочку</td></tr>
+            <tr><td><code>minecraft:gift</code></td><td>Житель или кот приносит подарок</td></tr>
+        </table>
+        <p>Если таблица ведёт себя правильно на тестах, но в мире не срабатывает никогда, проверьте, совпадает ли её тип с тем, как её реально вызывают.</p>
+
+        <h2>Проверка без беготни за сундуком</h2>
+        <p>Не нужно искать настоящее подземелье, чтобы увидеть свои шансы. Команда <code>/loot</code> разыгрывает существующую таблицу по требованию:</p>
+        <pre><code>/loot give @s loot harbor:harbor_dungeon</code></pre>
+        <p>Стоит проговорить явно, потому что название сбивает с толку: <code>/loot</code> <em>читает</em> таблицу, а не создаёт её. Команды, которая записывает loot-таблицу, не существует — файл сначала должен появиться в датапаке. Если вы его ещё не собрали, статья <a href="/ru/wiki-datapack-generator/">датапаки против команд</a> объясняет почему, а <a href="/ru/datapack-generator/">генератор датапаков</a> сделает папку.</p>
+        <p>Запустите её двадцать раз подряд — и распределение станет видно сразу. Это же самый быстрый способ поймать неправильно выставленный вес.</p>
+
+        <h2>Когда таблицу просто никогда не читают</h2>
+        <p>Две поломки выглядят изнутри игры одинаково и к вашему JSON отношения не имеют.</p>
+        <p>Первая — папка. В Minecraft 1.21 <code>loot_tables</code> переименовали в <code>loot_table</code>, в единственном числе. На 1.21+ файл в старой папке не загружается никогда, и ничего вас не предупредит — пак по-прежнему числится включённым.</p>
+        <p>Вторая — ID. Файл по пути <code>data/harbor/loot_table/harbor_dungeon.json</code> адресуется как <code>harbor:harbor_dungeon</code>. Пространство имён берётся из папки внутри <code>data</code>, а не из имени файла, и расхождение здесь даст ошибку «unknown loot table», а не тишину — что по сравнению с первым случаем даже милосердно.</p>
+
+        <h2>Куда идти дальше</h2>
+        <p><a href="/ru/loot-table-generator/">Генератор loot-таблиц</a> собирает эти структуры с уже правильными number provider и показывает путь, по которому файл должен лежать. Про контейнер для него — <a href="/ru/datapack-generator/">генератор датапаков</a>; чтобы предметы на выходе были интереснее, <a href="/ru/custom-item-builder/">конструктор предметов</a> закрывает имена, лор и скрытые ID.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

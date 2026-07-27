@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Wie Minecraft-Loot-Tabellen wirklich würfeln | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Pools, Rolls, Gewicht und Number Provider erklärt: warum Gewicht kein Prozentwert ist, was der Tabellentyp steuert und warum eine Tabelle im falschen Ordner auf 1.21+ nie auslöst.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-loot-table-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-loot-table-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Wie Minecraft-Loot-Tabellen wirklich würfeln | Cube in Square">
+    <meta property="og:description" content="Pools, Rolls, Gewicht und Number Provider erklärt, samt der Frage, warum Gewicht kein Prozentwert ist.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-loot-table-generator/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Wie Minecraft-Loot-Tabellen wirklich würfeln | Cube in Square">
+    <meta name="twitter:description" content="Pools, Rolls, Gewicht und Number Provider erklärt, samt der Frage, warum Gewicht kein Prozentwert ist.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/de/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/de/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/de/wiki-loot-table-generator/#article",
+            "headline": "Wie Minecraft-Loot-Tabellen wirklich würfeln",
+            "description": "Pools, Rolls, Gewicht und Number Provider erklärt: warum Gewicht kein Prozentwert ist und was der Tabellentyp steuert.",
+            "author": { "@id": "https://cubeinsquare.com/de/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/de/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/de/wiki-loot-table-generator/#webpage" },
+            "inLanguage": "de",
+            "url": "https://cubeinsquare.com/de/wiki-loot-table-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/de/wiki-loot-table-generator/#webpage",
+            "url": "https://cubeinsquare.com/de/wiki-loot-table-generator/",
+            "name": "Wie Minecraft-Loot-Tabellen wirklich würfeln",
+            "inLanguage": "de"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/wiki-loot-table-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://cubeinsquare.com/de/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/de/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Wie Loot-Tabellen würfeln", "item": "https://cubeinsquare.com/de/wiki-loot-table-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-loot-table-generator/">RU</a><a href="/wiki-loot-table-generator/">EN</a><a href="/fr/wiki-loot-table-generator/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Wie Minecraft-Loot-Tabellen wirklich würfeln</h1>
+        <p class="page-lead">Die meisten Loot-Tabellen, die „nicht funktionieren“, sind strukturell völlig in Ordnung. Nur die Chancen sind nicht die, die der Autor im Kopf hatte — weil Gewicht nicht das bedeutet, wonach es aussieht. Diese Seite beschreibt, wie eine Tabelle tatsächlich ausgewertet wird, in genau der Reihenfolge, in der das Spiel es tut.</p>
+        <a class="resource-link" href="/de/loot-table-generator/">Loot-Tabellen-Generator öffnen</a>
+    </section>
+
+    <article>
+        <h2>Pools würfeln unabhängig</h2>
+        <p>Eine Loot-Tabelle enthält eine Liste von Pools, und jeder wird getrennt ausgewertet. Das ist das Nützlichste, was man darüber wissen kann, denn genau so drückt man „immer eine Waffe, dazu zwei oder drei zufällige Vorräte, plus eine seltene Chance auf etwas Besonderes“ aus — drei Pools, nicht eine raffinierte Liste.</p>
+        <p>Innerhalb eines Pools gibt <code>rolls</code> an, wie oft gezogen wird. Das kann eine feste Zahl oder ein Bereich sein:</p>
+        <pre><code>"rolls": 1
+
+"rolls": { "type": "minecraft:uniform", "min": 2, "max": 4 }</code></pre>
+        <p>Jeder Roll wählt genau einen Eintrag aus der Liste dieses Pools. Vier Rolls auf einem Pool mit drei Items können durchaus viermal dasselbe Item liefern — Rolls sind unabhängig, es ist kein Blatt, das ohne Zurücklegen ausgeteilt wird.</p>
+
+        <h2>Gewicht ist ein Anteil, kein Prozentwert</h2>
+        <p>Hier gehen die meisten Tabellen schief. Gewicht ist keine Chance von 100. Es ist ein Anteil am Gesamtgewicht dieses Pools.</p>
+        <pre><code>iron_ingot  Gewicht 10
+gold_ingot  Gewicht  5
+diamond     Gewicht  1</code></pre>
+        <p>Die Summe ist 16, also kommt Eisen in 10/16 der Fälle — etwa 62 %, nicht 10 %. Füge einen vierten Eintrag mit Gewicht 84 hinzu, und Eisen fällt auf 10/100, ohne dass du seine Zahl angefasst hast. Jedes Gewicht in einem Pool ist relativ zu seinen Nachbarn: Ein zusätzlicher Eintrag bepreist den ganzen Rest des Pools still neu.</p>
+        <p>Wer einen echten Prozentwert will, braucht einen anderen Mechanismus: eine <code>random_chance</code>-Bedingung am Eintrag.</p>
+        <pre><code>"conditions": [
+  { "condition": "minecraft:random_chance", "chance": 0.15 }
+]</code></pre>
+        <p>Das sind echte 15 %, unabhängig vom Gewicht ausgewertet. Beide greifen so ineinander, dass man es bewusst entscheiden sollte: Der Eintrag muss zuerst die gewichtete Auswahl gewinnen, und erst danach findet der 15-%-Wurf statt.</p>
+
+        <h2>Die Anzahl ist ein eigener Schritt nach der Auswahl</h2>
+        <p>Zu bestimmen, <em>welches</em> Item fällt, und zu bestimmen, <em>wie viele</em>, sind verschiedene Vorgänge. Die Stapelgröße kommt aus einer Funktion, die nach der Auswahl des Eintrags angewendet wird:</p>
+        <pre><code>{
+  "type": "minecraft:item",
+  "name": "minecraft:iron_ingot",
+  "weight": 10,
+  "functions": [
+    {
+      "function": "minecraft:set_count",
+      "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
+    }
+  ]
+}</code></pre>
+        <p>Ohne <code>set_count</code> bekommst du genau eines. Das Objekt unter <code>count</code> ist ein <em>Number Provider</em> — dieselbe Struktur, die auch <code>rolls</code> verwendet. Einmal verstanden, deckt es beides ab.</p>
+
+        <h2>Der Tabellentyp ist ein Vertrag, kein Etikett</h2>
+        <p>Der <code>type</code> am Anfang der Datei erklärt, in welchem Kontext die Tabelle gewürfelt wird, und das Spiel nimmt dich beim Wort. Eine <code>minecraft:chest</code>-Tabelle hat weder Töter noch Opfer, deshalb ist eine Bedingung, die nach dem gestorbenen Wesen fragt, dort nicht bloß nutzlos — sie macht die Tabelle für diesen Kontext ungültig.</p>
+        <table class="compact-table">
+            <tr><th>Typ</th><th>Wird gewürfelt, wenn</th></tr>
+            <tr><td><code>minecraft:chest</code></td><td>Eine Strukturtruhe generiert wird oder <code>/loot</code> genutzt wird</td></tr>
+            <tr><td><code>minecraft:entity</code></td><td>Ein Mob stirbt</td></tr>
+            <tr><td><code>minecraft:block</code></td><td>Ein Block abgebaut wird</td></tr>
+            <tr><td><code>minecraft:fishing</code></td><td>Etwas an der Angel hängt</td></tr>
+            <tr><td><code>minecraft:gift</code></td><td>Ein Dorfbewohner oder eine Katze ein Geschenk bringt</td></tr>
+        </table>
+        <p>Verhält sich eine Tabelle im Test richtig, löst aber in der Welt nie aus, prüfe, ob ihr Typ dazu passt, wie sie tatsächlich ausgelöst wird.</p>
+
+        <h2>Testen, ohne eine Truhe zu suchen</h2>
+        <p>Du musst kein echtes Dungeon finden, um deine Chancen zu sehen. Der Befehl <code>/loot</code> würfelt eine vorhandene Tabelle auf Zuruf:</p>
+        <pre><code>/loot give @s loot harbor:harbor_dungeon</code></pre>
+        <p>Der Klarheit halber, weil der Name in die Irre führt: <code>/loot</code> <em>liest</em> eine Tabelle, er erstellt keine. Es gibt keinen Befehl, der eine Loot-Tabelle schreibt — die Datei muss zuerst in einem Datapack existieren. Wer noch keines gebaut hat: die Anleitung <a href="/de/wiki-datapack-generator/">Datapacks statt Befehle</a> erklärt, warum, und der <a href="/de/datapack-generator/">Datapack-Generator</a> legt den Ordner an.</p>
+        <p>Führe ihn zwanzigmal hintereinander aus, dann zeigt sich die Verteilung schnell. Das ist auch der schnellste Weg, ein falsch gesetztes Gewicht zu bemerken.</p>
+
+        <h2>Wenn die Tabelle schlicht nie gelesen wird</h2>
+        <p>Zwei Fehler sehen von innerhalb des Spiels gleich aus und haben mit deinem JSON nichts zu tun.</p>
+        <p>Der erste ist der Ordner. Minecraft 1.21 hat <code>loot_tables</code> in <code>loot_table</code> umbenannt, Singular. Auf 1.21+ wird eine Datei im alten Ordner nie geladen, und nichts warnt dich — das Pack gilt weiterhin als aktiviert.</p>
+        <p>Der zweite ist die ID. Die Datei unter <code>data/harbor/loot_table/harbor_dungeon.json</code> wird als <code>harbor:harbor_dungeon</code> angesprochen. Der Namensraum kommt aus dem Ordner unter <code>data</code>, nicht aus dem Dateinamen, und eine Abweichung erzeugt hier einen „unknown loot table“-Fehler statt Stille — was im Vergleich zum ersten Fall geradezu gnädig ist.</p>
+
+        <h2>Wie es weitergeht</h2>
+        <p>Der <a href="/de/loot-table-generator/">Loot-Tabellen-Generator</a> baut diese Strukturen mit bereits korrekt geformten Number Providern und zeigt den Pfad, unter den die Datei gehört. Für den Container drumherum siehe den <a href="/de/datapack-generator/">Datapack-Generator</a>; damit die herausfallenden Items interessanter werden, deckt der <a href="/de/custom-item-builder/">Custom-Item-Builder</a> Namen, Lore und versteckte IDs ab.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

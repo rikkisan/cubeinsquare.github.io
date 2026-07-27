@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Loot Table Generator | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Build Minecraft loot table JSON for chests, mob drops and fishing: pools, rolls, weights, count ranges and drop chances, with the file path for your data pack.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/loot-table-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/loot-table-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/loot-table-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/loot-table-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/loot-table-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/loot-table-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft Loot Table Generator | Cube in Square">
+    <meta property="og:description" content="Build loot table JSON for chests, mob drops and fishing without hand-writing pools and number providers.">
+    <meta property="og:url" content="https://cubeinsquare.com/loot-table-generator/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft Loot Table Generator | Cube in Square">
+    <meta name="twitter:description" content="Build loot table JSON for chests, mob drops and fishing without hand-writing pools and number providers.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "WebApplication",
+            "@id": "https://cubeinsquare.com/loot-table-generator/#app",
+            "name": "Minecraft Loot Table Generator",
+            "url": "https://cubeinsquare.com/loot-table-generator/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "description": "Build Minecraft loot table JSON for chests, mob drops and fishing.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/loot-table-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cubeinsquare.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://cubeinsquare.com/tools/" },
+                { "@type": "ListItem", "position": 3, "name": "Loot table generator", "item": "https://cubeinsquare.com/loot-table-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/loot-table-generator/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/loot-table-generator/">FR</a><a href="/de/loot-table-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell loot-page" data-loot-table-generator>
+    <section class="page-hero">
+        <h1>Minecraft Loot Table Generator</h1>
+        <p class="page-lead">A loot table decides what comes out of a chest, a mob or a fishing rod. It is a JSON file inside a data pack, not a command you can type, so this builder gives you the file and tells you where it goes. Set up pools, weights and count ranges here instead of hand-writing number providers.</p>
+    </section>
+
+    <section class="page-section tool-layout">
+        <div class="tool-primary-column">
+            <div class="tool-panel">
+                <div class="tool-button-row">
+                    <a class="tool-button" href="/wiki-loot-table-generator/">Read the guide</a>
+                    <a class="tool-button tool-button-secondary" href="/datapack-generator/">Data pack generator</a>
+                </div>
+                <p class="tool-summary">Need somewhere to put the result? The data pack generator builds the folder this file belongs in.</p>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Start from a preset</h2>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button" type="button" data-lt-preset="dungeon">Dungeon chest</button>
+                    <button class="tool-chip-button" type="button" data-lt-preset="mob">Rare mob drop</button>
+                    <button class="tool-chip-button" type="button" data-lt-preset="fishing">Fishing catch</button>
+                </div>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Table</h2>
+                <div class="tool-form-grid">
+                    <label class="tool-field">
+                        <span>Table type</span>
+                        <select id="lt-type">
+                            <option value="minecraft:chest">Chest</option>
+                            <option value="minecraft:entity">Entity (mob drop)</option>
+                            <option value="minecraft:block">Block</option>
+                            <option value="minecraft:fishing">Fishing</option>
+                            <option value="minecraft:gift">Gift</option>
+                            <option value="minecraft:generic">Generic</option>
+                        </select>
+                    </label>
+                    <label class="tool-field">
+                        <span>Namespace</span>
+                        <input id="lt-namespace" type="text" value="harbor">
+                    </label>
+                    <label class="tool-field">
+                        <span>File name</span>
+                        <input id="lt-file" type="text" value="harbor_dungeon">
+                    </label>
+                </div>
+                <p class="tool-summary">The table type tells Minecraft what context it is rolled in. A chest table cannot use mob-only conditions, which is a common reason a table looks right and never fires.</p>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Pools</h2>
+                <p class="tool-summary">Each pool rolls independently. Within a pool, weight decides the odds &mdash; a weight of 10 against a weight of 1 means ten times as likely, not ten percent.</p>
+                <div id="lt-pools"></div>
+                <div class="tool-button-row">
+                    <button id="lt-add-pool" class="tool-button" type="button">Add pool</button>
+                </div>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Generated JSON</h2>
+                <p class="tool-summary">Save as <code id="lt-path"></code></p>
+                <textarea id="lt-output" class="command-output" rows="18" readonly></textarea>
+                <p class="tool-summary" id="lt-summary"></p>
+                <div class="tool-button-row">
+                    <button id="lt-copy" class="tool-button" type="button">Copy JSON</button>
+                    <button id="lt-download" class="tool-button tool-button-secondary" type="button">Download .json</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="tool-secondary-column">
+            <div class="tool-panel">
+                <h2>How to use the file</h2>
+                <ol class="article-list">
+                    <li>Save the JSON at the path shown above, inside your data pack.</li>
+                    <li>Run <code>/reload</code>.</li>
+                    <li>Test with <code>/loot give @s loot harbor:harbor_dungeon</code></li>
+                </ol>
+                <p class="tool-summary">That <code>/loot</code> command reads an existing table &mdash; it does not create one. It is the fastest way to check your odds without hunting for a real chest.</p>
+            </div>
+            <div class="tool-panel">
+                <h2>Version note</h2>
+                <p class="tool-summary">Minecraft 1.21 renamed the folder from <code>loot_tables</code> to <code>loot_table</code>. On 1.21+ a table in the old folder is simply never read, with no error shown.</p>
+            </div>
+            <div class="tool-panel">
+                <h2>Related</h2>
+                <ul class="item-builder-help">
+                    <li><a href="/wiki-loot-table-generator/">Loot table guide</a></li>
+                    <li><a href="/wiki-datapack-generator/">Data packs vs commands</a></li>
+                    <li><a href="/custom-item-builder/">Custom item builder</a></li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/loot-table-generator.js"></script>
+</body>
+</html>

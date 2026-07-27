@@ -1,0 +1,1 @@
+Publish loot table generator bundle

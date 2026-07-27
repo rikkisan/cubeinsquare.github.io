@@ -1,0 +1,6 @@
+Adds the loot table generator and its guide in EN/RU/FR/DE, plus the
+catalog cards on /tools/ and /wiki/ in all four languages.
+
+The generator emits explicit number providers rather than the {min,max}
+shorthand, so the output is unambiguous, and targets the 1.21 singular
+loot_table directory.
