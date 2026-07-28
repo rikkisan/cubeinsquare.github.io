@@ -1,6 +1,0 @@
-Adds the recipe generator and its guide in EN/RU/FR/DE, plus the
-catalog cards on /tools/ and /wiki/ in all four languages.
-
-The generator derives the pattern and key from a 3x3 grid and trims
-empty edge rows and columns, and rewrites the ingredient and result
-shape for the target version.
