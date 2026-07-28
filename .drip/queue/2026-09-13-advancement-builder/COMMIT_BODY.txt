@@ -1,0 +1,6 @@
+Adds the advancement builder and its guide in EN/RU/FR/DE, plus the
+catalog cards on /tools/ and /wiki/ in all four languages.
+
+Completes the datapack tier: pack container, loot tables, recipes and
+now advancements, which is also what finally unlocks a custom recipe
+in the recipe book.

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Advancements as a quest system | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="How advancement trees work, why the impossible trigger is the backbone of custom quests, how recipe unlocks happen, and the renames that break older examples.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-advancement-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-advancement-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-advancement-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-advancement-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-advancement-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-advancement-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Advancements as a quest system | Cube in Square">
+    <meta property="og:description" content="Trees, the impossible trigger, recipe unlocks, and the renames that break older examples.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-advancement-builder/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Advancements as a quest system | Cube in Square">
+    <meta name="twitter:description" content="Trees, the impossible trigger, recipe unlocks, and the renames that break older examples.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-advancement-builder/#article",
+            "headline": "Advancements as a quest system",
+            "description": "How advancement trees work, why the impossible trigger is the backbone of custom quests, and how recipe unlocks happen.",
+            "author": { "@id": "https://cubeinsquare.com/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/wiki-advancement-builder/#webpage" },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-advancement-builder/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-advancement-builder/#webpage",
+            "url": "https://cubeinsquare.com/wiki-advancement-builder/",
+            "name": "Advancements as a quest system",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-advancement-builder/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cubeinsquare.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Advancements as a quest system", "item": "https://cubeinsquare.com/wiki-advancement-builder/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-advancement-builder/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-advancement-builder/">FR</a><a href="/de/wiki-advancement-builder/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Advancements as a quest system</h1>
+        <p class="page-lead">Vanilla has no quest system, and it does not need one, because advancements already are that in every way that matters: they chain, they gate, they reward, and they show progress. The trick is that the most useful trigger for custom quests is the one that never fires on its own.</p>
+        <a class="resource-link" href="/advancement-builder/">Open the advancement builder</a>
+    </section>
+
+    <article>
+        <h2>The shape of a tree</h2>
+        <p>An advancement with no <code>parent</code> is a root, and a root gets its own tab on the advancements screen. Everything that names it as parent becomes a node in that tab, and those nodes can have children of their own. That is the whole tree model &mdash; there is no separate concept of a chapter or a quest line, just parentage.</p>
+        <pre><code>harbor:harbor_quest_1        (root, own tab)
+  └─ harbor:harbor_hunt      "parent": "harbor:harbor_quest_1"
+       └─ harbor:harbor_end  "parent": "harbor:harbor_hunt"</code></pre>
+        <p>Only the root carries a <code>background</code>, the texture tiled behind the tab. Setting one on a child does nothing, which is why a builder that knows the difference is worth more than a template.</p>
+
+        <h2>The impossible trigger is the point</h2>
+        <p>Every advancement needs at least one criterion, and a criterion needs a trigger. Vanilla ships plenty of them &mdash; kill a thing, enter a place, pick up an item &mdash; but a real quest rarely maps onto a single one of those. "Deliver the letter to the harbourmaster" is not a vanilla event.</p>
+        <p>So you use the trigger that never fires:</p>
+        <pre><code>"criteria": {
+  "delivered": {
+    "trigger": "minecraft:impossible"
+  }
+}</code></pre>
+        <p>Nothing in the world completes it. You do, from your own logic:</p>
+        <pre><code>/advancement grant @s only harbor:harbor_quest_1</code></pre>
+        <p>That command goes wherever the quest actually concludes &mdash; a command block by the pier, a function called from a villager trade, a check inside your tick function. The advancement stops being a detector and becomes a <em>record</em>: the thing that remembers this player got that far, survives restarts, and gates whatever comes next.</p>
+        <p>This is the pattern nearly every custom quest system on a vanilla server is built from.</p>
+
+        <h2>Rewards, and the one that surprises people</h2>
+        <p>Four kinds of reward can hang off an advancement:</p>
+        <pre><code>"rewards": {
+  "experience": 50,
+  "recipes": ["harbor:reinforced_block"],
+  "loot": ["harbor:quest_bundle"],
+  "function": "harbor:on_quest_complete"
+}</code></pre>
+        <p>The <code>function</code> reward is the powerful one, because it turns an advancement into a hook: complete it and arbitrary commands run. Give an item, start a bossbar, set a scoreboard, open a gate.</p>
+        <p>The <code>recipes</code> reward is the one that surprises people, and it explains a mystery from the other side of the site: a custom recipe does not appear in the recipe book until something unlocks it, and this is that something. Vanilla ships a hidden advancement for every single one of its recipes, doing nothing but this. If your <a href="/wiki-recipe-generator/">custom recipe crafts fine but never shows in the book</a>, you have not written this file yet.</p>
+
+        <h2>Testing without playing the quest</h2>
+        <p>Two commands cover the whole loop:</p>
+        <pre><code>/advancement grant @s only harbor:harbor_quest_1
+/advancement revoke @s only harbor:harbor_quest_1</code></pre>
+        <p>Swap <code>only</code> for <code>until</code>, <code>from</code> or <code>through</code> to move a whole branch at once, which saves a lot of clicking when you are testing a five-step chain. Revoke is what lets you run the same step again without a fresh world.</p>
+
+        <h2>Two renames that break older examples</h2>
+        <table class="compact-table">
+            <tr><th>Change</th><th>Before</th><th>After</th></tr>
+            <tr><td>Folder, in 1.21</td><td><code>advancements/</code></td><td><code>advancement/</code></td></tr>
+            <tr><td>Display icon, in 1.20.5</td><td><code>{"item": "minecraft:map"}</code></td><td><code>{"id": "minecraft:map"}</code></td></tr>
+        </table>
+        <p>The folder rename is the nastier of the two, in the same way it is for loot tables: the pack still loads and reports as enabled, and the advancement simply is not there. The icon rename at least tends to complain in the log.</p>
+
+        <h2>Small things that cost an evening</h2>
+        <ul>
+            <li>An advancement with no <code>criteria</code> is invalid, even if you only ever grant it by command. Give it an <code>impossible</code> criterion.</li>
+            <li>A <code>parent</code> that points at an id which does not exist makes the child vanish rather than error loudly.</li>
+            <li><code>hidden</code> only hides it until earned, and only if it is not a root.</li>
+            <li>The tab does not appear at all until at least one advancement in it is visible to that player.</li>
+        </ul>
+
+        <h2>Where to go next</h2>
+        <p>The <a href="/advancement-builder/">advancement builder</a> writes the file and the matching grant command, and knows which fields belong to a root versus a child. For the container it goes in, see the <a href="/datapack-generator/">data pack generator</a>; to give the quest something worth handing over, the <a href="/loot-table-generator/">loot table generator</a> and the <a href="/recipe-generator/">recipe generator</a> cover rewards and unlocks.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
