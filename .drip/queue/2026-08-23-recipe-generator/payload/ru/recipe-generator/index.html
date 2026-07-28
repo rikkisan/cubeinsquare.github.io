@@ -73,6 +73,33 @@
     ]
 }
     </script>
+    <style>
+    /* Crafting bench visual. Scoped to this page so it travels with the
+       release instead of touching the shared stylesheet. */
+    .craft-bench { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 18px 0 6px; }
+    .craft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 8px;
+        background: #c6c6c6; border-radius: 3px;
+        box-shadow: inset -3px -3px 0 #555, inset 3px 3px 0 #fdfdfd; }
+    .craft-slot { position: relative; width: 66px; height: 66px; display: block; margin: 0;
+        background: #8b8b8b; box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd; }
+    .craft-slot.is-filled { background: #6d6d6d; }
+    .craft-slot input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+        padding: 2px; border: 0; background: transparent; color: transparent; caret-color: #fff;
+        font-size: 10px; line-height: 1.1; text-align: center; cursor: text; }
+    .craft-slot input:focus { color: #fff; outline: none; }
+    .craft-slot::after { content: attr(data-label); position: absolute; inset: 0; display: flex;
+        align-items: center; justify-content: center; padding: 4px; text-align: center;
+        font-size: 10px; line-height: 1.15; color: #f1f1f1; word-break: break-word;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.65); pointer-events: none; }
+    .craft-slot:focus-within::after { display: none; }
+    .craft-slot:focus-within { box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd, 0 0 0 2px #6366f1; }
+    .craft-arrow { width: 0; height: 0; border-left: 22px solid #9aa3b2;
+        border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+    .craft-slot--result { width: 78px; height: 78px; }
+    .craft-slot--result::before { content: attr(data-count); position: absolute; right: 4px; bottom: 1px;
+        font-size: 13px; font-weight: 700; color: #fff; text-shadow: 2px 2px 0 #3f3f3f; z-index: 1; }
+    @media (max-width: 520px) { .craft-slot { width: 56px; height: 56px; } .craft-slot--result { width: 64px; height: 64px; } }
+    </style>
 </head>
 <body>
 <div class="steam-navbar">
@@ -156,17 +183,22 @@
             <div class="tool-panel" id="rc-grid-panel">
                 <h2>Сетка крафта</h2>
                 <p class="tool-summary">Впишите ID предмета в нужные слоты, остальные оставьте пустыми — пустые крайние ряды и столбцы обрежутся сами. Префикс <code>#</code> означает тег предмета, например <code>#minecraft:planks</code>.</p>
-                <div class="tool-form-grid">
-                    <label class="tool-field"><span>Слот 1</span><input id="rc-cell-0" type="text"></label>
-                    <label class="tool-field"><span>Слот 2</span><input id="rc-cell-1" type="text"></label>
-                    <label class="tool-field"><span>Слот 3</span><input id="rc-cell-2" type="text"></label>
-                    <label class="tool-field"><span>Слот 4</span><input id="rc-cell-3" type="text"></label>
-                    <label class="tool-field"><span>Слот 5</span><input id="rc-cell-4" type="text"></label>
-                    <label class="tool-field"><span>Слот 6</span><input id="rc-cell-5" type="text"></label>
-                    <label class="tool-field"><span>Слот 7</span><input id="rc-cell-6" type="text"></label>
-                    <label class="tool-field"><span>Слот 8</span><input id="rc-cell-7" type="text"></label>
-                    <label class="tool-field"><span>Слот 9</span><input id="rc-cell-8" type="text"></label>
+                                <div class="craft-bench">
+                    <div class="craft-grid">
+                        <label class="craft-slot"><input id="rc-cell-0" type="text" aria-label="1"></label>
+                        <label class="craft-slot"><input id="rc-cell-1" type="text" aria-label="2"></label>
+                        <label class="craft-slot"><input id="rc-cell-2" type="text" aria-label="3"></label>
+                        <label class="craft-slot"><input id="rc-cell-3" type="text" aria-label="4"></label>
+                        <label class="craft-slot"><input id="rc-cell-4" type="text" aria-label="5"></label>
+                        <label class="craft-slot"><input id="rc-cell-5" type="text" aria-label="6"></label>
+                        <label class="craft-slot"><input id="rc-cell-6" type="text" aria-label="7"></label>
+                        <label class="craft-slot"><input id="rc-cell-7" type="text" aria-label="8"></label>
+                        <label class="craft-slot"><input id="rc-cell-8" type="text" aria-label="9"></label>
+                    </div>
+                    <span class="craft-arrow" aria-hidden="true"></span>
+                    <div class="craft-slot craft-slot--result" id="rc-result-preview"></div>
                 </div>
+
                 <div class="tool-button-row">
                     <button id="rc-clear-grid" class="tool-button tool-button-secondary" type="button">Очистить сетку</button>
                 </div>

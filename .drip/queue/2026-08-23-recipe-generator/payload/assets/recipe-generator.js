@@ -202,8 +202,36 @@
       : $('rc-list-panel').dataset.multiLabel;
   }
 
+  /** Short slot caption: "minecraft:iron_ingot" -> "iron ingot". */
+  function shortLabel(value) {
+    const id = String(value || '').trim();
+    if (!id) return '';
+    return id.replace(/^#/, '').split(':').pop().replace(/_/g, ' ');
+  }
+
+  /** Reflect what is typed into the grid onto the crafting-table visual. */
+  function paintGrid() {
+    for (let i = 0; i < 9; i++) {
+      const input = $('rc-cell-' + i);
+      if (!input) continue;
+      const slot = input.parentElement;
+      const label = shortLabel(input.value);
+      slot.classList.toggle('is-filled', Boolean(label));
+      slot.dataset.label = label;
+      input.title = input.value.trim();
+    }
+    const preview = $('rc-result-preview');
+    if (!preview) return;
+    const label = shortLabel($('rc-result').value);
+    preview.dataset.label = label;
+    preview.classList.toggle('is-filled', Boolean(label));
+    const count = Math.max(1, Math.min(64, Number($('rc-result-count').value) || 1));
+    preview.dataset.count = count > 1 ? String(count) : '';
+  }
+
   function update() {
     syncVisibility();
+    paintGrid();
     const built = buildRecipe();
     $('rc-output').value = built.json ? JSON.stringify(built.json, null, 2) : '';
     $('rc-summary').textContent = built.note;
