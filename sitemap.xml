@@ -2,15 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cubeinsquare.com/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-09</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/about/</loc>
     <lastmod>2026-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/book-letter-builder/</loc>
@@ -46,15 +42,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-09</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/about/</loc>
     <lastmod>2026-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/de/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/book-letter-builder/</loc>
@@ -78,11 +70,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-05</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/datapack-generator/</loc>
@@ -97,20 +89,12 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/de/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/de/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/de/recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/de/resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/skin-editor/</loc>
@@ -126,15 +110,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/de/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-armorhide-mod/</loc>
@@ -182,15 +162,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-model-data/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-weapon/</loc>
@@ -225,10 +205,6 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/de/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/de/wiki-mechanism-plugin/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
@@ -261,12 +237,8 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/de/wiki-recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/de/wiki-resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-resource-pack-structure/</loc>
@@ -286,7 +258,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-skin-editor/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-smart-potion-contents-1-21-4/</loc>
@@ -306,15 +278,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-09</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/about/</loc>
     <lastmod>2026-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/fr/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/book-letter-builder/</loc>
@@ -338,11 +306,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-05</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/datapack-generator/</loc>
@@ -357,20 +325,12 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/fr/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/fr/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/fr/recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/fr/resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/skin-editor/</loc>
@@ -386,15 +346,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/fr/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-armorhide-mod/</loc>
@@ -442,15 +398,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-model-data/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-weapon/</loc>
@@ -485,10 +441,6 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/fr/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/fr/wiki-mechanism-plugin/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
@@ -521,12 +473,8 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/fr/wiki-recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/fr/wiki-resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-resource-pack-structure/</loc>
@@ -546,7 +494,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-skin-editor/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-smart-potion-contents-1-21-4/</loc>
@@ -565,16 +513,8 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/resource-pack-generator/</loc>
@@ -582,15 +522,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-09</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/about/</loc>
     <lastmod>2026-05-09</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/ru/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/book-letter-builder/</loc>
@@ -614,11 +550,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-05</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/datapack-generator/</loc>
@@ -633,24 +569,16 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/ru/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/ru/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/ru/recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/ru/resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-21</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/skin-editor/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/sphere-generator/</loc>
@@ -662,15 +590,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/ru/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-armorhide-mod/</loc>
@@ -718,15 +642,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-model-data/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-potions/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-villager-trades/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-weapon/</loc>
@@ -761,10 +685,6 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/ru/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/ru/wiki-mechanism-plugin/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
@@ -797,12 +717,8 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/ru/wiki-recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/ru/wiki-resource-pack-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-05-06</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-resource-pack-structure/</loc>
@@ -822,7 +738,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-skin-editor/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-smart-potion-contents-1-21-4/</loc>
@@ -850,15 +766,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-07-27</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-armorhide-mod/</loc>
@@ -953,10 +865,6 @@
     <lastmod>2026-06-07</lastmod>
   </url>
   <url>
-    <loc>https://cubeinsquare.com/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
-  </url>
-  <url>
     <loc>https://cubeinsquare.com/wiki-mechanism-plugin/</loc>
     <lastmod>2026-04-26</lastmod>
   </url>
@@ -987,10 +895,6 @@
   <url>
     <loc>https://cubeinsquare.com/wiki-readable-minecraft-dialogue/</loc>
     <lastmod>2026-07-05</lastmod>
-  </url>
-  <url>
-    <loc>https://cubeinsquare.com/wiki-recipe-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-resource-pack-generator/</loc>
