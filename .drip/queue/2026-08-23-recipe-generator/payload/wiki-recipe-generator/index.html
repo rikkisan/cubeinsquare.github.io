@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Why your custom recipe does not show up | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Shaped vs shapeless, the pattern padding that stops a recipe matching, item tags as ingredients, and the two JSON format changes in 1.20.5 and 1.21.2.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-recipe-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-recipe-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-recipe-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-recipe-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-recipe-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-recipe-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why your custom recipe does not show up | Cube in Square">
+    <meta property="og:description" content="Pattern padding, item tags, and the two recipe JSON format changes that break copied examples.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-recipe-generator/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Why your custom recipe does not show up | Cube in Square">
+    <meta name="twitter:description" content="Pattern padding, item tags, and the two recipe JSON format changes that break copied examples.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-recipe-generator/#article",
+            "headline": "Why your custom recipe does not show up",
+            "description": "Shaped vs shapeless, pattern padding, item tags as ingredients, and the two recipe JSON format changes in 1.20.5 and 1.21.2.",
+            "author": { "@id": "https://cubeinsquare.com/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/wiki-recipe-generator/#webpage" },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-recipe-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-recipe-generator/#webpage",
+            "url": "https://cubeinsquare.com/wiki-recipe-generator/",
+            "name": "Why your custom recipe does not show up",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-recipe-generator/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cubeinsquare.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Why a recipe does not show up", "item": "https://cubeinsquare.com/wiki-recipe-generator/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-recipe-generator/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-recipe-generator/">FR</a><a href="/de/wiki-recipe-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Why your custom recipe does not show up</h1>
+        <p class="page-lead">A recipe that does nothing is almost never a broken idea. It is usually one of four things: the pattern is padded, the ingredient shape belongs to a different game version, the file is in the wrong folder, or the recipe works fine and only the recipe book is empty. This page walks each of them.</p>
+        <a class="resource-link" href="/recipe-generator/">Open the recipe generator</a>
+    </section>
+
+    <article>
+        <h2>A recipe is a file</h2>
+        <p>There is no command that adds a recipe. Like loot tables and advancements, a recipe is a JSON file the world reads at load time, living at <code>data/&lt;namespace&gt;/recipe/&lt;name&gt;.json</code> inside a data pack. If that sentence is new, the <a href="/wiki-datapack-generator/">data packs vs commands</a> guide covers why, and the <a href="/datapack-generator/">data pack generator</a> builds the folder.</p>
+        <p>Note the folder is <code>recipe</code>, singular, from 1.21 onward. It was <code>recipes</code> before, and a file left in the old folder on a modern game is never read.</p>
+
+        <h2>Padding: the mistake that costs the most time</h2>
+        <p>A shaped recipe is matched against the smallest box that contains it, and the pattern you write <em>is</em> that box. Write a pattern that is three rows tall when the recipe only occupies one, and you have declared a three-row recipe.</p>
+        <pre><code>"pattern": [
+  "###",
+  "   ",
+  "   "
+]</code></pre>
+        <p>That will not craft in a 2&times;2 inventory grid, and in a crafting table it demands the three items sit in the top row specifically. What you almost certainly wanted was this:</p>
+        <pre><code>"pattern": [
+  "###"
+]</code></pre>
+        <p>Now it matches anywhere the three items sit in a row. The rule is simple: trim every empty row and column from the edges. Spaces <em>inside</em> the shape are meaningful and must stay &mdash; the middle slot of a ring recipe is a real, deliberate hole.</p>
+
+        <h2>Shaped or shapeless</h2>
+        <p>Shapeless throws away arrangement entirely: it takes a flat list and matches as long as those items are somewhere in the grid.</p>
+        <pre><code>{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:ink_sac"
+  ],
+  "result": { "id": "minecraft:written_book", "count": 1 }
+}</code></pre>
+        <p>Use shapeless when the arrangement carries no meaning, which is most combination recipes. Reach for shaped when the shape is part of the idea &mdash; a pickaxe should look like a pickaxe on the grid.</p>
+
+        <h2>Two format changes that break copied examples</h2>
+        <p>Recipe JSON was rewritten twice in short order, which is why an example from a tutorial often fails for no visible reason.</p>
+        <table class="compact-table">
+            <tr><th>Version</th><th>Ingredient</th><th>Crafting result</th></tr>
+            <tr><td>before 1.20.5</td><td><code>{"item": "minecraft:x"}</code></td><td><code>{"item": ..., "count": n}</code></td></tr>
+            <tr><td>1.20.5 &ndash; 1.21.1</td><td><code>{"item": "minecraft:x"}</code></td><td><code>{"id": ..., "count": n}</code></td></tr>
+            <tr><td>1.21.2 and later</td><td><code>"minecraft:x"</code></td><td><code>{"id": ..., "count": n}</code></td></tr>
+        </table>
+        <p>Cooking and stonecutting results moved too: they were a bare id string before 1.20.5 and became an object afterwards. None of this changes what the recipe <em>means</em>, only how it is spelled, which is exactly the kind of difference that is miserable to debug by eye.</p>
+
+        <h2>One ingredient, many items</h2>
+        <p>An ingredient can be an item tag instead of a single item, written with a leading <code>#</code>. This is how a recipe accepts any wood:</p>
+        <pre><code>"key": {
+  "#": "#minecraft:planks"
+}</code></pre>
+        <p>Vanilla ships a lot of useful tags &mdash; <code>#minecraft:planks</code>, <code>#minecraft:logs</code>, <code>#minecraft:wool</code> &mdash; and you can define your own in <code>data/&lt;namespace&gt;/tags/item/</code>. Writing out every wood type by hand works, but it ages badly: the next update adds a wood and your recipe quietly does not accept it.</p>
+
+        <h2>When the recipe works but the book is empty</h2>
+        <p>This one confuses people because nothing is actually broken. A custom recipe is not shown in the recipe book until it is unlocked, and unlocking happens through an advancement with a <code>recipe_unlocked</code> reward. Vanilla does this for every one of its own recipes, which is why they appear as you gather materials.</p>
+        <p>Until you add that, the recipe still crafts perfectly if the player arranges it themselves. So if your test is "it is not in the book", try building it by hand before assuming the file is wrong.</p>
+
+        <h2>Checklist when nothing happens</h2>
+        <ol class="article-list">
+            <li>Is the file in <code>recipe/</code>, singular, on 1.21+?</li>
+            <li>Does the pattern have empty edge rows or columns?</li>
+            <li>Does the ingredient shape match your game version?</li>
+            <li>Did you <code>/reload</code>?</li>
+            <li>Is the pack listed by <code>/datapack list</code>?</li>
+        </ol>
+        <p>Unlike loot tables, a malformed recipe usually does complain in the server log on reload, so that log is worth reading before anything else.</p>
+
+        <h2>Where to go next</h2>
+        <p>The <a href="/recipe-generator/">recipe generator</a> lays a shaped recipe out on a grid, trims the pattern for you, and rewrites the ingredient and result shape when you change the target version. From there, the <a href="/loot-table-generator/">loot table generator</a> covers what comes out of chests and mobs rather than what goes into a crafting grid.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
