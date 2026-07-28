@@ -73,6 +73,13 @@ count=0
       loc="$BASE_URL/$path/"
     fi
 
+    # Listing a noindex page in the sitemap tells Google two opposite things
+    # at once: "index this" from the map and "do not" from the page. Google
+    # reports the page as excluded either way, so the entry is pure noise.
+    if grep -qi 'name="robots"[^>]*noindex' "$file"; then
+      continue
+    fi
+
     # A file staged for this very release has no commit yet; treat it as new.
     lastmod="$(git log -1 --format=%ad --date=short -- "$file" 2>/dev/null || true)"
     [[ -z "$lastmod" ]] && lastmod="$today"
