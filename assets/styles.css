@@ -700,11 +700,16 @@
         .steam-mega-panel {
             width: 260px;
             max-width: calc(100vw - 32px);
+            max-height: calc(100vh - 72px);
+            max-height: calc(100dvh - 72px);
             display: grid;
             grid-template-columns: 220px 360px;
             gap: 10px;
             align-items: stretch;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
             transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease, width 0.24s ease;
         }
         .steam-dropdown-panel a {
@@ -2170,6 +2175,35 @@
             margin-top: 14px;
         }
 
+        .tool-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tool-chip-button {
+            appearance: none;
+            padding: 9px 13px;
+            border-radius: 999px;
+            border: 1px solid rgba(116, 161, 255, 0.32);
+            background: rgba(65, 115, 222, 0.16);
+            color: #e8efff;
+            font: inherit;
+            font-weight: 700;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+        }
+
+        .tool-chip-button:hover,
+        .tool-chip-button:focus-visible,
+        .tool-chip-button.is-active {
+            background: rgba(65, 115, 222, 0.3);
+            border-color: rgba(147, 181, 255, 0.68);
+            color: #ffffff;
+            transform: translateY(-1px);
+            outline: none;
+        }
         .tool-button {
             display: inline-flex;
             align-items: center;

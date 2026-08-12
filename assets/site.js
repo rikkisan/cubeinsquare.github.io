@@ -970,6 +970,99 @@
             };
         });
 
+        const navigationExtras = {
+            en: {
+                resourcePackGenerator: 'Minecraft Resource Pack Generator',
+                sphereGenerator: 'Sphere generator',
+                customVillagerTrades: 'Custom villager trades',
+                customPotions: 'Custom potions',
+                upcomingTools: 'Upcoming tools'
+            },
+            ru: {
+                resourcePackGenerator: 'Генератор ресурс-паков Minecraft',
+                sphereGenerator: 'Генератор сфер',
+                customVillagerTrades: 'Кастомные торги жителей',
+                customPotions: 'Кастомные зелья',
+                upcomingTools: 'Будущие инструменты'
+            },
+            fr: {
+                resourcePackGenerator: 'Générateur de resource packs Minecraft',
+                sphereGenerator: 'Générateur de sphères',
+                customVillagerTrades: 'Échanges personnalisés de villageois',
+                customPotions: 'Potions personnalisées',
+                upcomingTools: 'Outils à venir'
+            },
+            de: {
+                resourcePackGenerator: 'Minecraft Resource-Pack-Generator',
+                sphereGenerator: 'Kugel-Generator',
+                customVillagerTrades: 'Benutzerdefinierter Dorfbewohner-Handel',
+                customPotions: 'Custom-Potions',
+                upcomingTools: 'Kommende Werkzeuge'
+            }
+        }[locale];
+        const toolsByKey = new Map(tools.map((tool) => [tool.key, tool]));
+        const navigationTools = [
+            { toolHref: withPrefix('/resource-pack-generator/'), toolLabel: navigationExtras.resourcePackGenerator },
+            toolsByKey.get('customItemBuilder'),
+            { toolHref: withPrefix('/sphere-generator/'), toolLabel: navigationExtras.sphereGenerator },
+            toolsByKey.get('skinEditor'),
+            toolsByKey.get('texturePainter'),
+            { toolHref: withPrefix('/custom-villager-trades/'), toolLabel: navigationExtras.customVillagerTrades },
+            { toolHref: withPrefix('/custom-potions/'), toolLabel: navigationExtras.customPotions },
+            toolsByKey.get('itemModelBuilder'),
+            toolsByKey.get('customItemCatalog'),
+            toolsByKey.get('circleDomePlanner'),
+            toolsByKey.get('bookLetterBuilder'),
+            toolsByKey.get('dialogueBuilder'),
+            toolsByKey.get('bossbarBuilder'),
+            toolsByKey.get('datapackGenerator'),
+            toolsByKey.get('lootTableGenerator'),
+            { toolHref: withPrefix('/tool-coming-soon/'), toolLabel: navigationExtras.upcomingTools }
+        ].filter(Boolean);
+
+        document.querySelectorAll('.steam-nav-menu').forEach((menu) => {
+            const dropdown = menu.querySelector('.steam-nav-dropdown');
+            const href = dropdown ? dropdown.getAttribute('href') || '' : '';
+            if (!/(?:^|\/)tools(?:\/|\.html)?$/i.test(href)) return;
+
+            let panel = menu.querySelector('.steam-dropdown-panel');
+            if (!panel) {
+                panel = document.createElement('div');
+                menu.appendChild(panel);
+            }
+            panel.className = 'steam-dropdown-panel steam-mega-panel steam-mega-panel--tools';
+
+            let list = panel.querySelector('.mega-list');
+            if (!list) {
+                list = document.createElement('div');
+                list.className = 'mega-list';
+            }
+            let feature = panel.querySelector('.mega-feature');
+            if (!feature) {
+                feature = document.createElement('div');
+                feature.className = 'mega-feature';
+            }
+            panel.replaceChildren(list, feature);
+
+            list.replaceChildren();
+            navigationTools.forEach((tool) => {
+                const link = document.createElement('a');
+                link.href = tool.toolHref;
+                link.textContent = tool.toolLabel;
+                list.appendChild(link);
+            });
+
+            feature.replaceChildren();
+            tools.forEach((tool) => {
+                if (!tool.featureTitle || !tool.featureDesc) return;
+                const card = document.createElement('a');
+                card.className = 'mega-card';
+                card.href = tool.toolHref;
+                card.innerHTML = '<strong>' + tool.featureTitle + '</strong><span>' + tool.featureDesc + '</span>';
+                feature.appendChild(card);
+            });
+        });
+
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             tools.forEach((tool) => {
