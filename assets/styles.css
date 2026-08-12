@@ -780,6 +780,9 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
+        .mega-list-tree + .mega-feature {
+            align-content: start;
+        }
         .mega-feature {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
