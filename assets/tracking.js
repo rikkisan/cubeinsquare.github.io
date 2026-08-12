@@ -369,15 +369,46 @@
             toggle.setAttribute('aria-haspopup', 'true');
             toggle.setAttribute('aria-expanded', 'false');
 
+            let closeButton = panel.querySelector('.steam-menu-close');
+            if (!closeButton) {
+                const closeLabels = {
+                    ru: 'Закрыть меню',
+                    fr: 'Fermer le menu',
+                    de: 'Menü schließen',
+                    en: 'Close menu'
+                };
+                const locale = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+                closeButton = document.createElement('button');
+                closeButton.type = 'button';
+                closeButton.className = 'steam-menu-close';
+                closeButton.textContent = '×';
+                closeButton.setAttribute('aria-label', closeLabels[locale] || closeLabels.en);
+                closeButton.title = closeLabels[locale] || closeLabels.en;
+                panel.prepend(closeButton);
+            }
+
+            closeButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                closeNavMenus();
+                toggle.focus();
+            });
+
             toggle.addEventListener('click', (event) => {
                 if (!isCompactHeaderMode()) return;
-                if (menu.classList.contains('is-open')) return;
 
                 event.preventDefault();
+                const shouldOpen = !menu.classList.contains('is-open');
+                if (!shouldOpen) {
+                    closeNavMenus();
+                    return;
+                }
+
                 closeLanguageSwitchers();
                 closeNavMenus(menu);
                 menu.classList.add('is-open');
                 toggle.setAttribute('aria-expanded', 'true');
+                panel.scrollTop = 0;
             });
         });
 
