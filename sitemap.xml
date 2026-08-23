@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cubeinsquare.com/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/about/</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/about/</loc>
@@ -90,11 +90,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/resource-pack-generator/</loc>
@@ -114,11 +118,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-armorhide-mod/</loc>
@@ -210,7 +214,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-mechanism-plugin/</loc>
@@ -243,6 +247,10 @@
   <url>
     <loc>https://cubeinsquare.com/de/wiki-readable-minecraft-dialogue/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-resource-pack-generator/</loc>
@@ -286,7 +294,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/about/</loc>
@@ -334,11 +342,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/resource-pack-generator/</loc>
@@ -358,11 +370,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-armorhide-mod/</loc>
@@ -454,7 +466,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-mechanism-plugin/</loc>
@@ -487,6 +499,10 @@
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-readable-minecraft-dialogue/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-resource-pack-generator/</loc>
@@ -530,11 +546,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/resource-pack-generator/</loc>
@@ -542,7 +562,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/about/</loc>
@@ -590,11 +610,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/privacy-policy/</loc>
     <lastmod>2026-04-26</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/resource-pack-generator/</loc>
@@ -614,11 +638,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-armorhide-mod/</loc>
@@ -710,7 +734,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-mechanism-plugin/</loc>
@@ -743,6 +767,10 @@
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-readable-minecraft-dialogue/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-resource-pack-generator/</loc>
@@ -794,11 +822,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/tools/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-armorhide-mod/</loc>
@@ -894,7 +922,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-loot-table-generator/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-mechanism-plugin/</loc>
@@ -927,6 +955,10 @@
   <url>
     <loc>https://cubeinsquare.com/wiki-readable-minecraft-dialogue/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-recipe-generator/</loc>
+    <lastmod>2026-07-28</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-resource-pack-generator/</loc>
