@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="stylesheet" href="/assets/sphere-generator.css">
+    <link rel="stylesheet" href="/assets/sphere-generator.css?v=20260910">
 </head>
 <body>
 <div class="steam-navbar">
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<main class="page-shell">
+<main class="page-shell sphere-page">
     <section class="page-hero">
         <h1>Генератор сфер Minecraft</h1>
         <p class="page-lead">Планируйте сплошные сферы, полые оболочки, купола и круги до того, как начнёте ставить блоки в мире. Можно листать слой за слоем, сравнивать силуэт сверху и спереди и копировать текущий срез как чистую подсказку для сборки.</p>
@@ -84,6 +84,7 @@
             <a class="resource-link resource-link-secondary" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
         </div>
     </section>
+
 
     <section class="page-section sphere-layout">
         <aside class="sphere-sidebar">
@@ -123,10 +124,29 @@
                 </div>
                 <p class="sphere-shape-note" id="sphereShapeNote">Сплошная сфера удобна, когда нужен плотный объём, спрятанная комната или чистая база под дальнейшую резьбу.</p>
             </section>
-
             <section class="tool-panel">
-                <h2>Навигатор по слоям</h2>
-                <div class="sphere-layer-controls">
+                <h2>Сводка</h2>
+                <div class="sphere-stat-grid"><div class="sphere-stat-card"><strong id="sphereShapeValue">Сплошная сфера</strong><span>Режим</span></div>
+<div class="sphere-stat-card"><strong id="sphereRadiusValue">7</strong><span>Радиус</span></div>
+<div class="sphere-stat-card"><strong id="sphereWidestSpanValue">0 блоков</strong><span>Максимальный размах</span></div>
+<div class="sphere-stat-card"><strong id="sphereCurrentLayerBlocksValue">0</strong><span>Блоков в слое</span></div></div>
+            </section>
+        </aside>
+        <div class="sphere-workspace">
+            <div class="sphere-metrics"><div class="sphere-stat-card"><strong id="sphereDiameterValue">15 блоков</strong><span>Диаметр</span></div>
+<div class="sphere-stat-card"><strong id="sphereTotalBlocksValue">0</strong><span>Всего блоков</span></div>
+<div class="sphere-stat-card"><strong id="sphereLayerCountValue">0</strong><span>Слоёв</span></div></div>
+            <section class="tool-panel sphere-viewer">
+                <div class="sphere-viewer-header">
+                    <h2>Просмотр</h2>
+                    <div class="sphere-tabs" role="tablist" aria-label="Просмотр">
+                        <button id="sphereTab3d" type="button" role="tab" aria-controls="spherePanel3d" aria-selected="true">3D</button>
+                        <button id="sphereTabLayers" type="button" role="tab" aria-controls="spherePanelLayers" aria-selected="false" tabindex="-1">Слои</button>
+                    </div>
+                </div>
+                <p id="sphere3dError" class="sphere-notice" role="status" hidden>3D-просмотр недоступен в этом браузере. Вы можете пользоваться планами слоёв.</p>
+                <div class="sphere-navigation" role="group" aria-label="Навигация по слоям">
+                    <div class="sphere-layer-controls">
                     <button class="resource-link resource-link-secondary" id="spherePrevLayer" type="button">Назад</button>
                     <div class="sphere-layer-label" id="sphereLayerLabel">Слой +0 - 0 блоков</div>
                     <button class="resource-link resource-link-secondary" id="sphereNextLayer" type="button">Вперёд</button>
@@ -141,58 +161,62 @@
                         <select id="sphereLayerSelect"></select>
                     </div>
                 </div>
-                <div class="sphere-layer-copy-grid">
+
+                </div>
+                <div id="spherePanel3d" role="tabpanel" aria-labelledby="sphereTab3d">
+                    <div class="sphere-preview-toolbar">
+                        <div class="tool-field">
+                            <label for="sphereViewMode">Вид в 3D</label>
+                            <select id="sphereViewMode">
+                                <option value="all">Вся фигура</option>
+                                <option value="cutaway">Выделить слой</option>
+                                <option value="slice">Только выбранный слой</option>
+                            </select>
+                        </div>
+                        <div class="sphere-camera-actions">
+                            <button id="sphereZoomIn" type="button" aria-label="Приблизить" title="Приблизить">+</button>
+                            <button id="sphereZoomOut" type="button" aria-label="Отдалить" title="Отдалить">−</button>
+                            <button id="sphereResetCamera" type="button">Сбросить камеру</button>
+                        </div>
+                    </div>
+                    <div class="sphere-scene" id="sphereScene" role="img" aria-label="Интерактивная 3D-модель из блоков">
+                        <p id="sphere3dLoading" class="sphere-loading" role="status">Загрузка 3D-просмотра…</p>
+                    </div>
+                    <p class="sphere-helper-note sphere-gesture-hint">Перетаскивайте для вращения · Колесо или жест для масштаба</p>
+                    <p id="sphereCutawayHint" class="sphere-helper-note sphere-cutaway-hint" hidden>Слои выше выбранного скрыты. Выбранный слой выделен бирюзовым.</p>
+                </div>
+                <div id="spherePanelLayers" role="tabpanel" aria-labelledby="sphereTabLayers" hidden>
+                    <div class="sphere-layer-card">
+                        <h3>Карта блоков</h3>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Карта блоков" id="sphereLayerCanvas" width="640" height="640"></canvas></div>
+                    </div>
+                    <details class="sphere-export">
+                        <summary>Копирование и текстовая схема</summary>
+                        <div class="sphere-layer-copy-grid">
                     <button class="resource-link" id="sphereCopyCurrent" type="button" data-copied-label="Скопировано">Копировать текущий слой</button>
                     <button class="resource-link resource-link-secondary" id="sphereCopyAll" type="button" data-copied-label="Скопировано">Копировать все слои</button>
                 </div>
                 <p class="sphere-helper-note">Копируйте текущий слой во время стройки. Полный экспорт полезен, когда нужно держать весь план под рукой или отдать его другому строителю.</p>
-            </section>
 
-            <section class="tool-panel">
-                <h2>Сводка</h2>
-                <div class="sphere-stat-grid">
-                    <div class="sphere-stat-card"><strong id="sphereShapeValue">Сплошная сфера</strong><span>Режим</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereRadiusValue">7</strong><span>Радиус</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereDiameterValue">15 блоков</strong><span>Диаметр</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereTotalBlocksValue">0</strong><span>Всего блоков</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereLayerCountValue">0</strong><span>Слоёв</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereWidestSpanValue">0 блоков</strong><span>Максимальный размах</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereCurrentLayerBlocksValue">0</strong><span>Блоков в слое</span></div>
-                </div>
-            </section>
-        </aside>
-
-        <div class="sphere-workspace">
-            <section class="tool-panel">
-                <h2>Силуэтные превью</h2>
-                <div class="sphere-projection-grid">
+                        <pre class="sphere-text-output" id="sphereLayerText"></pre>
+                    </details>
+                    <div class="sphere-projection-grid">
                     <div class="sphere-projection-card">
                         <h3>Вид сверху</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereTopCanvas" width="320" height="320"></canvas></div>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Вид сверху" id="sphereTopCanvas" width="320" height="320"></canvas></div>
                     </div>
                     <div class="sphere-projection-card">
                         <h3>Вид спереди</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereFrontCanvas" width="320" height="320"></canvas></div>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Вид спереди" id="sphereFrontCanvas" width="320" height="320"></canvas></div>
                     </div>
                 </div>
                 <p class="sphere-helper-note">Эти силуэты отвечают на самые важные вопросы заранее: насколько широкой будет форма сверху и не ломается ли кривая спереди на выбранном радиусе.</p>
-            </section>
 
-            <section class="tool-panel">
-                <h2>План текущего слоя</h2>
-                <div class="sphere-layer-grid">
-                    <div class="sphere-layer-card">
-                        <h3>Карта блоков</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereLayerCanvas" width="640" height="640"></canvas></div>
-                    </div>
-                    <div class="sphere-layer-card">
-                        <h3>Текстовая схема</h3>
-                        <pre class="sphere-text-output" id="sphereLayerText"></pre>
-                    </div>
                 </div>
             </section>
-
-            <section class="tool-panel">
+        </div>
+    </section>
+    <div class="sphere-help"><section class="tool-panel">
                 <h2>Как этим пользоваться</h2>
                 <div class="sphere-help-grid">
                     <article class="resource-card">
@@ -208,17 +232,15 @@
                         <p>Когда важен внешний силуэт, полая оболочка чаще всего экономит блоки и оставляет место под свет, лестницы и внутренний декор.</p>
                     </article>
                 </div>
-            </section>
-        </div>
-    </section>
+            </section></div>
+
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
-<script src="/assets/sphere-generator.js"></script>
+<script src="/assets/sphere-preview.js?v=20260910"></script>
+<script src="/assets/sphere-generator.js?v=20260910"></script>
 </body>
 </html>
-
-
