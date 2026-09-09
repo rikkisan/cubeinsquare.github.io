@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,7 @@
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
-    <link rel="stylesheet" href="/assets/sphere-generator.css">
+    <link rel="stylesheet" href="/assets/sphere-generator.css?v=20260910">
 </head>
 <body>
 <div class="steam-navbar">
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<main class="page-shell">
+<main class="page-shell sphere-page">
     <section class="page-hero">
         <h1>Minecraft Kugel-Generator</h1>
         <p class="page-lead">Plane volle Kugeln, hohle Schalen, Kuppeln und Kreise, bevor du die ersten Blöcke im Spiel setzt. Du kannst jede Ebene einzeln durchgehen, die Silhouette von oben und vorne prüfen und den aktuellen Schnitt als Bauhilfe kopieren.</p>
@@ -84,6 +84,7 @@
             <a class="resource-link resource-link-secondary" href="/de/resource-pack-generator/">Pack-Generator öffnen</a>
         </div>
     </section>
+
 
     <section class="page-section sphere-layout">
         <aside class="sphere-sidebar">
@@ -123,10 +124,29 @@
                 </div>
                 <p class="sphere-shape-note" id="sphereShapeNote">Die volle Kugel passt, wenn du ein massives Volumen, einen versteckten Raum oder eine saubere Basis zum späteren Ausschneiden brauchst.</p>
             </section>
-
             <section class="tool-panel">
-                <h2>Ebenen-Navigation</h2>
-                <div class="sphere-layer-controls">
+                <h2>Zusammenfassung</h2>
+                <div class="sphere-stat-grid"><div class="sphere-stat-card"><strong id="sphereShapeValue">Volle Kugel</strong><span>Modus</span></div>
+<div class="sphere-stat-card"><strong id="sphereRadiusValue">7</strong><span>Radius</span></div>
+<div class="sphere-stat-card"><strong id="sphereWidestSpanValue">0 Blöcke</strong><span>Größte Breite</span></div>
+<div class="sphere-stat-card"><strong id="sphereCurrentLayerBlocksValue">0</strong><span>Blöcke in Ebene</span></div></div>
+            </section>
+        </aside>
+        <div class="sphere-workspace">
+            <div class="sphere-metrics"><div class="sphere-stat-card"><strong id="sphereDiameterValue">15 Blöcke</strong><span>Durchmesser</span></div>
+<div class="sphere-stat-card"><strong id="sphereTotalBlocksValue">0</strong><span>Gesamtblöcke</span></div>
+<div class="sphere-stat-card"><strong id="sphereLayerCountValue">0</strong><span>Ebenen</span></div></div>
+            <section class="tool-panel sphere-viewer">
+                <div class="sphere-viewer-header">
+                    <h2>Vorschau</h2>
+                    <div class="sphere-tabs" role="tablist" aria-label="Vorschau">
+                        <button id="sphereTab3d" type="button" role="tab" aria-controls="spherePanel3d" aria-selected="true">3D</button>
+                        <button id="sphereTabLayers" type="button" role="tab" aria-controls="spherePanelLayers" aria-selected="false" tabindex="-1">Ebenen</button>
+                    </div>
+                </div>
+                <p id="sphere3dError" class="sphere-notice" role="status" hidden>Die 3D-Vorschau ist in diesem Browser nicht verfügbar. Die Ebenenpläne bleiben nutzbar.</p>
+                <div class="sphere-navigation" role="group" aria-label="Ebenennavigation">
+                    <div class="sphere-layer-controls">
                     <button class="resource-link resource-link-secondary" id="spherePrevLayer" type="button">Zurück</button>
                     <div class="sphere-layer-label" id="sphereLayerLabel">Ebene +0 - 0 Blöcke</div>
                     <button class="resource-link resource-link-secondary" id="sphereNextLayer" type="button">Weiter</button>
@@ -141,58 +161,62 @@
                         <select id="sphereLayerSelect"></select>
                     </div>
                 </div>
-                <div class="sphere-layer-copy-grid">
+
+                </div>
+                <div id="spherePanel3d" role="tabpanel" aria-labelledby="sphereTab3d">
+                    <div class="sphere-preview-toolbar">
+                        <div class="tool-field">
+                            <label for="sphereViewMode">3D-Ansicht</label>
+                            <select id="sphereViewMode">
+                                <option value="all">Gesamte Form</option>
+                                <option value="cutaway">Ebene hervorheben</option>
+                                <option value="slice">Nur ausgewählte Ebene</option>
+                            </select>
+                        </div>
+                        <div class="sphere-camera-actions">
+                            <button id="sphereZoomIn" type="button" aria-label="Vergrößern" title="Vergrößern">+</button>
+                            <button id="sphereZoomOut" type="button" aria-label="Verkleinern" title="Verkleinern">−</button>
+                            <button id="sphereResetCamera" type="button">Kamera zurücksetzen</button>
+                        </div>
+                    </div>
+                    <div class="sphere-scene" id="sphereScene" role="img" aria-label="Interaktives 3D-Blockmodell">
+                        <p id="sphere3dLoading" class="sphere-loading" role="status">3D-Vorschau wird geladen…</p>
+                    </div>
+                    <p class="sphere-helper-note sphere-gesture-hint">Ziehen zum Drehen · Mausrad oder Pinch-Geste zum Zoomen</p>
+                    <p id="sphereCutawayHint" class="sphere-helper-note sphere-cutaway-hint" hidden>Ebenen oberhalb der Auswahl sind ausgeblendet. Die gewählte Ebene ist türkis markiert.</p>
+                </div>
+                <div id="spherePanelLayers" role="tabpanel" aria-labelledby="sphereTabLayers" hidden>
+                    <div class="sphere-layer-card">
+                        <h3>Blockplan</h3>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Blockplan" id="sphereLayerCanvas" width="640" height="640"></canvas></div>
+                    </div>
+                    <details class="sphere-export">
+                        <summary>Kopieren und Textplan</summary>
+                        <div class="sphere-layer-copy-grid">
                     <button class="resource-link" id="sphereCopyCurrent" type="button" data-copied-label="Kopiert">Aktuelle Ebene kopieren</button>
                     <button class="resource-link resource-link-secondary" id="sphereCopyAll" type="button" data-copied-label="Kopiert">Alle Ebenen kopieren</button>
                 </div>
                 <p class="sphere-helper-note">Kopiere die aktuelle Ebene während des Bauens. Der Gesamtexport ist nützlich, wenn du den ganzen Plan neben dem Spiel liegen haben möchtest.</p>
-            </section>
 
-            <section class="tool-panel">
-                <h2>Zusammenfassung</h2>
-                <div class="sphere-stat-grid">
-                    <div class="sphere-stat-card"><strong id="sphereShapeValue">Volle Kugel</strong><span>Modus</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereRadiusValue">7</strong><span>Radius</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereDiameterValue">15 Blöcke</strong><span>Durchmesser</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereTotalBlocksValue">0</strong><span>Gesamtblöcke</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereLayerCountValue">0</strong><span>Ebenen</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereWidestSpanValue">0 Blöcke</strong><span>Größte Breite</span></div>
-                    <div class="sphere-stat-card"><strong id="sphereCurrentLayerBlocksValue">0</strong><span>Blöcke in Ebene</span></div>
-                </div>
-            </section>
-        </aside>
-
-        <div class="sphere-workspace">
-            <section class="tool-panel">
-                <h2>Silhouetten</h2>
-                <div class="sphere-projection-grid">
+                        <pre class="sphere-text-output" id="sphereLayerText"></pre>
+                    </details>
+                    <div class="sphere-projection-grid">
                     <div class="sphere-projection-card">
                         <h3>Ansicht von oben</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereTopCanvas" width="320" height="320"></canvas></div>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Draufsicht" id="sphereTopCanvas" width="320" height="320"></canvas></div>
                     </div>
                     <div class="sphere-projection-card">
                         <h3>Ansicht von vorne</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereFrontCanvas" width="320" height="320"></canvas></div>
+                        <div class="sphere-canvas-frame"><canvas role="img" aria-label="Vorderansicht" id="sphereFrontCanvas" width="320" height="320"></canvas></div>
                     </div>
                 </div>
                 <p class="sphere-helper-note">Die Silhouetten beantworten die wichtigsten Fragen zuerst: wie breit die Form von oben wird und ob die Kurve von vorne noch sauber wirkt.</p>
-            </section>
 
-            <section class="tool-panel">
-                <h2>Plan der aktuellen Ebene</h2>
-                <div class="sphere-layer-grid">
-                    <div class="sphere-layer-card">
-                        <h3>Blockkarte</h3>
-                        <div class="sphere-canvas-frame"><canvas id="sphereLayerCanvas" width="640" height="640"></canvas></div>
-                    </div>
-                    <div class="sphere-layer-card">
-                        <h3>Textreferenz</h3>
-                        <pre class="sphere-text-output" id="sphereLayerText"></pre>
-                    </div>
                 </div>
             </section>
-
-            <section class="tool-panel">
+        </div>
+    </section>
+    <div class="sphere-help"><section class="tool-panel">
                 <h2>So liest du den Plan</h2>
                 <div class="sphere-help-grid">
                     <article class="resource-card">
@@ -208,17 +232,15 @@
                         <p>Wenn vor allem die Außenform zählt, spart eine hohle Schale oft Blöcke und lässt Platz für Licht, Treppen und Innenausbau.</p>
                     </article>
                 </div>
-            </section>
-        </div>
-    </section>
+            </section></div>
+
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
-<script src="/assets/sphere-generator.js"></script>
+<script src="/assets/sphere-preview.js?v=20260910"></script>
+<script src="/assets/sphere-generator.js?v=20260910"></script>
 </body>
 </html>
-
-

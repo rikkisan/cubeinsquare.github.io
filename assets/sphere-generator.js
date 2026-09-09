@@ -2,11 +2,10 @@
     const DEFAULT_RADIUS = 7;
     const DEFAULT_THICKNESS = 1;
     const COPY_RESET_MS = 1400;
-    const CELL_PADDING = 0.14;
+    const CELL_PADDING = 0.06;
     const AXIS_COLOR = 'rgba(148, 163, 184, 0.18)';
     const GRID_COLOR = 'rgba(148, 163, 184, 0.16)';
     const FILL_COLOR = '#60a5fa';
-    const FILL_COLOR_ALT = '#93c5fd';
     const EMPTY_COLOR = 'rgba(15, 23, 42, 0.78)';
 
     const LOCALE = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
@@ -384,7 +383,7 @@
                 const x = offsetX + col * cell;
                 const y = offsetY + row * cell;
 
-                ctx.fillStyle = value > -Infinity ? (value % 2 === 0 ? FILL_COLOR : FILL_COLOR_ALT) : 'rgba(30, 41, 59, 0.96)';
+                ctx.fillStyle = value > -Infinity ? `hsl(212, 87%, ${58 + 16 * ((value + state.radius) / Math.max(1, state.radius * 2))}%)` : 'rgba(30, 41, 59, 0.96)';
                 ctx.fillRect(x, y, cell, cell);
                 ctx.strokeStyle = GRID_COLOR;
                 ctx.lineWidth = 1;
@@ -469,17 +468,20 @@
 
     function updateLayerOptions() {
         const currentY = state.layers[state.layerIndex] ? state.layers[state.layerIndex].y : null;
-        els.layerSelect.innerHTML = '';
+        if (projectedLayers !== state.layers) {
+            els.layerSelect.innerHTML = '';
 
-        state.layers.forEach((layer, index) => {
-            const option = document.createElement('option');
-            option.value = String(index);
-            option.textContent = state.shape === 'filled_circle' || state.shape === 'outline_circle'
-                ? `${t('singleLayer')} - ${layer.count} ${t('blocks')}`
-                : `Y ${layer.y > 0 ? `+${layer.y}` : layer.y} - ${layer.count} ${t('blocks')}`;
-            if (layer.y === currentY || index === state.layerIndex) option.selected = true;
-            els.layerSelect.appendChild(option);
-        });
+            state.layers.forEach((layer, index) => {
+                const option = document.createElement('option');
+                option.value = String(index);
+                option.textContent = state.shape === 'filled_circle' || state.shape === 'outline_circle'
+                    ? `${t('singleLayer')} - ${layer.count} ${t('blocks')}`
+                    : `Y ${layer.y > 0 ? `+${layer.y}` : layer.y} - ${layer.count} ${t('blocks')}`;
+                if (layer.y === currentY || index === state.layerIndex) option.selected = true;
+                els.layerSelect.appendChild(option);
+            });
+
+        }
 
         els.layerRange.max = String(Math.max(0, state.layers.length - 1));
         els.layerRange.value = String(state.layerIndex);
@@ -506,9 +508,13 @@
     function renderAll() {
         updateLayerOptions();
         updateSummary();
-        drawProjection(topCtx, buildProjection('top'));
-        drawProjection(frontCtx, buildProjection('front'));
+        if (projectedLayers !== state.layers) {
+            drawProjection(topCtx, buildProjection('top'));
+            drawProjection(frontCtx, buildProjection('front'));
+            projectedLayers = state.layers;
+        }
         drawLayerCanvas();
+        updatePreview();
     }
 
     function setLayerIndex(nextIndex) {
@@ -517,7 +523,8 @@
     }
 
     function syncRadius(nextValue) {
-        const radius = clamp(Number(nextValue || DEFAULT_RADIUS), 1, 64);
+        const numeric = Number(nextValue || DEFAULT_RADIUS);
+        const radius = clamp(Number.isFinite(numeric) ? Math.round(numeric) : DEFAULT_RADIUS, 1, 64);
         state.radius = radius;
         els.radiusRange.value = String(radius);
         els.radiusNumber.value = String(radius);
@@ -534,6 +541,99 @@
         els.thickness.value = String(state.thickness);
         buildShape();
         renderAll();
+    }
+
+
+    let preview = null;
+    let previewFailed = false;
+    let activeTab = '3d';
+    let projectedLayers = null;
+    let pendingRender = 0;
+
+    function updatePreview() {
+        if (!preview || activeTab !== '3d') return;
+        try {
+            preview.update(state.layers, state.radius, state.layers[state.layerIndex]?.y ?? 0,
+                document.getElementById('sphereViewMode').value);
+        } catch (error) {
+            failPreview();
+        }
+    }
+
+    function failPreview() {
+        previewFailed = true;
+        preview?.dispose();
+        preview = null;
+        document.getElementById('sphere3dLoading').hidden = true;
+        document.getElementById('sphere3dError').hidden = false;
+        const tab = document.getElementById('sphereTab3d');
+        const moveFocus = document.getElementById('spherePanel3d').contains(document.activeElement) ||
+            document.activeElement === tab;
+        tab.disabled = true;
+        selectTab('layers');
+        if (moveFocus) document.getElementById('sphereTabLayers').focus();
+    }
+
+    function selectTab(name) {
+        if (name === '3d' && previewFailed) return;
+        activeTab = name;
+        for (const [key, suffix] of [['3d', '3d'], ['layers', 'Layers']]) {
+            const selected = name === key;
+            const tab = document.getElementById('sphereTab' + suffix);
+            tab.setAttribute('aria-selected', String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            document.getElementById('spherePanel' + suffix).hidden = !selected;
+        }
+        if (name === '3d') updatePreview();
+        preview?.setActive(name === '3d');
+    }
+
+    function loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            const timer = window.setTimeout(() => {
+                script.remove();
+                reject(new Error('3D library timeout'));
+            }, 12000);
+            script.src = src;
+            script.onload = () => { clearTimeout(timer); resolve(); };
+            script.onerror = () => { clearTimeout(timer); script.remove(); reject(new Error('3D library unavailable')); };
+            document.head.appendChild(script);
+        });
+    }
+
+    async function initPreview() {
+        const tab3d = document.getElementById('sphereTab3d');
+        const tabLayers = document.getElementById('sphereTabLayers');
+        tab3d.addEventListener('click', () => selectTab('3d'));
+        tabLayers.addEventListener('click', () => selectTab('layers'));
+        [tab3d, tabLayers].forEach(tab => tab.addEventListener('keydown', event => {
+            if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+            event.preventDefault();
+            const next = event.key === 'Home' ? tab3d : event.key === 'End' ? tabLayers :
+                (tab === tab3d ? tabLayers : tab3d);
+            if (next.disabled) return;
+            selectTab(next === tab3d ? '3d' : 'layers');
+            next.focus();
+        }));
+        const mode = document.getElementById('sphereViewMode');
+        mode.addEventListener('change', () => {
+            document.getElementById('sphereCutawayHint').hidden = mode.value !== 'cutaway';
+            updatePreview();
+        });
+        document.getElementById('sphereZoomIn').addEventListener('click', () => preview?.zoom(.8));
+        document.getElementById('sphereZoomOut').addEventListener('click', () => preview?.zoom(1.25));
+        document.getElementById('sphereResetCamera').addEventListener('click', () => preview?.resetCamera());
+        try {
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
+            await loadScript('https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js');
+            preview = window.SpherePreview.create(document.getElementById('sphereScene'), failPreview);
+            document.getElementById('sphere3dLoading').hidden = true;
+            updatePreview();
+            preview?.setActive(activeTab === '3d');
+        } catch (error) {
+            failPreview();
+        }
     }
 
     function init() {
@@ -569,11 +669,17 @@
             renderAll();
         });
 
-        els.radiusRange.addEventListener('input', () => syncRadius(els.radiusRange.value));
+        els.radiusRange.addEventListener('input', () => {
+            cancelAnimationFrame(pendingRender);
+            pendingRender = requestAnimationFrame(() => syncRadius(els.radiusRange.value));
+        });
         els.radiusNumber.addEventListener('input', () => syncRadius(els.radiusNumber.value));
         els.thickness.addEventListener('change', () => syncThickness(els.thickness.value));
 
-        els.layerRange.addEventListener('input', () => setLayerIndex(Number(els.layerRange.value)));
+        els.layerRange.addEventListener('input', () => {
+            cancelAnimationFrame(pendingRender);
+            pendingRender = requestAnimationFrame(() => setLayerIndex(Number(els.layerRange.value)));
+        });
         els.layerSelect.addEventListener('change', () => setLayerIndex(Number(els.layerSelect.value)));
         els.prevLayer.addEventListener('click', () => setLayerIndex(state.layerIndex - 1));
         els.nextLayer.addEventListener('click', () => setLayerIndex(state.layerIndex + 1));
@@ -583,6 +689,7 @@
 
         buildShape();
         renderAll();
+        initPreview();
     }
 
     document.addEventListener('DOMContentLoaded', init);
