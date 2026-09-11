@@ -929,6 +929,7 @@
         }
         .steam-mega-panel--wiki .wiki-menu-links {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: max-content;
             align-content: start;
             min-height: 0;
             max-height: 310px;
@@ -2582,6 +2583,9 @@
 
             .steam-navbar {
                 height: auto;
+                /* Keep fixed mobile menus anchored to the viewport. */
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
                 padding: 10px 14px;
             }
 
