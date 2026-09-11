@@ -240,6 +240,111 @@
         return prefix ? `${prefix}${path}` : path;
     }
 
+
+
+    function initWikiNavigation(tools) {
+        const locale = getLocaleInfo().lang;
+        const copy = {
+            en: {
+                heading: 'Wiki library', open: 'Open wiki', topics: 'Wiki topics',
+                categories: ['All', 'Basics', 'Tools', 'Servers'],
+                labels: ['CustomModelData', 'Resource pack structure', 'Resource pack generator', 'Skin editor', 'Texture painter', 'Sphere generator', 'Custom potions', 'Villager trades', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Privacy policy'],
+                descriptions: ['Turn a vanilla item into a custom model.', 'Where textures, models and other pack files belong.', 'Build a resource pack from textures to ZIP.', 'Paint the skin atlas and the 3D player model.', 'Choose a canvas and create pixel textures.', 'Build spheres, domes and circles layer by layer.', 'Configure effects, colors and potion commands.', 'Set prices, rewards and trade limits.', 'Engineering, maintenance and ritual machinery.', 'Trophies, hunting and server progression.', 'Magic and dark rituals for your server.', 'How the site handles data and cookies.']
+            },
+            ru: {
+                heading: 'Библиотека вики', open: 'Открыть вики', topics: 'Темы вики',
+                categories: ['Все', 'Основы', 'Инструменты', 'Серверы'],
+                labels: ['CustomModelData', 'Структура ресурс-пака', 'Генератор ресурс-паков', 'Редактор скинов', 'Редактор текстур', 'Генератор сфер', 'Кастомные зелья', 'Торги жителей', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Конфиденциальность'],
+                descriptions: ['Как заменить модель обычного предмета.', 'Где хранить текстуры, модели и файлы пака.', 'Собрать ресурс-пак от текстур до ZIP.', 'Рисовать по атласу и 3D-модели игрока.', 'Выбрать холст и создать пиксельные текстуры.', 'Строить сферы, купола и круги по слоям.', 'Настроить эффекты, цвет и команды зелья.', 'Задать цены, награды и лимиты сделок.', 'Инженерия, обслуживание и ритуальная техника.', 'Трофеи, охота и прогрессия на сервере.', 'Магия и тёмные ритуалы на сервере.', 'Как сайт обрабатывает данные и cookies.']
+            },
+            fr: {
+                heading: 'Bibliothèque wiki', open: 'Ouvrir le wiki', topics: 'Thèmes du wiki',
+                categories: ['Tout', 'Bases', 'Outils', 'Serveurs'],
+                labels: ['CustomModelData', 'Structure du resource pack', 'Générateur de resource packs', 'Éditeur de skins', 'Éditeur de textures', 'Générateur de sphères', 'Potions personnalisées', 'Échanges de villageois', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Confidentialité'],
+                descriptions: ['Remplacer le modèle d’un objet vanilla.', 'Organiser les textures, modèles et fichiers.', 'Créer un pack, des textures au fichier ZIP.', 'Peindre sur l’atlas et le modèle 3D.', 'Choisir un canevas et créer des textures pixel.', 'Construire sphères, dômes et cercles par couches.', 'Régler les effets, couleurs et commandes.', 'Définir les prix, récompenses et limites.', 'Ingénierie, entretien et machines rituelles.', 'Trophées, chasse et progression du serveur.', 'Magie et rituels sombres sur le serveur.', 'Le traitement des données et des cookies.']
+            },
+            de: {
+                heading: 'Wiki-Bibliothek', open: 'Wiki öffnen', topics: 'Wiki-Themen',
+                categories: ['Alle', 'Grundlagen', 'Werkzeuge', 'Server'],
+                labels: ['CustomModelData', 'Resource-Pack-Struktur', 'Resource-Pack-Generator', 'Skin-Editor', 'Textur-Editor', 'Kugel-Generator', 'Eigene Tränke', 'Dorfbewohner-Handel', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Datenschutz'],
+                descriptions: ['Ein Vanilla-Item mit einem eigenen Modell versehen.', 'Texturen, Modelle und Dateien richtig ablegen.', 'Ein Pack von den Texturen bis zur ZIP erstellen.', 'Auf dem Atlas und dem 3D-Spielermodell malen.', 'Eine Leinwand wählen und Pixeltexturen zeichnen.', 'Kugeln, Kuppeln und Kreise schichtweise bauen.', 'Effekte, Farben und Trankbefehle einstellen.', 'Preise, Belohnungen und Handelslimits festlegen.', 'Ingenieurwesen, Wartung und Ritualmaschinen.', 'Trophäen, Jagd und Fortschritt auf dem Server.', 'Magie und dunkle Rituale auf dem Server.', 'Wie die Website Daten und Cookies verarbeitet.']
+            }
+        }[locale];
+        const paths = [
+            '/wiki-custom-model-data/', '/wiki-resource-pack-structure/',
+            '/wiki-resource-pack-generator/', '/wiki-skin-editor/', '/wiki-texture-painter/',
+            '/wiki-sphere-generator/', '/wiki-custom-potions/', '/wiki-custom-villager-trades/',
+            '/wiki-mechanism-plugin/', '/wiki-headhunter-plugin/', '/wiki-darkmage-plugin/', '/privacy-policy/'
+        ];
+        const links = new Map(paths.map((path, index) => [withPrefix(path), {
+            label: copy.labels[index], description: copy.descriptions[index],
+            category: index < 2 || index === 11 ? 'basics' : index >= 8 ? 'servers' : 'tools'
+        }]));
+        // New release metadata automatically appears on every page, in the right locale.
+        tools.forEach(tool => {
+            if (tool.guideHref && !links.has(tool.guideHref)) {
+                links.set(tool.guideHref, {
+                    label: tool.guideLabel || tool.toolLabel,
+                    description: tool.wikiDesc || tool.featureDesc || '',
+                    category: 'tools'
+                });
+            }
+        });
+        document.querySelectorAll('.steam-nav-menu').forEach(menu => {
+            const toggle = menu.querySelector('.steam-nav-dropdown');
+            if (!toggle || !/(?:^|\/)wiki(?:\/|\.html)?$/i.test(toggle.getAttribute('href') || '')) return;
+            let panel = menu.querySelector('.steam-dropdown-panel');
+            if (!panel) {
+                panel = document.createElement('div');
+                menu.appendChild(panel);
+            }
+            panel.className = 'steam-dropdown-panel steam-mega-panel steam-mega-panel--wiki';
+            const header = document.createElement('div');
+            header.className = 'wiki-menu-header';
+            const title = document.createElement('strong');
+            title.textContent = copy.heading;
+            const home = document.createElement('a');
+            home.href = withPrefix('/wiki/');
+            home.textContent = copy.open + ' →';
+            header.append(title, home);
+            const filters = document.createElement('div');
+            filters.className = 'wiki-menu-filters';
+            filters.setAttribute('role', 'group');
+            filters.setAttribute('aria-label', copy.topics);
+            const list = document.createElement('div');
+            list.className = 'mega-list wiki-menu-links';
+            links.forEach((entry, href) => {
+                const link = document.createElement('a');
+                link.href = href;
+                link.dataset.wikiCategory = entry.category;
+                link.title = entry.label + ' — ' + entry.description;
+                const label = document.createElement('strong');
+                label.textContent = entry.label;
+                const description = document.createElement('span');
+                description.className = 'wiki-menu-description';
+                description.textContent = entry.description;
+                link.append(label, description);
+                list.appendChild(link);
+            });
+            ['all', 'basics', 'tools', 'servers'].forEach((category, index) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = copy.categories[index];
+                button.setAttribute('aria-pressed', String(index === 0));
+                button.addEventListener('click', () => {
+                    filters.querySelectorAll('button').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+                    list.querySelectorAll('a').forEach(link => {
+                        link.hidden = category !== 'all' && link.dataset.wikiCategory !== category;
+                    });
+                    list.scrollTop = 0;
+                });
+                filters.appendChild(button);
+            });
+            const closeButton = panel.querySelector('.steam-menu-close');
+            panel.replaceChildren(...(closeButton ? [closeButton, header, filters, list] : [header, filters, list]));
+        });
+    }
+
     function initGlobalToolLinks() {
         const locale = getLocaleInfo().lang;
         const labels = {
@@ -1036,6 +1141,8 @@
                 ...copy
             };
         });
+
+        initWikiNavigation(tools);
 
         const navigationExtras = {
             en: {
