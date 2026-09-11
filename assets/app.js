@@ -331,6 +331,30 @@
         const inputEl = document.getElementById(id);
         if(!inputEl) return;
         const zone = inputEl.parentElement;
+        const uploadCopy = {
+            en: ['Choose PNG', 'or drag a file here'],
+            ru: ['Выбрать PNG', 'или перетащите файл сюда'],
+            fr: ['Choisir un PNG', 'ou glissez un fichier ici'],
+            de: ['PNG auswählen', 'oder Datei hierher ziehen']
+        }[pageLang] || ['Choose PNG', 'or drag a file here'];
+        const name = zone.textContent.trim().replace(/\s+/g, ' ');
+        zone.tabIndex = 0;
+        zone.setAttribute('role', 'button');
+        zone.setAttribute('aria-label', name + ': ' + uploadCopy[0]);
+        zone.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                inputEl.click();
+            }
+        });
+        const action = document.createElement('span');
+        action.className = 'upload-action';
+        action.textContent = '+ ' + uploadCopy[0];
+        const hint = document.createElement('span');
+        hint.className = 'upload-hint';
+        hint.textContent = uploadCopy[1];
+        zone.append(action, hint);
+
 
         inputEl.addEventListener('change', (e) => {
             handleFileUpload(e.target.files[0], id, `prev_${id}`, `stat_${id}`);

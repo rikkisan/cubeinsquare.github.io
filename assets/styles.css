@@ -2841,3 +2841,37 @@
                 right: 8px;
             }
         }
+
+        /* Resource-pack upload targets must remain visible in both themes. */
+        :is(#armor-container, #items-container, #blocks-container) .upload-zone {
+            background: #202733;
+            border: 2px dashed #7c8da8;
+            color: #f1f5f9;
+            min-width: 0;
+        }
+        :is(#armor-container, #items-container, #blocks-container) .upload-zone:is(:hover, :focus-visible, .dragover) {
+            background: #28374c;
+            border-color: #93c5fd;
+        }
+        :is(#armor-container, #items-container, #blocks-container) .upload-zone:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+        .upload-zone .upload-action {
+            display: block;
+            margin-top: 10px;
+            padding: 7px 12px;
+            border: 1px solid #7087aa;
+            border-radius: 6px;
+            background: #344765;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .upload-zone .upload-hint {
+            color: #c0ccdc;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            margin-top: 4px;
+        }
