@@ -825,9 +825,9 @@
             border-color: rgba(96, 165, 250, 0.42);
             background: rgba(59, 130, 246, 0.16);
         }
-        /* Shared tools navigation: one compact list in every locale. */
-        .steam-nav-menu .steam-mega-panel--tools,
-        .steam-nav-menu:is(:hover, :focus-within, .is-open) .steam-mega-panel--tools {
+        /* Shared tools and wiki navigation: compact lists in every locale. */
+        .steam-nav-menu :is(.steam-mega-panel--tools, .steam-mega-panel--wiki),
+        .steam-nav-menu:is(:hover, :focus-within, .is-open) :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) {
             width: min(640px, calc(100vw - 220px));
             max-height: min(440px, calc(100vh - 88px));
             max-height: min(440px, calc(100dvh - 88px));
@@ -837,7 +837,7 @@
             padding: 12px;
         }
 
-        .steam-mega-panel--tools .mega-list {
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 6px;
@@ -846,7 +846,7 @@
             border: 0;
         }
 
-        .steam-mega-panel--tools .mega-list a {
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list a {
             display: flex;
             align-items: center;
             min-width: 0;
@@ -858,25 +858,124 @@
             overflow-wrap: anywhere;
         }
 
-        .steam-mega-panel--tools .mega-list a:focus-visible {
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list a:focus-visible {
             outline: 2px solid var(--accent);
             outline-offset: -2px;
         }
 
-        .steam-mega-panel--tools .mega-feature {
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-feature {
             display: none;
         }
 
         @media (max-width: 700px) {
-            .steam-nav-menu .steam-mega-panel--tools,
-            .steam-nav-menu:is(:hover, :focus-within, .is-open) .steam-mega-panel--tools {
+            .steam-nav-menu :is(.steam-mega-panel--tools, .steam-mega-panel--wiki),
+            .steam-nav-menu:is(:hover, :focus-within, .is-open) :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) {
                 width: auto;
                 max-height: min(440px, calc(72vh - 12px));
                 max-height: min(440px, calc(72dvh - 12px));
             }
 
-            .steam-mega-panel--tools .mega-list {
+            :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+
+        /* Wiki topics keep short summaries without repeating links in feature cards. */
+        .wiki-menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 2px 8px;
+        }
+        .wiki-menu-header > strong {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+        .steam-mega-panel--wiki .wiki-menu-header a {
+            padding: 6px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+        }
+        .wiki-menu-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 0 0 12px;
+            flex-shrink: 0;
+        }
+        .wiki-menu-filters button {
+            padding: 7px 11px;
+            min-height: 36px;
+            border: 1px solid var(--glass-border);
+            border-radius: 7px;
+            background: transparent;
+            color: var(--text-dim);
+            font: inherit;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .wiki-menu-filters button[aria-pressed="true"] {
+            color: #fff;
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .wiki-menu-filters button:focus-visible,
+        .steam-mega-panel--wiki .wiki-menu-header a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .steam-mega-panel--wiki .wiki-menu-links {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-auto-rows: max-content;
+            align-content: start;
+            min-height: 0;
+            max-height: 310px;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
+            padding: 2px;
+        }
+        .steam-mega-panel--wiki .wiki-menu-links a {
+            display: block;
+            padding: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(148, 163, 184, 0.045);
+        }
+        .steam-mega-panel--wiki .wiki-menu-links a:hover,
+        .steam-mega-panel--wiki .wiki-menu-links a:focus-visible {
+            border-color: var(--accent);
+            background: rgba(96, 165, 250, 0.12);
+        }
+        .wiki-menu-links a[hidden] {
+            display: none !important;
+        }
+        .wiki-menu-links strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.85rem;
+            font-weight: 650;
+        }
+        .wiki-menu-description {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            margin-top: 5px;
+            color: var(--text-dim);
+            font-size: 0.76rem;
+            line-height: 1.45;
+            font-weight: 400;
+        }
+        @media (max-width: 480px) {
+            .steam-mega-panel--wiki .wiki-menu-links {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .wiki-menu-filters button {
+                padding: 7px 8px;
+                font-size: 0.75rem;
             }
         }
 
@@ -2484,6 +2583,9 @@
 
             .steam-navbar {
                 height: auto;
+                /* Keep fixed mobile menus anchored to the viewport. */
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
                 padding: 10px 14px;
             }
 
