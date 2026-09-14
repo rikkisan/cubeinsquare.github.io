@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Randomiseur d'enchantements et d'attributs | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Tirez un ensemble aléatoire d'enchantements vanilla et de modificateurs d'attributs pour un objet Minecraft : commande /give prête ou entrée de table de butin.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/enchantment-randomizer/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/enchantment-randomizer/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/enchantment-randomizer/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/enchantment-randomizer/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/enchantment-randomizer/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/enchantment-randomizer/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Randomiseur d'enchantements et d'attributs | Cube in Square">
+    <meta property="og:description" content="Ensemble aléatoire d'enchantements et de modificateurs d'attributs : commande /give ou entrée de table de butin.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/enchantment-randomizer/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Randomiseur d'enchantements et d'attributs | Cube in Square">
+    <meta name="twitter:description" content="Ensemble aléatoire d'enchantements et de modificateurs d'attributs : commande /give ou entrée de table de butin.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "WebApplication",
+            "@id": "https://cubeinsquare.com/fr/enchantment-randomizer/#app",
+            "name": "Randomiseur d'enchantements et d'attributs",
+            "url": "https://cubeinsquare.com/fr/enchantment-randomizer/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any",
+            "browserRequirements": "Requires JavaScript",
+            "description": "Ensemble aléatoire d'enchantements vanilla et de modificateurs d'attributs pour un objet Minecraft.",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/enchantment-randomizer/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cubeinsquare.com/fr/" },
+                { "@type": "ListItem", "position": 2, "name": "Outils", "item": "https://cubeinsquare.com/fr/tools/" },
+                { "@type": "ListItem", "position": 3, "name": "Randomiseur d'enchantements et d'attributs", "item": "https://cubeinsquare.com/fr/enchantment-randomizer/" }
+            ]
+        }
+    ]
+}
+    </script>
+    <style>
+    .er-weight-input { width: 60px; }
+    .er-value-input { width: 70px; }
+    .er-lock-checkbox { width: 18px; height: 18px; }
+    .er-table-scroll { overflow-x: auto; }
+    </style>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/enchantment-randomizer/">RU</a><a href="/enchantment-randomizer/">EN</a><a class="is-active" href="#">FR</a><a href="/de/enchantment-randomizer/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell" data-enchant-randomizer>
+    <section class="page-hero">
+        <h1>Randomiseur d'enchantements et d'attributs</h1>
+        <p class="page-lead">Choisissez un objet, tirez un ensemble aléatoire d'enchantements vanilla et de modificateurs d'attributs, puis récupérez soit une commande <code>/give</code> prête, soit une entrée de table de butin &mdash; avec les plages conservées comme number providers, pour que le jeu tire lui-même la valeur exacte à chaque butin plutôt que vous, une seule fois ici.</p>
+    </section>
+
+    <section class="page-section tool-layout">
+        <div class="tool-primary-column">
+            <div class="tool-panel">
+                <div class="tool-button-row">
+                    <a class="tool-button" href="/fr/wiki-enchantment-randomizer/">Lire le guide</a>
+                    <a class="tool-button tool-button-secondary" href="/fr/wiki-enchantment-conflicts/">Incompatibilités d'enchantements</a>
+                </div>
+                <p class="tool-summary">Le jeu vanilla impose des groupes d'enchantements mutuellement exclusifs (protection, dégâts, fortune/toucher de soie, etc.). Cet outil les respecte par défaut &mdash; liste complète dans le guide.</p>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Objet</h2>
+                <div class="tool-form-grid">
+                    <label class="tool-field">
+                        <span>Id de l'objet de base</span>
+                        <input id="er-item" type="text" value="minecraft:diamond_sword">
+                    </label>
+                    <label class="tool-field">
+                        <span>Catégorie</span>
+                        <select id="er-category">
+                            <option value="any">N'importe quel objet</option>
+                            <option value="sword" selected>Épée / arme de mêlée</option>
+                            <option value="tool">Outil (pioche, hache, pelle, houe)</option>
+                            <option value="bow">Arc</option>
+                            <option value="crossbow">Arbalète</option>
+                            <option value="trident">Trident</option>
+                            <option value="fishing_rod">Canne à pêche</option>
+                            <option value="armor_head">Armure &mdash; casque</option>
+                            <option value="armor_chest">Armure &mdash; plastron</option>
+                            <option value="armor_legs">Armure &mdash; jambières</option>
+                            <option value="armor_feet">Armure &mdash; bottes</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Sortie</h2>
+                <p class="tool-summary">Format</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button is-active" type="button" data-er-format="give">Commande /give</button>
+                    <button class="tool-chip-button" type="button" data-er-format="loot">Entrée de table de butin</button>
+                </div>
+                <p class="tool-summary">Format de l'objet</p>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button is-active" type="button" data-er-version="modern">Moderne (1.20.5+, composants)</button>
+                    <button class="tool-chip-button" type="button" data-er-version="legacy">Ancien (avant 1.20.5, NBT)</button>
+                </div>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Mode de randomisation</h2>
+                <div class="tool-chip-row">
+                    <button class="tool-chip-button is-active" type="button" data-er-mode="basic">Basique</button>
+                    <button class="tool-chip-button" type="button" data-er-mode="advanced">Avancé &mdash; poids et verrous</button>
+                </div>
+            </div>
+
+            <div class="tool-panel" id="er-ranges-panel">
+                <h2>Plages de tirage</h2>
+                <p class="tool-summary">Ces plages s'appliquent dans les deux modes : elles limitent le nombre d'emplacements remplis et le niveau qu'un enchantement non verrouillé peut atteindre.</p>
+                <div class="tool-form-grid">
+                    <label class="tool-field"><span>Enchantements &mdash; min</span><input id="er-ench-count-min" type="number" min="0" max="10" value="2"></label>
+                    <label class="tool-field"><span>Enchantements &mdash; max</span><input id="er-ench-count-max" type="number" min="0" max="10" value="4"></label>
+                    <label class="tool-field"><span>Niveau &mdash; min</span><input id="er-ench-level-min" type="number" min="1" max="255" value="1"></label>
+                    <label class="tool-field"><span>Niveau &mdash; max</span><input id="er-ench-level-max" type="number" min="1" max="255" value="5"></label>
+                </div>
+                <label class="tool-field"><span>Autoriser un niveau au-delà du maximum vanilla</span><input id="er-allow-above-cap" type="checkbox"></label>
+                <div class="tool-form-grid">
+                    <label class="tool-field"><span>Attributs &mdash; min</span><input id="er-attr-count-min" type="number" min="0" max="8" value="0"></label>
+                    <label class="tool-field"><span>Attributs &mdash; max</span><input id="er-attr-count-max" type="number" min="0" max="8" value="1"></label>
+                </div>
+                <label class="tool-field"><span>Respecter les incompatibilités vanilla</span><input id="er-respect-conflicts" type="checkbox" checked></label>
+            </div>
+
+            <div class="tool-panel" id="er-basic-panel">
+                <h2>Basique &mdash; valeur d'attribut</h2>
+                <p class="tool-summary">Utilisé quand le mode de randomisation est Basique. Le mode avancé utilise la plage propre à chaque attribut.</p>
+                <div class="tool-form-grid">
+                    <label class="tool-field"><span>Valeur &mdash; min</span><input id="er-attr-amount-min" type="number" step="0.1" value="1"></label>
+                    <label class="tool-field"><span>Valeur &mdash; max</span><input id="er-attr-amount-max" type="number" step="0.1" value="4"></label>
+                </div>
+                <label class="tool-field">
+                    <span>Opération de l'attribut</span>
+                    <select id="er-attr-operation">
+                        <option value="random">Aléatoire</option>
+                        <option value="add_value">Ajouter une valeur</option>
+                        <option value="add_multiplied_base">Multiplier la base</option>
+                        <option value="add_multiplied_total">Multiplier le total</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="tool-panel" id="er-advanced-panel" hidden>
+                <h2>Pool d'enchantements</h2>
+                <p class="tool-summary">Réglez un poids de rareté, ou cochez Verrou et fixez un niveau exact pour garder cet enchantement à chaque nouveau tirage.</p>
+                <div class="er-table-scroll">
+                    <table class="compact-table">
+                        <thead><tr><th>Enchantement</th><th>Poids</th><th>Verrou</th><th>Niveau</th></tr></thead>
+                        <tbody id="er-ench-body"></tbody>
+                    </table>
+                </div>
+                <h2 style="margin-top:20px;">Pool d'attributs</h2>
+                <div class="er-table-scroll">
+                    <table class="compact-table">
+                        <thead><tr><th>Attribut</th><th>Poids</th><th>Verrou</th><th>Valeur</th></tr></thead>
+                        <tbody id="er-attr-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tool-panel">
+                <h2>Résultat généré</h2>
+                <textarea id="er-output" class="command-output" rows="14" readonly></textarea>
+                <p class="tool-summary" id="er-summary"></p>
+                <div class="tool-button-row">
+                    <button id="er-randomize" class="tool-button" type="button">Randomiser</button>
+                    <button id="er-copy" class="tool-button tool-button-secondary" type="button">Copier</button>
+                    <button id="er-download" class="tool-button tool-button-secondary" type="button">Télécharger</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="tool-secondary-column">
+            <div class="tool-panel">
+                <h2>Deux formats de sortie, deux usages</h2>
+                <p class="tool-summary">La commande <code>/give</code> tire un objet concret, tout de suite &mdash; à coller dans un bloc de commande ou le chat. L'entrée de table de butin conserve les plages comme number providers <code>minecraft:uniform</code>, donc chaque butin de cette table tire sa propre valeur en jeu au lieu de toujours reproduire cette instance.</p>
+            </div>
+            <div class="tool-panel">
+                <h2>Pourquoi certaines combinaisons n'apparaissent jamais</h2>
+                <p class="tool-summary">Le jeu vanilla regroupe certains enchantements comme mutuellement exclusifs &mdash; vous ne verrez jamais Tranchant et Aubaine sur la même épée, ni Protection et Protection contre le feu sur le même casque. "Respecter les incompatibilités vanilla" applique les mêmes groupes ici ; désactivez-le uniquement pour un data pack qui modifie volontairement la compatibilité.</p>
+            </div>
+            <div class="tool-panel">
+                <h2>Voir aussi</h2>
+                <ul class="item-builder-help">
+                    <li><a href="/fr/wiki-enchantment-randomizer/">Guide du randomiseur</a></li>
+                    <li><a href="/fr/wiki-enchantment-conflicts/">Incompatibilités d'enchantements</a></li>
+                    <li><a href="/fr/custom-item-catalog/">Catalogue d'objets personnalisés</a></li>
+                    <li><a href="/fr/loot-table-generator/">Générateur de table de butin</a></li>
+                </ul>
+            </div>
+        </aside>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+<script src="/assets/enchantment-randomizer.js"></script>
+</body>
+</html>

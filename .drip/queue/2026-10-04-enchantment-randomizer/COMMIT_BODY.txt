@@ -1,0 +1,6 @@
+Adds the enchantment & attribute randomizer: basic (ranges) and advanced
+(per-entry rarity weights with lockable slots) randomization modes, output
+as either a /give command or a loot table entry with the ranges kept as
+uniform number providers, and a modern-components/legacy-NBT item format
+toggle. Ships with a how-to guide and a supporting article on vanilla
+enchantment incompatibility groups, treasure enchantments, and level caps.
