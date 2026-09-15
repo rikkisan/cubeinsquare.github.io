@@ -107,6 +107,20 @@
         <p>Le mode avancé affiche chaque enchantement et attribut éligible sous forme de ligne avec un poids de rareté et une case Verrou. Augmentez un poids pour rendre cette entrée plus probable ; baissez-le près de zéro pour la rendre rare sans l'exclure complètement. Verrouiller une ligne la fixe à un niveau ou une valeur exacte &mdash; elle survit à chaque nouveau tirage, seules les lignes non verrouillées changent. C'est ainsi que l'on construit "toujours Réparation automatique, parfois autre chose" sans retirer en boucle en espérant tomber sur Réparation automatique.</p>
         <p>Les champs de plage partagés au-dessus des deux panneaux (combien, quel niveau) s'appliquent aussi en mode avancé : ils limitent combien de slots <em>non verrouillés</em> se remplissent autour de vos choix fixés.</p>
 
+        <h2>Basique ou avancé : lequel choisir</h2>
+        <table class="compact-table">
+            <tr><th>Situation</th><th>Mode</th><th>Pourquoi</th></tr>
+            <tr><td>Butin rapide d'un coffre, récompense ponctuelle</td><td>Basique</td><td>Réglez une plage de nombre et de niveau, cliquez une fois, terminé.</td></tr>
+            <tr><td>Une arme de boss qui doit toujours avoir Réparation automatique</td><td>Avancé</td><td>Verrouillez Réparation automatique au niveau 1, laissez le reste se retirer autour.</td></tr>
+            <tr><td>Toute une table de butin où Tranchant doit être commun et Toucher de soie rare</td><td>Avancé</td><td>Les poids orientent le tirage sans exclure quoi que ce soit.</td></tr>
+            <tr><td>Peu importe les enchantements, juste "quelques-uns, pas trop forts"</td><td>Basique</td><td>Un poids égal sur chaque entrée éligible fait exactement cela.</td></tr>
+        </table>
+
+        <h2>Exemple concret : tirer une épée de boss</h2>
+        <p>Disons que vous voulez une épée en diamant qui a toujours Réparation automatique, plus deux ou trois autres enchantements qui varient. En mode avancé : cochez Verrou sur la ligne Réparation automatique et laissez son niveau à 1, réglez la plage partagée du nombre d'enchantements sur 2&ndash;3 (Réparation automatique compte dans ce total), et cliquez sur Randomiser plusieurs fois. Un tirage pourrait donner :</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <p>Randomiser à nouveau avec les mêmes verrous ne change que Tranchant et Solidité &mdash; Réparation automatique ne bouge jamais, car elle est verrouillée et non simplement probable. C'est la différence pratique entre monter un poids à 99 et cocher Verrou : un poids élevé reste un tirage qui peut échouer, un verrou ne le peut pas.</p>
+
         <h2>/give contre une entrée de table de butin</h2>
         <p>C'est le second choix, indépendant du premier. Une commande <code>/give</code> tire un objet concret tout de suite : vous l'obtenez, et les chiffres dans le résultat sont définitifs. Utile pour une récompense de bloc de commande ou pour donner quelque chose directement à un joueur.</p>
         <p>Une entrée de table de butin fonctionne différemment, volontairement. Au lieu de tirer un niveau ou une valeur à l'avance, l'outil l'écrit comme un <a href="https://minecraft.wiki/w/Loot_table" rel="nofollow">number provider</a> :</p>
@@ -115,6 +129,18 @@
 
         <h2>Format d'objet moderne ou ancien</h2>
         <p>Minecraft 1.20.5 a remplacé la plupart des tags NBT des objets par des composants. Cet outil suit la même répartition que le guide <a href="/fr/wiki-components-vs-nbt/">composants contre NBT</a> : choisissez Moderne pour les composants <code>minecraft:enchantments</code> / <code>minecraft:attribute_modifiers</code>, ou Ancien pour les tags NBT <code>Enchantments</code> / <code>AttributeModifiers</code> plus anciens si vous visez un vieux serveur.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>La case "Respecter les incompatibilités vanilla" ralentit-elle quelque chose ?</h3>
+            <p>Non, elle filtre simplement le pool de candidats avant le tirage. Désactivée, le randomiseur peut produire des combinaisons qu'aucune table d'enchantement n'offrirait jamais &mdash; utile pour un butin de boss délibérément généreux, pas quelque chose à laisser activé par accident pour une table de butin "réaliste".</p>
+            <h3>Peut-on verrouiller un attribut comme un enchantement ?</h3>
+            <p>Oui. En mode avancé, le tableau des attributs a les mêmes colonnes Poids et Verrou, et un attribut verrouillé garde sa valeur et son opération exactes à chaque nouveau tirage, comme un enchantement verrouillé garde son niveau.</p>
+            <h3>Que se passe-t-il si ma plage de nombre dépasse le pool éligible ?</h3>
+            <p>L'outil remplit autant d'emplacements que la catégorie en compte réellement, puis s'arrête &mdash; une canne à pêche n'aura jamais quatre enchantements si seuls deux enchantements vanilla s'y appliquent.</p>
+            <h3>Pourquoi la sortie de table de butin affiche parfois un nombre simple plutôt qu'une plage ?</h3>
+            <p>Quand un enchantement ou un attribut est verrouillé (ou que son minimum et son maximum coïncident), il n'y a rien à randomiser, donc l'outil écrit la valeur simple plutôt que d'envelopper un seul nombre dans un objet <code>minecraft:uniform</code>.</p>
+        </div>
 
         <h2>Voir aussi</h2>
         <p>Vous ne comprenez pas pourquoi deux enchantements refusent de sortir ensemble ? <a href="/fr/wiki-enchantment-conflicts/">Incompatibilités d'enchantements</a> liste tous les groupes d'incompatibilité vanilla. Pour un objet entièrement personnalisé plutôt qu'un tirage aléatoire sur un objet vanilla, voyez le <a href="/fr/custom-item-catalog/">catalogue d'objets personnalisés</a>.</p>

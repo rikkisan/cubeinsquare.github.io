@@ -111,6 +111,19 @@
         </table>
         <p>Außerhalb dieser Gruppen kombinieren sich Vanilla-Verzauberungen frei &mdash; Haltbarkeit, Reparatur und Fluch des Verschwindens gelten für fast jedes verzauberbare Item und stehen nie in Konflikt mit irgendetwas.</p>
 
+        <h2>Praxisbeispiel: Was passiert, wenn man es trotzdem erzwingt</h2>
+        <p>Versuche, Schärfe und Verwüstung an einem Zaubertisch, einem Amboss oder mit zwei verzauberten Büchern zu kombinieren, und die Oberfläche lässt es einfach nicht zu &mdash; die zweite Verzauberung ist ausgegraut, oder der Amboss verweigert die Kombination. Diese Blockade steckt im Crafting-Code, nicht in den Item-Daten. Schreibe beide direkt in ein Item, und das Spiel hält dich nicht auf:</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <p>Dieses Item existiert, beide Verzauberungen erscheinen im Tooltip, und beide wenden ihren Schadensbonus im Kampf an. Kein Survival-Spieler hätte es je durch normales Spielen bekommen können &mdash; genau deshalb wirkt es sofort erkennbar untypisch: ein nützliches Signal für ein von einem Admin erzeugtes Relikt, und ein verräterisches Detail, falls das Item eigentlich legitim von einem Spieler stammen sollte.</p>
+
+        <h2>Wo das außerhalb des Zaubertischs auftaucht</h2>
+        <p>Dieselben Gruppen spielen an drei weiteren Stellen eine Rolle, auf die Ersteller stoßen:</p>
+        <ul>
+            <li><strong>Amboss-Kombination.</strong> Das Kombinieren zweier Bücher oder eines Items mit einem Buch am Amboss weist die zweite Verzauberung zurück, wenn sie mit einer bereits vorhandenen auf dem Ziel im Konflikt steht &mdash; genau wie der Zaubertisch.</li>
+            <li><strong>Loot-Tables.</strong> Eine <code>minecraft:set_enchantments</code>-Funktion mit einer handgeschriebenen Liste prüft keine Konflikte &mdash; das sind einfach nur Daten. Eine Loot-Table kann durchaus Schärfe und Verwüstung auf demselben Schwert würfeln, sofern der Ersteller der Tabelle das nicht bewusst vermieden hat.</li>
+            <li><strong>Befehlsblöcke und Mob-Spawner.</strong> Jeder <code>/give</code>-Befehl, <code>/item modify</code> oder Spawn mit Ausrüstung hat dieselbe Freiheit und dieselbe Verantwortung &mdash; das Spiel warnt dich nicht, wenn eine Kombination natürlich nie hätte entstehen können.</li>
+        </ul>
+
         <h2>Schatz-Verzauberungen</h2>
         <p>Eine Handvoll Verzauberungen kann niemals von einem Zaubertisch kommen, auf keinem Level, egal wie viel Lapis oder wie viele Bücherregale drumherum stehen: Reparatur, Frostwanderer, Fluch der Bindung, Fluch des Verschwindens, Seelenschnelligkeit, Leises Schleichen und Kanalisierung. Das sind "Schatz"-Verzauberungen, nur durch Angeln, Handel, Struktur-Loot oder einen <code>/give</code>-Befehl erhältlich. Ein Randomizer oder eine Loot-Table, die eine davon auf ein gewöhnliches Item würfelt, ist bewusst großzügig &mdash; genau die Art von Sache, die man absichtlich tun sollte, nicht aus Versehen.</p>
 
@@ -119,6 +132,18 @@
 
         <h2>Was das für einen Randomizer bedeutet</h2>
         <p>Ein Tool, das Verzauberungen würfelt, hat drei ehrliche Optionen: innerhalb der Vanilla-Gruppen und Level-Limits bleiben, um etwas zu erzeugen, das ein Zaubertisch hätte hervorbringen können; Schatz-Verzauberungen erlauben und das klar kennzeichnen; oder Level über dem Limit erlauben und das ebenfalls kennzeichnen. Alle drei sind legitim, je nachdem, was gebaut wird &mdash; eine "realistische" Loot-Table für einen Survival-Server will die erste, eine Boss-Belohnung für eine Abenteuerkarte vielleicht die dritte. Der <a href="/de/enchantment-randomizer/">Verzauberungs- &amp; Attribut-Randomizer</a> berücksichtigt die Gruppen standardmäßig, mit einer expliziten Checkbox, um das abzuschalten.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Können zwei Schatz-Verzauberungen miteinander in Konflikt stehen?</h3>
+            <p>Ja &mdash; "nur als Schatz erhältlich" und die Zugehörigkeit zu einer Unverträglichkeitsgruppe sind getrennte Regeln. Frostwanderer und Kanalisierung sind beide Schatz-Verzauberungen, aber Frostwanderer steht trotzdem im Konflikt mit Tiefensteher, und Kanalisierung mit Fluttritt, genau wie bei gewöhnlichen Verzauberungen.</p>
+            <h3>Nutzt Bedrock Edition dieselben Gruppen?</h3>
+            <p>Die Gruppen selbst sind dieselbe kurze Liste; diese Seite und der Randomizer sind für die Java-Edition-Syntax geschrieben und getestet, auf die die meisten Datapack- und Befehlsblock-Workflows abzielen.</p>
+            <h3>Kann ein Datapack diese Gruppen legitim überschreiben?</h3>
+            <p>Benutzerdefinierte Verzauberungen, die über das datengetriebene Verzauberungssystem definiert werden, können eigene exklusive Gruppen deklarieren, getrennt von denen von Vanilla. Das ist ein eigenes Thema der Datapack-Erstellung, außerhalb dessen, was ein auf Vanilla ausgerichteter Randomizer abdeckt.</p>
+            <h3>Warum berücksichtigt der Randomizer die Gruppen standardmäßig, statt sie zu ignorieren?</h3>
+            <p>Weil die häufigere Anfrage lautet: "gib mir etwas, das ein Spieler plausibel gefunden haben könnte", und das gilt nur, wenn die Gruppen eingehalten werden. Großzügigkeit darüber hinaus sollte eine bewusste Entscheidung sein, kein Zufall.</p>
+        </div>
 
         <h2>Weiterlesen</h2>
         <p>Bereit, eine Kombination zu würfeln: der <a href="/de/enchantment-randomizer/">Randomizer</a> und seine <a href="/de/wiki-enchantment-randomizer/">Anleitung</a> erklären den einfachen und erweiterten Modus sowie die beiden Ausgabeformate. Für Verzauberungen an einem komplett benutzerdefinierten Item statt einem Vanilla-Item siehe den <a href="/de/custom-item-catalog/">Katalog für benutzerdefinierte Items</a>.</p>

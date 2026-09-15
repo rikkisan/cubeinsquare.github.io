@@ -107,6 +107,20 @@
         <p>Advanced mode shows every eligible enchantment and attribute as a row with a rarity weight and a Lock checkbox. Raise a weight to make that entry more likely to be picked; lower it toward zero to make it rare without excluding it outright. Locking a row pins it at an exact level or amount &mdash; it survives every reroll, and only the unlocked rows change. This is how you build "always Mending, sometimes something else" without re-rolling until Mending happens to show up.</p>
         <p>The shared range fields above both panels (how many, what level) still apply in Advanced mode: they cap how many <em>unlocked</em> slots get filled around your locked picks.</p>
 
+        <h2>Basic or Advanced: which one for which job</h2>
+        <table class="compact-table">
+            <tr><th>Situation</th><th>Use</th><th>Why</th></tr>
+            <tr><td>Quick chest loot, one-off reward</td><td>Basic</td><td>Set a count and level range, click once, done.</td></tr>
+            <tr><td>A boss weapon that must always have Mending</td><td>Advanced</td><td>Lock Mending at level 1, let everything else reroll around it.</td></tr>
+            <tr><td>A whole loot table where Sharpness should be common and Silk Touch rare</td><td>Advanced</td><td>Weights bias the pick without excluding anything outright.</td></tr>
+            <tr><td>You don't care which enchantments, just "a few, not too strong"</td><td>Basic</td><td>Even weighting across every eligible entry is exactly that.</td></tr>
+        </table>
+
+        <h2>Worked example: rolling a boss sword</h2>
+        <p>Say you want a diamond sword that always carries Mending, plus two or three other enchantments that vary. In Advanced mode: tick Lock on the Mending row and leave its level at 1, set the shared enchantment count range to 2&ndash;3 (Mending counts toward that), and click Randomize a few times. One roll might come back as:</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <p>Randomize again with the same locks and only Sharpness and Unbreaking change &mdash; Mending never moves, because it is locked rather than merely likely. That is the practical difference between raising a weight to 99 and ticking Lock: a high weight is still a roll that can fail, a lock cannot.</p>
+
         <h2>/give vs a loot table entry</h2>
         <p>This is the second, unrelated choice. A <code>/give</code> command rolls one concrete item right now: pick it, and the numbers in the output are final. Useful for a command block reward or handing something to a player directly.</p>
         <p>A loot table entry is different on purpose. Instead of pre-rolling a level or an amount, the tool writes it as a <a href="https://minecraft.wiki/w/Loot_table" rel="nofollow">number provider</a>:</p>
@@ -115,6 +129,18 @@
 
         <h2>Modern vs legacy item format</h2>
         <p>Minecraft 1.20.5 replaced most item NBT tags with data components. This tool follows the same two-way split covered in the <a href="/wiki-components-vs-nbt/">components vs NBT</a> guide: pick Modern for <code>minecraft:enchantments</code> / <code>minecraft:attribute_modifiers</code> components, or Legacy for the older <code>Enchantments</code> / <code>AttributeModifiers</code> NBT tags if you are targeting an old server.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Does the "respect vanilla conflicts" checkbox slow anything down?</h3>
+            <p>No, it just filters the candidate pool before a pick is made. With it off, the randomizer can produce combinations no enchanting table would ever offer &mdash; useful for a deliberately generous boss drop, not something to leave on by accident for a "realistic" loot table.</p>
+            <h3>Can I lock an attribute the same way as an enchantment?</h3>
+            <p>Yes. Advanced mode's attribute table has the same Weight and Lock columns as the enchantment table, and a locked attribute keeps its exact amount and operation across rerolls the same way a locked enchantment keeps its level.</p>
+            <h3>What happens if my count range is larger than the eligible pool?</h3>
+            <p>The tool fills as many slots as the category actually has enchantments or attributes for, then stops &mdash; a fishing rod category will never produce four enchantments if only two vanilla enchantments apply to it.</p>
+            <h3>Why does the loot table output sometimes show a plain number instead of a range?</h3>
+            <p>When an enchantment or attribute is locked (or its min and max happen to match), there is nothing to randomize, so the tool writes the plain value instead of wrapping a single number in a <code>minecraft:uniform</code> object.</p>
+        </div>
 
         <h2>Where to go next</h2>
         <p>Not sure why two enchantments will not roll together? <a href="/wiki-enchantment-conflicts/">Enchantment conflicts explained</a> lists every vanilla incompatibility group. For a fully custom item instead of a random roll on a vanilla item, see the <a href="/custom-item-catalog/">custom item catalog</a>.</p>

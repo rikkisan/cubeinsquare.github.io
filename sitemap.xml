@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/book-letter-builder/</loc>
@@ -54,7 +54,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/book-letter-builder/</loc>
@@ -93,6 +93,10 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/de/enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/de/item-model-builder/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
@@ -126,15 +130,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/tools/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-armorhide-mod/</loc>
@@ -207,6 +211,14 @@
   <url>
     <loc>https://cubeinsquare.com/de/wiki-dialogue-builder/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-enchantment-conflicts/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-give-command-not-working/</loc>
@@ -297,12 +309,20 @@
     <lastmod>2026-06-02</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/de/wiki-string-ids-custom-model-data/</loc>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/de/wiki-texture-painter/</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/dialogue-builder/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/</loc>
@@ -314,7 +334,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/book-letter-builder/</loc>
@@ -353,6 +373,10 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/fr/enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/fr/item-model-builder/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
@@ -386,15 +410,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/tools/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-armorhide-mod/</loc>
@@ -467,6 +491,14 @@
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-dialogue-builder/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-enchantment-conflicts/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-give-command-not-working/</loc>
@@ -557,6 +589,10 @@
     <lastmod>2026-06-02</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/</loc>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/fr/wiki-texture-painter/</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
@@ -590,7 +626,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/book-letter-builder/</loc>
@@ -629,6 +665,10 @@
     <lastmod>2026-07-05</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/ru/enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/ru/item-model-builder/</loc>
     <lastmod>2026-06-07</lastmod>
   </url>
@@ -662,15 +702,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/tools/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-armorhide-mod/</loc>
@@ -743,6 +783,14 @@
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-dialogue-builder/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-enchantment-conflicts/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/ru/wiki-enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-give-command-not-working/</loc>
@@ -833,6 +881,10 @@
     <lastmod>2026-06-02</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/ru/wiki-string-ids-custom-model-data/</loc>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/ru/wiki-texture-painter/</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
@@ -850,15 +902,15 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/tools/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki/</loc>
-    <lastmod>2026-08-23</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-advancement-builder/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-09-13</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-armorhide-mod/</loc>
@@ -935,6 +987,14 @@
   <url>
     <loc>https://cubeinsquare.com/wiki-dialogue-builder/</loc>
     <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-enchantment-conflicts/</loc>
+    <lastmod>2026-09-14</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-enchantment-randomizer/</loc>
+    <lastmod>2026-09-14</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-give-command-not-working/</loc>

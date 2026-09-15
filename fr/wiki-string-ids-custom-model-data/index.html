@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Objets RP uniques avec des IDs en chaîne : utiliser custom_model_data plus sûrement que de simples nombres | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comment gérer l'identité des objets RP avec des IDs en chaîne lisibles autour de custom_model_data, plutôt que de ne dépendre que de nombres.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Objets RP uniques avec des IDs en chaîne | Cube in Square">
+    <meta property="og:description" content="Comment gérer l'identité des objets RP avec des IDs en chaîne lisibles autour de custom_model_data.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Objets RP uniques avec des IDs en chaîne | Cube in Square">
+    <meta name="twitter:description" content="Comment gérer l'identité des objets RP avec des IDs en chaîne lisibles autour de custom_model_data.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/#article",
+            "headline": "Objets RP uniques avec des IDs en chaîne : utiliser custom_model_data plus sûrement que de simples nombres",
+            "description": "Comment gérer l'identité des objets RP avec des IDs en chaîne lisibles autour de custom_model_data, plutôt que de ne dépendre que de nombres.",
+            "author": { "@id": "https://cubeinsquare.com/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/#webpage" },
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/",
+            "name": "Objets RP uniques avec des IDs en chaîne",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cubeinsquare.com/fr/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/fr/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Objets RP uniques avec des IDs en chaîne", "item": "https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/" }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-string-ids-custom-model-data/">RU</a><a href="/wiki-string-ids-custom-model-data/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-string-ids-custom-model-data/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Objets RP uniques avec des IDs en chaîne : utiliser custom_model_data plus sûrement que de simples nombres</h1>
+        <p class="page-lead">Une immense liste de valeurs CustomModelData numérotées fonctionne un temps, puis un jour plus personne ne se souvient si 2047 était un anneau relique, un badge de shérif, ou une vieille tasse de test. Les IDs en chaîne résolvent le problème d'organisation même quand le moteur de rendu a toujours besoin d'une référence de modèle.</p>
+        <a class="resource-link" href="/fr/resource-pack-generator/">Ouvrir le générateur de resource pack</a>
+    </section>
+    <article>
+        <h2>Le problème des systèmes uniquement numériques</h2>
+        <p>Les nombres sont parfaits pour le rendu, mais mauvais pour la mémoire. La documentation d'équipe devient un immense tableau de correspondances, de vieux IDs sont réutilisés par erreur, et déboguer une récompense de quête cassée devient plus lent que nécessaire.</p>
+        <h2>Gardez une couche d'identité lisible</h2>
+        <p>Même si le pipeline visuel du modèle pointe toujours vers un nombre, votre workflow serveur devrait aussi conserver un ID en chaîne comme <code>rp.guard.badge_bronze</code> ou <code>quest.chapter3.letter_mayor</code>. Cette chaîne peut vivre dans <code>minecraft:custom_data</code> pendant que l'apparence visible continue d'utiliser <code>custom_model_data</code>.</p>
+        <h2>Un motif combiné sûr</h2>
+<pre><code>components:{
+  "minecraft:custom_model_data":2047,
+  "minecraft:custom_data":{
+    item_id:"rp.guard.badge_bronze",
+    issue:"capital_watch"
+  }
+}</code></pre>
+        <h2>Pourquoi cela s'adapte mieux à la croissance</h2>
+        <table class="compact-table">
+            <tr><th>Question</th><th>Nombre seul</th><th>Nombre + ID en chaîne</th></tr>
+            <tr><td>« Qu'est-ce que l'objet 2047 ? »</td><td>Chercher dans un tableau, espérer qu'il est à jour.</td><td>Lire <code>rp.guard.badge_bronze</code> directement depuis l'objet.</td></tr>
+            <tr><td>Deux membres réutilisent une valeur par accident</td><td>Collision visuelle silencieuse, découverte en jeu.</td><td>Un ID en chaîne dupliqué se retrouve facilement par une recherche avant la sortie.</td></tr>
+            <tr><td>Un échange ou une quête doit vérifier l'objet</td><td>Comparaison sur le numéro de modèle, qui change aussi si l'art change.</td><td>Comparaison sur la chaîne stable, indépendante de tout futur changement de texture.</td></tr>
+        </table>
+        <ul><li>L'équipe artistique peut chercher des IDs lisibles dans la documentation.</li><li>La logique de quête devient plus facile à auditer.</li><li>Les anciens objets sont moins susceptibles d'être confondus avec des assets de test.</li><li>Les échanges et récompenses peuvent vérifier la chaîne cachée, pas seulement le modèle visible.</li></ul>
+        <h2>Stratégie de nommage suggérée</h2>
+        <ul><li>Utilisez des espaces de noms par système : <code>rp.</code>, <code>quest.</code>, <code>shop.</code>, <code>faction.</code></li><li>Gardez les tokens lisibles et stables.</li><li>Évitez les espaces et les noms traduits dans l'ID caché.</li><li>Laissez le texte visible être local et joli, et laissez l'ID caché rester ennuyeux.</li></ul>
+        <p>C'est le même instinct que derrière un système de nommage complet pour les objets personnalisés en général &mdash; voyez <a href="/fr/wiki-custom-item-id-naming/">comment nommer des objets Minecraft personnalisés sans doublons</a> pour le motif plus large (catégorie + famille + variante) dans lequel un ID en chaîne comme celui-ci est censé s'insérer.</p>
+        <h2>Où le nombre reste utile</h2>
+        <p>Le hook numérique du modèle reste important pour le rendu et l'organisation du pack. L'astuce n'est pas de l'abandonner, mais d'arrêter de prétendre qu'un seul entier devrait aussi être votre unique identité d'objet compréhensible par un administrateur.</p>
+        <h2>Workflow serveur recommandé</h2>
+        <ol><li>Attribuez la valeur de modèle destinée à l'art.</li><li>Attribuez l'ID en chaîne destiné à la logique.</li><li>Utilisez l'ID en chaîne dans la documentation, les boutiques et les vérifications.</li><li>Gardez le nombre principalement comme un détail de rendu du pack.</li></ol>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>custom_data ralentit-il le rendu ?</h3>
+            <p>Non. <code>custom_model_data</code> pilote toujours la recherche de modèle exactement comme avant ; <code>custom_data</code> est une donnée supplémentaire inerte dont le client n'a pas besoin pour rendre quoi que ce soit, donc cela ne coûte rien visuellement.</p>
+            <h3>Puis-je ajouter un ID en chaîne à des objets qui n'ont déjà qu'un nombre ?</h3>
+            <p>Oui, rétroactivement c'est possible. Les objets existants continuent de fonctionner avec juste le nombre ; vous ne gagnez l'ID lisible que sur les objets que vous mettez à jour ou réémettez ensuite.</p>
+            <h3>L'ID en chaîne doit-il être montré aux joueurs ?</h3>
+            <p>Généralement non &mdash; gardez-le dans <code>custom_data</code>, qui n'est pas affiché dans l'infobulle par défaut. Le nom visible et le lore restent purement cosmétiques et peuvent changer librement sans toucher à l'identité cachée.</p>
+            <h3>Que faire si deux objets différents partagent légitimement un numéro de modèle ?</h3>
+            <p>C'est exactement le cas pour lequel un ID en chaîne existe. Le numéro de modèle peut être réutilisé pour des objets visuellement identiques ; l'ID en chaîne est ce qui indique à vos systèmes qu'ils ne sont pas le même objet.</p>
+        </div>
+        <h2>Voir aussi</h2>
+        <p>Pour le principe de nommage lui-même &mdash; catégorie, famille, variante &mdash; voyez <a href="/fr/wiki-custom-item-id-naming/">comment nommer des objets Minecraft personnalisés sans doublons</a>. Pour assembler la commande complète autour d'un tel objet, le <a href="/fr/custom-item-catalog/">catalogue d'objets personnalisés</a> garde IDs, noms visibles et slots CustomModelData au même endroit.</p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

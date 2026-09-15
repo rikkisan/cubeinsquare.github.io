@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,10 @@
     <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-string-ids-custom-model-data/">
     <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-string-ids-custom-model-data/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
@@ -21,6 +24,9 @@
     <meta property="og:description" content="How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-string-ids-custom-model-data/">
     <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers | Cube in Square">
     <meta name="twitter:description" content="How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.">
@@ -29,6 +35,47 @@
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": { "@type": "ImageObject", "url": "https://cubeinsquare.com/assets/server-icon.png" }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/#article",
+            "headline": "Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers",
+            "description": "How to manage RP item identity with readable string IDs around custom_model_data workflows instead of relying only on raw numbers.",
+            "author": { "@id": "https://cubeinsquare.com/#organization" },
+            "publisher": { "@id": "https://cubeinsquare.com/#organization" },
+            "mainEntityOfPage": { "@id": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/#webpage" },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/#webpage",
+            "url": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/",
+            "name": "Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/#breadcrumb",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://cubeinsquare.com/" },
+                { "@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/wiki/" },
+                { "@type": "ListItem", "position": 3, "name": "Unique RP items with string IDs", "item": "https://cubeinsquare.com/wiki-string-ids-custom-model-data/" }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
@@ -38,11 +85,11 @@
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
         <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-string-ids-custom-model-data/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-string-ids-custom-model-data/">FR</a><a href="/de/wiki-string-ids-custom-model-data/">DE</a></div>
     </div>
 </div>
 <main class="page-shell wiki-article">
-    <a class="article-back" href="/wiki/">← All articles</a>
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
     <section class="page-hero">
         <h1>Unique RP Items with String IDs: Using custom_model_data More Safely Than Raw Numbers</h1>
         <p class="page-lead">A giant list of numbered CustomModelData values works for a while, and then one day nobody remembers whether 2047 was a relic ring, a sheriff badge, or an old test mug. String IDs solve the organizational problem even when the renderer still needs a model reference.</p>
@@ -62,13 +109,33 @@
   }
 }</code></pre>
         <h2>Why this scales better</h2>
+        <table class="compact-table">
+            <tr><th>Question</th><th>Number only</th><th>Number + string ID</th></tr>
+            <tr><td>"What is item 2047?"</td><td>Search a spreadsheet, hope it is current.</td><td>Read <code>rp.guard.badge_bronze</code> directly from the item.</td></tr>
+            <tr><td>Two staff reuse a value by accident</td><td>Silent visual collision, discovered in play.</td><td>Duplicate string ID is easy to grep for before it ships.</td></tr>
+            <tr><td>A trade or quest needs to check the item</td><td>Match on the model number, which also changes if the art changes.</td><td>Match on the stable string, independent of any future re-texture.</td></tr>
+        </table>
         <ul><li>The art team can search readable IDs in docs.</li><li>Quest logic becomes easier to audit.</li><li>Old items are less likely to be confused with test assets.</li><li>Trades and rewards can validate the hidden string, not only the visible model.</li></ul>
         <h2>Suggested naming strategy</h2>
         <ul><li>Use namespaces by system: <code>rp.</code>, <code>quest.</code>, <code>shop.</code>, <code>faction.</code></li><li>Keep tokens readable and stable.</li><li>Avoid spaces and translated names in the hidden ID.</li><li>Let the visible text be local and pretty, and let the hidden ID stay boring.</li></ul>
+        <p>This is the same instinct behind a full naming system for custom items in general &mdash; see <a href="/wiki-custom-item-id-naming/">how to name custom Minecraft items without duplicates</a> for the broader pattern (category + family + variant) that a string ID like this one is meant to slot into.</p>
         <h2>Where the number still belongs</h2>
         <p>The numeric model hook still matters for rendering and pack organization. The trick is not to throw it away, but to stop pretending that one integer should also be your only admin-friendly item identity.</p>
         <h2>Recommended server workflow</h2>
         <ol><li>Assign the art-facing model value.</li><li>Assign the logic-facing string ID.</li><li>Use the string ID in documentation, shops, and validation checks.</li><li>Keep the number mainly as a pack rendering detail.</li></ol>
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Does adding custom_data slow down rendering?</h3>
+            <p>No. <code>custom_model_data</code> still drives the model lookup exactly as before; <code>custom_data</code> is inert extra data the client does not need to render anything, so it costs nothing visually.</p>
+            <h3>Can I add a string ID to items that already only have a number?</h3>
+            <p>Yes, retroactively is fine. Existing items keep working with just the number; you only gain the readable ID on items you update or reissue going forward.</p>
+            <h3>Should the string ID ever be shown to players?</h3>
+            <p>Generally no &mdash; keep it in <code>custom_data</code>, which is not shown in the tooltip by default. The visible name and lore stay purely cosmetic and can change freely without touching the hidden identity.</p>
+            <h3>What if two different items legitimately share one model number?</h3>
+            <p>That is exactly the case a string ID is for. The model number can be reused for visually identical items; the string ID is what tells your systems they are not the same object.</p>
+        </div>
+        <h2>Where to go next</h2>
+        <p>For the naming convention itself &mdash; category, family, variant &mdash; see <a href="/wiki-custom-item-id-naming/">how to name custom Minecraft items without duplicates</a>. To assemble the full give command around an item like this, the <a href="/custom-item-catalog/">custom item catalog</a> keeps IDs, display names, and CustomModelData slots together in one place.</p>
     </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

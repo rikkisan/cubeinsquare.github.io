@@ -111,6 +111,19 @@
         </table>
         <p>Hors de ces groupes, les enchantements vanilla se combinent librement &mdash; Solidité, Réparation automatique et Malédiction de disparition s'appliquent à presque tout objet enchantable et n'entrent jamais en conflit avec rien.</p>
 
+        <h2>Exemple concret : que se passe-t-il si on force la combinaison</h2>
+        <p>Essayez de combiner Tranchant et Aubaine des morts-vivants sur une table d'enchantement, une enclume, ou avec deux livres enchantés : l'interface ne vous laissera simplement pas faire &mdash; le second enchantement est grisé, ou l'enclume refuse la combinaison. Ce blocage vit dans le code d'artisanat, pas dans les données de l'objet. Écrivez les deux directement dans un objet, et le jeu ne vous arrête pas :</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <p>Cet objet existe, les deux enchantements apparaissent dans l'infobulle, et les deux appliquent leur bonus de dégâts au combat. Aucun joueur en survie n'aurait jamais pu l'obtenir en jouant, ce qui explique pourquoi il se lit immédiatement comme quelque chose de manifestement hors norme &mdash; un signal utile pour une relique générée par un admin, et un indice révélateur si vous vouliez que l'objet paraisse légitimement obtenu par un joueur.</p>
+
+        <h2>Où cela se retrouve ailleurs que sur la table d'enchantement</h2>
+        <p>Les mêmes groupes comptent dans trois autres endroits que rencontrent les créateurs :</p>
+        <ul>
+            <li><strong>Combinaison à l'enclume.</strong> Combiner deux livres, ou un objet et un livre, à l'enclume rejette le second enchantement s'il entre en conflit avec un enchantement déjà présent sur la cible, exactement comme la table d'enchantement.</li>
+            <li><strong>Tables de butin.</strong> Une fonction <code>minecraft:set_enchantments</code> avec une liste écrite à la main ne vérifie aucun conflit &mdash; ce ne sont que des données. Une table de butin peut parfaitement faire apparaître Tranchant et Aubaine des morts-vivants sur la même épée, sauf si l'auteur de la table l'a évité volontairement.</li>
+            <li><strong>Blocs de commande et apparition de monstres.</strong> Tout <code>/give</code>, <code>/item modify</code>, ou une apparition avec équipement a la même liberté et la même responsabilité &mdash; le jeu ne vous préviendra pas qu'une combinaison n'aurait jamais pu se produire naturellement.</li>
+        </ul>
+
         <h2>Enchantements de trésor</h2>
         <p>Une poignée d'enchantements ne peut jamais sortir d'une table d'enchantement, à aucun niveau, quel que soit le lapis ou le nombre d'étagères autour : Réparation automatique, Semelles de glace, Malédiction du lien, Malédiction de disparition, Vitesse de l'âme, Foulée silencieuse, et Canalisation. Ce sont des enchantements "de trésor", obtenables uniquement par la pêche, le commerce, le butin de structures, ou une commande <code>/give</code>. Un randomiseur ou une table de butin qui en fait apparaître un sur un objet commun est délibérément généreux &mdash; exactement le genre de chose à faire volontairement plutôt que par accident.</p>
 
@@ -119,6 +132,18 @@
 
         <h2>Ce que cela signifie pour un randomiseur</h2>
         <p>Un outil qui tire des enchantements a trois choix honnêtes : rester dans les groupes et les niveaux maximum vanilla pour produire quelque chose qu'une table d'enchantement aurait pu créer, autoriser les enchantements de trésor en le signalant clairement, ou autoriser des niveaux au-delà du maximum en le signalant aussi. Les trois sont légitimes selon ce que vous construisez &mdash; une table de butin "réaliste" pour un serveur survie veut le premier, une récompense de boss pour une carte d'aventure peut vouloir le troisième. Le <a href="/fr/enchantment-randomizer/">randomiseur d'enchantements et d'attributs</a> respecte les groupes par défaut, avec une case explicite pour désactiver ce comportement.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Deux enchantements de trésor peuvent-ils entrer en conflit entre eux ?</h3>
+            <p>Oui &mdash; être "de trésor uniquement" et appartenir à un groupe d'incompatibilité sont deux règles séparées. Semelles de glace et Canalisation sont tous deux des enchantements de trésor, mais Semelles de glace entre toujours en conflit avec Résilience aquatique, et Canalisation avec Ralliement, exactement comme des enchantements ordinaires.</p>
+            <h3>La Bedrock Edition utilise-t-elle les mêmes groupes ?</h3>
+            <p>Les groupes eux-mêmes forment la même courte liste ; cette page et le randomiseur sont écrits et testés pour la syntaxe Java Edition, celle que visent la plupart des workflows de data packs et de blocs de commande.</p>
+            <h3>Un data pack peut-il légitimement outrepasser ces groupes ?</h3>
+            <p>Les enchantements personnalisés définis via le système d'enchantements piloté par les données peuvent déclarer leurs propres ensembles exclusifs, distincts de ceux de vanilla. C'est un sujet de création de data pack à part entière, hors du champ d'un randomiseur centré sur le vanilla.</p>
+            <h3>Pourquoi le randomiseur respecte-t-il les groupes par défaut plutôt que de les ignorer ?</h3>
+            <p>Parce que la demande la plus courante est "donnez-moi quelque chose qu'un joueur aurait pu plausiblement trouver", et cela ne tient que si les groupes sont respectés. Aller au-delà par générosité devrait être un choix, pas un accident.</p>
+        </div>
 
         <h2>Voir aussi</h2>
         <p>Prêt à tirer un ensemble : le <a href="/fr/enchantment-randomizer/">randomiseur</a> et son <a href="/fr/wiki-enchantment-randomizer/">guide d'utilisation</a> couvrent les modes basique/avancé et les deux formats de sortie. Pour des enchantements sur un objet entièrement personnalisé plutôt que vanilla, voyez le <a href="/fr/custom-item-catalog/">catalogue d'objets personnalisés</a>.</p>

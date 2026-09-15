@@ -111,6 +111,19 @@
         </table>
         <p>Outside these groups, vanilla enchantments freely combine &mdash; Unbreaking, Mending and Curse of Vanishing apply to almost any enchantable item and never conflict with anything.</p>
 
+        <h2>Worked example: what actually happens if you force it</h2>
+        <p>Try to combine Sharpness and Smite at an enchanting table, on an anvil, or with two enchanted books, and the interface simply will not let you &mdash; the second enchantment is greyed out or the anvil refuses the combination. That block lives in the crafting-side code, not in the item's data. Write both into an item directly, and the game does not stop you:</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <p>This item exists, both enchantments show in the tooltip, and both apply their damage bonus in combat. No survival player could ever obtain it through play, which is exactly why it reads as clearly out-of-the-ordinary the moment someone sees it &mdash; a useful signal for an admin-spawned relic, and a giveaway if you wanted the item to look legitimately player-made.</p>
+
+        <h2>Where this shows up outside the enchanting table</h2>
+        <p>The same groups matter in three other places creators run into:</p>
+        <ul>
+            <li><strong>Anvil combining.</strong> Combining two books or an item and a book at an anvil rejects the second enchantment if it conflicts with one already on the target, the same way the enchanting table does.</li>
+            <li><strong>Loot tables.</strong> A <code>minecraft:set_enchantments</code> function with a hand-written list does not check for conflicts &mdash; it is just data. A loot table can absolutely roll Sharpness and Smite on the same sword unless whoever wrote the table avoided it on purpose.</li>
+            <li><strong>Command blocks and mob spawners.</strong> Any <code>/give</code>, <code>/item modify</code>, or spawn-with-equipment setup has the same freedom and the same responsibility &mdash; the game will not warn you when a combination could never occur naturally.</li>
+        </ul>
+
         <h2>Treasure enchantments</h2>
         <p>A handful of enchantments cannot appear from an enchanting table at all, at any level, no matter how much lapis or how many bookshelves surround it: Mending, Frost Walker, Curse of Binding, Curse of Vanishing, Soul Speed, Swift Sneak, and Channeling. These are "treasure" enchantments, obtainable only from fishing, trading, structure loot, or a <code>/give</code> command. A randomizer or loot table that rolls one onto a common item is deliberately generous &mdash; which is exactly the kind of thing worth doing on purpose rather than by accident.</p>
 
@@ -119,6 +132,18 @@
 
         <h2>What this means for a randomizer</h2>
         <p>A tool that rolls enchantments has three honest choices: stay inside vanilla's groups and level caps to produce something an in-game enchanting table could have made, allow treasure enchantments and call that out, or allow levels past the cap and call that out too. All three are legitimate depending on what you are building &mdash; a "realistic" loot table for a survival server wants the first, a boss-drop for an adventure map might want the third. The <a href="/enchantment-randomizer/">enchantment &amp; attribute randomizer</a> defaults to respecting the groups, with an explicit checkbox to turn that off.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Can two treasure enchantments ever conflict with each other?</h3>
+            <p>Yes &mdash; being "treasure only" and belonging to an incompatibility group are separate rules. Frost Walker and Channeling are both treasure enchantments, but Frost Walker still conflicts with Depth Strider and Channeling still conflicts with Riptide, exactly as if they were common enchantments.</p>
+            <h3>Does Bedrock Edition use the same groups?</h3>
+            <p>The groups themselves are the same short list; this page and the randomizer are written and tested against Java Edition syntax, which is what most data pack and command-block workflows target.</p>
+            <h3>Will a data pack ever let me override these groups legitimately?</h3>
+            <p>Custom enchantments defined through the data-driven enchantment system can declare their own exclusive sets, separate from vanilla's. That is a data pack authoring topic on its own, outside what a vanilla-focused randomizer covers.</p>
+            <h3>Why does the randomizer default to respecting the groups instead of ignoring them?</h3>
+            <p>Because the more common request is "give me something a player could plausibly have found," and that only holds if the groups are respected. Generosity past that point should be a choice, not an accident.</p>
+        </div>
 
         <h2>Where to go next</h2>
         <p>Ready to roll a set: the <a href="/enchantment-randomizer/">randomizer</a> and its <a href="/wiki-enchantment-randomizer/">usage guide</a> cover the basic/advanced modes and the two output formats. For enchantments alongside a fully custom item definition rather than a vanilla one, see the <a href="/custom-item-catalog/">custom item catalog</a>.</p>

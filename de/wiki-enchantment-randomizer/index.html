@@ -107,6 +107,20 @@
         <p>Der erweiterte Modus zeigt jede zulässige Verzauberung und jedes Attribut als Zeile mit einem Seltenheits-Gewicht und einer Sperren-Checkbox. Ein höheres Gewicht macht diesen Eintrag wahrscheinlicher; ein Gewicht nahe null macht ihn selten, ohne ihn ganz auszuschließen. Sperren fixiert eine Zeile auf ein exaktes Level oder einen exakten Wert &mdash; sie bleibt bei jedem neuen Wurf erhalten, nur die nicht gesperrten Zeilen ändern sich. So baut man "immer Reparatur, manchmal etwas anderes", ohne endlos neu zu würfeln, bis Reparatur zufällig erscheint.</p>
         <p>Die gemeinsamen Bereichsfelder über beiden Panels (wie viele, welches Level) gelten auch im erweiterten Modus: Sie begrenzen, wie viele <em>nicht gesperrte</em> Slots rund um deine fixierten Auswahlen gefüllt werden.</p>
 
+        <h2>Einfach oder erweitert: was für welchen Fall</h2>
+        <table class="compact-table">
+            <tr><th>Situation</th><th>Modus</th><th>Warum</th></tr>
+            <tr><td>Schnelles Truhen-Loot, einmalige Belohnung</td><td>Einfach</td><td>Bereich für Anzahl und Level setzen, einmal klicken, fertig.</td></tr>
+            <tr><td>Eine Boss-Waffe, die immer Reparatur haben muss</td><td>Erweitert</td><td>Reparatur bei Level 1 sperren, alles andere drumherum neu würfeln lassen.</td></tr>
+            <tr><td>Eine ganze Loot-Table, bei der Schärfe häufig und Behutsamkeit selten sein soll</td><td>Erweitert</td><td>Gewichte verzerren die Auswahl, ohne etwas ganz auszuschließen.</td></tr>
+            <tr><td>Egal welche Verzauberungen, nur "ein paar, nicht zu stark"</td><td>Einfach</td><td>Gleiches Gewicht über alle zulässigen Einträge ist genau das.</td></tr>
+        </table>
+
+        <h2>Praxisbeispiel: ein Boss-Schwert würfeln</h2>
+        <p>Angenommen, du willst ein Diamantschwert, das immer Reparatur trägt, plus zwei oder drei weitere Verzauberungen, die variieren. Im erweiterten Modus: Sperren bei der Reparatur-Zeile aktivieren und ihr Level bei 1 lassen, den gemeinsamen Bereich für die Verzauberungsanzahl auf 2&ndash;3 setzen (Reparatur zählt dazu) und mehrfach Würfeln klicken. Ein Wurf könnte so aussehen:</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <p>Erneutes Würfeln mit denselben Sperren ändert nur Schärfe und Verstärkung &mdash; Reparatur bewegt sich nie, weil sie gesperrt und nicht nur wahrscheinlich ist. Das ist der praktische Unterschied zwischen einem Gewicht von 99 und Sperren: Ein hohes Gewicht bleibt ein Wurf, der scheitern kann, eine Sperre kann das nicht.</p>
+
         <h2>/give gegen einen Loot-Table-Eintrag</h2>
         <p>Das ist die zweite, unabhängige Entscheidung. Ein <code>/give</code>-Befehl würfelt sofort ein konkretes Item: Du erhältst es, und die Zahlen in der Ausgabe sind endgültig. Nützlich für eine Befehlsblock-Belohnung oder um einem Spieler direkt etwas zu geben.</p>
         <p>Ein Loot-Table-Eintrag funktioniert absichtlich anders. Statt ein Level oder einen Wert vorab zu würfeln, schreibt das Tool ihn als <a href="https://minecraft.wiki/w/Loot_table" rel="nofollow">Number Provider</a>:</p>
@@ -115,6 +129,18 @@
 
         <h2>Modernes oder altes Item-Format</h2>
         <p>Minecraft 1.20.5 hat die meisten Item-NBT-Tags durch Components ersetzt. Dieses Tool folgt derselben Aufteilung wie die Anleitung <a href="/de/wiki-components-vs-nbt/">Components gegen NBT</a>: wähle Modern für die Components <code>minecraft:enchantments</code> / <code>minecraft:attribute_modifiers</code>, oder Alt für die älteren NBT-Tags <code>Enchantments</code> / <code>AttributeModifiers</code>, wenn ein alter Server das Ziel ist.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Verlangsamt die Checkbox "Vanilla-Konflikte berücksichtigen" irgendetwas?</h3>
+            <p>Nein, sie filtert nur den Kandidatenpool vor der Auswahl. Ausgeschaltet kann der Randomizer Kombinationen erzeugen, die kein Zaubertisch je anbieten würde &mdash; nützlich für einen bewusst großzügigen Boss-Drop, aber nichts, was man für eine "realistische" Loot-Table versehentlich aktiviert lassen sollte.</p>
+            <h3>Kann ich ein Attribut genauso sperren wie eine Verzauberung?</h3>
+            <p>Ja. Die Attribut-Tabelle im erweiterten Modus hat dieselben Spalten Gewicht und Sperren, und ein gesperrtes Attribut behält seinen exakten Wert und seine Operation bei jedem neuen Wurf, genau wie eine gesperrte Verzauberung ihr Level behält.</p>
+            <h3>Was passiert, wenn mein Anzahlbereich größer ist als der zulässige Pool?</h3>
+            <p>Das Tool füllt so viele Slots, wie die Kategorie tatsächlich an Verzauberungen oder Attributen bietet, und hört dann auf &mdash; eine Angel bekommt nie vier Verzauberungen, wenn nur zwei Vanilla-Verzauberungen darauf zutreffen.</p>
+            <h3>Warum zeigt die Loot-Table-Ausgabe manchmal eine einfache Zahl statt eines Bereichs?</h3>
+            <p>Wenn eine Verzauberung oder ein Attribut gesperrt ist (oder Minimum und Maximum zufällig übereinstimmen), gibt es nichts zu randomisieren, also schreibt das Tool den einfachen Wert statt eine einzelne Zahl in ein <code>minecraft:uniform</code>-Objekt zu verpacken.</p>
+        </div>
 
         <h2>Weiterlesen</h2>
         <p>Unklar, warum sich zwei Verzauberungen nicht kombinieren lassen? <a href="/de/wiki-enchantment-conflicts/">Verzauberungs-Konflikte erklärt</a> listet alle Vanilla-Unverträglichkeitsgruppen. Für ein komplett benutzerdefiniertes Item statt eines Zufallswurfs auf ein Vanilla-Item siehe den <a href="/de/custom-item-catalog/">Katalog für benutzerdefinierte Items</a>.</p>
