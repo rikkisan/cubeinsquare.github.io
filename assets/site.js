@@ -1809,6 +1809,32 @@
         headings.forEach((heading) => headingObserver.observe(heading));
     }
 
+    /**
+     * A "new" badge that never expires stops meaning anything once half the
+     * catalog carries it. Cards opt in with data-released="YYYY-MM-DD"; once
+     * that many days have passed, the pill quietly becomes "ready" instead
+     * of someone having to remember to downgrade it by hand.
+     */
+    function initResourceCardBadgeAging() {
+        const NEW_BADGE_DAYS = 45;
+        const READY_LABELS = { en: 'ready', ru: 'готов', fr: 'prêt', de: 'bereit' };
+        const NEW_LABELS = new Set(['new', 'новое', 'nouveau', 'neu']);
+        const locale = (document.documentElement.lang || 'en').slice(0, 2).toLowerCase();
+        const readyLabel = READY_LABELS[locale] || READY_LABELS.en;
+        const now = Date.now();
+
+        document.querySelectorAll('.resource-card[data-released]').forEach((card) => {
+            const released = Date.parse(card.dataset.released + 'T00:00:00Z');
+            if (!Number.isFinite(released)) return;
+            const ageDays = (now - released) / 86400000;
+            if (ageDays < NEW_BADGE_DAYS) return;
+
+            const pill = card.querySelector('.status-pill');
+            if (!pill || !NEW_LABELS.has(pill.textContent.trim().toLowerCase())) return;
+            pill.textContent = readyLabel;
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         initGlobalToolLinks();
         initProjectSupportLinks();
@@ -1819,6 +1845,7 @@
         initCopyButtons();
         observeRangeInputs();
         initArticleToc();
+        initResourceCardBadgeAging();
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });
 })();

@@ -93,6 +93,12 @@ Note that `/tools/` (and its `ru`/`fr`/`de` copies) is a **static** page — the
 JS only fills the navbar dropdown. A new tool also needs a `resource-card`
 added to those four pages, which belongs in the bundle's payload.
 
+Give that `resource-card` a `data-released="YYYY-MM-DD"` attribute (the
+publish date) alongside its `new`/`новое`/`nouveau`/`neu` status pill.
+`assets/site.js`'s `initResourceCardBadgeAging()` downgrades the pill to
+`ready` on its own once the card is 45 days old, so the catalog doesn't fill
+up with permanently-"new" tools — no manual follow-up commit needed.
+
 ## What validation checks
 
 `.github/scripts/drip-validate.sh` rejects a bundle that:

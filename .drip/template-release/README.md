@@ -42,7 +42,9 @@ one published silently erased the others' menu entries and sitemap URLs.
 
 Remember that `/tools/` is a static page: a new tool also needs a
 `resource-card` added to `tools/index.html` and its ru/fr/de copies, and those
-belong in `payload/`.
+belong in `payload/`. Give the card a `data-released="YYYY-MM-DD"` attribute
+(the publish date) — the site auto-downgrades its `new` pill to `ready` after
+45 days, so this is the only thing that needs setting by hand.
 
 Check before you ship
 ---------------------
