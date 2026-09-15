@@ -277,6 +277,22 @@
         });
     }
 
+    /**
+     * gtag.js does real synchronous work once it has loaded (dataLayer
+     * processing, Enhanced Measurement, ads pixels). Running that inline
+     * inside a click handler is exactly what pushes Interaction to Next
+     * Paint into "needs improvement" -- the click's own visual feedback
+     * (menu open, "Copied" label) has to wait behind it. Scheduling it for
+     * the next idle slot lets the browser paint that feedback first.
+     */
+    function deferWork(fn) {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(fn, { timeout: 1000 });
+        } else {
+            window.setTimeout(fn, 0);
+        }
+    }
+
     function track(eventName, params, options) {
         const payload = {
             page_language: getPageLanguage(),
@@ -286,11 +302,13 @@
         };
 
         if (hasMeasurementIds()) {
-            boot();
-            if (typeof window.gtag === 'function') {
-                window.gtag('event', eventName, payload);
-                sendConversion(options && options.conversionKey, payload);
-            }
+            deferWork(() => {
+                boot();
+                if (typeof window.gtag === 'function') {
+                    window.gtag('event', eventName, payload);
+                    sendConversion(options && options.conversionKey, payload);
+                }
+            });
         } else {
             debugLog('[CubeAnalytics]', eventName, payload);
         }
