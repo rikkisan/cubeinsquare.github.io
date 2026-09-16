@@ -8,6 +8,9 @@
   // "item" to "id" and turned cooking results into objects, and 1.21.2 let
   // ingredients be bare id strings instead of {"item": id}.
   const VERSIONS = [
+    { id: '26.3',   label: '26.3',            format: 121 },
+    { id: '26.2',   label: '26.2',            format: 107 },
+    { id: '26.1',   label: '26.1',            format: 101 },
     { id: '1.21.7', label: '1.21.7 - 1.21.8', format: 81 },
     { id: '1.21.6', label: '1.21.6',          format: 80 },
     { id: '1.21.5', label: '1.21.5',          format: 71 },

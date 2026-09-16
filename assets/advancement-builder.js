@@ -6,6 +6,9 @@
   // Only the icon shape depends on the version here: 1.20.5 renamed the
   // display icon's "item" field to "id", same rename as recipes and loot.
   const VERSIONS = [
+    { id: '26.3',   label: '26.3',            format: 121 },
+    { id: '26.2',   label: '26.2',            format: 107 },
+    { id: '26.1',   label: '26.1',            format: 101 },
     { id: '1.21.7', label: '1.21.7 - 1.21.8', format: 81 },
     { id: '1.21.6', label: '1.21.6',          format: 80 },
     { id: '1.21.5', label: '1.21.5',          format: 71 },

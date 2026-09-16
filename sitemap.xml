@@ -178,7 +178,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-item-id-naming/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-custom-item-no-json/</loc>
@@ -214,11 +214,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-enchantment-conflicts/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-enchantment-randomizer/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-give-command-not-working/</loc>
@@ -311,6 +311,10 @@
   <url>
     <loc>https://cubeinsquare.com/de/wiki-string-ids-custom-model-data/</loc>
     <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/de/wiki-sulfur-cube-texture/</loc>
+    <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/de/wiki-texture-painter/</loc>
@@ -458,7 +462,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-item-id-naming/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-custom-item-no-json/</loc>
@@ -494,11 +498,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-enchantment-conflicts/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-enchantment-randomizer/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-give-command-not-working/</loc>
@@ -591,6 +595,10 @@
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-string-ids-custom-model-data/</loc>
     <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/fr/wiki-sulfur-cube-texture/</loc>
+    <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/fr/wiki-texture-painter/</loc>
@@ -750,7 +758,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-item-id-naming/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-custom-item-no-json/</loc>
@@ -786,11 +794,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-enchantment-conflicts/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-enchantment-randomizer/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/ru/wiki-give-command-not-working/</loc>
@@ -885,6 +893,10 @@
     <lastmod>2026-09-15</lastmod>
   </url>
   <url>
+    <loc>https://cubeinsquare.com/ru/wiki-sulfur-cube-texture/</loc>
+    <lastmod>2026-09-16</lastmod>
+  </url>
+  <url>
     <loc>https://cubeinsquare.com/ru/wiki-texture-painter/</loc>
     <lastmod>2026-05-24</lastmod>
   </url>
@@ -950,7 +962,7 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-custom-item-id-naming/</loc>
-    <lastmod>2026-06-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-custom-item-no-json/</loc>
@@ -990,11 +1002,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-enchantment-conflicts/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-enchantment-randomizer/</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-15</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-give-command-not-working/</loc>
@@ -1090,7 +1102,11 @@
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-string-ids-custom-model-data/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://cubeinsquare.com/wiki-sulfur-cube-texture/</loc>
+    <lastmod>2026-09-16</lastmod>
   </url>
   <url>
     <loc>https://cubeinsquare.com/wiki-texture-painter/</loc>
