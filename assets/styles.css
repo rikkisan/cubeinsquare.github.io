@@ -856,6 +856,14 @@
             font-weight: 600;
             line-height: 1.35;
             overflow-wrap: anywhere;
+            border: 1px solid var(--glass-border);
+            background: rgba(148, 163, 184, 0.045);
+        }
+
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list a:hover,
+        :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list a:focus-visible {
+            border-color: var(--accent);
+            background: rgba(96, 165, 250, 0.12);
         }
 
         :is(.steam-mega-panel--tools, .steam-mega-panel--wiki) .mega-list a:focus-visible {
@@ -941,13 +949,6 @@
         .steam-mega-panel--wiki .wiki-menu-links a {
             display: block;
             padding: 10px;
-            border: 1px solid var(--glass-border);
-            background: rgba(148, 163, 184, 0.045);
-        }
-        .steam-mega-panel--wiki .wiki-menu-links a:hover,
-        .steam-mega-panel--wiki .wiki-menu-links a:focus-visible {
-            border-color: var(--accent);
-            background: rgba(96, 165, 250, 0.12);
         }
         .wiki-menu-links a[hidden] {
             display: none !important;
