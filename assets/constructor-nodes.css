@@ -1,0 +1,35 @@
+.nv-editor { margin: 24px 0; min-width: 0; }
+.nv-modebar, .nv-toolbar, .nv-node-actions, .nv-action-list { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.nv-button { border:1px solid #526078; border-radius:8px; padding:9px 13px; background:#263348; color:#f0f4fa; font:inherit; font-size:.85rem; cursor:pointer; }
+.nv-button:hover { background:#354966; border-color:#93b8ee; }
+.nv-button:focus-visible, .nv-drag:focus-visible, .nv-input:focus-visible, .nv-viewport:focus-visible, .nv-actions summary:focus-visible { outline:3px solid #93c5fd; outline-offset:3px; }
+.nv-button[aria-selected="true"] { background:var(--accent,#5865f2); border-color:#8da1ff; }
+.nv-button:disabled { opacity:.45; cursor:default; }
+.nv-form-hidden, .nv-view[hidden] { display:none !important; }
+.nv-hint { max-width:900px; font-size:.9rem; color:var(--text-dim); line-height:1.55; }
+.nv-toolbar { margin:12px 0; }
+.nv-zoom { font-size:.85rem; min-width:50px; text-align:center; }
+.nv-actions { border:1px solid #4b5870; padding:12px; border-radius:8px; margin-bottom:12px; background:#202938; }
+.nv-actions summary { cursor:pointer; color:#e4ecfa; font-size:.9rem; }
+.nv-action-list { margin-top:12px; }
+.nv-viewport { height:min(760px,78vh); min-height:440px; position:relative; overflow:hidden; border:1px solid #4e607e; border-radius:12px; background-color:#111927; background-image:radial-gradient(#42516a 1px, transparent 1px); background-size:22px 22px; touch-action:none; cursor:grab; }
+.nv-world { transform-origin:0 0; position:absolute; top:0; left:0; }
+.nv-cards { position:absolute; top:0; left:0; }
+.nv-wires { position:absolute; top:0; left:0; overflow:visible; pointer-events:none; }
+.nv-wires path { fill:none; stroke:#8ab9f7; stroke-width:2; }
+.nv-node { width:310px; position:absolute; top:0; left:0; border:1px solid #5f789b; border-radius:10px; background:#202c3d; color:#edf3fd; box-shadow:0 8px 20px #0005; }
+.nv-result { width:380px; border-color:#68bfa3; }
+.nv-node-header { display:flex; align-items:center; gap:8px; border-bottom:1px solid #4b617f; border-radius:10px 10px 0 0; background:#2e4059; padding:6px 10px; }
+.nv-result .nv-node-header { background:#25483f; }
+.nv-port { width:10px; height:10px; background:#93c5fd; border:2px solid #ddeaff; border-radius:50%; flex:0 0 auto; }
+.nv-drag { background:none; border:0; text-align:left; color:inherit; font:inherit; font-size:.9rem; font-weight:700; padding:6px 0; flex:1; cursor:grab; touch-action:none; overflow-wrap:anywhere; }
+.nv-node-body { padding:14px; display:grid; gap:12px; max-height:370px; overflow:auto; overscroll-behavior:contain; cursor:default; touch-action:pan-y; }
+.nv-field { display:grid; gap:5px; font-size:.8rem; line-height:1.4; min-width:0; }
+.nv-input { width:100%; min-width:0; box-sizing:border-box; background:#131d2c; color:#f4f7fe; border:1px solid #6681a7; border-radius:5px; padding:8px; font:inherit; }
+.nv-input[type="checkbox"], .nv-input[type="radio"] { width:20px; height:20px; accent-color:#7da5fb; }
+textarea.nv-input { min-height:90px; resize:vertical; }
+.nv-input:disabled { opacity:.5; }
+.nv-output-label { font-size:.8rem; margin:0; overflow-wrap:anywhere; }
+.nv-output-text { width:100%; min-height:150px; background:#111923; color:#d1e6fe; border:1px solid #577590; padding:10px; border-radius:6px; font:12px/1.5 monospace; box-sizing:border-box; resize:vertical; }
+.nv-status { min-height:1.5em; font-size:.85rem; color:var(--text-dim); }
+@media(max-width:600px) { .nv-viewport { min-height:460px; height:70vh; } .nv-button { padding:8px 10px; } }
