@@ -1846,6 +1846,17 @@
         observeRangeInputs();
         initArticleToc();
         initResourceCardBadgeAging();
+        // Load the Beta node workspace only on supported constructors.
+        const constructorPath = location.pathname.replace(/^\/(ru|fr|de)\//, '/').split('/')[1];
+        if (['custom-item-builder','item-model-builder','book-letter-builder','dialogue-builder','bossbar-builder','advancement-builder','custom-potions','custom-villager-trades','datapack-generator','recipe-generator','loot-table-generator'].includes(constructorPath)) {
+            const style = document.createElement('link');
+            style.rel = 'stylesheet'; style.href = '/assets/constructor-nodes.css';
+            document.head.appendChild(style);
+            const script = document.createElement('script');
+            script.src = '/assets/constructor-nodes.js';
+            document.body.appendChild(script);
+        }
+
         document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
     });
 })();
