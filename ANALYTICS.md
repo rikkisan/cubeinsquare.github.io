@@ -136,7 +136,11 @@ Unchanged and unpaired: `page_view`, `site_search`, `wiki_example_copy`, `cookie
 than export, `skin_editor_*` other than export. The old events have their own spellings (`version`, `syntax_version`);
 they were not renamed.
 
-## Custom dimensions to create in GA4
+## Custom dimensions in GA4
+
+**Done on 2026-10-24** (property `533247043`, via the Admin API): all 10 dimensions below plus `page_type` and
+`page_language` exist, `tool_copy` and `tool_download` are key events, and event data retention is 14 months. Do not
+ask the owner to create them again. A new event parameter that should appear in reports still needs its own dimension.
 
 Admin → Data display → Custom definitions → Create custom dimension, scope **Event**, dimension name = event parameter.
 GA4 fills a dimension only from the day it is created, with no backfill, so create them right after a deploy.
