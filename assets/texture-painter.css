@@ -1,6 +1,8 @@
-.page-shell[data-texture-painter] {
-    width: min(96vw, 1520px);
-    max-width: 1520px;
+@media (min-width: 981px) {
+    .page-shell[data-texture-painter] {
+        width: min(96vw, 1520px);
+        max-width: 1520px;
+    }
 }
 
 .texture-layout {
@@ -121,15 +123,10 @@
     margin: 10px 0 0;
 }
 
+/* display: none, not a clipped 1px box: inside `.tool-field` the rule `.tool-field input { width: 100% }`
+   in styles.css wins on specificity and stretched the box to the viewport width. Opened with input.click(). */
 .texture-hidden-input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    border: 0;
+    display: none;
 }
 
 .texture-color-row {
