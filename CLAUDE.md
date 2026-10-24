@@ -9,7 +9,8 @@ A static site of Minecraft tools (generators and builders) plus a wiki of guides
 Pages from this repo (`rikkisan/cubeinsquare.github.io`, custom domain in `CNAME`). Plain
 HTML/CSS/JS: no framework, no bundler, no `package.json`, no build step. Four locales: English at
 the root, plus `ru/`, `fr/`, `de/`. New tools and articles are mostly published on a schedule from
-`.drip/queue/` (Sundays). Pages carry AdSense and GA4 (`assets/tracking.js`).
+`.drip/queue/` (Sundays). Pages carry AdSense and GA4 (`assets/tracking.js`). Consent: Google's consent message (TCF CMP,
+set up in AdSense) in the EEA, the UK and Switzerland, the site's own banner elsewhere ([ANALYTICS.md](ANALYTICS.md#consent)).
 
 **Start of every session** (details: [COLLABORATION.md](COLLABORATION.md) §1): `git pull --rebase origin main`,
 `git status --short`, `git log --oneline -5`, `ls .drip/queue`. `main` moves under you: the Sunday
@@ -24,7 +25,7 @@ the same tree, so stage your own files by name rather than `git add -A`.
 | `wiki-<slug>/index.html` | Wiki guide or article. A tool's guide is `wiki-<tool-slug>/`. |
 | `ru/`, `fr/`, `de/` | Full mirrors of the English route tree, same slugs. |
 | `assets/` | Shared `styles.css`, `site.js`, `tracking*.js`, `app.js`, plus one `<tool>.js` (and sometimes `.css`) per tool. |
-| `tests/`, `scripts/` | Tests; sitemap generator, link checker, `TOOL_META.js` merger. |
+| `tests/`, `scripts/` | Tests; sitemap generator, link checker, `TOOL_META.js` merger, the consent `<head>` block and its copier. |
 | `.drip/queue/`, `.drip/template-release/`, `.drip/drafts/` | Scheduled releases; template for a new one; unpublished drafts nothing reads (see its README). |
 | `.github/` | Workflows: `drip-publish.yml` (Sunday release), `checks.yml` (tests, links, stale queued bundles on every push and PR), `sitemap-refresh.yml` (bot keeps `sitemap.xml` current). Scripts: publisher, `drip-validate.sh`, `drip-base.sh` and `drip-check-base.sh` (stale payload protection). |
 | Root `*.html`, `en/`, `ru/*.html` | `noindex` redirect stubs for old URLs. Never add content to them. |
@@ -42,6 +43,9 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
   workspace. A syntax error breaks navigation everywhere. The drip pipeline edits it through `TOOL_META.js`.
 - `assets/styles.css`: all layout and both themes. `assets/app.js`: resource-pack generator logic and 3D preview.
   `assets/tracking.js`, `assets/tracking-config.js`: analytics and consent (events and parameters: [ANALYTICS.md](ANALYTICS.md)).
+- The Consent Mode block in the `<head>` of every page with the AdSense tag or `tracking.js`, just before the tag. Its source
+  is `scripts/consent-defaults.txt`: edit that and run `node scripts/apply-consent-defaults.mjs`, never the copies by hand.
+  `tests/analytics.test.cjs` fails on a page without the current block (queued payloads included).
 - Hubs, which are the pages queued payloads like to carry stale copies of: `index.html`, `tools/index.html`,
   `wiki/index.html` and their `ru/`, `fr/`, `de/` copies. `404.html` too. A bundle that carries one needs it
   recorded in `BASE.txt`, and a push that changes one fails Checks while a queued bundle still has an old copy (see Drip publishing).
@@ -75,6 +79,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 7. Form-based constructor: add the slug to the `constructorPath` list in `assets/site.js` and to `tests/constructor-nodes.browser.js`.
 8. Sitemap: do nothing and do not commit `sitemap.xml`. `sitemap-refresh.yml` regenerates it after any push that changes an `.html` file, and after every drip publish; `git pull --rebase` picks up the bot's commit.
 9. Analytics: add the slug to `TOOL_SLUGS` in `assets/tracking.js` (`tests/analytics.test.cjs` fails otherwise), load `tracking-config.js` and `tracking.js` on the tool page and its guide, and report copy, download and examples as described in [ANALYTICS.md](ANALYTICS.md#adding-a-tool).
+   Keep the consent block and the AdSense tag from the sibling's `<head>`; `node scripts/apply-consent-defaults.mjs` adds them if missing.
 
 ## Add an article: file checklist
 
@@ -101,6 +106,7 @@ node --test tests/*.test.cjs                        # unit tests, Node 20+ (not 
 node --check assets/site.js                         # also for any tool script you changed
 node scripts/check-links.mjs                        # internal links, hreflang, title/description/canonical
 bash scripts/generate-sitemap.sh --check            # exit 1 if sitemap.xml is stale; only a warning in CI, the bot fixes it
+node scripts/apply-consent-defaults.mjs --check     # pages whose consent <head> block is missing or out of date
 bash .github/scripts/drip-check-base.sh .drip/queue/<bundle>   # is the payload still based on the live site
 bash .github/scripts/drip-validate.sh .drip/queue/<bundle>
 DRIP_DRY_RUN=1 bash .github/scripts/drip-publish.sh # needs a clean tree and resets it afterwards
@@ -130,6 +136,6 @@ Browser checks never reach the live GA4: local hosts and `file://` only log to t
 | [RELEASE_ROADMAP.md](RELEASE_ROADMAP.md) | What has shipped, the current queue, ideas, known issues |
 | [PUBLISHED.md](PUBLISHED.md) | Bot-written log of drip publishes (from 2026-08-02) |
 | [COLLABORATION.md](COLLABORATION.md) | Working agreement for parallel sessions: collision zones, themes, ownership |
-| [ANALYTICS.md](ANALYTICS.md) | GA4 events and parameters, custom dimensions to create, the test-traffic rule, how to add a tool to tracking |
+| [ANALYTICS.md](ANALYTICS.md) | GA4 events and parameters, consent (Google CMP vs site banner, the `<head>` block), custom dimensions, the test-traffic rule, how to add a tool to tracking |
 | [TEXTURE_PAINTER_STATUS.md](TEXTURE_PAINTER_STATUS.md) | Live versus outstanding texture painter changes |
 | [PIXEL_ART_AUTHOR_BRIEF.md](PIXEL_ART_AUTHOR_BRIEF.md) | Where the author's own writing goes on the skin editor and texture painter pages |

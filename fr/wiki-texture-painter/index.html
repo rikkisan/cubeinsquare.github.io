@@ -12,6 +12,41 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-texture-painter/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-texture-painter/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-texture-painter/">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>

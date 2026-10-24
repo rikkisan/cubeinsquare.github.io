@@ -120,27 +120,40 @@
             message: 'We use cookies to analyze traffic and personalize ads. You can accept or decline non-essential tracking.',
             accept: 'Accept',
             decline: 'Decline',
-            learnMore: 'Privacy Policy'
+            learnMore: 'Privacy Policy',
+            settings: 'Cookie settings'
         },
         ru: {
             message: 'Мы используем cookies, чтобы анализировать трафик и персонализировать рекламу. Вы можете принять или отклонить необязательное отслеживание.',
             accept: 'Принять',
             decline: 'Отклонить',
-            learnMore: 'Политика конфиденциальности'
+            learnMore: 'Политика конфиденциальности',
+            settings: 'Настройки cookie'
         },
         fr: {
             message: 'Nous utilisons des cookies pour analyser le trafic et personnaliser les annonces. Vous pouvez accepter ou refuser le suivi non essentiel.',
             accept: 'Accepter',
             decline: 'Refuser',
-            learnMore: 'Politique de confidentialité'
+            learnMore: 'Politique de confidentialité',
+            settings: 'Paramètres des cookies'
         },
         de: {
             message: 'Wir verwenden Cookies, um den Traffic zu analysieren und Werbung zu personalisieren. Sie können nicht notwendiges Tracking akzeptieren oder ablehnen.',
             accept: 'Akzeptieren',
             decline: 'Ablehnen',
-            learnMore: 'Datenschutz'
+            learnMore: 'Datenschutz',
+            settings: 'Cookie-Einstellungen'
         }
     };
+
+    // Who decides consent on this page. Google's consent message (the TCF CMP that adsbygoogle.js
+    // loads) answers whether GDPR applies: 'cmp' in the EEA, the UK and Switzerland, where only that
+    // message asks and updates Consent Mode; 'site' everywhere else, and whenever the CMP does not
+    // answer in time (ad blocker, message not published, page without the AdSense tag), where the
+    // site's own banner asks. 'pending' until one of the two is known.
+    let consentAuthority = 'pending';
+    const CMP_API_WAIT_MS = 5000;
+    const CMP_DATA_WAIT_MS = 5000;
 
     function hasMeasurementIds() {
         return trafficMode !== 'local' && Boolean(config.ga4MeasurementId || config.googleAdsId);
@@ -158,6 +171,16 @@
         try {
             if (window.localStorage) {
                 window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
+            }
+        } catch (error) {
+            // ignore storage failures
+        }
+    }
+
+    function clearStoredConsent() {
+        try {
+            if (window.localStorage) {
+                window.localStorage.removeItem(COOKIE_CONSENT_KEY);
             }
         } catch (error) {
             // ignore storage failures
@@ -222,10 +245,15 @@
         if (consentInitialized) return;
 
         ensureGtag();
-        window.gtag('consent', 'default', {
-            ...getConsentModeState(getStoredConsent()),
-            wait_for_update: 500
-        });
+        // The defaults normally come from the inline block in <head> (scripts/consent-defaults.txt),
+        // which runs before adsbygoogle.js and has the EEA/UK/CH region. This is the fallback for a
+        // page that lacks it.
+        if (!window.cubeConsentDefaults) {
+            window.gtag('consent', 'default', {
+                ...getConsentModeState(getStoredConsent()),
+                wait_for_update: 500
+            });
+        }
         consentInitialized = true;
     }
 
@@ -926,14 +954,145 @@
     }
 
     function applyConsentChoice(value) {
-        setStoredConsent(value);
-        updateConsentMode(value);
         removeConsentBanner();
-        track('cookie_consent_update', { consent_state: value });
+        if (consentAuthority === 'cmp') return;
+        setStoredConsent(value);
+        // The banner is gone before gtag does any work, so the click paints at once (INP).
+        deferWork(() => updateConsentMode(value));
+        track('cookie_consent_update', { consent_state: value, consent_source: 'site' });
     }
 
-    function initConsentBanner() {
-        if (hasConsentChoice() || document.querySelector('[data-cookie-banner="true"]')) return;
+    function getGoogleFc() {
+        window.googlefc = window.googlefc || {};
+        window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
+        return window.googlefc;
+    }
+
+    function hasAdSenseTag() {
+        return Boolean(document.querySelector('script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'));
+    }
+
+    /**
+     * Outside the CMP's regions the site's banner decides. The stored answer is sent as an update,
+     * never left to the default alone: an update outranks any default sent later (a CMP's
+     * included), so the banner's answer holds. No answer yet means denied and the banner.
+     */
+    function useSiteConsent() {
+        if (consentAuthority !== 'pending') return;
+        consentAuthority = 'site';
+        updateConsentMode(getStoredConsent());
+        if (!hasConsentChoice()) showConsentBanner();
+        addConsentSettingsButton();
+    }
+
+    /**
+     * In the EEA, the UK and Switzerland Google's message decides and updates Consent Mode itself.
+     * The old banner's answer is not a TCF consent, so it is dropped: Google's message asks once,
+     * and the <head> block stops asking AdSense for non-personalized ads on an old "declined".
+     */
+    function useCmpConsent() {
+        if (consentAuthority === 'cmp') return;
+        consentAuthority = 'cmp';
+        removeConsentBanner();
+        clearStoredConsent();
+        addConsentSettingsButton();
+    }
+
+    // What a choice in Google's message means for ads: no storage (purpose 1) is a refusal,
+    // storage plus ad profiles and personalized ads (purposes 3 and 4) a full consent.
+    function describeTcfChoice(tcData) {
+        const consents = (tcData.purpose && tcData.purpose.consents) || {};
+        if (!consents[1]) return COOKIE_CONSENT_DECLINED;
+        return consents[3] && consents[4] ? COOKIE_CONSENT_ACCEPTED : 'partial';
+    }
+
+    function handleTcfData(tcData, success) {
+        if (!success || !tcData) return false;
+        if (tcData.gdprApplies === true) {
+            useCmpConsent();
+            if (tcData.eventStatus === 'useractioncomplete') {
+                track('cookie_consent_update', { consent_state: describeTcfChoice(tcData), consent_source: 'cmp' });
+            }
+            return true;
+        }
+        if (tcData.gdprApplies === false) {
+            useSiteConsent();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Asks Google's CMP, through the queue its documentation prescribes, whether GDPR applies.
+     * A CMP that answers late still takes over and removes the site's banner, so a visitor never
+     * sees both.
+     */
+    function watchConsentPlatform() {
+        if (!hasAdSenseTag()) {
+            useSiteConsent();
+            return;
+        }
+
+        const apiTimer = window.setTimeout(useSiteConsent, CMP_API_WAIT_MS);
+        getGoogleFc().callbackQueue.push({
+            CONSENT_API_READY: () => {
+                window.clearTimeout(apiTimer);
+                if (typeof window.__tcfapi !== 'function') {
+                    useSiteConsent();
+                    return;
+                }
+                let answered = false;
+                const dataTimer = window.setTimeout(() => {
+                    if (!answered) useSiteConsent();
+                }, CMP_DATA_WAIT_MS);
+                window.__tcfapi('addEventListener', 2, (tcData, success) => {
+                    if (handleTcfData(tcData, success)) {
+                        answered = true;
+                        window.clearTimeout(dataTimer);
+                    }
+                });
+            }
+        });
+    }
+
+    function openConsentSettings() {
+        if (consentAuthority === 'cmp') {
+            getGoogleFc().callbackQueue.push(() => {
+                if (typeof window.googlefc.showRevocationMessage === 'function') window.googlefc.showRevocationMessage();
+            });
+            return;
+        }
+        showConsentBanner({ focus: true });
+    }
+
+    // "Cookie settings" next to the privacy link in the footer: Google's message in the CMP's
+    // regions, the site's banner elsewhere. A button, so the a[href] handlers (guide links,
+    // search index) never see it.
+    function addConsentSettingsButton() {
+        const footer = document.querySelector('.site-footer');
+        if (!footer || footer.querySelector('[data-cookie-settings="true"]')) return;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'cookie-settings-button';
+        button.dataset.cookieSettings = 'true';
+        button.textContent = getConsentCopy().settings;
+        button.addEventListener('click', openConsentSettings);
+
+        const privacyLink = footer.querySelector('a[href$="/privacy-policy/"]');
+        if (privacyLink) {
+            const group = document.createElement('span');
+            group.className = 'site-footer-links';
+            privacyLink.replaceWith(group);
+            group.appendChild(privacyLink);
+            group.appendChild(button);
+        } else {
+            footer.appendChild(button);
+        }
+    }
+
+    function showConsentBanner(options) {
+        if (document.querySelector('[data-cookie-banner="true"]')) return;
 
         const copy = getConsentCopy();
         const banner = document.createElement('aside');
@@ -963,6 +1122,8 @@
         if (declineButton) {
             declineButton.addEventListener('click', () => applyConsentChoice(COOKIE_CONSENT_DECLINED));
         }
+
+        if (options && options.focus && acceptButton) acceptButton.focus();
     }
 
     function init() {
@@ -974,7 +1135,7 @@
         bindGuideLinkTracking();
         bindHeaderMenus();
         initSearchResults();
-        initConsentBanner();
+        watchConsentPlatform();
         trackPageView();
         flushPendingLink();
     }

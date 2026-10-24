@@ -1,8 +1,9 @@
 # ANALYTICS.md — events, parameters and GA4 setup
 
-What the site sends to GA4 (`G-HDJD70TN5K`), how, and what has to exist in the GA4 admin for the data to be
-usable. Code: [assets/tracking.js](assets/tracking.js) (core, Consent Mode v2, cookie banner),
-[assets/tracking-config.js](assets/tracking-config.js) (IDs), tool scripts (`CubeAnalytics.track(...)` calls),
+What the site sends to GA4 (`G-HDJD70TN5K`), how, who asks for consent, and what has to exist in the GA4 admin for the
+data to be usable. Code: [assets/tracking.js](assets/tracking.js) (core, Consent Mode v2, cookie banner, Google CMP
+hand-off), [scripts/consent-defaults.txt](scripts/consent-defaults.txt) (the Consent Mode defaults in every `<head>`, see
+[Consent](#consent)), [assets/tracking-config.js](assets/tracking-config.js) (IDs), tool scripts (`CubeAnalytics.track(...)` calls),
 [assets/constructor-nodes.js](assets/constructor-nodes.js) (node editor). Tests: [tests/analytics.test.cjs](tests/analytics.test.cjs).
 
 ## Rule for browser checks: never send local traffic to the live property
@@ -131,7 +132,7 @@ New events are sent next to these, never instead of them. Only the old ones carr
 | `texture_painter_export` | `tool_download` (`png`) |
 | `skin_editor_export` | `tool_download` (`png`) |
 
-Unchanged and unpaired: `page_view`, `site_search`, `wiki_example_copy`, `cookie_consent_update`, `resource_pack_build_*`,
+Unchanged and unpaired: `page_view`, `site_search`, `wiki_example_copy`, `resource_pack_build_*`,
 `texture_slices_applied`, `resource_pack_preview_open`, `potion_effect_added`, `villager_trade_added`, `texture_painter_*` other
 than export, `skin_editor_*` other than export. The old events have their own spellings (`version`, `syntax_version`);
 they were not renamed.
@@ -141,6 +142,138 @@ Custom potions before 2026-10-24: the **Load example**, **+ Add effect** and **R
 `potion_example_loaded`, `potion_effect_added` and `tool_example_load` for that tool under-count until that date. Delegated
 click handlers match with `event.target.closest(...)`, never `event.target === button`; `===` stays only for input events
 on the field itself and for deliberate "the empty canvas itself" checks in `constructor-nodes.js`.
+
+### Consent choice: `cookie_consent_update`
+
+| Parameter | Value |
+| --- | --- |
+| `consent_source` | `site` (the site's banner) or `cmp` (Google's consent message) |
+| `consent_state` | `accepted`, `declined`; from the CMP also `partial` |
+
+From the banner it is sent on the click. From the CMP it is sent when the visitor finishes a choice (TCF event
+`useractioncomplete`, also after reopening the message), described by the TCF purposes that matter for ads: no
+purpose 1 (storage) is `declined`, purposes 1, 3 and 4 (storage, ad profile, personalised ads) are `accepted`,
+anything in between is `partial`. `consent_source` is new (2026-10-24) and has no custom dimension yet; create one if the
+consent rate per source should appear in reports.
+
+## Consent
+
+Two tools ask, never both on one page view:
+
+| Where | Who asks | Who updates Consent Mode | Answer kept in |
+| --- | --- | --- | --- |
+| EEA, UK, Switzerland | Google's consent message (Google's CMP, IAB TCF), set up in AdSense → Privacy & messaging | Google's CMP, because "consent mode for advertising / analytics purposes" is enabled in the AdSense account | Google's cookies |
+| Everywhere else, and wherever the CMP does not answer | the site's banner in `tracking.js` | `tracking.js` | `localStorage` `cube_cookie_consent` (`accepted` / `declined`) |
+
+Google requires a Google-certified TCF CMP to serve personalised AdSense ads in the EEA, the UK and Switzerland; traffic
+without one gets non-personalised or limited ads at best ([AdSense 13554020](https://support.google.com/adsense/answer/13554020),
+[13554116](https://support.google.com/adsense/answer/13554116)). The site's banner is not a TCF CMP, hence the split.
+
+### How a page decides (`watchConsentPlatform` in `tracking.js`)
+
+`tracking.js` asks Google's CMP through `googlefc.callbackQueue` (`CONSENT_API_READY`, then `__tcfapi('addEventListener')`),
+the way the [Funding Choices API](https://developers.google.com/funding-choices/fc-api-docs) prescribes. The CMP is
+loaded by `adsbygoogle.js`, so it only exists on pages with the AdSense tag.
+
+| CMP says | Mode | What happens |
+| --- | --- | --- |
+| `gdprApplies: true` | `cmp` | No site banner (removed if it already shows); `tracking.js` sends no consent update; `cube_cookie_consent` is deleted |
+| `gdprApplies: false` | `site` | The stored answer is sent as `gtag('consent', 'update')`; no answer means an explicit `denied` update and the banner |
+| nothing within 5 s, or the API loads but reports nothing within 5 more seconds | `site` | as above |
+| no AdSense tag on the page | `site` | at once |
+| `gdprApplies: true` after the page already went `site` | `cmp` | the site banner disappears; its earlier update stays until the CMP sends its own |
+
+The old answer is deleted in `cmp` mode because it is not a TCF consent (Google's message asks once), and because the
+`<head>` block would otherwise keep asking AdSense for non-personalised ads after an old "declined", overriding a consent
+given in Google's message. That affects only the first page a visitor from those regions opens after the change.
+
+"Cookie settings" (`Настройки cookie`, `Paramètres des cookies`, `Cookie-Einstellungen`) is a `<button>` that
+`tracking.js` adds to `.site-footer` next to the privacy link once the mode is known: in `cmp` mode it calls
+`googlefc.showRevocationMessage()`, in `site` mode it reopens the banner. A button, not a link, so the guide-link handler and
+the wiki search index never see it.
+
+### The `<head>` block
+
+[scripts/consent-defaults.txt](scripts/consent-defaults.txt) is copied into every page that loads the AdSense tag or
+`tracking.js`, directly before the AdSense tag, by `node scripts/apply-consent-defaults.mjs` (live pages and payloads in
+`.drip/queue`; it replaces the block between its markers, so it is the way to change it). A page that loads `tracking.js`
+without the AdSense tag gets the tag too. `tests/analytics.test.cjs` fails when a page has no current copy, has it after
+the tag or `tracking.js`, or loads `tracking.js` without the tag. The block:
+
+1. sets `default` = `denied` for the 32 regions of the EEA (27 EU countries, Iceland, Liechtenstein, Norway), the UK and
+   Switzerland;
+2. sets `default` for everyone else from `cube_cookie_consent`: `accepted` → `granted`, anything else → `denied`;
+3. after a stored `declined`, sets `adsbygoogle.requestNonPersonalizedAds = 1`
+   ([AdSense 9042142](https://support.google.com/adsense/answer/9042142)), because AdSense does not read Consent Mode;
+   it applies from the next page load after the choice;
+4. sets `window.cubeConsentDefaults`. Without it (a page that lacks the block), `tracking.js` sets the old global default itself.
+
+`wait_for_update` is 500 ms. gtag resolves `region` itself, so the page never needs to know where the visitor is for the
+defaults; only the banner needs the CMP's answer.
+
+### Why the site keeps its own EEA default although Google's CMP updates Consent Mode
+
+Question (2026-10-24): with the AdSense consent mode settings on, does Google's CMP send `gtag('consent', 'default')` itself,
+so that ours duplicates or conflicts with it? Google does not say. [AdSense 16088460](https://support.google.com/adsense/answer/16088460)
+and [16053245](https://support.google.com/adsense/answer/16053245) only say that the CMP "interprets" EEA, UK and Swiss
+choices for consent mode; the [consent mode guide](https://developers.google.com/tag-platform/security/guides/consent)
+says that no values are set by default, that the default must come before any tag reads it, and that it must not be set
+asynchronously. The CMP loader for this account could not be inspected either: until a message is published it only
+reports `googlefcInactive`.
+
+What gtag does with two commands was measured instead (headless Chrome 155, test property `G-TEST000000`, the second
+command 1.5 s after `config`, one probe event before and one after):
+
+| First | Then | Event after | Meaning |
+| --- | --- | --- | --- |
+| `default` denied | nothing | `G100`, `gcd` `13p3p3p3p5l1` | baseline |
+| `default` denied | a second `default` granted | `G111`, `gcd` `…t…` | a later default replaces an earlier one |
+| `default` denied, `update` granted | a `default` denied | `G111`, `gcd` `…r…` | a default never overrides an update |
+| `default` denied for the EEA list, `default` granted for the rest | nothing | `G111` from this machine | `region` is resolved by gtag; the test machine is outside the list |
+
+Decision: keep the site's EEA default.
+
+- Until the CMP arrives (`adsbygoogle.js` is async, and the CMP loads after it, while GA4 may already send `page_view`),
+  ours is the only default. Without it, EEA hits would go out with no consent state, that is with cookies.
+- If the CMP sends a `default` later, it replaces ours (row 2). Before a choice it can only be `denied`, or the stored
+  choice of a returning visitor; both are what the page should use. No conflict.
+- If the CMP only sends updates, ours is the default it updates (row 3 shows the update wins).
+- In `site` mode `tracking.js` sends an update rather than relying on the default, so no later `default` from any script
+  can override the banner's answer (row 3).
+
+Once the message is published, a visit from the EEA can confirm it: `page_view` should carry `gcd` with `p` (our default,
+denied) and the hits after a consent `r`.
+
+### Reading `gcs` and `gcd`
+
+`gcs` is `G1` + `ad_storage` + `analytics_storage` (`1` granted, `0` denied): `G100`, `G111`, `G110`, `G101`. In `gcd` the
+letters after each `3` are `ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization`; seen here: `p` default
+denied, `q` default denied and update denied, `t` default granted, `r` default denied then update granted, `l` not set.
+
+### Browser check, 2026-10-24
+
+`http://127.0.0.1:8765` with `?analytics_test=1`, headless Chrome 155. Requests to AdSense, Funding Choices and DoubleClick
+were blocked so no ad request for the publisher ID left the machine; Google's CMP was a stub that loads 800 ms after
+`DOMContentLoaded` and on a choice sends the update the real one would.
+
+| Scenario | Pages | Result |
+| --- | --- | --- |
+| No CMP (ad blocker, message not published) | `/`, `/ru/recipe-generator/`, `/fr/wiki-recipe-generator/`, `/de/tools/` | banner in the page language after the 5 s wait; `page_view` `G100` `p`; Accept → `G111` `r`, `cookie_consent_update` `site/accepted`; next page `G111` `t`; Decline (de) → `G100` `q`, next page `requestNonPersonalizedAds = 1`; "Cookie settings" reopens the banner and focuses Accept |
+| CMP, `gdprApplies: true`, old `declined` stored | `/fr/recipe-generator/` | no site banner; old answer deleted; "Cookie settings" calls `showRevocationMessage`; CMP update → `G111`, `cookie_consent_update` `cmp/accepted`; next page no non-personalised flag |
+| CMP, `gdprApplies: false` | `/de/recipe-generator/` | site banner after 1.4 s, without the timeout |
+
+No page errors on any page. Banner and footer looked right in both designs (`modern`, `classic`) at 360, 768 and 1440 px in
+`ru` and `de`; the privacy pages have no horizontal scroll at 360 px. The real Google message only shows on
+`cubeinsquare.com` once the owner publishes it; it was not seen here.
+
+### Performance
+
+- The `<head>` block is inline (no request) and runs in well under a millisecond. Google's CMP comes through the
+  `adsbygoogle.js` the pages already loaded, so no script was added.
+- Banner clicks remove the banner first and run the consent update and the event in `deferWork` (INP).
+- The banner and Google's message are fixed overlays (no layout shift). On phones in the EEA, Google's dialog can become the
+  LCP element, since it is a large block of text painted late. Watch LCP for `fr`/`de` in PageSpeed Insights or CrUX about 28
+  days after the message is live; a `preconnect` to `fundingchoicesmessages.google.com` is the first thing to try if it got worse.
 
 ## Custom dimensions in GA4
 
@@ -208,4 +341,10 @@ code does. This is one browser and one network; read 0/3 as "cannot be relied on
 ## Known gaps
 
 - `tool-coming-soon/` (four locales) and the `en/index.html` redirect stub load no analytics.
+- Google's consent message picks its language from the visitor's device, not from the page: a visitor on `/fr/` with an
+  English browser sees it in English.
+- An EEA visitor whose CMP answers only after the 5 s fallback gets the site's update first (their old banner answer, or
+  `denied`); it stays until the CMP sends its own update.
+- Whether Google's CMP answers `gdprApplies: false` quickly outside the EEA is not verified yet (the message is not
+  published). If it does not, visitors there see the site's banner after the 5 s wait.
 - The custom-item catalog's JSON import and the basic/advanced switch of the enchantment randomizer have no event.
