@@ -29,7 +29,7 @@ Updated 2026-10-24. Sources of truth, in case this file drifts:
 | 2026-08-02 | Loot table generator and guide (drip). |
 | 2026-08-23 | Recipe generator and guide (drip). |
 | 2026-09-13 | Advancement builder and guide (drip). |
-| 2026-10-04 | Enchantment & attribute randomizer, its guide, and the "which enchantments can't combine" article (drip). |
+| 2026-10-04 | Enchantment & attribute randomizer, its guide, and the "which enchantments can't combine" article. The pages were already live from 2026-09-14 (committed together with the queued bundle); the drip publish added the menu entry. |
 
 The texture painter preview bundle (palette extraction, export file naming,
 canvas layout/pan/undo fixes, block template as a cube side sheet) and the
@@ -58,7 +58,14 @@ for the individual commits.
   menu and `sitemap.xml` for a few weeks; both have since been fixed.
 - On 2026-07-28 a mistaken command released the loot table, recipe and advancement bundles early; they were
   un-published (`b17c493`) and went out again on their real dates above.
-- The 2026-10-04 publish carried stale hub pages and rolled back earlier fixes (see Known issues).
+- The 2026-10-04 publish (`3174b9e`) carried stale hub pages and rolled back earlier fixes. The randomizer bundle
+  was queued on 2026-09-14 with full copies of `tools/index.html` and `wiki/index.html` (all four locales), and
+  publishing overwrote the live hubs with them, undoing `2a6ee93` (`data-released` badges, wiki hub cleanup, article
+  nesting) and the links added by `6e9767d` and `0407fd8`. It went unnoticed for ten days; the symptoms were
+  permanent "new" pills and three orphaned articles. Restored on 2026-10-24 (`465b592`). The same queue commit
+  (`237cb5a`) had also committed the whole tool and its hub cards live, so the pages were public from 2026-09-14 and the
+  publish added only the menu entry; commit a tool either live or through the queue, not both. Guarded now by
+  `BASE.txt` and the stale-payload check (see `DRIP_PUBLISHING.md`).
 
 ## Queued releases
 
@@ -79,21 +86,11 @@ whenever fewer than two bundles remain.
 - **Author's own writing** for the skin editor and texture painter pages, as laid out in
   `PIXEL_ART_AUTHOR_BRIEF.md`. It waits on the author; nothing in the repo tracks whether it has been written.
 
-## Known issues (need a code commit, found 2026-10-24)
+## Known issues
 
-1. **The 2026-10-04 publish (`3174b9e`) rolled back earlier fixes.** The enchantment bundle was queued on
-   2026-09-14 with its own copies of `tools/index.html` and `wiki/index.html` (and the `ru/fr/de` versions),
-   made before the 2026-09-15 and 2026-09-16 commits, and publishing overwrote the live files with them.
-   Result, checked against `HEAD`:
-   - `data-released` is gone from the `resource-card`s in all four `tools/index.html`, so badge aging does not run
-     and every tool keeps its `new` pill (10 cards per locale had the attribute on 2026-09-15).
-   - All four wiki hubs lost the links to `wiki-string-ids-custom-model-data`, `wiki-custom-item-id-naming` and
-     `wiki-sulfur-cube-texture`, so those pages are orphaned again, and the Privacy Policy card is back in the hubs.
-   - Fix: restore those lines from `2a6ee93`, `6e9767d` and `0407fd8` on top of the current hubs.
-2. **Homepage metric is stale.** `index.html` and the `ru/fr/de` copies still say 15 live tools; there are 18.
-   The number is edited by hand with every tool release.
-3. **`sitemap.xml` lastmod values are stale** (`bash scripts/generate-sitemap.sh --check` fails since the
-   2026-10-13 title rewrite). Regenerate and commit.
+None open. The three found on 2026-10-24 are closed: the hubs rolled back by `3174b9e` were restored (`465b592`),
+the homepage metric says 18 and `tests/homepage-tool-count.test.cjs` keeps it honest, and `sitemap-refresh.yml`
+keeps `sitemap.xml` current.
 
 ## Operating rules
 
@@ -102,7 +99,9 @@ AdSense declined the site and a resubmission is planned (owner, 2026-10-24), so 
 - Prefer content depth, documentation and queue work. Avoid large live-page restructuring unless it fixes a real bug.
 - Do not add thin placeholder pages; every new release should include a tool or article with enough context, navigation, and sitemap coverage.
 - New drip bundles must not carry their own copy of `assets/site.js` or `sitemap.xml` in `payload/` — those are shared files and get updated in a separate commit.
-- Hub pages are shared too. If a bundle must ship `tools/index.html` or `wiki/index.html` (any locale), re-copy
-  them from current `main` when the release date is near and re-check the payload against `git log` for those
-  files; a stale copy silently undoes everything committed since it was made.
-- A bundle that adds a tool also bumps the homepage tool count and sets `data-released` on its catalog card.
+- Hub pages are shared too. If a bundle must ship a hub (`index.html`, `tools/index.html`, `wiki/index.html` in any
+  locale, `404.html`), take it with `drip-base.sh --copy` so `BASE.txt` records the live version it came from. A stale
+  copy silently undoes everything committed since it was made; validation and Checks now reject it and name the
+  commits, and `drip-base.sh --update` carries the bundle's edit onto the current live file.
+- A bundle that adds a tool also bumps the homepage tool count (a test fails if it is wrong) and sets `data-released`
+  on its catalog card.
