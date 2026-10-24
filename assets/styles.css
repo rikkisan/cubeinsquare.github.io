@@ -1773,6 +1773,11 @@
             color: #bfdbfe;
         }
 
+        /* Long file paths in inline code would otherwise push phone layouts sideways. */
+        main :not(pre) > code {
+            overflow-wrap: anywhere;
+        }
+
         .article-back {
             display: inline-flex;
             margin-bottom: 18px;
