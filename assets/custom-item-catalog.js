@@ -1,5 +1,6 @@
 (function () {
   const STORAGE_KEY = 'cubeinsquare-custom-item-catalog-v1';
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
   const lang = document.documentElement.lang || 'en';
   const copy = {
     en: {
@@ -177,6 +178,7 @@
         }
         if (button.dataset.action === 'copy') {
           await navigator.clipboard.writeText(JSON.stringify(entry, null, 2));
+          track('tool_copy', { output_kind: 'catalog_entry' });
           const original = button.textContent;
           button.textContent = copy.copied;
           setTimeout(() => { button.textContent = original; }, 1200);
@@ -215,6 +217,7 @@
     link.download = 'custom-item-catalog.' + ext;
     link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+    track('tool_download', { file_kind: ext });
   }
 
   async function importJsonFile(file) {
@@ -253,6 +256,7 @@
     fields.cmd.value = 'guild_pass';
     fields.tags.value = 'guild, pass, archive';
     fields.notes.value = 'Used for guarded rooms and scripted checks.';
+    track('tool_example_load');
   });
   document.getElementById('cic-import-json').addEventListener('click', () => importFile.click());
   importFile.addEventListener('change', async () => {

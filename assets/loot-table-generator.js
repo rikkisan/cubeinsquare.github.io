@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-loot-table-generator]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   const LOCALE = (document.documentElement.lang || 'en').slice(0, 2);
   const T = {
@@ -257,12 +258,16 @@
   });
 
   document.querySelectorAll('[data-lt-preset]').forEach((button) => {
-    button.addEventListener('click', () => applyPreset(button.dataset.ltPreset));
+    button.addEventListener('click', () => {
+      applyPreset(button.dataset.ltPreset);
+      track('tool_example_load');
+    });
   });
 
   $('lt-copy').addEventListener('click', async (event) => {
     try {
       await navigator.clipboard.writeText($('lt-output').value);
+      track('tool_copy', { output_kind: 'json' });
       const button = event.currentTarget;
       const label = button.textContent;
       button.textContent = t.copied;
@@ -282,6 +287,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    track('tool_download', { file_kind: 'json' });
   });
 
   root.addEventListener('change', (event) => {

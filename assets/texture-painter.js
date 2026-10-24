@@ -1405,6 +1405,7 @@
             link.click();
             if (window.CubeAnalytics) {
                 window.CubeAnalytics.track('texture_painter_export', { texture_size: state.size });
+                window.CubeAnalytics.track('tool_download', { file_kind: 'png' });
             }
         });
 

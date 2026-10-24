@@ -83,6 +83,7 @@
   const modeNote = document.getElementById('imb-mode-note');
   const pathPreview = document.getElementById('imb-path-preview');
   const copyButton = document.getElementById('imb-copy');
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   function buildBranchRow(mode, value = {}) {
     const card = document.createElement('div');
@@ -200,13 +201,20 @@
     branchList.appendChild(buildBranchRow(modeInput.value));
     update();
   });
-  document.getElementById('imb-load-example').addEventListener('click', () => loadScenario(modeInput.value));
+  document.getElementById('imb-load-example').addEventListener('click', () => {
+    loadScenario(modeInput.value);
+    track('tool_example_load');
+  });
   document.getElementById('imb-reset').addEventListener('click', () => loadScenario('select'));
   document.querySelectorAll('[data-imb-example]').forEach((button) => {
-    button.addEventListener('click', () => loadScenario(button.dataset.imbExample));
+    button.addEventListener('click', () => {
+      loadScenario(button.dataset.imbExample);
+      track('tool_example_load');
+    });
   });
   copyButton.addEventListener('click', async () => {
     await navigator.clipboard.writeText(output.value);
+    track('tool_copy', { output_kind: 'json' });
     const original = copyButton.textContent;
     copyButton.textContent = copyButton.dataset.copiedLabel || original;
     setTimeout(() => { copyButton.textContent = original; }, 1400);

@@ -456,6 +456,7 @@
             has_invulnerable: checked('vt-invulnerable'),
             has_silent: checked('vt-silent')
         }, { conversionKey: 'villager_command_copy' });
+        trackEvent('tool_copy', { output_kind: 'command', item_format: fieldValue('vt-version', 'modern') });
         copyButton.textContent = text.copied;
         window.setTimeout(() => {
             copyButton.textContent = text.copy;
@@ -481,6 +482,7 @@
         trackEvent('villager_command_block_copy', {
             syntax_version: version
         });
+        trackEvent('tool_copy', { output_kind: 'command_block_give', item_format: version });
         commandBlockCopyButton.textContent = text.commandBlockCopied;
         window.setTimeout(() => {
             commandBlockCopyButton.textContent = text.commandBlockCopy;

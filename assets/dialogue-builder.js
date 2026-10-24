@@ -11,6 +11,7 @@
   const summary = document.getElementById('dg-summary');
   const output = document.getElementById('dg-output');
   const copyButton = document.getElementById('dg-copy');
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
   const channelOptions = (localeData[locale] || localeData.en).channelOptions;
   const colorOptions = (localeData[locale] || localeData.en).colorOptions;
   const styleOptions = (localeData[locale] || localeData.en).styleOptions;
@@ -129,7 +130,10 @@
   }
 
   document.querySelectorAll('[data-dg-preset]').forEach((button) => {
-    button.addEventListener('click', () => applyPreset(button.dataset.dgPreset));
+    button.addEventListener('click', () => {
+      applyPreset(button.dataset.dgPreset);
+      track('tool_example_load');
+    });
   });
   [targetInput, speakerInput, prefixInput, speakerColorInput].forEach((input) => {
     input.addEventListener('input', update);
@@ -152,6 +156,7 @@
       document.execCommand('copy');
       document.body.removeChild(area);
     }
+    track('tool_copy', { output_kind: 'command' });
     const original = copyButton.textContent;
     copyButton.textContent = copy.copied[locale] || copy.copied.en;
     setTimeout(() => {
@@ -320,6 +325,7 @@
   const preview = panel.querySelector('#md-preview');
   const output = panel.querySelector('#md-output');
   const copyButton = panel.querySelector('#md-copy');
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   function componentFromPart(part, firstInteractive) {
     const text = part.querySelector('[data-md-text]').value;
@@ -387,10 +393,14 @@
   panel.addEventListener('input', updatePreview);
   panel.addEventListener('change', updatePreview);
   panel.querySelectorAll('[data-md-preset]').forEach((button) => {
-    button.addEventListener('click', () => applyPreset(Number(button.dataset.mdPreset)));
+    button.addEventListener('click', () => {
+      applyPreset(Number(button.dataset.mdPreset));
+      track('tool_example_load');
+    });
   });
   copyButton.addEventListener('click', async () => {
     await navigator.clipboard.writeText(output.value);
+    track('tool_copy', { output_kind: 'message_command' });
     const original = copyButton.textContent;
     copyButton.textContent = copy.copied;
     setTimeout(() => {

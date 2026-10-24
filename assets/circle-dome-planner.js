@@ -47,6 +47,7 @@
   const copyButton = document.getElementById('cdp-copy');
   const copyStackButton = document.getElementById('cdp-copy-stack');
   const ctx = canvas.getContext('2d');
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   const presets = {
     town: { mode: 'filled_circle', radius: 8, thickness: 2 },
@@ -154,18 +155,23 @@
 
   copyButton.addEventListener('click', async () => {
     await navigator.clipboard.writeText(output.textContent);
+    track('tool_copy', { output_kind: 'plan' });
     const original = copyButton.textContent;
     copyButton.textContent = copyButton.dataset.copiedLabel || copy.copied;
     setTimeout(() => { copyButton.textContent = original; }, 1200);
   });
   copyStackButton.addEventListener('click', async () => {
     await copyStack();
+    track('tool_copy', { output_kind: 'stack' });
     const original = copyStackButton.textContent;
     copyStackButton.textContent = copyStackButton.dataset.copiedLabel || copy.copied;
     setTimeout(() => { copyStackButton.textContent = original; }, 1200);
   });
   document.querySelectorAll('[data-cdp-preset]').forEach((button) => {
-    button.addEventListener('click', () => loadPreset(button.dataset.cdpPreset));
+    button.addEventListener('click', () => {
+      loadPreset(button.dataset.cdpPreset);
+      track('tool_example_load');
+    });
   });
   [mode, radius, thickness].forEach((field) => field.addEventListener('input', update));
   update();

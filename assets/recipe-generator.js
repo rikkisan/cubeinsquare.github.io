@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-recipe-generator]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   // Data pack format per version, used only to decide which JSON shape to
   // emit. Recipe JSON changed twice: 1.20.5 renamed the crafting result's
@@ -283,6 +284,7 @@
     button.addEventListener('click', () => {
       (PRESETS[button.dataset.rcPreset] || PRESETS.shaped)();
       update();
+      track('tool_example_load');
     });
   });
 
@@ -294,6 +296,7 @@
   $('rc-copy').addEventListener('click', async (event) => {
     try {
       await navigator.clipboard.writeText($('rc-output').value);
+      track('tool_copy', { output_kind: 'json', mc_version: $('rc-version').value });
       const button = event.currentTarget;
       const label = button.textContent;
       button.textContent = t.copied;
@@ -314,6 +317,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    track('tool_download', { file_kind: 'json', mc_version: $('rc-version').value });
   });
 
   PRESETS.shaped();

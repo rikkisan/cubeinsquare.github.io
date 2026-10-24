@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-enchant-randomizer]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   const LOCALE = (document.documentElement.lang || 'en').slice(0, 2);
   const T = {
@@ -417,6 +418,7 @@
   $('er-copy').addEventListener('click', async (event) => {
     try {
       await navigator.clipboard.writeText($('er-output').value);
+      track('tool_copy', { output_kind: outputFormat() === 'give' ? 'command' : 'json', item_format: currentVersion() });
       const button = event.currentTarget;
       const label = button.textContent;
       button.textContent = t.copied;
@@ -438,6 +440,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    track('tool_download', { file_kind: isJson ? 'json' : 'txt', item_format: currentVersion() });
   });
 
   syncVisibility();

@@ -2,6 +2,7 @@
     const DEFAULT_RADIUS = 7;
     const DEFAULT_THICKNESS = 1;
     const COPY_RESET_MS = 1400;
+    const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
     const CELL_PADDING = 0.06;
     const AXIS_COLOR = 'rgba(148, 163, 184, 0.18)';
     const GRID_COLOR = 'rgba(148, 163, 184, 0.16)';
@@ -217,7 +218,7 @@
         document.body.removeChild(textarea);
     }
 
-    async function copyText(text, button) {
+    async function copyText(text, button, outputKind) {
         if (!text) return;
 
         try {
@@ -229,6 +230,8 @@
         } catch (error) {
             copyTextFallback(text);
         }
+
+        track('tool_copy', { output_kind: outputKind });
 
         if (button) {
             const original = button.dataset.defaultLabel || button.textContent;
@@ -684,8 +687,8 @@
         els.prevLayer.addEventListener('click', () => setLayerIndex(state.layerIndex - 1));
         els.nextLayer.addEventListener('click', () => setLayerIndex(state.layerIndex + 1));
 
-        els.copyCurrent.addEventListener('click', () => copyText(buildLayerText(state.layers[state.layerIndex]), els.copyCurrent));
-        els.copyAll.addEventListener('click', () => copyText(buildAllLayersText(), els.copyAll));
+        els.copyCurrent.addEventListener('click', () => copyText(buildLayerText(state.layers[state.layerIndex]), els.copyCurrent, 'layer'));
+        els.copyAll.addEventListener('click', () => copyText(buildAllLayersText(), els.copyAll, 'all_layers'));
 
         buildShape();
         renderAll();

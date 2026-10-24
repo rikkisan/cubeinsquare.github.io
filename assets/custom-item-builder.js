@@ -486,6 +486,7 @@
             version: getState().version,
             command_length: command.length
         });
+        trackEvent('tool_copy', { output_kind: 'command', item_format: getState().version });
     }
 
     refs.form.addEventListener('input', (event) => {
@@ -517,6 +518,7 @@
         const exampleData = version === 'modern' ? text.exampleModern : text.exampleLegacy;
         fillForm(exampleData);
         trackEvent('custom_item_example_load', { version });
+        trackEvent('tool_example_load');
     });
 
     refs.reset.addEventListener('click', () => {

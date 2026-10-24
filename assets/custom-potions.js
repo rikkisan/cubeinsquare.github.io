@@ -552,6 +552,7 @@
             item_type: example.type,
             effect_count: example.effects.length
         });
+        trackEvent('tool_example_load');
     }
 
     function resetTool() {
@@ -576,6 +577,7 @@
             has_color: boolValue('pp-use-color'),
             has_custom_model_data: intValue(fieldValue('pp-custom-model-data', '0'), 0, 0, 2147483647) > 0
         }, { conversionKey: 'potion_command_copy' });
+        trackEvent('tool_copy', { output_kind: 'command', item_format: fieldValue('pp-version', 'current') });
         references.copyButton.textContent = text.copied;
         window.setTimeout(() => {
             references.copyButton.textContent = text.copy;
@@ -587,6 +589,7 @@
         trackEvent('potion_command_block_give_copy', {
             syntax_version: fieldValue('pp-version', 'current')
         });
+        trackEvent('tool_copy', { output_kind: 'command_block_give', item_format: fieldValue('pp-version', 'current') });
         commandBlockCopyButton.textContent = commandBlockText.copied;
         window.setTimeout(() => {
             commandBlockCopyButton.textContent = commandBlockText.copy;

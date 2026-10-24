@@ -12,6 +12,7 @@
   const summary = document.getElementById('blb-summary');
   const output = document.getElementById('blb-output');
   const copyButton = document.getElementById('blb-copy');
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   function escapeText(text) {
     return String(text)
@@ -118,7 +119,10 @@
   }
 
   document.querySelectorAll('[data-blb-preset]').forEach((button) => {
-    button.addEventListener('click', () => applyPreset(button.dataset.blbPreset));
+    button.addEventListener('click', () => {
+      applyPreset(button.dataset.blbPreset);
+      track('tool_example_load');
+    });
   });
   addPageButton.addEventListener('click', () => {
     addPage('');
@@ -141,6 +145,7 @@
       document.execCommand('copy');
       document.body.removeChild(area);
     }
+    track('tool_copy', { output_kind: 'command', item_format: versionInput.value });
     const original = copyButton.textContent;
     copyButton.textContent = copy.copiedButton || original;
     setTimeout(() => { copyButton.textContent = original; }, 1400);

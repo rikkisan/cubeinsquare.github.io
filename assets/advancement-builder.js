@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-advancement-builder]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   // Only the icon shape depends on the version here: 1.20.5 renamed the
   // display icon's "item" field to "id", same rename as recipes and loot.
@@ -187,12 +188,13 @@
   root.addEventListener('change', update);
 
   document.querySelectorAll('[data-ad-preset]').forEach((button) => {
-    button.addEventListener('click', () => { (PRESETS[button.dataset.adPreset] || PRESETS.quest)(); update(); });
+    button.addEventListener('click', () => { (PRESETS[button.dataset.adPreset] || PRESETS.quest)(); update(); track('tool_example_load'); });
   });
 
-  async function copyText(text, button) {
+  async function copyText(text, button, outputKind) {
     try {
       await navigator.clipboard.writeText(text);
+      track('tool_copy', { output_kind: outputKind, mc_version: $('ad-version').value });
       const label = button.textContent;
       button.textContent = t.copied;
       setTimeout(() => { button.textContent = label; }, 1200);
@@ -201,8 +203,8 @@
     }
   }
 
-  $('ad-copy').addEventListener('click', (e) => copyText($('ad-output').value, e.currentTarget));
-  $('ad-copy-grant').addEventListener('click', (e) => copyText(grantCommand(), e.currentTarget));
+  $('ad-copy').addEventListener('click', (e) => copyText($('ad-output').value, e.currentTarget, 'json'));
+  $('ad-copy-grant').addEventListener('click', (e) => copyText(grantCommand(), e.currentTarget, 'command'));
 
   $('ad-download').addEventListener('click', () => {
     const blob = new Blob([$('ad-output').value], { type: 'application/json' });
@@ -214,6 +216,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    track('tool_download', { file_kind: 'json', mc_version: $('ad-version').value });
   });
 
   PRESETS.quest();

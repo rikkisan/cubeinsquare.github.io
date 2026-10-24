@@ -2157,6 +2157,7 @@
                 window.CubeAnalytics.track('skin_editor_export', {
                     export_type: 'png'
                 });
+                window.CubeAnalytics.track('tool_download', { file_kind: 'png' });
             }
         });
 

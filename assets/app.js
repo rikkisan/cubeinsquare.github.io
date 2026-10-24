@@ -822,6 +822,7 @@
                 archive_name_length: safeFileName.length,
                 ...getResourcePackStats()
             }, { conversionKey: 'resource_pack_download' });
+            trackEvent('tool_download', { file_kind: 'zip' });
             btn.innerText = originalText;
         }).catch(err => {
             alert(UI_TEXT.buildError + err);

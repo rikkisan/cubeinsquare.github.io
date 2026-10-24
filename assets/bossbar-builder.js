@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-bossbar-builder]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
   const presets = [
     { id:'cube:ritual_charge', title:'Ritual charge', color:'purple', style:'notched_10', value:65, max:100, players:'@a' },
     { id:'cube:raid_phase', title:'Raid phase II', color:'red', style:'notched_6', value:2, max:4, players:'@a' },
@@ -23,7 +24,7 @@
   function update() { const max = Math.max(1, num('bb-max', 100)); const value = Math.min(max, num('bb-value', 0)); $('bb-output').value = commands().join('\n'); $('bb-preview-title').textContent = $('bb-title').value || 'Event'; $('bb-preview-fill').style.width = Math.max(0, Math.min(100, value / max * 100)) + '%'; $('bb-preview-fill').className = 'is-' + $('bb-color').value; }
   root.addEventListener('input', update);
   root.addEventListener('change', update);
-  document.querySelectorAll('[data-bb-preset]').forEach((button) => button.addEventListener('click', () => { const p = presets[Number(button.dataset.bbPreset)] || presets[0]; $('bb-id').value=p.id; $('bb-title').value=p.title; $('bb-color').value=p.color; $('bb-style').value=p.style; $('bb-value').value=p.value; $('bb-max').value=p.max; $('bb-players').value=p.players; $('bb-visible').checked=true; update(); }));
-  $('bb-copy').addEventListener('click', async () => { await navigator.clipboard.writeText($('bb-output').value); const old = $('bb-copy').textContent; $('bb-copy').textContent = 'Copied'; setTimeout(() => $('bb-copy').textContent = old, 1200); });
+  document.querySelectorAll('[data-bb-preset]').forEach((button) => button.addEventListener('click', () => { const p = presets[Number(button.dataset.bbPreset)] || presets[0]; $('bb-id').value=p.id; $('bb-title').value=p.title; $('bb-color').value=p.color; $('bb-style').value=p.style; $('bb-value').value=p.value; $('bb-max').value=p.max; $('bb-players').value=p.players; $('bb-visible').checked=true; update(); track('tool_example_load'); }));
+  $('bb-copy').addEventListener('click', async () => { await navigator.clipboard.writeText($('bb-output').value); track('tool_copy', { output_kind: 'command' }); const old = $('bb-copy').textContent; $('bb-copy').textContent = 'Copied'; setTimeout(() => $('bb-copy').textContent = old, 1200); });
   update();
 })();

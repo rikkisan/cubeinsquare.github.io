@@ -2,6 +2,7 @@
   const root = document.querySelector('[data-datapack-generator]');
   if (!root) return;
   const $ = (id) => document.getElementById(id);
+  const track = (name, params) => { if (window.CubeAnalytics) window.CubeAnalytics.track(name, params); };
 
   // Data pack formats, from the version table. Getting this wrong is the most
   // common reason a pack shows up as "incompatible" and refuses to enable.
@@ -253,6 +254,7 @@
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+      track('tool_download', { file_kind: 'zip', mc_version: $('dp-version').value });
     } finally {
       button.textContent = label;
       button.disabled = false;
@@ -260,9 +262,10 @@
     }
   }
 
-  async function copyFrom(field, button) {
+  async function copyFrom(field, button, outputKind) {
     try {
       await navigator.clipboard.writeText($(field).value);
+      track('tool_copy', { output_kind: outputKind, mc_version: $('dp-version').value });
       const label = button.textContent;
       button.textContent = t.copied;
       setTimeout(() => { button.textContent = label; }, 1200);
@@ -285,8 +288,8 @@
   root.addEventListener('change', update);
   $('dp-file-select').addEventListener('change', () => showSelectedFile());
   $('dp-download').addEventListener('click', download);
-  $('dp-copy-mcmeta').addEventListener('click', (e) => copyFrom('dp-mcmeta', e.currentTarget));
-  $('dp-copy-file').addEventListener('click', (e) => copyFrom('dp-file-content', e.currentTarget));
+  $('dp-copy-mcmeta').addEventListener('click', (e) => copyFrom('dp-mcmeta', e.currentTarget, 'pack_mcmeta'));
+  $('dp-copy-file').addEventListener('click', (e) => copyFrom('dp-file-content', e.currentTarget, 'file_content'));
 
   update();
 })();
