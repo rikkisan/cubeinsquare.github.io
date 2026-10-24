@@ -27,3 +27,9 @@ English only.
   it English-only), links from the related guides, and `ru/`, `fr/`, `de/` versions.
 - **No `.html` redirect stub.** The address `/wiki-item-model-definitions.html` never existed, and stubs like that were
   deleted on 2026-10-24.
+
+## commands-to-test.md
+
+The list of commands added or fixed on the site during the AdSense content pass (2026-10), with the version
+and the expected result, for the owner to run in game. Syntax was checked against Minecraft Wiki and the
+changelogs, not in game. New and corrected commands are added here as each batch lands.

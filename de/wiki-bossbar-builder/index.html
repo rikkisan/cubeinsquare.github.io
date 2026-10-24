@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Minecraft-Bossbars für Events nutzen | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Minecraft-Bossbars für Events nutzen | Cube in Square">
-  <meta property="og:description" content="Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing.">
-  <meta property="og:url" content="https://cubeinsquare.com/de/wiki-bossbar-builder/">
-  <meta property="og:locale" content="de_DE">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Minecraft-/bossbar-Befehle erklärt: Anleitung zum Bossbar-Builder | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Was jeder der sieben /bossbar-Befehle aus dem Builder tut, welche Farben und Stile es gibt, wo man sie ausführt und wie keine Leiste nach dem Event hängen bleibt.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft-/bossbar-Befehle erklärt: Anleitung zum Bossbar-Builder | Cube in Square">
+    <meta property="og:description" content="Was jeder der sieben /bossbar-Befehle aus dem Builder tut, welche Farben und Stile es gibt, wo man sie ausführt und wie keine Leiste nach dem Event hängen bleibt.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-bossbar-builder/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft-/bossbar-Befehle erklärt: Anleitung zum Bossbar-Builder | Cube in Square">
+    <meta name="twitter:description" content="Was jeder der sieben /bossbar-Befehle aus dem Builder tut, welche Farben und Stile es gibt, wo man sie ausführt und wie keine Leiste nach dem Event hängen bleibt.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,153 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/de/wiki-bossbar-builder/#article",
+            "headline": "Bossbar-Builder: was jeder /bossbar-Befehl macht",
+            "description": "Was jeder der sieben /bossbar-Befehle aus dem Builder tut, welche Farben und Stile es gibt, wo man sie ausführt und wie keine Leiste nach dem Event hängen bleibt.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/de/wiki-bossbar-builder/#webpage"
+            },
+            "inLanguage": "de",
+            "url": "https://cubeinsquare.com/de/wiki-bossbar-builder/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/de/wiki-bossbar-builder/#webpage",
+            "url": "https://cubeinsquare.com/de/wiki-bossbar-builder/",
+            "name": "Bossbar-Builder: was jeder /bossbar-Befehl macht",
+            "inLanguage": "de"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/wiki-bossbar-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Startseite",
+                    "item": "https://cubeinsquare.com/de/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/de/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Anleitung zum Bossbar-Builder",
+                    "item": "https://cubeinsquare.com/de/wiki-bossbar-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/de/wiki/">← Alle Artikel</a><article class="wiki-article"><h1>Minecraft-Bossbars für Events nutzen</h1><p class="page-lead">Eine Bossbar ist nicht nur für Bosse da. Auf RP-Servern kann sie öffentlicher Timer, Ritualanzeige, Fraktionsalarm, Phasentracker oder Druckanzeige sein, die alle Spieler ohne Chatfenster lesen können.</p><h2>1. Eine Leiste für einen gemeinsamen Zustand</h2><p>Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing. Eine Bossbar ist nicht nur für Bosse da. Auf RP-Servern kann sie öffentlicher Timer, Ritualanzeige, Fraktionsalarm, Phasentracker oder Druckanzeige sein, die alle Spieler ohne Chatfenster lesen können.</p><h2>2. Halte Namen kurz und lesbar</h2><p>Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing. Eine Bossbar ist nicht nur für Bosse da. Auf RP-Servern kann sie öffentlicher Timer, Ritualanzeige, Fraktionsalarm, Phasentracker oder Druckanzeige sein, die alle Spieler ohne Chatfenster lesen können.</p><h2>3. Kombiniere die Leiste mit Command-Blöcken oder Funktionen</h2><p>Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing. Eine Bossbar ist nicht nur für Bosse da. Auf RP-Servern kann sie öffentlicher Timer, Ritualanzeige, Fraktionsalarm, Phasentracker oder Druckanzeige sein, die alle Spieler ohne Chatfenster lesen können.</p><h2>4. Entferne alte Leisten nach der Szene</h2><p>Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing. Eine Bossbar ist nicht nur für Bosse da. Auf RP-Servern kann sie öffentlicher Timer, Ritualanzeige, Fraktionsalarm, Phasentracker oder Druckanzeige sein, die alle Spieler ohne Chatfenster lesen können.</p><p><a href="/de/bossbar-builder/">Minecraft Bossbar-Builder</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Sprache"><a href="/ru/wiki-bossbar-builder/">RU</a><a href="/wiki-bossbar-builder/">EN</a><a href="/fr/wiki-bossbar-builder/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Bossbar-Builder: was jeder /bossbar-Befehl macht</h1>
+        <p class="page-lead">Der Builder macht aus ein paar Feldern sieben Befehle: einer erstellt die Leiste, sechs richten sie ein. Diese Anleitung erklärt jede Zeile, wo sie hingehört und an welchen kleinen Regeln eine Bossleiste scheitert oder hängen bleibt: doppelte IDs, Spieler, die später einloggen, und Leisten, die einen Neustart überleben.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/bossbar-builder/">Bossbar-Builder öffnen</a><a class="tool-button tool-button-secondary" href="/de/wiki-minecraft-bossbar-events/">Event-Anzeigen und Countdowns</a></div>
+    </section>
+    <article>
+        <p><strong>Geprüft für die Versionen:</strong> Java Edition 1.13–26.3. In der Bedrock Edition gibt es <code>/bossbar</code> nicht.</p>
+        <h2 id="output">Was der Builder ausgibt</h2>
+        <p>Mit der Vorlage <em>Ritual charge</em> sieht die Ausgabe so aus:</p>
+        <pre><code>/bossbar add cube:ritual_charge {"text":"Ritual charge","color":"white"}
+/bossbar set cube:ritual_charge color purple
+/bossbar set cube:ritual_charge style notched_10
+/bossbar set cube:ritual_charge max 100
+/bossbar set cube:ritual_charge value 65
+/bossbar set cube:ritual_charge players @a
+/bossbar set cube:ritual_charge visible true</code></pre>
+        <table class="compact-table">
+            <thead><tr><th>Zeile</th><th>Was sie tut</th><th>Worauf achten</th></tr></thead>
+            <tbody>
+                <tr><td><code>add &lt;id&gt; &lt;name&gt;</code></td><td>Erstellt die Leiste und speichert sie in der Welt.</td><td>Schlägt fehl, wenn es die ID schon gibt. IDs sind kleingeschrieben: Buchstaben, Ziffern, <code>_ - . /</code> und ein optionaler Namensraum wie <code>cube:</code>.</td></tr>
+                <tr><td><code>color</code></td><td><code>blue</code>, <code>green</code>, <code>pink</code>, <code>purple</code>, <code>red</code>, <code>white</code> oder <code>yellow</code>.</td><td>Die Farbe färbt auch den Titel, aber nur, wenn der Name keine eigene Farbe hat. Der Builder schreibt <code>"color":"white"</code> in den Namen, deshalb bleibt der Titel weiß.</td></tr>
+                <tr><td><code>style</code></td><td><code>progress</code> (durchgehend) oder <code>notched_6</code>, <code>notched_10</code>, <code>notched_12</code>, <code>notched_20</code>.</td><td>Die Kerben werden nur darübergezeichnet; der Füllstand bleibt value ÷ max.</td></tr>
+                <tr><td><code>max</code></td><td>Der Wert einer vollen Leiste, von 1 bis 2147483647.</td><td>Dieselbe Einheit wie bei <code>value</code>: Sekunden, Ticks, Phasen oder Lebenspunkte.</td></tr>
+                <tr><td><code>value</code></td><td>Der aktuelle Füllstand, ab 0.</td><td>Der Builder hält ihn höchstens auf max; ein größerer Wert zeigt einfach eine volle Leiste.</td></tr>
+                <tr><td><code>players</code></td><td>Legt fest, wer die Leiste sieht.</td><td>Der Selektor wird einmal ausgewertet, beim Ausführen. Wer später einloggt, sieht nichts, bis die Zeile erneut läuft.</td></tr>
+                <tr><td><code>visible</code></td><td><code>true</code> oder <code>false</code>.</td><td>Blendet die Leiste für alle aus, ohne Spieler oder Werte zu vergessen.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="units">max, value und Stil wählen</h2>
+        <p>Eine Bossleiste zeigt nur ein Verhältnis. Leg deshalb zuerst fest, was eine Einheit bedeutet. Bei einem Timer ist <code>max</code> die Dauer des Events in dem, was deine Update-Schleife zählt: Sekunden, wenn sie einmal pro Sekunde läuft, Ticks, wenn sie jeden Tick läuft. Bei einem Ritual, das sich mit Opfergaben füllt, ist <code>max</code> die Zahl der Gaben. Bei einem Raid in Stufen die Zahl der Stufen.</p>
+        <p>Gekerbte Stile helfen, wenn Spieler mitzählen sollen. Wähl eine Segmentzahl, die sich glatt durch dein max teilen lässt: Bei vier Phasen gibt <code>notched_12</code> jeder Phase drei Segmente, bei <code>notched_6</code> liegen die Phasengrenzen zwischen den Kerben. Für Countdowns und alles Fließende liest sich <code>progress</code> am besten.</p>
+        <p>Die vier Vorlagen sind Ausgangspunkte: <em>Ritual charge</em> (65 von 100), <em>Raid phase II</em> (Phase 2 von 4), <em>Evacuation: 3 minutes</em> (180 von 300 Sekunden übrig) und <em>Phase break incoming</em> (8 von 12). Ändere vor dem Einsatz die ID, damit sich nie zwei Events eine Leiste teilen.</p>
+        <h2 id="where">Chat, Befehlsblöcke oder Funktionsdatei</h2>
+        <ul>
+            <li><strong>Chat.</strong> Zeilen einzeln einfügen; der Chat nimmt einen Befehl pro Nachricht. Gut, um das Aussehen vor dem Event zu testen.</li>
+            <li><strong>Befehlsblöcke.</strong> Eine Zeile pro Block. Die Einrichtung läuft einmal: Impuls-Blöcke hinter einem Knopf oder eine Kette, die ein einzelner Impuls-Block startet. <code>add</code> gehört nicht in einen Wiederhol-Block: Ab dem zweiten Durchlauf schlägt der Befehl fehl, weil die Leiste existiert, und jedes <code>set</code> mit unverändertem Wert meldet ebenfalls einen Fehlschlag – das bricht bedingte Ketten.</li>
+            <li><strong>Funktionsdateien.</strong> In einer <code>.mcfunction</code>-Datei steht jeder Befehl in einer eigenen Zeile, <em>ohne</em> führenden Schrägstrich. Entferne das <code>/</code> aus jeder Zeile des Builders, sonst lädt die Funktion nicht.</li>
+        </ul>
+        <h2 id="update">Die Leiste während des Events ändern</h2>
+        <p>Existiert die Leiste, führ nur die Zeile aus, die sich ändert:</p>
+        <pre><code>/bossbar set cube:ritual_charge value 80
+/bossbar set cube:ritual_charge name {"text":"The circle is complete","color":"gold"}
+/bossbar set cube:ritual_charge color yellow</code></pre>
+        <p>Soll die Leiste einer echten Zahl folgen, kopier sie jeden Tick oder jede Sekunde aus einem Scoreboard:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <p>Einen kompletten Countdown nach diesem Muster findest du im <a href="/de/wiki-minecraft-bossbar-events/#countdown">Artikel über Event-Anzeigen</a>. Für Spieler, die mitten in der Szene dazukommen, führ <code>/bossbar set cube:ritual_charge players @a</code> erneut aus, zum Beispiel in derselben Schleife. Ist niemand Neues online, meldet der Befehl einen harmlosen Fehlschlag.</p>
+        <h2 id="cleanup">Die Leiste entfernen</h2>
+        <p>Eigene Bossleisten werden in der Welt gespeichert (in <code>level.dat</code>). Eine vergessene Leiste ist also auch nach einem Serverneustart noch da. Wenn die Szene vorbei ist:</p>
+        <pre><code>/bossbar remove cube:ritual_charge
+/bossbar list</code></pre>
+        <p><code>list</code> zeigt alle noch vorhandenen Leisten – nach jedem Event ausführen, um Reste zu finden. Brauchst du dieselbe Leiste morgen wieder, blendet <code>visible false</code> sie aus und behält die Einstellungen.</p>
+        <h2 id="versions">Der Titeltext in verschiedenen Versionen</h2>
+        <p>Der Builder schreibt den Namen als <code>{"text":"…","color":"white"}</code>. Bis 1.21.4 liest das Spiel das als JSON. Seit 1.21.5 werden Textkomponenten in Befehlen als SNBT geschrieben, und diese Form bleibt gültig, weil SNBT Schlüssel in Anführungszeichen erlaubt – dieselbe Zeile funktioniert vor und nach der Änderung. Die kurze Form <code>{text:"…"}</code> ohne Anführungszeichen geht erst ab 1.21.5. Ohne Formatierung funktioniert überall auch ein einfacher String wie <code>"Ritual charge"</code>.</p>
+        <h2 id="faq">Häufige Fragen</h2>
+        <div class="faq-section"><h3>Zählt eine Bossleiste von selbst herunter?</h3><p>Nein. Sie zeigt den zuletzt gesetzten Wert. Ein Wiederhol-Block oder eine geplante Funktion muss sie aktualisieren; siehe das <a href="/de/wiki-minecraft-bossbar-events/#countdown">Countdown-Rezept</a>.</p></div>
+        <div class="faq-section"><h3>Können verschiedene Spieler verschiedene Leisten sehen?</h3><p>Ja. Erstelle pro Gruppe eine Leiste mit eigenem Selektor, zum Beispiel <code>@a[team=red]</code> und <code>@a[team=blue]</code>.</p></div>
+        <div class="faq-section"><h3>Warum wird meine Leiste nicht angezeigt?</h3><p>Meist lief die <code>players</code>-Zeile nie, lief, bevor die Spieler online waren, oder <code>visible</code> steht auf false. <code>/bossbar get cube:ritual_charge players</code> sagt, wie viele Spieler sie gerade sehen.</p></div>
+        <div class="faq-section"><h3>Funktioniert das in Bedrock?</h3><p>Nein. <code>/bossbar</code> ist ein Befehl der Java Edition.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

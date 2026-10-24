@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>How to use a Minecraft bossbar for events | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A practical guide to bossbar command structure, progress values, colors, and readable event pacing.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="How to use a Minecraft bossbar for events | Cube in Square">
-  <meta property="og:description" content="A practical guide to bossbar command structure, progress values, colors, and readable event pacing.">
-  <meta property="og:url" content="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Minecraft bossbar commands explained: Bossbar Builder guide | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="What each of the seven /bossbar commands from the builder does, which colors and styles exist, where to run them, and how to keep a bar from lingering.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft bossbar commands explained: Bossbar Builder guide | Cube in Square">
+    <meta property="og:description" content="What each of the seven /bossbar commands from the builder does, which colors and styles exist, where to run them, and how to keep a bar from lingering.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft bossbar commands explained: Bossbar Builder guide | Cube in Square">
+    <meta name="twitter:description" content="What each of the seven /bossbar commands from the builder does, which colors and styles exist, where to run them, and how to keep a bar from lingering.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,153 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-bossbar-builder/#article",
+            "headline": "How to use the Bossbar Builder: what each /bossbar command does",
+            "description": "What each of the seven /bossbar commands from the builder does, which colors and styles exist, where to run them, and how to keep a bar from lingering.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-bossbar-builder/#webpage"
+            },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-bossbar-builder/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-bossbar-builder/#webpage",
+            "url": "https://cubeinsquare.com/wiki-bossbar-builder/",
+            "name": "How to use the Bossbar Builder: what each /bossbar command does",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-bossbar-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Bossbar Builder guide",
+                    "item": "https://cubeinsquare.com/wiki-bossbar-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/wiki/">← All articles</a><article class="wiki-article"><h1>How to use a Minecraft bossbar for events</h1><p class="page-lead">A bossbar is not only for bosses. On roleplay servers it can become a public timer, ritual meter, faction alert, phase tracker, or pressure line that every player can read without opening chat.</p><h2>1. Use one bar for one shared state</h2><p>A practical guide to bossbar command structure, progress values, colors, and readable event pacing. A bossbar is not only for bosses. On roleplay servers it can become a public timer, ritual meter, faction alert, phase tracker, or pressure line that every player can read without opening chat.</p><h2>2. Keep names short and readable</h2><p>A practical guide to bossbar command structure, progress values, colors, and readable event pacing. A bossbar is not only for bosses. On roleplay servers it can become a public timer, ritual meter, faction alert, phase tracker, or pressure line that every player can read without opening chat.</p><h2>3. Pair the bar with command blocks or functions</h2><p>A practical guide to bossbar command structure, progress values, colors, and readable event pacing. A bossbar is not only for bosses. On roleplay servers it can become a public timer, ritual meter, faction alert, phase tracker, or pressure line that every player can read without opening chat.</p><h2>4. Remove stale bars after the scene</h2><p>A practical guide to bossbar command structure, progress values, colors, and readable event pacing. A bossbar is not only for bosses. On roleplay servers it can become a public timer, ritual meter, faction alert, phase tracker, or pressure line that every player can read without opening chat.</p><p><a href="/bossbar-builder/">Minecraft Bossbar Builder</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-bossbar-builder/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-bossbar-builder/">FR</a><a href="/de/wiki-bossbar-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>How to use the Bossbar Builder: what each /bossbar command does</h1>
+        <p class="page-lead">The Bossbar Builder turns a few fields into seven commands: one creates the bar, six configure it. This guide explains every line, where to run it, and the small rules that make a bar fail or linger: duplicate IDs, players who log in later, and bars that survive a restart.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/bossbar-builder/">Open the Bossbar Builder</a><a class="tool-button tool-button-secondary" href="/wiki-minecraft-bossbar-events/">Event UI and countdowns</a></div>
+    </section>
+    <article>
+        <p><strong>Checked for versions:</strong> Java Edition 1.13–26.3. <code>/bossbar</code> does not exist in Bedrock Edition.</p>
+        <h2 id="output">What the builder generates</h2>
+        <p>With the <em>Ritual charge</em> preset the output is:</p>
+        <pre><code>/bossbar add cube:ritual_charge {"text":"Ritual charge","color":"white"}
+/bossbar set cube:ritual_charge color purple
+/bossbar set cube:ritual_charge style notched_10
+/bossbar set cube:ritual_charge max 100
+/bossbar set cube:ritual_charge value 65
+/bossbar set cube:ritual_charge players @a
+/bossbar set cube:ritual_charge visible true</code></pre>
+        <table class="compact-table">
+            <thead><tr><th>Line</th><th>What it does</th><th>Watch out for</th></tr></thead>
+            <tbody>
+                <tr><td><code>add &lt;id&gt; &lt;name&gt;</code></td><td>Creates the bar and saves it in the world.</td><td>Fails if a bar with that ID already exists. IDs are lowercase: letters, digits, <code>_ - . /</code> and an optional namespace such as <code>cube:</code>.</td></tr>
+                <tr><td><code>color</code></td><td><code>blue</code>, <code>green</code>, <code>pink</code>, <code>purple</code>, <code>red</code>, <code>white</code> or <code>yellow</code>.</td><td>It also tints the title, but only when the name has no color of its own. The builder writes <code>"color":"white"</code> into the name, so the title stays white.</td></tr>
+                <tr><td><code>style</code></td><td><code>progress</code> (one smooth bar) or <code>notched_6</code>, <code>notched_10</code>, <code>notched_12</code>, <code>notched_20</code>.</td><td>Notches are only drawn on top; the fill is still value ÷ max.</td></tr>
+                <tr><td><code>max</code></td><td>The value of a full bar, from 1 to 2147483647.</td><td>Use the same unit as <code>value</code>: seconds, ticks, phases or hit points.</td></tr>
+                <tr><td><code>value</code></td><td>The current fill, from 0 up.</td><td>The builder keeps it at or below max; a larger value just shows a full bar.</td></tr>
+                <tr><td><code>players</code></td><td>Sets who sees the bar.</td><td>The selector is resolved once, when the command runs. Someone who logs in later sees nothing until the line runs again.</td></tr>
+                <tr><td><code>visible</code></td><td><code>true</code> or <code>false</code>.</td><td>Hides the bar for everyone without forgetting its players or values.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="units">Choosing max, value and style</h2>
+        <p>A bossbar only shows a ratio, so decide first what one unit means. For a timer, <code>max</code> is the length of the event in whatever your update loop counts: seconds if it runs once per second, ticks if it runs every tick. For a ritual that fills as players bring offerings, <code>max</code> is the number of offerings. For a raid in stages, it is the number of stages.</p>
+        <p>Notched styles help when players should be able to count. Pick a style whose segment count divides evenly by your max: with four phases, <code>notched_12</code> gives each phase three segments, while <code>notched_6</code> puts phase boundaries between notches. For countdowns and anything continuous, <code>progress</code> reads best.</p>
+        <p>The four presets are starting points: <em>Ritual charge</em> (65 of 100), <em>Raid phase II</em> (phase 2 of 4), <em>Evacuation: 3 minutes</em> (180 of 300 seconds left) and <em>Phase break incoming</em> (8 of 12). Change the ID before using one, so that two events never share a bar.</p>
+        <h2 id="where">Chat, command blocks or a function file</h2>
+        <ul>
+            <li><strong>Chat.</strong> Paste the lines one at a time; chat takes one command per message. Good for testing a look before an event.</li>
+            <li><strong>Command blocks.</strong> One line per block. Run the setup once: impulse blocks behind a button, or a chain started by a single impulse block. Do not put <code>add</code> in a repeating block. From the second run on it fails because the bar exists, and every <code>set</code> that repeats an unchanged value also reports a failure, which breaks conditional chains.</li>
+            <li><strong>Function files.</strong> In a <code>.mcfunction</code> file every command goes on its own line <em>without</em> the leading slash. Delete the <code>/</code> from each line the builder gives you, or the function fails to load.</li>
+        </ul>
+        <h2 id="update">Changing the bar during the event</h2>
+        <p>Once the bar exists, run only the line that changes:</p>
+        <pre><code>/bossbar set cube:ritual_charge value 80
+/bossbar set cube:ritual_charge name {"text":"The circle is complete","color":"gold"}
+/bossbar set cube:ritual_charge color yellow</code></pre>
+        <p>To make the bar follow a real number, copy it from a scoreboard every tick or every second:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <p>A complete countdown built on this pattern is in the <a href="/wiki-minecraft-bossbar-events/#countdown">event UI article</a>. For players who arrive in the middle of a scene, run <code>/bossbar set cube:ritual_charge players @a</code> again, for example from the same loop. When nobody new is online the command reports a failure, which is harmless.</p>
+        <h2 id="cleanup">Removing the bar</h2>
+        <p>Custom bossbars are stored in the world (in <code>level.dat</code>), so a bar you forget about is still there after a server restart. When the scene ends:</p>
+        <pre><code>/bossbar remove cube:ritual_charge
+/bossbar list</code></pre>
+        <p><code>list</code> shows every custom bar that still exists; run it after an event to catch leftovers. If you need the same bar again tomorrow, <code>visible false</code> hides it and keeps its settings.</p>
+        <h2 id="versions">The title text across versions</h2>
+        <p>The builder writes the name as <code>{"text":"…","color":"white"}</code>. Up to 1.21.4 the game reads it as JSON. From 1.21.5 text components in commands are written in SNBT, and this form is still valid there because SNBT accepts quoted keys, so the same line works on both sides of the change. The shorter <code>{text:"…"}</code> without quotes only works from 1.21.5. A plain quoted string such as <code>"Ritual charge"</code> works everywhere if you do not need formatting.</p>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Does a bossbar count down by itself?</h3><p>No. It shows the last value it was given. A repeating command block or a scheduled function has to update it; see the <a href="/wiki-minecraft-bossbar-events/#countdown">countdown recipe</a>.</p></div>
+        <div class="faq-section"><h3>Can different players see different bars?</h3><p>Yes. Create one bar per group and give each its own selector, for example <code>@a[team=red]</code> and <code>@a[team=blue]</code>.</p></div>
+        <div class="faq-section"><h3>Why is my bar not showing?</h3><p>Usually the <code>players</code> line never ran, ran before those players were online, or <code>visible</code> is false. <code>/bossbar get cube:ritual_charge players</code> tells you how many players currently see it.</p></div>
+        <div class="faq-section"><h3>Does this work on Bedrock?</h3><p>No. <code>/bossbar</code> is a Java Edition command.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

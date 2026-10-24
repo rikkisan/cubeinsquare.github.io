@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Event UI в Minecraft: когда bossbar лучше чата | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Event UI в Minecraft: когда bossbar лучше чата | Cube in Square">
-  <meta property="og:description" content="Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз.">
-  <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
-  <meta property="og:locale" content="ru_RU">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Интерфейс событий в Minecraft: боссбар или чат и рабочий таймер на боссбаре | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Когда боссбар — правильный канал для серверного события, четыре рабочих приёма (таймер, заряд, фазы, здоровье босса) и обратный отсчёт на командных блоках и в датапаке.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Интерфейс событий в Minecraft: боссбар или чат и рабочий таймер на боссбаре | Cube in Square">
+    <meta property="og:description" content="Когда боссбар — правильный канал для серверного события, четыре рабочих приёма (таймер, заряд, фазы, здоровье босса) и обратный отсчёт на командных блоках и в датапаке.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Интерфейс событий в Minecraft: боссбар или чат и рабочий таймер на боссбаре | Cube in Square">
+    <meta name="twitter:description" content="Когда боссбар — правильный канал для серверного события, четыре рабочих приёма (таймер, заряд, фазы, здоровье босса) и обратный отсчёт на командных блоках и в датапаке.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,186 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/#article",
+            "headline": "Боссбары для событий в Minecraft: когда шкала лучше чата и как сделать обратный отсчёт",
+            "description": "Когда боссбар — правильный канал для серверного события, четыре рабочих приёма (таймер, заряд, фазы, здоровье босса) и обратный отсчёт на командных блоках и в датапаке.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/",
+            "name": "Боссбары для событий в Minecraft: когда шкала лучше чата и как сделать обратный отсчёт",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Боссбары для событий и таймеры",
+                    "item": "https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/ru/wiki/">← Все статьи</a><article class="wiki-article"><h1>Event UI в Minecraft: когда bossbar лучше чата</h1><p class="page-lead">Чат шумный. Titles драматичные, но быстро исчезают. Bossbar остаётся на экране достаточно долго, чтобы держать общее состояние события, поэтому он хорошо подходит для сцен, где все игроки должны понимать одно и то же давление одновременно.</p><h2>1. Bossbar держит состояние на виду</h2><p>Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз. Чат шумный. Titles драматичные, но быстро исчезают. Bossbar остаётся на экране достаточно долго, чтобы держать общее состояние события, поэтому он хорошо подходит для сцен, где все игроки должны понимать одно и то же давление одновременно.</p><h2>2. Не используйте её для каждой фразы</h2><p>Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз. Чат шумный. Titles драматичные, но быстро исчезают. Bossbar остаётся на экране достаточно долго, чтобы держать общее состояние события, поэтому он хорошо подходит для сцен, где все игроки должны понимать одно и то же давление одновременно.</p><h2>3. У хорошего event UI есть начало и конец</h2><p>Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз. Чат шумный. Titles драматичные, но быстро исчезают. Bossbar остаётся на экране достаточно долго, чтобы держать общее состояние события, поэтому он хорошо подходит для сцен, где все игроки должны понимать одно и то же давление одновременно.</p><h2>4. Сочетайте bossbar с предметами и диалогами</h2><p>Разбираем, когда использовать bossbar для публичных событий, давления, таймеров и фаз. Чат шумный. Titles драматичные, но быстро исчезают. Bossbar остаётся на экране достаточно долго, чтобы держать общее состояние события, поэтому он хорошо подходит для сцен, где все игроки должны понимать одно и то же давление одновременно.</p><p><a href="/ru/bossbar-builder/">Генератор bossbar для Minecraft</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-minecraft-bossbar-events/">EN</a><a href="/fr/wiki-minecraft-bossbar-events/">FR</a><a href="/de/wiki-minecraft-bossbar-events/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Боссбары для событий в Minecraft: когда шкала лучше чата и как сделать обратный отсчёт</h1>
+        <p class="page-lead">Чат уезжает вверх, заголовок гаснет через несколько секунд, а строка над хотбаром исчезает раньше, чем её прочтёт половина игроков. Боссбар висит наверху экрана, пока идёт событие, и все видят одно и то же заполнение. Поэтому он нужен для общего состояния: сколько осталось времени, насколько продвинулся ритуал, какая фаза у рейда.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/bossbar-builder/">Открыть генератор</a><a class="tool-button tool-button-secondary" href="/ru/wiki-bossbar-builder/">Гайд по генератору</a></div>
+    </section>
+    <article>
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.15–26.3 (<code>/schedule … replace</code> и <code>/schedule clear</code> появились в 1.15, остальное работает с 1.13). Названия папок датапака ниже — для 1.21 и новее.</p>
+        <h2 id="channels">Канал выбирают по тому, как долго важна информация</h2>
+        <table class="compact-table">
+            <thead><tr><th>Канал</th><th>Сколько держится</th><th>Подходит для</th><th>Плохо для</th></tr></thead>
+            <tbody>
+                <tr><td>Чат (<code>tellraw</code>)</td><td>Пока не уедет; остаётся в истории</td><td>Правил, инструкций, точных формулировок</td><td>Того, за чем нужно следить на бегу</td></tr>
+                <tr><td>Заголовок и подзаголовок</td><td>Около 5 секунд со стандартными таймингами (0,5 с появление, 3,5 с на экране, 1 с исчезновение)</td><td>Начала или конца события, одного тяжёлого момента</td><td>Информации, которая понадобится позже</td></tr>
+                <tr><td>Строка над хотбаром (actionbar)</td><td>Несколько секунд</td><td>Личной обратной связи: «Задание обновлено», «Не хватает жетонов»</td><td>Состояния, общего для всего сервера</td></tr>
+                <tr><td>Боссбар</td><td>Пока его не спрячут или не удалят</td><td>Таймеров, прогресса, фаз, здоровья босса</td><td>Сообщений и диалогов</td></tr>
+            </tbody>
+        </table>
+        <p>Хорошо проведённое событие обычно использует несколько каналов сразу: заголовок на старте, одна строка в чате о том, что показывает шкала, сама шкала на всё время события и заголовок или сообщение в конце. Про текстовую часть — в статье о <a href="/ru/wiki-minecraft-server-announcements/">читаемых объявлениях на сервере</a>.</p>
+        <h2 id="patterns">Четыре приёма, которые работают на RP-серверах</h2>
+        <h3>Обратный отсчёт</h3>
+        <p>«Окно эвакуации», «Ритуал завершится через…». Шкала начинается полной и убывает. Стиль <code>progress</code>, цвет жёлтый или красный. Полный рецепт — <a href="#countdown">ниже</a>.</p>
+        <h3>Заряд</h3>
+        <p>Шкала наполняется от действий игроков: принесённые подношения, починенные генераторы, поданные голоса. <code>max</code> — цель, а значение берётся из scoreboard, который событие уже считает:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <h3>Фазы</h3>
+        <p>Рейд из четырёх этапов: <code>max 4</code>, а <code>value</code> — текущий этап. Берите стиль с делениями, кратными числу этапов (<code>notched_12</code> для 4 или 6 этапов, <code>notched_10</code> для 5), чтобы границы фаз совпадали с засечками.</p>
+        <h3>Здоровье босса</h3>
+        <p>Для своего босса, призванного с тегом, копируйте здоровье в шкалу каждый тик или каждую секунду. <code>max</code> — максимальное здоровье босса (здесь 300); сохраняется здоровье, округлённое вниз:</p>
+        <pre><code>bossbar set cube:event_boss max 300
+execute store result bossbar cube:event_boss value run data get entity @e[tag=event_boss,limit=1] Health</code></pre>
+        <p>Селектор должен находить ровно одну сущность. Если босс погиб или выгружен, вторая строка падает, а шкала остаётся на последнем значении — поэтому удаляйте её после боя. Разным группам можно показывать разные шкалы, у каждой свой селектор, например <code>players @a[team=defenders]</code>.</p>
+        <h2 id="rules">Правила читаемого интерфейса события</h2>
+        <ul>
+            <li><strong>Одна шкала — одно состояние.</strong> Если игрокам нужно следить за двумя вещами, сделайте две шкалы, но редко больше двух одновременно.</li>
+            <li><strong>Короткий заголовок.</strong> Он написан мелко над шкалой. «Эвакуация» или «Ритуал 65%» читается быстрее предложения.</li>
+            <li><strong>Цвета, которые всегда значат одно и то же.</strong> Например, красный — опасность, жёлтый — таймер, фиолетовый — магия. После пары событий игроки запоминают код.</li>
+            <li><strong>Объясните один раз.</strong> Когда шкала появляется впервые, напишите в чат, что она измеряет и что будет, когда она заполнится или опустеет.</li>
+            <li><strong>Завершайте.</strong> Удаляйте шкалу после события. Свои боссбары сохраняются в мире, так что шкала вчерашнего рейда переживёт перезапуск.</li>
+        </ul>
+        <h2 id="countdown">Рабочий обратный отсчёт</h2>
+        <p>Боссбар сам не считает. Оставшееся время хранится в scoreboard, уменьшается по расписанию и копируется в шкалу. Главное — не перепутать единицы: повторяющийся командный блок срабатывает каждый игровой тик, 20 раз в секунду, поэтому цикл, который вычитает 1 за срабатывание, считает тики, а не секунды. «60-секундный» таймер со значением 60 закончится за три секунды.</p>
+        <h3>На командных блоках (счёт в тиках)</h3>
+        <p>Настройка, один раз из чата или импульсного блока. 60 секунд — это 1200 тиков:</p>
+        <pre><code>/scoreboard objectives add event_timer dummy
+/scoreboard players set #timer event_timer 1200
+/bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+/bossbar set cube:evacuation color yellow
+/bossbar set cube:evacuation max 1200
+/bossbar set cube:evacuation value 1200
+/bossbar set cube:evacuation players @a</code></pre>
+        <p>Цикл — один повторяющийся командный блок и за ним четыре цепных, все в режиме «Всегда активен», в таком порядке (командные блоки принимают команды и со слэшем, и без):</p>
+        <pre><code>execute if score #timer event_timer matches 1.. run scoreboard players remove #timer event_timer 1
+execute if score #timer event_timer matches 0.. store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+execute if score #timer event_timer matches 0 run say Окно эвакуации закрыто.
+execute if score #timer event_timer matches 0 run bossbar remove cube:evacuation
+execute if score #timer event_timer matches 0 run scoreboard players set #timer event_timer -1</code></pre>
+        <p>Первый блок вычитает, только пока время есть. Второй копирует время в шкалу. На нуле последние три блока запускают команду события, удаляют шкалу и ставят таймер на -1, чтобы в следующие тики ничего не повторялось. Повторный запуск настройки перезапускает отсчёт.</p>
+        <h3>В датапаке (счёт в секундах)</h3>
+        <p>В датапаке можно вообще обойтись без работы каждый тик: функция переназначает сама себя раз в секунду. Три файла в пространстве имён <code>cube</code> (до 1.21 папка называется <code>functions</code>, а не <code>function</code>):</p>
+        <p><code>data/cube/function/evacuation/start.mcfunction</code></p>
+        <pre><code>scoreboard objectives add event_timer dummy
+scoreboard players set #timer event_timer 60
+bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+bossbar set cube:evacuation color yellow
+bossbar set cube:evacuation max 60
+bossbar set cube:evacuation value 60
+bossbar set cube:evacuation players @a
+schedule function cube:evacuation/second 1s replace</code></pre>
+        <p><code>data/cube/function/evacuation/second.mcfunction</code></p>
+        <pre><code>scoreboard players remove #timer event_timer 1
+execute store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+bossbar set cube:evacuation players @a
+execute if score #timer event_timer matches 1.. run schedule function cube:evacuation/second 1s replace
+execute if score #timer event_timer matches ..0 run function cube:evacuation/finish</code></pre>
+        <p><code>data/cube/function/evacuation/finish.mcfunction</code></p>
+        <pre><code>bossbar remove cube:evacuation
+say Окно эвакуации закрыто.</code></pre>
+        <p>Запуск — <code>/function cube:evacuation/start</code>. Строка <code>players</code> в <code>second</code> добавляет тех, кто зашёл во время отсчёта. Между секундами ничего не выполняется, а <code>/schedule clear cube:evacuation/second</code> останавливает отсчёт досрочно (шкалу после этого удалите).</p>
+        <h2 id="mistakes">Частые ошибки</h2>
+        <ul>
+            <li><strong>Шкалы не видно.</strong> <code>players</code> не выполнялась или выполнилась, когда никого не было онлайн.</li>
+            <li><strong>Таймер заканчивается в 20 раз быстрее.</strong> Цикл считает тики, а <code>max</code> и счёт заданы в секундах.</li>
+            <li><strong>Настройка падает со второго раза.</strong> <code>bossbar add</code> останавливается на существующем ID. Сначала удалите старую шкалу или пропустите строку add.</li>
+            <li><strong>Вчерашняя шкала всё ещё на экране.</strong> Удаляйте шкалы после каждого события и проверяйте <code>/bossbar list</code>.</li>
+            <li><strong>Шкала несёт текст.</strong> Если сообщение нужно прочитать, а не отслеживать, его место в чате или заголовке.</li>
+        </ul>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>Можно дать каждому игроку личный таймер?</h3><p>Одной шкалой — нет: её значение одинаково для всех, кто её видит. Для личных таймеров используйте actionbar или личный счёт в scoreboard.</p></div>
+        <div class="faq-section"><h3>Тики или секунды?</h3><p>Секунды через <code>/schedule</code>, если шага в секунду достаточно. Тики через повторяющийся блок или tick-функцию, если шкала должна убывать совершенно плавно.</p></div>
+        <div class="faq-section"><h3>Может заголовок показывать оставшиеся секунды?</h3><p>Сам — нет. Название фиксируется в момент <code>bossbar set … name</code>, так что его пришлось бы задавать заново каждую секунду. Большинству событий хватает короткого заголовка и самой шкалы.</p></div>
+        <div class="faq-section"><h3>Это работает в Bedrock?</h3><p>Нет. <code>/bossbar</code> и <code>/schedule</code> — команды Java Edition.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

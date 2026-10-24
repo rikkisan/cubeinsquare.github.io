@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Minecraft event UI: when a bossbar is better than chat | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Minecraft event UI: when a bossbar is better than chat | Cube in Square">
-  <meta property="og:description" content="Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking.">
-  <meta property="og:url" content="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <meta property="og:locale" content="en_US">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Minecraft event UI: bossbar or chat, and a working bossbar countdown | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="When a bossbar is the right channel for a server event, four patterns that work (timer, charge, phases, boss health), and a countdown for command blocks and data packs.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft event UI: bossbar or chat, and a working bossbar countdown | Cube in Square">
+    <meta property="og:description" content="When a bossbar is the right channel for a server event, four patterns that work (timer, charge, phases, boss health), and a countdown for command blocks and data packs.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft event UI: bossbar or chat, and a working bossbar countdown | Cube in Square">
+    <meta name="twitter:description" content="When a bossbar is the right channel for a server event, four patterns that work (timer, charge, phases, boss health), and a countdown for command blocks and data packs.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,186 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/#article",
+            "headline": "Bossbars for Minecraft events: when a bar beats chat, and how to build a countdown",
+            "description": "When a bossbar is the right channel for a server event, four patterns that work (timer, charge, phases, boss health), and a countdown for command blocks and data packs.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/#webpage"
+            },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/#webpage",
+            "url": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/",
+            "name": "Bossbars for Minecraft events: when a bar beats chat, and how to build a countdown",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Bossbars for events and countdowns",
+                    "item": "https://cubeinsquare.com/wiki-minecraft-bossbar-events/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/tools/">Tools</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div><form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/wiki/">← All articles</a><article class="wiki-article"><h1>Minecraft event UI: when a bossbar is better than chat</h1><p class="page-lead">Chat is noisy. Titles are dramatic but temporary. A bossbar stays visible long enough to carry shared event state, which makes it perfect for scenes where every player should understand the same pressure at the same time.</p><h2>1. Bossbars keep state visible</h2><p>Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking. Chat is noisy. Titles are dramatic but temporary. A bossbar stays visible long enough to carry shared event state, which makes it perfect for scenes where every player should understand the same pressure at the same time.</p><h2>2. Do not use them for every line</h2><p>Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking. Chat is noisy. Titles are dramatic but temporary. A bossbar stays visible long enough to carry shared event state, which makes it perfect for scenes where every player should understand the same pressure at the same time.</p><h2>3. Good event UI has a beginning and an end</h2><p>Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking. Chat is noisy. Titles are dramatic but temporary. A bossbar stays visible long enough to carry shared event state, which makes it perfect for scenes where every player should understand the same pressure at the same time.</p><h2>4. Combine bossbars with props and dialogue</h2><p>Learn when to use Minecraft bossbars for public events, server pressure, countdowns, and phase tracking. Chat is noisy. Titles are dramatic but temporary. A bossbar stays visible long enough to carry shared event state, which makes it perfect for scenes where every player should understand the same pressure at the same time.</p><p><a href="/bossbar-builder/">Minecraft Bossbar Builder</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-minecraft-bossbar-events/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-minecraft-bossbar-events/">FR</a><a href="/de/wiki-minecraft-bossbar-events/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Bossbars for Minecraft events: when a bar beats chat, and how to build a countdown</h1>
+        <p class="page-lead">Chat scrolls away, a title fades after a few seconds, and an action bar line is gone before half the players have read it. A bossbar stays at the top of the screen for as long as the event lasts, and everyone sees the same fill. That makes it the place for shared state: how much time is left, how far a ritual has got, which phase a raid is in.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/bossbar-builder/">Open the Bossbar Builder</a><a class="tool-button tool-button-secondary" href="/wiki-bossbar-builder/">Bossbar Builder guide</a></div>
+    </section>
+    <article>
+        <p><strong>Checked for versions:</strong> Java Edition 1.15–26.3 (<code>/schedule … replace</code> and <code>/schedule clear</code> need 1.15; everything else works from 1.13). Data pack folder names below are for 1.21 and newer.</p>
+        <h2 id="channels">Pick the channel by how long the information matters</h2>
+        <table class="compact-table">
+            <thead><tr><th>Channel</th><th>How long it stays</th><th>Good for</th><th>Poor for</th></tr></thead>
+            <tbody>
+                <tr><td>Chat (<code>tellraw</code>)</td><td>Until it scrolls away; stays in chat history</td><td>Rules, instructions, exact wording</td><td>Anything players must watch while moving</td></tr>
+                <tr><td>Title and subtitle</td><td>About 5 seconds with the default timing (0.5 s in, 3.5 s on screen, 1 s out)</td><td>The start or end of an event, one heavy moment</td><td>Information needed later</td></tr>
+                <tr><td>Action bar</td><td>A few seconds above the hotbar</td><td>Personal feedback: "Quest updated", "Not enough tokens"</td><td>State the whole server shares</td></tr>
+                <tr><td>Bossbar</td><td>Until you hide or remove it</td><td>Timers, progress, phases, a boss's health</td><td>Messages and dialogue</td></tr>
+            </tbody>
+        </table>
+        <p>A well-run event usually uses several at once: a title when it starts, one chat line that says what the bar measures, the bar itself for the duration, and a title or chat line at the end. For the message side, see <a href="/wiki-minecraft-server-announcements/">readable server announcements</a>.</p>
+        <h2 id="patterns">Four bossbar patterns that work on RP servers</h2>
+        <h3>Countdown</h3>
+        <p>"Evacuation window", "The ritual completes in…". The bar starts full and drains. Use the <code>progress</code> style and a yellow or red color. The full recipe is <a href="#countdown">below</a>.</p>
+        <h3>Charge</h3>
+        <p>The bar fills as players act: offerings brought, generators repaired, votes cast. <code>max</code> is the goal, and the value comes from a scoreboard your event already counts:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <h3>Phases</h3>
+        <p>A raid in four stages: <code>max 4</code>, and <code>value</code> is the current stage. Choose a notched style that divides evenly by the number of stages (<code>notched_12</code> for 4 or 6 stages, <code>notched_10</code> for 5), so phase boundaries land on notches.</p>
+        <h3>Boss health</h3>
+        <p>For a custom boss summoned with a tag, copy its health into the bar every tick or every second. Set <code>max</code> to the boss's maximum health (300 here); the stored value is the health rounded down:</p>
+        <pre><code>bossbar set cube:event_boss max 300
+execute store result bossbar cube:event_boss value run data get entity @e[tag=event_boss,limit=1] Health</code></pre>
+        <p>The selector must find exactly one entity. If the boss is dead or unloaded the second line fails and the bar keeps its last value, so remove the bar when the fight ends. Different groups can see different bars: give each one its own selector, such as <code>players @a[team=defenders]</code>.</p>
+        <h2 id="rules">Rules that keep event UI readable</h2>
+        <ul>
+            <li><strong>One bar for one piece of state.</strong> If players need to follow two things, use two bars, and rarely more than two at once.</li>
+            <li><strong>A short title.</strong> The title sits in small text above the bar. "Evacuation" or "Ritual 65%" reads faster than a sentence.</li>
+            <li><strong>Colors that mean the same thing every time.</strong> For example red for danger, yellow for timers, purple for magic. Players learn the code after an event or two.</li>
+            <li><strong>Explain it once.</strong> The first time a bar appears, say in chat what it measures and what happens when it fills or empties.</li>
+            <li><strong>End it.</strong> Remove the bar when the event is over. Custom bars are saved with the world, so yesterday's raid bar is still there after a restart.</li>
+        </ul>
+        <h2 id="countdown">A working countdown</h2>
+        <p>A bossbar does not count by itself. You keep the remaining time in a scoreboard, lower it on a schedule and copy it into the bar. The one thing to get right is the unit: a repeating command block runs every game tick, 20 times per second, so a loop that subtracts 1 per run counts ticks, not seconds. A "60 second" timer set to 60 would be over in three seconds.</p>
+        <h3>With command blocks (counting ticks)</h3>
+        <p>Setup, run once from chat or an impulse block. 60 seconds are 1200 ticks:</p>
+        <pre><code>/scoreboard objectives add event_timer dummy
+/scoreboard players set #timer event_timer 1200
+/bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+/bossbar set cube:evacuation color yellow
+/bossbar set cube:evacuation max 1200
+/bossbar set cube:evacuation value 1200
+/bossbar set cube:evacuation players @a</code></pre>
+        <p>The loop is one repeating command block followed by four chain blocks, all set to <em>Always Active</em>, in this order (command blocks accept the commands with or without a leading slash):</p>
+        <pre><code>execute if score #timer event_timer matches 1.. run scoreboard players remove #timer event_timer 1
+execute if score #timer event_timer matches 0.. store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+execute if score #timer event_timer matches 0 run say The evacuation window is closed.
+execute if score #timer event_timer matches 0 run bossbar remove cube:evacuation
+execute if score #timer event_timer matches 0 run scoreboard players set #timer event_timer -1</code></pre>
+        <p>The first block only subtracts while time is left. The second copies the time into the bar. At zero the last three blocks run your event command, remove the bar and park the timer at -1, so nothing repeats on the following ticks. Running the setup again restarts the countdown.</p>
+        <h3>With a data pack (counting seconds)</h3>
+        <p>In a data pack you can skip per-tick work entirely: a function reschedules itself once per second. Three files in the namespace <code>cube</code> (before 1.21 the folder is <code>functions</code>, not <code>function</code>):</p>
+        <p><code>data/cube/function/evacuation/start.mcfunction</code></p>
+        <pre><code>scoreboard objectives add event_timer dummy
+scoreboard players set #timer event_timer 60
+bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+bossbar set cube:evacuation color yellow
+bossbar set cube:evacuation max 60
+bossbar set cube:evacuation value 60
+bossbar set cube:evacuation players @a
+schedule function cube:evacuation/second 1s replace</code></pre>
+        <p><code>data/cube/function/evacuation/second.mcfunction</code></p>
+        <pre><code>scoreboard players remove #timer event_timer 1
+execute store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+bossbar set cube:evacuation players @a
+execute if score #timer event_timer matches 1.. run schedule function cube:evacuation/second 1s replace
+execute if score #timer event_timer matches ..0 run function cube:evacuation/finish</code></pre>
+        <p><code>data/cube/function/evacuation/finish.mcfunction</code></p>
+        <pre><code>bossbar remove cube:evacuation
+say The evacuation window is closed.</code></pre>
+        <p>Start it with <code>/function cube:evacuation/start</code>. The <code>players</code> line in <code>second</code> adds anyone who logged in during the countdown. Nothing runs between the seconds, and <code>/schedule clear cube:evacuation/second</code> stops the countdown early (remove the bar afterwards).</p>
+        <h2 id="mistakes">Common mistakes</h2>
+        <ul>
+            <li><strong>The bar is invisible.</strong> <code>players</code> never ran, or ran before anyone was online.</li>
+            <li><strong>The timer ends 20 times too fast.</strong> The loop counts ticks while <code>max</code> and the score were set in seconds.</li>
+            <li><strong>The setup fails the second time.</strong> <code>bossbar add</code> stops at an existing ID. Remove the old bar first, or skip the add line.</li>
+            <li><strong>Yesterday's bar is still on screen.</strong> Remove bars at the end of every event and check <code>/bossbar list</code>.</li>
+            <li><strong>The bar carries text.</strong> If a message has to be read rather than watched, it belongs in chat or a title.</li>
+        </ul>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Can every player have a personal timer?</h3><p>Not with one bar: its value is the same for everyone who sees it. For personal timers use the action bar or a per-player score.</p></div>
+        <div class="faq-section"><h3>Ticks or seconds?</h3><p>Seconds with <code>/schedule</code> when a one-second step is precise enough. Ticks with a repeating block or a tick function when the bar should drain perfectly smoothly.</p></div>
+        <div class="faq-section"><h3>Can the title show the remaining seconds?</h3><p>Not on its own. The name is fixed when <code>bossbar set … name</code> runs, so you would have to set it again every second. Most events read fine with a short title and the bar itself.</p></div>
+        <div class="faq-section"><h3>Does it work on Bedrock?</h3><p>No. <code>/bossbar</code> and <code>/schedule</code> are Java Edition commands.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

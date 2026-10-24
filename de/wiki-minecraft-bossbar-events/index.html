@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>Minecraft Event-UI: wann eine Bossbar besser ist als Chat | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Minecraft Event-UI: wann eine Bossbar besser ist als Chat | Cube in Square">
-  <meta property="og:description" content="Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat.">
-  <meta property="og:url" content="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
-  <meta property="og:locale" content="de_DE">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Minecraft-Event-Anzeigen: Bossleiste oder Chat, und ein funktionierender Countdown | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Wann die Bossleiste der richtige Kanal für ein Server-Event ist, vier Muster, die funktionieren (Timer, Ladung, Phasen, Boss-Leben), und ein Countdown mit Befehlsblöcken oder Datenpaket.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-bossbar-events/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Minecraft-Event-Anzeigen: Bossleiste oder Chat, und ein funktionierender Countdown | Cube in Square">
+    <meta property="og:description" content="Wann die Bossleiste der richtige Kanal für ein Server-Event ist, vier Muster, die funktionieren (Timer, Ladung, Phasen, Boss-Leben), und ein Countdown mit Befehlsblöcken oder Datenpaket.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft-Event-Anzeigen: Bossleiste oder Chat, und ein funktionierender Countdown | Cube in Square">
+    <meta name="twitter:description" content="Wann die Bossleiste der richtige Kanal für ein Server-Event ist, vier Muster, die funktionieren (Timer, Ladung, Phasen, Boss-Leben), und ein Countdown mit Befehlsblöcken oder Datenpaket.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,186 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/#article",
+            "headline": "Bossleisten für Minecraft-Events: wann eine Leiste den Chat schlägt und wie man einen Countdown baut",
+            "description": "Wann die Bossleiste der richtige Kanal für ein Server-Event ist, vier Muster, die funktionieren (Timer, Ladung, Phasen, Boss-Leben), und ein Countdown mit Befehlsblöcken oder Datenpaket.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/#webpage"
+            },
+            "inLanguage": "de",
+            "url": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/#webpage",
+            "url": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/",
+            "name": "Bossleisten für Minecraft-Events: wann eine Leiste den Chat schlägt und wie man einen Countdown baut",
+            "inLanguage": "de"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Startseite",
+                    "item": "https://cubeinsquare.com/de/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/de/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Bossleisten für Events und Countdowns",
+                    "item": "https://cubeinsquare.com/de/wiki-minecraft-bossbar-events/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/de" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/de/tools/">Werkzeuge</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div><form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/de/wiki/">← Alle Artikel</a><article class="wiki-article"><h1>Minecraft Event-UI: wann eine Bossbar besser ist als Chat</h1><p class="page-lead">Chat ist laut. Titles sind dramatisch, aber flüchtig. Eine Bossbar bleibt lange genug sichtbar, um gemeinsamen Event-Zustand zu tragen, und passt deshalb zu Szenen, in denen alle denselben Druck verstehen sollen.</p><h2>1. Bossbars halten Zustand sichtbar</h2><p>Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat. Chat ist laut. Titles sind dramatisch, aber flüchtig. Eine Bossbar bleibt lange genug sichtbar, um gemeinsamen Event-Zustand zu tragen, und passt deshalb zu Szenen, in denen alle denselben Druck verstehen sollen.</p><h2>2. Nutze sie nicht für jede Zeile</h2><p>Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat. Chat ist laut. Titles sind dramatisch, aber flüchtig. Eine Bossbar bleibt lange genug sichtbar, um gemeinsamen Event-Zustand zu tragen, und passt deshalb zu Szenen, in denen alle denselben Druck verstehen sollen.</p><h2>3. Gute Event-UI hat Anfang und Ende</h2><p>Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat. Chat ist laut. Titles sind dramatisch, aber flüchtig. Eine Bossbar bleibt lange genug sichtbar, um gemeinsamen Event-Zustand zu tragen, und passt deshalb zu Szenen, in denen alle denselben Druck verstehen sollen.</p><h2>4. Kombiniere Bossbars mit Requisiten und Dialog</h2><p>Wann Bossbars für öffentliche Events, Serverdruck, Countdowns und Phasen besser funktionieren als Chat. Chat ist laut. Titles sind dramatisch, aber flüchtig. Eine Bossbar bleibt lange genug sichtbar, um gemeinsamen Event-Zustand zu tragen, und passt deshalb zu Szenen, in denen alle denselben Druck verstehen sollen.</p><p><a href="/de/bossbar-builder/">Minecraft Bossbar-Builder</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Sprache"><a href="/ru/wiki-minecraft-bossbar-events/">RU</a><a href="/wiki-minecraft-bossbar-events/">EN</a><a href="/fr/wiki-minecraft-bossbar-events/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
+    <section class="page-hero">
+        <h1>Bossleisten für Minecraft-Events: wann eine Leiste den Chat schlägt und wie man einen Countdown baut</h1>
+        <p class="page-lead">Der Chat scrollt weg, ein Titel verblasst nach ein paar Sekunden, und eine Actionbar-Zeile ist verschwunden, bevor die Hälfte der Spieler sie gelesen hat. Eine Bossleiste bleibt oben auf dem Bildschirm, solange das Event läuft, und alle sehen denselben Füllstand. Damit ist sie der Ort für gemeinsamen Zustand: wie viel Zeit bleibt, wie weit ein Ritual ist, in welcher Phase ein Raid steckt.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/bossbar-builder/">Bossbar-Builder öffnen</a><a class="tool-button tool-button-secondary" href="/de/wiki-bossbar-builder/">Anleitung zum Builder</a></div>
+    </section>
+    <article>
+        <p><strong>Geprüft für die Versionen:</strong> Java Edition 1.15–26.3 (<code>/schedule … replace</code> und <code>/schedule clear</code> brauchen 1.15, alles andere geht ab 1.13). Die Ordnernamen im Datenpaket gelten ab 1.21.</p>
+        <h2 id="channels">Den Kanal danach wählen, wie lange die Information zählt</h2>
+        <table class="compact-table">
+            <thead><tr><th>Kanal</th><th>Wie lange sichtbar</th><th>Gut für</th><th>Schlecht für</th></tr></thead>
+            <tbody>
+                <tr><td>Chat (<code>tellraw</code>)</td><td>Bis er wegscrollt; bleibt im Verlauf</td><td>Regeln, Anweisungen, genaue Formulierungen</td><td>Alles, was man beim Laufen beobachten muss</td></tr>
+                <tr><td>Titel und Untertitel</td><td>Etwa 5 Sekunden mit dem Standard-Timing (0,5 s Einblenden, 3,5 s sichtbar, 1 s Ausblenden)</td><td>Beginn oder Ende eines Events, einen großen Moment</td><td>Informationen, die man später braucht</td></tr>
+                <tr><td>Actionbar</td><td>Ein paar Sekunden über der Schnellleiste</td><td>Persönliches Feedback: „Quest aktualisiert“, „Nicht genug Marken“</td><td>Zustand, den der ganze Server teilt</td></tr>
+                <tr><td>Bossleiste</td><td>Bis man sie ausblendet oder entfernt</td><td>Timer, Fortschritt, Phasen, das Leben eines Bosses</td><td>Nachrichten und Dialoge</td></tr>
+            </tbody>
+        </table>
+        <p>Ein gut geführtes Event nutzt meist mehrere gleichzeitig: einen Titel zum Start, eine Chatzeile, die sagt, was die Leiste misst, die Leiste selbst für die ganze Dauer und am Ende einen Titel oder eine Chatnachricht. Für die Textseite siehe <a href="/de/wiki-minecraft-server-announcements/">lesbare Server-Ankündigungen</a>.</p>
+        <h2 id="patterns">Vier Muster, die auf RP-Servern funktionieren</h2>
+        <h3>Countdown</h3>
+        <p>„Evakuierungsfenster“, „Das Ritual endet in…“. Die Leiste startet voll und leert sich. Stil <code>progress</code>, Farbe Gelb oder Rot. Das vollständige Rezept steht <a href="#countdown">weiter unten</a>.</p>
+        <h3>Ladung</h3>
+        <p>Die Leiste füllt sich durch Aktionen der Spieler: gebrachte Opfergaben, reparierte Generatoren, abgegebene Stimmen. <code>max</code> ist das Ziel, der Wert kommt aus einem Scoreboard, das dein Event ohnehin zählt:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <h3>Phasen</h3>
+        <p>Ein Raid in vier Stufen: <code>max 4</code>, und <code>value</code> ist die aktuelle Stufe. Wähl einen gekerbten Stil, der sich durch die Stufenzahl teilen lässt (<code>notched_12</code> für 4 oder 6 Stufen, <code>notched_10</code> für 5), damit die Phasengrenzen auf Kerben fallen.</p>
+        <h3>Boss-Leben</h3>
+        <p>Für einen eigenen Boss, der mit einem Tag beschworen wurde, kopierst du sein Leben jeden Tick oder jede Sekunde in die Leiste. Setz <code>max</code> auf sein maximales Leben (hier 300); gespeichert wird das abgerundete Leben:</p>
+        <pre><code>bossbar set cube:event_boss max 300
+execute store result bossbar cube:event_boss value run data get entity @e[tag=event_boss,limit=1] Health</code></pre>
+        <p>Der Selektor muss genau ein Wesen finden. Ist der Boss tot oder entladen, schlägt die zweite Zeile fehl und die Leiste behält den letzten Wert – entferne sie also nach dem Kampf. Verschiedene Gruppen können verschiedene Leisten sehen, jede mit eigenem Selektor, etwa <code>players @a[team=defenders]</code>.</p>
+        <h2 id="rules">Regeln für lesbare Event-Anzeigen</h2>
+        <ul>
+            <li><strong>Eine Leiste für einen Zustand.</strong> Müssen Spieler zwei Dinge verfolgen, nimm zwei Leisten, aber selten mehr als zwei gleichzeitig.</li>
+            <li><strong>Ein kurzer Titel.</strong> Er steht klein über der Leiste. „Evakuierung“ oder „Ritual 65 %“ liest sich schneller als ein Satz.</li>
+            <li><strong>Farben, die immer dasselbe bedeuten.</strong> Etwa Rot für Gefahr, Gelb für Timer, Lila für Magie. Nach ein, zwei Events kennen die Spieler den Code.</li>
+            <li><strong>Einmal erklären.</strong> Wenn die Leiste zum ersten Mal erscheint, schreib in den Chat, was sie misst und was passiert, wenn sie voll oder leer ist.</li>
+            <li><strong>Sauber beenden.</strong> Entferne die Leiste nach dem Event. Eigene Bossleisten werden mit der Welt gespeichert – die Leiste des gestrigen Raids übersteht einen Neustart.</li>
+        </ul>
+        <h2 id="countdown">Ein funktionierender Countdown</h2>
+        <p>Eine Bossleiste zählt nicht von selbst. Die Restzeit liegt in einem Scoreboard, wird nach Plan verringert und in die Leiste kopiert. Wichtig ist nur die Einheit: Ein Wiederhol-Befehlsblock läuft jeden Spieltick, 20-mal pro Sekunde. Eine Schleife, die pro Durchlauf 1 abzieht, zählt also Ticks, nicht Sekunden. Ein „60-Sekunden“-Timer mit dem Wert 60 wäre nach drei Sekunden vorbei.</p>
+        <h3>Mit Befehlsblöcken (in Ticks)</h3>
+        <p>Einrichtung, einmal aus dem Chat oder einem Impuls-Block. 60 Sekunden sind 1200 Ticks:</p>
+        <pre><code>/scoreboard objectives add event_timer dummy
+/scoreboard players set #timer event_timer 1200
+/bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+/bossbar set cube:evacuation color yellow
+/bossbar set cube:evacuation max 1200
+/bossbar set cube:evacuation value 1200
+/bossbar set cube:evacuation players @a</code></pre>
+        <p>Die Schleife ist ein Wiederhol-Block mit vier Ketten-Blöcken dahinter, alle auf „Immer aktiv“, in dieser Reihenfolge (Befehlsblöcke nehmen die Befehle mit oder ohne Schrägstrich):</p>
+        <pre><code>execute if score #timer event_timer matches 1.. run scoreboard players remove #timer event_timer 1
+execute if score #timer event_timer matches 0.. store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+execute if score #timer event_timer matches 0 run say Das Evakuierungsfenster ist geschlossen.
+execute if score #timer event_timer matches 0 run bossbar remove cube:evacuation
+execute if score #timer event_timer matches 0 run scoreboard players set #timer event_timer -1</code></pre>
+        <p>Der erste Block zieht nur ab, solange Zeit übrig ist. Der zweite kopiert die Zeit in die Leiste. Bei null führen die letzten drei deinen Event-Befehl aus, entfernen die Leiste und parken den Timer bei -1, damit sich in den folgenden Ticks nichts wiederholt. Erneutes Ausführen der Einrichtung startet den Countdown neu.</p>
+        <h3>Mit einem Datenpaket (in Sekunden)</h3>
+        <p>Im Datenpaket lässt sich die Arbeit pro Tick ganz vermeiden: Eine Funktion plant sich einmal pro Sekunde selbst neu ein. Drei Dateien im Namensraum <code>cube</code> (vor 1.21 heißt der Ordner <code>functions</code>, nicht <code>function</code>):</p>
+        <p><code>data/cube/function/evacuation/start.mcfunction</code></p>
+        <pre><code>scoreboard objectives add event_timer dummy
+scoreboard players set #timer event_timer 60
+bossbar add cube:evacuation {"text":"Evacuation","color":"yellow"}
+bossbar set cube:evacuation color yellow
+bossbar set cube:evacuation max 60
+bossbar set cube:evacuation value 60
+bossbar set cube:evacuation players @a
+schedule function cube:evacuation/second 1s replace</code></pre>
+        <p><code>data/cube/function/evacuation/second.mcfunction</code></p>
+        <pre><code>scoreboard players remove #timer event_timer 1
+execute store result bossbar cube:evacuation value run scoreboard players get #timer event_timer
+bossbar set cube:evacuation players @a
+execute if score #timer event_timer matches 1.. run schedule function cube:evacuation/second 1s replace
+execute if score #timer event_timer matches ..0 run function cube:evacuation/finish</code></pre>
+        <p><code>data/cube/function/evacuation/finish.mcfunction</code></p>
+        <pre><code>bossbar remove cube:evacuation
+say Das Evakuierungsfenster ist geschlossen.</code></pre>
+        <p>Gestartet wird mit <code>/function cube:evacuation/start</code>. Die <code>players</code>-Zeile in <code>second</code> nimmt alle auf, die während des Countdowns eingeloggt haben. Zwischen den Sekunden läuft nichts, und <code>/schedule clear cube:evacuation/second</code> stoppt den Countdown vorzeitig (danach die Leiste entfernen).</p>
+        <h2 id="mistakes">Häufige Fehler</h2>
+        <ul>
+            <li><strong>Die Leiste ist unsichtbar.</strong> <code>players</code> lief nie oder lief, als niemand online war.</li>
+            <li><strong>Der Timer endet 20-mal zu schnell.</strong> Die Schleife zählt Ticks, während <code>max</code> und der Punktestand in Sekunden gesetzt wurden.</li>
+            <li><strong>Die Einrichtung schlägt beim zweiten Mal fehl.</strong> <code>bossbar add</code> stoppt an einer vorhandenen ID. Entferne zuerst die alte Leiste oder überspring die add-Zeile.</li>
+            <li><strong>Die Leiste von gestern ist noch zu sehen.</strong> Entferne Leisten nach jedem Event und prüf <code>/bossbar list</code>.</li>
+            <li><strong>Die Leiste trägt Text.</strong> Muss eine Nachricht gelesen statt beobachtet werden, gehört sie in den Chat oder einen Titel.</li>
+        </ul>
+        <h2 id="faq">Häufige Fragen</h2>
+        <div class="faq-section"><h3>Kann jeder Spieler einen eigenen Timer haben?</h3><p>Nicht mit einer Leiste: Ihr Wert ist für alle gleich, die sie sehen. Für persönliche Timer nimm die Actionbar oder einen Punktestand pro Spieler.</p></div>
+        <div class="faq-section"><h3>Ticks oder Sekunden?</h3><p>Sekunden mit <code>/schedule</code>, wenn ein Schritt pro Sekunde genau genug ist. Ticks mit einem Wiederhol-Block oder einer Tick-Funktion, wenn die Leiste ganz gleichmäßig ablaufen soll.</p></div>
+        <div class="faq-section"><h3>Kann der Titel die Restsekunden zeigen?</h3><p>Nicht von selbst. Der Name wird beim Ausführen von <code>bossbar set … name</code> festgelegt; man müsste ihn jede Sekunde neu setzen. Den meisten Events reichen ein kurzer Titel und die Leiste selbst.</p></div>
+        <div class="faq-section"><h3>Funktioniert das in Bedrock?</h3><p>Nein. <code>/bossbar</code> und <code>/schedule</code> sind Befehle der Java Edition.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

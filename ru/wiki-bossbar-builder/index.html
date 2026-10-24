@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Как использовать bossbar Minecraft для событий | Cube in Square</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий.">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-  <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
-  <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
-  <meta property="og:site_name" content="Cube in Square">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Как использовать bossbar Minecraft для событий | Cube in Square">
-  <meta property="og:description" content="Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий.">
-  <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
-  <meta property="og:locale" content="ru_RU">
-  <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <meta charset="UTF-8">
+    <title>Команды /bossbar в Minecraft: гайд по генератору боссбаров | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Что делает каждая из семи команд /bossbar, которые выдаёт генератор: цвета и стили, где их запускать и как не оставить шкалу висеть после события.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-bossbar-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-bossbar-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Команды /bossbar в Minecraft: гайд по генератору боссбаров | Cube in Square">
+    <meta property="og:description" content="Что делает каждая из семи команд /bossbar, которые выдаёт генератор: цвета и стили, где их запускать и как не оставить шкалу висеть после события.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-bossbar-builder/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Команды /bossbar в Minecraft: гайд по генератору боссбаров | Cube in Square">
+    <meta name="twitter:description" content="Что делает каждая из семи команд /bossbar, которые выдаёт генератор: цвета и стили, где их запускать и как не оставить шкалу висеть после события.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -53,10 +68,153 @@
         })();
     </script>
     <!-- /consent-defaults -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/assets/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-bossbar-builder/#article",
+            "headline": "Генератор боссбаров: что делает каждая команда /bossbar",
+            "description": "Что делает каждая из семи команд /bossbar, которые выдаёт генератор: цвета и стили, где их запускать и как не оставить шкалу висеть после события.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-bossbar-builder/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-bossbar-builder/",
+            "datePublished": "2026-07-12",
+            "dateModified": "2026-10-24"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-bossbar-builder/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-bossbar-builder/",
+            "name": "Генератор боссбаров: что делает каждая команда /bossbar",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-bossbar-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Гайд по генератору боссбаров",
+                    "item": "https://cubeinsquare.com/ru/wiki-bossbar-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown " href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search">⌕</button></form><div class="language-switch"><a href="/bossbar-builder/">EN</a><a href="/ru/bossbar-builder/">RU</a><a href="/fr/bossbar-builder/">FR</a><a href="/de/bossbar-builder/">DE</a></div></div></div>
-<main class="article-shell"><a class="back-link" href="/ru/wiki/">← Все статьи</a><article class="wiki-article"><h1>Как использовать bossbar Minecraft для событий</h1><p class="page-lead">Bossbar нужен не только для боссов. На ролевом сервере он может стать общим таймером, шкалой ритуала, предупреждением фракции, трекером фазы или строкой давления, которую видят все игроки без открытия чата.</p><h2>1. Одна шкала — одно общее состояние</h2><p>Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий. Bossbar нужен не только для боссов. На ролевом сервере он может стать общим таймером, шкалой ритуала, предупреждением фракции, трекером фазы или строкой давления, которую видят все игроки без открытия чата.</p><h2>2. Держите название коротким и читаемым</h2><p>Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий. Bossbar нужен не только для боссов. На ролевом сервере он может стать общим таймером, шкалой ритуала, предупреждением фракции, трекером фазы или строкой давления, которую видят все игроки без открытия чата.</p><h2>3. Связывайте шкалу с командными блоками или функциями</h2><p>Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий. Bossbar нужен не только для боссов. На ролевом сервере он может стать общим таймером, шкалой ритуала, предупреждением фракции, трекером фазы или строкой давления, которую видят все игроки без открытия чата.</p><h2>4. Убирайте старые шкалы после сцены</h2><p>Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий. Bossbar нужен не только для боссов. На ролевом сервере он может стать общим таймером, шкалой ритуала, предупреждением фракции, трекером фазы или строкой давления, которую видят все игроки без открытия чата.</p><p><a href="/ru/bossbar-builder/">Генератор bossbar для Minecraft</a></p></article></main><footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script>
-</body></html>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-bossbar-builder/">EN</a><a href="/fr/wiki-bossbar-builder/">FR</a><a href="/de/wiki-bossbar-builder/">DE</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Генератор боссбаров: что делает каждая команда /bossbar</h1>
+        <p class="page-lead">Генератор превращает несколько полей в семь команд: одна создаёт шкалу, шесть настраивают её. Здесь разобрана каждая строка, где её запускать и на чём шкала чаще всего ломается или зависает: повторный ID, игроки, зашедшие позже, и шкалы, которые переживают перезапуск сервера.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/bossbar-builder/">Открыть генератор</a><a class="tool-button tool-button-secondary" href="/ru/wiki-minecraft-bossbar-events/">Боссбар для событий и таймеры</a></div>
+    </section>
+    <article>
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.13–26.3. В Bedrock Edition команды <code>/bossbar</code> нет.</p>
+        <h2 id="output">Что выдаёт генератор</h2>
+        <p>Для пресета <em>Ritual charge</em> получается так:</p>
+        <pre><code>/bossbar add cube:ritual_charge {"text":"Ritual charge","color":"white"}
+/bossbar set cube:ritual_charge color purple
+/bossbar set cube:ritual_charge style notched_10
+/bossbar set cube:ritual_charge max 100
+/bossbar set cube:ritual_charge value 65
+/bossbar set cube:ritual_charge players @a
+/bossbar set cube:ritual_charge visible true</code></pre>
+        <table class="compact-table">
+            <thead><tr><th>Строка</th><th>Что делает</th><th>На что обратить внимание</th></tr></thead>
+            <tbody>
+                <tr><td><code>add &lt;id&gt; &lt;name&gt;</code></td><td>Создаёт шкалу и сохраняет её в мире.</td><td>Не сработает, если шкала с таким ID уже есть. ID пишется строчными: буквы, цифры, <code>_ - . /</code> и пространство имён вроде <code>cube:</code>.</td></tr>
+                <tr><td><code>color</code></td><td><code>blue</code>, <code>green</code>, <code>pink</code>, <code>purple</code>, <code>red</code>, <code>white</code> или <code>yellow</code>.</td><td>Цвет шкалы окрашивает и заголовок, но только если у названия нет своего цвета. Генератор пишет в название <code>"color":"white"</code>, поэтому заголовок остаётся белым.</td></tr>
+                <tr><td><code>style</code></td><td><code>progress</code> (сплошная полоса) или <code>notched_6</code>, <code>notched_10</code>, <code>notched_12</code>, <code>notched_20</code>.</td><td>Деления только рисуются поверх: заполнение по-прежнему равно value ÷ max.</td></tr>
+                <tr><td><code>max</code></td><td>Значение полной шкалы, от 1 до 2147483647.</td><td>Единица та же, что у <code>value</code>: секунды, тики, фазы или здоровье.</td></tr>
+                <tr><td><code>value</code></td><td>Текущее заполнение, от 0.</td><td>Генератор не даёт превысить max; большее значение просто показывает полную шкалу.</td></tr>
+                <tr><td><code>players</code></td><td>Задаёт, кто видит шкалу.</td><td>Селектор вычисляется один раз, в момент выполнения. Игрок, зашедший позже, ничего не увидит, пока строку не запустят снова.</td></tr>
+                <tr><td><code>visible</code></td><td><code>true</code> или <code>false</code>.</td><td>Прячет шкалу у всех, не теряя список игроков и значения.</td></tr>
+            </tbody>
+        </table>
+        <h2 id="units">Как выбрать max, value и стиль</h2>
+        <p>Боссбар показывает только долю, поэтому сначала решите, что значит одна единица. Для таймера <code>max</code> — длительность события в том, что считает ваш цикл обновления: секундах, если он срабатывает раз в секунду, или тиках, если каждый тик. Для ритуала, который наполняется подношениями, <code>max</code> — число подношений. Для рейда по этапам — число этапов.</p>
+        <p>Стили с делениями полезны, когда игрокам нужно считать. Выбирайте стиль, у которого число делений делится на ваш max без остатка: при четырёх фазах <code>notched_12</code> даёт каждой фазе по три деления, а при <code>notched_6</code> границы фаз попадают между засечками. Для обратного отсчёта и всего непрерывного лучше всего читается <code>progress</code>.</p>
+        <p>Четыре пресета — заготовки: <em>Ritual charge</em> (65 из 100), <em>Raid phase II</em> (фаза 2 из 4), <em>Evacuation: 3 minutes</em> (осталось 180 из 300 секунд) и <em>Phase break incoming</em> (8 из 12). Перед использованием смените ID, чтобы два события никогда не делили одну шкалу.</p>
+        <h2 id="where">Чат, командные блоки или файл функции</h2>
+        <ul>
+            <li><strong>Чат.</strong> Вставляйте строки по одной: чат принимает одну команду за раз. Удобно, чтобы примерить вид шкалы до события.</li>
+            <li><strong>Командные блоки.</strong> По одной строке на блок. Настройку запускайте один раз: импульсные блоки за кнопкой или цепочка, которую стартует один импульсный блок. Не ставьте <code>add</code> в повторяющийся блок: со второго срабатывания команда падает, потому что шкала уже есть, а каждый <code>set</code> с тем же значением тоже возвращает неудачу и ломает условные цепочки.</li>
+            <li><strong>Файлы функций.</strong> В <code>.mcfunction</code> каждая команда пишется на своей строке <em>без</em> начального слэша. Уберите <code>/</code> из каждой строки генератора, иначе функция не загрузится.</li>
+        </ul>
+        <h2 id="update">Как менять шкалу по ходу события</h2>
+        <p>Когда шкала уже создана, запускайте только ту строку, которая меняется:</p>
+        <pre><code>/bossbar set cube:ritual_charge value 80
+/bossbar set cube:ritual_charge name {"text":"The circle is complete","color":"gold"}
+/bossbar set cube:ritual_charge color yellow</code></pre>
+        <p>Чтобы шкала следовала за реальным числом, копируйте его из scoreboard каждый тик или каждую секунду:</p>
+        <pre><code>execute store result bossbar cube:ritual_charge value run scoreboard players get #offerings ritual</code></pre>
+        <p>Готовый обратный отсчёт на этом приёме разобран в <a href="/ru/wiki-minecraft-bossbar-events/#countdown">статье про боссбары для событий</a>. Для игроков, которые подключились посреди сцены, снова выполните <code>/bossbar set cube:ritual_charge players @a</code>, например в том же цикле. Если новых игроков нет, команда сообщит о неудаче — это безвредно.</p>
+        <h2 id="cleanup">Как убрать шкалу</h2>
+        <p>Свои боссбары хранятся в мире (в <code>level.dat</code>), поэтому забытая шкала останется и после перезапуска сервера. Когда сцена закончилась:</p>
+        <pre><code>/bossbar remove cube:ritual_charge
+/bossbar list</code></pre>
+        <p><code>list</code> показывает все оставшиеся шкалы — запускайте после события, чтобы ничего не забыть. Если та же шкала понадобится завтра, <code>visible false</code> спрячет её и сохранит настройки.</p>
+        <h2 id="versions">Текст заголовка в разных версиях</h2>
+        <p>Генератор пишет название как <code>{"text":"…","color":"white"}</code>. До 1.21.4 игра читает это как JSON. С 1.21.5 текстовые компоненты в командах записываются в SNBT, и такая запись остаётся верной, потому что SNBT допускает ключи в кавычках, — одна и та же строка работает по обе стороны изменения. Короткая форма <code>{text:"…"}</code> без кавычек работает только с 1.21.5. Если форматирование не нужно, подойдёт и обычная строка в кавычках, например <code>"Ritual charge"</code>, — в любой версии.</p>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>Боссбар сам отсчитывает время?</h3><p>Нет. Он показывает последнее значение, которое ему дали. Обновлять его должен повторяющийся командный блок или функция по расписанию — см. <a href="/ru/wiki-minecraft-bossbar-events/#countdown">рецепт обратного отсчёта</a>.</p></div>
+        <div class="faq-section"><h3>Можно показать разным игрокам разные шкалы?</h3><p>Да. Создайте по шкале на группу и дайте каждой свой селектор, например <code>@a[team=red]</code> и <code>@a[team=blue]</code>.</p></div>
+        <div class="faq-section"><h3>Почему шкалу не видно?</h3><p>Обычно строка <code>players</code> не выполнялась, выполнилась до того, как игроки зашли, или <code>visible</code> стоит в false. <code>/bossbar get cube:ritual_charge players</code> покажет, сколько игроков видят шкалу сейчас.</p></div>
+        <div class="faq-section"><h3>Это работает в Bedrock?</h3><p>Нет. <code>/bossbar</code> есть только в Java Edition.</p></div>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
