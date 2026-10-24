@@ -28,6 +28,7 @@ the same tree, so stage your own files by name rather than `git add -A`.
 | `tests/`, `scripts/` | Tests; sitemap generator, link checker, `TOOL_META.js` merger, the consent `<head>` block and its copier. |
 | `.drip/queue/`, `.drip/template-release/`, `.drip/drafts/` | Scheduled releases; template for a new one; unpublished drafts nothing reads (see its README). |
 | `.github/` | Workflows: `drip-publish.yml` (Sunday release), `checks.yml` (tests, links, stale queued bundles on every push and PR), `sitemap-refresh.yml` (bot keeps `sitemap.xml` current). Scripts: publisher, `drip-validate.sh`, `drip-base.sh` and `drip-check-base.sh` (stale payload protection). |
+| `_config.yml` | Jekyll `exclude` list: keeps `*.md`, `scripts/` and `tests/` off the site. Pages builds with Jekyll, which never publishes dot-directories. New internal files outside those go on this list. |
 | Root `*.html`, `en/`, `ru/*.html` | `noindex` redirect stubs for old URLs. Never add content to them. |
 | `.claude/worktrees/` | Git-excluded scratch worktrees holding stale copies of these docs. Ignore them when grepping or globbing. |
 

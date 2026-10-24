@@ -1,0 +1,11 @@
+# GitHub Pages builds this repository with Jekyll (there is no .nojekyll). Jekyll never
+# publishes dot-files and dot-directories (.github, .drip, .claude, .gitignore); this list
+# keeps the rest of the repository's internal files off the site.
+#
+# Setting exclude replaces the GitHub Pages default list, which is just CNAME, so CNAME is
+# repeated here: it has never been served, and the custom domain does not depend on it.
+exclude:
+  - "*.md"
+  - scripts/
+  - tests/
+  - CNAME
