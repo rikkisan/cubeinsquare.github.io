@@ -248,37 +248,37 @@
             en: {
                 heading: 'Wiki library', open: 'Open wiki', topics: 'Wiki topics',
                 categories: ['All', 'Basics', 'Tools'],
-                labels: ['CustomModelData', 'Resource pack structure', 'Resource pack generator', 'Skin editor', 'Texture painter', 'Sphere generator', 'Custom potions', 'Villager trades', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Privacy policy'],
-                descriptions: ['Turn a vanilla item into a custom model.', 'Where textures, models and other pack files belong.', 'Build a resource pack from textures to ZIP.', 'Paint the skin atlas and the 3D player model.', 'Choose a canvas and create pixel textures.', 'Build spheres, domes and circles layer by layer.', 'Configure effects, colors and potion commands.', 'Set prices, rewards and trade limits.', 'Engineering, maintenance and ritual machinery.', 'Trophies, hunting and server progression.', 'Magic and dark rituals for your server.', 'How the site handles data and cookies.']
+                labels: ['CustomModelData', 'Resource pack structure', 'Resource pack generator', 'Skin editor', 'Texture painter', 'Sphere generator', 'Custom potions', 'Villager trades', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin'],
+                descriptions: ['Turn a vanilla item into a custom model.', 'Where textures, models and other pack files belong.', 'Build a resource pack from textures to ZIP.', 'Paint the skin atlas and the 3D player model.', 'Choose a canvas and create pixel textures.', 'Build spheres, domes and circles layer by layer.', 'Configure effects, colors and potion commands.', 'Set prices, rewards and trade limits.', 'Engineering, maintenance and ritual machinery.', 'Trophies, hunting and server progression.', 'Magic and dark rituals for your server.']
             },
             ru: {
                 heading: 'Библиотека вики', open: 'Открыть вики', topics: 'Темы вики',
                 categories: ['Все', 'Основы', 'Инструменты'],
-                labels: ['CustomModelData', 'Структура ресурс-пака', 'Генератор ресурс-паков', 'Редактор скинов', 'Редактор текстур', 'Генератор сфер', 'Кастомные зелья', 'Торги жителей', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Конфиденциальность'],
-                descriptions: ['Как заменить модель обычного предмета.', 'Где хранить текстуры, модели и файлы пака.', 'Собрать ресурс-пак от текстур до ZIP.', 'Рисовать по атласу и 3D-модели игрока.', 'Выбрать холст и создать пиксельные текстуры.', 'Строить сферы, купола и круги по слоям.', 'Настроить эффекты, цвет и команды зелья.', 'Задать цены, награды и лимиты сделок.', 'Инженерия, обслуживание и ритуальная техника.', 'Трофеи, охота и прогрессия на сервере.', 'Магия и тёмные ритуалы на сервере.', 'Как сайт обрабатывает данные и cookies.']
+                labels: ['CustomModelData', 'Структура ресурс-пака', 'Генератор ресурс-паков', 'Редактор скинов', 'Редактор текстур', 'Генератор сфер', 'Кастомные зелья', 'Торги жителей', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin'],
+                descriptions: ['Как заменить модель обычного предмета.', 'Где хранить текстуры, модели и файлы пака.', 'Собрать ресурс-пак от текстур до ZIP.', 'Рисовать по атласу и 3D-модели игрока.', 'Выбрать холст и создать пиксельные текстуры.', 'Строить сферы, купола и круги по слоям.', 'Настроить эффекты, цвет и команды зелья.', 'Задать цены, награды и лимиты сделок.', 'Инженерия, обслуживание и ритуальная техника.', 'Трофеи, охота и прогрессия на сервере.', 'Магия и тёмные ритуалы на сервере.']
             },
             fr: {
                 heading: 'Bibliothèque wiki', open: 'Ouvrir le wiki', topics: 'Thèmes du wiki',
                 categories: ['Tout', 'Bases', 'Outils'],
-                labels: ['CustomModelData', 'Structure du resource pack', 'Générateur de resource packs', 'Éditeur de skins', 'Éditeur de textures', 'Générateur de sphères', 'Potions personnalisées', 'Échanges de villageois', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Confidentialité'],
-                descriptions: ['Remplacer le modèle d’un objet vanilla.', 'Organiser les textures, modèles et fichiers.', 'Créer un pack, des textures au fichier ZIP.', 'Peindre sur l’atlas et le modèle 3D.', 'Choisir un canevas et créer des textures pixel.', 'Construire sphères, dômes et cercles par couches.', 'Régler les effets, couleurs et commandes.', 'Définir les prix, récompenses et limites.', 'Ingénierie, entretien et machines rituelles.', 'Trophées, chasse et progression du serveur.', 'Magie et rituels sombres sur le serveur.', 'Le traitement des données et des cookies.']
+                labels: ['CustomModelData', 'Structure du resource pack', 'Générateur de resource packs', 'Éditeur de skins', 'Éditeur de textures', 'Générateur de sphères', 'Potions personnalisées', 'Échanges de villageois', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin'],
+                descriptions: ['Remplacer le modèle d’un objet vanilla.', 'Organiser les textures, modèles et fichiers.', 'Créer un pack, des textures au fichier ZIP.', 'Peindre sur l’atlas et le modèle 3D.', 'Choisir un canevas et créer des textures pixel.', 'Construire sphères, dômes et cercles par couches.', 'Régler les effets, couleurs et commandes.', 'Définir les prix, récompenses et limites.', 'Ingénierie, entretien et machines rituelles.', 'Trophées, chasse et progression du serveur.', 'Magie et rituels sombres sur le serveur.']
             },
             de: {
                 heading: 'Wiki-Bibliothek', open: 'Wiki öffnen', topics: 'Wiki-Themen',
                 categories: ['Alle', 'Grundlagen', 'Werkzeuge'],
-                labels: ['CustomModelData', 'Resource-Pack-Struktur', 'Resource-Pack-Generator', 'Skin-Editor', 'Textur-Editor', 'Kugel-Generator', 'Eigene Tränke', 'Dorfbewohner-Handel', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin', 'Datenschutz'],
-                descriptions: ['Ein Vanilla-Item mit einem eigenen Modell versehen.', 'Texturen, Modelle und Dateien richtig ablegen.', 'Ein Pack von den Texturen bis zur ZIP erstellen.', 'Auf dem Atlas und dem 3D-Spielermodell malen.', 'Eine Leinwand wählen und Pixeltexturen zeichnen.', 'Kugeln, Kuppeln und Kreise schichtweise bauen.', 'Effekte, Farben und Trankbefehle einstellen.', 'Preise, Belohnungen und Handelslimits festlegen.', 'Ingenieurwesen, Wartung und Ritualmaschinen.', 'Trophäen, Jagd und Fortschritt auf dem Server.', 'Magie und dunkle Rituale auf dem Server.', 'Wie die Website Daten und Cookies verarbeitet.']
+                labels: ['CustomModelData', 'Resource-Pack-Struktur', 'Resource-Pack-Generator', 'Skin-Editor', 'Textur-Editor', 'Kugel-Generator', 'Eigene Tränke', 'Dorfbewohner-Handel', 'Mechanism Plugin', 'HeadHunter Plugin', 'DarkMage Plugin'],
+                descriptions: ['Ein Vanilla-Item mit einem eigenen Modell versehen.', 'Texturen, Modelle und Dateien richtig ablegen.', 'Ein Pack von den Texturen bis zur ZIP erstellen.', 'Auf dem Atlas und dem 3D-Spielermodell malen.', 'Eine Leinwand wählen und Pixeltexturen zeichnen.', 'Kugeln, Kuppeln und Kreise schichtweise bauen.', 'Effekte, Farben und Trankbefehle einstellen.', 'Preise, Belohnungen und Handelslimits festlegen.', 'Ingenieurwesen, Wartung und Ritualmaschinen.', 'Trophäen, Jagd und Fortschritt auf dem Server.', 'Magie und dunkle Rituale auf dem Server.']
             }
         }[locale];
         const paths = [
             '/wiki-custom-model-data/', '/wiki-resource-pack-structure/',
             '/wiki-resource-pack-generator/', '/wiki-skin-editor/', '/wiki-texture-painter/',
             '/wiki-sphere-generator/', '/wiki-custom-potions/', '/wiki-custom-villager-trades/',
-            '/wiki-mechanism-plugin/', '/wiki-headhunter-plugin/', '/wiki-darkmage-plugin/', '/privacy-policy/'
+            '/wiki-mechanism-plugin/', '/wiki-headhunter-plugin/', '/wiki-darkmage-plugin/'
         ];
         const links = new Map(paths.map((path, index) => [withPrefix(path), {
             label: copy.labels[index], description: copy.descriptions[index],
-            category: index < 2 || index === 11 ? 'basics' : index >= 8 ? 'servers' : 'tools'
+            category: index < 2 ? 'basics' : index >= 8 ? 'servers' : 'tools'
         }]));
         // New release metadata automatically appears on every page, in the right locale.
         tools.forEach(tool => {
@@ -643,14 +643,14 @@
                               "toolLabel": "Katalog für Custom-Items",
                               "guideLabel": "Anleitung zum Item-Katalog",
                               "featureTitle": "Custom-Item-Katalog",
-                              "featureDesc": "Verwaltet IDs, Basisitems, visuelle Hooks und Notizen für eure Item-Bibliothek.",
+                              "featureDesc": "Verwaltet IDs, Basisitems, visuelle Hooks und Notizen für deine Item-Bibliothek.",
                               "catalogTitle": "Katalog für Custom-Items",
                               "catalogDesc": "Pflege lokal versteckte IDs, Basisitems, item_model-Hooks, Notizen und Dublettenprüfungen.",
                               "catalogAction": "Katalog öffnen",
                               "catalogStatus": "neu",
                               "wikiKicker": "Workflow-Anleitung",
                               "wikiTitle": "Katalog für Custom-Items",
-                              "wikiDesc": "Wie ihr IDs, Anzeigenamen, Basisitems und Pack-Hooks lesbar haltet, sobald euer Server mehr als ein paar Sonderitems hat.",
+                              "wikiDesc": "Wie du IDs, Anzeigenamen, Basisitems und Pack-Hooks lesbar hältst, sobald dein Server mehr als ein paar Sonderitems hat.",
                               "wikiAction": "Anleitung lesen",
                               "articleLabel": "Benennungsleitfaden",
                               "articleDesc": "Custom-Item-IDs lesbar und eindeutig benennen.",
@@ -720,7 +720,7 @@
                               "catalogStatus": "neu",
                               "wikiKicker": "Planungs-Anleitung",
                               "wikiTitle": "Kreis- und Kuppelplaner",
-                              "wikiDesc": "Wie ihr zuerst die Grundfläche festlegt, Ringstärke bewusst einsetzt und von einem 2D-Plan zu einem Kuppelprofil wechselt.",
+                              "wikiDesc": "Wie du zuerst die Grundfläche festlegst, die Ringstärke bewusst wählst und vom 2D-Plan zum Kuppelprofil wechselst.",
                               "wikiAction": "Anleitung lesen",
                               "articleLabel": "Artikel zur Formwahl",
                               "articleDesc": "Kreis, Ring, Bogen, Kuppel oder volle Sphäre?",
@@ -741,6 +741,8 @@
                               "wikiTitle": "Book & letter builder",
                               "wikiDesc": "Build written books, letters, notes, contracts, and readable page layouts for Minecraft with modern and legacy give commands.",
                               "wikiAction": "Read guide",
+                              "articleLabel": "Readable books article",
+                              "articleDesc": "One beat per page, quest props, signed and unsigned books.",
                               "sidebarLabel": "Book & letter builder"
                     },
                     "ru": {
@@ -756,6 +758,8 @@
                               "wikiTitle": "Конструктор книг и писем",
                               "wikiDesc": "Собирайте written books, письма, записки, контракты и команды выдачи книг для новых и старых версий Minecraft.",
                               "wikiAction": "Читать гайд",
+                              "articleLabel": "Статья о читаемых книгах",
+                              "articleDesc": "Один такт на страницу, квестовый реквизит, подписанные и неподписанные книги.",
                               "sidebarLabel": "Конструктор книг и писем"
                     },
                     "fr": {
@@ -771,6 +775,8 @@
                               "wikiTitle": "Constructeur de livres et lettres",
                               "wikiDesc": "Créez des livres écrits, lettres, contrats et commandes /give pour les versions modernes et anciennes de Minecraft.",
                               "wikiAction": "Lire le guide",
+                              "articleLabel": "Article sur les livres lisibles",
+                              "articleDesc": "Un temps fort par page, accessoires de quête, livres signés ou non.",
                               "sidebarLabel": "Constructeur de livres et lettres"
                     },
                     "de": {
@@ -786,6 +792,8 @@
                               "wikiTitle": "Buch- und Brief-Builder",
                               "wikiDesc": "Erstelle geschriebene Bücher, Briefe, Verträge und /give-Befehle für moderne und ältere Minecraft-Versionen.",
                               "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Artikel zu lesbaren Büchern",
+                              "articleDesc": "Ein Takt pro Seite, Quest-Requisiten, signierte und unsignierte Bücher.",
                               "sidebarLabel": "Buch- und Brief-Builder"
                     }
           },
@@ -803,6 +811,8 @@
                               "wikiTitle": "Dialogue builder",
                               "wikiDesc": "Build tellraw lines, titles, subtitles, and actionbars for Minecraft scenes without losing readability or pacing.",
                               "wikiAction": "Read guide",
+                              "articleLabel": "Readable dialogue article",
+                              "articleDesc": "Pacing lines and choosing the channel during live play.",
                               "sidebarLabel": "Dialogue builder"
                     },
                     "ru": {
@@ -818,6 +828,8 @@
                               "wikiTitle": "Конструктор диалогов",
                               "wikiDesc": "Собирайте tellraw-реплики, title, subtitle и actionbar для сцен Minecraft без потери читаемости и ритма.",
                               "wikiAction": "Читать гайд",
+                              "articleLabel": "Статья о читаемых диалогах",
+                              "articleDesc": "Ритм реплик и выбор канала прямо во время игры.",
                               "sidebarLabel": "Конструктор диалогов"
                     },
                     "fr": {
@@ -833,6 +845,8 @@
                               "wikiTitle": "Constructeur de dialogues",
                               "wikiDesc": "Créez des répliques tellraw, des titles, des subtitles et des actionbars pour vos scènes Minecraft sans perdre en lisibilité ni en rythme.",
                               "wikiAction": "Lire le guide",
+                              "articleLabel": "Article sur les dialogues lisibles",
+                              "articleDesc": "Rythmer les répliques et choisir le canal en jeu.",
                               "sidebarLabel": "Constructeur de dialogues"
                     },
                     "de": {
@@ -848,6 +862,8 @@
                               "wikiTitle": "Dialog-Builder",
                               "wikiDesc": "Erstelle Tellraw-Zeilen, Titles, Subtitles und Actionbars für Minecraft-Szenen, ohne Lesbarkeit und Takt zu verlieren.",
                               "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Artikel zu lesbaren Dialogen",
+                              "articleDesc": "Zeilen takten und den Kanal im laufenden Spiel wählen.",
                               "sidebarLabel": "Dialog-Builder"
                     }
           },
@@ -863,8 +879,10 @@
                               "catalogStatus": "new",
                               "wikiKicker": "Builder guide",
                               "wikiTitle": "Bossbar builder",
-                              "wikiDesc": "A practical guide to bossbar command structure, progress values, colors, and readable event pacing.",
+                              "wikiDesc": "What each of the seven /bossbar commands does, colors and styles, and how to remove a bar cleanly.",
                               "wikiAction": "Read guide",
+                              "articleLabel": "Event UI and countdowns",
+                              "articleDesc": "When a bossbar beats chat, and a working countdown.",
                               "sidebarLabel": "Bossbar builder"
                     },
                     "ru": {
@@ -878,8 +896,10 @@
                               "catalogStatus": "новое",
                               "wikiKicker": "Гайд по конструктору",
                               "wikiTitle": "Генератор bossbar",
-                              "wikiDesc": "Практический гайд по командам bossbar, значениям прогресса, цветам и читаемому ритму событий.",
+                              "wikiDesc": "Что делает каждая из семи команд /bossbar, цвета и стили и как чисто убрать шкалу.",
                               "wikiAction": "Читать гайд",
+                              "articleLabel": "Боссбары для событий и таймеры",
+                              "articleDesc": "Когда шкала лучше чата, и рабочий обратный отсчёт.",
                               "sidebarLabel": "Генератор bossbar"
                     },
                     "fr": {
@@ -893,8 +913,10 @@
                               "catalogStatus": "nouveau",
                               "wikiKicker": "Guide builder",
                               "wikiTitle": "Générateur de bossbar",
-                              "wikiDesc": "Guide pratique sur les commandes bossbar, les valeurs de progression, les couleurs et le rythme lisible d’un événement.",
+                              "wikiDesc": "Ce que fait chacune des sept commandes /bossbar, couleurs et styles, et comment retirer une barre proprement.",
                               "wikiAction": "Lire le guide",
+                              "articleLabel": "Bossbars d’événement et comptes à rebours",
+                              "articleDesc": "Quand une barre vaut mieux que le chat, et un compte à rebours qui marche.",
                               "sidebarLabel": "Générateur de bossbar"
                     },
                     "de": {
@@ -908,8 +930,10 @@
                               "catalogStatus": "neu",
                               "wikiKicker": "Builder-Anleitung",
                               "wikiTitle": "Bossbar-Builder",
-                              "wikiDesc": "Praktischer Leitfaden zu Bossbar-Befehlen, Fortschrittswerten, Farben und lesbarem Event-Pacing.",
+                              "wikiDesc": "Was jeder der sieben /bossbar-Befehle tut, Farben und Stile und wie man eine Leiste sauber entfernt.",
                               "wikiAction": "Anleitung lesen",
+                              "articleLabel": "Event-Anzeigen und Countdowns",
+                              "articleDesc": "Wann eine Bossleiste den Chat schlägt, und ein funktionierender Countdown.",
                               "sidebarLabel": "Bossbar-Builder"
                     }
           },
@@ -1261,16 +1285,19 @@
           "bookLetterBuilder": {
                     "path": "/book-letter-builder/",
                     "guidePath": "/wiki-book-letter-builder/",
+                    "articlePath": "/wiki-readable-minecraft-books/",
                     "sectionId": "how-to-guides"
           },
           "dialogueBuilder": {
                     "path": "/dialogue-builder/",
                     "guidePath": "/wiki-dialogue-builder/",
+                    "articlePath": "/wiki-readable-minecraft-dialogue/",
                     "sectionId": "how-to-guides"
           },
           "bossbarBuilder": {
                     "path": "/bossbar-builder/",
                     "guidePath": "/wiki-bossbar-builder/",
+                    "articlePath": "/wiki-minecraft-bossbar-events/",
                     "sectionId": "how-to-guides"
           },
 "datapackGenerator": {
@@ -1454,35 +1481,34 @@
 
         const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
         if (wikiSidebarNav) {
+            // Links the static sidebar already has anywhere are skipped; the rest go into a group made on demand.
+            const inSidebar = (href) => wikiSidebarNav.querySelector(`a[href="${href}"], a[href$="${href}"]`);
             let group = wikiSidebarNav.querySelector('[data-generated-future-guides]');
-            if (!group) {
-                group = document.createElement('div');
-                group.className = 'wiki-sidebar-group';
-                group.setAttribute('data-generated-future-guides', 'true');
-                const heading = document.createElement('h2');
-                heading.textContent = locale === 'ru' ? 'Новые инструменты' : locale === 'fr' ? 'Nouveaux outils' : locale === 'de' ? 'Neue Werkzeuge' : 'New tools';
-                group.appendChild(heading);
-                wikiSidebarNav.appendChild(group);
-            }
-            tools.filter((tool) => tool.guideHref && tool.sidebarLabel).forEach((tool) => {
-                if (group.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
-                const link = document.createElement('a');
-                link.href = tool.guideHref;
-                link.textContent = tool.sidebarLabel;
-                group.appendChild(link);
-                if (tool.articleHref && tool.articleLabel && !group.querySelector(`a[href="${tool.articleHref}"], a[href$="${tool.articleHref}"]`)) {
-                    const articleLink = document.createElement('a');
-                    articleLink.href = tool.articleHref;
-                    articleLink.textContent = tool.articleLabel;
-                    group.appendChild(articleLink);
+            const addLink = (href, label) => {
+                if (!group) {
+                    group = document.createElement('div');
+                    group.className = 'wiki-sidebar-group';
+                    group.setAttribute('data-generated-future-guides', 'true');
+                    const heading = document.createElement('h2');
+                    heading.textContent = locale === 'ru' ? 'Новые инструменты' : locale === 'fr' ? 'Nouveaux outils' : locale === 'de' ? 'Neue Werkzeuge' : 'New tools';
+                    group.appendChild(heading);
+                    wikiSidebarNav.appendChild(group);
                 }
+                const link = document.createElement('a');
+                link.href = href;
+                link.textContent = label;
+                group.appendChild(link);
+            };
+            tools.filter((tool) => tool.guideHref && tool.sidebarLabel).forEach((tool) => {
+                if (!inSidebar(tool.guideHref)) addLink(tool.guideHref, tool.sidebarLabel);
+                if (tool.articleHref && tool.articleLabel && !inSidebar(tool.articleHref)) addLink(tool.articleHref, tool.articleLabel);
             });
         }
 
         tools.forEach((tool) => {
             if (!tool.guideHref || !tool.sectionId || !tool.wikiTitle) return;
             const grid = document.querySelector(`#${tool.sectionId} .resource-grid`);
-            if (!grid || grid.querySelector(`a[href="${tool.guideHref}"], a[href$="${tool.guideHref}"]`)) return;
+            if (!grid || document.querySelector(`main a[href="${tool.guideHref}"], main a[href$="${tool.guideHref}"]`)) return;
             const card = document.createElement('article');
             card.className = 'resource-card';
             card.innerHTML = `<p class="wiki-card-kicker">${tool.wikiKicker || ''}</p><h3>${tool.wikiTitle}</h3><p>${tool.wikiDesc || ''}</p><a class="resource-link" href="${tool.guideHref}">${tool.wikiAction || 'Read guide'}</a>`;
@@ -1620,7 +1646,8 @@
         });
 
         const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
-        if (wikiSidebarNav) {
+        const dialogueLinksMissing = wikiSidebarNav && [guideHref, articleHref].some((href) => !wikiSidebarNav.querySelector(`a[href="${href}"], a[href$="${href}"]`));
+        if (dialogueLinksMissing) {
             let group = wikiSidebarNav.querySelector('[data-generated-dialogue-guides]');
             if (!group) {
                 group = document.createElement('div');
@@ -1658,19 +1685,22 @@
                 toolLabel: 'Конструктор книг и писем',
                 guideLabel: 'Гайд по книгам и письмам',
                 featureTitle: 'Конструктор книг и писем',
-                featureDesc: 'Собирает письма, книги, контракты и команды выдачи по страницам.'
+                featureDesc: 'Собирает письма, книги, контракты и команды выдачи по страницам.',
+                articleLabel: 'Статья о читаемых книгах'
             },
             fr: {
                 toolLabel: 'Constructeur de livres et lettres',
                 guideLabel: 'Guide des livres et lettres',
                 featureTitle: 'Constructeur de livres et lettres',
-                featureDesc: 'Crée des livres, lettres, contrats et commandes /give page par page.'
+                featureDesc: 'Crée des livres, lettres, contrats et commandes /give page par page.',
+                articleLabel: 'Article sur les livres lisibles'
             },
             de: {
                 toolLabel: 'Buch- und Brief-Builder',
                 guideLabel: 'Buch- und Brief-Anleitung',
                 featureTitle: 'Buch- und Brief-Builder',
-                featureDesc: 'Erstellt Bücher, Briefe, Verträge und Give-Befehle Seite für Seite.'
+                featureDesc: 'Erstellt Bücher, Briefe, Verträge und Give-Befehle Seite für Seite.',
+                articleLabel: 'Artikel zu lesbaren Büchern'
             }
         };
         const copy = labels[locale] || labels.en;
@@ -1712,7 +1742,8 @@
         });
 
         const wikiSidebarNav = document.querySelector('.wiki-sidebar-nav');
-        if (wikiSidebarNav) {
+        const bookLinksMissing = wikiSidebarNav && [guideHref, articleHref].some((href) => !wikiSidebarNav.querySelector(`a[href="${href}"], a[href$="${href}"]`));
+        if (bookLinksMissing) {
             let group = wikiSidebarNav.querySelector('[data-generated-book-guides]');
             if (!group) {
                 group = document.createElement('div');

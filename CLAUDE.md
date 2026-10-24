@@ -75,7 +75,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 2. Guide: `wiki-<slug>/index.html` in all four locales.
 3. Menu entry and labels (all four locales). Drip release: a `TOOL_META.js` in the bundle. Direct commit: add to `meta` and `labels` in `assets/site.js`.
 4. Catalog card in `tools/index.html` × 4: pill `new` plus `data-released="YYYY-MM-DD"` (the site turns it into `ready` after 45 days).
-5. Guide card in `wiki/index.html` × 4, next to the neighbouring tool guides.
+5. Guide card in `wiki/index.html` × 4, next to the neighbouring tool guides, and its link in the same sidebar group.
 6. Homepage metric ("N Live browser tools") in `index.html` × 4, edited by hand. `tests/homepage-tool-count.test.cjs` fails, locally and in Checks, unless it equals the number of live tools.
 7. Form-based constructor: add the slug to the `constructorPath` list in `assets/site.js` and to `tests/constructor-nodes.browser.js`.
 8. Sitemap: do nothing and do not commit `sitemap.xml`. `sitemap-refresh.yml` regenerates it after any push that changes an `.html` file, and after every drip publish; `git pull --rebase` picks up the bot's commit.
@@ -85,7 +85,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 ## Add an article: file checklist
 
 1. `wiki-<slug>/index.html` × 4 locales, or a written decision to leave locales for later.
-2. A card in the right section of `wiki/index.html` × 4. Most non-tool articles are not in the Wiki dropdown, so the hub is how readers find them.
+2. A card in the right section of `wiki/index.html` × 4, plus its link in the matching sidebar group. Most non-tool articles are not in the Wiki dropdown, so the hub (and its search, which only sees hub cards) is how readers find them. Every indexable article is on the hub as of 2026-10-24; keep it that way.
 3. Links from related guides, then the sitemap as in tool step 8.
 4. No thin pages: AdSense review needs substance. Details: [RELEASE_ROADMAP.md](RELEASE_ROADMAP.md).
 

@@ -98,64 +98,361 @@
         <div class="language-switch" aria-label="Language"><a href="/ru/wiki/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki/">FR</a><a href="/de/wiki/">DE</a></div>
     </div>
 </div>
-<main class="page-shell">
+<main class="page-shell wiki-docs-shell">
     <section class="page-hero">
         <h1>Minecraft Resource Pack Wiki and Tool Guides</h1>
-        <p class="page-lead">Minecraft resource pack guides, CustomModelData explainers, and walkthroughs for the generator, skin editor, texture painter, potions, villager trade tools, and component-era item systems.</p>
+        <p class="page-lead">Guides to every tool on the site, plus articles on resource packs, item commands, data packs and running events on a roleplay server.</p>
     </section>
-    <section class="page-section" id="general-wiki">
-        <h2 class="section-title">General Articles</h2>
-        <div class="resource-grid">
-            <article class="resource-card"><h3>What is CustomModelData and how does it work?</h3><p>How one vanilla item can become a katana, mug, chainsaw, or any other model without mods.</p><a class="resource-link" href="/wiki-custom-model-data/">Read article</a></article>
-            <article class="resource-card"><h3>Resource pack structure</h3><p>A quick reference for <code>textures</code>, <code>models</code>, <code>blockstates</code>, and common file names.</p><a class="resource-link" href="#resource-pack-paths">Open reference</a></article>
-            <article class="resource-card"><h3>Unique RP items with string IDs</h3><p>Why a giant list of numbered CustomModelData values breaks down, and how a readable string ID in custom_data fixes it without giving up the model hook.</p><a class="resource-link" href="/wiki-string-ids-custom-model-data/">Read article</a></article>
-            <article class="resource-card"><h3>How to name custom items without duplicates</h3><p>A category + family + variant pattern for internal IDs, visible names, and visual hooks that survives a server growing past a handful of items.</p><a class="resource-link" href="/wiki-custom-item-id-naming/">Read article</a></article>
+
+    <section class="wiki-layout">
+        <aside class="wiki-sidebar">
+            <div class="wiki-sidebar-card">
+                <p class="wiki-sidebar-eyebrow">Library</p>
+                <div class="wiki-sidebar-nav">
+                    <div class="wiki-sidebar-group">
+                        <h2>Start here</h2>
+                        <a href="/wiki-custom-model-data/">What is CustomModelData and how does it work?</a>
+                        <a href="/wiki-resource-pack-structure/">Resource pack structure</a>
+                        <a href="/wiki-string-ids-custom-model-data/">Unique RP items with string IDs</a>
+                        <a href="/wiki-custom-item-id-naming/">How to name custom items without duplicates</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Packs, textures and round builds</h2>
+                        <a href="/wiki-resource-pack-generator/">How to Use the Minecraft Resource Pack Generator</a>
+                        <a href="/wiki-skin-editor/">Skin editor</a>
+                        <a href="/wiki-texture-painter/">Texture painter</a>
+                        <a href="/wiki-sulfur-cube-texture/">How the Sulfur Cube's texture works</a>
+                        <a href="/wiki-sphere-generator/">Sphere generator</a>
+                        <a href="/wiki-circle-dome-planner/">Circle & dome planner</a>
+                        <a href="/wiki-round-build-shape-choice/">Circle, ring, arch, dome or sphere?</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Custom items, potions and trades</h2>
+                        <a href="/wiki-custom-potions/">Custom potions</a>
+                        <a href="/wiki-custom-villager-trades/">Custom villager trades</a>
+                        <a href="/wiki-item-model-builder/">Item model builder</a>
+                        <a href="/wiki-item-model-branch-choices/">select, range_dispatch or condition?</a>
+                        <a href="/wiki-custom-item-catalog/">Custom item catalog</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Books, dialogue and event UI</h2>
+                        <a href="/wiki-book-letter-builder/">Book & letter builder</a>
+                        <a href="/wiki-readable-minecraft-books/">Books players actually read</a>
+                        <a href="/wiki-dialogue-builder/">Dialogue builder</a>
+                        <a href="/wiki-readable-minecraft-dialogue/">Dialogue players actually read</a>
+                        <a href="/wiki-minecraft-server-announcements/">Readable server announcements</a>
+                        <a href="/wiki-bossbar-builder/">Bossbar builder</a>
+                        <a href="/wiki-minecraft-bossbar-events/">Bossbars for events and countdowns</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Item commands and components</h2>
+                        <a href="/wiki-components-vs-nbt/">Components instead of NBT</a>
+                        <a href="/wiki-give-command-not-working/">Why your /give command fails</a>
+                        <a href="/wiki-custom-item-no-json/">Custom items without writing JSON</a>
+                        <a href="/wiki-blockbench-custom-model/">From a Blockbench model to an item</a>
+                        <a href="/wiki-custom-weapon/">Custom weapons with their own stats</a>
+                        <a href="/wiki-data-components-architecture/">Data Components architecture</a>
+                        <a href="/wiki-resource-pack-migration-1-21-4/">Migrating packs to 1.21.4</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Data packs, loot and progression</h2>
+                        <a href="/wiki-datapack-generator/">Data packs vs commands</a>
+                        <a href="/wiki-loot-table-generator/">How loot tables roll</a>
+                        <a href="/wiki-recipe-generator/">Why a recipe does not show up</a>
+                        <a href="/wiki-advancement-builder/">Advancements as a quest system</a>
+                        <a href="/wiki-enchantment-randomizer/">How to randomize Minecraft enchantments & attributes</a>
+                        <a href="/wiki-enchantment-conflicts/">Which enchantments can't combine, and why</a>
+                        <a href="/wiki-rp-economy-custom-data/">RP economy with custom_data</a>
+                        <a href="/wiki-rp-progression-systems/">RP progression on a Paper server</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Our plugins and mods</h2>
+                        <a href="/wiki-mechanism-plugin/">Mechanism Plugin</a>
+                        <a href="/wiki-darkmage-plugin/">DarkMage Plugin</a>
+                        <a href="/wiki-headhunter-plugin/">HeadHunter Plugin</a>
+                        <a href="/wiki-armorhide-mod/">ArmorHide mod</a>
+                        <a href="/wiki-chest-helper-mod/">Chest Helper mod</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="wiki-main">
+            <section class="page-section" id="general-wiki">
+                <h2 class="section-title">Start here</h2>
+                <p class="section-intro">What CustomModelData does, where files go inside a pack, and how to name custom items so a growing server keeps track of them.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>What is CustomModelData and how does it work?</h3>
+                        <p>How one vanilla item can become a katana, mug, chainsaw, or any other model without mods.</p>
+                        <a class="resource-link" href="/wiki-custom-model-data/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Resource pack structure</h3>
+                        <p>Where textures, models, blockstates, armor layers and item definitions belong in a modern pack.</p>
+                        <a class="resource-link" href="/wiki-resource-pack-structure/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Unique RP items with string IDs</h3>
+                        <p>Why a giant list of numbered CustomModelData values breaks down, and how a readable string ID in custom_data fixes it without giving up the model hook.</p>
+                        <a class="resource-link" href="/wiki-string-ids-custom-model-data/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>How to name custom items without duplicates</h3>
+                        <p>A category + family + variant pattern for internal IDs, visible names, and visual hooks that survives a server growing past a handful of items.</p>
+                        <a class="resource-link" href="/wiki-custom-item-id-naming/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="resource-pack-generator-wiki">
+                <h2 class="section-title">Packs, textures and round builds</h2>
+                <p class="section-intro">The resource pack generator, the skin and texture editors, and the planners for spheres, circles and domes.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>How to Use the Minecraft Resource Pack Generator</h3>
+                        <p>A step-by-step guide: choose a version, add items, blocks and armor, upload textures, preview the result, and download the ZIP.</p>
+                        <a class="resource-link" href="/wiki-resource-pack-generator/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Skin editor</h3>
+                        <p>How the classic 64x64 layout works, what the overlay layer is for, and why painting directly on the model helps with sleeves, hats, and boots.</p>
+                        <a class="resource-link" href="/wiki-skin-editor/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Texture painter</h3>
+                        <p>How texture size changes detail, workload, and readability, and how to move exported PNGs into the resource-pack generator.</p>
+                        <a class="resource-link" href="/wiki-texture-painter/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>How the Sulfur Cube's texture works</h3>
+                        <p>What we found inside the real Minecraft 26.x client jar: two texture layers, no editable model, and how to paint a replacement skin.</p>
+                        <a class="resource-link" href="/wiki-sulfur-cube-texture/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Sphere generator</h3>
+                        <p>Choosing between circles, domes, hollow shells and solid spheres, and building them layer by layer.</p>
+                        <a class="resource-link" href="/wiki-sphere-generator/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Circle & dome planner</h3>
+                        <p>How to lock the footprint first, use ring thickness on purpose, and move from a 2D plan to a dome profile without guessing.</p>
+                        <a class="resource-link" href="/wiki-circle-dome-planner/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Circle, ring, arch, dome or sphere?</h3>
+                        <p>How to tell which part of a build is really round, pick the lighter planner, size the radius and test the outline in game.</p>
+                        <a class="resource-link" href="/wiki-round-build-shape-choice/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="other-tools-wiki">
+                <h2 class="section-title">Custom items, potions and trades</h2>
+                <p class="section-intro">Potion and villager trade commands, item model definitions, and a catalog that keeps a growing item list in order.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Custom potions</h3>
+                        <p>How to build a potion with potion contents, custom effects, bottle color, lore, CustomModelData, and a give command for the right Minecraft version.</p>
+                        <a class="resource-link" href="/wiki-custom-potions/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Custom villager trades</h3>
+                        <p>How Offers, Recipes, prices, rewards, limits, CustomModelData, and summon commands work.</p>
+                        <a class="resource-link" href="/wiki-custom-villager-trades/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Item model builder</h3>
+                        <p>When to use model, select, range_dispatch or condition, and how to place the definition in the items folder cleanly.</p>
+                        <a class="resource-link" href="/wiki-item-model-builder/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>select, range_dispatch or condition?</h3>
+                        <p>Choosing the branch type of an item definition: named states, numeric thresholds or yes/no conditions, with three worked examples.</p>
+                        <a class="resource-link" href="/wiki-item-model-branch-choices/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Custom item catalog</h3>
+                        <p>How to keep IDs, display names, base items and pack hooks readable once a server ships more than ten custom items.</p>
+                        <a class="resource-link" href="/wiki-custom-item-catalog/">Read guide</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="how-to-guides">
+                <h2 class="section-title">Books, dialogue and event UI</h2>
+                <p class="section-intro">Written books and letters, chat and title messages, and bossbars for state every player shares.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Book & letter builder</h3>
+                        <p>Written books, letters, notes and contracts built page by page, with the give command for the version you play.</p>
+                        <a class="resource-link" href="/wiki-book-letter-builder/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Books players actually read</h3>
+                        <p>One beat per page, choosing the object before the first sentence, quest props from contracts to clues, and what signing a book changes.</p>
+                        <a class="resource-link" href="/wiki-readable-minecraft-books/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Dialogue builder</h3>
+                        <p>tellraw lines, titles, subtitles and action bar beats for Minecraft scenes, and when each channel fits.</p>
+                        <a class="resource-link" href="/wiki-dialogue-builder/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Dialogue players actually read</h3>
+                        <p>Pacing lines during live play, choosing the channel, and keeping scene text readable in a busy chat.</p>
+                        <a class="resource-link" href="/wiki-readable-minecraft-dialogue/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Readable server announcements</h3>
+                        <p>tellraw, title, subtitle and action bar announcements that players can still read in the middle of an event.</p>
+                        <a class="resource-link" href="/wiki-minecraft-server-announcements/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Bossbar builder</h3>
+                        <p>What each of the seven /bossbar commands does, colors and styles, where to run them, and how to remove a bar cleanly.</p>
+                        <a class="resource-link" href="/wiki-bossbar-builder/">Read guide</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Bossbars for events and countdowns</h3>
+                        <p>When a bar beats chat and titles, four patterns for RP events, and a countdown for command blocks or a data pack.</p>
+                        <a class="resource-link" href="/wiki-minecraft-bossbar-events/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="item-commands">
+                <h2 class="section-title">Item commands and components</h2>
+                <p class="section-intro">How /give changed with data components in 1.20.5 and again in 1.21.4, why old commands break, and custom items without hand-written JSON.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Components instead of NBT</h3>
+                        <p>What changed in item commands in 1.20.5, an old command next to its component version, and what breaks first on a live server.</p>
+                        <a class="resource-link" href="/wiki-components-vs-nbt/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Why your /give command fails</h3>
+                        <p>Checking the target version first, the errors that break /give most often, and how to read the red error text.</p>
+                        <a class="resource-link" href="/wiki-give-command-not-working/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Custom items without writing JSON</h3>
+                        <p>What a custom item needs in 1.20.5 and newer, building one step by step, and how the item connects to the resource pack.</p>
+                        <a class="resource-link" href="/wiki-custom-item-no-json/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>From a Blockbench model to an item</h3>
+                        <p>The four parts of a custom model pipeline, where the model lives in the pack, and how the item points to it.</p>
+                        <a class="resource-link" href="/wiki-blockbench-custom-model/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Custom weapons with their own stats</h3>
+                        <p>Choosing the weapon role and base item first, then attack damage, attack speed and a visual that makes it readable.</p>
+                        <a class="resource-link" href="/wiki-custom-weapon/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Data Components architecture</h3>
+                        <p>A deep explanation of how Mojang split visible text, hidden state, and model identity into explicit components.</p>
+                        <a class="resource-link" href="/wiki-data-components-architecture/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Migrating packs to 1.21.4</h3>
+                        <p>A practical checklist for moving old NBT-heavy pack workflows into the modern component format.</p>
+                        <a class="resource-link" href="/wiki-resource-pack-migration-1-21-4/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="advanced-rp-guides">
+                <h2 class="section-title">Data packs, loot and progression</h2>
+                <p class="section-intro">Loot tables, recipes, advancements and enchantments as data pack files, plus economy and progression design for RP servers.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Data packs vs commands</h3>
+                        <p>Why loot tables and recipes cannot be made with a command, and the 1.21 folder rename that silently stops packs from doing anything.</p>
+                        <a class="resource-link" href="/wiki-datapack-generator/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>How loot tables roll</h3>
+                        <p>Pools, rolls and number providers, and why weight of 10 is not a 10% chance &mdash; the reason most "broken" tables are actually just mispriced.</p>
+                        <a class="resource-link" href="/wiki-loot-table-generator/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Why a recipe does not show up</h3>
+                        <p>Pattern padding, item tags as ingredients, and the two JSON format changes that make a copied example fail for no visible reason.</p>
+                        <a class="resource-link" href="/wiki-recipe-generator/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Advancements as a quest system</h3>
+                        <p>Why the trigger that never fires is the backbone of custom quests, and the reward that finally puts a recipe in the recipe book.</p>
+                        <a class="resource-link" href="/wiki-advancement-builder/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>How to randomize Minecraft enchantments & attributes</h3>
+                        <p>Basic vs advanced randomization, and /give vs a loot table entry with the ranges baked in as number providers.</p>
+                        <a class="resource-link" href="/wiki-enchantment-randomizer/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Which enchantments can't combine, and why</h3>
+                        <p>Every vanilla incompatibility group, treasure-only enchantments, and why level caps are a command-side choice, not a wall.</p>
+                        <a class="resource-link" href="/wiki-enchantment-conflicts/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>RP economy with custom_data</h3>
+                        <p>How to stop forged notes, passes, and tokens from slipping into your villager economy.</p>
+                        <a class="resource-link" href="/wiki-rp-economy-custom-data/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>RP progression on a Paper server</h3>
+                        <p>Artifacts, upkeep loops, class branches, restrictions and admin controls for progression without client mods.</p>
+                        <a class="resource-link" href="/wiki-rp-progression-systems/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="rp-server-plugins-wiki">
+                <h2 class="section-title">Our plugins and mods</h2>
+                <p class="section-intro">Built for the Cube in Square server. ArmorHide and Chest Helper are public on Modrinth, DarkMage and Mechanism are available on our Patreon, and HeadHunter runs only on our server.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <h3>Mechanism Plugin</h3>
+                        <p>A machine-body RP system with Gear Heart transformation, oxidation upkeep, copper metabolism, jetpacks, lasers, storm charge, and admin tuning.</p>
+                        <a class="resource-link" href="/wiki-mechanism-plugin/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>DarkMage Plugin</h3>
+                        <p>Maximum health as the price of magic, blood bottles, curses, rituals and artifacts. Available on our Patreon.</p>
+                        <a class="resource-link" href="/wiki-darkmage-plugin/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>HeadHunter Plugin</h3>
+                        <p>A progression system built around Hunter's Fang upgrades and dozens of creature powers, with deliberate restrictions and death-loss balancing.</p>
+                        <a class="resource-link" href="/wiki-headhunter-plugin/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>ArmorHide mod</h3>
+                        <p>A client-side Fabric mod that hides or fades the armor on players, so skins and costumes stay visible in RP scenes. On Modrinth.</p>
+                        <a class="resource-link" href="/wiki-armorhide-mod/">Read article</a>
+                    </article>
+                    <article class="resource-card">
+                        <h3>Chest Helper mod</h3>
+                        <p>A client-side mod that remembers the containers you opened and turns them into a searchable item list. On Modrinth.</p>
+                        <a class="resource-link" href="/wiki-chest-helper-mod/">Read article</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="resource-pack-paths">
+                <h2 class="section-title">Path Reference</h2>
+                <table class="compact-table">
+                    <tr><th>Type</th><th>Pack path</th><th>Example name</th></tr>
+                    <tr><td>Item</td><td><code>assets/minecraft/textures/item</code></td><td><div class="copy-example"><code>diamond_sword.png</code><button class="copy-button" type="button" data-copy-text="diamond_sword.png" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
+                    <tr><td>Block</td><td><code>assets/minecraft/textures/block</code></td><td><div class="copy-example"><code>oak_planks.png</code><button class="copy-button" type="button" data-copy-text="oak_planks.png" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
+                    <tr><td>Item model</td><td><code>assets/minecraft/models/item</code></td><td><div class="copy-example"><code>custom_diamond_sword_1.json</code><button class="copy-button" type="button" data-copy-text="custom_diamond_sword_1.json" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
+                    <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
+                </table>
+            </section>
         </div>
-    </section>
-    <section class="page-section" id="resource-pack-generator-wiki">
-        <h2 class="section-title">Minecraft Resource Pack Generator</h2>
-        <div class="resource-grid"><article class="resource-card"><h3>How to Use the Minecraft Resource Pack Generator</h3><p>A step-by-step guide: choose a version, add items, blocks and armor, upload textures, preview the result, and download the ZIP.</p><a class="resource-link" href="/wiki-resource-pack-generator/">Read guide</a></article></div>
-    </section>
-    <section class="page-section" id="other-tools-wiki">
-        <h2 class="section-title">Other Tools</h2>
-        <div class="resource-grid">
-            <article class="resource-card"><h3>Skin editor</h3><p>How the classic 64x64 layout works, what the overlay layer is for, and why painting directly on the model helps with sleeves, hats, and boots.</p><a class="resource-link" href="/wiki-skin-editor/">Read article</a></article>
-            <article class="resource-card"><h3>Texture painter</h3><p>How texture size changes detail, workload, and readability, and how to move exported PNGs into the resource-pack generator.</p><a class="resource-link" href="/wiki-texture-painter/">Read article</a></article>
-            <article class="resource-card"><h3>How the Sulfur Cube's texture works</h3><p>What we found inside the real Minecraft 26.x client jar: two texture layers, no editable model, and how to paint a replacement skin.</p><a class="resource-link" href="/wiki-sulfur-cube-texture/">Read article</a></article>
-            <article class="resource-card"><h3>Custom potions</h3><p>How to build a potion with potion contents, custom effects, bottle color, lore, CustomModelData, and a give command for the right Minecraft version.</p><a class="resource-link" href="/wiki-custom-potions/">Read article</a></article>
-            <article class="resource-card"><h3>Custom villager trades</h3><p>How Offers, Recipes, prices, rewards, limits, CustomModelData, and summon commands work.</p><a class="resource-link" href="/wiki-custom-villager-trades/">Read article</a></article>
-        </div>
-    </section>
-    <section class="page-section" id="advanced-rp-guides">
-        <h2 class="section-title">Advanced RP and migration guides</h2>
-        <div class="resource-grid">
-            <article class="resource-card"><h3>RP economy with custom_data</h3><p>How to stop forged notes, passes, and tokens from slipping into your villager economy.</p><a class="resource-link" href="/wiki-rp-economy-custom-data/">Read article</a></article>
-            <article class="resource-card"><h3>Data packs vs commands</h3><p>Why loot tables and recipes cannot be made with a command, and the 1.21 folder rename that silently stops packs from doing anything.</p><a class="resource-link" href="/wiki-datapack-generator/">Read article</a></article>
-            <article class="resource-card"><h3>How loot tables roll</h3><p>Pools, rolls and number providers, and why weight of 10 is not a 10% chance &mdash; the reason most "broken" tables are actually just mispriced.</p><a class="resource-link" href="/wiki-loot-table-generator/">Read article</a></article>
-            <article class="resource-card"><h3>Why a recipe does not show up</h3><p>Pattern padding, item tags as ingredients, and the two JSON format changes that make a copied example fail for no visible reason.</p><a class="resource-link" href="/wiki-recipe-generator/">Read article</a></article>
-            <article class="resource-card"><h3>Advancements as a quest system</h3><p>Why the trigger that never fires is the backbone of custom quests, and the reward that finally puts a recipe in the recipe book.</p><a class="resource-link" href="/wiki-advancement-builder/">Read article</a></article>
-            <article class="resource-card"><h3>How to randomize Minecraft enchantments & attributes</h3><p>Basic vs advanced randomization, and /give vs a loot table entry with the ranges baked in as number providers.</p><a class="resource-link" href="/wiki-enchantment-randomizer/">Read article</a></article>
-            <article class="resource-card"><h3>Which enchantments can't combine, and why</h3><p>Every vanilla incompatibility group, treasure-only enchantments, and why level caps are a command-side choice, not a wall.</p><a class="resource-link" href="/wiki-enchantment-conflicts/">Read article</a></article>
-            <article class="resource-card"><h3>Migrating packs to 1.21.4</h3><p>A practical checklist for moving old NBT-heavy pack workflows into the modern component format.</p><a class="resource-link" href="/wiki-resource-pack-migration-1-21-4/">Read article</a></article>
-            <article class="resource-card"><h3>Data Components architecture</h3><p>A deep explanation of how Mojang split visible text, hidden state, and model identity into explicit components.</p><a class="resource-link" href="/wiki-data-components-architecture/">Read article</a></article>
-        </div>
-    </section>
-    <section class="page-section" id="rp-server-plugins-wiki">
-        <h2 class="section-title">RP Server Plugins</h2>
-        <div class="resource-grid">
-            <article class="resource-card"><h3>Mechanism Plugin</h3><p>A machine-body RP system with Gear Heart transformation, oxidation upkeep, copper metabolism, jetpacks, lasers, storm charge, and admin tuning.</p><a class="resource-link" href="/wiki-mechanism-plugin/">Read article</a></article>
-            <article class="resource-card"><h3>HeadHunter Plugin</h3><p>A progression system built around Hunter's Fang upgrades and dozens of creature powers, with deliberate restrictions and death-loss balancing.</p><a class="resource-link" href="/wiki-headhunter-plugin/">Read article</a></article>
-        </div>
-    </section>
-    <section class="page-section" id="resource-pack-paths">
-        <h2 class="section-title">Path Reference</h2>
-        <table class="compact-table">
-            <tr><th>Type</th><th>Pack path</th><th>Example name</th></tr>
-            <tr><td>Item</td><td><code>assets/minecraft/textures/item</code></td><td><div class="copy-example"><code>diamond_sword.png</code><button class="copy-button" type="button" data-copy-text="diamond_sword.png" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
-            <tr><td>Block</td><td><code>assets/minecraft/textures/block</code></td><td><div class="copy-example"><code>oak_planks.png</code><button class="copy-button" type="button" data-copy-text="oak_planks.png" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
-            <tr><td>Item model</td><td><code>assets/minecraft/models/item</code></td><td><div class="copy-example"><code>custom_diamond_sword_1.json</code><button class="copy-button" type="button" data-copy-text="custom_diamond_sword_1.json" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
-            <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Copy" data-copy-copied-label="Copied">Copy</button></div></td></tr>
-        </table>
     </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
