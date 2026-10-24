@@ -1924,6 +1924,8 @@
         .wiki-sidebar {
             position: sticky;
             top: 92px;
+            max-height: calc(100vh - 108px);
+            overflow-y: auto;
         }
 
         .wiki-sidebar-card {
@@ -2773,7 +2775,7 @@
              }
 
              .wiki-sidebar {
-                 position: static;
+                 display: none;
              }
 
              .article-layout {
