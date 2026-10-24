@@ -62,6 +62,21 @@ for shared in "assets/site.js" "sitemap.xml"; do
 done
 [[ "$shared_hits" -eq 0 ]] && ok "no shared files in payload"
 
+# --- payload must still be based on the live site ---------------------------
+# A payload file is a snapshot that overwrites the live file. The 2026-10-04
+# publish carried hub pages copied three weeks earlier and rolled back every
+# commit made to them since. BASE.txt records what the payload was copied from;
+# drip-check-base.sh refuses the bundle when the live files have moved on.
+
+base_out="$(bash .github/scripts/drip-check-base.sh "$BUNDLE" 2>&1)"
+base_status=$?
+printf '%s\n' "$base_out"
+warnings=$((warnings + $(printf '%s\n' "$base_out" | grep -c '^  \[WARN\]' || true)))
+if [[ "$base_status" -ne 0 ]]; then
+  errors=$((errors + $(printf '%s\n' "$base_out" | grep -c '^  \[FAIL\]' || true)))
+  [[ "$errors" -gt 0 ]] || errors=1
+fi
+
 # --- HTML sanity -----------------------------------------------------------
 
 html_files="$(find "$payload" -type f -name '*.html')"
@@ -77,6 +92,10 @@ if [[ "$html_count" -gt 0 ]]; then
     if grep -qi 'name="robots"[^>]*noindex' "$f" && ! grep -qi 'http-equiv="refresh"' "$f"; then
       fail "$rel is marked noindex but is not a redirect stub"
     fi
+
+    # drip-base.sh --update leaves these when the bundle's edit and a live
+    # change touch the same lines.
+    ! grep -q '^<<<<<<< ' "$f"              || fail "$rel has unresolved merge conflict markers"
 
     grep -qi '<title>' "$f"                 || fail "$rel has no <title>"
     grep -qi 'name="description"' "$f"      || fail "$rel has no meta description"
