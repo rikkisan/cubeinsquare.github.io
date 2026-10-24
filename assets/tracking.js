@@ -138,7 +138,7 @@
             settings: 'Paramètres des cookies'
         },
         de: {
-            message: 'Wir verwenden Cookies, um den Traffic zu analysieren und Werbung zu personalisieren. Sie können nicht notwendiges Tracking akzeptieren oder ablehnen.',
+            message: 'Wir verwenden Cookies, um den Traffic zu analysieren und Werbung zu personalisieren. Du kannst nicht notwendiges Tracking akzeptieren oder ablehnen.',
             accept: 'Akzeptieren',
             decline: 'Ablehnen',
             learnMore: 'Datenschutz',
