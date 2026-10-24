@@ -1,0 +1,51 @@
+name: Refresh Sitemap
+
+on:
+  push:
+    branches: [main]
+    # Only a page can change the sitemap. The bot's own commit touches
+    # sitemap.xml alone, so it can never match this filter, whatever token
+    # pushed it. Release payloads under .drip/ are not live pages.
+    paths:
+      - '**.html'
+      - '!.drip/**'
+  # A drip release is pushed with GITHUB_TOKEN, which starts no push workflows,
+  # and the publisher regenerates the sitemap before its commit exists, so the
+  # lastmod of every page it updated is one release behind. Catch up here.
+  workflow_run:
+    workflows: [Drip Publish]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Deliberately the same group as drip-publish.yml. Both commit to main and both
+# rewrite sitemap.xml, so one must never run while the other is mid-flight: the
+# drip publisher's retry is `git pull --rebase`, which would conflict on that
+# file. Runs queue; none is cancelled mid-run.
+concurrency:
+  group: drip-publish
+  cancel-in-progress: false
+
+jobs:
+  refresh-sitemap:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # Latest main, not the SHA that triggered us: this run may have waited
+          # behind a drip release in the shared concurrency group.
+          ref: main
+          # lastmod comes from `git log`; see checks.yml.
+          fetch-depth: 0
+
+      - name: Regenerate and commit sitemap.xml
+        shell: bash
+        run: bash .github/scripts/sitemap-refresh.sh
