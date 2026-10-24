@@ -185,8 +185,11 @@ if [[ "$DRY_RUN" != "0" ]]; then
   exit 0
 fi
 
-git config user.name "github-actions[bot]"
-git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+# Scoped to this commit only (via -c), never written to .git/config -- a
+# real (non-dry) run outside CI must not leave the bot identity behind for
+# whoever commits next in this clone.
+bot_identity=(-c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com")
+
 git add -A
 
 if git diff --cached --quiet; then
@@ -194,7 +197,7 @@ if git diff --cached --quiet; then
   exit 0
 fi
 
-git commit -m "$commit_title" -m "$commit_body"
+git "${bot_identity[@]}" commit -m "$commit_title" -m "$commit_body"
 
 # main may have moved while this job ran; rebase rather than fail the release.
 if ! git push; then
