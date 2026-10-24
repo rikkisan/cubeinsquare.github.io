@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Item Model Definitions in Minecraft 1.21.4: Using minecraft:select Instead of Overrides | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A deep guide to Minecraft 1.21.4 item model definitions: why old overrides break, how minecraft:select works, and how to think about model routing in the items folder.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-item-model-definitions/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-item-model-definitions/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-item-model-definitions/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Item Model Definitions in Minecraft 1.21.4: Using minecraft:select Instead of Overrides | Cube in Square">
+    <meta property="og:description" content="How Minecraft 1.21.4 replaces old item overrides with item model definitions, what minecraft:select actually does, and how to rebuild your item routing cleanly.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-item-model-definitions/">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Item Model Definitions in Minecraft 1.21.4: Using minecraft:select Instead of Overrides | Cube in Square">
+    <meta name="twitter:description" content="Why overrides stop being the center of the item pipeline in 1.21.4 and how to move into minecraft:select and item model definitions.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "alternateName": "Kub v kvadrate",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-item-model-definitions/#article",
+            "headline": "Item Model Definitions in Minecraft 1.21.4: Using minecraft:select Instead of Overrides",
+            "description": "A deep guide to item model definitions in Minecraft 1.21.4: why old overrides break, how minecraft:select works, and how to move your item routing into the items folder.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-item-model-definitions/#webpage"
+            },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-item-model-definitions/",
+            "image": [
+                "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
+            ],
+            "datePublished": "2026-04-28",
+            "dateModified": "2026-04-28"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-item-model-definitions/#webpage",
+            "url": "https://cubeinsquare.com/wiki-item-model-definitions/",
+            "name": "Item Model Definitions in Minecraft 1.21.4: Using minecraft:select Instead of Overrides",
+            "description": "A deep guide to item model definitions in Minecraft 1.21.4: why old overrides break, how minecraft:select works, and how to move your item routing into the items folder.",
+            "isPartOf": {
+                "@id": "https://cubeinsquare.com/#website"
+            },
+            "about": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "inLanguage": "en",
+            "mainEntity": {
+                "@id": "https://cubeinsquare.com/wiki-item-model-definitions/#article"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-item-model-definitions/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Item Model Definitions in Minecraft 1.21.4",
+                    "item": "https://cubeinsquare.com/wiki-item-model-definitions/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">EN</a></div>
+    </div>
+</div>
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Item Model Definitions in Minecraft 1.21.4: Using <code>minecraft:select</code> Instead of Overrides</h1>
+        <p class="page-lead">The move to Minecraft 1.21.4 breaks more than old file paths. It breaks the old habit of treating one item model JSON as both the art file and the routing brain. Item Model Definitions separate those jobs, and once you accept that split, the new system starts making sense.</p>
+        <a class="resource-link" href="/resource-pack-generator/">Open resource-pack generator</a>
+    </section>
+    <article>
+        <h2>Why old overrides stop feeling solid</h2>
+        <p>For years the usual pattern was simple: place a base model in <code>models/item</code>, attach an <code>overrides</code> array, and let predicates choose which alternative model should render. It was flexible enough to carry thousands of packs, but it also mixed two separate responsibilities inside one place. The file was both the object and the dispatcher.</p>
+        <p>That old pattern was convenient because it hid the complexity. You could think in one file, one list, one growing pile of branches. But as soon as the item ecosystem became richer, with component-based identity and more explicit rendering states, the old setup started feeling like a cramped storage room. Mojang's answer in 1.21.4 was not to make overrides slightly nicer. It was to pull the routing layer out and give it its own home.</p>
+
+        <h2>What Item Model Definitions actually are</h2>
+        <p>In 1.21.4, the game can read item model logic from <code>assets/&lt;namespace&gt;/items/</code>. That file no longer pretends to be just a raw model. It is a definition layer that describes how the game should choose between visual outcomes. The visual model still exists, but the selection logic is now a separate object instead of a side effect stuffed into <code>overrides</code>.</p>
+        <table class="compact-table">
+            <tr><th>Old 1.20 habit</th><th>1.21.4 model definition approach</th><th>What changed in practice</th></tr>
+            <tr><td>One JSON with <code>overrides</code></td><td>One item definition plus referenced raw models</td><td>The render choice and the art asset stop living in one pile.</td></tr>
+            <tr><td>Predicate checks in a flat array</td><td>Dispatcher types like <code>minecraft:select</code> or <code>minecraft:range_dispatch</code></td><td>The routing logic is named and explicit.</td></tr>
+            <tr><td>Numeric CustomModelData as the usual branch key</td><td>Structured component values, often strings or floats</td><td>The branch source can be more readable than a magic number.</td></tr>
+            <tr><td>Thinking “this model picks other models”</td><td>Thinking “this definition chooses which model to render”</td><td>The mental model becomes cleaner.</td></tr>
+        </table>
+
+        <h2>The old override pattern</h2>
+        <p>Here is the kind of model most creators already know. It is familiar for a reason: it used to be the normal way to route a vanilla item into custom art.</p>
+<pre><code>{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "minecraft:item/paper"
+  },
+  "overrides": [
+    {
+      "predicate": { "custom_model_data": 12 },
+      "model": "cubeinsquare:item/paper/archive_pass"
+    }
+  ]
+}</code></pre>
+        <p>This does two things at once. It tells the game what the base paper looks like, and it tells the game how to branch into another model. For small projects that was fine. For bigger systems it encouraged one long file with growing special cases and very little semantic clarity.</p>
+
+        <h2>The new definition pattern</h2>
+        <p>Now compare that with an Item Model Definition that uses <code>minecraft:select</code>. The new file says, more openly: the job here is to choose a rendering branch based on a known property.</p>
+<pre><code>{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "cases": [
+      {
+        "when": "archive_pass",
+        "model": {
+          "type": "minecraft:model",
+          "model": "cubeinsquare:item/paper/archive_pass"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "minecraft:item/paper"
+    }
+  }
+}</code></pre>
+
+        <h2>Line-by-line explanation of the new file</h2>
+        <p><code>"model"</code>: this is the root model definition object. It is not a raw art file. It is the top-level routing rule.</p>
+        <p><code>"type": "minecraft:select"</code>: this dispatcher chooses from discrete cases. Use it when an item should jump between named states such as <code>archive_pass</code>, <code>vault_receipt</code>, or <code>ritual_key</code>.</p>
+        <p><code>"property": "minecraft:custom_model_data"</code>: the branch source is the component itself, not the old predicate syntax.</p>
+        <p><code>"index": 0</code>: the definition is reading from a specific slot in the structured payload. That matters because modern <code>custom_model_data</code> can hold more than one flavor of value.</p>
+        <p><code>"cases"</code>: this is the list of explicit branches. Each one says what should happen when a particular state is present.</p>
+        <p><code>"when": "archive_pass"</code>: this is where the system gets friendlier to humans. A readable string tells you far more than an old integer like <code>12</code> ever could.</p>
+        <p><code>"type": "minecraft:model"</code>: this branch resolves to a normal raw model file. In other words, the final art asset still exists in the model layer you already understand.</p>
+        <p><code>"fallback"</code>: if nothing matches, the item still needs a stable base render. That fallback keeps test items and incomplete commands from becoming missing-model chaos.</p>
+
+        <h2>Why <code>minecraft:select</code> feels better for symbolic states</h2>
+        <p>The biggest strength of <code>minecraft:select</code> is that it matches the way many server creators already think. A permit is a permit. A ritual contract is a ritual contract. A guild seal is a guild seal. These are discrete identities, not gradual measurements. That means a select-style dispatcher is often a cleaner fit than a number-heavy override list.</p>
+        <p>On an RP server, that clarity matters twice. First, it helps the pack author remember what each branch is for. Second, it helps future maintenance when somebody else has to trace a broken item. “The archive_pass branch is wrong” is much kinder than “somewhere around CustomModelData 12 something weird is happening.”</p>
+
+        <h2>Where raw models still belong</h2>
+        <p>Item Model Definitions do not replace the craft of building models. They replace the place where you describe when a model should be shown. The raw geometry or generated model still lives in the model layer. The change is that the logic no longer has to masquerade as just another item model file.</p>
+        <p>That split is healthy because it gives you two clearer responsibilities:</p>
+        <ul>
+            <li>The definition decides which branch should render.</li>
+            <li>The raw model decides what that branch actually looks like.</li>
+        </ul>
+
+        <h2>When to use <code>minecraft:select</code> and when not to</h2>
+        <p>Use <code>minecraft:select</code> when the item moves between clearly named states: pass versus receipt, charged relic versus dormant relic, one faction seal versus another. Use it when the state is symbolic.</p>
+        <p>Do not force everything into <code>select</code> if the item changes along a measurable scale. If the appearance depends on durability, charge, or another numeric progression, that is usually the territory of <code>minecraft:range_dispatch</code>. The difference is simple: select is for named branches, range dispatch is for measured ranges.</p>
+
+        <h2>A useful mental split: symbolic versus continuous</h2>
+        <table class="compact-table">
+            <tr><th>Situation</th><th>Better fit</th><th>Reason</th></tr>
+            <tr><td>Guild pass, city permit, ritual seal</td><td><code>minecraft:select</code></td><td>The item is switching between named identities.</td></tr>
+            <tr><td>Battery charge, staff power, weapon wear</td><td><code>minecraft:range_dispatch</code></td><td>The item is moving along a scale, not flipping between symbolic roles.</td></tr>
+            <tr><td>Boolean on/off appearance</td><td><code>minecraft:condition</code> or select-like branching</td><td>The state is simple and explicit.</td></tr>
+        </table>
+
+        <h2>Typical migration mistakes</h2>
+        <ol>
+            <li><strong>Treating the new file as a renamed override list.</strong> It is better to think of it as a routing definition with explicit dispatcher types.</li>
+            <li><strong>Keeping unreadable number habits where strings would help.</strong> If the state is symbolic, a readable label is usually easier to maintain.</li>
+            <li><strong>Forgetting the fallback.</strong> Without a fallback, testing becomes harder and broken branches become less obvious.</li>
+            <li><strong>Mixing routing logic and server identity carelessly.</strong> Rendering state and hidden logic can relate to each other, but they are not automatically the same concern.</li>
+            <li><strong>Only converting the pack and not the commands.</strong> The visual routing and the item payload changed together. A half-migrated workflow still hurts.</li>
+        </ol>
+
+        <h2>What this means for a real workflow</h2>
+        <p>If you are building with the pack generator, the custom item builder, villager trades, and your own RP systems, the ideal flow becomes much cleaner than before:</p>
+        <ol>
+            <li>Decide the item's symbolic identity in a readable way.</li>
+            <li>Build the raw model and texture as art assets.</li>
+            <li>Use an Item Model Definition to route the identity to the correct model.</li>
+            <li>Keep hidden validation in <code>custom_data</code> or another explicit server-facing place.</li>
+            <li>Test the command and the render together.</li>
+        </ol>
+        <p>That is the real gift of the new system. It forces each layer to say what job it is doing.</p>
+
+        <h2>Practical conclusion</h2>
+        <p>Item Model Definitions are not just Mojang moving files around for fun. They are a structural answer to an old mess. The old override model let one file act as both art and routing. The new system separates those concerns and gives you named dispatcher types that better match the real shape of item logic.</p>
+        <p>If your item changes between symbolic states, <code>minecraft:select</code> is usually the right place to start. Once you make that mental shift, the rest of 1.21.4 begins to feel less like random breakage and more like a more legible rendering architecture.</p>
+
+        <h2>FAQ</h2>
+        <h3>Do raw item model files still exist in 1.21.4?</h3>
+        <p>Yes. The important change is that routing logic moves into Item Model Definitions under the <code>items</code> layer. Raw models still exist and still matter.</p>
+
+        <h3>Is <code>minecraft:select</code> a direct one-to-one replacement for overrides?</h3>
+        <p>Not exactly. It solves a similar routing problem, but it lives in a more explicit architecture and works better when you think in named states instead of a pile of old predicate branches.</p>
+
+        <h3>Should I always switch from numbers to strings?</h3>
+        <p>Not always. Numeric logic still makes sense for measured values. But if the item is really a named thing, like a pass or relic, readable symbolic states are often a better fit.</p>
+
+        <h3>When should I use <code>range_dispatch</code> instead?</h3>
+        <p>Use it when the item appearance should react to a continuous range such as charge, damage, or some other numeric progression rather than a discrete named identity.</p>
+
+        <h3>What usually breaks first during migration?</h3>
+        <p>Usually not the PNG itself. The first real failures tend to be command payloads, branch routing, and the assumptions old admin documentation still makes about where render logic lives.</p>
+    </article>
+</main>
+<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
