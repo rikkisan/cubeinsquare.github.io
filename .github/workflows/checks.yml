@@ -1,0 +1,68 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          # generate-sitemap.sh takes lastmod from `git log`; a shallow clone
+          # would stamp every page with the checkout commit's date.
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # Not `node --test tests/`: Node 24 treats that as a module path and
+      # fails with "Cannot find module". The glob also keeps out
+      # constructor-nodes.browser.js, a Playwright scenario, not a Node test.
+      # Every step below runs even if an earlier one failed, so one push
+      # reports all of its problems at once.
+      - name: Unit tests
+        run: node --test tests/*.test.cjs
+
+      - name: Syntax of assets/*.js
+        if: ${{ !cancelled() }}
+        run: |
+          status=0
+          for f in assets/*.js; do
+            node --check "$f" || status=1
+          done
+          exit "$status"
+
+      - name: Internal links, hreflang and page metadata
+        if: ${{ !cancelled() }}
+        run: node scripts/check-links.mjs
+
+      # lastmod is each page's last commit date, so a sitemap committed together
+      # with its pages is stale by construction. sitemap-refresh.yml repairs
+      # main after every push; failing here would turn every content push red
+      # until the bot catches up. So staleness is only a warning, except in a
+      # manual run, which is the hard check.
+      - name: Sitemap is current
+        if: ${{ !cancelled() }}
+        run: |
+          if ! bash scripts/generate-sitemap.sh --check; then
+            echo "::warning title=sitemap.xml is stale::sitemap-refresh.yml regenerates it once this lands on main."
+            if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+              exit 1
+            fi
+          fi
