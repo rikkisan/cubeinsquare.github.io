@@ -1732,22 +1732,6 @@
         function animate() {
             preAnimId = requestAnimationFrame(animate);
             preControls.update();
-            
-            if (preCurrentObj && preCurrentObj.userData.isItem) {
-                if (preCurrentObj.userData.view === 'first') {
-                    // Закрепляем предмет сбоку как в руках
-                    preCurrentObj.rotation.set(0, -Math.PI / 4, 0);
-                    preCurrentObj.position.set(0.6, -0.4, -1.2);
-                } else {
-                    preCurrentObj.rotation.y += 0.02; // вращение предмета
-                    preCurrentObj.position.set(0, Math.sin(Date.now() / 300) * 0.1, 0); // подпрыгивание
-                    preCurrentObj.rotation.x = 0;
-                    preCurrentObj.rotation.z = 0;
-                }
-            } else if (type === 'blocks') {
-                preCurrentObj.rotation.y += 0.005; // медленное вращение блока
-            }
-            
             preRenderer.render(preScene, preCamera);
         }
         animate();
@@ -1784,6 +1768,16 @@
         document.querySelectorAll('#cameraControls .slicer-btn').forEach(b => b.style.background = 'rgba(255, 255, 255, 0.1)');
         
         if (preCurrentObj) preCurrentObj.userData.view = view;
+        if (preCurrentObj && preCurrentObj.userData.isItem) {
+            if (view === 'first') {
+                // Закрепляем предмет сбоку как в руках
+                preCurrentObj.rotation.set(0, -Math.PI / 4, 0);
+                preCurrentObj.position.set(0.6, -0.4, -1.2);
+            } else {
+                preCurrentObj.rotation.set(0, 0, 0);
+                preCurrentObj.position.set(0, 0, 0);
+            }
+        }
         
         if (view === 'first') {
             const firstBtn = document.getElementById('btn_cam_first');

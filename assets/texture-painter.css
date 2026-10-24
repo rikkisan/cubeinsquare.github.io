@@ -1,13 +1,19 @@
+.page-shell[data-texture-painter] {
+    width: min(96vw, 1520px);
+    max-width: 1520px;
+}
+
 .texture-layout {
     display: grid;
-    grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
+    gap: 22px;
     align-items: start;
 }
 
 .texture-sidebar,
 .texture-workspace {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
     min-width: 0;
 }
@@ -29,6 +35,15 @@
     background-size: 22px 22px;
 }
 
+.texture-stage-inner {
+    width: max-content;
+    height: max-content;
+    min-width: 100%;
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+}
+
 .texture-panel-head {
     display: grid;
     gap: 12px;
@@ -42,7 +57,7 @@
 
 #textureEditorCanvas {
     display: block;
-    margin: 0 auto;
+    margin: 0;
     flex: 0 0 auto;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
