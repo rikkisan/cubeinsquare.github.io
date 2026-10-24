@@ -10,6 +10,8 @@
     { id: '26.3',   label: '26.3',            format: 121, singular: true },
     { id: '26.2',   label: '26.2',            format: 107, singular: true },
     { id: '26.1',   label: '26.1',            format: 101, singular: true },
+    { id: '1.21.11', label: '1.21.11',        format: 94, singular: true },
+    { id: '1.21.9', label: '1.21.9 - 1.21.10', format: 88, singular: true },
     { id: '1.21.7', label: '1.21.7 - 1.21.8', format: 81, singular: true },
     { id: '1.21.6', label: '1.21.6',          format: 80, singular: true },
     { id: '1.21.5', label: '1.21.5',          format: 71, singular: true },
@@ -56,7 +58,7 @@
   const t = T[LOCALE] || T.en;
 
   function currentVersion() {
-    return VERSIONS.find((v) => v.id === $('dp-version').value) || VERSIONS[3];
+    return VERSIONS.find((v) => v.id === $('dp-version').value) || VERSIONS.find((v) => v.id === '1.21.4');
   }
 
   // 1.21 (snapshot 24w21a) renamed every content directory to the singular:
@@ -85,6 +87,18 @@
     return String(value || 'pack').trim().replace(/[^a-zA-Z0-9а-яёА-ЯЁ _-]/g, '_').replace(/\s+/g, '_') || 'pack';
   }
 
+  // 1.21.9 (data pack format 88) replaced pack_format with required min_format and
+  // max_format. A single number in max_format accepts every minor version, so
+  // 26.1 (101.1) and 26.2 (107.1) are covered by 101 and 107.
+  function mcmetaFields(version, description) {
+    if (version.format >= 88) return { description, min_format: version.format, max_format: version.format };
+    return { pack_format: version.format, description };
+  }
+
+  function formatNote(version) {
+    return version.format >= 88 ? `min_format ${version.format}` : `pack_format ${version.format}`;
+  }
+
   function jsonFile(value) {
     return JSON.stringify(value, null, 2) + '\n';
   }
@@ -99,7 +113,7 @@
 
     files.push({
       path: 'pack.mcmeta',
-      content: jsonFile({ pack: { pack_format: version.format, description } })
+      content: jsonFile({ pack: mcmetaFields(version, description) })
     });
 
     const wantLoad = $('dp-load').checked;
@@ -205,7 +219,7 @@
     const { files, version } = buildFiles();
     const hasContent = files.length > 1;
 
-    $('dp-format-note').textContent = `pack_format ${version.format}`;
+    $('dp-format-note').textContent = formatNote(version);
     $('dp-tree').textContent = hasContent ? renderTree(files) : t.empty;
     $('dp-summary').textContent = hasContent ? t.ready(files.length) : t.empty;
     $('dp-mcmeta').value = files[0].content.trim();
