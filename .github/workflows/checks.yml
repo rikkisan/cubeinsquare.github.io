@@ -52,6 +52,28 @@ jobs:
         if: ${{ !cancelled() }}
         run: node scripts/check-links.mjs
 
+      # A payload file overwrites the live file on publish, so a hub copied
+      # into a bundle before someone else's commit silently rolls that commit
+      # back (the 2026-10-04 publish undid three fixes this way). Each bundle's
+      # BASE.txt records the live versions it was copied from. Checking every
+      # queued bundle on every push turns a stale copy into a red build on the
+      # push that caused it, not into a bad release on the Sunday it ships.
+      # Held and future-dated bundles are checked too: they go stale as well.
+      - name: Queued bundles are based on the live site
+        if: ${{ !cancelled() }}
+        run: |
+          status=0
+          shopt -s nullglob
+          bundles=(.drip/queue/*/)
+          if [ "${#bundles[@]}" -eq 0 ]; then
+            echo "No bundles are queued."
+          fi
+          for b in "${bundles[@]}"; do
+            echo "== ${b%/}"
+            bash .github/scripts/drip-check-base.sh "$b" || status=1
+          done
+          exit "$status"
+
       # lastmod is each page's last commit date, so a sitemap committed together
       # with its pages is stale by construction. sitemap-refresh.yml repairs
       # main after every push; failing here would turn every content push red
