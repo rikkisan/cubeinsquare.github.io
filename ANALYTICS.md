@@ -136,6 +136,12 @@ Unchanged and unpaired: `page_view`, `site_search`, `wiki_example_copy`, `cookie
 than export, `skin_editor_*` other than export. The old events have their own spellings (`version`, `syntax_version`);
 they were not renamed.
 
+Custom potions before 2026-10-24: the **Load example**, **+ Add effect** and **Reset** buttons ignored a click on their label
+(the delegated handler compared `event.target` with the button, and the label is a `<span>` inside it), so
+`potion_example_loaded`, `potion_effect_added` and `tool_example_load` for that tool under-count until that date. Delegated
+click handlers match with `event.target.closest(...)`, never `event.target === button`; `===` stays only for input events
+on the field itself and for deliberate "the empty canvas itself" checks in `constructor-nodes.js`.
+
 ## Custom dimensions in GA4
 
 **Done on 2026-10-24** (property `533247043`, via the Admin API): all 10 dimensions below plus `page_type` and
@@ -202,7 +208,4 @@ code does. This is one browser and one network; read 0/3 as "cannot be relied on
 ## Known gaps
 
 - `tool-coming-soon/` (four locales) and the `en/index.html` redirect stub load no analytics.
-- Custom potions: the **Load example**, **+ Add effect** and **Reset** buttons only react to a click on the button's edge. The
-  handler compares `event.target` with the button, and a click on the label lands on the `<span>` inside it. The old
-  `potion_example_loaded` / `potion_effect_added` and the new `tool_example_load` under-count because of it.
 - The custom-item catalog's JSON import and the basic/advanced switch of the enchantment randomizer have no event.

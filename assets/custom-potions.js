@@ -622,16 +622,19 @@
             }
             return;
         }
-        if (event.target === references.addEffectButton) {
+        // The labels sit in a <span> inside the button, so match the button the click landed in, not the raw target.
+        const button = event.target.closest('button');
+        if (!button) return;
+        if (button === references.addEffectButton) {
             createEffectCard({ id: 'strength', duration: 30, level: 1, particles: true, icon: true });
             trackEvent('potion_effect_added', {
                 effect_count: references.effectList.children.length
             });
         }
-        if (event.target === references.exampleButton) loadExample();
-        if (event.target === references.resetButton) resetTool();
-        if (event.target === references.copyButton) copyCommand();
-        if (event.target === commandBlockCopyButton) copyCommandBlockCommand();
+        if (button === references.exampleButton) loadExample();
+        if (button === references.resetButton) resetTool();
+        if (button === references.copyButton) copyCommand();
+        if (button === commandBlockCopyButton) copyCommandBlockCommand();
     });
 
     root.querySelector('#pp-add-effect-label').textContent = text.addEffect;
