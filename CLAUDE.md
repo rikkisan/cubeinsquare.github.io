@@ -42,7 +42,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
   rebuilds the Tools/Wiki dropdowns at runtime, ages out "new" badges, and loads the Beta node
   workspace. A syntax error breaks navigation everywhere. The drip pipeline edits it through `TOOL_META.js`.
 - `assets/styles.css`: all layout and both themes. `assets/app.js`: resource-pack generator logic and 3D preview.
-  `assets/tracking.js`, `assets/tracking-config.js`: analytics and consent.
+  `assets/tracking.js`, `assets/tracking-config.js`: analytics and consent (events and parameters: [ANALYTICS.md](ANALYTICS.md)).
 - Hubs, which are the pages queued payloads like to carry stale copies of: `index.html`, `tools/index.html`,
   `wiki/index.html` and their `ru/`, `fr/`, `de/` copies. `404.html` too. A bundle that carries one needs it
   recorded in `BASE.txt`, and a push that changes one fails Checks while a queued bundle still has an old copy (see Drip publishing).
@@ -74,6 +74,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 6. Homepage metric ("N Live browser tools") in `index.html` × 4, edited by hand. `tests/homepage-tool-count.test.cjs` fails, locally and in Checks, unless it equals the number of live tools.
 7. Form-based constructor: add the slug to the `constructorPath` list in `assets/site.js` and to `tests/constructor-nodes.browser.js`.
 8. Sitemap: do nothing and do not commit `sitemap.xml`. `sitemap-refresh.yml` regenerates it after any push that changes an `.html` file, and after every drip publish; `git pull --rebase` picks up the bot's commit.
+9. Analytics: add the slug to `TOOL_SLUGS` in `assets/tracking.js` (`tests/analytics.test.cjs` fails otherwise), load `tracking-config.js` and `tracking.js` on the tool page and its guide, and report copy, download and examples as described in [ANALYTICS.md](ANALYTICS.md#adding-a-tool).
 
 ## Add an article: file checklist
 
@@ -111,6 +112,8 @@ Browser regression for the Beta node workspace (11 constructors × 4 locales): s
 `tests/constructor-nodes.browser.js`. For any UI change, also open the page in two locales, in both themes,
 at 360 / 768 / 1440 px. That is what PRs #6–#10 verified.
 
+Browser checks never reach the live GA4: local hosts and `file://` only log to the console, and `?analytics_test=1` sends to the fictitious `G-TEST000000` to inspect `collect?v=2` ([ANALYTICS.md](ANALYTICS.md#rule-for-browser-checks-never-send-local-traffic-to-the-live-property)); never test against `cubeinsquare.com`.
+
 ## Commit rules
 
 - Small commits with a clear subject that says the outcome ("Fix armor add button contrast across all locales"), never "fix stuff" or "updates".
@@ -127,5 +130,6 @@ at 360 / 768 / 1440 px. That is what PRs #6–#10 verified.
 | [RELEASE_ROADMAP.md](RELEASE_ROADMAP.md) | What has shipped, the current queue, ideas, known issues |
 | [PUBLISHED.md](PUBLISHED.md) | Bot-written log of drip publishes (from 2026-08-02) |
 | [COLLABORATION.md](COLLABORATION.md) | Working agreement for parallel sessions: collision zones, themes, ownership |
+| [ANALYTICS.md](ANALYTICS.md) | GA4 events and parameters, custom dimensions to create, the test-traffic rule, how to add a tool to tracking |
 | [TEXTURE_PAINTER_STATUS.md](TEXTURE_PAINTER_STATUS.md) | Live versus outstanding texture painter changes |
 | [PIXEL_ART_AUTHOR_BRIEF.md](PIXEL_ART_AUTHOR_BRIEF.md) | Where the author's own writing goes on the skin editor and texture painter pages |
