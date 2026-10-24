@@ -19,6 +19,17 @@
   const repeat = '.effect-card, .blb-page-card, .dg-line-card, .imb-branch-card, [data-trade-card], .message-part';
   const el = (tag, cls, content) => { const e=document.createElement(tag); if(cls) e.className=cls; if(content) e.textContent=content; return e; };
   const button = (label, action) => { const b=el('button','nv-button',label); b.type='button'; b.addEventListener('click',action); return b; };
+  const track=(name,params)=>{if(window.CubeAnalytics)window.CubeAnalytics.track(name,params);};
+  // tool_copy for "Copy result": what each read-only output is, and which select holds the version.
+  // Mirrors the copy handlers in the tool scripts (proxied buttons call those, so they need no entry).
+  const outputKinds={customItemCommandOutput:'command','imb-output':'json','blb-output':'command','dg-output':'command','bb-output':'command','ad-output':'json',potionCommandOutput:'command',villagerCommandOutput:'command','dp-file-content':'file_content','dp-mcmeta':'pack_mcmeta','dp-tree':'file_tree','rc-output':'json','rc-ingredients':'ingredients','lt-output':'json'};
+  const versionFields={'recipe-generator':['mc_version','rc-version'],'advancement-builder':['mc_version','ad-version'],'datapack-generator':['mc_version','dp-version'],'book-letter-builder':['item_format','blb-version'],'custom-item-builder':['item_format','ci-version'],'custom-potions':['item_format','pp-version'],'custom-villager-trades':['item_format','vt-version']};
+  function copyParams(field){
+    const params={output_kind:outputKinds[field.id]||(tool==='custom-potions'||tool==='custom-villager-trades'?'command_block_give':'other')};
+    const version=versionFields[tool],select=version&&document.getElementById(version[1]);
+    if(select&&select.value)params[version[0]]=select.value;
+    return params;
+  }
   const shell=el('section','nv-editor');
   const modeBar=el('div','nv-modebar'); modeBar.setAttribute('role','tablist'); modeBar.setAttribute('aria-label',text.title);
   const form=button(text.form,()=>setMode(false)), nodes=button(text.nodes+' · Beta',()=>setMode(true));
@@ -131,7 +142,7 @@
     [...source.querySelectorAll('textarea[readonly],input[readonly],pre.command-output,pre[id],code[id]')].sort((a,b)=>Number(b.matches('textarea,input'))-Number(a.matches('textarea,input'))).forEach(f=>{
       if(!shown(f))return;
       const heading=el('p','nv-output-label',fieldLabel(f));const area=el('textarea','nv-output-text');area.readOnly=true;area.value=f.value??f.textContent;
-      const copy=button(text.copy,async()=>{try{await navigator.clipboard.writeText(area.value);live.textContent=text.copied;}catch(_){area.focus();area.select();}});const sourceCopy=[...(f.closest('.tool-panel')?.querySelectorAll('button')||[])].find(b=>/copy/i.test(b.id));copy.disabled=Boolean(sourceCopy?.disabled);output.append(heading,area,copy);
+      const copy=button(text.copy,async()=>{try{await navigator.clipboard.writeText(area.value);track('tool_copy',copyParams(f));live.textContent=text.copied;}catch(_){area.focus();area.select();}});const sourceCopy=[...(f.closest('.tool-panel')?.querySelectorAll('button')||[])].find(b=>/copy/i.test(b.id));copy.disabled=Boolean(sourceCopy?.disabled);output.append(heading,area,copy);
     });
     source.querySelectorAll('.tool-summary[id],[role="alert"]').forEach(e=>{if(shown(e)&&e.textContent.trim())output.append(el('p','nv-output-label',e.textContent.trim()));});
     if(!output.children.length)output.append(el('p','',text.empty));
@@ -163,6 +174,9 @@
   viewport.addEventListener('wheel',e=>{if(e.target.closest('.nv-node-body'))return;e.preventDefault();const box=viewport.getBoundingClientRect();zoom(scale*(e.deltaY>0?.9:1.1),e.clientX-box.left,e.clientY-box.top);},{passive:false});
   viewport.addEventListener('keydown',e=>{if(e.target!==viewport)return;if(e.key==='+'||e.key==='='){e.preventDefault();zoom(scale*1.2);}if(e.key==='-'){e.preventDefault();zoom(scale/1.2);}if(e.key==='Home'){e.preventDefault();fit();}});
   function setMode(value){
+    const changed=value!==active;
+    document.documentElement.dataset.editorMode=value?'nodes':'form';
+    if(changed)track('tool_mode_switch',{editor_mode:value?'nodes':'form'});
     active=value;view.hidden=!value;source.classList.toggle('nv-form-hidden',value);form.setAttribute('aria-selected',String(!value));nodes.setAttribute('aria-selected',String(value));form.tabIndex=value?-1:0;nodes.tabIndex=value?0:-1;
     if(value){build(collect());refreshActions();transform();if(!opened){fit();if(scale<.75){scale=.75;pan={x:24-Math.min(...model.map(n=>positions[n.key].x))*scale,y:24-Math.min(...model.map(n=>positions[n.key].y))*scale};transform();}opened=true;}}
   }
