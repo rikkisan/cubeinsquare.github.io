@@ -18,6 +18,23 @@ How to prepare one queued site release
          wiki/index.html            <- hub page, if it needs a new link
          ru/wiki/index.html
 
+   Do not copy the hub pages by hand: use step 2a.
+
+2a. Hub pages (`index.html`, `tools/index.html`, `wiki/index.html`, `404.html`
+   and their ru/fr/de copies) are overwritten by whatever is in the payload, so a
+   copy made today undoes every commit to that page between now and the release.
+   Take them with `drip-base.sh --copy`, which copies the live file into
+   `payload/` and records its version in `BASE.txt`; edit the copy afterwards:
+
+       bash .github/scripts/drip-base.sh --copy .drip/queue/<your-folder> \
+         tools/index.html ru/tools/index.html fr/tools/index.html de/tools/index.html \
+         wiki/index.html ru/wiki/index.html fr/wiki/index.html de/wiki/index.html
+
+   Then run `bash .github/scripts/drip-base.sh .drip/queue/<your-folder>` once the
+   new pages are in `payload/`: it records the rest (a new page is recorded as
+   absent). Never run it on a hub copied earlier; it would record the current live
+   version and hide that your copy is old.
+
 3. Set the commit subject in `COMMIT_TITLE.txt`, and optionally a longer
    message in `COMMIT_BODY.txt`.
 
@@ -45,6 +62,23 @@ Remember that `/tools/` is a static page: a new tool also needs a
 belong in `payload/`. Give the card a `data-released="YYYY-MM-DD"` attribute
 (the publish date) — the site auto-downgrades its `new` pill to `ready` after
 45 days, so this is the only thing that needs setting by hand.
+
+Stale copies
+------------
+
+`BASE.txt` is how a stale hub is caught. The Checks workflow compares it with the
+live site on every push, so when someone edits a hub your bundle carries, the build
+goes red that day and names the commits. Fix it with:
+
+    bash .github/scripts/drip-base.sh --update .drip/queue/<your-folder>
+
+That merges your edit onto the current live file and re-records it. It prints how
+many lines the payload now differs from live by (for a hub: just your card, e.g.
+`+1/-0`) and leaves `<<<<<<<` markers where your edit and a live change collide;
+validation rejects the bundle until they are gone.
+
+A hub overwritten without a `BASE.txt` record is an error. Any other overwritten
+page without one is a warning. Details: DRIP_PUBLISHING.md, "Stale payloads".
 
 Check before you ship
 ---------------------
