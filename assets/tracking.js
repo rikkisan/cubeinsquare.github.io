@@ -31,6 +31,56 @@
         }
     };
 
+    // Traffic from a developer's machine must never reach the live GA4 property:
+    // on localhost, private LAN addresses and file:// events are only logged to the
+    // console. ?analytics_test=1 (remembered for the tab, ?analytics_test=0 clears it)
+    // sends them to a throwaway measurement ID instead, so collect?v=2 requests can be
+    // inspected in DevTools without touching real data.
+    const TEST_MEASUREMENT_ID = 'G-TEST000000';
+    const ANALYTICS_TEST_KEY = 'cube_analytics_test';
+
+    function isLocalEnvironment() {
+        const location = window.location || {};
+        if (location.protocol === 'file:') return true;
+        const host = String(location.hostname || '').toLowerCase().replace(/^\[|\]$/g, '');
+        return host === 'localhost'
+            || host.endsWith('.localhost')
+            || host.endsWith('.local')
+            || host === '::1'
+            || host === '0.0.0.0'
+            || /^127\./.test(host)
+            || /^10\./.test(host)
+            || /^192\.168\./.test(host)
+            || /^172\.(1[6-9]|2\d|3[01])\./.test(host);
+    }
+
+    function resolveTrafficMode() {
+        if (!isLocalEnvironment()) return 'live';
+
+        let requested = '';
+        try {
+            requested = new URLSearchParams(window.location.search || '').get('analytics_test') || '';
+        } catch (error) {
+            requested = '';
+        }
+
+        try {
+            if (requested === '1') window.sessionStorage.setItem(ANALYTICS_TEST_KEY, '1');
+            if (requested === '0') window.sessionStorage.removeItem(ANALYTICS_TEST_KEY);
+            return window.sessionStorage.getItem(ANALYTICS_TEST_KEY) === '1' ? 'test' : 'local';
+        } catch (error) {
+            return requested === '1' ? 'test' : 'local';
+        }
+    }
+
+    // 'live': real traffic. 'local': console only. 'test': sent to TEST_MEASUREMENT_ID.
+    const trafficMode = resolveTrafficMode();
+    if (trafficMode === 'test') {
+        config.ga4MeasurementId = TEST_MEASUREMENT_ID;
+        config.googleAdsId = '';
+    }
+    config.trafficMode = trafficMode;
+
     window.CUBE_ANALYTICS_CONFIG = config;
 
     let booted = false;
@@ -93,7 +143,7 @@
     };
 
     function hasMeasurementIds() {
-        return Boolean(config.ga4MeasurementId || config.googleAdsId);
+        return trafficMode !== 'local' && Boolean(config.ga4MeasurementId || config.googleAdsId);
     }
 
     function getStoredConsent() {
@@ -137,8 +187,17 @@
     }
 
     function debugLog() {
-        if (!config.debug || !window.console || typeof window.console.info !== 'function') return;
+        if (!(config.debug || trafficMode !== 'live')) return;
+        if (!window.console || typeof window.console.info !== 'function') return;
         window.console.info.apply(window.console, arguments);
+    }
+
+    function announceTrafficMode() {
+        if (trafficMode === 'local') {
+            debugLog('[CubeAnalytics] local environment: events are logged here and not sent. Add ?analytics_test=1 to send them to the test property ' + TEST_MEASUREMENT_ID + '.');
+        } else if (trafficMode === 'test') {
+            debugLog('[CubeAnalytics] test mode: events go to ' + TEST_MEASUREMENT_ID + ', not to the live property. ?analytics_test=0 turns it off.');
+        }
     }
 
     function ensureGtag() {
@@ -199,17 +258,99 @@
         return (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
     }
 
-    function getPageType() {
-        const path = (window.location.pathname || '/').toLowerCase();
-        if (path.includes('resource-pack-generator')) return 'resource_pack_generator';
-        if (path.includes('custom-potions')) return 'custom_potions';
-        if (path.includes('custom-villager-trades')) return 'custom_villager_trades';
-        if (path.includes('/wiki') || path.includes('wiki-')) return 'wiki';
-        if (path.includes('privacy-policy')) return 'privacy_policy';
-        if (path.includes('about')) return 'about';
-        if (path.includes('tools')) return 'tools';
-        if (path === '/' || /^\/(?:ru|fr|de)\/?$/.test(path)) return 'home';
-        return 'page';
+    // Every live tool, by its URL slug. A tool page gets tool_id, and /wiki-<slug>/ gets
+    // guide_for. Any other wiki-* page is an article. tests/analytics.test.cjs fails when
+    // this list and the live tool catalog disagree, so a new tool has to be added here.
+    const TOOL_SLUGS = [
+        'resource-pack-generator',
+        'custom-potions',
+        'custom-villager-trades',
+        'custom-item-builder',
+        'texture-painter',
+        'skin-editor',
+        'recipe-generator',
+        'loot-table-generator',
+        'advancement-builder',
+        'enchantment-randomizer',
+        'datapack-generator',
+        'sphere-generator',
+        'circle-dome-planner',
+        'item-model-builder',
+        'custom-item-catalog',
+        'dialogue-builder',
+        'book-letter-builder',
+        'bossbar-builder'
+    ];
+
+    // These three tool pages reported their own slug as page_type before tool_id existed.
+    const LEGACY_TOOL_PAGE_TYPES = {
+        'resource-pack-generator': 'resource_pack_generator',
+        'custom-potions': 'custom_potions',
+        'custom-villager-trades': 'custom_villager_trades'
+    };
+
+    const SECTION_PAGE_TYPES = {
+        wiki: 'wiki',
+        tools: 'tools',
+        about: 'about',
+        'privacy-policy': 'privacy_policy'
+    };
+
+    function slugToId(slug) {
+        return String(slug).replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    }
+
+    /**
+     * Describes a site path without a locale prefix. Returns
+     * { kind, id, pageType, routeId } where kind is home | tool | guide | article | hub | page
+     * and routeId is the compact name used by link_from / link_to.
+     */
+    function classifyPath(pathname) {
+        const parts = String(pathname || '/').toLowerCase().split('/').filter(Boolean);
+        if (parts.length && /^(?:ru|fr|de)$/.test(parts[0])) parts.shift();
+        if (parts.length && parts[parts.length - 1] === 'index.html') parts.pop();
+        const slug = parts[0] || '';
+
+        if (!slug) return { kind: 'home', id: '', pageType: 'home', routeId: 'home' };
+
+        if (TOOL_SLUGS.includes(slug)) {
+            const id = slugToId(slug);
+            return { kind: 'tool', id, pageType: LEGACY_TOOL_PAGE_TYPES[slug] || 'tool', routeId: `tool:${id}` };
+        }
+
+        if (slug.startsWith('wiki-')) {
+            const target = slug.slice('wiki-'.length);
+            const id = slugToId(target);
+            if (TOOL_SLUGS.includes(target)) return { kind: 'guide', id, pageType: 'wiki', routeId: `guide:${id}` };
+            return { kind: 'article', id, pageType: 'wiki', routeId: `article:${id}` };
+        }
+
+        if (slug === 'wiki' || slug === 'tools') {
+            return { kind: 'hub', id: slug, pageType: SECTION_PAGE_TYPES[slug], routeId: `hub:${slug}` };
+        }
+
+        const id = slugToId(slug);
+        return { kind: 'page', id, pageType: SECTION_PAGE_TYPES[slug] || 'page', routeId: `page:${id}` };
+    }
+
+    /**
+     * Parameters every event carries. tool_id marks a tool page, guide_for marks the guide of
+     * a tool, editor_mode (form | nodes) is set by constructor-nodes.js on pages that have the
+     * node editor.
+     */
+    function getBasePayload() {
+        const route = classifyPath(window.location.pathname);
+        const base = {
+            page_language: getPageLanguage(),
+            page_type: route.pageType,
+            page_path: window.location.pathname
+        };
+        if (route.kind === 'tool') base.tool_id = route.id;
+        if (route.kind === 'guide') base.guide_for = route.id;
+
+        const dataset = document.documentElement && document.documentElement.dataset;
+        if (dataset && dataset.editorMode) base.editor_mode = dataset.editorMode;
+        return base;
     }
 
     function getSearchCopy() {
@@ -293,13 +434,18 @@
         }
     }
 
+    /**
+     * options.conversionKey fires the matching Google Ads conversion.
+     * options.context replaces the page parameters: an event that was queued on one page and
+     * is sent from the next one keeps the page it happened on.
+     */
     function track(eventName, params, options) {
-        const payload = {
-            page_language: getPageLanguage(),
-            page_type: getPageType(),
-            page_path: window.location.pathname,
-            ...sanitizeParams(params)
-        };
+        const payload = sanitizeParams({
+            ...((options && options.context) || getBasePayload()),
+            ...params
+        });
+
+        debugLog('[CubeAnalytics]', eventName, payload);
 
         if (hasMeasurementIds()) {
             deferWork(() => {
@@ -309,8 +455,6 @@
                     sendConversion(options && options.conversionKey, payload);
                 }
             });
-        } else {
-            debugLog('[CubeAnalytics]', eventName, payload);
         }
 
         return payload;
@@ -355,6 +499,124 @@
                 click_area: target.dataset.trackArea || ''
             });
         });
+    }
+
+    // Where on the page a link sits. The first matching container wins, so a link in the
+    // navbar is "navigation" even though the navbar is also inside the page.
+    const LINK_AREAS = [
+        ['.steam-navbar', 'navigation'],
+        ['.site-footer', 'footer'],
+        ['.resource-card', 'card'],
+        ['.page-hero', 'hero'],
+        ['.tool-button-row', 'cta'],
+        ['.item-builder-help, .tool-secondary-column', 'related'],
+        ['.wiki-article, .article-shell', 'article_body']
+    ];
+    const PENDING_LINK_KEY = 'cube_pending_link_click';
+    const PENDING_LINK_MAX_AGE_MS = 60000;
+
+    function getLinkArea(link) {
+        for (let index = 0; index < LINK_AREAS.length; index += 1) {
+            if (link.closest(LINK_AREAS[index][0])) return LINK_AREAS[index][1];
+        }
+        return 'other';
+    }
+
+    /**
+     * A link that goes to a tool or to the guide of a tool, or null for any other link.
+     * Language switches and links to the current page are not guide links.
+     */
+    function describeGuideLink(link) {
+        let url;
+        try {
+            url = new URL(link.getAttribute('href'), window.location.href);
+        } catch (error) {
+            return null;
+        }
+        if (url.origin !== window.location.origin) return null;
+
+        const to = classifyPath(url.pathname);
+        if (to.kind !== 'tool' && to.kind !== 'guide') return null;
+
+        const from = classifyPath(window.location.pathname);
+        if (from.routeId === to.routeId) return null;
+
+        return {
+            toPath: url.pathname,
+            params: {
+                link_from: from.routeId,
+                link_to: to.routeId,
+                click_area: getLinkArea(link)
+            }
+        };
+    }
+
+    function leavesPageInSameTab(event, link) {
+        if (event.type !== 'click' || event.defaultPrevented) return false;
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+        const target = String(link.getAttribute('target') || '').toLowerCase();
+        return !target || target === '_self';
+    }
+
+    /**
+     * gtag batches hits, and a page that navigates away takes the batch with it: in headless
+     * Chrome a link-click event was never delivered from the page being left. So a click
+     * that leaves the page in the same tab is parked in sessionStorage and sent by the page it
+     * lands on, still through track() and deferWork(), with the context of the page it came from.
+     */
+    function stashPendingLink(entry) {
+        try {
+            window.sessionStorage.setItem(PENDING_LINK_KEY, JSON.stringify(entry));
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function flushPendingLink() {
+        let entry;
+        try {
+            const raw = window.sessionStorage.getItem(PENDING_LINK_KEY);
+            if (!raw) return;
+            window.sessionStorage.removeItem(PENDING_LINK_KEY);
+            entry = JSON.parse(raw);
+        } catch (error) {
+            return;
+        }
+
+        if (!entry || typeof entry !== 'object' || !entry.context || !entry.params) return;
+        if (!(Date.now() - Number(entry.time) <= PENDING_LINK_MAX_AGE_MS)) return;
+        if (entry.toPath !== window.location.pathname) return;
+
+        track('guide_link_click', entry.params, { context: entry.context });
+    }
+
+    function handleGuideLinkClick(event) {
+        if (!event.target || typeof event.target.closest !== 'function') return;
+        if (event.type === 'auxclick' && event.button !== 1) return;
+
+        const link = event.target.closest('a[href]');
+        if (!link || link.hasAttribute('download') || link.closest('.language-switch')) return;
+
+        const guideLink = describeGuideLink(link);
+        if (!guideLink) return;
+
+        if (leavesPageInSameTab(event, link)) {
+            const parked = stashPendingLink({
+                time: Date.now(),
+                toPath: guideLink.toPath,
+                context: getBasePayload(),
+                params: guideLink.params
+            });
+            if (parked) return;
+        }
+
+        track('guide_link_click', guideLink.params);
+    }
+
+    function bindGuideLinkTracking() {
+        document.addEventListener('click', handleGuideLinkClick);
+        document.addEventListener('auxclick', handleGuideLinkClick);
     }
 
     function closeNavMenus(exceptMenu) {
@@ -704,19 +966,23 @@
     }
 
     function init() {
+        announceTrafficMode();
         boot();
         bindSearchTracking();
         bindSearchForms();
         bindDeclarativeClickTracking();
+        bindGuideLinkTracking();
         bindHeaderMenus();
         initSearchResults();
         initConsentBanner();
         trackPageView();
+        flushPendingLink();
     }
 
     window.CubeAnalytics = {
         track,
         trackPageView,
+        classifyPath,
         config
     };
 
