@@ -1,0 +1,17 @@
+# Claude Code: local settings and scratch worktrees
+.claude/
+
+# Page snapshots written by playwright-cli during browser checks
+.playwright-cli/
+
+# Operating systems
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
