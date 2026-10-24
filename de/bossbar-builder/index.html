@@ -76,5 +76,31 @@
 </div><p class="tool-summary">Bossbars sind am stärksten, wenn sie Zustand zeigen: Gefahr, Ritual-Ladung, Phase, Evakuierungszeit oder öffentlichen Serverdruck. Dieses Werkzeug erzeugt Setup-Befehle; ein laufender Timer muss weiter über wiederholende Command-Blöcke oder Datapack-Funktionen aktualisiert werden.</p></div>
 <div class="tool-panel"><h2>Erzeugte Befehle</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Befehle kopieren</button></div></div>
 </div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Builder</h2>
+        <p class="section-intro">Der Builder schreibt sieben /bossbar-Befehle: einer erstellt die Leiste, sechs richten sie ein. Die Vorschau zeigt Titel, Farbe und Füllstand, bevor du etwas kopierst.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Mit einer Vorlage starten</h3><p>Ritual charge, Raid phase II, Evacuation: 3 minutes und Phase break incoming füllen alle Felder für ein typisches Event. Ändere die ID, bevor du eine nutzt, damit sich nie zwei Events eine Leiste teilen.</p></article>
+            <article class="resource-card"><h3>Zwei Namen</h3><p>Die ID, etwa <code>cube:ritual_charge</code>, ist das, woran spätere Befehle die Leiste finden; sie ist kleingeschrieben und bekommt den Namensraum <code>cube:</code>, wenn du keinen angibst. Der Titel ist das, was Spieler lesen, klein über der Leiste – ein paar Wörter reichen.</p></article>
+            <article class="resource-card"><h3>Farbe und Stil</h3><p><code>progress</code> für Timer und alles Fließende, ein gekerbter Stil, wenn Spieler Phasen mitzählen sollen. Wähl eine Kerbenzahl, durch die sich dein Maximum glatt teilen lässt.</p></article>
+            <article class="resource-card"><h3>Max, Wert und Spieler</h3><p>Max und value haben dieselbe Einheit: Sekunden, Phasen, Opfergaben. Players legt fest, wer die Leiste gerade sieht; wer später einloggt, sieht nichts, bis die Zeile erneut läuft.</p></article>
+            <article class="resource-card"><h3>Kopieren und ausführen</h3><p>Zum Testen die Zeilen einzeln in den Chat, in Befehlsblöcke eine pro Block, in eine Funktionsdatei ohne führenden Schrägstrich.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Drei Dinge, die die Befehle nicht für dich erledigen</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Zweimal ausführen</h3><p>Die <code>add</code>-Zeile schlägt fehl, wenn es die ID schon gibt. Um eine Leiste neu zu bauen, führ zuerst <code>/bossbar remove</code> aus oder lass die erste Zeile weg.</p></article>
+            <article class="resource-card"><h3>Herunterzählen</h3><p>Eine Leiste zeigt den zuletzt gesetzten Wert. Ein Timer braucht eine Schleife, die sie aktualisiert; der Event-Artikel hat einen funktionierenden Countdown.</p></article>
+            <article class="resource-card"><h3>Aufräumen</h3><p>Eigene Leisten werden mit der Welt gespeichert und überstehen Neustarts. Führ am Ende der Szene <code>/bossbar remove</code> aus, und <code>/bossbar list</code> zeigt vergessene.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Java Edition 1.13 bis 26.3. Der Titel steht als <code>{"text":"…","color":"white"}</code> in der Ausgabe: Bis 1.21.4 liest das Spiel ihn als JSON, ab 1.21.5 als SNBT, deshalb funktioniert dieselbe Ausgabe in beiden. Die Bedrock Edition hat keinen <code>/bossbar</code>-Befehl.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-bossbar-builder/">Anleitung zum Bossbar-Builder</a><a class="tool-button tool-button-secondary" href="/de/wiki-minecraft-bossbar-events/#countdown">Countdowns und Event-Anzeigen</a></div>
+    </section>
 </main><footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script><script src="/assets/bossbar-builder.js"></script>
 </body></html>

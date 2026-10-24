@@ -157,6 +157,32 @@
       </div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться конструктором</h2>
+        <p class="section-intro">Пишите книгу по страницам и копируйте одну команду /give. Конструктор сам расставляет кавычки и экранирование, на которых обычно ломаются написанные вручную книги.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Начните с заготовки</h3><p>Letter, Quest notice, Contract и Diary page загружают короткий черновик с подходящим числом страниц. Замените текст, сохранив форму.</p></article>
+            <article class="resource-card"><h3>Подписанная или для записей</h3><p>Signed даёт написанную книгу: название, автор и поколение видны в подсказке, и текст никто не изменит. Writable даёт книгу с пером, которую может открыть и переписать любой, у кого она в руках, — это для бланков и черновиков, а не для доказательств.</p></article>
+            <article class="resource-card"><h3>Название, автор, поколение</h3><p>Они нужны только подписанной книге. Поколение — Оригинал, Копия оригинала, Копия копии или Потрёпанная; копию копии на верстаке уже не скопировать.</p></article>
+            <article class="resource-card"><h3>Страницы</h3><p>Каждое поле — одна страница. Экран книги не прокручивается, поэтому на странице — один такт: обращение, пункт договора, улика. Лучше добавить страницу, чем удлинять одну.</p></article>
+            <article class="resource-card"><h3>Синтаксис и получатель</h3><p>Выберите формат компонентов для 1.20.5 и новее или NBT для старых версий, и селектор игрока, который получит книгу (по умолчанию <code>@p</code>).</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Прежде чем выдать книгу</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Прочитайте самую длинную страницу в игре</h3><p>Откройте книгу и проверьте самую длинную страницу; если текст уходит за нижний край, разделите её.</p></article>
+            <article class="resource-card"><h3>Кавычки уже учтены</h3><p>Конструктор экранирует кавычки и обратные слэши, так что страницы можно писать обычным текстом.</p></article>
+            <article class="resource-card"><h3>Дайте ей облик</h3><p>Договор или проклятый дневник читаются лучше со своим названием или моделью. Имена и модели — в конструкторе кастомных предметов; сама команда книги несёт только текст.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Два формата: компоненты предметов с 1.20.5 и NBT до неё. В формате компонентов каждая страница записана как текстовый компонент — так игра хранит страницы книг с 1.21.5; в 1.20.5–1.21.4 страницы были строками JSON, поэтому, если вы играете на одной из этих версий, сначала проверьте короткую книгу.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-book-letter-builder/">Гайд по конструктору книг и писем</a><a class="tool-button tool-button-secondary" href="/ru/wiki-readable-minecraft-books/">Книги, которые игроки дочитывают</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script>window.CUBE_BOOK_BUILDER_COPY={"copiedButton":"Скопировано","pageLabel":"Страница","removePage":"Убрать","versionNotes":{"modern":"Современный режим нужен, если сервер уже работает через components. Команда будет собрана через written_book_content.","legacy":"Legacy-режим подходит для старых серверов, которые всё ещё ждут NBT-теги книги и массивы страниц."},"versionNames":{"modern":"1.20.5+ Components","legacy":"До 1.20.5 NBT"},"summaryPattern":"Подготовлено страниц: {count}. Синтаксис: {mode}.","exampleData":{"letter":{"version":"modern","type":"signed","title":"Письмо с причала","author":"Смотритель гавани","generation":"original","target":"@p","pages":["Тому, кто первым найдёт эту записку,\n\nне зажигайте западный маяк этой ночью.","После заката вода отвечает иначе.\n\nСожгите письмо после чтения."]},"quest":{"version":"modern","type":"signed","title":"Запрос архива","author":"Квартирмейстер","generation":"original","target":"@p","pages":["Обновление задания:\n\nдостаньте запечатанную ведомость из архивного хранилища.","Не ломайте красную печать.\nВерните книгу нераскрытой."]},"contract":{"version":"modern","type":"signed","title":"Транзитный контракт","author":"Гильдейская канцелярия","generation":"copy_of_original","target":"@p","pages":["Этот контракт даёт один проход через восточные ворота на рассвете.","Оплата взимается по прибытии.\nНедействителен при сорванной печати."]},"diary":{"version":"legacy","type":"signed","title":"Полевые записи","author":"С. Вейл","generation":"original","target":"@p","pages":["Роща снова ответила на третий звон.\nКорни двинулись раньше ветра."]}}};</script>

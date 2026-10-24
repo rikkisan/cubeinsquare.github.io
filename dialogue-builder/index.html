@@ -87,6 +87,32 @@
       <div class="tool-panel"><h2>Before export</h2><ul class="item-builder-help"><li>Reserve titles for strong beats. If every line becomes a title, players stop reading them.</li><li>Use books for evidence, letters, contracts, and anything players should revisit later.</li><li>If the speaker matters as an object, pair the scene with named items, books, or props from the rest of the toolset.</li></ul></div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the builder</h2>
+        <p class="section-intro">The page has two builders. The scene builder turns a list of lines into one command per line; the message designer below it builds a single message from colored parts.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Load a quick start</h3><p>Courtroom, Quest turn, Ritual and Duel load a short scene with speakers and channels already chosen. Rewrite the voices for your world instead of starting from an empty list.</p></article>
+            <article class="resource-card"><h3>Set up the scene</h3><p>Audience target is the selector every line goes to, for example <code>@a</code> or <code>@a[distance=..30]</code> for players near the stage. Default speaker, prefix style and speaker color decide how a name appears in front of each line.</p></article>
+            <article class="resource-card"><h3>One beat per line</h3><p>Each line has its own channel, color and style. <code>tellraw</code> goes to chat and stays in its history; title and actionbar are for short beats that should land hard or add pressure.</p></article>
+            <article class="resource-card"><h3>The message designer</h3><p>Builds one message from several parts, each with its own color and style, with optional hover text and a click command. For titles it also writes the <code>/title … times</code> line.</p></article>
+            <article class="resource-card"><h3>Copy the commands</h3><p>Lines come out in order, one command each, ready for a chain of command blocks or a function.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Before you run a scene</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Lines run at once</h3><p>Commands in one chain or one function run in the same tick, so a whole scene would appear at once. Space the lines out with redstone delays, or put each line in its own function and chain them with <code>/schedule function … 3s</code>.</p></article>
+            <article class="resource-card"><h3>A subtitle needs a title</h3><p>A subtitle line shows nothing by itself: Minecraft keeps it for the next title. Put the subtitle line before the title it belongs to.</p></article>
+            <article class="resource-card"><h3>Keep titles rare</h3><p>With the default timing a title stays about five seconds in the middle of the screen. Save titles for the moment a scene turns.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Lines are written as JSON text components, which Minecraft reads as JSON up to 1.21.4 and as SNBT from 1.21.5, so they work on both. One exception is hover text and click commands in the message designer: it writes <code>hoverEvent</code> and <code>clickEvent</code>, the names used up to 1.21.4. From 1.21.5 Minecraft expects <code>hover_event</code> and <code>click_event</code>, and a click's <code>value</code> is called <code>command</code>; on newer versions rename those fields in the copied command.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-dialogue-builder/">Dialogue Builder guide</a><a class="tool-button tool-button-secondary" href="/wiki-readable-minecraft-dialogue/">Dialogue players actually read</a><a class="tool-button tool-button-secondary" href="/wiki-minecraft-server-announcements/">Readable server announcements</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
 <script src="/assets/site.js"></script>

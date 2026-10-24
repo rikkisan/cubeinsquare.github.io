@@ -157,6 +157,32 @@
       </div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the builder</h2>
+        <p class="section-intro">Write a book page by page and copy one /give command. The builder handles the quoting and escaping that usually breaks hand-written book commands.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Start from a pattern</h3><p>Letter, Quest notice, Contract and Diary page load a short draft with a fitting number of pages. Replace the text and keep the shape.</p></article>
+            <article class="resource-card"><h3>Signed or writable</h3><p>Signed gives a written book: title, author and generation show in the tooltip and nobody can edit the text. Writable gives a book and quill that any player holding it can open and change, which suits forms and drafts, not evidence.</p></article>
+            <article class="resource-card"><h3>Title, author, generation</h3><p>Only signed books use them. Generation is Original, Copy of original, Copy of copy or Tattered; a copy of a copy cannot be copied again in a crafting grid.</p></article>
+            <article class="resource-card"><h3>Pages</h3><p>Each box is one page. The book screen does not scroll, so a page should carry one beat: a greeting, a clause, a clue. Add a page rather than making one page longer.</p></article>
+            <article class="resource-card"><h3>Syntax and target</h3><p>Choose the component format for 1.20.5 and newer or the NBT format for older versions, and the player selector that receives the book (<code>@p</code> by default).</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Before you hand the book out</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Read the longest page in game</h3><p>Open the book and check the longest page; if text runs off the bottom, split it.</p></article>
+            <article class="resource-card"><h3>Quotes are handled</h3><p>The builder escapes quotation marks and backslashes, so you can type pages as plain text.</p></article>
+            <article class="resource-card"><h3>Give it a look</h3><p>A contract or a cursed diary reads better with its own name or model. The custom item builder covers names and models; the book command itself only carries the text.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Two formats: item components from 1.20.5 and NBT before that. The component output stores each page as a text component, which is how Minecraft keeps book pages from 1.21.5; on 1.20.5–1.21.4 pages were JSON strings, so if you play one of those versions, test a short book first.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-book-letter-builder/">Book & Letter Builder guide</a><a class="tool-button tool-button-secondary" href="/wiki-readable-minecraft-books/">Books players actually read</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
 <script>window.CUBE_BOOK_BUILDER_COPY={"copiedButton":"Copied","pageLabel":"Page","removePage":"Remove","versionNotes":{"modern":"Use the modern mode when your server already works with components. The builder will export a give command using written_book_content.","legacy":"Use the legacy mode for older servers that still expect NBT book tags and page arrays."},"versionNames":{"modern":"1.20.5+ Components","legacy":"Before 1.20.5 NBT"},"summaryPattern":"{count} page(s) prepared. Syntax: {mode}.","exampleData":{"letter":{"version":"modern","type":"signed","title":"Letter from the pier","author":"Harbormaster","generation":"original","target":"@p","pages":["To whoever finds this note first,\n\nDo not light the western beacon tonight.","The water answers differently after dusk.\n\nBurn this after reading."]},"quest":{"version":"modern","type":"signed","title":"Archive request","author":"Quartermaster","generation":"original","target":"@p","pages":["Objective update:\n\nRecover the sealed ledger from the archive vault.","Do not break the red wax.\nReturn it unopened."]},"contract":{"version":"modern","type":"signed","title":"Transit Contract","author":"Guild Office","generation":"copy_of_original","target":"@p","pages":["This contract grants one passage through the eastern gate at dawn.","Payment is due upon arrival.\nVoid if seal is broken."]},"diary":{"version":"legacy","type":"signed","title":"Field Notes","author":"S. Vale","generation":"original","target":"@p","pages":["The grove answered the third bell again.\nRoots moved before the wind did."]}}};</script>

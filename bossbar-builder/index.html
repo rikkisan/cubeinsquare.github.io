@@ -76,5 +76,31 @@
 </div><p class="tool-summary">Bossbars are strongest when they show state: danger, ritual charge, phase progress, evacuation time, or public server pressure. This builder creates the setup commands; live timers still need repeating command blocks or datapack functions to update the value.</p></div>
 <div class="tool-panel"><h2>Generated commands</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Copy commands</button></div></div>
 </div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the builder</h2>
+        <p class="section-intro">The builder writes seven /bossbar commands: one creates the bar, six set it up. The preview shows the title, color and fill before you copy anything.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Start from a preset</h3><p>Ritual charge, Raid phase II, Evacuation: 3 minutes and Phase break incoming fill every field with a typical event. Change the ID before using one, so two events never share a bar.</p></article>
+            <article class="resource-card"><h3>Name it twice</h3><p>The ID, for example <code>cube:ritual_charge</code>, is how later commands find the bar; it is lowercase and gets the <code>cube:</code> namespace if you leave one out. The title is what players read, drawn small above the bar, so keep it to a few words.</p></article>
+            <article class="resource-card"><h3>Color and style</h3><p>Use <code>progress</code> for timers and anything continuous, and a notched style when players should be able to count phases. Pick a notch count that your maximum divides into evenly.</p></article>
+            <article class="resource-card"><h3>Max, value and players</h3><p>Max and value share one unit: seconds, phases, offerings. Players decides who sees the bar right now; someone who logs in later sees nothing until that line runs again.</p></article>
+            <article class="resource-card"><h3>Copy and run</h3><p>Paste the lines into chat one at a time to test, into command blocks one per block, or into a function file without the leading slash.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Three things the output cannot do for you</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Run twice</h3><p>The <code>add</code> line fails if the ID already exists. To rebuild a bar, run <code>/bossbar remove</code> first or skip the first line.</p></article>
+            <article class="resource-card"><h3>Count down</h3><p>A bar shows the last value it was given. A timer needs a loop that keeps updating it; the event article has a working countdown.</p></article>
+            <article class="resource-card"><h3>Clean up</h3><p>Custom bars are saved with the world and survive restarts. Run <code>/bossbar remove</code> when the scene ends and <code>/bossbar list</code> to catch leftovers.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.13 to 26.3. The title is written as <code>{"text":"…","color":"white"}</code>: Minecraft reads it as JSON up to 1.21.4 and as SNBT from 1.21.5, so the same output works on both. Bedrock Edition has no <code>/bossbar</code> command.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-bossbar-builder/">Bossbar Builder guide</a><a class="tool-button tool-button-secondary" href="/wiki-minecraft-bossbar-events/#countdown">Countdowns and event UI</a></div>
+    </section>
 </main><footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script><script src="/assets/bossbar-builder.js"></script>
 </body></html>

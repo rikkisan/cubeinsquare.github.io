@@ -87,6 +87,32 @@
       <div class="tool-panel"><h2>Перед экспортом</h2><ul class="item-builder-help"><li>Оставляйте title для сильных ударов. Если каждая строчка станет title, игроки перестанут их читать.</li><li>Книги лучше подходят для доказательств, писем, контрактов и всего, к чему нужно вернуться позже.</li><li>Если важен сам объект, свяжите сцену с именованными предметами, книгами или пропами из остального набора инструментов.</li></ul></div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться конструктором</h2>
+        <p class="section-intro">На странице два конструктора. Конструктор сцены превращает список реплик в команды, по одной на реплику; дизайнер сообщений под ним собирает одно сообщение из цветных частей.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Загрузите заготовку</h3><p>Courtroom, Quest turn, Ritual и Duel загружают короткую сцену с уже выбранными говорящими и каналами. Перепишите голоса под свой мир, а не начинайте с пустого списка.</p></article>
+            <article class="resource-card"><h3>Настройте сцену</h3><p>Цель аудитории — селектор, которому уходят все реплики, например <code>@a</code> или <code>@a[distance=..30]</code> для тех, кто рядом со сценой. Говорящий по умолчанию, стиль префикса и цвет имени решают, как имя стоит перед репликой.</p></article>
+            <article class="resource-card"><h3>Один такт на реплику</h3><p>У каждой реплики свой канал, цвет и стиль. <code>tellraw</code> идёт в чат и остаётся в истории; title и actionbar — для коротких тактов, которые должны ударить или добавить давления.</p></article>
+            <article class="resource-card"><h3>Дизайнер сообщений</h3><p>Собирает одно сообщение из нескольких частей, у каждой свой цвет и стиль, с текстом при наведении и командой по клику. Для заголовков он ещё пишет строку <code>/title … times</code>.</p></article>
+            <article class="resource-card"><h3>Скопируйте команды</h3><p>Реплики выходят по порядку, по команде на каждую, — готово для цепочки командных блоков или функции.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Перед запуском сцены</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Реплики выполняются разом</h3><p>Команды одной цепочки или одной функции выполняются в один тик, и вся сцена появится сразу. Разнесите реплики редстоун-задержками или положите каждую в свою функцию и свяжите их через <code>/schedule function … 3s</code>.</p></article>
+            <article class="resource-card"><h3>Подзаголовку нужен заголовок</h3><p>Строка subtitle сама ничего не показывает: игра держит её до следующего заголовка. Ставьте subtitle перед тем title, к которому он относится.</p></article>
+            <article class="resource-card"><h3>Заголовки — редко</h3><p>Со стандартными таймингами заголовок висит около пяти секунд посреди экрана. Берегите его для момента, когда сцена поворачивает.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Реплики записаны как текстовые компоненты JSON: до 1.21.4 игра читает их как JSON, с 1.21.5 — как SNBT, поэтому они работают в обеих. Исключение — наведение и клик в дизайнере сообщений: он пишет <code>hoverEvent</code> и <code>clickEvent</code>, как было до 1.21.4. С 1.21.5 игра ждёт <code>hover_event</code> и <code>click_event</code>, а поле <code>value</code> у клика называется <code>command</code>; в новых версиях переименуйте эти поля в скопированной команде.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-dialogue-builder/">Гайд по конструктору диалогов</a><a class="tool-button tool-button-secondary" href="/ru/wiki-readable-minecraft-dialogue/">Диалоги, которые игроки читают</a><a class="tool-button tool-button-secondary" href="/ru/wiki-minecraft-server-announcements/">Читаемые объявления сервера</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script src="/assets/site.js"></script>

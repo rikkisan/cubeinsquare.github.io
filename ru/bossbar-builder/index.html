@@ -76,5 +76,31 @@
 </div><p class="tool-summary">Bossbar лучше всего работает как состояние: опасность, заряд ритуала, фаза боя, время эвакуации или общее давление на сервере. Этот инструмент создаёт команды настройки; живой таймер всё равно нужно обновлять через повторяющийся командный блок или datapack-функцию.</p></div>
 <div class="tool-panel"><h2>Готовые команды</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Скопировать команды</button></div></div>
 </div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться генератором</h2>
+        <p class="section-intro">Генератор пишет семь команд /bossbar: одна создаёт шкалу, шесть настраивают её. Превью показывает заголовок, цвет и заполнение ещё до копирования.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Начните с пресета</h3><p>Ritual charge, Raid phase II, Evacuation: 3 minutes и Phase break incoming заполняют все поля под типичное событие. Перед использованием смените ID, чтобы два события не делили одну шкалу.</p></article>
+            <article class="resource-card"><h3>Два имени</h3><p>ID, например <code>cube:ritual_charge</code>, — то, по чему шкалу найдут следующие команды; он пишется строчными, а без пространства имён получит <code>cube:</code>. Заголовок — то, что читают игроки; он мелко написан над шкалой, так что хватит пары слов.</p></article>
+            <article class="resource-card"><h3>Цвет и стиль</h3><p>Для таймеров и всего непрерывного берите <code>progress</code>, а стиль с делениями — когда игрокам нужно считать фазы. Число делений должно делиться на ваш максимум без остатка.</p></article>
+            <article class="resource-card"><h3>Максимум, значение и игроки</h3><p>У max и value одна единица: секунды, фазы, подношения. Players решает, кто видит шкалу прямо сейчас; кто зайдёт позже, ничего не увидит, пока строку не выполнят снова.</p></article>
+            <article class="resource-card"><h3>Скопировать и запустить</h3><p>Вставляйте строки в чат по одной для проверки, в командные блоки — по строке на блок, в файл функции — без начального слэша.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Три вещи, которые команды за вас не сделают</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Повторный запуск</h3><p>Строка <code>add</code> падает, если такой ID уже есть. Чтобы пересоздать шкалу, сначала выполните <code>/bossbar remove</code> или пропустите первую строку.</p></article>
+            <article class="resource-card"><h3>Обратный отсчёт</h3><p>Шкала показывает последнее значение, которое ей дали. Таймеру нужен цикл, который её обновляет; рабочий отсчёт разобран в статье о событиях.</p></article>
+            <article class="resource-card"><h3>Уборка</h3><p>Свои шкалы сохраняются в мире и переживают перезапуск. В конце сцены выполните <code>/bossbar remove</code>, а <code>/bossbar list</code> покажет забытые.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Java Edition 1.13–26.3. Заголовок записан как <code>{"text":"…","color":"white"}</code>: до 1.21.4 игра читает его как JSON, с 1.21.5 — как SNBT, поэтому одни и те же строки работают в обеих. В Bedrock Edition команды <code>/bossbar</code> нет.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-bossbar-builder/">Гайд по генератору боссбаров</a><a class="tool-button tool-button-secondary" href="/ru/wiki-minecraft-bossbar-events/#countdown">Таймеры и интерфейс событий</a></div>
+    </section>
 </main><footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script><script src="/assets/bossbar-builder.js"></script>
 </body></html>

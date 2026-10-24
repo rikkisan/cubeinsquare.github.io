@@ -87,6 +87,32 @@
       <div class="tool-panel"><h2>Vor dem Export</h2><ul class="item-builder-help"><li>Spare Titles für starke Einschläge auf. Wenn jede Zeile ein Title wird, lesen Spieler sie nicht mehr.</li><li>Bücher sind besser für Beweise, Briefe, Verträge und alles, was später noch einmal gelesen werden soll.</li><li>Wenn das Objekt selbst wichtig ist, kombiniere die Szene mit benannten Items, Büchern oder Requisiten aus dem restlichen Toolset.</li></ul></div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Builder</h2>
+        <p class="section-intro">Die Seite hat zwei Werkzeuge. Der Szenen-Builder macht aus einer Liste von Zeilen je einen Befehl pro Zeile; der Nachrichten-Designer darunter baut eine einzelne Nachricht aus farbigen Teilen.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Eine Vorlage laden</h3><p>Courtroom, Quest turn, Ritual und Duel laden eine kurze Szene mit fertig gewählten Sprechern und Kanälen. Schreib die Stimmen für deine Welt um, statt mit einer leeren Liste anzufangen.</p></article>
+            <article class="resource-card"><h3>Die Szene einrichten</h3><p>Das Publikum ist der Selektor, an den jede Zeile geht, etwa <code>@a</code> oder <code>@a[distance=..30]</code> für Spieler nahe der Bühne. Standardsprecher, Präfixstil und Namensfarbe bestimmen, wie der Name vor jeder Zeile steht.</p></article>
+            <article class="resource-card"><h3>Ein Takt pro Zeile</h3><p>Jede Zeile hat eigenen Kanal, eigene Farbe und eigenen Stil. <code>tellraw</code> geht in den Chat und bleibt im Verlauf; Titel und Actionbar sind für kurze Takte, die sitzen oder Druck machen sollen.</p></article>
+            <article class="resource-card"><h3>Der Nachrichten-Designer</h3><p>Baut eine Nachricht aus mehreren Teilen mit je eigener Farbe und eigenem Stil, wahlweise mit Hover-Text und Klick-Befehl. Für Titel schreibt er auch die Zeile <code>/title … times</code>.</p></article>
+            <article class="resource-card"><h3>Die Befehle kopieren</h3><p>Die Zeilen kommen der Reihe nach heraus, ein Befehl pro Zeile, fertig für eine Befehlsblock-Kette oder eine Funktion.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Bevor du eine Szene startest</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Alles kommt auf einmal</h3><p>Befehle einer Kette oder einer Funktion laufen im selben Tick, die ganze Szene erschiene also auf einen Schlag. Verteil die Zeilen mit Redstone-Verzögerungen, oder leg jede Zeile in eine eigene Funktion und verkette sie mit <code>/schedule function … 3s</code>.</p></article>
+            <article class="resource-card"><h3>Ein Untertitel braucht einen Titel</h3><p>Eine subtitle-Zeile zeigt allein nichts an: Minecraft hebt sie für den nächsten Titel auf. Setz sie vor den Titel, zu dem sie gehört.</p></article>
+            <article class="resource-card"><h3>Titel sparsam</h3><p>Mit dem Standard-Timing steht ein Titel etwa fünf Sekunden mitten im Bild. Heb ihn für den Moment auf, in dem die Szene kippt.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Die Zeilen sind als JSON-Textkomponenten geschrieben, die Minecraft bis 1.21.4 als JSON und ab 1.21.5 als SNBT liest – sie funktionieren also in beiden. Ausnahme sind Hover und Klick im Nachrichten-Designer: Er schreibt <code>hoverEvent</code> und <code>clickEvent</code>, die Namen bis 1.21.4. Ab 1.21.5 erwartet Minecraft <code>hover_event</code> und <code>click_event</code>, und das Feld <code>value</code> eines Klicks heißt <code>command</code>; in neueren Versionen benennst du diese Felder im kopierten Befehl um.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-dialogue-builder/">Anleitung zum Dialog-Builder</a><a class="tool-button tool-button-secondary" href="/de/wiki-readable-minecraft-dialogue/">Dialoge, die Spieler wirklich lesen</a><a class="tool-button tool-button-secondary" href="/de/wiki-minecraft-server-announcements/">Lesbare Server-Ankündigungen</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzrichtlinie</a></footer>
 <script src="/assets/site.js"></script>

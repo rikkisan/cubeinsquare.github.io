@@ -76,5 +76,31 @@
 </div><p class="tool-summary">Une bossbar fonctionne mieux quand elle affiche un état : danger, charge rituelle, phase, temps d’évacuation ou pression publique du serveur. Cet outil crée les commandes de base ; un minuteur vivant doit encore être mis à jour par command block répétitif ou fonction datapack.</p></div>
 <div class="tool-panel"><h2>Commandes générées</h2><div class="bossbar-preview"><div class="bossbar-preview-title" id="bb-preview-title"></div><div class="bossbar-track"><span id="bb-preview-fill"></span></div></div><textarea id="bb-output" class="command-output" readonly></textarea><div class="tool-button-row"><button id="bb-copy" class="tool-button" type="button">Copier les commandes</button></div></div>
 </div><aside class="tool-secondary-column"><div class="tool-panel"><h2>Bossbar</h2><ul class="item-builder-help"><li>/bossbar add</li><li>/bossbar set value</li><li>/bossbar set players</li><li>/bossbar remove</li></ul></div></aside></section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le générateur</h2>
+        <p class="section-intro">Le générateur écrit sept commandes /bossbar : une crée la barre, six la configurent. L’aperçu montre le titre, la couleur et le remplissage avant toute copie.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Partir d’un préréglage</h3><p>Ritual charge, Raid phase II, Evacuation: 3 minutes et Phase break incoming remplissent tous les champs pour un événement typique. Changez l’identifiant avant de vous en servir, pour que deux événements ne partagent jamais une barre.</p></article>
+            <article class="resource-card"><h3>Deux noms</h3><p>L’identifiant, par exemple <code>cube:ritual_charge</code>, permet aux commandes suivantes de retrouver la barre ; il s’écrit en minuscules et reçoit l’espace de noms <code>cube:</code> si vous n’en mettez pas. Le titre est ce que lisent les joueurs, en petit au-dessus de la barre : quelques mots suffisent.</p></article>
+            <article class="resource-card"><h3>Couleur et style</h3><p><code>progress</code> pour les minuteurs et tout ce qui est continu, un style à crans quand les joueurs doivent pouvoir compter les phases. Choisissez un nombre de crans qui divise votre maximum.</p></article>
+            <article class="resource-card"><h3>Max, valeur et joueurs</h3><p>Max et value partagent une unité : secondes, phases, offrandes. Players décide qui voit la barre maintenant ; un joueur qui se connecte plus tard ne voit rien tant que la ligne n’est pas relancée.</p></article>
+            <article class="resource-card"><h3>Copier et lancer</h3><p>Collez les lignes une par une dans le chat pour tester, une par bloc dans des blocs de commande, ou dans un fichier de fonction sans la barre oblique initiale.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Trois choses que les commandes ne font pas à votre place</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Relancer</h3><p>La ligne <code>add</code> échoue si l’identifiant existe déjà. Pour reconstruire une barre, lancez d’abord <code>/bossbar remove</code> ou sautez la première ligne.</p></article>
+            <article class="resource-card"><h3>Décompter</h3><p>Une barre affiche la dernière valeur reçue. Un minuteur a besoin d’une boucle qui la met à jour ; l’article sur les événements donne un compte à rebours qui marche.</p></article>
+            <article class="resource-card"><h3>Ranger</h3><p>Les barres personnalisées sont enregistrées avec le monde et survivent aux redémarrages. Lancez <code>/bossbar remove</code> à la fin de la scène, et <code>/bossbar list</code> pour repérer les oubliées.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.13 à 26.3. Le titre est écrit <code>{"text":"…","color":"white"}</code> : le jeu le lit comme du JSON jusqu’en 1.21.4 et comme du SNBT depuis la 1.21.5, donc la même sortie fonctionne des deux côtés. Bedrock Edition n’a pas de commande <code>/bossbar</code>.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-bossbar-builder/">Guide du générateur de bossbar</a><a class="tool-button tool-button-secondary" href="/fr/wiki-minecraft-bossbar-events/#countdown">Comptes à rebours et interface d’événement</a></div>
+    </section>
 </main><footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer><script src="/assets/site.js"></script><script src="/assets/tracking-config.js"></script><script src="/assets/tracking.js"></script><script src="/assets/bossbar-builder.js"></script>
 </body></html>

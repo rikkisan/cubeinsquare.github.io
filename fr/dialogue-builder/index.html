@@ -87,6 +87,32 @@
       <div class="tool-panel"><h2>Avant l’export</h2><ul class="item-builder-help"><li>Gardez les titles pour les gros impacts. Si chaque ligne devient un title, les joueurs cessent de les lire.</li><li>Les livres sont meilleurs pour les preuves, lettres, contrats et tout ce qu’on doit relire plus tard.</li><li>Si l’objet lui-même compte, reliez la scène à des items nommés, des livres ou des accessoires du reste du site.</li></ul></div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le constructeur</h2>
+        <p class="section-intro">La page contient deux outils. Le constructeur de scène transforme une liste de répliques en une commande par réplique ; le concepteur de messages, en dessous, assemble un seul message à partir de morceaux colorés.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Charger une base</h3><p>Courtroom, Quest turn, Ritual et Duel chargent une courte scène avec locuteurs et canaux déjà choisis. Réécrivez les voix pour votre monde plutôt que de partir d’une liste vide.</p></article>
+            <article class="resource-card"><h3>Régler la scène</h3><p>La cible est le sélecteur qui reçoit toutes les répliques, par exemple <code>@a</code> ou <code>@a[distance=..30]</code> pour les joueurs proches de la scène. Le locuteur par défaut, le style de préfixe et la couleur du nom décident de l’affichage du nom devant chaque réplique.</p></article>
+            <article class="resource-card"><h3>Un temps fort par réplique</h3><p>Chaque réplique a son canal, sa couleur et son style. <code>tellraw</code> va dans le chat et reste dans l’historique ; titre et action bar servent aux temps courts qui doivent frapper ou mettre la pression.</p></article>
+            <article class="resource-card"><h3>Le concepteur de messages</h3><p>Assemble un message de plusieurs morceaux, chacun avec sa couleur et son style, avec un texte au survol et une commande au clic en option. Pour les titres, il écrit aussi la ligne <code>/title … times</code>.</p></article>
+            <article class="resource-card"><h3>Copier les commandes</h3><p>Les répliques sortent dans l’ordre, une commande chacune, prêtes pour une chaîne de blocs de commande ou une fonction.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Avant de lancer une scène</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Tout part en même temps</h3><p>Les commandes d’une même chaîne ou d’une même fonction s’exécutent dans le même tick : toute la scène s’afficherait d’un coup. Espacez les répliques avec des délais de redstone, ou mettez chaque réplique dans sa fonction et enchaînez-les avec <code>/schedule function … 3s</code>.</p></article>
+            <article class="resource-card"><h3>Un sous-titre a besoin d’un titre</h3><p>Une ligne subtitle n’affiche rien seule : le jeu la garde pour le prochain titre. Placez-la avant le titre auquel elle appartient.</p></article>
+            <article class="resource-card"><h3>Des titres rares</h3><p>Avec le minutage par défaut, un titre reste environ cinq secondes au milieu de l’écran. Gardez-le pour le moment où la scène bascule.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Les répliques sont écrites en composants de texte JSON, que le jeu lit comme du JSON jusqu’en 1.21.4 et comme du SNBT depuis la 1.21.5 : elles fonctionnent des deux côtés. Exception : le survol et le clic du concepteur de messages, qui écrit <code>hoverEvent</code> et <code>clickEvent</code>, les noms d’avant la 1.21.5. Depuis la 1.21.5, le jeu attend <code>hover_event</code> et <code>click_event</code>, et le champ <code>value</code> d’un clic s’appelle <code>command</code> ; sur les versions récentes, renommez ces champs dans la commande copiée.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-dialogue-builder/">Guide du constructeur de dialogues</a><a class="tool-button tool-button-secondary" href="/fr/wiki-readable-minecraft-dialogue/">Des dialogues que les joueurs lisent</a><a class="tool-button tool-button-secondary" href="/fr/wiki-minecraft-server-announcements/">Des annonces serveur lisibles</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script src="/assets/site.js"></script>

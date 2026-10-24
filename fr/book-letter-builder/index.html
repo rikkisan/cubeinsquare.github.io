@@ -157,6 +157,32 @@
       </div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le constructeur</h2>
+        <p class="section-intro">Écrivez un livre page par page et copiez une seule commande /give. Le constructeur gère les guillemets et l’échappement, là où cassent d’habitude les commandes de livre écrites à la main.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Partir d’un modèle</h3><p>Letter, Quest notice, Contract et Diary page chargent un court brouillon avec un nombre de pages adapté. Remplacez le texte, gardez la forme.</p></article>
+            <article class="resource-card"><h3>Signé ou modifiable</h3><p>Signed donne un livre écrit : titre, auteur et génération apparaissent dans l’infobulle et personne ne peut plus modifier le texte. Writable donne un livre et plume que tout joueur qui le tient peut ouvrir et réécrire : bien pour les formulaires et brouillons, pas pour une preuve.</p></article>
+            <article class="resource-card"><h3>Titre, auteur, génération</h3><p>Seuls les livres signés les utilisent. La génération vaut Original, Copie de l’original, Copie d’une copie ou En lambeaux ; une copie de copie ne peut plus être copiée sur l’établi.</p></article>
+            <article class="resource-card"><h3>Pages</h3><p>Chaque champ est une page. L’écran du livre ne défile pas : une page porte un seul temps fort, une salutation, une clause, un indice. Ajoutez une page plutôt que d’en allonger une.</p></article>
+            <article class="resource-card"><h3>Syntaxe et destinataire</h3><p>Choisissez le format à composants pour la 1.20.5 et au-delà ou le format NBT pour les versions plus anciennes, et le sélecteur du joueur qui reçoit le livre (<code>@p</code> par défaut).</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Avant de remettre le livre</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Lire la page la plus longue en jeu</h3><p>Ouvrez le livre et vérifiez la page la plus longue ; si le texte déborde en bas, coupez-la en deux.</p></article>
+            <article class="resource-card"><h3>Les guillemets sont gérés</h3><p>Le constructeur échappe les guillemets et les barres obliques inverses : écrivez les pages en texte normal.</p></article>
+            <article class="resource-card"><h3>Lui donner une apparence</h3><p>Un contrat ou un journal maudit se lit mieux avec son propre nom ou modèle. Les noms et modèles se font dans le constructeur d’objets custom ; la commande du livre ne porte que le texte.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Deux formats : composants d’objet depuis la 1.20.5 et NBT avant. La sortie à composants enregistre chaque page comme un composant de texte, la façon dont le jeu stocke les pages depuis la 1.21.5 ; en 1.20.5–1.21.4, les pages étaient des chaînes JSON, donc si vous jouez sur l’une de ces versions, testez d’abord un livre court.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-book-letter-builder/">Guide du constructeur de livres et lettres</a><a class="tool-button tool-button-secondary" href="/fr/wiki-readable-minecraft-books/">Des livres que les joueurs lisent vraiment</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script>window.CUBE_BOOK_BUILDER_COPY={"copiedButton":"Copié","pageLabel":"Page","removePage":"Retirer","versionNotes":{"modern":"Le mode moderne convient aux serveurs déjà passés aux components. La commande utilisera written_book_content.","legacy":"Le mode legacy est prévu pour les anciens serveurs qui attendent encore les tags NBT et les tableaux de pages."},"versionNames":{"modern":"1.20.5+ Components","legacy":"Avant 1.20.5 NBT"},"summaryPattern":"{count} page(s) préparée(s). Syntaxe : {mode}.","exampleData":{"letter":{"version":"modern","type":"signed","title":"Lettre du quai","author":"Maître du port","generation":"original","target":"@p","pages":["À la première personne qui trouvera cette note,\n\nn’allumez pas le phare ouest cette nuit.","Après la tombée du jour, l’eau répond autrement.\n\nBrûlez cette lettre après lecture."]},"quest":{"version":"modern","type":"signed","title":"Demande d’archives","author":"Intendance","generation":"original","target":"@p","pages":["Mise à jour de quête:\n\nrécupérez le registre scellé dans la salle d’archives.","Ne brisez pas la cire rouge.\nRapportez-le fermé."]},"contract":{"version":"modern","type":"signed","title":"Contrat de passage","author":"Office de guilde","generation":"copy_of_original","target":"@p","pages":["Ce contrat autorise un passage par la porte est à l’aube.","Le paiement est dû à l’arrivée.\nNul si le sceau est brisé."]},"diary":{"version":"legacy","type":"signed","title":"Notes de terrain","author":"S. Vale","generation":"original","target":"@p","pages":["Le bosquet a répondu à la troisième cloche.\nLes racines ont bougé avant le vent."]}}};</script>

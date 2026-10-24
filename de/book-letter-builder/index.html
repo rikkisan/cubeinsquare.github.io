@@ -157,6 +157,32 @@
       </div>
     </aside>
   </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Builder</h2>
+        <p class="section-intro">Schreib ein Buch Seite für Seite und kopiere einen einzigen /give-Befehl. Der Builder übernimmt Anführungszeichen und Escaping, an denen handgeschriebene Buchbefehle meist scheitern.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Mit einer Vorlage starten</h3><p>Letter, Quest notice, Contract und Diary page laden einen kurzen Entwurf mit passender Seitenzahl. Ersetz den Text und behalt die Form.</p></article>
+            <article class="resource-card"><h3>Signiert oder beschreibbar</h3><p>Signed ergibt ein beschriebenes Buch: Titel, Autor und Generation stehen im Tooltip, und niemand kann den Text mehr ändern. Writable ergibt ein Buch und Feder, das jeder Spieler, der es hält, öffnen und umschreiben kann – gut für Formulare und Entwürfe, nicht für Beweise.</p></article>
+            <article class="resource-card"><h3>Titel, Autor, Generation</h3><p>Nur signierte Bücher nutzen sie. Die Generation ist Original, Kopie des Originals, Kopie einer Kopie oder zerfleddert; eine Kopie einer Kopie lässt sich in der Werkbank nicht weiter kopieren.</p></article>
+            <article class="resource-card"><h3>Seiten</h3><p>Jedes Feld ist eine Seite. Der Buchbildschirm scrollt nicht, also trägt eine Seite einen Takt: eine Anrede, eine Klausel, einen Hinweis. Füg lieber eine Seite hinzu, als eine zu verlängern.</p></article>
+            <article class="resource-card"><h3>Syntax und Empfänger</h3><p>Wähl das Komponentenformat für 1.20.5 und neuer oder das NBT-Format für ältere Versionen, und den Selektor des Spielers, der das Buch bekommt (standardmäßig <code>@p</code>).</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Bevor du das Buch herausgibst</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Die längste Seite im Spiel lesen</h3><p>Öffne das Buch und prüf die längste Seite; läuft Text unten heraus, teil sie auf.</p></article>
+            <article class="resource-card"><h3>Anführungszeichen sind erledigt</h3><p>Der Builder escaped Anführungszeichen und Backslashes, du kannst Seiten also als normalen Text tippen.</p></article>
+            <article class="resource-card"><h3>Ein Aussehen geben</h3><p>Ein Vertrag oder ein verfluchtes Tagebuch liest sich besser mit eigenem Namen oder Modell. Namen und Modelle macht der Custom-Item-Builder; der Buchbefehl selbst trägt nur den Text.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Zwei Formate: Item-Komponenten ab 1.20.5 und NBT davor. Die Komponenten-Ausgabe speichert jede Seite als Textkomponente, so wie Minecraft Buchseiten ab 1.21.5 ablegt; in 1.20.5–1.21.4 waren Seiten JSON-Strings, also teste auf einer dieser Versionen zuerst ein kurzes Buch.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-book-letter-builder/">Anleitung zum Buch- und Brief-Builder</a><a class="tool-button tool-button-secondary" href="/de/wiki-readable-minecraft-books/">Bücher, die Spieler wirklich lesen</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutz</a></footer>
 <script>window.CUBE_BOOK_BUILDER_COPY={"copiedButton":"Kopiert","pageLabel":"Seite","removePage":"Entfernen","versionNotes":{"modern":"Der moderne Modus passt zu Servern, die bereits mit Components arbeiten. Der Export nutzt written_book_content.","legacy":"Der Legacy-Modus ist für ältere Server gedacht, die noch NBT-Tags und Seitenarrays erwarten."},"versionNames":{"modern":"1.20.5+ Components","legacy":"Vor 1.20.5 NBT"},"summaryPattern":"{count} Seite(n) vorbereitet. Syntax: {mode}.","exampleData":{"letter":{"version":"modern","type":"signed","title":"Brief vom Kai","author":"Hafenmeister","generation":"original","target":"@p","pages":["An die erste Person, die diese Notiz findet,\n\nzündet heute Nacht das Westfeuer nicht an.","Nach Einbruch der Dunkelheit antwortet das Wasser anders.\n\nVerbrennt diesen Brief nach dem Lesen."]},"quest":{"version":"modern","type":"signed","title":"Archivauftrag","author":"Quartiermeister","generation":"original","target":"@p","pages":["Quest-Update:\n\nholt das versiegelte Register aus dem Archivgewölbe.","Brecht das rote Siegel nicht.\nBringt es ungeöffnet zurück."]},"contract":{"version":"modern","type":"signed","title":"Transitvertrag","author":"Gildenamt","generation":"copy_of_original","target":"@p","pages":["Dieser Vertrag gewährt einen Durchgang durch das Osttor bei Sonnenaufgang.","Die Zahlung ist bei Ankunft fällig.\nUngültig bei gebrochenem Siegel."]},"diary":{"version":"legacy","type":"signed","title":"Feldnotizen","author":"S. Vale","generation":"original","target":"@p","pages":["Der Hain antwortete wieder auf die dritte Glocke.\nDie Wurzeln bewegten sich vor dem Wind."]}}};</script>
