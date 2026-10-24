@@ -113,12 +113,93 @@ up with permanently-"new" tools — no manual follow-up commit needed.
 
 Missing translations are a warning, not a rejection.
 
+## CI checks and sitemap refresh
+
+Validation only looks at a queued bundle. Two more workflows cover the live
+site itself.
+
+### Checks (`checks.yml`)
+
+Runs on every push and pull request to `main`, and by hand. Every step runs
+even if an earlier one failed, so one run reports all the problems.
+
+| Step | Command | Catches |
+| --- | --- | --- |
+| Unit tests | `node --test tests/*.test.cjs` | broken generators, wiki grids |
+| Syntax | `node --check` on each `assets/*.js` | a typo that breaks a tool or the menu |
+| Links and metadata | `node scripts/check-links.mjs` | see below |
+| Sitemap | `bash scripts/generate-sitemap.sh --check` | stale `sitemap.xml` (advisory) |
+
+Name a new test `tests/<name>.test.cjs` and it is picked up. The glob is
+deliberate: `node --test tests/` fails on Node 24 (it treats the folder as a
+module path), and `tests/constructor-nodes.browser.js` is a Playwright
+scenario, not a Node test, so it must stay out of the runner.
+
+`scripts/check-links.mjs` has no dependencies and scans every `.html` file
+(dot-directories are skipped). It fails when:
+
+- an `href="/..."` has no matching file. `/x/` needs `x/index.html`; `/x` also
+  accepts `x.html` or `x/index.html`, as GitHub Pages serves them. Lookups are
+  case-sensitive on every OS, so `/Wiki/` fails on a Windows checkout too
+- a `<link hreflang>` has no href, points off-site, or points at a page that
+  does not exist
+- an indexable page lacks a `<title>`, a meta description or a canonical
+  link, or its canonical points at a page that does not exist
+
+"Indexable" means neither `noindex` in the robots meta tag nor a `Disallow` in
+`robots.txt`. The redirect stubs are `noindex`, so they are exempt from the
+metadata rules, but their links are still checked.
+
+**The sitemap step only warns**, except in a manual run. `lastmod` is each
+page's last commit date, so a sitemap committed together with its pages is
+stale by construction, and the refresh below repairs `main` after every push.
+A hard failure would turn every content push red until the bot catches up.
+Use **Run workflow** on Checks for the strict version. To make it strict on
+every push instead, delete the `if` block in that step.
+
+### Sitemap refresh (`sitemap-refresh.yml`)
+
+Regenerates `sitemap.xml` and commits it as `github-actions[bot]` when it
+changed. You never need to regenerate or hand-edit it; run `git pull --rebase`
+to pick up the bot's commit.
+
+It runs when:
+
+- a push to `main` touches an `.html` file (not under `.drip/`)
+- **Drip Publish** completes. A drip release is pushed with `GITHUB_TOKEN`,
+  which starts no push workflows, and the publisher regenerates the sitemap
+  before its own commit exists, so every existing page it updated carries the
+  previous `lastmod`. This run catches up
+- you start it by hand
+
+It cannot loop. Three independent things prevent it:
+
+- the push filter matches `.html` files only, and the bot's commit touches
+  `sitemap.xml` alone, whichever token pushed it
+- `GITHUB_TOKEN` pushes do not start workflows
+- it is idempotent: the commit changes no page, so no page's last-commit date
+  moves and a second run finds nothing to do
+
+It shares the `drip-publish` concurrency group with the publisher. Both commit
+to `main` and both rewrite `sitemap.xml`, so a refresh landing mid-release
+would make the publisher's `git pull --rebase` conflict. Runs queue and none is
+cancelled mid-run. GitHub keeps only one *pending* run per group, though, so if
+the Sunday release is waiting behind a refresh and a second refresh queues
+after it, the release run is cancelled. If Sunday shows as cancelled, start
+Drip Publish by hand.
+
+If someone else's push moves `main` mid-run, the refresh drops its own commit,
+fast-forwards and regenerates, rather than rebasing. If `main` gets branch
+protection, `github-actions[bot]` needs permission to push to it.
+
 ## Running things by hand
 
 ```bash
 bash .github/scripts/drip-validate.sh .drip/queue/2026-08-02-my-bundle
 DRIP_DRY_RUN=1 bash .github/scripts/drip-publish.sh
 bash scripts/generate-sitemap.sh --check
+node --test tests/*.test.cjs
+node scripts/check-links.mjs
 ```
 
 A dry run resets the working tree afterwards, so it refuses to start unless
@@ -127,8 +208,12 @@ the tree is already clean.
 ## Files
 
 - `.github/workflows/drip-publish.yml` — schedule and dry-run input
+- `.github/workflows/checks.yml` — tests, syntax, links, sitemap on push and PR
+- `.github/workflows/sitemap-refresh.yml` — keeps `sitemap.xml` current on `main`
 - `.github/scripts/drip-publish.sh` — the publisher
 - `.github/scripts/drip-validate.sh` — preflight checks
+- `.github/scripts/sitemap-refresh.sh` — regenerate, commit and push the sitemap
 - `scripts/generate-sitemap.sh` — sitemap rebuild
+- `scripts/check-links.mjs` — links, hreflang and page metadata checks
 - `scripts/merge-tool-meta.sh` — menu entry splice
 - `.drip/template-release/` — copy this to start a new bundle
