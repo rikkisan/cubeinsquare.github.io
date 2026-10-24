@@ -510,14 +510,15 @@
             }
             return;
         }
-        if (event.target === addTradeButton) {
+        const button = event.target.closest('button');
+        if (button === addTradeButton) {
             createTradeCard({ buyCount: 1, sellId: 'diamond', sellName: '' });
             trackEvent('villager_trade_added', {
                 trade_count: tradeList.querySelectorAll('[data-trade-card]').length
             });
         }
-        if (event.target === resetButton) resetTool();
-        if (event.target === copyButton) copyCommand();
+        if (button === resetButton) resetTool();
+        if (button === copyButton) copyCommand();
         if (commandBlockButton === commandBlockCopyButton) copyCommandBlockGive();
         if (commandBlockSync === commandBlockSyncButton) {
             commandBlockVersionOverride = '';
