@@ -48,6 +48,7 @@ for the individual commits.
 | 2026-09-30 | PR #11: Form / Nodes (Beta) workspace on 11 constructors, all four locales. PR #12: homepage "real server experience" caption. |
 | 2026-10-13 | Titles and descriptions rewritten for pages with near-zero CTR at a good search position; `.tool-button` underline fix. |
 | 2026-10-24 | The publisher no longer writes the bot identity into the local `.git/config`. |
+| 2026-10-24 | AdSense wave A: bossbar pages rewritten, four short articles merged or closed, "coming soon" removed, complete tools and wiki hubs (see "AdSense resubmission" below). |
 
 ### Pipeline incidents worth remembering
 
@@ -78,13 +79,53 @@ whenever fewer than two bundles remain.
 - **Notification Builder.**
 - **Quest Journal / Objective Tracker.** Overlaps with the Advancement builder, which already builds quest
   chains; decide what the journal adds (book or scoreboard based tracking) before starting.
-- **Map art builder** and **Pixel-art palette** are already shown as "soon" cards on `/tools/` (in all four locales).
+- **Map art builder** and **Pixel-art palette.** Their "soon" cards were removed from `/tools/` on 2026-10-24 (AdSense
+  counts unlaunched pages against the site); announce them only when they ship.
 - **Texture painter polish.** `TEXTURE_PAINTER_STATUS.md` is the source of truth for what is live, what is
   outstanding, known issues and the test plan; it is not repeated here. Check `git status` and ask before
   starting, since these edits touch `assets/texture-painter.css`, `assets/app.js` and the four
   `texture-painter/index.html` pages.
 - **Author's own writing** for the skin editor and texture painter pages, as laid out in
   `PIXEL_ART_AUTHOR_BRIEF.md`. It waits on the author; nothing in the repo tracks whether it has been written.
+
+## AdSense resubmission
+
+AdSense declined the site for **low-value content** ("бесполезный контент"). The audit of 2026-10-24 found the
+causes in content, not in consent or ads: 12 of 18 tool pages had 37–68 words of their own text, two bossbar pages
+repeated one generated paragraph under every heading, many articles still taught 1.21.4-era syntax (or broke on
+1.21.5+), and the English wiki hub listed only half of the articles. The owner decided not to resubmit until items
+1–8 of the audit's top list are done. Work runs in waves; commands added or fixed along the way are listed with the
+expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
+
+**Wave A, done 2026-10-24**
+
+- Bossbar guide and event article rewritten (x4); the countdown article folded into the event article with a
+  corrected recipe (its old loop counted ticks as seconds).
+- Merged into stronger siblings with noindex redirects: smart potion contents → custom potions, written books for
+  quests → readable books, circle/dome arena layouts → round build shape choice. `wiki-complex-command-blocks`
+  (no commands, sales pitch) redirects to the data pack guide.
+- "Coming soon" removed: Tools menu entry, the two "soon" cards, `/tool-coming-soon/` now redirects to `/tools/`.
+- `/tools/` shows all 18 tools (item model builder and custom item catalog were missing in every locale).
+- Wiki hubs (x4) rebuilt: every indexable article is on its hub, in seven sections with a sidebar; runtime duplicate
+  cards fixed in `site.js`; the Wiki menu lists the book, dialogue and bossbar articles again.
+- Related-reading links into the least-linked articles; inline code wraps on phones (`/ru/recipe-generator/` no
+  longer scrolls sideways); German cookie banner uses "du".
+
+**Still to do before resubmitting**
+
+- Wave B: 300–600 words of real content under each of the 12 thin tool pages (x4); fix outdated commands
+  (`wiki-custom-model-data`, `wiki-give-command-not-working`, migration and Data Components articles, potions and
+  trades guides); rewrite the templated articles (components vs NBT, give command, custom item without JSON,
+  Blockbench model, custom weapon), without "our tools" sections or CTA panels.
+- Wave C: contact email `cubeinsquare@proton.me` on About and in every footer; remove Discord promises (there is no
+  public invite); bylines (Mark for DarkMage, Mechanism, ArmorHide, Chest Helper; Rikki for the rest; HeadHunter
+  author to confirm); rewrite ArmorHide and Chest Helper as documentation from their Modrinth pages; plugin pages
+  say where each plugin is available; server described as between seasons (season 2 over, season 3 in
+  development).
+- After Wave B: homepage less about the site itself; localized pages that are 40–50% shorter than English brought
+  to parity.
+- The owner runs `.drip/drafts/commands-to-test.md` in game; the draft `wiki-item-model-definitions` is not published
+  on its own and feeds the migration article update.
 
 ## Known issues
 
