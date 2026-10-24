@@ -1318,29 +1318,25 @@
                 resourcePackGenerator: 'Minecraft Resource Pack Generator',
                 sphereGenerator: 'Sphere generator',
                 customVillagerTrades: 'Custom villager trades',
-                customPotions: 'Custom potions',
-                upcomingTools: 'Upcoming tools'
+                customPotions: 'Custom potions'
             },
             ru: {
                 resourcePackGenerator: 'Генератор ресурс-паков Minecraft',
                 sphereGenerator: 'Генератор сфер',
                 customVillagerTrades: 'Кастомные торги жителей',
-                customPotions: 'Кастомные зелья',
-                upcomingTools: 'Будущие инструменты'
+                customPotions: 'Кастомные зелья'
             },
             fr: {
                 resourcePackGenerator: 'Générateur de resource packs Minecraft',
                 sphereGenerator: 'Générateur de sphères',
                 customVillagerTrades: 'Échanges personnalisés de villageois',
-                customPotions: 'Potions personnalisées',
-                upcomingTools: 'Outils à venir'
+                customPotions: 'Potions personnalisées'
             },
             de: {
                 resourcePackGenerator: 'Minecraft Resource-Pack-Generator',
                 sphereGenerator: 'Kugel-Generator',
                 customVillagerTrades: 'Benutzerdefinierter Dorfbewohner-Handel',
-                customPotions: 'Custom-Potions',
-                upcomingTools: 'Kommende Werkzeuge'
+                customPotions: 'Custom-Potions'
             }
         }[locale];
         const toolsByKey = new Map(tools.map((tool) => [tool.key, tool]));
@@ -1359,8 +1355,7 @@
             toolsByKey.get('dialogueBuilder'),
             toolsByKey.get('bossbarBuilder'),
             toolsByKey.get('datapackGenerator'),
-            toolsByKey.get('lootTableGenerator'),
-            { toolHref: withPrefix('/tool-coming-soon/'), toolLabel: navigationExtras.upcomingTools }
+            toolsByKey.get('lootTableGenerator')
         ].filter(Boolean);
 
         document.querySelectorAll('.steam-nav-menu').forEach((menu) => {
@@ -1407,13 +1402,12 @@
         });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
-            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             tools.forEach((tool) => {
                 if (list.querySelector(`a[href="${tool.toolHref}"], a[href$="${tool.toolHref}"]`)) return;
                 const link = document.createElement('a');
                 link.href = tool.toolHref;
                 link.textContent = tool.toolLabel;
-                list.insertBefore(link, upcoming || null);
+                list.appendChild(link);
             });
         });
 
@@ -1594,11 +1588,10 @@
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             if (list.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
-            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             const link = document.createElement('a');
             link.href = toolHref;
             link.textContent = copy.toolLabel;
-            list.insertBefore(link, upcoming || null);
+            list.appendChild(link);
         });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {
@@ -1687,11 +1680,10 @@
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-list').forEach((list) => {
             if (list.querySelector(`a[href="${toolHref}"], a[href$="${toolHref}"]`)) return;
-            const upcoming = Array.from(list.querySelectorAll('a')).find((item) => /(?:^|\/)tool-coming-soon(?:\/|\.html)?$/i.test(item.getAttribute('href') || ''));
             const link = document.createElement('a');
             link.href = toolHref;
             link.textContent = copy.toolLabel;
-            list.insertBefore(link, upcoming || null);
+            list.appendChild(link);
         });
 
         document.querySelectorAll('.steam-mega-panel--tools .mega-feature').forEach((feature) => {

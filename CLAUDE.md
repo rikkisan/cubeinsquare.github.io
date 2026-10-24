@@ -32,8 +32,8 @@ the same tree, so stage your own files by name rather than `git add -A`.
 | Root `*.html`, `en/`, `ru/*.html` | `noindex` redirect stubs for old URLs. Never add content to them. |
 | `.claude/worktrees/` | Git-excluded scratch worktrees holding stale copies of these docs. Ignore them when grepping or globbing. |
 
-18 tool pages are live. `tools/index.html` has static cards for 16 of them; `site.js` adds cards for the rest
-(item-model-builder, custom-item-catalog), so a tool missing from the HTML is not necessarily missing from the page.
+18 tool pages are live, and `tools/index.html` (×4) has a static card for each. Add the card in the HTML: the
+`site.js` fallback only injects tools that have `catalogTitle` in their labels, which most do not.
 
 ## Shared files: dangerous to touch
 
