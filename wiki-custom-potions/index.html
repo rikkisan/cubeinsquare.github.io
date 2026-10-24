@@ -117,7 +117,7 @@
                                      "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
                                  ],
                        "datePublished":  "2026-04-23",
-                       "dateModified":  "2026-04-23"
+                       "dateModified":  "2026-10-24"
                    },
                    {
                        "@type":  "WebPage",
@@ -222,6 +222,25 @@
   custom_color:7173375
 }</code></pre>
         <p>This matters because many good RP potions are not purely vanilla and not purely custom either. They often start from a normal potion identity and then get one or two precise changes that make them fit the server’s fiction.</p>
+        <h2 id="potion-contents">Reading potion_contents field by field</h2>
+        <p><strong>Checked for versions:</strong> Java Edition 1.20.5–26.3; the <code>0x</code> color form needs 1.21.5 or newer.</p>
+        <p>From 1.20.5 the whole effect side of a bottle lives in one component. A tonic with two effects and its own color:</p>
+        <pre><code>potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <table class="compact-table"><thead><tr><th>Field</th><th>What it means</th><th>Worth knowing</th></tr></thead><tbody>
+        <tr><td><code>potion</code></td><td>A vanilla potion as the base, for example <code>minecraft:swiftness</code></td><td>Optional. Leave it out when the bottle should carry only your own effects.</td></tr>
+        <tr><td><code>custom_color</code></td><td>The bottle color as one number: red × 65536 + green × 256 + blue</td><td>11750815 is #B34D9F. From 1.21.5 you can write <code>0xB34D9F</code> instead of converting.</td></tr>
+        <tr><td><code>id</code></td><td>The effect, for example <code>minecraft:speed</code></td><td>A readable ID; numeric effect IDs belong to the pre-1.20.5 format.</td></tr>
+        <tr><td><code>amplifier</code></td><td>The level minus one</td><td>0 is level I, 1 is level II. Left out, it is 0.</td></tr>
+        <tr><td><code>duration</code></td><td>Length in ticks, 20 per second</td><td>2400 is two minutes; -1 makes the effect infinite.</td></tr>
+        <tr><td><code>show_particles</code>, <code>show_icon</code>, <code>ambient</code></td><td>How visible the effect is</td><td>Particles and the HUD icon show unless set to false; <code>ambient</code> makes particles fainter, like a beacon's.</td></tr>
+        </tbody></table>
+        <p>A few habits keep these bottles readable in play. Match the color to the story role, so a medic's tincture never shares a shade with a poison. Let the name say what the bottle is in the world; the tooltip already lists what it does. Stop at two or three effects, because players stop reading a longer list. Typical RP bottles built this way: a medic's tincture (mild speed and regeneration), an investigator's elixir (night vision and a short invisibility), faction tonics that share effects but differ in color, and quest-only brews with a readable name and their own model.</p>
         <h2>Version split</h2>
         <p>Since Minecraft 1.20.5, items use Data Components. In practice that gives custom potions two common formats:</p>
         <ul><li><strong>1.20.5+</strong> uses square brackets with <code>potion_contents</code>, plus <code>item_name</code>, <code>lore</code>, and <code>custom_model_data</code>.</li><li><strong>Before 1.20.5</strong> uses NBT tags such as <code>Potion</code>, <code>CustomPotionEffects</code>, <code>CustomPotionColor</code>, and the old <code>display</code> block.</li></ul>

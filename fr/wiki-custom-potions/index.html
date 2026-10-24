@@ -234,6 +234,25 @@
   custom_color:7173375
 }</code></pre>
         <p>Cela compte parce que beaucoup de bonnes potions RP ne sont ni purement vanilla ni totalement custom. Elles partent d’une base reconnaissable et gagnent ensuite un ou deux détails très précis qui les rendent cohérentes avec votre monde.</p>
+        <h2 id="potion-contents">Le composant potion_contents champ par champ</h2>
+        <p><strong>Vérifié pour les versions :</strong> Java Edition 1.20.5–26.3 ; l’écriture de la couleur en <code>0x</code> demande la 1.21.5.</p>
+        <p>Depuis la 1.20.5, tout ce qui concerne les effets d’une fiole tient dans un seul composant. Un tonique avec deux effets et sa propre couleur :</p>
+        <pre><code>potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <table class="compact-table"><thead><tr><th>Champ</th><th>Signification</th><th>Bon à savoir</th></tr></thead><tbody>
+        <tr><td><code>potion</code></td><td>Une potion vanilla comme base, par exemple <code>minecraft:swiftness</code></td><td>Facultatif. Omettez-le si la fiole ne doit porter que vos propres effets.</td></tr>
+        <tr><td><code>custom_color</code></td><td>La couleur de la fiole en un seul nombre : rouge × 65536 + vert × 256 + bleu</td><td>11750815 correspond à #B34D9F. Depuis la 1.21.5, on peut écrire <code>0xB34D9F</code> sans conversion.</td></tr>
+        <tr><td><code>id</code></td><td>L’effet, par exemple <code>minecraft:speed</code></td><td>Un identifiant lisible ; les numéros d’effet appartiennent au format d’avant la 1.20.5.</td></tr>
+        <tr><td><code>amplifier</code></td><td>Le niveau moins un</td><td>0 donne le niveau I, 1 le niveau II. Par défaut, 0.</td></tr>
+        <tr><td><code>duration</code></td><td>La durée en ticks, 20 par seconde</td><td>2400 font deux minutes ; -1 rend l’effet infini.</td></tr>
+        <tr><td><code>show_particles</code>, <code>show_icon</code>, <code>ambient</code></td><td>La visibilité de l’effet</td><td>Particules et icône s’affichent sauf si on les passe à false ; <code>ambient</code> rend les particules plus discrètes, comme celles d’une balise.</td></tr>
+        </tbody></table>
+        <p>Quelques habitudes gardent ces fioles lisibles en jeu. Accordez la couleur au rôle dans l’histoire, pour qu’une teinture de soigneur ne partage jamais la nuance d’un poison. Laissez le nom dire ce qu’est la fiole dans le monde : l’infobulle indique déjà ce qu’elle fait. Arrêtez-vous à deux ou trois effets, car au-delà les joueurs ne lisent plus la liste. Fioles RP typiques construites ainsi : la teinture du soigneur (légère vitesse et régénération), l’élixir de l’enquêteur (vision nocturne et brève invisibilité), des toniques de faction aux mêmes effets mais de couleurs différentes, et des breuvages de quête avec un nom clair et leur propre modèle.</p>
         <h2>Différence entre les versions</h2>
         <p>Depuis Minecraft 1.20.5, les items sont passés aux Data Components. En pratique, les potions personnalisées ont maintenant deux formats principaux :</p>
         <ul>

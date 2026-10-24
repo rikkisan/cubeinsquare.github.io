@@ -234,6 +234,25 @@
   custom_color:7173375
 }</code></pre>
         <p>Das zählt, weil viele gute RP-Tränke weder rein vanilla noch komplett custom sind. Sie beginnen mit einer vertrauten Grundlage und bekommen ein oder zwei präzise Wendungen, die sie in die Welt des Servers einbetten.</p>
+        <h2 id="potion-contents">Die Komponente potion_contents Feld für Feld</h2>
+        <p><strong>Geprüft für die Versionen:</strong> Java Edition 1.20.5–26.3; die Farbschreibweise mit <code>0x</code> braucht 1.21.5.</p>
+        <p>Seit 1.20.5 steckt alles, was die Wirkung einer Flasche betrifft, in einer einzigen Komponente. Ein Tonikum mit zwei Effekten und eigener Farbe:</p>
+        <pre><code>potion_contents={
+  custom_color:11750815,
+  custom_effects:[
+    {id:"minecraft:speed",amplifier:1,duration:2400},
+    {id:"minecraft:night_vision",duration:2400}
+  ]
+}</code></pre>
+        <table class="compact-table"><thead><tr><th>Feld</th><th>Bedeutung</th><th>Gut zu wissen</th></tr></thead><tbody>
+        <tr><td><code>potion</code></td><td>Ein Vanilla-Trank als Basis, etwa <code>minecraft:swiftness</code></td><td>Optional. Lass es weg, wenn die Flasche nur deine eigenen Effekte tragen soll.</td></tr>
+        <tr><td><code>custom_color</code></td><td>Die Flaschenfarbe als eine Zahl: Rot × 65536 + Grün × 256 + Blau</td><td>11750815 ist #B34D9F. Ab 1.21.5 kannst du direkt <code>0xB34D9F</code> schreiben.</td></tr>
+        <tr><td><code>id</code></td><td>Der Effekt, etwa <code>minecraft:speed</code></td><td>Eine lesbare ID; numerische Effekt-IDs gehören zum Format vor 1.20.5.</td></tr>
+        <tr><td><code>amplifier</code></td><td>Die Stufe minus eins</td><td>0 ist Stufe I, 1 ist Stufe II. Ohne Angabe 0.</td></tr>
+        <tr><td><code>duration</code></td><td>Dauer in Ticks, 20 pro Sekunde</td><td>2400 sind zwei Minuten; -1 macht den Effekt unendlich.</td></tr>
+        <tr><td><code>show_particles</code>, <code>show_icon</code>, <code>ambient</code></td><td>Wie sichtbar der Effekt ist</td><td>Partikel und Symbol erscheinen, solange du sie nicht auf false setzt; <code>ambient</code> macht die Partikel blasser, wie bei einem Leuchtfeuer.</td></tr>
+        </tbody></table>
+        <p>Ein paar Gewohnheiten halten solche Flaschen im Spiel lesbar. Stimm die Farbe auf die Rolle in der Geschichte ab, damit eine Heilertinktur nie denselben Ton hat wie ein Gift. Lass den Namen sagen, was die Flasche in der Welt ist; was sie tut, zeigt der Tooltip ohnehin. Hör bei zwei oder drei Effekten auf, denn eine längere Liste lesen Spieler nicht mehr. Typische RP-Flaschen nach diesem Muster: die Tinktur des Heilers (leichte Schnelligkeit und Regeneration), das Elixier des Ermittlers (Nachtsicht und kurze Unsichtbarkeit), Fraktionstonika mit gleichen Effekten in verschiedenen Farben und Questtränke mit klarem Namen und eigenem Modell.</p>
         <h2>Versionsunterschied</h2>
         <p>Seit Minecraft 1.20.5 arbeiten Items mit Data Components. Für Custom-Tränke bedeutet das in der Praxis zwei Hauptformate:</p>
         <ul>
