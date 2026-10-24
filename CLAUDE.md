@@ -24,11 +24,10 @@ the same tree, so stage your own files by name rather than `git add -A`.
 | `wiki-<slug>/index.html` | Wiki guide or article. A tool's guide is `wiki-<tool-slug>/`. |
 | `ru/`, `fr/`, `de/` | Full mirrors of the English route tree, same slugs. |
 | `assets/` | Shared `styles.css`, `site.js`, `tracking*.js`, `app.js`, plus one `<tool>.js` (and sometimes `.css`) per tool. |
-| `tests/`, `scripts/` | Tests; sitemap generator, `TOOL_META.js` merger, and historical one-off scripts. |
+| `tests/`, `scripts/` | Tests; sitemap generator, link checker, `TOOL_META.js` merger. |
 | `.drip/queue/`, `.drip/template-release/` | Scheduled releases; template for a new one. |
 | `.github/` | Workflows: `drip-publish.yml` (Sunday release), `checks.yml` (tests, links, stale queued bundles on every push and PR), `sitemap-refresh.yml` (bot keeps `sitemap.xml` current). Scripts: publisher, `drip-validate.sh`, `drip-base.sh` and `drip-check-base.sh` (stale payload protection). |
 | Root `*.html`, `en/`, `ru/*.html` | `noindex` redirect stubs for old URLs. Never add content to them. |
-| `universal_generator.html` | Legacy page, disallowed in `robots.txt`. |
 | `.claude/worktrees/` | Git-excluded scratch worktrees holding stale copies of these docs. Ignore them when grepping or globbing. |
 
 18 tool pages are live. `tools/index.html` has static cards for 16 of them; `site.js` adds cards for the rest
@@ -48,8 +47,9 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
   recorded in `BASE.txt`, and a push that changes one fails Checks while a queued bundle still has an old copy (see Drip publishing).
 - Never edit or delete: `CNAME`, `ads.txt`, `robots.txt`, `favicon.ico`, `server-icon.png`.
 - Generated: `sitemap.xml` (use `scripts/generate-sitemap.sh`) and `PUBLISHED.md` (appended by the bot).
-- Historical, do not run: `generate_articles*.js` and `update_wiki_index.js` (Windows Script Host, article text is
-  embedded and they write pages), `scripts/generate-future-tool-bundles.mjs`, `scripts/migrate-clean-urls.ps1`.
+- Deleted on 2026-10-24, only in git history now (`git log --all -- <path>`): the Windows Script Host article generators
+  `generate_articles*.js` and `update_wiki_index.js`, `scripts/generate-future-tool-bundles.mjs`, `scripts/migrate-clean-urls.ps1`
+  and the legacy `universal_generator.html` (its `Disallow` line stays in `robots.txt`, which is not edited).
 - Encoding: files are UTF-8. Do not write them through PowerShell `Set-Content` without `-Encoding utf8`,
   and never put a backtick-r-n sequence in a string (it once leaked into the wiki grids; `tests/wiki-content.test.cjs` guards it).
 

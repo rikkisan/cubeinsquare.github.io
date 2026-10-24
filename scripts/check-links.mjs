@@ -12,8 +12,7 @@
 //   2. every <link hreflang> points at a page of this site that exists
 //   3. every indexable page has a <title>, a meta description and a canonical
 //      link, and the canonical points at a page that exists. Indexable means
-//      neither marked robots noindex nor disallowed in robots.txt (the legacy
-//      universal_generator.html is only the latter)
+//      neither marked robots noindex nor disallowed in robots.txt
 //
 // Resolution follows what GitHub Pages serves: "/x/" is x/index.html, "/x.html"
 // is that file, and "/x" is x.html or x/index.html (Pages redirects to "/x/").
