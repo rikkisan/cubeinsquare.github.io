@@ -185,8 +185,8 @@
   function filePath() {
     const ns = String($('rc-namespace').value || 'harbor').trim().toLowerCase().replace(/[^a-z0-9_.-]/g, '_') || 'harbor';
     const file = String($('rc-file').value || 'recipe').trim().toLowerCase().replace(/[^a-z0-9_/.-]/g, '_') || 'recipe';
-    // 1.21 renamed recipes/ to recipe/; this targets 1.21+ layouts.
-    return `data/${ns}/recipe/${file}.json`;
+    // 1.21 (data pack format 48) renamed recipes/ to recipe/.
+    return `data/${ns}/${currentFormat() >= 48 ? 'recipe' : 'recipes'}/${file}.json`;
   }
 
   /** Show only the controls the selected recipe type actually uses. */

@@ -104,8 +104,8 @@
   function filePath() {
     const ns = safeId($('ad-namespace').value, 'harbor');
     const file = safeId($('ad-file').value, 'root');
-    // 1.21 renamed advancements/ to advancement/.
-    return `data/${ns}/advancement/${file}.json`;
+    // 1.21 (data pack format 48) renamed advancements/ to advancement/.
+    return `data/${ns}/${currentFormat() >= 48 ? 'advancement' : 'advancements'}/${file}.json`;
   }
 
   function grantCommand() {
