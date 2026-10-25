@@ -255,6 +255,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться каталогом</h2>
+        <p class="section-intro">Одна запись — один кастомный предмет. Каталог держит их в поиске, отмечает пересечения и выгружает список для остальной команды.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Внутренний ID и видимое имя</h3><p>Внутренний ID — то, как предмет называет команда, например <code>rp.guild.pass</code>; видимое имя читают игроки. Если хранить оба, видимое имя не станет единственной зацепкой.</p></article>
+            <article class="resource-card"><h3>Базовый предмет и версия</h3><p>Ванильный предмет под капотом и версия, на которой вы выпускаете пак, решают, какой визуальный хук уместен: числовой CustomModelData до 1.21.4, <code>item_model</code> и новые списки custom_model_data с 1.21.4.</p></article>
+            <article class="resource-card"><h3>Скрытый ID, хук, теги, заметки</h3><p>Скрытый ID — то, что проверяют команды и жители в <code>custom_data</code>. Теги группируют предметы по фракции, квесту или сезону; в заметках — правила, которые легко забыть.</p></article>
+            <article class="resource-card"><h3>Отметки о дублях</h3><p>Сводка считает повторяющиеся скрытые ID и визуальные хуки, а каждая конфликтная запись помечается — два предмета не откликнутся на один ID и не получат одну модель случайно.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Как не потерять список</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Он живёт в этом браузере</h3><p>Записи хранятся локально в браузере, которым вы пользуетесь. В другом браузере или на другом устройстве каталог пуст, а очистка данных сайта удаляет список, так что время от времени делайте экспорт.</p></article>
+            <article class="resource-card"><h3>Форматы экспорта</h3><p>JSON можно потом импортировать обратно; CSV открывается в любой таблице; Markdown аккуратно вставляется в вики или командный чат.</p></article>
+            <article class="resource-card"><h3>Сначала импорт, потом правки</h3><p>Если коллега прислал JSON, сначала импортируйте его, а потом добавляйте свои записи, вместо того чтобы вести два отдельных списка.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">От каталога к предмету</h2>
+        <p class="section-intro">Каталог планирует предметы, но не пишет команды. Саму команду <code>/give</code> соберите в конструкторе кастомных предметов, а модель подключите через конструктор item_model с 1.21.4 или генератор ресурс-паков для более ранних версий.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-custom-item-catalog/">Гайд по каталогу</a><a class="tool-button tool-button-secondary" href="/ru/wiki-custom-item-id-naming/">Как называть кастомные предметы</a><a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Конструктор кастомных предметов</a></div>
+    </section>
 </main>
 <footer class="site-footer">
     <span>Куб в квадрате</span>

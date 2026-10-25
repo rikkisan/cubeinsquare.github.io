@@ -255,6 +255,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Katalog</h2>
+        <p class="section-intro">Ein Eintrag pro Custom-Item. Der Katalog hält sie durchsuchbar, markiert Überschneidungen und exportiert die Liste für den Rest des Teams.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Interne ID und Anzeigename</h3><p>Die interne ID ist der Name, den dein Team für das Item nutzt, etwa <code>rp.guild.pass</code>; der Anzeigename ist, was Spieler lesen. Wer beides führt, macht den sichtbaren Namen nicht zur einzigen Referenz.</p></article>
+            <article class="resource-card"><h3>Basisitem und Version</h3><p>Das Vanilla-Item darunter und die Version, für die du baust, bestimmen den passenden visuellen Hook: numerisches CustomModelData vor 1.21.4, <code>item_model</code> und die neuen custom_model_data-Listen ab 1.21.4.</p></article>
+            <article class="resource-card"><h3>Versteckte ID, Hook, Tags, Notizen</h3><p>Die versteckte ID prüfen Befehle und Dorfbewohner in <code>custom_data</code>. Tags gruppieren nach Fraktion, Quest oder Saison; Notizen halten Regeln fest, die man leicht vergisst.</p></article>
+            <article class="resource-card"><h3>Doppelt-Markierungen</h3><p>Die Übersicht zählt doppelte versteckte IDs und doppelte visuelle Hooks, und jeder betroffene Eintrag wird markiert – so hören nie zwei Items versehentlich auf dieselbe ID oder teilen ein Modell.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Die Liste nicht verlieren</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Sie lebt in diesem Browser</h3><p>Einträge werden lokal im Browser gespeichert, den du benutzt. Ein anderer Browser oder ein anderes Gerät startet leer, und das Löschen der Websitedaten entfernt die Liste – exportier also ab und zu.</p></article>
+            <article class="resource-card"><h3>Exportformate</h3><p>JSON lässt sich später wieder importieren; CSV öffnet jede Tabellenkalkulation; Markdown passt sauber in ein Wiki oder einen Team-Chat.</p></article>
+            <article class="resource-card"><h3>Erst importieren, dann bearbeiten</h3><p>Schickt dir jemand aus dem Team einen JSON-Export, importier ihn zuerst und ergänze dann deine Einträge, statt zwei getrennte Listen zu führen.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Vom Katalog zum Item</h2>
+        <p class="section-intro">Der Katalog plant Items, schreibt aber keine Befehle. Den eigentlichen <code>/give</code>-Befehl baust du im Custom-Item-Builder, das Modell kommt ab 1.21.4 über den item_model-Builder, davor über den Resource-Pack-Generator.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-custom-item-catalog/">Anleitung zum Katalog</a><a class="tool-button tool-button-secondary" href="/de/wiki-custom-item-id-naming/">Custom-Items benennen</a><a class="tool-button tool-button-secondary" href="/de/custom-item-builder/">Custom-Item-Builder</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
 <script src="/assets/site.js"></script>

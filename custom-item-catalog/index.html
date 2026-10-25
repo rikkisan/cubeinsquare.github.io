@@ -215,6 +215,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the catalog</h2>
+        <p class="section-intro">One entry per custom item. The catalog keeps them searchable, flags clashes and exports the list for the rest of the team.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Internal ID and display name</h3><p>The internal ID is the name your team uses for the item, such as <code>rp.guild.pass</code>; the display name is what players read. Keeping both stops the visible name from becoming the only reference.</p></article>
+            <article class="resource-card"><h3>Base item and version</h3><p>The vanilla item underneath and the version you ship decide which visual hook makes sense: numeric CustomModelData before 1.21.4, <code>item_model</code> and the newer custom_model_data lists from 1.21.4.</p></article>
+            <article class="resource-card"><h3>Hidden ID, hook, tags, notes</h3><p>The hidden ID is what commands and villagers check in <code>custom_data</code>. Tags group items by faction, quest or season; notes hold the rules that are easy to forget.</p></article>
+            <article class="resource-card"><h3>Duplicate flags</h3><p>The summary counts duplicate hidden IDs and duplicate visual hooks, and each clashing entry is marked, so two items never answer to the same ID or share one model by accident.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Keeping the list safe</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>It lives in this browser</h3><p>Entries are stored locally in the browser you use. Another browser or device starts empty, and clearing site data removes the list, so export it now and then.</p></article>
+            <article class="resource-card"><h3>Export formats</h3><p>JSON can be imported back later; CSV opens in any spreadsheet; Markdown pastes cleanly into a wiki page or a team chat.</p></article>
+            <article class="resource-card"><h3>Import before you edit</h3><p>If a teammate sends a JSON export, import it first and then add your entries, rather than keeping two separate lists.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">From catalog to item</h2>
+        <p class="section-intro">The catalog plans items; it does not write commands. Build the actual <code>/give</code> command in the custom item builder, and give the item a model with the item model builder from 1.21.4 or the resource pack generator before that.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-custom-item-catalog/">Catalog guide</a><a class="tool-button tool-button-secondary" href="/wiki-custom-item-id-naming/">Naming custom items</a><a class="tool-button tool-button-secondary" href="/custom-item-builder/">Custom item builder</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
 <script src="/assets/site.js"></script>

@@ -255,6 +255,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le catalogue</h2>
+        <p class="section-intro">Une entrée par objet custom. Le catalogue les garde consultables, signale les collisions et exporte la liste pour le reste de l’équipe.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>ID interne et nom visible</h3><p>L’ID interne est le nom que l’équipe donne à l’objet, comme <code>rp.guild.pass</code> ; le nom visible est ce que lisent les joueurs. Garder les deux évite que le nom visible devienne la seule référence.</p></article>
+            <article class="resource-card"><h3>Objet de base et version</h3><p>L’objet vanilla sous-jacent et la version visée décident du hook visuel : CustomModelData numérique avant la 1.21.4, <code>item_model</code> et les nouvelles listes custom_model_data depuis la 1.21.4.</p></article>
+            <article class="resource-card"><h3>ID caché, hook, tags, notes</h3><p>L’ID caché est ce que vérifient les commandes et les villageois dans <code>custom_data</code>. Les tags regroupent par faction, quête ou saison ; les notes gardent les règles faciles à oublier.</p></article>
+            <article class="resource-card"><h3>Signalement des doublons</h3><p>Le résumé compte les ID cachés et les hooks visuels en double, et chaque entrée en conflit est marquée : deux objets ne répondent jamais au même ID ni ne partagent un modèle par accident.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Ne pas perdre la liste</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Elle vit dans ce navigateur</h3><p>Les entrées sont stockées localement dans votre navigateur. Un autre navigateur ou appareil démarre vide, et effacer les données du site supprime la liste : exportez de temps en temps.</p></article>
+            <article class="resource-card"><h3>Formats d’export</h3><p>Le JSON se réimporte plus tard ; le CSV s’ouvre dans n’importe quel tableur ; le Markdown se colle proprement dans un wiki ou un chat d’équipe.</p></article>
+            <article class="resource-card"><h3>Importer avant de modifier</h3><p>Si un coéquipier envoie un export JSON, importez-le d’abord puis ajoutez vos entrées, plutôt que de tenir deux listes séparées.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Du catalogue à l’objet</h2>
+        <p class="section-intro">Le catalogue planifie les objets, il n’écrit pas de commandes. Construisez la commande <code>/give</code> dans le constructeur d’objets custom, et donnez un modèle à l’objet avec le constructeur item_model depuis la 1.21.4 ou le générateur de resource packs avant.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-custom-item-catalog/">Guide du catalogue</a><a class="tool-button tool-button-secondary" href="/fr/wiki-custom-item-id-naming/">Nommer les objets custom</a><a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Constructeur d’objets custom</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script src="/assets/site.js"></script>
