@@ -381,10 +381,11 @@
     return ITEM_VERSIONS[key] || ITEM_VERSIONS.v1215;
   }
 
-  /** Analytics keeps the documented item_format values; the branch goes into mc_version. */
+  /** item_format as documented in ANALYTICS.md; the exact branch goes into mc_version. */
   function versionParams() {
     const version = currentVersion();
-    return version.components ? { item_format: 'modern', mc_version: version.mc } : { item_format: 'legacy' };
+    if (!version.components) return { item_format: 'legacy' };
+    return { item_format: version.simplified ? 'latest' : 'modern', mc_version: version.mc };
   }
 
   function syncVisibility() {

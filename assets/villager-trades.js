@@ -230,6 +230,12 @@
         return JSON.stringify(String(value));
     }
 
+    // From 1.21.5 text components in commands are SNBT; a quoted JSON string
+    // would be shown literally instead of being read as a component.
+    function snbtText(value) {
+        return `{text:${JSON.stringify(String(value))},italic:false}`;
+    }
+
     function snbtJsonText(value) {
         const json = JSON.stringify({
             text: String(value),
@@ -255,9 +261,9 @@
 
         const parts = [`id:${snbtString(id)}`, `count:${count}`];
         const components = [];
-        if (customName) components.push(`"minecraft:custom_name":${snbtJsonText(customName)}`);
+        if (customName) components.push(`"minecraft:custom_name":${version === 'latest' ? snbtText(customName) : snbtJsonText(customName)}`);
         if (customModelData > 0) {
-            if (version === 'modern') {
+            if (version === 'modern' || version === 'latest') {
                 components.push(`"minecraft:custom_model_data":{floats:[${customModelData}f]}`);
             } else {
                 components.push(`"minecraft:custom_model_data":${customModelData}`);
@@ -379,7 +385,7 @@
         ];
 
         const villagerName = fieldValue('vt-name', '');
-        if (villagerName) tags.push(`CustomName:${snbtJsonText(villagerName)}`);
+        if (villagerName) tags.push(`CustomName:${version === 'latest' ? snbtText(villagerName) : snbtJsonText(villagerName)}`);
         if (checked('vt-no-ai')) tags.push('NoAI:1b');
         if (checked('vt-invulnerable')) tags.push('Invulnerable:1b');
         if (checked('vt-silent')) tags.push('Silent:1b');

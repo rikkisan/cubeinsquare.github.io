@@ -306,6 +306,12 @@
         return `'${json.replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
     }
 
+    // From 1.21.5 text components in commands are SNBT; a quoted JSON string
+    // would be shown literally instead of being read as a component.
+    function snbtText(value) {
+        return `{text:${JSON.stringify(String(value))},italic:false}`;
+    }
+
     function splitLore(value) {
         return String(value || '')
             .split(/\r?\n/)
@@ -455,12 +461,13 @@
         if (effects.parts.length) potionContents.push(`custom_effects:[${effects.parts.join(',')}]`);
         if (useColor) potionContents.push(`custom_color:${colorValue}`);
         if (potionContents.length) components.push(`potion_contents={${potionContents.join(',')}}`);
-        if (name) components.push(`item_name=${jsonTextLiteral(name)}`);
-        if (loreLines.length) components.push(`lore=[${loreLines.map(jsonTextLiteral).join(',')}]`);
+        const asText = version === 'latest' ? snbtText : jsonTextLiteral;
+        if (name) components.push(`item_name=${asText(name)}`);
+        if (loreLines.length) components.push(`lore=[${loreLines.map(asText).join(',')}]`);
         if (customModelData > 0) {
             // 1.21.4 turned custom_model_data from a bare int into a record of
             // typed lists, so the older form no longer parses there.
-            components.push(version === 'modern'
+            components.push(version === 'modern' || version === 'latest'
                 ? `custom_model_data={floats:[${customModelData}f]}`
                 : `custom_model_data=${customModelData}`);
         }

@@ -54,10 +54,12 @@ used to report `page`.
 | `guide_link_click` | `link_from`, `link_to`, `click_area` | a click on a link to a tool or to the guide of a tool |
 
 `mc_version` is only ever a real game version, as the tool's version select names it (`1.21.4`, `26.1`, …).
-`item_format` is the command syntax generation of the tools that offer one: `modern` (1.21.4+ components),
-`current` (1.20.5–1.21.3 components), `legacy` (before 1.20.5, NBT). Book & letter offers only `modern` (1.20.5+
-components) and `legacy`. The enchantment randomizer has three component branches (1.21.5–26.x, 1.21.2–1.21.4,
-1.21–1.21.1): it sends `modern` for all of them and the branch's first version as `mc_version` (`1.21.5`, `1.21.2`, `1.21`).
+`item_format` is the command syntax generation of the tools that offer one: `latest` (1.21.5–26.x components, text
+components in SNBT), `modern` (1.21.4 components), `current` (1.20.5–1.21.3 components), `legacy` (before 1.20.5, NBT).
+The custom item builder, custom potions and villager trades offer all four (`latest` since 2026-10-25; before that
+`modern` meant 1.21.4+). Book & letter offers only `modern` (1.20.5+ components) and `legacy`. The enchantment
+randomizer sends `latest` for its 1.21.5–26.x branch and `modern` for 1.21.2–1.21.4 and 1.21–1.21.1, with the
+branch's first version as `mc_version` (`1.21.5`, `1.21.2`, `1.21`).
 
 | Tool | `tool_copy` `output_kind` | `tool_download` `file_kind` | `tool_example_load` | version parameter |
 | --- | --- | --- | --- | --- |

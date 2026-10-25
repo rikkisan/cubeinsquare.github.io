@@ -15,7 +15,7 @@
             items: (count) => `item${count === 1 ? '' : 's'}`,
             versionLegacy: 'Before 1.20.5',
             versionCurrent: '1.20.5-1.21.3',
-            versionModern: '1.21.4+',
+            versionModern: '1.21.4',
             copyModern: 'This version can carry a visible model route, a readable hidden ID, and richer custom_model_data slots at the same time.',
             copyLegacy: 'This version keeps the command compact and useful for older packs, older quest rewards, and legacy server utilities.',
             summary: (version, length) => `Version: ${version}. Command length: ${length} characters.`,
@@ -64,7 +64,7 @@
             items: (count) => `предмет${count === 1 ? '' : 'ов'}`,
             versionLegacy: 'До 1.20.5',
             versionCurrent: '1.20.5-1.21.3',
-            versionModern: '1.21.4+',
+            versionModern: '1.21.4',
             copyModern: 'Эта версия позволяет одновременно хранить путь к визуальной модели, читаемый скрытый ID и богатые слоты custom_model_data.',
             copyLegacy: 'Эта версия оставляет команду компактной и полезной для старых паков, старых квестов и утилит серверов.',
             summary: (version, length) => `Версия: ${version}. Длина: ${length} символов.`,
@@ -113,7 +113,7 @@
             items: (count) => `Item${count === 1 ? '' : 's'}`,
             versionLegacy: 'Vor 1.20.5',
             versionCurrent: '1.20.5-1.21.3',
-            versionModern: '1.21.4+',
+            versionModern: '1.21.4',
             copyModern: 'Diese Version kann gleichzeitig eine visuelle Modellroute, eine lesbare versteckte ID und reichhaltige custom_model_data-Slots tragen.',
             copyLegacy: 'Diese Version hält den Befehl kompakt und nützlich für ältere Packs, ältere Quest-Belohnungen und alte Server-Tools.',
             summary: (version, length) => `Version: ${version}. Länge: ${length} Zeichen.`,
@@ -162,7 +162,7 @@
             items: (count) => `objet${count === 1 ? '' : 's'}`,
             versionLegacy: 'Avant 1.20.5',
             versionCurrent: '1.20.5-1.21.3',
-            versionModern: '1.21.4+',
+            versionModern: '1.21.4',
             copyModern: 'Cette version peut transporter simultanément une route de modèle visible, un ID caché lisible et des slots custom_model_data enrichis.',
             copyLegacy: 'Cette version garde la commande compacte pour les anciens packs, anciennes récompenses et vieux utilitaires de serveur.',
             summary: (version, length) => `Version : ${version}. Longueur : ${length} caractères.`,
@@ -290,6 +290,16 @@
         return JSON.stringify(String(value));
     }
 
+    // From 1.21.5 text components in commands are SNBT, and a quoted JSON string
+    // would show up literally as the item name.
+    function snbtText(value) {
+        return `{text:${snbtString(value)},italic:false}`;
+    }
+
+    function isModernVersion(version) {
+        return version === 'modern' || version === 'latest';
+    }
+
     function splitLore(value) {
         return String(value || '')
             .split(/\r?\n/)
@@ -315,6 +325,7 @@
     }
 
     function versionLabel(version) {
+        if (version === 'latest') return '1.21.5 – 26.x';
         if (version === 'legacy') return text.versionLegacy;
         if (version === 'current') return text.versionCurrent;
         return text.versionModern;
@@ -348,8 +359,9 @@
 
     function buildModernCommand(state) {
         const components = [];
-        if (state.name) components.push(`minecraft:custom_name=${jsonTextLiteral(state.name)}`);
-        if (state.loreLines.length) components.push(`minecraft:lore=[${state.loreLines.map(jsonTextLiteral).join(',')}]`);
+        const asText = state.version === 'latest' ? snbtText : jsonTextLiteral;
+        if (state.name) components.push(`minecraft:custom_name=${asText(state.name)}`);
+        if (state.loreLines.length) components.push(`minecraft:lore=[${state.loreLines.map(asText).join(',')}]`);
         if (state.itemModel) components.push(`minecraft:item_model=${snbtString(state.itemModel)}`);
         if (state.hiddenId) components.push(`minecraft:custom_data={item_id:${snbtString(state.hiddenId)}}`);
 
@@ -385,7 +397,7 @@
 
         if (state.hiddenId) chips.push({ label: text.labels.hiddenId, value: state.hiddenId });
 
-        if (state.version === 'modern') {
+        if (isModernVersion(state.version)) {
             if (state.itemModel) chips.push({ label: text.labels.itemModel, value: state.itemModel });
             if (state.modernFloat !== '') chips.push({ label: text.labels.floatSlot, value: String(state.modernFloat) });
             if (state.modernString) chips.push({ label: text.labels.stringSlot, value: state.modernString });
@@ -401,7 +413,7 @@
     function updatePreview(state, command) {
         refs.previewName.textContent = state.name || text.unnamed;
         refs.previewMeta.textContent = `${versionLabel(state.version)} | ${state.baseItem} | ${state.count} ${text.items(state.count)}`;
-        refs.previewCopy.textContent = state.version === 'modern' ? text.copyModern : text.copyLegacy;
+        refs.previewCopy.textContent = isModernVersion(state.version) ? text.copyModern : text.copyLegacy;
 
         refs.previewChips.innerHTML = '';
         buildChips(state).forEach((chipData) => {
@@ -416,7 +428,7 @@
     }
 
     function updateVersionUi(state) {
-        const modern = state.version === 'modern';
+        const modern = isModernVersion(state.version);
         refs.modernGroup.hidden = !modern;
         refs.legacyGroup.hidden = modern;
     }
@@ -515,7 +527,7 @@
 
     refs.example.addEventListener('click', () => {
         const version = fieldValue('ci-version', 'modern');
-        const exampleData = version === 'modern' ? text.exampleModern : text.exampleLegacy;
+        const exampleData = isModernVersion(version) ? text.exampleModern : text.exampleLegacy;
         fillForm(exampleData);
         trackEvent('custom_item_example_load', { version });
         trackEvent('tool_example_load');
