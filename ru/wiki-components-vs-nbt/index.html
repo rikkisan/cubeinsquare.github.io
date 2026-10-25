@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square</title>
+    <title>Компоненты вместо NBT: таблица соответствия для 1.20.5, 1.21.4 и 1.21.5 | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
+    <meta name="description" content="Какой компонент заменил каждый старый тег NBT предмета, что ещё раз изменилось в 1.21.4 и 1.21.5 и в каком порядке переводить предметы сервера, не ломая магазины и квесты.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-components-vs-nbt/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-components-vs-nbt/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-components-vs-nbt/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square">
-    <meta property="og:description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
+    <meta property="og:title" content="Компоненты вместо NBT: таблица соответствия для 1.20.5, 1.21.4 и 1.21.5 | Cube in Square">
+    <meta property="og:description" content="Какой компонент заменил каждый старый тег NBT предмета, что ещё раз изменилось в 1.21.4 и 1.21.5 и в каком порядке переводить предметы сервера, не ломая магазины и квесты.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-components-vs-nbt/">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Компоненты вместо NBT: таблица соответствия для 1.20.5, 1.21.4 и 1.21.5 | Cube in Square">
+    <meta name="twitter:description" content="Какой компонент заменил каждый старый тег NBT предмета, что ещё раз изменилось в 1.21.4 и 1.21.5 и в каком порядке переводить предметы сервера, не ломая магазины и квесты.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,285 +72,138 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#article",
-      "headline": "Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft",
-      "name": "Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft",
-      "description": "Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#webpage" },
-      "inLanguage": "ru",
-      "url": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-28"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#webpage",
-      "url": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/",
-      "name": "Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft",
-      "description": "Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "ru",
-      "mainEntity": { "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cubeinsquare.com/ru/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Вики",
-          "item": "https://cubeinsquare.com/ru/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#article",
+            "headline": "Компоненты вместо NBT: что заменило каждый тег и что изменилось после 1.20.5",
+            "description": "Какой компонент заменил каждый старый тег NBT предмета, что ещё раз изменилось в 1.21.4 и 1.21.5 и в каком порядке переводить предметы сервера, не ломая магазины и квесты.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft",
-          "item": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/",
+            "name": "Компоненты вместо NBT: что заменило каждый тег и что изменилось после 1.20.5",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Компоненты вместо NBT",
+                    "item": "https://cubeinsquare.com/ru/wiki-components-vs-nbt/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-components-vs-nbt/">Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-components-vs-nbt/"><strong>Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft</strong><span>Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="/ru/wiki-components-vs-nbt/">RU</a><a href="/wiki-components-vs-nbt/">EN</a><a href="/fr/wiki-components-vs-nbt/">FR</a><a href="/de/wiki-components-vs-nbt/">DE</a></div>
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-components-vs-nbt/">EN</a><a href="/fr/wiki-components-vs-nbt/">FR</a><a href="/de/wiki-components-vs-nbt/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
-    <section class="page-hero"><h1>Компоненты вместо NBT: всё, что нужно знать о создании предметов в новых версиях Minecraft</h1><p class="page-lead">Поймите разницу между старыми NBT-тегами и новой системой компонентов данных в Minecraft 1.20.5+.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Хочешь перейти от статьи к рабочему предмету?</p>
-        <p class="article-cta-text">Собери визуальную часть в генераторе ресурспаков, а командную и логическую — в конструкторе кастомных предметов. Так легче проверить и внешний вид, и серверную логику без ручной каши.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
-            <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть конструктор предметов</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Компоненты вместо NBT: что заменило каждый тег и что изменилось после 1.20.5</h1>
+        <p class="page-lead">До 1.20.4 предмет нёс один свободный блок NBT, и туда можно было положить что угодно. В 1.20.5 этот блок заменили компонентами предмета — именованными частями с фиксированной формой: custom_name, lore, enchantments. Два следующих релиза изменили часть из них ещё раз, поэтому перевод команд должен знать, под какую версию он делается.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-give-command-not-working/">Почему не работает /give</a><a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Конструктор кастомных предметов</a></div>
+    </section>
     <article>
-        <h2>Почему этот переход ощущается не как мелкая правка синтаксиса</h2>
-        <p>Много лет у предметов в Minecraft был один понятный позвоночник: NBT. Админы серверов, авторы датапаков, создатели карт и RP-проектов привыкли складывать туда имя, чары, лор, модельки и любые странные крайние случаи. Это было не особенно красиво, но это было знакомо. А потом в 1.20.5 Mojang заменили предметный NBT на компоненты данных, и даже простая команда <code>/give</code> стала выглядеть чужой.</p>
-        <p>Именно поэтому миграция воспринимается как нечто большее, чем замена фигурных скобок на квадратные. Изменилась сама структура. Раньше данные предмета были похожи на один мешок тегов. Теперь каждая часть живёт в своём именованном компоненте. Для игры это чище, но для человека ломает привычки, старые заметки, старые туториалы и целые архивы рабочих команд.</p>
-
-        <h2>Что Mojang поменяли на самом деле</h2>
-        <p>В старой системе данные предмета жили внутри одного NBT-блока. Можно было добавлять в него всё новые поля, и если синтаксис не разваливался, команда обычно работала. В новой системе имя предмета - это отдельный компонент. Лор - отдельный компонент. Данные зелья - отдельный компонент. Custom Model Data - тоже отдельный компонент. Именно это делает систему более прозрачной для движка и более предсказуемой в долгую, но в начале она пугает своей строгостью.</p>
-
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.20–26.3.</p>
+        <h2 id="what-changed">Что изменилось на самом деле</h2>
+        <p>Теперь предмет — это его ID плюс список компонентов. У каждого компонента фиксированная форма, и игра проверяет её при чтении команды, поэтому опечатка, которую NBT раньше проглатывал, теперь останавливает команду. Другое большое отличие: свободных ключей больше нет. Тег, который вы раньше придумывали, например <code>role:"guard"</code>, должен жить внутри <code>custom_data</code>.</p>
+        <p>Один и тот же предмет до 1.20.5 и в 1.21.5 – 26.x:</p>
+        <pre><code>/give @p minecraft:paper{display:{Name:'{"text":"Guild Pass","italic":false}'},CustomModelData:12,role:"guard"} 1</code></pre>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]},minecraft:custom_data={role:"guard"}] 1</code></pre>
+        <h2 id="table">Старый тег → компонент</h2>
         <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Зона</th>
-                    <th>До 1.20.5</th>
-                    <th>1.20.5+</th>
-                    <th>Почему это важно</th>
-                </tr>
-            </thead>
+            <thead><tr><th>До 1.20.5</th><th>С 1.20.5</th><th>Позднее изменение</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>Общий синтаксис</td>
-                    <td><code>{...}</code></td>
-                    <td><code>[...]</code></td>
-                    <td>Большая часть старых команд перестаёт работать сразу, если оставить старую обёртку.</td>
-                </tr>
-                <tr>
-                    <td>Видимое имя</td>
-                    <td><code>display.Name</code></td>
-                    <td><code>minecraft:custom_name</code></td>
-                    <td>Имя больше не лежит внутри старого display-блока.</td>
-                </tr>
-                <tr>
-                    <td>Лор</td>
-                    <td><code>display.Lore</code></td>
-                    <td><code>minecraft:lore</code></td>
-                    <td>Теперь это отдельная зона, а не кусок общей NBT-структуры.</td>
-                </tr>
-                <tr>
-                    <td>Хук на модель</td>
-                    <td><code>CustomModelData</code></td>
-                    <td><code>minecraft:custom_model_data</code></td>
-                    <td>Смысл остался, но синтаксис и будущее связаны уже с компонентами.</td>
-                </tr>
-                <tr>
-                    <td>Данные зелий</td>
-                    <td>Смешаны в NBT</td>
-                    <td><code>minecraft:potion_contents</code></td>
-                    <td>Логика стала яснее, но старые сниппеты перестали совпадать с реальностью.</td>
-                </tr>
+                <tr><td><code>display.Name</code></td><td><code>custom_name</code> или <code>item_name</code></td><td>1.21.5: записывается как текст SNBT, <code>{text:"…"}</code></td></tr>
+                <tr><td><code>display.Lore</code></td><td><code>lore</code></td><td>1.21.5: каждая строка — текст SNBT</td></tr>
+                <tr><td><code>CustomModelData:12</code></td><td><code>custom_model_data</code></td><td>1.21.4: <code>{floats:[12f]}</code>, плюс списки flags, strings и colors</td></tr>
+                <tr><td><code>Enchantments</code></td><td><code>enchantments</code></td><td>1.21.5: <code>{"minecraft:sharpness":3}</code> без обёртки <code>levels</code></td></tr>
+                <tr><td><code>AttributeModifiers</code></td><td><code>attribute_modifiers</code></td><td>1.21: <code>id</code> с пространством имён; 1.21.2: без <code>generic.</code>; 1.21.5: обычный список</td></tr>
+                <tr><td><code>Unbreakable:1b</code></td><td><code>unbreakable={}</code></td><td></td></tr>
+                <tr><td><code>HideFlags</code></td><td>поля <code>show_in_tooltip</code>, <code>hide_additional_tooltip</code></td><td>1.21.5: <code>tooltip_display={hidden_components:[…]}</code></td></tr>
+                <tr><td>Свои теги, например <code>role:"guard"</code></td><td><code>custom_data={role:"guard"}</code></td><td>Единственное место для своих ключей</td></tr>
+                <tr><td><code>display.color</code></td><td><code>dyed_color</code></td><td>1.21.5: <code>dyed_color=12345</code> вместо <code>{rgb:12345}</code></td></tr>
+                <tr><td><code>Potion</code>, <code>CustomPotionEffects</code></td><td><code>potion_contents</code></td><td></td></tr>
+                <tr><td><code>SkullOwner</code></td><td><code>profile</code></td><td></td></tr>
+                <tr><td><code>BlockEntityTag</code>, <code>EntityTag</code></td><td><code>block_entity_data</code>, <code>entity_data</code></td><td></td></tr>
             </tbody>
         </table>
-
-        <h2>Старая команда и современная команда</h2>
-        <p>Одна и та же идея, именованная бумажка с моделью, в двух разных эпохах выглядит так:</p>
-        <pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild Pass","italic":false}'}}</code></pre>
-        <pre><code>/give @p minecraft:paper[minecraft:custom_model_data=2047,minecraft:custom_name='{"text":"Guild Pass","italic":false}']</code></pre>
-        <p>Новая строка сперва кажется более жёсткой, но по смыслу она даже понятнее:</p>
-        <ul>
-            <li><code>minecraft:paper</code> по-прежнему задаёт базовый предмет.</li>
-            <li><code>minecraft:custom_model_data=2047</code> отвечает за визуальный хук.</li>
-            <li><code>minecraft:custom_name=...</code> хранит видимое имя для игрока.</li>
-            <li>Каждая роль предмета теперь лежит в своём слоте, а не тонет внутри одного большого NBT-мешка.</li>
-        </ul>
-
-        <h2>Что обычно ломается первым на живом сервере</h2>
-        <p>Когда сервер обновляется, а привычки остаются прежними, ошибки почти всегда скучные, но дорогие по времени:</p>
-        <ul>
-            <li>в админских заметках по-прежнему лежит <code>{CustomModelData:...}</code>, и команда умирает при первом же вставлении в 1.21.4;</li>
-            <li>командные блоки остались в старой эпохе синтаксиса, хотя сама версия сервера уже переехала;</li>
-            <li>люди меняют обёртку, но забывают, что имя, лор, зелья и модельные хуки тоже переехали в отдельные компоненты;</li>
-            <li>ресурспак уже нарисован, а сама команда на выдачу предмета больше не читается человеком;</li>
-            <li>один случайно найденный фикс работает для меча, но снова ломается, когда у предмета появляются лор, эффекты или скрытая логика.</li>
-        </ul>
-        <p>Именно поэтому переход больнее всего бьёт по живым серверам. Это не одна большая драматическая поломка. Это двадцать маленьких мест, где старые привычки перестают быть надёжными.</p>
-
-        <h2>Где наши инструменты снимают самое неприятное трение</h2>
-        <p>Если писать всё руками, тебе приходится думать о синтаксисе и о дизайне предмета одновременно. Мы как раз стараемся развести эти задачи. <a href='/custom-item-builder/'>Custom Item Builder</a> помогает, когда нужен предмет с видимым именем, скрытым идентификатором и привязкой к модели. <a href='/custom-potions/'>Генератор зелий</a> берёт на себя <code>potion_contents</code>. <a href='/custom-villager-trades/'>Торги жителей</a> показывают разницу между версиями так, чтобы ты не тащил старую запись в современный командный блок.</p>
-        <p>Смысл не в том, чтобы никогда ничего не понимать. Смысл в том, чтобы не тратить часы на скобки и кавычки в тот момент, когда ты ещё только придумываешь сам предмет.</p>
-
-        <h2>Практичный порядок миграции, который тратит меньше нервов</h2>
+        <p>Когда мир открывают в новой версии, игра конвертирует хранящиеся в нём предметы. Команды не конвертируются: командные блоки, файлы функций и сохранённые заметки остаются в старом синтаксисе, пока их не перепишешь.</p>
+        <h2 id="later">Два более поздних изменения</h2>
+        <p><strong>1.21.4</strong> изменил выбор моделей. <code>custom_model_data</code> стал четырьмя типизированными списками (floats, flags, strings, colors), а ресурс-пак выбирает модель через item definition в <code>assets/&lt;namespace&gt;/items/</code>, на который предмет указывает компонентом <code>item_model</code>. Старые <code>overrides</code> в моделях предметов перестали работать.</p>
+        <p><strong>1.21.5</strong> изменил запись компонентов. Текстовые компоненты пишутся в SNBT, а не строками JSON, несколько компонентов потеряли обёртку (<code>enchantments</code>, <code>attribute_modifiers</code>, <code>dyed_color</code>), а все поля <code>show_in_tooltip</code> переехали в один компонент <code>tooltip_display</code>.</p>
+        <h2 id="custom-data">Почему custom_data важен для серверов</h2>
+        <p>Видимое имя легко подделать на наковальне. Если магазин, дверь или квест проверяют скрытое значение в <code>custom_data</code>, переименованный ванильный предмет не пройдёт. Торги жителей с 1.20.5 сравнивают компоненты, указанные в цене, поэтому сделка, которая просит <code>custom_data={currency:"guild_voucher"}</code>, примет только настоящую расписку.</p>
+        <h2 id="migration">Как перевести сервер и ничего не сломать</h2>
         <ol>
-            <li>Начни с одного реального предмета, а не со всего архива. Лучше всего с токена, пропуска или книги.</li>
-            <li>Сначала добей базовый предмет, имя и лор в новом синтаксисе.</li>
-            <li>Потом верни визуальный хук, через <code>minecraft:custom_model_data</code> или уже через более современный item model workflow.</li>
-            <li>Только после этого переходи к зельям, торгам и более сложной логике.</li>
-            <li>Держи старую и новую версию рядом во время тестов. Когда сравниваешь один предмет, сразу видно, что именно переехало.</li>
+            <li>Составьте список всех мест, где создаются предметы: командные блоки, функции, таблицы лута, сделки жителей, конфиги плагинов.</li>
+            <li>Сначала переведите имена, лор и придуманные теги (<code>custom_data</code>) — их читают магазины и квесты.</li>
+            <li>Если вы переходите на 1.21.4 или новее, переписывайте хуки моделей вместе с ресурс-паком: команда заполняет ячейку, item definition её читает.</li>
+            <li>Проверьте каждый предмет в игре, прежде чем он попадёт к игрокам, и держите список там, где его видит вся команда.</li>
         </ol>
-
-        <h2>Типичные ошибки при переходе от NBT к компонентам</h2>
-        <ul>
-            <li><strong>Относиться к компонентам как к просто переименованному NBT:</strong> названия изменились, но важнее то, что изменилась сама форма хранения данных.</li>
-            <li><strong>Пытаться держать всё в голове:</strong> это самый быстрый путь к кривым командам.</li>
-            <li><strong>Смешивать туториалы разных эпох:</strong> старые гайды по-прежнему ранжируются, хотя больше не соответствуют новым версиям.</li>
-            <li><strong>Хранить логику только в видимом тексте:</strong> чем крупнее проект, тем важнее читаемые скрытые ID.</li>
-            <li><strong>Сначала мигрировать красивую картинку, а потом думать о команде:</strong> игроку не поможет прекрасная моделька, если предмет нельзя корректно выдать.</li>
-        </ul>
-
-        <h2>Практический вывод</h2>
-        <p>Mojang не просто перекрасили синтаксис предметов. Они поменяли сам способ думать о предмете. Старый NBT позволял свалить всё в одну кучу тегов. Компоненты предлагают разложить ответственность по зонам: имя, лор, визуал, эффекты, характеристики и скрытая логика. Когда это понимаешь, новая система перестаёт казаться враждебной. Она становится строгой, а строгая система в долгую куда легче поддерживается на живом сервере.</p>
-        <p>Для no-mod RP-проекта это особенно полезно. Так предметы проще документировать, проще переиспользовать в наградах, торговцах и паке, и проще поддерживать спустя месяцы, когда уже никто не помнит, почему в старом блоке была именно такая мешанина тегов.</p>
-
-        <h2>Часто задаваемые вопросы (FAQ)</h2>
-        <div class='faq-section'>
-            <h3>Поддерживаются ли старые версии Minecraft?</h3>
-            <p>Да. Версии до 1.20.4 продолжают жить на классическом NBT. Поэтому наши инструменты и разделяют режимы по версиям, а не делают вид, что одна команда подходит всем.</p>
-
-            <h3>Нужно ли переписывать вообще все старые команды вручную?</h3>
-            <p>Не каждую до последней. Простые предметы игра иногда конвертирует автоматически, но сложные командные блоки и рабочие админские цепочки обычно всё равно требуют ручной проверки.</p>
-
-            <h3>CustomModelData исчез?</h3>
-            <p>Нет. Сам принцип остался. Он просто переехал в компонентную форму и теперь живёт рядом с более современными штуками вроде <code>item_model</code> и расширенных слотов custom model data.</p>
-
-            <h3>Почему старые туториалы всё ещё так сильно путают?</h3>
-            <p>Потому что многие из них были абсолютно правильными в момент публикации. Проблема в том, что поисковая выдача до сих пор подсовывает советы до 1.20.5 без явного предупреждения.</p>
-
-            <h3>С какого инструмента безопаснее всего начинать миграцию?</h3>
-            <p>Обычно с <a href='/custom-item-builder/'>Custom Item Builder</a>. Он позволяет сравнить старую и новую эпоху команд без того, чтобы сразу смешивать в одном тесте зелья, торги, пак и скрытую серверную логику.</p>
-        </div>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>custom_name или item_name?</h3><p><code>custom_name</code> работает как переименование на наковальне и пишется курсивом, если не указать <code>italic:false</code>. <code>item_name</code> — собственное имя предмета, без курсива, и наковальня его не снимет.</p></div>
+        <div class="faq-section"><h3>Можно ли добавить предмету свои данные?</h3><p>Да, внутри <code>custom_data</code>. Он принимает любой compound, и его могут проверять команды, предикаты и торги жителей.</p></div>
+        <div class="faq-section"><h3>Есть ли официальный список компонентов?</h3><p>Игра показывает их в автодополнении <code>/give</code>, а страница «Data component format» на Minecraft Wiki описывает каждый вместе с историей изменений.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

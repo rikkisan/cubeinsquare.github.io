@@ -124,3 +124,14 @@
 | B28 | Та же команда в ветке 1.21.4 на 1.21.4 | 1.21.4 | Имя и лор нормальные | |
 | B29 | Конструктор зелий, имя зелья, ветка 1.21.5 – 26.x | 26.3 | Бутылка с этим именем и эффектами | |
 | B30 | Торги жителей, имя жителя и именованный предмет в сделке, ветка 1.21.5 – 26.x, `/summon` | 26.3 | Житель с именем над головой; в торговле предмет с именем; сделка принимает только предмет с тем же именем | |
+
+## Волна Б: статьи «Почему не работает /give» и «Компоненты вместо NBT»
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B31 | `/give @p minecraft:paper{display:{Name:'{"text":"Guild Pass","italic":false}'},CustomModelData:12} 1` | 1.20.4 | Бумага «Guild Pass» | |
+| B32 | `/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=12] 1` | 1.21.1 (или 1.20.6) | То же | |
+| B33 | `/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data={floats:[12f]}] 1` | 1.21.4 | То же | |
+| B34 | `/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]}] 1` | 26.3 | То же | |
+| B35 | B33 на 26.3 и B32 на 1.21.4 | 26.3, 1.21.4 | На 26.3 имя видно как `{"text":…}`; на 1.21.4 — ошибка разбора на `custom_model_data=12` | |
+| B36 | `/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]},minecraft:custom_data={role:"guard"}] 1`, затем `/data get entity @s SelectedItem` | 26.3 | В данных предмета видно `custom_data` с `role:"guard"` | |

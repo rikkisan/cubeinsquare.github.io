@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes | Cube in Square</title>
+    <title>Pourquoi votre commande /give ne marche pas : corrections par version | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.">
+    <meta name="description" content="La même commande /give écrite pour quatre versions de Minecraft, les erreurs nées de leur mélange et un ordre de débogage qui trouve vite la partie cassée.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-give-command-not-working/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-give-command-not-working/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-give-command-not-working/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes | Cube in Square">
-    <meta property="og:description" content="Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.">
+    <meta property="og:title" content="Pourquoi votre commande /give ne marche pas : corrections par version | Cube in Square">
+    <meta property="og:description" content="La même commande /give écrite pour quatre versions de Minecraft, les erreurs nées de leur mélange et un ordre de débogage qui trouve vite la partie cassée.">
     <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-give-command-not-working/">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:locale:alternate" content="ru_RU">
-    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes | Cube in Square">
-    <meta name="twitter:description" content="Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pourquoi votre commande /give ne marche pas : corrections par version | Cube in Square">
+    <meta name="twitter:description" content="La même commande /give écrite pour quatre versions de Minecraft, les erreurs nées de leur mélange et un ordre de débogage qui trouve vite la partie cassée.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,262 +72,141 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#article",
-      "headline": "Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes",
-      "name": "Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes",
-      "description": "Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#webpage" },
-      "inLanguage": "fr",
-      "url": "https://cubeinsquare.com/fr/wiki-give-command-not-working/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#webpage",
-      "url": "https://cubeinsquare.com/fr/wiki-give-command-not-working/",
-      "name": "Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes",
-      "description": "Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "fr",
-      "mainEntity": { "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "https://cubeinsquare.com/fr/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wiki",
-          "item": "https://cubeinsquare.com/fr/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#article",
+            "headline": "Pourquoi votre commande /give ne marche pas, et comment la corriger pour votre version",
+            "description": "La même commande /give écrite pour quatre versions de Minecraft, les erreurs nées de leur mélange et un ordre de débogage qui trouve vite la partie cassée.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#webpage"
+            },
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-give-command-not-working/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes",
-          "item": "https://cubeinsquare.com/fr/wiki-give-command-not-working/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-give-command-not-working/",
+            "name": "Pourquoi votre commande /give ne marche pas, et comment la corriger pour votre version",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-give-command-not-working/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://cubeinsquare.com/fr/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/fr/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Pourquoi /give ne marche pas",
+                    "item": "https://cubeinsquare.com/fr/wiki-give-command-not-working/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-give-command-not-working/">Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-give-command-not-working/"><strong>Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes</strong><span>Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-give-command-not-working/">RU</a><a href="/wiki-give-command-not-working/">EN</a><a class="is-active" href="/fr/wiki-give-command-not-working/">FR</a><a href="/de/wiki-give-command-not-working/">DE</a></div>
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Langue"><a href="/ru/wiki-give-command-not-working/">RU</a><a href="/wiki-give-command-not-working/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-give-command-not-working/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
-    <section class="page-hero"><h1>Pourquoi votre commande /give ne fonctionne-t-elle pas ? Erreurs courantes</h1><p class="page-lead">Dépannez vos commandes /give Minecraft, corrigez les erreurs de crochets et apprenez à utiliser les générateurs.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Envie de passer de l’article à un objet vraiment utilisable ?</p>
-        <p class="article-cta-text">Construisez la partie visuelle dans le générateur de packs, puis assemblez la commande et la logique dans le constructeur d’objets. C’est le chemin le plus simple pour tester à la fois l’apparence et le comportement serveur.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/fr/resource-pack-generator/">Ouvrir le générateur de packs</a>
-            <a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Ouvrir le constructeur d’objets</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Pourquoi votre commande /give ne marche pas, et comment la corriger pour votre version</h1>
+        <p class="page-lead">La plupart des commandes /give cassées ne sont pas des fautes de frappe. Elles sont écrites pour une autre version de Minecraft que celle qui tourne chez vous. La syntaxe des objets a changé trois fois entre la 1.20.5 et la 1.21.5, et une commande copiée d’un guide d’une époque échoue, ou marche à moitié, dans une autre.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/custom-item-builder/">Constructeur d’objets custom</a><a class="tool-button tool-button-secondary" href="/fr/wiki-components-vs-nbt/">Les composants à la place du NBT</a></div>
+    </section>
     <article>
-        <h2>Pourquoi /give casse plus souvent qu'on ne le croit</h2>
-        <p>Le plus agaçant avec une commande <code>/give</code> cassée, c'est qu'elle a presque toujours l'air presque correcte. On la relit, on recompte les crochets, on reconnaît les morceaux, et pourtant le jeu renvoie toujours du texte rouge. Ce n'est pas parce que Minecraft veut être cruel. C'est surtout parce que les commandes d'objets modernes portent beaucoup plus de choses qu'avant: nom visible, lore, identifiant caché, hook de modèle, logique de version, parfois même une partie du comportement de l'objet.</p>
-        <p>Depuis Minecraft 1.20.5, cela se voit encore plus. Les vieilles habitudes NBT sont restées dans les mains de tout le monde, alors que le jeu, lui, attend déjà des composants. Résultat: beaucoup de commandes “mystérieusement cassées” ne sont pas victimes d'un problème compliqué, mais d'une simple collision entre deux époques de syntaxe.</p>
-
-        <h2>Première question: pour quelle version la commande est-elle écrite ?</h2>
-        <p>Avant toute autre tentative de débogage, vérifiez cela. Une commande valide en 1.19 ou en 1.20.4 peut être totalement fausse en 1.21.4. Et l'inverse est tout aussi vrai: un serveur ancien ne comprendra pas une commande moderne simplement parce qu'elle vous paraît plus élégante.</p>
-
+        <p><strong>Vérifié pour les versions :</strong> Java Edition 1.20 à 26.3. Bedrock Edition utilise une autre syntaxe de <code>/give</code>, non traitée ici.</p>
+        <h2 id="version">D’abord, savoir quelle version tourne</h2>
+        <p>Regardez la version dans le profil du launcher ou en haut de l’écran F3 ; sur un serveur, la liste multijoueur l’affiche à côté du nom. Puis repérez dans le tableau la forme que demande la commande.</p>
         <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Plage de versions</th>
-                    <th>Enveloppe typique</th>
-                    <th>Erreur fréquente</th>
-                    <th>Bonne habitude</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Version</th><th>Données de l’objet</th><th>Nom</th><th>CustomModelData</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>Avant 1.20.5</td>
-                    <td><code>{...}</code></td>
-                    <td>Coller de la syntaxe de composants dans un serveur legacy.</td>
-                    <td>Garder la logique NBT et générer la commande dans le bon mode.</td>
-                </tr>
-                <tr>
-                    <td>1.20.5–1.21.3</td>
-                    <td><code>[...]</code></td>
-                    <td>Importer des snippets NBT anciens dans le nouveau système d'items.</td>
-                    <td>Vérifier chaque champ comme un composant moderne.</td>
-                </tr>
-                <tr>
-                    <td>1.21.4+</td>
-                    <td><code>[...]</code></td>
-                    <td>Mélanger les composants avec un workflow item model plus récent à moitié seulement.</td>
-                    <td>Faire évoluer la commande, le pack et la logique visuelle ensemble.</td>
-                </tr>
+                <tr><td>Avant 1.20.5</td><td>NBT entre <code>{}</code> après l’objet</td><td><code>display:{Name:'{"text":"…"}'}</code></td><td><code>CustomModelData:12</code></td></tr>
+                <tr><td>1.20.5 – 1.21.3</td><td>Composants entre <code>[]</code></td><td><code>custom_name='{"text":"…"}'</code></td><td><code>custom_model_data=12</code></td></tr>
+                <tr><td>1.21.4</td><td>Composants</td><td><code>custom_name='{"text":"…"}'</code></td><td><code>custom_model_data={floats:[12f]}</code></td></tr>
+                <tr><td>1.21.5 – 26.x</td><td>Composants</td><td><code>custom_name={text:"…"}</code></td><td><code>custom_model_data={floats:[12f]}</code></td></tr>
             </tbody>
         </table>
-
-        <h2>Cinq erreurs qui cassent /give le plus souvent</h2>
+        <h2 id="four-versions">Le même objet dans quatre versions</h2>
+        <p>Un papier nommé Guild Pass avec le hook de modèle 12. Avant la 1.20.5 :</p>
+        <pre><code>/give @p minecraft:paper{display:{Name:'{"text":"Guild Pass","italic":false}'},CustomModelData:12} 1</code></pre>
+        <p>De la 1.20.5 à la 1.21.3 : des composants entre crochets, le nom encore en chaîne JSON :</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=12] 1</code></pre>
+        <p>1.21.4 : CustomModelData devient un ensemble de listes typées, le nombre seul est refusé :</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data={floats:[12f]}] 1</code></pre>
+        <p>De la 1.21.5 à 26.x : les composants de texte s’écrivent en SNBT, le nom perd ses guillemets :</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]}] 1</code></pre>
+        <p>Chaque ligne ne marche que dans sa plage. Voilà pourquoi « la commande de la vidéo » échoue si souvent : la vidéo visait une autre version.</p>
+        <h2 id="symptoms">Ce que dit l’échec</h2>
+        <ul>
+            <li><strong>Texte rouge avec <code>&lt;--[HERE]</code>.</strong> Minecraft a cessé de lire à cet endroit. Tout ce qui précède a été compris : le problème est la première chose après le repère, un crochet d’une autre époque, une virgule manquante ou un composant qui n’existe pas dans votre version.</li>
+            <li><strong>L’objet s’appelle <code>{"text":"Guild Pass"}</code>.</strong> Vous êtes en 1.21.5 ou plus avec un nom au format 1.21.4. Retirez les apostrophes extérieures et les guillemets autour de <code>text</code>.</li>
+            <li><strong>La commande marche mais l’objet reste vanilla.</strong> La commande est bonne, le resource pack non. Depuis la 1.21.4, le modèle est choisi par un fichier dans <code>assets/&lt;namespace&gt;/items/</code>, et les anciens <code>overrides</code> de <code>models/item</code> sont ignorés.</li>
+            <li><strong>Enchantement ou attribut inconnu.</strong> Les identifiants ont aussi changé : <code>sweeping</code> est devenu <code>sweeping_edge</code> en 1.20.5, les attributs ont perdu le préfixe <code>generic.</code> en 1.21.2, et la malédiction de disparition s’écrit <code>vanishing_curse</code>.</li>
+            <li><strong>Marche dans le chat, rien dans un bloc de commande.</strong> Les blocs de commande doivent être activés sur le serveur (<code>enable-command-block=true</code> dans <code>server.properties</code>), et dans un bloc <code>@p</code> désigne le joueur le plus proche du bloc.</li>
+        </ul>
+        <h2 id="length">Trop long pour le chat</h2>
+        <p>Le chat accepte 256 caractères par commande, un bloc de commande jusqu’à 32 500. Un /give avec nom, lore, enchantements et attributs dépasse vite 256. Prenez un bloc avec <code>/give @p minecraft:command_block</code>, collez-y la commande et alimentez-le avec un bouton.</p>
+        <h2 id="debug">Un ordre de débogage qui trouve vite la panne</h2>
         <ol>
-            <li><strong>La mauvaise enveloppe extérieure :</strong> les anciens objets utilisent les accolades, les composants modernes utilisent les crochets. Si la structure de base est mauvaise, tout le reste tombe avec elle.</li>
-            <li><strong>Les guillemets cassés dans le texte :</strong> dès qu'un nom personnalisé ou une lore contient du JSON textuel, un seul guillemet mal échappé peut invalider toute la commande.</li>
-            <li><strong>Des champs encore pensés comme du vieux NBT :</strong> beaucoup de gens changent les crochets mais gardent la logique mentale de <code>display</code> et d'autres vieux blocs.</li>
-            <li><strong>Une commande correcte, mais un visuel mal relié :</strong> l'objet peut être donné correctement tout en ressemblant au mauvais item parce que le hook de modèle ne pointe pas vers le bon pack.</li>
-            <li><strong>Tout déboguer d'un coup :</strong> si vous corrigez nom, lore, modèle, données cachées et effets dans la même ligne, vous créez plusieurs points de panne à la fois.</li>
+            <li>Vérifiez la version et prenez la ligne correspondante du tableau.</li>
+            <li>Donnez d’abord l’objet nu : <code>/give @p minecraft:paper</code>. Si cela échoue, le problème vient du sélecteur ou des permissions, pas des données de l’objet.</li>
+            <li>Ajoutez un composant à la fois : le nom, puis le lore, puis le hook de modèle, puis les enchantements. L’étape qui casse est celle à corriger.</li>
+            <li>Si la commande marche mais que l’apparence est fausse, passez au resource pack et vérifiez que le hook du pack lit la case que la commande remplit.</li>
         </ol>
-
-        <h2>Lisez l'erreur comme un indice, pas comme une humiliation</h2>
-        <p>Les messages d'erreur de Minecraft ne sont pas toujours élégants, mais ils donnent souvent une direction. “Unknown item component” indique souvent un composant utilisé dans la mauvaise version ou un mélange entre vieux NBT et syntaxe moderne. Une erreur de symbole inattendu renvoie souvent vers un problème de structure ou de guillemets. “Command too long” ne dit pas que la commande est fausse; il dit que vous essayez de la coller au mauvais endroit.</p>
-        <p>Le réflexe utile est donc simple: au lieu de demander “pourquoi le jeu me déteste encore”, demandez-vous si l'erreur pointe vers un problème de version, de guillemets, de structure ou de longueur. Une fois la catégorie trouvée, la réparation devient beaucoup plus rapide.</p>
-
-        <h2>Exemple d'une commande cassée puis corrigée</h2>
-        <p>Cas très courant: on récupère une vieille ligne écrite pour un autre moment de Minecraft et on la colle dans un serveur moderne:</p>
-        <pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild Pass","italic":false}'}}</code></pre>
-        <p>En 1.20.5+, la même idée doit plutôt s'écrire ainsi:</p>
-        <pre><code>/give @p minecraft:paper[minecraft:custom_model_data=2047,minecraft:custom_name='{"text":"Guild Pass","italic":false}']</code></pre>
-        <p>L'idée de l'objet n'a pas changé. Sa grammaire, oui. C'est précisément pour cela que tant de commandes paraissent “presque bonnes”: le concept est valable, mais la langue ne correspond plus à la version.</p>
-
-        <h2>Limite du chat et limite du bloc de commande</h2>
-        <p>Parfois une commande est valide et échoue quand même dans le chat. Ce n'est pas forcément une erreur de syntaxe. Le chat joueur est limité à 256 caractères. Les blocs de commande acceptent des lignes bien plus longues. Si vous générez un marchand, un objet très détaillé ou une récompense avec beaucoup de texte, vous pouvez toucher la limite du chat avant de toucher la moindre vraie erreur de structure.</p>
-        <p>Autrement dit, “trop long” n'est pas la même chose que “faux”. Dans ce cas, il ne faut pas mutiler l'idée jusqu'à ce qu'elle tienne dans le chat. Il faut simplement l'envoyer dans le bon support.</p>
-
-        <h2>Un ordre de débogage plus pratique</h2>
-        <ol>
-            <li>Vérifiez d'abord la version cible. Si elle est mauvaise, le reste n'a presque aucun sens.</li>
-            <li>Réduisez la commande à un item de base et à un seul champ visible pour confirmer que le squelette passe.</li>
-            <li>Ajoutez ensuite le nom ou la lore, mais pas tout à la fois si vous êtes déjà en train de lutter avec les guillemets.</li>
-            <li>Restaurez seulement après cela le hook de modèle, les données cachées ou les effets.</li>
-            <li>Si la ligne devient longue, passez au bloc de commande avant de conclure que la syntaxe est morte.</li>
-        </ol>
-        <p>Cette méthode paraît plus lente, mais elle évite de réparer une ligne géante à l'aveugle.</p>
-
-        <h2>Quand il faut arrêter d'écrire tout à la main</h2>
-        <p>Écrire une petite commande à la main reste normal pour un test rapide. Mais dès que l'objet a un vrai rôle — nom, lore, ID caché, hook de modèle, logique de version ou réutilisation dans des trades et des récompenses — on n'est plus en train d'écrire une simple note de test. On construit du contenu. À ce stade, un générateur n'est plus un luxe. C'est une façon saine de travailler.</p>
-        <p>Le <a href='/custom-item-builder/'>Custom Item Builder</a> enlève la souffrance de la syntaxe d'objet. Le <a href='/custom-villager-trades/'>builder de trades</a> devient utile quand la ligne est déjà trop grande pour une édition confortable. L'objectif n'est pas de ne jamais comprendre les commandes. L'objectif est de ne pas sacrifier votre énergie créative à des catastrophes de ponctuation.</p>
-
-        <h2>FAQ</h2>
-        <div class='faq-section'>
-            <h3>Pourquoi le jeu dit-il que ma commande est trop longue ?</h3>
-            <p>Le plus souvent, ce n'est pas une erreur de structure mais un problème de support. Le chat ne peut pas accueillir de très longues lignes. Utilisez un bloc de commande pour les sorties volumineuses.</p>
-
-            <h3>Pourquoi tant d'anciens tutoriels YouTube donnent-ils encore des commandes cassées ?</h3>
-            <p>Parce qu'ils étaient souvent corrects au moment de leur publication. Le problème est que Minecraft 1.20.5 a changé la base du système d'items, tandis que les anciens conseils continuent à ressortir dans la recherche.</p>
-
-            <h3>Comment savoir si le problème vient de la commande ou du resource pack ?</h3>
-            <p>Si l'objet apparaît mais a le mauvais visuel, il faut aussi vérifier le pack. Si l'objet n'apparaît pas du tout, la commande reste la première zone à inspecter.</p>
-
-            <h3>Un seul guillemet mal placé peut-il vraiment casser toute la ligne ?</h3>
-            <p>Oui. Dès que vous embarquez du texte structuré dans le nom ou la lore, une seule erreur de citation peut invalider l'ensemble.</p>
-
-            <h3>Quel est le meilleur premier outil si je bloque sans cesse ?</h3>
-            <p>Le plus sûr est souvent le <a href='/custom-item-builder/'>Custom Item Builder</a>. Il fournit une sortie propre, adaptée à la version, et vous aide à séparer la logique de l'objet de la panique syntaxique.</p>
-        </div>
+        <p>Si vous en écrivez souvent, le <a href="/fr/custom-item-builder/">constructeur d’objets custom</a> produit la commande pour chacune des quatre versions à partir des mêmes champs, ce qui supprime l’étape des guillemets où naissent la plupart des erreurs.</p>
+        <h2 id="faq">Questions fréquentes</h2>
+        <div class="faq-section"><h3>Pourquoi mon vieux monde garde ses objets alors que mes commandes ne marchent plus ?</h3><p>Quand un monde est ouvert dans une version plus récente, le jeu convertit les objets qu’il contient. Le texte des blocs de commande, des fonctions et de vos notes n’est pas converti : ces commandes gardent l’ancienne syntaxe jusqu’à ce que vous les réécriviez.</p></div>
+        <div class="faq-section"><h3>custom_name ou item_name ?</h3><p>Les deux existent depuis la 1.20.5. <code>custom_name</code> se comporte comme un renommage à l’enclume : en italique sauf avec <code>italic:false</code>. <code>item_name</code> est le nom propre de l’objet : pas d’italique, et l’enclume ne peut pas l’enlever.</p></div>
+        <div class="faq-section"><h3>Peut-on garder une seule commande pour plusieurs versions ?</h3><p>Pas à travers les frontières 1.20.5, 1.21.4 et 1.21.5. Gardez une ligne par plage de versions, ou gardez les données de l’objet en un seul endroit et générez les commandes.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
