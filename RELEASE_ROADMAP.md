@@ -111,12 +111,23 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
 - Related-reading links into the least-linked articles; inline code wraps on phones (`/ru/recipe-generator/` no
   longer scrolls sideways); German cookie banner uses "du".
 
+**Wave B, done 2026-10-25**
+
+- The 12 thin tool pages (x4) carry 235–425 words of page-specific text each: how the page works, what the
+  output cannot do for you, versions.
+- Rewritten from scratch (x4): `wiki-give-command-not-working`, `wiki-components-vs-nbt`, `wiki-custom-weapon`,
+  `wiki-blockbench-custom-model`, and `wiki-custom-item-no-json`, which is now the custom item builder's guide.
+- Version fixes in `wiki-custom-model-data`, the enchantment, economy and trades articles, the data pack format
+  table (up to 26.3, `min_format`/`max_format`), and the English migration and Data Components articles (the
+  unpublished draft's useful parts went into the migration article).
+- Tool output fixed: data pack generator (`pack.mcmeta` for 1.21.9+, missing 1.21.9–1.21.11), enchantment randomizer
+  (three component branches, `vanishing_curse`), custom item builder, potions and trades (new 1.21.5 – 26.x branch
+  with SNBT names; ru/fr/de potions also lacked the 1.21.4 branch), recipe and advancement folders before 1.21,
+  item model builder `select` values, phone overflow on path notes.
+- The resource pack generator page and guide now say which versions its packs serve.
+
 **Still to do before resubmitting**
 
-- Wave B: 300–600 words of real content under each of the 12 thin tool pages (x4); fix outdated commands
-  (`wiki-custom-model-data`, `wiki-give-command-not-working`, migration and Data Components articles, potions and
-  trades guides); rewrite the templated articles (components vs NBT, give command, custom item without JSON,
-  Blockbench model, custom weapon), without "our tools" sections or CTA panels.
 - Wave C: contact email `cubeinsquare@proton.me` on About and in every footer; remove Discord promises (there is no
   public invite); bylines (Mark for DarkMage, Mechanism, ArmorHide, Chest Helper; Rikki for the rest; HeadHunter
   author to confirm); rewrite ArmorHide and Chest Helper as documentation from their Modrinth pages; plugin pages
@@ -124,8 +135,12 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
   development).
 - After Wave B: homepage less about the site itself; localized pages that are 40–50% shorter than English brought
   to parity.
-- The owner runs `.drip/drafts/commands-to-test.md` in game; the draft `wiki-item-model-definitions` is not published
-  on its own and feeds the migration article update.
+- The owner runs `.drip/drafts/commands-to-test.md` in game (53 checks). Two tool changes wait for that run: the
+  dialogue page's message designer writes `hoverEvent`/`clickEvent` (renamed in 1.21.5, checks B2–B4), and the book
+  builder's component output may not suit 1.20.5–1.21.4 (B5).
+- Not part of the resubmission, but the biggest remaining gap in value: the resource pack generator still builds
+  1.20-format packs with `overrides` and the pre-1.21.2 armor folder, so its CustomModelData variants and armor do not
+  work on 1.21.4 and newer. Updating it is an engineering task of its own.
 
 ## Known issues
 
