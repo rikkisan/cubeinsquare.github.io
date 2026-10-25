@@ -305,6 +305,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the generator</h2>
+        <p class="section-intro">Choose a recipe type and version, fill the grid or the ingredient list, and copy or download the JSON with its path.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Recipe type and version</h3><p>Shaped, shapeless, the four cooking types and stonecutting each have their own fields; the target version decides which JSON shape is written.</p></article>
+            <article class="resource-card"><h3>Category</h3><p>The recipe book tab the recipe appears in. Crafting uses building, redstone, equipment and misc; cooking uses food, blocks and misc. Stonecutting has none.</p></article>
+            <article class="resource-card"><h3>The grid</h3><p>Type an item ID in each slot you need. Empty edge rows and columns are trimmed, so a pattern that fits in 2×2 also works in the inventory crafting grid. Prefix <code>#</code> for an item tag, such as <code>#minecraft:planks</code>.</p></article>
+            <article class="resource-card"><h3>Result, experience, time</h3><p>Set the result item and count. Cooking recipes add experience and a cooking time in ticks: vanilla furnace recipes use 200 (10 seconds), blast furnace and smoker recipes half that.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Why a recipe seems missing</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Not in the recipe book</h3><p>A new recipe works in the grid straight away but appears in the book only once unlocked: <code>/recipe give @s harbor:reinforced_block</code>, or an advancement with a recipe reward.</p></article>
+            <article class="resource-card"><h3>Copied from an older tutorial</h3><p>1.20.5 renamed the result field from <code>item</code> to <code>id</code>, and 1.21.2 allowed plain item IDs as ingredients. A file in the wrong shape for your version fails without a visible error in game.</p></article>
+            <article class="resource-card"><h3>Changing a vanilla recipe</h3><p>A file with the vanilla name under the <code>minecraft</code> namespace, such as <code>data/minecraft/recipe/torch.json</code>, replaces the original recipe.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 to 26.3. The JSON shape changes at 1.20.5 and 1.21.2, and the folder is <code>recipe</code> from 1.21 and <code>recipes</code> before; the generator follows the version you pick.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-recipe-generator/">Recipe guide</a><a class="tool-button tool-button-secondary" href="/datapack-generator/">Data pack generator</a><a class="tool-button tool-button-secondary" href="/advancement-builder/">Advancement builder</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

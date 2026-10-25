@@ -305,6 +305,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le générateur</h2>
+        <p class="section-intro">Choisissez un type de recette et une version, remplissez la grille ou la liste d’ingrédients, puis copiez ou téléchargez le JSON avec son chemin.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Type et version</h3><p>Recettes avec ou sans forme, quatre types de cuisson et tailleur de pierre ont chacun leurs champs ; la version décide de la forme du JSON écrit.</p></article>
+            <article class="resource-card"><h3>Catégorie</h3><p>L’onglet du livre de recettes où elle apparaît. L’artisanat utilise building, redstone, equipment et misc ; la cuisson food, blocks et misc. Le tailleur de pierre n’en a pas.</p></article>
+            <article class="resource-card"><h3>La grille</h3><p>Tapez un identifiant dans chaque case utile. Les rangées et colonnes vides du bord sont retirées : un motif qui tient en 2×2 marche aussi dans la grille de l’inventaire. Le préfixe <code>#</code> désigne un tag d’objets, comme <code>#minecraft:planks</code>.</p></article>
+            <article class="resource-card"><h3>Résultat, expérience, durée</h3><p>Réglez l’objet produit et sa quantité. Les recettes de cuisson ajoutent l’expérience et une durée en ticks : 200 (10 secondes) pour les recettes de four vanilla, la moitié pour le haut fourneau et le fumoir.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Pourquoi une recette semble absente</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Absente du livre</h3><p>Une nouvelle recette marche tout de suite dans la grille, mais n’apparaît dans le livre qu’une fois débloquée : <code>/recipe give @s harbor:reinforced_block</code>, ou un progrès qui la donne en récompense.</p></article>
+            <article class="resource-card"><h3>Copiée d’un vieux tutoriel</h3><p>La 1.20.5 a renommé le champ du résultat de <code>item</code> en <code>id</code>, et la 1.21.2 a permis des identifiants simples comme ingrédients. Un fichier à la mauvaise forme échoue sans erreur visible en jeu.</p></article>
+            <article class="resource-card"><h3>Modifier une recette vanilla</h3><p>Un fichier portant le nom vanilla dans l’espace <code>minecraft</code>, comme <code>data/minecraft/recipe/torch.json</code>, remplace la recette d’origine.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 à 26.3. La forme du JSON change en 1.20.5 et en 1.21.2, et le dossier s’appelle <code>recipe</code> depuis la 1.21 et <code>recipes</code> avant ; le générateur suit la version choisie.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-recipe-generator/">Guide des recettes</a><a class="tool-button tool-button-secondary" href="/fr/datapack-generator/">Générateur de data packs</a><a class="tool-button tool-button-secondary" href="/fr/advancement-builder/">Constructeur de progrès</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

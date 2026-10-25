@@ -226,6 +226,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться генератором</h2>
+        <p class="section-intro">Заполните четыре поля, отметьте, что должно быть в паке, и скачайте ZIP, который мир загрузит как есть.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Данные пака</h3><p>Название станет именем ZIP-файла, описание показывается при наведении в <code>/datapack list</code>. Пространство имён (строчные буквы, цифры, <code>_ . -</code>) войдёт в каждый ID пака, например <code>harbor:load</code>.</p></article>
+            <article class="resource-card"><h3>Версия игры</h3><p>Задаёт номер формата в <code>pack.mcmeta</code> и имена папок. Выбирайте точную версию, на которой играете: номер формата меняется почти с каждым релизом.</p></article>
+            <article class="resource-card"><h3>Что включить</h3><p>Функция load выполняется при каждом <code>/reload</code> и запуске мира, функция tick — 20 раз в секунду. Примеры таблицы лута, рецепта и достижения — рабочие файлы для правки, а не заглушки.</p></article>
+            <article class="resource-card"><h3>Проверьте перед скачиванием</h3><p>Список файлов показывает всё дерево, а каждый файл можно открыть и скопировать отдельно — удобно, если хотите собрать папку вручную.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Если пак не загружается</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>pack.mcmeta не на верхнем уровне</h3><p>Если вы распаковали пак и заархивировали заново, проверьте, что <code>pack.mcmeta</code> лежит в корне ZIP, а не внутри лишней папки, — иначе игра вообще не увидит пак.</p></article>
+            <article class="resource-card"><h3>Не тот мир</h3><p>Датапак принадлежит одному миру: <code>saves/&lt;мир&gt;/datapacks/</code> в одиночной игре и <code>&lt;мир&gt;/datapacks/</code> рядом с <code>level.dat</code> на сервере.</p></article>
+            <article class="resource-card"><h3>В списке есть, но не работает</h3><p><code>/datapack list</code> показывает включённые и доступные паки. Пак с пометкой о несовместимости собран под другую версию; пак, который загрузился, но ничего не делает, обычно использует не те имена папок для этой версии.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Java Edition 1.20–26.3. В 1.21 папки контента получили имена в единственном числе (<code>function</code>, <code>loot_table</code>, <code>recipe</code>…), а в 1.21.9 в <code>pack.mcmeta</code> вместо <code>pack_format</code> появились <code>min_format</code> и <code>max_format</code>. Генератор пишет то, что ждёт выбранная версия.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-datapack-generator/">Гайд по датапакам</a><a class="tool-button tool-button-secondary" href="/ru/loot-table-generator/">Генератор таблиц лута</a><a class="tool-button tool-button-secondary" href="/ru/recipe-generator/">Генератор рецептов</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

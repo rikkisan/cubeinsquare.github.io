@@ -215,6 +215,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the generator</h2>
+        <p class="section-intro">Set up a table, add pools and entries, and the JSON and its path update as you type. The presets show three common shapes.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Start from a preset</h3><p>Dungeon chest rolls two to four times over iron, gold and a rare diamond. Rare mob drop gives a named sword 15% of the time. Fishing catch is mostly cod with a rare name tag.</p></article>
+            <article class="resource-card"><h3>Table type</h3><p>Chest, entity, block, fishing, gift or generic tells Minecraft in which situation the table is rolled. A condition that only makes sense for a mob kill never passes in a chest table.</p></article>
+            <article class="resource-card"><h3>Namespace and file name</h3><p>Together they give the path, <code>data/&lt;namespace&gt;/loot_table/&lt;file&gt;.json</code>, and the ID commands use, such as <code>harbor:harbor_dungeon</code>.</p></article>
+            <article class="resource-card"><h3>Pools and rolls</h3><p>Each pool rolls on its own. Rolls from 2 to 4 means two, three or four picks from that pool, chosen at random each time the table is used.</p></article>
+            <article class="resource-card"><h3>Entries</h3><p>Every entry has an item, a weight, a count range and optionally a custom name and a drop chance; the generator turns them into <code>set_count</code>, <code>set_name</code> and a <code>random_chance</code> condition.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Reading the odds</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Weight is relative</h3><p>Weights 10, 5 and 1 in one pool mean 10/16, 5/16 and 1/16 per pick: about 62%, 31% and 6%. Adding an entry lowers the odds of all the others.</p></article>
+            <article class="resource-card"><h3>Drop chance comes first</h3><p>An entry with a drop chance is tested before the weighted pick. If the test fails, the entry is out for that pick and the others share the odds; on a pool with one entry it simply means "this often".</p></article>
+            <article class="resource-card"><h3>Hooking the table up</h3><p>Test it with <code>/loot give @s loot harbor:harbor_dungeon</code>. To use it, put it on a container, for example <code>/setblock ~ ~1 ~ minecraft:chest{LootTable:"harbor:harbor_dungeon"}</code>, or on a mob through its <code>DeathLootTable</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">The generator writes the 1.21+ folder <code>loot_table</code>; before 1.21 the folder was <code>loot_tables</code>, so rename it there. Count ranges use the explicit <code>minecraft:uniform</code> form, which every version since 1.17 reads.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-loot-table-generator/">Loot table guide</a><a class="tool-button tool-button-secondary" href="/datapack-generator/">Data pack generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

@@ -226,6 +226,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Generator</h2>
+        <p class="section-intro">Füll vier Felder aus, hak an, was ins Pack soll, und lad ein ZIP herunter, das eine Welt direkt laden kann.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Pack-Daten</h3><p>Der Name wird zum Dateinamen des ZIP, die Beschreibung erscheint beim Überfahren in <code>/datapack list</code>. Der Namensraum (Kleinbuchstaben, Ziffern, <code>_ . -</code>) steckt in jeder ID des Packs, etwa <code>harbor:load</code>.</p></article>
+            <article class="resource-card"><h3>Zielversion</h3><p>Bestimmt die Formatnummer in <code>pack.mcmeta</code> und die Ordnernamen. Wähl genau die Version, die du spielst: Die Formatnummer ändert sich fast mit jedem Release.</p></article>
+            <article class="resource-card"><h3>Was hinein soll</h3><p>Eine Load-Funktion läuft bei jedem <code>/reload</code> und Weltstart, eine Tick-Funktion 20-mal pro Sekunde. Beutetabelle, Rezept und Fortschritt als Beispiel sind funktionierende Dateien zum Bearbeiten, keine Platzhalter.</p></article>
+            <article class="resource-card"><h3>Vor dem Download prüfen</h3><p>Die Dateiliste zeigt den ganzen Baum, und jede Datei lässt sich einzeln öffnen und kopieren – praktisch, wenn du den Ordner lieber selbst baust.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Wenn ein Pack nicht lädt</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>pack.mcmeta liegt nicht oben</h3><p>Wenn du das Pack entpackst und neu zippst, muss <code>pack.mcmeta</code> im Wurzelverzeichnis des ZIP liegen, nicht in einem zusätzlichen Ordner – sonst sieht das Spiel gar kein Pack.</p></article>
+            <article class="resource-card"><h3>Falsche Welt</h3><p>Ein Datenpaket gehört zu einer Welt: <code>saves/&lt;Welt&gt;/datapacks/</code> im Einzelspieler, <code>&lt;Welt&gt;/datapacks/</code> neben <code>level.dat</code> auf einem Server.</p></article>
+            <article class="resource-card"><h3>Gelistet, aber wirkungslos</h3><p><code>/datapack list</code> zeigt aktivierte und verfügbare Packs. Ein als inkompatibel markiertes Pack ist für eine andere Version gebaut; ein Pack, das lädt und nichts tut, nutzt meist für diese Version falsche Ordnernamen.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Java Edition 1.20 bis 26.3. 1.21 hat die Inhaltsordner in die Einzahl umbenannt (<code>function</code>, <code>loot_table</code>, <code>recipe</code>…), und 1.21.9 hat in <code>pack.mcmeta</code> <code>pack_format</code> durch <code>min_format</code> und <code>max_format</code> ersetzt. Der Generator schreibt, was deine Zielversion erwartet.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-datapack-generator/">Anleitung zu Datenpaketen</a><a class="tool-button tool-button-secondary" href="/de/loot-table-generator/">Beutetabellen-Generator</a><a class="tool-button tool-button-secondary" href="/de/recipe-generator/">Rezept-Generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

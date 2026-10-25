@@ -215,6 +215,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le générateur</h2>
+        <p class="section-intro">Réglez la table, ajoutez des pools et des entrées : le JSON et son chemin se mettent à jour pendant la saisie. Les préréglages montrent trois formes courantes.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Partir d’un préréglage</h3><p>Dungeon chest tire deux à quatre fois parmi fer, or et un diamant rare. Rare mob drop donne une épée nommée 15 % du temps. Fishing catch donne surtout de la morue et parfois une étiquette.</p></article>
+            <article class="resource-card"><h3>Type de table</h3><p>Coffre, entité, bloc, pêche, cadeau ou générique indique à Minecraft dans quelle situation la table est tirée. Une condition qui n’a de sens qu’à la mort d’un mob ne passe jamais dans une table de coffre.</p></article>
+            <article class="resource-card"><h3>Espace de noms et fichier</h3><p>Ensemble, ils donnent le chemin <code>data/&lt;namespace&gt;/loot_table/&lt;file&gt;.json</code> et l’identifiant utilisé par les commandes, comme <code>harbor:harbor_dungeon</code>.</p></article>
+            <article class="resource-card"><h3>Pools et tirages</h3><p>Chaque pool est tiré à part. Des tirages de 2 à 4 signifient deux, trois ou quatre choix dans ce pool, le nombre étant tiré à chaque utilisation de la table.</p></article>
+            <article class="resource-card"><h3>Entrées</h3><p>Chaque entrée a un objet, un poids, une plage de quantité et, en option, un nom et une probabilité ; le générateur en fait <code>set_count</code>, <code>set_name</code> et une condition <code>random_chance</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Lire les probabilités</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Le poids est relatif</h3><p>Des poids 10, 5 et 1 dans un pool donnent 10/16, 5/16 et 1/16 par tirage : environ 62 %, 31 % et 6 %. Ajouter une entrée baisse les chances de toutes les autres.</p></article>
+            <article class="resource-card"><h3>La probabilité passe d’abord</h3><p>Une entrée avec une probabilité est testée avant le tirage pondéré. Si le test échoue, elle est écartée pour ce tirage et les autres se partagent les chances ; dans un pool à une seule entrée, cela veut simplement dire « aussi souvent ».</p></article>
+            <article class="resource-card"><h3>Brancher la table</h3><p>Testez-la avec <code>/loot give @s loot harbor:harbor_dungeon</code>. Pour l’utiliser, mettez-la sur un conteneur, par exemple <code>/setblock ~ ~1 ~ minecraft:chest{LootTable:"harbor:harbor_dungeon"}</code>, ou sur un mob via son <code>DeathLootTable</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Le générateur écrit le dossier 1.21+ <code>loot_table</code> ; avant la 1.21, il s’appelait <code>loot_tables</code>, renommez-le dans ce cas. Les plages de quantité utilisent la forme explicite <code>minecraft:uniform</code>, lue par toutes les versions depuis la 1.17.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-loot-table-generator/">Guide des tables de butin</a><a class="tool-button tool-button-secondary" href="/fr/datapack-generator/">Générateur de data packs</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

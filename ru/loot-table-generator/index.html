@@ -215,6 +215,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться генератором</h2>
+        <p class="section-intro">Задайте таблицу, добавьте пулы и записи — JSON и путь обновляются прямо во время ввода. Пресеты показывают три частые формы.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Начните с пресета</h3><p>Dungeon chest делает от двух до четырёх бросков по железу, золоту и редкому алмазу. Rare mob drop даёт именной меч в 15% случаев. Fishing catch — в основном треска и изредка бирка.</p></article>
+            <article class="resource-card"><h3>Тип таблицы</h3><p>Сундук, сущность, блок, рыбалка, подарок или generic говорят Minecraft, в какой ситуации бросается таблица. Условие, которое имеет смысл только при убийстве моба, в таблице сундука никогда не выполнится.</p></article>
+            <article class="resource-card"><h3>Пространство имён и имя файла</h3><p>Вместе они дают путь <code>data/&lt;namespace&gt;/loot_table/&lt;file&gt;.json</code> и ID для команд, например <code>harbor:harbor_dungeon</code>.</p></article>
+            <article class="resource-card"><h3>Пулы и броски</h3><p>Каждый пул бросается отдельно. Броски от 2 до 4 — это два, три или четыре выбора из этого пула, число выпадает случайно при каждом использовании таблицы.</p></article>
+            <article class="resource-card"><h3>Записи</h3><p>У каждой записи есть предмет, вес, диапазон количества и по желанию своё имя и шанс выпадения; генератор превращает их в <code>set_count</code>, <code>set_name</code> и условие <code>random_chance</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Как читать шансы</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Вес относительный</h3><p>Веса 10, 5 и 1 в одном пуле дают 10/16, 5/16 и 1/16 на выбор: примерно 62%, 31% и 6%. Новая запись снижает шансы всех остальных.</p></article>
+            <article class="resource-card"><h3>Шанс выпадения проверяется раньше</h3><p>Запись с шансом выпадения проверяется до взвешенного выбора. Если проверка не прошла, запись выбывает из этого выбора, и шансы делят остальные; в пуле из одной записи это просто «вот так часто».</p></article>
+            <article class="resource-card"><h3>Как подключить таблицу</h3><p>Проверьте её командой <code>/loot give @s loot harbor:harbor_dungeon</code>. Чтобы использовать, повесьте её на контейнер, например <code>/setblock ~ ~1 ~ minecraft:chest{LootTable:"harbor:harbor_dungeon"}</code>, или на моба через его <code>DeathLootTable</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Генератор пишет папку <code>loot_table</code> для 1.21+; до 1.21 она называлась <code>loot_tables</code>, так что там её нужно переименовать. Диапазоны количества записаны явной формой <code>minecraft:uniform</code>, которую читают все версии с 1.17.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-loot-table-generator/">Гайд по таблицам лута</a><a class="tool-button tool-button-secondary" href="/ru/datapack-generator/">Генератор датапаков</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

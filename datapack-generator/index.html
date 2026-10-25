@@ -226,6 +226,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the generator</h2>
+        <p class="section-intro">Fill in four fields, tick what the pack should contain, and download a ZIP that a world can load as it is.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Pack details</h3><p>The name becomes the ZIP file name, the description is what <code>/datapack list</code> shows on hover. The namespace (lowercase letters, digits, <code>_ . -</code>) becomes part of every ID in the pack, such as <code>harbor:load</code>.</p></article>
+            <article class="resource-card"><h3>Target version</h3><p>Sets the format number in <code>pack.mcmeta</code> and the folder names. Pick the exact version you run: the format number changes with almost every release.</p></article>
+            <article class="resource-card"><h3>What to include</h3><p>A load function runs on every <code>/reload</code> and world start; a tick function runs 20 times a second. The example loot table, recipe and advancement are working files to edit, not placeholders.</p></article>
+            <article class="resource-card"><h3>Inspect before you download</h3><p>The file list shows the whole tree, and every file can be opened and copied on its own, which helps if you prefer to build the folder by hand.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">When a pack does not load</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>pack.mcmeta is not at the top</h3><p>If you unzip the pack and zip it again, make sure <code>pack.mcmeta</code> sits at the root of the ZIP, not inside an extra folder; otherwise the game does not see a pack at all.</p></article>
+            <article class="resource-card"><h3>Wrong world</h3><p>Data packs belong to one world: <code>saves/&lt;world&gt;/datapacks/</code> in single player, <code>&lt;world&gt;/datapacks/</code> next to <code>level.dat</code> on a server.</p></article>
+            <article class="resource-card"><h3>Listed but not working</h3><p><code>/datapack list</code> shows enabled and available packs. A pack marked incompatible was built for another version; a pack that loads but does nothing usually uses the wrong folder names for that version.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 to 26.3. 1.21 renamed the content folders to the singular (<code>function</code>, <code>loot_table</code>, <code>recipe</code>…), and 1.21.9 replaced <code>pack_format</code> with <code>min_format</code> and <code>max_format</code> in <code>pack.mcmeta</code>. The generator writes whichever your target version expects.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-datapack-generator/">Data pack guide</a><a class="tool-button tool-button-secondary" href="/loot-table-generator/">Loot table generator</a><a class="tool-button tool-button-secondary" href="/recipe-generator/">Recipe generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

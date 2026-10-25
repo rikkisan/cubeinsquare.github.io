@@ -305,6 +305,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться генератором</h2>
+        <p class="section-intro">Выберите тип рецепта и версию, заполните сетку или список ингредиентов и скопируйте или скачайте JSON вместе с путём.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Тип рецепта и версия</h3><p>У рецептов с формой, без формы, четырёх видов готовки и камнереза свои поля; версия решает, в какой форме будет записан JSON.</p></article>
+            <article class="resource-card"><h3>Категория</h3><p>Вкладка книги рецептов, где появится рецепт. У крафта — building, redstone, equipment и misc; у готовки — food, blocks и misc. У камнереза категории нет.</p></article>
+            <article class="resource-card"><h3>Сетка</h3><p>Впишите ID предмета в каждую нужную ячейку. Пустые крайние ряды и столбцы обрезаются, поэтому узор, который помещается в 2×2, крафтится и в сетке инвентаря. Префикс <code>#</code> означает тег предметов, например <code>#minecraft:planks</code>.</p></article>
+            <article class="resource-card"><h3>Результат, опыт, время</h3><p>Укажите предмет и количество на выходе. Рецепты готовки добавляют опыт и время в тиках: ванильные рецепты печи — 200 (10 секунд), доменной печи и коптильни — вдвое меньше.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Почему рецепта как будто нет</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Его нет в книге рецептов</h3><p>Новый рецепт сразу работает в сетке, но в книге появится только после открытия: <code>/recipe give @s harbor:reinforced_block</code> или достижение с рецептом в награду.</p></article>
+            <article class="resource-card"><h3>Скопирован из старого гайда</h3><p>В 1.20.5 поле результата переименовали из <code>item</code> в <code>id</code>, а в 1.21.2 ингредиентами разрешили писать просто ID предметов. Файл в неподходящей форме молча не работает.</p></article>
+            <article class="resource-card"><h3>Изменить ванильный рецепт</h3><p>Файл с ванильным именем в пространстве <code>minecraft</code>, например <code>data/minecraft/recipe/torch.json</code>, заменяет исходный рецепт.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Java Edition 1.20–26.3. Форма JSON меняется в 1.20.5 и 1.21.2, а папка называется <code>recipe</code> с 1.21 и <code>recipes</code> до неё; генератор следует выбранной версии.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-recipe-generator/">Гайд по рецептам</a><a class="tool-button tool-button-secondary" href="/ru/datapack-generator/">Генератор датапаков</a><a class="tool-button tool-button-secondary" href="/ru/advancement-builder/">Конструктор достижений</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

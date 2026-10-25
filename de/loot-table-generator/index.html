@@ -215,6 +215,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Generator</h2>
+        <p class="section-intro">Leg die Tabelle an, füge Pools und Einträge hinzu – JSON und Pfad aktualisieren sich beim Tippen. Die Vorlagen zeigen drei häufige Formen.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Mit einer Vorlage starten</h3><p>Dungeon chest würfelt zwei- bis viermal über Eisen, Gold und einen seltenen Diamanten. Rare mob drop gibt in 15 % der Fälle ein benanntes Schwert. Fishing catch bringt meist Kabeljau und selten ein Namensschild.</p></article>
+            <article class="resource-card"><h3>Tabellentyp</h3><p>Truhe, Wesen, Block, Angeln, Geschenk oder generisch sagt Minecraft, in welcher Situation die Tabelle gewürfelt wird. Eine Bedingung, die nur bei einem getöteten Mob Sinn ergibt, greift in einer Truhentabelle nie.</p></article>
+            <article class="resource-card"><h3>Namensraum und Dateiname</h3><p>Zusammen ergeben sie den Pfad <code>data/&lt;namespace&gt;/loot_table/&lt;file&gt;.json</code> und die ID für Befehle, etwa <code>harbor:harbor_dungeon</code>.</p></article>
+            <article class="resource-card"><h3>Pools und Würfe</h3><p>Jeder Pool würfelt für sich. Würfe von 2 bis 4 heißt zwei, drei oder vier Ziehungen aus diesem Pool, bei jeder Nutzung der Tabelle neu ausgewürfelt.</p></article>
+            <article class="resource-card"><h3>Einträge</h3><p>Jeder Eintrag hat ein Item, ein Gewicht, einen Mengenbereich und optional einen eigenen Namen und eine Drop-Chance; der Generator macht daraus <code>set_count</code>, <code>set_name</code> und eine <code>random_chance</code>-Bedingung.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Die Chancen richtig lesen</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Gewicht ist relativ</h3><p>Gewichte 10, 5 und 1 in einem Pool ergeben 10/16, 5/16 und 1/16 pro Ziehung: etwa 62 %, 31 % und 6 %. Jeder neue Eintrag senkt die Chancen aller anderen.</p></article>
+            <article class="resource-card"><h3>Die Drop-Chance kommt zuerst</h3><p>Ein Eintrag mit Drop-Chance wird vor der gewichteten Ziehung geprüft. Fällt der Test durch, scheidet er für diese Ziehung aus und die anderen teilen sich die Chancen; in einem Pool mit nur einem Eintrag heißt es einfach „so oft“.</p></article>
+            <article class="resource-card"><h3>Die Tabelle einbinden</h3><p>Teste sie mit <code>/loot give @s loot harbor:harbor_dungeon</code>. Zum Einsatz hängst du sie an einen Behälter, etwa <code>/setblock ~ ~1 ~ minecraft:chest{LootTable:"harbor:harbor_dungeon"}</code>, oder an einen Mob über seine <code>DeathLootTable</code>.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Der Generator schreibt den 1.21+-Ordner <code>loot_table</code>; vor 1.21 hieß er <code>loot_tables</code>, dort also umbenennen. Mengenbereiche nutzen die ausdrückliche Form <code>minecraft:uniform</code>, die jede Version seit 1.17 liest.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-loot-table-generator/">Anleitung zu Beutetabellen</a><a class="tool-button tool-button-secondary" href="/de/datapack-generator/">Datenpaket-Generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

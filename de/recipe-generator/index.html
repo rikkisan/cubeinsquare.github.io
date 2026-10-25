@@ -305,6 +305,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Generator</h2>
+        <p class="section-intro">Wähl Rezepttyp und Version, füll das Raster oder die Zutatenliste und kopier oder lad das JSON mitsamt Pfad herunter.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Rezepttyp und Version</h3><p>Geformte und formlose Rezepte, die vier Kocharten und der Steinschneider haben jeweils eigene Felder; die Zielversion entscheidet, in welcher Form das JSON geschrieben wird.</p></article>
+            <article class="resource-card"><h3>Kategorie</h3><p>Der Reiter im Rezeptbuch, in dem das Rezept erscheint. Handwerk nutzt building, redstone, equipment und misc, Kochen food, blocks und misc. Der Steinschneider hat keine.</p></article>
+            <article class="resource-card"><h3>Das Raster</h3><p>Trag in jedes benötigte Feld eine Item-ID ein. Leere Randreihen und -spalten werden abgeschnitten, ein Muster, das in 2×2 passt, geht also auch im Inventar-Handwerksfeld. Ein vorangestelltes <code>#</code> steht für einen Item-Tag, etwa <code>#minecraft:planks</code>.</p></article>
+            <article class="resource-card"><h3>Ergebnis, Erfahrung, Zeit</h3><p>Leg Ergebnis-Item und Anzahl fest. Kochrezepte bekommen Erfahrung und eine Garzeit in Ticks: Vanilla-Ofenrezepte nutzen 200 (10 Sekunden), Schmelzofen und Räucherofen die Hälfte.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Warum ein Rezept zu fehlen scheint</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Nicht im Rezeptbuch</h3><p>Ein neues Rezept funktioniert sofort im Raster, erscheint im Buch aber erst nach dem Freischalten: <code>/recipe give @s harbor:reinforced_block</code> oder ein Fortschritt mit Rezept als Belohnung.</p></article>
+            <article class="resource-card"><h3>Aus einer alten Anleitung kopiert</h3><p>1.20.5 hat das Ergebnisfeld von <code>item</code> in <code>id</code> umbenannt, und 1.21.2 erlaubt einfache Item-IDs als Zutaten. Eine Datei in der falschen Form scheitert ohne sichtbaren Fehler im Spiel.</p></article>
+            <article class="resource-card"><h3>Ein Vanilla-Rezept ändern</h3><p>Eine Datei mit dem Vanilla-Namen im Namensraum <code>minecraft</code>, etwa <code>data/minecraft/recipe/torch.json</code>, ersetzt das Originalrezept.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Java Edition 1.20 bis 26.3. Die JSON-Form ändert sich mit 1.20.5 und 1.21.2, und der Ordner heißt ab 1.21 <code>recipe</code>, davor <code>recipes</code>; der Generator folgt der gewählten Version.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-recipe-generator/">Anleitung zu Rezepten</a><a class="tool-button tool-button-secondary" href="/de/datapack-generator/">Datenpaket-Generator</a><a class="tool-button tool-button-secondary" href="/de/advancement-builder/">Fortschritts-Builder</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

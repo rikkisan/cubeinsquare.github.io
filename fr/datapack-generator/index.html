@@ -226,6 +226,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le générateur</h2>
+        <p class="section-intro">Remplissez quatre champs, cochez ce que le pack doit contenir et téléchargez un ZIP qu’un monde charge tel quel.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Informations du pack</h3><p>Le nom devient celui du fichier ZIP, la description s’affiche au survol dans <code>/datapack list</code>. L’espace de noms (minuscules, chiffres, <code>_ . -</code>) entre dans chaque identifiant du pack, comme <code>harbor:load</code>.</p></article>
+            <article class="resource-card"><h3>Version visée</h3><p>Fixe le numéro de format dans <code>pack.mcmeta</code> et les noms de dossiers. Choisissez la version exacte : le numéro de format change presque à chaque sortie.</p></article>
+            <article class="resource-card"><h3>Contenu</h3><p>La fonction load s’exécute à chaque <code>/reload</code> et au lancement du monde, la fonction tick 20 fois par seconde. La table de butin, la recette et le progrès d’exemple sont des fichiers fonctionnels à modifier, pas des bouche-trous.</p></article>
+            <article class="resource-card"><h3>Vérifier avant de télécharger</h3><p>La liste montre toute l’arborescence, et chaque fichier peut être ouvert et copié seul, pratique si vous préférez monter le dossier à la main.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Quand un pack ne se charge pas</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>pack.mcmeta n’est pas à la racine</h3><p>Si vous décompressez puis recompressez le pack, vérifiez que <code>pack.mcmeta</code> est à la racine du ZIP et pas dans un dossier en trop ; sinon le jeu ne voit pas de pack du tout.</p></article>
+            <article class="resource-card"><h3>Mauvais monde</h3><p>Un data pack appartient à un monde : <code>saves/&lt;monde&gt;/datapacks/</code> en solo, <code>&lt;monde&gt;/datapacks/</code> à côté de <code>level.dat</code> sur un serveur.</p></article>
+            <article class="resource-card"><h3>Listé mais sans effet</h3><p><code>/datapack list</code> montre les packs activés et disponibles. Un pack marqué incompatible a été fait pour une autre version ; un pack chargé qui ne fait rien utilise en général de mauvais noms de dossiers pour cette version.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 à 26.3. La 1.21 a mis les dossiers de contenu au singulier (<code>function</code>, <code>loot_table</code>, <code>recipe</code>…), et la 1.21.9 a remplacé <code>pack_format</code> par <code>min_format</code> et <code>max_format</code> dans <code>pack.mcmeta</code>. Le générateur écrit ce qu’attend la version choisie.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-datapack-generator/">Guide des data packs</a><a class="tool-button tool-button-secondary" href="/fr/loot-table-generator/">Générateur de tables de butin</a><a class="tool-button tool-button-secondary" href="/fr/recipe-generator/">Générateur de recettes</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
