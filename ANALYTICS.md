@@ -55,8 +55,9 @@ used to report `page`.
 
 `mc_version` is only ever a real game version, as the tool's version select names it (`1.21.4`, `26.1`, …).
 `item_format` is the command syntax generation of the tools that offer one: `modern` (1.21.4+ components),
-`current` (1.20.5–1.21.3 components), `legacy` (before 1.20.5, NBT). Book & letter and the enchantment randomizer offer only
-`modern` (1.20.5+ components) and `legacy`.
+`current` (1.20.5–1.21.3 components), `legacy` (before 1.20.5, NBT). Book & letter offers only `modern` (1.20.5+
+components) and `legacy`. The enchantment randomizer has three component branches (1.21.5–26.x, 1.21.2–1.21.4,
+1.21–1.21.1): it sends `modern` for all of them and the branch's first version as `mc_version` (`1.21.5`, `1.21.2`, `1.21`).
 
 | Tool | `tool_copy` `output_kind` | `tool_download` `file_kind` | `tool_example_load` | version parameter |
 | --- | --- | --- | --- | --- |

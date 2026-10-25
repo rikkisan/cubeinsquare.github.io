@@ -61,7 +61,7 @@
     { id: 'lure', maxLevel: 3, treasure: false, weight: 2, categories: ['fishing_rod'], conflicts: [] },
     { id: 'unbreaking', maxLevel: 3, treasure: false, weight: 5, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] },
     { id: 'mending', maxLevel: 1, treasure: true, weight: 2, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] },
-    { id: 'curse_of_vanishing', maxLevel: 1, treasure: true, weight: 1, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] }
+    { id: 'vanishing_curse', maxLevel: 1, treasure: true, weight: 1, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] }
   ];
 
   /** Generic attribute ids, stable since 1.9 and still valid in 1.21.x. */
@@ -275,19 +275,35 @@
     return Math.round(n * 100) / 100;
   }
 
-  /** Modern (1.20.5+) /give uses data components; legacy uses NBT tags. */
-  function buildGiveCommand(item, enchantments, attributes, isModern) {
-    if (isModern) {
+  /**
+   * Item syntax per version branch. 1.20.5 moved items to data components;
+   * 1.21 gave attribute modifiers a namespaced id; 1.21.2 dropped the generic.
+   * prefix from attribute ids; 1.21.5 removed the {levels:...} and
+   * {modifiers:...,show_in_tooltip} wrappers (tooltips moved to tooltip_display).
+   */
+  const ITEM_VERSIONS = {
+    v1215: { components: true, simplified: true, plainAttributes: true, mc: '1.21.5' },
+    v1212: { components: true, simplified: false, plainAttributes: true, mc: '1.21.2' },
+    v121: { components: true, simplified: false, plainAttributes: false, mc: '1.21' },
+    legacy: { components: false, simplified: false, plainAttributes: false, mc: '' }
+  };
+
+  function attributeId(attribute, version) {
+    return 'minecraft:' + (version.plainAttributes ? attribute.id.replace(/^generic\./, '') : attribute.id);
+  }
+
+  function buildGiveCommand(item, enchantments, attributes, version) {
+    if (version.components) {
       const parts = [];
       if (enchantments.length) {
         const levels = enchantments.map((e) => `"minecraft:${e.id}":${e.level}`).join(',');
-        parts.push(`minecraft:enchantments={levels:{${levels}}}`);
+        parts.push(version.simplified ? `minecraft:enchantments={${levels}}` : `minecraft:enchantments={levels:{${levels}}}`);
       }
       if (attributes.length) {
         const mods = attributes.map((a, i) =>
-          `{type:"minecraft:${a.id}",id:"harbor:roll_${i}",amount:${roundAmount(a.amount)},operation:"${a.operation}",slot:"${a.slot}"}`
+          `{type:"${attributeId(a, version)}",id:"harbor:roll_${i}",amount:${roundAmount(a.amount)},operation:"${a.operation}",slot:"${a.slot}"}`
         ).join(',');
-        parts.push(`minecraft:attribute_modifiers={modifiers:[${mods}],show_in_tooltip:true}`);
+        parts.push(version.simplified ? `minecraft:attribute_modifiers=[${mods}]` : `minecraft:attribute_modifiers={modifiers:[${mods}]}`);
       }
       const components = parts.length ? `[${parts.join(',')}]` : '';
       return `/give @p ${item}${components} 1`;
@@ -320,7 +336,7 @@
    * each unlocked one as a minecraft:uniform number provider instead of a
    * fixed value, so the game rolls it fresh on every drop.
    */
-  function buildLootEntry(item, enchantments, attributes) {
+  function buildLootEntry(item, enchantments, attributes, version) {
     const functions = [];
 
     if (enchantments.length) {
@@ -335,11 +351,12 @@
     if (attributes.length) {
       functions.push({
         function: 'minecraft:set_attributes',
+        // Before 1.21 a modifier was named, not given a namespaced id.
         modifiers: attributes.map((a) => ({
-          attribute: `minecraft:${a.id}`,
+          attribute: attributeId(a, version),
           amount: a.locked ? roundAmount(a.amount) : numberProvider(a.amount, a.amountRange),
           operation: a.operation,
-          id: `harbor:roll_${a.id.split('.').pop()}`,
+          ...(version.components ? { id: `harbor:roll_${a.id.split('.').pop()}` } : { name: `harbor.roll_${a.id.split('.').pop()}` }),
           slot: a.slot
         }))
       });
@@ -360,7 +377,14 @@
 
   function currentVersion() {
     const active = root.querySelector('[data-er-version].is-active');
-    return active ? active.dataset.erVersion : 'modern';
+    const key = active ? active.dataset.erVersion : 'v1215';
+    return ITEM_VERSIONS[key] || ITEM_VERSIONS.v1215;
+  }
+
+  /** Analytics keeps the documented item_format values; the branch goes into mc_version. */
+  function versionParams() {
+    const version = currentVersion();
+    return version.components ? { item_format: 'modern', mc_version: version.mc } : { item_format: 'legacy' };
   }
 
   function syncVisibility() {
@@ -383,9 +407,9 @@
     const attributes = rollAttributes(isAdvanced);
 
     if (outputFormat() === 'give') {
-      $('er-output').value = buildGiveCommand(item, enchantments, attributes, currentVersion() === 'modern');
+      $('er-output').value = buildGiveCommand(item, enchantments, attributes, currentVersion());
     } else {
-      $('er-output').value = JSON.stringify(buildLootEntry(item, enchantments, attributes), null, 2);
+      $('er-output').value = JSON.stringify(buildLootEntry(item, enchantments, attributes, currentVersion()), null, 2);
     }
     $('er-summary').textContent = t.summary(enchantments.length, attributes.length);
   }
@@ -418,7 +442,7 @@
   $('er-copy').addEventListener('click', async (event) => {
     try {
       await navigator.clipboard.writeText($('er-output').value);
-      track('tool_copy', { output_kind: outputFormat() === 'give' ? 'command' : 'json', item_format: currentVersion() });
+      track('tool_copy', { output_kind: outputFormat() === 'give' ? 'command' : 'json', ...versionParams() });
       const button = event.currentTarget;
       const label = button.textContent;
       button.textContent = t.copied;
@@ -440,7 +464,7 @@
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-    track('tool_download', { file_kind: isJson ? 'json' : 'txt', item_format: currentVersion() });
+    track('tool_download', { file_kind: isJson ? 'json' : 'txt', ...versionParams() });
   });
 
   syncVisibility();

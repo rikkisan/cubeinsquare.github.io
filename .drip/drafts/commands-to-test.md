@@ -88,3 +88,16 @@
 | B13 | Рецепт из пресета Shaped craft, `/reload`, скрафтить; затем открыть книгу рецептов; затем `/recipe give @s harbor:reinforced_block` | 26.3 | Крафт работает сразу; в книге рецепт появляется только после `/recipe give` | |
 | B14 | Файл `data/minecraft/recipe/torch.json` с другим рецептом | 26.3 | Ванильный рецепт факела заменён | |
 | B15 | Рецепт с версией 1.20.5 в генераторе (путь `recipes/`, поле `id`) | 1.20.6 | Работает; та же форма на 26.3 тоже грузится или даёт ошибку в логе — записать, что именно | |
+
+## Волна Б: рандомайзер зачарований и атрибутов (исправлен вывод)
+
+До исправления «Modern (1.20.5+)» писал `enchantments={levels:…}`, `generic.`-атрибуты и обёртку
+`{modifiers:…,show_in_tooltip:true}`; теперь у него три ветки версий. Проверьте по одной команде из каждой.
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B16 | `/give @p minecraft:iron_sword[minecraft:enchantments={"minecraft:sharpness":3},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"harbor:roll_0",amount:4,operation:"add_value",slot:"mainhand"}]] 1` (ветка 1.21.5 – 26.x) | 26.3 | Меч с «Острота III» и +4 к урону в подсказке | |
+| B17 | `/give @p minecraft:iron_sword[minecraft:enchantments={levels:{"minecraft:sharpness":3}},minecraft:attribute_modifiers={modifiers:[{type:"minecraft:attack_damage",id:"harbor:roll_0",amount:4,operation:"add_value",slot:"mainhand"}]}] 1` (ветка 1.21.2 – 1.21.4) | 1.21.4 | То же | |
+| B18 | Та же команда, что B17, но `type:"minecraft:generic.attack_damage"` (ветка 1.21 – 1.21.1) | 1.21.1 | То же | |
+| B19 | Команда из B17 на 26.3 | 26.3 | Для сравнения: ошибка разбора — поэтому нужны отдельные ветки | |
+| B20 | `/give @p minecraft:iron_sword[minecraft:enchantments={"minecraft:vanishing_curse":1}] 1` | 26.3 | Проклятие утраты в подсказке (раньше инструмент писал несуществующий `curse_of_vanishing`) | |
