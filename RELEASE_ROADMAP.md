@@ -1,7 +1,7 @@
 # Cube in Square release roadmap
 
 This file tracks what has shipped, what is queued, and what is only an idea.
-Updated 2026-10-24. Sources of truth, in case this file drifts:
+Updated 2026-10-25. Sources of truth, in case this file drifts:
 
 - **queue:** `.drip/queue/` (the folders there are the only scheduled releases)
 - **drip publishes:** `PUBLISHED.md` (written by the bot; starts 2026-08-02) and `git log`
@@ -49,6 +49,7 @@ for the individual commits.
 | 2026-10-13 | Titles and descriptions rewritten for pages with near-zero CTR at a good search position; `.tool-button` underline fix. |
 | 2026-10-24 | The publisher no longer writes the bot identity into the local `.git/config`. |
 | 2026-10-24 | AdSense wave A: bossbar pages rewritten, four short articles merged or closed, "coming soon" removed, complete tools and wiki hubs (see "AdSense resubmission" below). |
+| 2026-10-25 | AdSense waves B and C: text for the 12 thin tools, version fixes across articles and tools, contact email in every footer, bylines, mod pages rewritten as documentation. |
 
 ### Pipeline incidents worth remembering
 
@@ -126,13 +127,29 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
   item model builder `select` values, phone overflow on path notes.
 - The resource pack generator page and guide now say which versions its packs serve.
 
+**Wave C, done 2026-10-25**
+
+- Every footer (259 pages) links About and `cubeinsquare@proton.me`. About has a contact card with the email (and
+  in its JSON-LD `ContactPoint`) instead of the Discord card; the homepage no longer promises Discord either. There
+  is no public Discord invite.
+- The server is described as between seasons (season two over, season three in development, no date) on About and
+  the homepage.
+- DarkMage and Mechanism articles say they are published on our Patreon; HeadHunter says it is not distributed and
+  runs only on our server. About links all three and both mod guides.
+- ArmorHide and Chest Helper rewritten as documentation from their Modrinth pages only (versions, loaders, install,
+  controls, settings, limits, changelog). ArmorHide is Apache-2.0, so two gallery screenshots live in
+  `assets/mods/`; Chest Helper is All Rights Reserved, so its gallery is linked.
+- Bylines on 162 articles: Rikki (linked to `/about/#team`, where About now says "Rikki (`rikki.san`)"), Mark on the
+  DarkMage, Mechanism, ArmorHide and Chest Helper articles. JSON-LD `author` is that Person; 54 articles that had no
+  JSON-LD got an Article block. The convention is in `CLAUDE.md` (article checklist, step 5).
+- `styles.css`: `.article-byline`, `.article-figure`, and `.prose-table` (tables with sentences in their cells wrap
+  on phones instead of scrolling).
+
 **Still to do before resubmitting**
 
-- Wave C: contact email `cubeinsquare@proton.me` on About and in every footer; remove Discord promises (there is no
-  public invite); bylines (Mark for DarkMage, Mechanism, ArmorHide, Chest Helper; Rikki for the rest; HeadHunter
-  author to confirm); rewrite ArmorHide and Chest Helper as documentation from their Modrinth pages; plugin pages
-  say where each plugin is available; server described as between seasons (season 2 over, season 3 in
-  development).
+- Owner answers: who wrote the HeadHunter article (its four pages have no byline yet); who Mark is on the About
+  team list, so his byline can link there; what ArmorHide's H key does (the Modrinth page only names the binding).
+- The privacy policy still gives the Discord nick "kvaasssssssss" as the contact. The owner edits that page.
 - After Wave B: homepage less about the site itself; localized pages that are 40–50% shorter than English brought
   to parity.
 - The owner runs `.drip/drafts/commands-to-test.md` in game (53 checks). Two tool changes wait for that run: the

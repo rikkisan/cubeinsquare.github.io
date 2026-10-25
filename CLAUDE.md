@@ -72,7 +72,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 ## Add a tool: file checklist
 
 1. `<slug>/index.html` and `ru|fr|de/<slug>/index.html`, copied from a sibling tool; `assets/<slug>.js` (+ `.css`).
-2. Guide: `wiki-<slug>/index.html` in all four locales.
+2. Guide: `wiki-<slug>/index.html` in all four locales, with a byline (article checklist, step 5).
 3. Menu entry and labels (all four locales). Drip release: a `TOOL_META.js` in the bundle. Direct commit: add to `meta` and `labels` in `assets/site.js`.
 4. Catalog card in `tools/index.html` × 4: pill `new` plus `data-released="YYYY-MM-DD"` (the site turns it into `ready` after 45 days).
 5. Guide card in `wiki/index.html` × 4, next to the neighbouring tool guides, and its link in the same sidebar group.
@@ -88,6 +88,7 @@ Each of these affects the whole site, so check it against `.drip/queue/` first a
 2. A card in the right section of `wiki/index.html` × 4, plus its link in the matching sidebar group. Most non-tool articles are not in the Wiki dropdown, so the hub (and its search, which only sees hub cards) is how readers find them. Every indexable article is on the hub as of 2026-10-24; keep it that way.
 3. Links from related guides, then the sitemap as in tool step 8.
 4. No thin pages: AdSense review needs substance. Details: [RELEASE_ROADMAP.md](RELEASE_ROADMAP.md).
+5. Byline right after the lead, `<p class="article-byline">By <a href="/about/#team">Rikki</a></p>` (localized: `Автор:`/`Рикки`, `Par`, `Von`), and the same Person as `author` in the JSON-LD. Rikki writes everything except the DarkMage, Mechanism, ArmorHide and Chest Helper articles (Mark, no link yet); HeadHunter has no byline until the owner names its author.
 
 ## Drip publishing in brief
 
