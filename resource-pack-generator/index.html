@@ -308,8 +308,9 @@
         <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Target game version:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
             <option value="1.20.4">Before 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (Components syntax: [custom_model_data=1])</option>
+            <option value="1.20.5">1.20.5 – 1.21.3 (Components syntax: [custom_model_data=1])</option>
         </select>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">The pack uses the format of 1.20 – 1.20.1; newer versions load it after an "older version" warning. Replaced item and block textures work in every version. CustomModelData variants rely on model overrides, which Minecraft ignores from 1.21.4 (use the <a href="/item-model-builder/">item model builder</a> there), and armor goes to the <code>textures/models/armor</code> folder that 1.21.2 replaced.</p>
     </div>
 
     <div class="tabs">

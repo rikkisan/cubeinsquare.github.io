@@ -313,8 +313,9 @@
         <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Version cible du jeu :</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
             <option value="1.20.4">Avant 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (syntaxe Components : [custom_model_data=1])</option>
+            <option value="1.20.5">1.20.5 – 1.21.3 (syntaxe Components : [custom_model_data=1])</option>
         </select>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Le pack utilise le format de la 1.20 – 1.20.1 ; les versions récentes le chargent après un avertissement « version plus ancienne ». Les textures d’objets et de blocs remplacées marchent partout. Les variantes CustomModelData reposent sur les overrides de modèles, que Minecraft ignore depuis la 1.21.4 (utilisez-y le <a href="/fr/item-model-builder/">constructeur item_model</a>), et l’armure va dans le dossier <code>textures/models/armor</code>, remplacé en 1.21.2.</p>
     </div>
 
     <div class="tabs">

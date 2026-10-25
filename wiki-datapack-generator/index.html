@@ -195,8 +195,22 @@
             <tr><td>1.21.5</td><td>71</td></tr>
             <tr><td>1.21.6</td><td>80</td></tr>
             <tr><td>1.21.7 – 1.21.8</td><td>81</td></tr>
+            <tr><td>1.21.9 – 1.21.10</td><td>88.0</td></tr>
+            <tr><td>1.21.11</td><td>94.1</td></tr>
+            <tr><td>26.1 – 26.1.2</td><td>101.1</td></tr>
+            <tr><td>26.2</td><td>107.1</td></tr>
+            <tr><td>26.3</td><td>121.0</td></tr>
         </table>
         <p>Note that these are <em>data</em> pack numbers. Resource packs use a separate scale, so a pack_format you copied from a resource pack tutorial will be wrong here.</p>
+        <p>From 1.21.9 the format numbers have a minor part, and <code>pack.mcmeta</code> declares a range with <code>min_format</code> and <code>max_format</code> instead of <code>pack_format</code>. A single number in <code>max_format</code> accepts every minor version of it, so 121 covers 26.3:</p>
+        <pre><code>{
+  "pack": {
+    "description": "Harbor district rules",
+    "min_format": 121,
+    "max_format": 121
+  }
+}</code></pre>
+        <p>A pack that must also load on versions before 1.21.9 keeps <code>pack_format</code> next to the two new fields.</p>
 
         <h2>load and tick</h2>
         <p>Two function hooks cover most of what a pack needs to do on its own. You write a <code>.mcfunction</code> file — a plain text file, one command per line, no leading slash — and then point a tag at it.</p>

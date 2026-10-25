@@ -313,8 +313,9 @@
         <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Версия целевой игры:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
             <option value="1.20.4">До 1.20.5 (Синтаксис NBT: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5+ (Синтаксис Components: [custom_model_data=1])</option>
+            <option value="1.20.5">1.20.5 – 1.21.3 (Синтаксис Components: [custom_model_data=1])</option>
         </select>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Пак собирается в формате 1.20 – 1.20.1; новые версии загружают его после предупреждения о старой версии. Заменённые текстуры предметов и блоков работают в любой версии. Варианты CustomModelData держатся на overrides моделей, которые Minecraft игнорирует с 1.21.4 (там используйте <a href="/ru/item-model-builder/">конструктор item_model</a>), а броня кладётся в папку <code>textures/models/armor</code>, которую заменили в 1.21.2.</p>
     </div>
 
     <div class="tabs">
