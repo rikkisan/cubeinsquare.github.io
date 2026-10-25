@@ -145,13 +145,24 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
 - `styles.css`: `.article-byline`, `.article-figure`, and `.prose-table` (tables with sentences in their cells wrap
   on phones instead of scrolling).
 
+**Homepage and locales (audit items 11 and 12), done 2026-10-25**
+
+- Homepage (x4) rebuilt around the tools: all 18 in six groups by task, each with what it outputs and its guide;
+  starter guides taken from the wiki hub cards; a practical FAQ (versions, uploads, a broken command, the contact
+  email). The sections about the site itself (why it matters in 1.21.4, the workflow, what you could build) are gone.
+- Localized pages that were 48–66% of the English text now carry the missing sections: resource pack generator,
+  custom potions, the RP progression article, the texture size guide, and the German item model branch guide.
+  Re-measured: no route has a locale under 65% of English (DarkMage in German is 64%: all sections present, just
+  denser, 794 words).
+- Register: ten German pages still said "ihr" and three Russian pages "ты"; all now use "du" / "вы".
+- `/custom-potions/` no longer scrolls sideways on phones and tablets (the CustomModelData help popover ran past
+  the right edge in every locale).
+
 **Still to do before resubmitting**
 
 - Owner answers: who wrote the HeadHunter article (its four pages have no byline yet); who Mark is on the About
   team list, so his byline can link there; what ArmorHide's H key does (the Modrinth page only names the binding).
 - The privacy policy still gives the Discord nick "kvaasssssssss" as the contact. The owner edits that page.
-- After Wave B: homepage less about the site itself; localized pages that are 40–50% shorter than English brought
-  to parity.
 - The owner runs `.drip/drafts/commands-to-test.md` in game (53 checks). Two tool changes wait for that run: the
   dialogue page's message designer writes `hoverEvent`/`clickEvent` (renamed in 1.21.5, checks B2–B4), and the book
   builder's component output may not suit 1.20.5–1.21.4 (B5).
