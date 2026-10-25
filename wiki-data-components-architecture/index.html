@@ -102,29 +102,20 @@
         <p>Here is why older item workflows became fragile. One paper item might hold a custom name, a lore line, a numeric CustomModelData value, a hidden quest token, and maybe even some hand-written flags copied from a wiki page years ago. Nothing in that design told you which part was cosmetic, which part was structural, and which part was critical to the server economy.</p>
         <p>That is exactly why migrations felt dangerous. When an item broke, you were not debugging one field. You were debugging a pile of mixed intentions.</p>
 
-<pre><code>// Old NBT-heavy style
-/give @p minecraft:paper{
-  CustomModelData:12,
-  display:{
-    Name:'{"text":"Guild Pass","italic":false}',
-    Lore:['{"text":"Issued by the archive","color":"gray","italic":false}']
-  },
-  cubeinsquare_role:"visitor",
-  cubeinsquare_source:"archive"
-} 1</code></pre>
+<pre><code>// Before 1.20.5
+/give @p minecraft:paper{CustomModelData:12,display:{Name:'{"text":"Guild Pass","italic":false}',Lore:['{"text":"Issued by the archive","color":"gray","italic":false}']},cubeinsquare_role:"visitor",cubeinsquare_source:"archive"} 1</code></pre>
 
         <p>This worked, but it encouraged one bad habit after another. Every new feature became just another tag. Every hidden meaning became another secret convention. Over time, the item stopped being readable except to the one person who originally invented it.</p>
 
         <h2>The new model: explicit parts with explicit jobs</h2>
         <p>Data Components do not magically simplify every command, but they do make intent visible. The same item can now be written in a way that exposes structure instead of hiding it.</p>
 
-<pre><code>// Data Components style
-/give @p minecraft:paper[
-  minecraft:custom_name='[{"text":"Guild Pass","italic":false}]',
-  minecraft:lore=['[{"text":"Issued by the archive","color":"gray","italic":false}]'],
-  minecraft:custom_model_data={strings:["guild_pass"]},
-  minecraft:custom_data={role:"visitor",source:"archive"}
-] 1</code></pre>
+<pre><code>// 1.21.4
+/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:lore=['{"text":"Issued by the archive","color":"gray","italic":false}'],minecraft:custom_model_data={strings:["guild_pass"]},minecraft:custom_data={role:"visitor",source:"archive"}] 1
+
+// 1.21.5 – 26.x
+/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:lore=[{text:"Issued by the archive",color:"gray",italic:false}],minecraft:custom_model_data={strings:["guild_pass"]},minecraft:custom_data={role:"visitor",source:"archive"}] 1</code></pre>
+        <p>The two lines differ only in how text is written. 1.21.5 switched text components from JSON strings to SNBT, so name and lore lose their outer quotes; the 1.21.4 line pasted into 1.21.5 or newer names the item <code>{"text":"Guild Pass",…}</code>. The <code>strings</code> slot of <code>custom_model_data</code> needs 1.21.4; on 1.20.5 – 1.21.3 the component was a single number.</p>
 
         <h2>Line-by-line explanation of the new command</h2>
         <p><code>minecraft:paper</code>: the vanilla base item still matters. Components do not create a new registry item out of nothing; they enrich a real item stack.</p>

@@ -95,6 +95,7 @@
             <tr><td><code>{CustomModelData:12}</code></td><td><code>minecraft:custom_model_data</code> component</td><td>Identity is component-driven, not an ad-hoc NBT tag.</td></tr>
             <tr><td><code>display:{Name:...,Lore:...}</code></td><td><code>minecraft:custom_name</code>, <code>minecraft:lore</code></td><td>Visible item presentation is broken into named components.</td></tr>
             <tr><td>Numeric-only model identity</td><td>Strings, flags, floats, colors inside <code>custom_model_data</code></td><td>One item can now carry richer state than just one integer.</td></tr>
+            <tr><td>Names as JSON strings</td><td>From 1.21.5, text components in SNBT: <code>custom_name={text:"Pass"}</code></td><td>A 1.21.4 command shows the raw JSON as the item name on 1.21.5 and newer.</td></tr>
         </table>
 
         <h2>The folder move is real, but the deeper change is conceptual</h2>
@@ -152,20 +153,43 @@
 
         <h2>Commands break for the same reason</h2>
         <p>The command layer and the pack layer break together because they used to depend on the same old assumptions. Here is the shape of the transition:</p>
-<pre><code>// Old style
+<pre><code>// Before 1.20.5
 /give @p minecraft:paper{CustomModelData:12,display:{Name:'{"text":"Pass"}'}} 1
 
-// New style
-/give @p minecraft:paper[
-  minecraft:custom_model_data={strings:["pass_document"]},
-  minecraft:custom_name='[{"text":"Pass"}]'
-] 1</code></pre>
+// 1.21.4
+/give @p minecraft:paper[minecraft:custom_model_data={strings:["pass_document"]},minecraft:custom_name='{"text":"Pass"}'] 1
+
+// 1.21.5 – 26.x
+/give @p minecraft:paper[minecraft:custom_model_data={strings:["pass_document"]},minecraft:custom_name={text:"Pass"}] 1</code></pre>
+        <p>Each command fits on one line, because chat and command blocks do not accept line breaks. The last two differ only in the name: 1.21.5 writes text components in SNBT, so the 1.21.4 line names the item <code>{"text":"Pass"}</code> there.</p>
 
         <h2>Line-by-line explanation of the new command</h2>
         <p><code>minecraft:paper</code>: the vanilla base item still matters. Your pack logic decorates or redirects a real item, it does not create a new registry item.</p>
         <p><code>minecraft:custom_model_data={...}</code>: the identity payload now sits in a named component block.</p>
         <p><code>strings:["pass_document"]</code>: instead of encoding meaning into a number like <code>12</code>, you can now write a human-readable state key. That is much friendlier for long-term maintenance.</p>
-        <p><code>minecraft:custom_name</code>: visible text becomes its own component. In older workflows, creators often buried everything inside <code>display</code>; now the data is flatter and easier to reason about.</p>
+        <p><code>minecraft:custom_name</code>: visible text becomes its own component, written as a JSON string on 1.21.4 and as SNBT, <code>{text:"Pass"}</code>, from 1.21.5. In older workflows creators often buried everything inside <code>display</code>; now the data is flatter and easier to reason about.</p>
+
+        <h2>If your pack is built on numbers: range_dispatch</h2>
+        <p>A pack with dozens of numbered variants does not have to rename them all to strings before it can move. <code>range_dispatch</code> reads the same number from the <code>floats</code> list, so <code>assets/minecraft/items/paper.json</code> can keep the old numbering:</p>
+<pre><code>{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/paper" },
+    "entries": [
+      { "threshold": 12, "model": { "type": "minecraft:model", "model": "cubeinsquare:item/paper/pass" } },
+      { "threshold": 13, "model": { "type": "minecraft:model", "model": "cubeinsquare:item/paper/receipt" } }
+    ]
+  }
+}</code></pre>
+        <p>The command then carries the number as a float: <code>/give @p minecraft:paper[minecraft:custom_model_data={floats:[12f]}] 1</code>. A threshold catches every value up to the next one, so 12.5 would still show the pass; keep the numbers whole.</p>
+        <h2>Or give the item its own definition: item_model</h2>
+        <p>From 1.21.4 an item can also point straight at a definition with the <code>item_model</code> component, so a custom prop does not have to share paper's file at all. <code>/give @p minecraft:paper[minecraft:item_model="cubeinsquare:archive_pass"] 1</code> reads <code>assets/cubeinsquare/items/archive_pass.json</code>:</p>
+<pre><code>{
+  "model": { "type": "minecraft:model", "model": "cubeinsquare:item/paper/archive_pass" }
+}</code></pre>
+        <p>This is the shortest route for one-off props. A <code>select</code> or <code>range_dispatch</code> on <code>custom_model_data</code> stays useful when one item has to switch between several states. The <a href="/item-model-builder/">item model builder</a> writes both kinds of file.</p>
 
         <h2>What should you audit first on a real server</h2>
         <ul>

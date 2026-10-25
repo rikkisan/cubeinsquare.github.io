@@ -27,6 +27,10 @@ English only.
   it English-only), links from the related guides, and `ru/`, `fr/`, `de/` versions.
 - **No `.html` redirect stub.** The address `/wiki-item-model-definitions.html` never existed, and stubs like that were
   deleted on 2026-10-24.
+- **Decision (2026-10-25): not published on its own.** About 80% of it repeats
+  `wiki-resource-pack-migration-1-21-4/`. What it was missing (moving numeric CustomModelData with `range_dispatch`,
+  giving a prop its own definition with `item_model`, the 1.21.5 text change) was written into that article instead.
+  The file stays here only as a record.
 
 ## commands-to-test.md
 

@@ -164,3 +164,11 @@
 | B48 | Пак с `assets/minecraft/items/iron_sword.json` из статьи про CMD (`range_dispatch` по custom_model_data, пороги 1 и 2) и моделями katana/chainsaw; `/give @p minecraft:iron_sword[minecraft:custom_model_data={floats:[1f]}] 1`, затем `{floats:[2f]}`, затем обычный меч | 26.3 и 1.21.4 | Катана, бензопила, ванильный меч | |
 | B49 | `/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1` | 26.3 | Меч с обоими зачарованиями | |
 | B50 | Житель со сделкой, где `buy` содержит `"minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}` и имя `{text:"Guild voucher",italic:false}`; предложить настоящий ваучер и переименованную бумагу | 26.3 | Настоящий принимается, подделка — нет | |
+
+## Волна Б: английские статьи о миграции и Data Components
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B51 | `assets/minecraft/items/paper.json` с `range_dispatch` (пороги 12 и 13) из статьи о миграции; `/give @p minecraft:paper[minecraft:custom_model_data={floats:[12f]}] 1` и `{floats:[13f]}` | 26.3 | Модели pass и receipt; бумага без данных — ванильная | |
+| B52 | `/give @p minecraft:paper[minecraft:item_model="cubeinsquare:archive_pass"] 1` при файле `assets/cubeinsquare/items/archive_pass.json` | 26.3 и 1.21.4 | Модель archive_pass | |
+| B53 | Обе команды из статьи о Data Components (ветки 1.21.4 и 1.21.5 – 26.x) на своих версиях | 1.21.4, 26.3 | Бумага «Guild Pass» с серым лором | |
