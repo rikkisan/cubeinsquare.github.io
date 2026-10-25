@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>How to add a Custom Model Data model to an item: A visual tutorial | Cube in Square</title>
+    <title>From a Blockbench model to a Minecraft item: export, pack paths and the item definition | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.">
+    <meta name="description" content="How to take a Blockbench model into a resource pack and onto an item: Java Block/Item limits, where the files go, the item definition for 1.21.4+ and overrides for older versions.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-blockbench-custom-model/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-blockbench-custom-model/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-blockbench-custom-model/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="How to add a Custom Model Data model to an item: A visual tutorial | Cube in Square">
-    <meta property="og:description" content="Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.">
+    <meta property="og:title" content="From a Blockbench model to a Minecraft item: export, pack paths and the item definition | Cube in Square">
+    <meta property="og:description" content="How to take a Blockbench model into a resource pack and onto an item: Java Block/Item limits, where the files go, the item definition for 1.21.4+ and overrides for older versions.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-blockbench-custom-model/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="How to add a Custom Model Data model to an item: A visual tutorial | Cube in Square">
-    <meta name="twitter:description" content="Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="From a Blockbench model to a Minecraft item: export, pack paths and the item definition | Cube in Square">
+    <meta name="twitter:description" content="How to take a Blockbench model into a resource pack and onto an item: Java Block/Item limits, where the files go, the item definition for 1.21.4+ and overrides for older versions.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,272 +72,149 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#article",
-      "headline": "How to add a Custom Model Data model to an item: A visual tutorial",
-      "name": "How to add a Custom Model Data model to an item: A visual tutorial",
-      "description": "Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#webpage" },
-      "inLanguage": "en",
-      "url": "https://cubeinsquare.com/wiki-blockbench-custom-model/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#webpage",
-      "url": "https://cubeinsquare.com/wiki-blockbench-custom-model/",
-      "name": "How to add a Custom Model Data model to an item: A visual tutorial",
-      "description": "Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "en",
-      "mainEntity": { "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://cubeinsquare.com/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wiki",
-          "item": "https://cubeinsquare.com/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#article",
+            "headline": "From a Blockbench model to an in-game item: export, pack paths and the hook",
+            "description": "How to take a Blockbench model into a resource pack and onto an item: Java Block/Item limits, where the files go, the item definition for 1.21.4+ and overrides for older versions.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#webpage"
+            },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-blockbench-custom-model/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "How to add a Custom Model Data model to an item: A visual tutorial",
-          "item": "https://cubeinsquare.com/wiki-blockbench-custom-model/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#webpage",
+            "url": "https://cubeinsquare.com/wiki-blockbench-custom-model/",
+            "name": "From a Blockbench model to an in-game item: export, pack paths and the hook",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-blockbench-custom-model/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Blockbench model to item",
+                    "item": "https://cubeinsquare.com/wiki-blockbench-custom-model/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
         <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-blockbench-custom-model/">How to add a Custom Model Data model to an item: A visual tutorial</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-blockbench-custom-model/"><strong>How to add a Custom Model Data model to an item: A visual tutorial</strong><span>Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-blockbench-custom-model/">RU</a><a class="is-active" href="/wiki-blockbench-custom-model/">EN</a><a href="/fr/wiki-blockbench-custom-model/">FR</a><a href="/de/wiki-blockbench-custom-model/">DE</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-blockbench-custom-model/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-blockbench-custom-model/">FR</a><a href="/de/wiki-blockbench-custom-model/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/wiki/">&larr; All articles</a>
-    <section class="page-hero"><h1>How to add a Custom Model Data model to an item: A visual tutorial</h1><p class="page-lead">Learn how to link a 3D Blockbench model to a vanilla Minecraft item using Custom Model Data and our visual tools.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel"><p class="article-cta-title">Model finished? Wire it into the game</p><p class="article-cta-text">Use the Resource Pack Generator for the pack-side files, then connect the item to a command in the Custom Item Builder.</p><div class="tool-button-row"><a class="tool-button" href="/resource-pack-generator/">Open Resource Pack Generator</a><a class="tool-button tool-button-secondary" href="/custom-item-builder/">Open Custom Item Builder</a></div></div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>From a Blockbench model to an in-game item: export, pack paths and the hook</h1>
+        <p class="page-lead">Blockbench makes the model; the resource pack decides which item shows it. The model file is the same in every version since 1.13, but how an item is told to use it changed in 1.21.4, so the last step depends on the version you play.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/item-model-builder/">Item model builder</a><a class="tool-button tool-button-secondary" href="/wiki-resource-pack-structure/">Resource pack structure</a></div>
+    </section>
     <article>
-        <h2>What actually turns a Blockbench model into a usable Minecraft item</h2>
-        <p>Making a custom item model always sounds simple when you describe it out loud. You make the model in Blockbench, export it, connect it to an item, and then give that item to the player. The problem is that in practice those steps live in three different worlds at once: Blockbench, the resource pack, and the in-game command. If even one of those layers uses the wrong ID, the wrong file path, or the wrong version logic, the result is the classic disappointment: your “custom artifact” still looks like plain paper or a normal iron sword.</p>
-        <p>That is why Custom Model Data matters so much. It is not just a number you throw at an item because a tutorial said so. It is the bridge between the item the server gives and the model the client should render. Once you understand that bridge, custom models stop feeling mystical. They become a repeatable workflow.</p>
-
-        <h2>The four parts of a custom model pipeline</h2>
-        <p>A working custom item model usually depends on four layers that have to agree with each other:</p>
-
-        <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Layer</th>
-                    <th>What lives there</th>
-                    <th>Example</th>
-                    <th>What breaks when it goes wrong</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>3D source</td>
-                    <td>The model you build in Blockbench</td>
-                    <td>A book, relic, weapon, tool, badge</td>
-                    <td>The exported model looks wrong or cannot be reused cleanly.</td>
-                </tr>
-                <tr>
-                    <td>Resource pack</td>
-                    <td>Model files, textures, and routing logic</td>
-                    <td><code>assets/.../models</code>, textures, item definitions</td>
-                    <td>The game never points the base item to your custom model.</td>
-                </tr>
-                <tr>
-                    <td>Item identity</td>
-                    <td>The in-game hook that tells Minecraft which visual variant to use</td>
-                    <td><code>custom_model_data</code> or a related modern item-model setup</td>
-                    <td>The item spawns, but still looks vanilla.</td>
-                </tr>
-                <tr>
-                    <td>Give command</td>
-                    <td>The command that actually hands the player the item</td>
-                    <td><code>/give @p minecraft:paper[...]</code></td>
-                    <td>The item never reaches the player in the right form.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Start in Blockbench, but do not stop there mentally</h2>
-        <p>Blockbench is where the custom item becomes visually real. That is where you decide whether your druid relic looks ceremonial, whether your mechanical tool feels heavy, or whether your quest pass looks like paper, brass, crystal, or something stranger. But Blockbench only solves the art side. Minecraft still needs to be told when that model should appear.</p>
-        <p>This is the point where many people get stuck. They export a valid model JSON and assume the game will somehow know what to do with it. It will not. Minecraft needs a base item to override or reroute, and it needs a condition that tells the client: “show this custom model instead of the normal item now.” That condition is where Custom Model Data became so popular, and where newer item-model flows now keep evolving.</p>
-
-        <h2>Choose the right base item before you connect anything</h2>
-        <p>The base vanilla item matters more than it looks. It decides how the object stacks, whether it has durability, how players already read it, and how much friction it causes in inventories.</p>
+        <p><strong>Checked for versions:</strong> Java Edition 1.20 to 26.3. Blockbench's Bedrock formats do not work in Java Edition.</p>
+        <h2 id="blockbench">In Blockbench</h2>
         <ul>
-            <li><strong>Paper</strong> is great for passes, letters, contracts, permits, guild tokens, and flat symbolic items.</li>
-            <li><strong>Carrot on a stick</strong> and similar odd items have been used for tools or props when people want a less common base.</li>
-            <li><strong>Swords or tools</strong> work well for weapons because durability-bearing items do not stack and already feel like equipment.</li>
-            <li><strong>Potions</strong> make sense when the item is meant to behave like a consumable rather than a static prop.</li>
+            <li><strong>Use the "Java Block/Item" format.</strong> It enforces the rules the game has: every cube must stay within −16 to 32 on each axis (three blocks), and a cube rotates around one axis only, at the 22.5° steps up to 45° that every version accepts.</li>
+            <li><strong>Set the display.</strong> The Display tab decides how the model sits in the hand, on the head, in a frame and in the inventory. Without it a large model fills the hotbar slot or floats beside the hand.</li>
+            <li><strong>Name textures with their pack path.</strong> A texture saved as <code>assets/cube/textures/item/guild_hammer.png</code> is referenced as <code>cube:item/guild_hammer</code>. Blockbench writes that reference into the model, so the path must already be right when you export.</li>
+            <li><strong>Export</strong> with File → Export → Export Block/Item Model, into <code>assets/cube/models/item/</code>.</li>
         </ul>
-        <p>Choosing the wrong base item does not always break the model, but it often makes the final item awkward to use. A custom rifle that stacks like paper or a sacred relic that behaves like ordinary junk can undermine the whole mood even if the model itself is beautiful.</p>
-
-        <h2>Where the model lives in the pack</h2>
-        <p>Your exported Blockbench model needs a place inside the resource pack, and that place depends partly on the Minecraft version and the workflow you are using. Older guidance often talks only about <code>assets/minecraft/models/item/</code> plus override logic. Modern versions can still touch related structures, but the bigger point is this: the model file and the routing logic must match the version you are targeting.</p>
-        <p>That is one reason our <a href='/resource-pack-generator/'>Resource Pack Generator</a> matters. Instead of manually assembling folders, JSON entries, and pack plumbing every time, you can upload the relevant art assets, connect the model hook, and let the tool produce the pack-side structure for you. This removes a lot of tedious mistakes, especially once you are no longer dealing with one item but with an entire set of currencies, quest objects, tools, books, and class items.</p>
-
-        <h2>How Custom Model Data connects the item to the model</h2>
-        <p>At the gameplay layer, your custom model still needs a trigger. In many workflows that trigger is still <code>CustomModelData</code> or its modern component form. The principle is simple: the vanilla base item stays the same, but a specific identifier tells the client to render a different model for that one item instance.</p>
-        <p>That is why the same number or model hook has to be consistent across tools. If your resource pack is waiting for model hook <code>2047</code>, but the give command sends <code>2046</code>, the pack is not broken and the model is not broken. The connection between them is broken.</p>
-
-        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
-        <p>That command does not create the model out of thin air. It creates the right paper item with the right model hook so the client can swap in the correct visual from the pack.</p>
-
-        <h2>A practical workflow from model to in-game item</h2>
-        <ol>
-            <li><strong>Build and export the model in Blockbench.</strong> Make sure the geometry and textures look correct before you touch commands.</li>
-            <li><strong>Choose the vanilla base item.</strong> Pick something that makes sense for stacking, durability, and player readability.</li>
-            <li><strong>Put the model into the pack workflow.</strong> Use the <a href='/resource-pack-generator/'>Resource Pack Generator</a> so the folder structure and routing logic do not turn into a hand-maintained mess.</li>
-            <li><strong>Assign a model hook.</strong> Keep it documented, because the command side must use the same value.</li>
-            <li><strong>Generate the item command.</strong> In the <a href='/custom-item-builder/'>Custom Item Builder</a>, enter the same model hook and give the item a readable name, lore, and optional hidden identity.</li>
-            <li><strong>Test it in a real usage context.</strong> Check the item in inventory, on the ground, in trades, and in any quest or reward flow where it will actually appear.</li>
-        </ol>
-
-        <h2>What usually goes wrong</h2>
+        <h2 id="paths">Where the files go</h2>
+        <pre><code>my_pack/
+  pack.mcmeta
+  assets/cube/
+    items/guild_hammer.json          (1.21.4+ only)
+    models/item/guild_hammer.json    (exported from Blockbench)
+    textures/item/guild_hammer.png</code></pre>
+        <p>Use your own namespace (here <code>cube</code>) instead of <code>minecraft</code> for new files, so they cannot collide with vanilla assets or with another pack.</p>
+        <h2 id="new">Hooking it to an item on 1.21.4 and newer</h2>
+        <p>An item definition in <code>items/</code> says which model to draw:</p>
+        <pre><code>{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cube:item/guild_hammer"
+  }
+}</code></pre>
+        <p>The item points to that definition with the <code>item_model</code> component, written the same way on 1.21.4 and 1.21.5 – 26.x:</p>
+        <pre><code>/give @p minecraft:stick[minecraft:item_model="cube:guild_hammer"] 1</code></pre>
+        <p>One model can serve several states of the same item (charged, broken, faction colors) through <code>select</code>, <code>range_dispatch</code> or <code>condition</code> in the definition; the <a href="/item-model-builder/">item model builder</a> writes those files.</p>
+        <h2 id="old">Hooking it on 1.21.3 and older</h2>
+        <p>Older versions have no <code>items/</code> folder. Instead the vanilla item's model gets an override that switches on CustomModelData, in <code>assets/minecraft/models/item/stick.json</code>:</p>
+        <pre><code>{
+  "parent": "minecraft:item/handheld",
+  "textures": { "layer0": "minecraft:item/stick" },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "cube:item/guild_hammer" }
+  ]
+}</code></pre>
+        <p>The command then sets the number, with components on 1.20.5 – 1.21.3 or NBT before that:</p>
+        <pre><code>/give @p minecraft:stick[minecraft:custom_model_data=1] 1
+/give @p minecraft:stick{CustomModelData:1} 1</code></pre>
+        <p>From 1.21.4 overrides are ignored, which is the most common reason a pack that "worked last year" shows only vanilla items.</p>
+        <h2 id="problems">When it does not show up</h2>
         <ul>
-            <li><strong>The model exported correctly, but the pack never points at it.</strong></li>
-            <li><strong>The give command uses the wrong model hook.</strong></li>
-            <li><strong>The base item changed midway through the process.</strong></li>
-            <li><strong>The tutorial followed was for a different Minecraft generation.</strong></li>
-            <li><strong>The item looks fine in a test world, but the live server is using a different pack revision.</strong></li>
+            <li><strong>Purple and black checkerboard on the model:</strong> the model loaded, the texture did not. Compare the texture reference inside the model JSON with the PNG's real path.</li>
+            <li><strong>Purple and black cube instead of the model:</strong> the model file was not found or failed to load. Check the path in the item definition or the override, and look at the game log for the file name.</li>
+            <li><strong>Huge or misplaced in the hand:</strong> the display settings were left at their defaults.</li>
+            <li><strong>Nothing changed after editing:</strong> press F3+T in game to reload resource packs; restarting is not needed.</li>
+            <li><strong>Pack marked as incompatible:</strong> <code>pack.mcmeta</code> declares a format for another version. The Minecraft Wiki "Pack format" page lists the number for each release.</li>
         </ul>
-        <p>Notice how most of these are not “art” mistakes. They are pipeline mistakes. That is why this topic matters so much for RP servers and no-mod projects. Once you go beyond one decorative test item, the bottleneck is almost never the model alone. It is the coordination between model, pack, and command.</p>
-
-        <h2>Where our tools simplify the painful part</h2>
-        <p>The goal of the site is not to replace Blockbench. Blockbench is still the place where you actually shape the object. What we try to remove is the messy bridge between the art and the live server. The <a href='/resource-pack-generator/'>Resource Pack Generator</a> handles the pack-facing side. The <a href='/custom-item-builder/'>Custom Item Builder</a> handles the command-facing side. The two together mean you spend less time hunting for one wrong ID or one missing file path and more time iterating on the item itself.</p>
-        <p>That is especially useful if you are building multiple connected objects for a season or a setting. Once the workflow is stable, a relic, a ritual book, a badge, a token, and a weapon no longer feel like five unrelated technical problems. They become one coherent content pipeline.</p>
-
-        <h2>Frequently Asked Questions</h2>
-        <div class='faq-section'>
-            <h3>Can I use any vanilla item as the base?</h3>
-            <p>Yes, but some choices are better than others. Paper is great for tokens and documents, while durability items are usually better for weapons and equipment because they do not stack.</p>
-
-            <h3>Do players need to install a mod to see the model?</h3>
-            <p>No. This workflow is designed for vanilla clients with a resource pack, not for a required gameplay mod.</p>
-
-            <h3>What if the item spawns correctly but still looks vanilla?</h3>
-            <p>That usually means the model hook in the command does not match the pack-side routing, or the player is loading the wrong pack version.</p>
-
-            <h3>Is CustomModelData still relevant on modern versions?</h3>
-            <p>Yes. Even as item-model workflows evolve, the core idea of linking an item instance to a custom visual stays important. The syntax and surrounding structure may change, but the bridge still matters.</p>
-
-            <h3>What is the safest way to keep model IDs organized?</h3>
-            <p>Document them while you build. The biggest source of confusion is not the number itself, but forgetting which pack entry, item, or season asset it was supposed to belong to.</p>
-        </div>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Can one model be used by several items?</h3><p>Yes. Several item definitions, or several overrides, can point to the same model file.</p></div>
+        <div class="faq-section"><h3>Can the texture be animated?</h3><p>Yes, with a vertical strip of frames in the PNG and a <code>.png.mcmeta</code> file next to it that sets the frame time.</p></div>
+        <div class="faq-section"><h3>Which base item should carry the model?</h3><p>One whose behaviour fits: a stick or a carrot on a stick for props, a sword or an axe for weapons, paper for documents. The model changes only the look.</p></div>
     </article>
 </main>
+
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

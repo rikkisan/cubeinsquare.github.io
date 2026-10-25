@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал | Cube in Square</title>
+    <title>От модели в Blockbench к предмету Minecraft: экспорт, пути в паке и item definition | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.">
+    <meta name="description" content="Как перенести модель из Blockbench в ресурс-пак и на предмет: ограничения формата Java Block/Item, куда класть файлы, item definition для 1.21.4+ и overrides для старых версий.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-blockbench-custom-model/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-blockbench-custom-model/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-blockbench-custom-model/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал | Cube in Square">
-    <meta property="og:description" content="Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.">
+    <meta property="og:title" content="От модели в Blockbench к предмету Minecraft: экспорт, пути в паке и item definition | Cube in Square">
+    <meta property="og:description" content="Как перенести модель из Blockbench в ресурс-пак и на предмет: ограничения формата Java Block/Item, куда класть файлы, item definition для 1.21.4+ и overrides для старых версий.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-blockbench-custom-model/">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал | Cube in Square">
-    <meta name="twitter:description" content="Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="От модели в Blockbench к предмету Minecraft: экспорт, пути в паке и item definition | Cube in Square">
+    <meta name="twitter:description" content="Как перенести модель из Blockbench в ресурс-пак и на предмет: ограничения формата Java Block/Item, куда класть файлы, item definition для 1.21.4+ и overrides для старых версий.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,279 +72,149 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#article",
-      "headline": "Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал",
-      "name": "Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал",
-      "description": "Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#webpage" },
-      "inLanguage": "ru",
-      "url": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#webpage",
-      "url": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/",
-      "name": "Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал",
-      "description": "Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "ru",
-      "mainEntity": { "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cubeinsquare.com/ru/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Вики",
-          "item": "https://cubeinsquare.com/ru/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#article",
+            "headline": "От модели в Blockbench к предмету в игре: экспорт, пути в паке и подключение",
+            "description": "Как перенести модель из Blockbench в ресурс-пак и на предмет: ограничения формата Java Block/Item, куда класть файлы, item definition для 1.21.4+ и overrides для старых версий.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал",
-          "item": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/",
+            "name": "От модели в Blockbench к предмету в игре: экспорт, пути в паке и подключение",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Модель из Blockbench на предмет",
+                    "item": "https://cubeinsquare.com/ru/wiki-blockbench-custom-model/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-blockbench-custom-model/">Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-blockbench-custom-model/"><strong>Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал</strong><span>Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="/ru/wiki-blockbench-custom-model/">RU</a><a href="/wiki-blockbench-custom-model/">EN</a><a href="/fr/wiki-blockbench-custom-model/">FR</a><a href="/de/wiki-blockbench-custom-model/">DE</a></div>
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-blockbench-custom-model/">EN</a><a href="/fr/wiki-blockbench-custom-model/">FR</a><a href="/de/wiki-blockbench-custom-model/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
-    <section class="page-hero"><h1>Как добавить кастомную модель (Custom Model Data) предмету: наглядный туториал</h1><p class="page-lead">Узнайте, как привязать 3D-модель из Blockbench к ванильному предмету Minecraft через Custom Model Data с помощью наших инструментов.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Хочешь перейти от статьи к рабочему предмету?</p>
-        <p class="article-cta-text">Собери визуальную часть в генераторе ресурспаков, а командную и логическую — в конструкторе кастомных предметов. Так легче проверить и внешний вид, и серверную логику без ручной каши.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
-            <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть конструктор предметов</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>От модели в Blockbench к предмету в игре: экспорт, пути в паке и подключение</h1>
+        <p class="page-lead">Blockbench делает модель, а ресурс-пак решает, какой предмет её показывает. Файл модели одинаков во всех версиях с 1.13, но способ сказать предмету, какую модель использовать, изменился в 1.21.4, поэтому последний шаг зависит от вашей версии.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/item-model-builder/">Конструктор item_model</a><a class="tool-button tool-button-secondary" href="/ru/wiki-resource-pack-structure/">Структура ресурс-пака</a></div>
+    </section>
     <article>
-        <h2>Что на самом деле превращает модель из Blockbench в предмет Minecraft</h2>
-        <p>На словах всё кажется простым. Ты делаешь модель в Blockbench, экспортируешь её, подключаешь к предмету и потом выдаёшь игроку. На практике же эти шаги живут сразу в трёх мирах: в самом Blockbench, в ресурс-паке и в команде, которая должна дать предмет. Если хотя бы один из этих слоёв использует неправильный ID, путь к файлу или версионную логику, результат будет до боли знакомым: твой “уникальный артефакт” всё ещё выглядит как обычная бумага или стандартный меч.</p>
-        <p>Именно поэтому Custom Model Data так важен. Это не просто число, которое ты куда-то вставляешь потому, что так сказал гайд. Это мост между предметом, который выдаёт сервер, и моделью, которую должен отрисовать клиент. Как только этот мост становится понятным, кастомные модели перестают казаться магией и превращаются в нормальный повторяемый workflow.</p>
-
-        <h2>Четыре части пайплайна кастомной модели</h2>
-        <p>Рабочий кастомный предмет с моделью обычно зависит от четырёх слоёв, и все они должны согласоваться между собой:</p>
-
-        <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Слой</th>
-                    <th>Что там живёт</th>
-                    <th>Пример</th>
-                    <th>Что ломается, если слой не совпадает</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>3D-источник</td>
-                    <td>Модель, которую ты собираешь в Blockbench</td>
-                    <td>Книга, реликвия, оружие, значок, инструмент</td>
-                    <td>Экспорт выглядит криво или модель потом неудобно переиспользовать.</td>
-                </tr>
-                <tr>
-                    <td>Ресурс-пак</td>
-                    <td>Файлы модели, текстуры и логика маршрутизации</td>
-                    <td><code>assets/.../models</code>, текстуры, item definitions</td>
-                    <td>Игра вообще не понимает, когда надо показать твою модель.</td>
-                </tr>
-                <tr>
-                    <td>Идентичность предмета</td>
-                    <td>Игровой хук, который говорит Minecraft, какую визуальную вариацию брать</td>
-                    <td><code>custom_model_data</code> или связанный современный item-model flow</td>
-                    <td>Предмет спавнится, но всё ещё выглядит ванильным.</td>
-                </tr>
-                <tr>
-                    <td>Команда выдачи</td>
-                    <td>Команда, которая реально кладёт предмет игроку</td>
-                    <td><code>/give @p minecraft:paper[...]</code></td>
-                    <td>Игрок не получает предмет в нужной форме.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Начинай с Blockbench, но не заканчивай на нём мысленно</h2>
-        <p>Blockbench — это место, где предмет становится визуально настоящим. Там ты решаешь, как выглядит друидический фолиант, механический инструмент, жетон культа или пропуск. Но Blockbench закрывает только арт-часть. Minecraft всё ещё надо объяснить, когда именно этот визуал должен появиться.</p>
-        <p>И именно здесь многие застревают. Они экспортируют корректный JSON модели и ждут, что игра дальше сама всё поймёт. Не поймёт. Ей нужен базовый ванильный предмет, который ты будешь переопределять или перенаправлять, и ей нужно условие, при котором клиент скажет: “покажи вот эту кастомную модель вместо стандартной”. Раньше таким мостом чаще всего выступал Custom Model Data, и даже в более новых системах сама идея этого моста никуда не делась.</p>
-
-        <h2>Выбери правильный базовый предмет заранее</h2>
-        <p>Базовый ванильный предмет важнее, чем кажется. Он определяет стакаемость, ощущение в инвентаре, наличие прочности и то, как игроки уже читают этот объект.</p>
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.20–26.3. Форматы Bedrock в Blockbench в Java Edition не работают.</p>
+        <h2 id="blockbench">В Blockbench</h2>
         <ul>
-            <li><strong>Бумага</strong> хороша для пропусков, писем, контрактов, жетонов и плоских символических предметов.</li>
-            <li><strong>Удочка с морковкой</strong> и похожие странные базы иногда удобны для инструментов или пропов, если нужен менее банальный фундамент.</li>
-            <li><strong>Мечи и инструменты</strong> лучше подходят для оружия, потому что не стакаются и уже ощущаются как экипировка.</li>
-            <li><strong>Зелья</strong> логичны там, где предмет должен вести себя как расходник, а не просто как декоративный объект.</li>
+            <li><strong>Используйте формат «Java Block/Item».</strong> Он соблюдает правила игры: каждый куб должен оставаться в пределах от −16 до 32 по каждой оси (три блока), а куб вращается только вокруг одной оси, шагами по 22,5° до 45°, которые принимает любая версия.</li>
+            <li><strong>Настройте отображение.</strong> Вкладка Display решает, как модель сидит в руке, на голове, в рамке и в инвентаре. Без неё большая модель заполняет ячейку хотбара или висит рядом с рукой.</li>
+            <li><strong>Называйте текстуры по пути в паке.</strong> Текстура, сохранённая как <code>assets/cube/textures/item/guild_hammer.png</code>, указывается как <code>cube:item/guild_hammer</code>. Blockbench записывает эту ссылку в модель, так что путь должен быть верным уже при экспорте.</li>
+            <li><strong>Экспортируйте</strong> через File → Export → Export Block/Item Model в <code>assets/cube/models/item/</code>.</li>
         </ul>
-        <p>Неправильный базовый предмет не всегда ломает модель буквально, но он часто делает итоговый объект неудобным в реальном использовании.</p>
-
-        <h2>Где модель живёт внутри пака</h2>
-        <p>Экспорт из Blockbench должен попасть в правильное место внутри ресурс-пака, и это место частично зависит от версии Minecraft и от того, каким именно workflow ты пользуешься. Старые гайды часто говорят только про <code>assets/minecraft/models/item/</code> и overrides. В более современных версиях routing-слой вокруг моделей уже выглядит по-другому. Но главный смысл остаётся: файл модели и логика, которая к нему ведёт, должны соответствовать целевой версии.</p>
-        <p>Именно поэтому важен наш <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Вместо того чтобы каждый раз вручную поддерживать папки, JSON-логики и связки, можно загрузить нужные ассеты, прописать модельный хук и дать инструменту собрать pack-side часть за тебя.</p>
-
-        <h2>Как Custom Model Data связывает предмет и модель</h2>
-        <p>На уровне gameplay твоей модели всё ещё нужен триггер. Во многих workflow этим триггером остаётся <code>CustomModelData</code> или его современная компонентная форма. Принцип простой: ванильный предмет остаётся ванильным предметом, но конкретный идентификатор говорит клиенту показать уже другую модель именно для этого экземпляра.</p>
-        <p>Поэтому один и тот же ID должен быть согласован между инструментами. Если ресурс-пак ждёт, например, хук <code>2047</code>, а команда выдаёт <code>2046</code>, пак не сломан и модель не сломана. Сломана именно связь между ними.</p>
-
-        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
-        <p>Эта команда не создаёт модель из воздуха. Она создаёт правильный экземпляр бумаги с правильным модельным хуком, чтобы клиент уже подменил визуал на нужный из пака.</p>
-
-        <h2>Практический маршрут: от модели к предмету в игре</h2>
-        <ol>
-            <li><strong>Собери и экспортируй модель в Blockbench.</strong> Убедись, что геометрия и текстуры выглядят как надо, ещё до команд.</li>
-            <li><strong>Выбери ванильный базовый предмет.</strong> Он должен подходить по стакаемости, прочности и читаемости.</li>
-            <li><strong>Подключи модель к pack workflow.</strong> Через <a href='/resource-pack-generator/'>Resource Pack Generator</a>, чтобы не утонуть в ручной структуре файлов.</li>
-            <li><strong>Назначь модельный хук.</strong> Держи его записанным, потому что командная сторона должна использовать тот же ID.</li>
-            <li><strong>Сгенерируй команду предмета.</strong> В <a href='/custom-item-builder/'>Custom Item Builder</a> введи тот же хук, имя, лор и при необходимости скрытый ID.</li>
-            <li><strong>Проверь предмет в реальных условиях.</strong> В инвентаре, на земле, в торгах и в тех цепочках наград, где он действительно будет жить.</li>
-        </ol>
-
-        <h2>Что обычно ломается</h2>
+        <h2 id="paths">Куда кладутся файлы</h2>
+        <pre><code>my_pack/
+  pack.mcmeta
+  assets/cube/
+    items/guild_hammer.json          (1.21.4+ only)
+    models/item/guild_hammer.json    (exported from Blockbench)
+    textures/item/guild_hammer.png</code></pre>
+        <p>Для новых файлов используйте своё пространство имён (здесь <code>cube</code>), а не <code>minecraft</code>, чтобы они не пересеклись с ванильными ресурсами или другим паком.</p>
+        <h2 id="new">Подключение к предмету в 1.21.4 и новее</h2>
+        <p>Item definition в <code>items/</code> говорит, какую модель рисовать:</p>
+        <pre><code>{
+  "model": {
+    "type": "minecraft:model",
+    "model": "cube:item/guild_hammer"
+  }
+}</code></pre>
+        <p>Предмет указывает на этот файл компонентом <code>item_model</code>, одинаково в 1.21.4 и 1.21.5 – 26.x:</p>
+        <pre><code>/give @p minecraft:stick[minecraft:item_model="cube:guild_hammer"] 1</code></pre>
+        <p>Одна модель может обслуживать несколько состояний предмета (заряжен, сломан, цвета фракций) через <code>select</code>, <code>range_dispatch</code> или <code>condition</code> в definition; эти файлы пишет <a href="/ru/item-model-builder/">конструктор item_model</a>.</p>
+        <h2 id="old">Подключение в 1.21.3 и старше</h2>
+        <p>В старых версиях папки <code>items/</code> нет. Вместо неё модель ванильного предмета получает override, который переключается по CustomModelData, в <code>assets/minecraft/models/item/stick.json</code>:</p>
+        <pre><code>{
+  "parent": "minecraft:item/handheld",
+  "textures": { "layer0": "minecraft:item/stick" },
+  "overrides": [
+    { "predicate": { "custom_model_data": 1 }, "model": "cube:item/guild_hammer" }
+  ]
+}</code></pre>
+        <p>Команда задаёт число — компонентами в 1.20.5 – 1.21.3 или NBT до этого:</p>
+        <pre><code>/give @p minecraft:stick[minecraft:custom_model_data=1] 1
+/give @p minecraft:stick{CustomModelData:1} 1</code></pre>
+        <p>С 1.21.4 overrides игнорируются — это самая частая причина, по которой пак, который «в прошлом году работал», показывает только ванильные предметы.</p>
+        <h2 id="problems">Если модель не появилась</h2>
         <ul>
-            <li><strong>Модель экспортировалась нормально, но пак никогда на неё не указывает.</strong></li>
-            <li><strong>Команда использует не тот модельный хук.</strong></li>
-            <li><strong>Базовый предмет поменяли посередине пайплайна.</strong></li>
-            <li><strong>Гайд, по которому шли, был написан для другой эпохи Minecraft.</strong></li>
-            <li><strong>В тестовом мире всё выглядит хорошо, а на живом сервере стоит другая ревизия пака.</strong></li>
+            <li><strong>Фиолетово-чёрная клетка на модели:</strong> модель загрузилась, текстура — нет. Сравните ссылку на текстуру внутри JSON модели с настоящим путём к PNG.</li>
+            <li><strong>Фиолетово-чёрный куб вместо модели:</strong> файл модели не найден или не загрузился. Проверьте путь в item definition или в override и найдите имя файла в логе игры.</li>
+            <li><strong>Огромная или не на месте в руке:</strong> настройки Display остались по умолчанию.</li>
+            <li><strong>После правки ничего не изменилось:</strong> нажмите F3+T в игре, чтобы перезагрузить ресурс-паки; перезапуск не нужен.</li>
+            <li><strong>Пак помечен как несовместимый:</strong> <code>pack.mcmeta</code> объявляет формат другой версии. Номер для каждого релиза есть на странице «Pack format» в Minecraft Wiki.</li>
         </ul>
-        <p>И почти все эти проблемы — не художественные. Это проблемы пайплайна. Поэтому тема так важна для RP-серверов и no-mod проектов. Когда у тебя не один декоративный тестовый объект, бутылочное горлышко обычно не в самой модели, а в согласованности между моделью, паком и командой.</p>
-
-        <h2>Где наши инструменты снимают самую неприятную часть</h2>
-        <p>Сайт не пытается заменить Blockbench. Он всё ещё нужен как место, где ты реально создаёшь форму объекта. Но мы снимаем болезненный мост между артом и живым сервером. <a href='/resource-pack-generator/'>Resource Pack Generator</a> берёт pack-facing часть. <a href='/custom-item-builder/'>Custom Item Builder</a> закрывает command-facing часть. В паре они означают, что ты меньше времени тратишь на поиск одного неправильного ID или пропущенного пути и больше — на сам предмет.</p>
-        <p>Это особенно полезно, если ты строишь не один объект, а целый сет для сезона, фракции или сеттинга. Тогда реликвия, жетон, пропуск, механический инструмент и оружие перестают быть пятью разрозненными техническими проблемами и становятся единым контентным pipeline.</p>
-
-        <h2>Часто задаваемые вопросы (FAQ)</h2>
-        <div class='faq-section'>
-            <h3>Могу ли я использовать любой ванильный предмет как основу?</h3>
-            <p>Да, но некоторые варианты удобнее других. Бумага хороша для документов и жетонов, а предметы с прочностью — для оружия и экипировки, потому что они не стакаются.</p>
-
-            <h3>Нужно ли игрокам устанавливать мод для отображения модели?</h3>
-            <p>Нет. Этот workflow рассчитан на ванильный клиент с ресурс-паком, а не на обязательный мод.</p>
-
-            <h3>Что делать, если предмет выдаётся правильно, но всё равно выглядит ванильным?</h3>
-            <p>Чаще всего это означает, что модельный хук в команде не совпал с логикой внутри пака, либо игрок загрузил не ту версию ресурспака.</p>
-
-            <h3>CustomModelData всё ещё актуален на новых версиях?</h3>
-            <p>Да. Даже если item-model workflow становится сложнее и богаче, сама идея связки между экземпляром предмета и кастомным визуалом остаётся важной.</p>
-
-            <h3>Как безопаснее всего держать model IDs в порядке?</h3>
-            <p>Документировать их по мере работы. Главный источник путаницы не само число, а забытый контекст: к какому предмету, паку и сезону оно относилось.</p>
-        </div>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>Может одна модель использоваться несколькими предметами?</h3><p>Да. Несколько item definitions или несколько overrides могут указывать на один файл модели.</p></div>
+        <div class="faq-section"><h3>Можно ли анимировать текстуру?</h3><p>Да: вертикальная полоса кадров в PNG и файл <code>.png.mcmeta</code> рядом, в котором задано время кадра.</p></div>
+        <div class="faq-section"><h3>Какой базовый предмет должен нести модель?</h3><p>Тот, чьё поведение подходит: палка или удочка с морковкой для реквизита, меч или топор для оружия, бумага для документов. Модель меняет только вид.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
