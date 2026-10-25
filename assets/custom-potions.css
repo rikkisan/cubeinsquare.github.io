@@ -329,6 +329,16 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
+    /* Anchor the popover to the label row, not the "?" icon at its end: from the icon a
+       280px box ran past the right edge and gave phones a sideways scroll even while hidden. */
+    .tool-label-with-help {
+        position: relative;
+    }
+
+    .field-help {
+        position: static;
+    }
+
     .field-help-popover {
         right: auto;
         left: 0;
