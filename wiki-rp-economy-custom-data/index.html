@@ -90,9 +90,10 @@
         <h2>Use <code>minecraft:custom_data</code> as the identity layer</h2>
         <p>In modern versions you can attach a hidden component to the currency item. The visible label can still say <em>Guild voucher</em>, but the real check lives in a structured object.</p>
 <pre><code>components:{
-  "minecraft:custom_name":'[{"text":"Guild voucher","italic":false}]',
+  "minecraft:custom_name":{text:"Guild voucher",italic:false},
   "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
 }</code></pre>
+        <p>Names here use the 1.21.5 – 26.x form; on 1.20.5 – 1.21.4 write them as a JSON string, <code>'{"text":"Guild voucher"}'</code>.</p>
         <h2>Why this protects the economy</h2>
         <ul><li>A renamed vanilla item will not have the same hidden payload.</li><li>You can rotate designs without changing the underlying ID.</li><li>Different factions can use separate issuers and tiers.</li><li>The same visible note can still be invalid if the hidden data is wrong.</li></ul>
         <h2>Practical villager pattern</h2>
@@ -101,7 +102,7 @@
   id:"minecraft:paper",
   count:3,
   components:{
-    "minecraft:custom_name":'[{"text":"Guild voucher","italic":false}]',
+    "minecraft:custom_name":{text:"Guild voucher",italic:false},
     "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
   }
 }</code></pre>

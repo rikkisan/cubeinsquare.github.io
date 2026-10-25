@@ -156,3 +156,11 @@
 | B45 | Пак по дереву из статьи (namespace `cube`, `items/guild_hammer.json`, модель и PNG), `/give @p minecraft:stick[minecraft:item_model="cube:guild_hammer"] 1` | 26.3 и 1.21.4 | Палка выглядит как модель из Blockbench | |
 | B46 | Пак с override в `assets/minecraft/models/item/stick.json` и `/give @p minecraft:stick[minecraft:custom_model_data=1] 1` | 1.21.1 | Модель видна; та же схема на 1.21.4 даёт ванильную палку | |
 | B47 | Поменять PNG, нажать F3+T | 26.3 | Текстура обновилась без перезапуска | |
+
+## Волна Б: точечные правки (CustomModelData, зачарования, экономика)
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B48 | Пак с `assets/minecraft/items/iron_sword.json` из статьи про CMD (`range_dispatch` по custom_model_data, пороги 1 и 2) и моделями katana/chainsaw; `/give @p minecraft:iron_sword[minecraft:custom_model_data={floats:[1f]}] 1`, затем `{floats:[2f]}`, затем обычный меч | 26.3 и 1.21.4 | Катана, бензопила, ванильный меч | |
+| B49 | `/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1` | 26.3 | Меч с обоими зачарованиями | |
+| B50 | Житель со сделкой, где `buy` содержит `"minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}` и имя `{text:"Guild voucher",italic:false}`; предложить настоящий ваучер и переименованную бумагу | 26.3 | Настоящий принимается, подделка — нет | |

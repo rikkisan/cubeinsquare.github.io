@@ -146,7 +146,8 @@
 
         <h2>Exemple concret : que se passe-t-il si on force la combinaison</h2>
         <p>Essayez de combiner Tranchant et Aubaine des morts-vivants sur une table d'enchantement, une enclume, ou avec deux livres enchantés : l'interface ne vous laissera simplement pas faire &mdash; le second enchantement est grisé, ou l'enclume refuse la combinaison. Ce blocage vit dans le code d'artisanat, pas dans les données de l'objet. Écrivez les deux directement dans un objet, et le jeu ne vous arrête pas :</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1</code></pre>
+        <p>C’est la forme 1.21.5 – 26.x ; en 1.20.5 – 1.21.4, les mêmes paires se placent dans <code>{levels:{…}}</code>.</p>
         <p>Cet objet existe, les deux enchantements apparaissent dans l'infobulle, et les deux appliquent leur bonus de dégâts au combat. Aucun joueur en survie n'aurait jamais pu l'obtenir en jouant, ce qui explique pourquoi il se lit immédiatement comme quelque chose de manifestement hors norme &mdash; un signal utile pour une relique générée par un admin, et un indice révélateur si vous vouliez que l'objet paraisse légitimement obtenu par un joueur.</p>
 
         <h2>Où cela se retrouve ailleurs que sur la table d'enchantement</h2>

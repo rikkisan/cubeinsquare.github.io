@@ -260,10 +260,23 @@
     { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
   ]
 }</code></pre>
+        <p><strong>Ab 1.21.4 wird diese Datei ignoriert.</strong> Overrides wurden entfernt, das Modell wählt eine Item-Definition in <code>assets/minecraft/items/iron_sword.json</code>, die dieselbe Zahl mit <code>range_dispatch</code> liest:</p><pre><code>{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/iron_sword" },
+    "entries": [
+      { "threshold": 1, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_katana" } },
+      { "threshold": 2, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_chainsaw" } }
+    ]
+  }
+}</code></pre><p><code>range_dispatch</code> nimmt die höchste Schwelle, die den Wert nicht übersteigt: 1 zeigt das Katana, 2 die Kettensäge, und ein Item ohne CustomModelData fällt auf das Vanilla-Schwert zurück. Diese Datei schreibt der <a href="/de/item-model-builder/">item_model-Builder</a>.</p>
         <h2>NBT vs Components</h2><p>Minecraft 1.20.5 hat Item-Daten von alter NBT-Syntax auf Data Components umgestellt. Das visuelle Ergebnis ist ähnlich, aber Befehle haben sich geändert.</p>
         <h3>Vor 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
-        <h3>1.20.5 und neuer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
-        <p>Der Minecraft Resource-Pack-Generator berücksichtigt diese Umstellung, wenn er give-Befehle für deine Custom-Items zeigt.</p>
+        <h3>1.20.5 – 1.21.3</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+        <h3>1.21.4 und neuer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data={floats:[1f]}] 1</code></pre><p>Ab 1.21.4 enthält CustomModelData typisierte Listen, eine ganze Zahl kommt in <code>floats</code>. Derselbe Befehl funktioniert in 1.21.5 – 26.x, weil er keinen Text enthält.</p>
+        <p>Der <a href="/de/custom-item-builder/">Custom-Item-Builder</a> schreibt die Zahl in der Form, die jede Version braucht. Der Resource-Pack-Generator baut weiterhin Packs mit Overrides, sie funktionieren also bis 1.21.3.</p>
     
 <!-- cmd-expansion:start -->
         <h2>Warum CustomModelData auch nach Components relevant bleibt</h2>
@@ -314,7 +327,7 @@
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>Brauche ich in neuen Minecraft-Versionen noch CustomModelData?</h3>
-                <p>Ja, sobald ein einziges Vanilla-Item in mehrere unterschiedliche Looks verzweigen soll. Die Syntax außen herum hat sich geändert, aber das visuelle Grundproblem existiert weiterhin.</p>
+                <p>Nicht immer. Ab 1.21.4 kann ein Item mit <code>item_model</code> direkt auf seine eigene Item-Definition zeigen, was einfacher ist, als ein Vanilla-Item per Zahl zu verzweigen. CustomModelData bleibt nützlich, wenn eine Definition zwischen mehreren Looks wechseln soll, etwa Stufen oder Zuständen.</p>
             </article>
             <article class="resource-card">
                 <h3>Welches praktische Tool-Paar auf der Seite hilft dabei am meisten?</h3>

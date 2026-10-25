@@ -151,7 +151,8 @@
 
         <h2>Worked example: rolling a boss sword</h2>
         <p>Say you want a diamond sword that always carries Mending, plus two or three other enchantments that vary. In Advanced mode: tick Lock on the Mending row and leave its level at 1, set the shared enchantment count range to 2&ndash;3 (Mending counts toward that), and click Randomize a few times. One roll might come back as:</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}] 1</code></pre>
+        <p>This is the 1.21.5 – 26.x form; on 1.20.5 – 1.21.4 the same pairs sit inside <code>{levels:{…}}</code>.</p>
         <p>Randomize again with the same locks and only Sharpness and Unbreaking change &mdash; Mending never moves, because it is locked rather than merely likely. That is the practical difference between raising a weight to 99 and ticking Lock: a high weight is still a roll that can fail, a lock cannot.</p>
 
         <h2>/give vs a loot table entry</h2>

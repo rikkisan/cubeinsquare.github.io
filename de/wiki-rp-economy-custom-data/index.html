@@ -90,9 +90,10 @@
         <h2><code>minecraft:custom_data</code> als Identitätsschicht nutzen</h2>
         <p>In modernen Versionen kannst du dem Währungsitem eine versteckte Komponente geben. Das sichtbare Label kann weiterhin <em>Gildengutschein</em> heißen, aber die echte Prüfung liegt in einem strukturierten Objekt.</p>
 <pre><code>components:{
-  "minecraft:custom_name":'[{"text":"Gildengutschein","italic":false}]',
+  "minecraft:custom_name":{text:"Gildengutschein",italic:false},
   "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
 }</code></pre>
+        <p>Die Namen stehen hier in der Form für 1.21.5 – 26.x; in 1.20.5 – 1.21.4 schreibst du sie als JSON-String, <code>'{"text":"Gildengutschein"}'</code>.</p>
         <h2>Warum das die Wirtschaft schützt</h2>
         <ul><li>Ein umbenanntes Vanilla-Item hat nicht dieselbe versteckte Nutzlast.</li><li>Du kannst das Design wechseln, ohne die eigentliche ID zu ändern.</li><li>Verschiedene Fraktionen können eigene Aussteller und Stufen verwenden.</li><li>Ein sichtbar gleicher Schein kann trotzdem ungültig sein, wenn die versteckten Daten falsch sind.</li></ul>
         <h2>Praktisches Muster für Dorfbewohner</h2>
@@ -101,7 +102,7 @@
   id:"minecraft:paper",
   count:3,
   components:{
-    "minecraft:custom_name":'[{"text":"Gildengutschein","italic":false}]',
+    "minecraft:custom_name":{text:"Gildengutschein",italic:false},
     "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
   }
 }</code></pre>

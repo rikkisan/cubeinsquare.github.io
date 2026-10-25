@@ -146,7 +146,8 @@
 
         <h2>Praxisbeispiel: Was passiert, wenn man es trotzdem erzwingt</h2>
         <p>Versuche, Schärfe und Verwüstung an einem Zaubertisch, einem Amboss oder mit zwei verzauberten Büchern zu kombinieren, und die Oberfläche lässt es einfach nicht zu &mdash; die zweite Verzauberung ist ausgegraut, oder der Amboss verweigert die Kombination. Diese Blockade steckt im Crafting-Code, nicht in den Item-Daten. Schreibe beide direkt in ein Item, und das Spiel hält dich nicht auf:</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1</code></pre>
+        <p>Das ist die Form für 1.21.5 – 26.x; in 1.20.5 – 1.21.4 stehen dieselben Paare in <code>{levels:{…}}</code>.</p>
         <p>Dieses Item existiert, beide Verzauberungen erscheinen im Tooltip, und beide wenden ihren Schadensbonus im Kampf an. Kein Survival-Spieler hätte es je durch normales Spielen bekommen können &mdash; genau deshalb wirkt es sofort erkennbar untypisch: ein nützliches Signal für ein von einem Admin erzeugtes Relikt, und ein verräterisches Detail, falls das Item eigentlich legitim von einem Spieler stammen sollte.</p>
 
         <h2>Wo das außerhalb des Zaubertischs auftaucht</h2>

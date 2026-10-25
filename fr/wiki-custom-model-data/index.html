@@ -260,10 +260,23 @@
     { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
   ]
 }</code></pre>
+        <p><strong>Depuis la 1.21.4, ce fichier est ignoré.</strong> Les overrides ont disparu, et le modèle est choisi par une item definition dans <code>assets/minecraft/items/iron_sword.json</code> qui lit le même nombre avec <code>range_dispatch</code> :</p><pre><code>{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/iron_sword" },
+    "entries": [
+      { "threshold": 1, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_katana" } },
+      { "threshold": 2, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_chainsaw" } }
+    ]
+  }
+}</code></pre><p><code>range_dispatch</code> prend le seuil le plus haut sans dépasser la valeur : 1 affiche le katana, 2 la tronçonneuse, et un objet sans CustomModelData revient à l’épée vanilla. Le <a href="/fr/item-model-builder/">constructeur item_model</a> écrit ce fichier.</p>
         <h2>NBT contre Components</h2><p>Minecraft 1.20.5 a remplacé l’ancienne syntaxe NBT des objets par les Data Components. Le résultat visuel est similaire, mais les commandes ont changé.</p>
         <h3>Avant 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
-        <h3>1.20.5 et plus récent</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
-        <p>Le générateur de packs de ressources Minecraft tient compte de ce changement quand il affiche les commandes give pour vos objets personnalisés.</p>
+        <h3>1.20.5 – 1.21.3</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+        <h3>1.21.4 et plus récent</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data={floats:[1f]}] 1</code></pre><p>Depuis la 1.21.4, CustomModelData contient des listes typées, et un nombre entier va dans <code>floats</code>. La même commande marche en 1.21.5 – 26.x, car elle ne contient pas de texte.</p>
+        <p>Le <a href="/fr/custom-item-builder/">constructeur d’objets custom</a> écrit le nombre sous la forme attendue par chaque version. Le générateur de resource packs construit toujours des packs avec overrides : ils fonctionnent jusqu’en 1.21.3.</p>
     
 <!-- cmd-expansion:start -->
         <h2>Pourquoi CustomModelData reste important même après les composants</h2>
@@ -314,7 +327,7 @@
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>Faut-il encore CustomModelData dans les nouvelles versions?</h3>
-                <p>Oui, dès qu’un même objet vanilla doit se ramifier en plusieurs apparences. La syntaxe autour a changé, mais le problème visuel de base n’a pas disparu.</p>
+                <p>Pas toujours. Depuis la 1.21.4, un objet peut pointer directement vers sa propre item definition avec <code>item_model</code>, ce qui est plus simple que de ramifier un objet vanilla par un nombre. CustomModelData reste utile quand une définition doit basculer entre plusieurs apparences, comme des niveaux ou des états.</p>
             </article>
             <article class="resource-card">
                 <h3>Quel est le duo pratique sur ce site pour travailler avec lui?</h3>

@@ -151,7 +151,8 @@
 
         <h2>Exemple concret : tirer une épée de boss</h2>
         <p>Disons que vous voulez une épée en diamant qui a toujours Réparation automatique, plus deux ou trois autres enchantements qui varient. En mode avancé : cochez Verrou sur la ligne Réparation automatique et laissez son niveau à 1, réglez la plage partagée du nombre d'enchantements sur 2&ndash;3 (Réparation automatique compte dans ce total), et cliquez sur Randomiser plusieurs fois. Un tirage pourrait donner :</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}] 1</code></pre>
+        <p>C’est la forme 1.21.5 – 26.x ; en 1.20.5 – 1.21.4, les mêmes paires se placent dans <code>{levels:{…}}</code>.</p>
         <p>Randomiser à nouveau avec les mêmes verrous ne change que Tranchant et Solidité &mdash; Réparation automatique ne bouge jamais, car elle est verrouillée et non simplement probable. C'est la différence pratique entre monter un poids à 99 et cocher Verrou : un poids élevé reste un tirage qui peut échouer, un verrou ne le peut pas.</p>
 
         <h2>/give contre une entrée de table de butin</h2>

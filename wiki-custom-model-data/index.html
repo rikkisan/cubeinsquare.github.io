@@ -117,7 +117,7 @@
                                      "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
                                  ],
                        "datePublished":  "2026-04-23",
-                       "dateModified":  "2026-04-23"
+                       "dateModified":  "2026-10-25"
                    },
                    {
                        "@type":  "WebPage",
@@ -248,10 +248,23 @@
     { "predicate": { "custom_model_data": 2 }, "model": "item/custom_chainsaw" }
   ]
 }</code></pre>
+        <p><strong>From 1.21.4 this file is ignored.</strong> Overrides were removed, and the model is chosen by an item definition in <code>assets/minecraft/items/iron_sword.json</code> that reads the same number with <code>range_dispatch</code>:</p><pre><code>{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:custom_model_data",
+    "index": 0,
+    "fallback": { "type": "minecraft:model", "model": "minecraft:item/iron_sword" },
+    "entries": [
+      { "threshold": 1, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_katana" } },
+      { "threshold": 2, "model": { "type": "minecraft:model", "model": "minecraft:item/custom_chainsaw" } }
+    ]
+  }
+}</code></pre><p><code>range_dispatch</code> uses the highest threshold that is not above the value, so 1 shows the katana, 2 the chainsaw, and an item without CustomModelData falls back to the vanilla sword. The <a href="/item-model-builder/">item model builder</a> writes this file.</p>
         <h2>NBT vs Components</h2><p>Minecraft 1.20.5 changed item data from old NBT syntax to Data Components. The visual result is similar, but commands changed.</p>
         <h3>Before 1.20.5</h3><pre><code>/give @p minecraft:iron_sword{CustomModelData:1} 1</code></pre>
-        <h3>1.20.5 and newer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
-        <p>Minecraft Resource Pack Generator accounts for this switch when it shows give commands for your custom items.</p>
+        <h3>1.20.5 – 1.21.3</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data=1] 1</code></pre>
+        <h3>1.21.4 and newer</h3><pre><code>/give @p minecraft:iron_sword[minecraft:custom_model_data={floats:[1f]}] 1</code></pre><p>From 1.21.4 CustomModelData holds typed lists, and a whole number goes into <code>floats</code>. The same command works on 1.21.5 – 26.x, because it contains no text.</p>
+        <p>The <a href="/custom-item-builder/">custom item builder</a> writes the number in the right form for each version. The resource pack generator still builds packs with overrides, so its packs work up to 1.21.3.</p>
     
 <!-- cmd-expansion:start -->
         <h2>Why CustomModelData still matters after the move to components</h2>
@@ -302,7 +315,7 @@
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>Do I still need CustomModelData on new Minecraft versions?</h3>
-                <p>Yes, if one vanilla item should branch into multiple different looks. The surrounding syntax changed, but the underlying visual problem did not disappear.</p>
+                <p>Not always. From 1.21.4 an item can point straight at its own item definition with <code>item_model</code>, which is simpler than branching one vanilla item by number. CustomModelData stays useful when one definition should switch between several looks, such as tiers or states.</p>
             </article>
             <article class="resource-card">
                 <h3>What is the practical pair on this site for working with it?</h3>

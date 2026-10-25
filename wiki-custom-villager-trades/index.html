@@ -117,7 +117,7 @@
                                      "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
                                  ],
                        "datePublished":  "2026-04-26",
-                       "dateModified":  "2026-04-26"
+                       "dateModified":  "2026-10-25"
                    },
                    {
                        "@type":  "WebPage",
@@ -220,7 +220,7 @@
   ]
 }</code></pre>
         <p>Once you read it this way, the builder becomes much less mysterious. It is really arranging three layers: villager identity, trade economics, and item syntax.</p>
-        <h2>Three version modes are there for a reason</h2><p>The builder shows three version choices because the item syntax changed twice, not once. Minecraft 1.20.5 moved item data to Data Components, and Minecraft 1.21.4 refined the modern format again for fields such as <code>custom_model_data</code>.</p><ul><li><strong>1.21.4+</strong> still uses <code>count</code> and <code>components</code>, but newer component payloads can become more structured. In this builder that mainly matters for how <code>minecraft:custom_model_data</code> is written.</li><li><strong>1.20.5-1.21.3</strong> already uses <code>count</code> and <code>components</code>, but keeps the simpler earlier component syntax.</li><li><strong>Before 1.20.5</strong> uses <code>Count</code> and the older <code>tag</code> compound with legacy NBT-style item stacks.</li></ul><p>So the three choices are not cosmetic. They decide how the <code>buy</code>, <code>buyB</code>, and <code>sell</code> stacks are serialized inside the summon command. The command block helper mirrors the same version split mostly for clarity and consistency, even though the plain <code>/give</code> command for a command block changes much less than the villager trade payload itself.</p>
+        <h2>Four version modes are there for a reason</h2><p>The builder offers four version choices because item syntax changed three times: 1.20.5 moved item data to components, 1.21.4 turned <code>custom_model_data</code> into typed lists, and 1.21.5 started writing names and other text as SNBT instead of JSON strings, so a villager named in the 1.21.4 form shows <code>{"text":…}</code> above its head on 1.21.5 and newer. The lines below show the model hook for 1.21.4 and newer, 1.20.5 – 1.21.3 and before 1.20.5.</p><ul><li><strong>1.21.4+</strong> still uses <code>count</code> and <code>components</code>, but newer component payloads can become more structured. In this builder that mainly matters for how <code>minecraft:custom_model_data</code> is written.</li><li><strong>1.20.5-1.21.3</strong> already uses <code>count</code> and <code>components</code>, but keeps the simpler earlier component syntax.</li><li><strong>Before 1.20.5</strong> uses <code>Count</code> and the older <code>tag</code> compound with legacy NBT-style item stacks.</li></ul><p>So the three choices are not cosmetic. They decide how the <code>buy</code>, <code>buyB</code>, and <code>sell</code> stacks are serialized inside the summon command. The command block helper mirrors the same version split mostly for clarity and consistency, even though the plain <code>/give</code> command for a command block changes much less than the villager trade payload itself.</p>
 <pre><code>{id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":{floats:[12f]}}}
 {id:"minecraft:paper",count:1,components:{"minecraft:custom_model_data":12}}
 {id:"minecraft:paper",Count:1b,tag:{CustomModelData:12}}</code></pre>

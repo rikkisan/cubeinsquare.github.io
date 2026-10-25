@@ -90,9 +90,10 @@
         <h2>Используйте <code>minecraft:custom_data</code> как слой идентичности</h2>
         <p>В современных версиях к валютному предмету можно добавить скрытый компонент. Видимое имя всё ещё может быть <em>Гильдейский ваучер</em>, но настоящая проверка должна жить в структурированном объекте.</p>
 <pre><code>components:{
-  "minecraft:custom_name":'[{"text":"Гильдейский ваучер","italic":false}]',
+  "minecraft:custom_name":{text:"Гильдейский ваучер",italic:false},
   "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
 }</code></pre>
+        <p>Имена здесь записаны в форме 1.21.5 – 26.x; в 1.20.5 – 1.21.4 пишите их строкой JSON, <code>'{"text":"Гильдейский ваучер"}'</code>.</p>
         <h2>Почему это защищает экономику</h2>
         <ul><li>Переименованный ванильный предмет не получит такой же скрытый payload.</li><li>Можно менять внешний дизайн, не меняя базовый ID.</li><li>Разные фракции могут использовать отдельных эмитентов и уровни.</li><li>Даже одинаково выглядящая купюра будет недействительной, если скрытые данные неверные.</li></ul>
         <h2>Практический шаблон для жителей</h2>
@@ -101,7 +102,7 @@
   id:"minecraft:paper",
   count:3,
   components:{
-    "minecraft:custom_name":'[{"text":"Гильдейский ваучер","italic":false}]',
+    "minecraft:custom_name":{text:"Гильдейский ваучер",italic:false},
     "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
   }
 }</code></pre>

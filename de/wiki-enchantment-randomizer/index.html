@@ -151,7 +151,8 @@
 
         <h2>Praxisbeispiel: ein Boss-Schwert würfeln</h2>
         <p>Angenommen, du willst ein Diamantschwert, das immer Reparatur trägt, plus zwei oder drei weitere Verzauberungen, die variieren. Im erweiterten Modus: Sperren bei der Reparatur-Zeile aktivieren und ihr Level bei 1 lassen, den gemeinsamen Bereich für die Verzauberungsanzahl auf 2&ndash;3 setzen (Reparatur zählt dazu) und mehrfach Würfeln klicken. Ein Wurf könnte so aussehen:</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:mending":1,"minecraft:sharpness":4,"minecraft:unbreaking":2}] 1</code></pre>
+        <p>Das ist die Form für 1.21.5 – 26.x; in 1.20.5 – 1.21.4 stehen dieselben Paare in <code>{levels:{…}}</code>.</p>
         <p>Erneutes Würfeln mit denselben Sperren ändert nur Schärfe und Verstärkung &mdash; Reparatur bewegt sich nie, weil sie gesperrt und nicht nur wahrscheinlich ist. Das ist der praktische Unterschied zwischen einem Gewicht von 99 und Sperren: Ein hohes Gewicht bleibt ein Wurf, der scheitern kann, eine Sperre kann das nicht.</p>
 
         <h2>/give gegen einen Loot-Table-Eintrag</h2>

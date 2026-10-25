@@ -90,9 +90,10 @@
         <h2>Utiliser <code>minecraft:custom_data</code> comme couche d’identité</h2>
         <p>Dans les versions modernes, vous pouvez attacher un composant caché à l’objet monétaire. L’étiquette visible peut toujours dire <em>Bon de guilde</em>, mais la vraie vérification se trouve dans un objet structuré.</p>
 <pre><code>components:{
-  "minecraft:custom_name":'[{"text":"Bon de guilde","italic":false}]',
+  "minecraft:custom_name":{text:"Bon de guilde",italic:false},
   "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
 }</code></pre>
+        <p>Les noms utilisent ici la forme 1.21.5 – 26.x ; en 1.20.5 – 1.21.4, écrivez-les en chaîne JSON, <code>'{"text":"Bon de guilde"}'</code>.</p>
         <h2>Pourquoi cela protège l’économie</h2>
         <ul><li>Un objet vanilla renommé n’aura pas la même donnée cachée.</li><li>Vous pouvez changer le design sans modifier l’ID de base.</li><li>Différentes factions peuvent utiliser des émetteurs et des niveaux séparés.</li><li>Un billet visuellement identique peut rester invalide si les données cachées sont fausses.</li></ul>
         <h2>Modèle pratique pour les villageois</h2>
@@ -101,7 +102,7 @@
   id:"minecraft:paper",
   count:3,
   components:{
-    "minecraft:custom_name":'[{"text":"Bon de guilde","italic":false}]',
+    "minecraft:custom_name":{text:"Bon de guilde",italic:false},
     "minecraft:custom_data":{currency:"guild_voucher",issuer:"capital_bank",tier:"silver"}
   }
 }</code></pre>

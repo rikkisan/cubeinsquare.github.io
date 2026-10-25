@@ -146,7 +146,8 @@
 
         <h2>Worked example: what actually happens if you force it</h2>
         <p>Try to combine Sharpness and Smite at an enchanting table, on an anvil, or with two enchanted books, and the interface simply will not let you &mdash; the second enchantment is greyed out or the anvil refuses the combination. That block lives in the crafting-side code, not in the item's data. Write both into an item directly, and the game does not stop you:</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={levels:{"minecraft:sharpness":5,"minecraft:smite":5}}] 1</code></pre>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1</code></pre>
+        <p>This is the 1.21.5 – 26.x form; on 1.20.5 – 1.21.4 the same pairs sit inside <code>{levels:{…}}</code>.</p>
         <p>This item exists, both enchantments show in the tooltip, and both apply their damage bonus in combat. No survival player could ever obtain it through play, which is exactly why it reads as clearly out-of-the-ordinary the moment someone sees it &mdash; a useful signal for an admin-spawned relic, and a giveaway if you wanted the item to look legitimately player-made.</p>
 
         <h2>Where this shows up outside the enchanting table</h2>
