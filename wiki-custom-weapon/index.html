@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Step-by-step: Creating unique weapons with custom attributes | Cube in Square</title>
+    <title>How to make a custom weapon in Minecraft: damage, attack speed and a readable look | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.">
+    <meta name="description" content="Pick a weapon role, turn it into attack damage and attack speed modifiers with the right numbers, and write the /give command for your Minecraft version.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-weapon/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-weapon/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-weapon/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Step-by-step: Creating unique weapons with custom attributes | Cube in Square">
-    <meta property="og:description" content="Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.">
+    <meta property="og:title" content="How to make a custom weapon in Minecraft: damage, attack speed and a readable look | Cube in Square">
+    <meta property="og:description" content="Pick a weapon role, turn it into attack damage and attack speed modifiers with the right numbers, and write the /give command for your Minecraft version.">
     <meta property="og:url" content="https://cubeinsquare.com/wiki-custom-weapon/">
     <meta property="og:locale" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Step-by-step: Creating unique weapons with custom attributes | Cube in Square">
-    <meta name="twitter:description" content="Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="How to make a custom weapon in Minecraft: damage, attack speed and a readable look | Cube in Square">
+    <meta name="twitter:description" content="Pick a weapon role, turn it into attack damage and attack speed modifiers with the right numbers, and write the /give command for your Minecraft version.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,275 +72,135 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/wiki-custom-weapon/#article",
-      "headline": "Step-by-step: Creating unique weapons with custom attributes",
-      "name": "Step-by-step: Creating unique weapons with custom attributes",
-      "description": "Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/wiki-custom-weapon/#webpage" },
-      "inLanguage": "en",
-      "url": "https://cubeinsquare.com/wiki-custom-weapon/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/wiki-custom-weapon/#webpage",
-      "url": "https://cubeinsquare.com/wiki-custom-weapon/",
-      "name": "Step-by-step: Creating unique weapons with custom attributes",
-      "description": "Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "en",
-      "mainEntity": { "@id": "https://cubeinsquare.com/wiki-custom-weapon/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/wiki-custom-weapon/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://cubeinsquare.com/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wiki",
-          "item": "https://cubeinsquare.com/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-custom-weapon/#article",
+            "headline": "How to make a custom weapon: damage, attack speed and a look players recognise",
+            "description": "Pick a weapon role, turn it into attack damage and attack speed modifiers with the right numbers, and write the /give command for your Minecraft version.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-custom-weapon/#webpage"
+            },
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-custom-weapon/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Step-by-step: Creating unique weapons with custom attributes",
-          "item": "https://cubeinsquare.com/wiki-custom-weapon/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-custom-weapon/#webpage",
+            "url": "https://cubeinsquare.com/wiki-custom-weapon/",
+            "name": "How to make a custom weapon: damage, attack speed and a look players recognise",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-custom-weapon/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Custom weapons",
+                    "item": "https://cubeinsquare.com/wiki-custom-weapon/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
         <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-custom-weapon/">Step-by-step: Creating unique weapons with custom attributes</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-weapon/"><strong>Step-by-step: Creating unique weapons with custom attributes</strong><span>Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-weapon/">RU</a><a class="is-active" href="/wiki-custom-weapon/">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a href="/de/wiki-custom-weapon/">DE</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-weapon/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a href="/de/wiki-custom-weapon/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/wiki/">&larr; All articles</a>
-    <section class="page-hero"><h1>Step-by-step: Creating unique weapons with custom attributes</h1><p class="page-lead">Learn how to generate custom weapons with specific attack damage, speed, and visual effects in Minecraft.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel"><p class="article-cta-title">Want the weapon to become a real in-game item?</p><p class="article-cta-text">Build the command in the Custom Item Builder and keep the visual side in the Resource Pack Generator.</p><div class="tool-button-row"><a class="tool-button" href="/custom-item-builder/">Open Custom Item Builder</a><a class="tool-button tool-button-secondary" href="/resource-pack-generator/">Open Resource Pack Generator</a></div></div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>How to make a custom weapon: damage, attack speed and a look players recognise</h1>
+        <p class="page-lead">A custom weapon is a vanilla item with attribute modifiers for damage and speed, a name, and usually its own model. The numbers are easier than they look once you know what the player starts with, and the command differs between versions mostly in how the modifiers are written.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/custom-item-builder/">Custom item builder</a><a class="tool-button tool-button-secondary" href="/enchantment-randomizer/">Enchantment & attribute randomizer</a></div>
+    </section>
     <article>
-        <h2>Unique weapons start with identity, not with a damage number</h2>
-<p>When people first decide to make custom weapons in Minecraft, they often jump straight to “how do I give this item more damage?” That question matters, but it is not the best starting point. A good custom weapon is not only a stat block. It is a role. It has a rhythm, a silhouette, and a place in your server economy or combat design.</p>
-<p>A dagger, a ritual knife, a rusted cleaver, a guild spear, and a mechanical hammer might all be “melee weapons,” but they do not need to feel the same. One should hit quickly and lightly. Another should punish mistakes but swing slowly. Another may be mostly a roleplay prop until a quest turns it into a real combat item. That means the best custom weapon workflow always combines three layers: combat stats, visual identity, and clean item logic.</p>
-
-<h2>Choose the weapon fantasy before you touch attributes</h2>
-<p>The easiest way to create bland weapons is to think only in damage numbers. Before you edit any component, define what the weapon is meant to feel like.</p>
-
-<table class="compact-table">
-    <thead>
-        <tr><th>Weapon type</th><th>Expected feeling</th><th>Typical stat direction</th><th>Visual idea</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Dagger</td><td>Fast, light, pressure-based</td><td>Lower damage, higher attack speed</td><td>Small blade, sharp silhouette</td></tr>
-        <tr><td>Longsword</td><td>Balanced and readable</td><td>Moderate damage, moderate speed</td><td>Clean weapon profile players recognize instantly</td></tr>
-        <tr><td>War hammer</td><td>Heavy, punishing, slow</td><td>Higher damage, lower attack speed</td><td>Chunky head, short brutal proportions</td></tr>
-        <tr><td>Ritual staff</td><td>Hybrid or symbolic</td><td>Maybe light melee stats, stronger visual identity</td><td>Custom model matters as much as combat value</td></tr>
-    </tbody>
-</table>
-
-<p>This first decision prevents a lot of rework later. If you know whether the weapon is meant to pressure, burst, or simply exist as a setting prop, you make better choices for its base item, model, name, and balance.</p>
-
-<h2>The base item matters more than people expect</h2>
-<p>The vanilla item underneath your custom weapon still affects how the weapon behaves in inventories and in moment-to-moment use. Items with durability feel more natural as real equipment. Paper, sticks, or tokens can still become weapons technically, but they often need more extra work to feel convincing.</p>
-<ul>
-    <li><strong>Use swords or tools</strong> when you want the weapon to behave like combat gear immediately.</li>
-    <li><strong>Use unusual base items</strong> when the item is mostly a prop, a cursed relic, or something intentionally strange.</li>
-    <li><strong>Think about stacking</strong> before you commit. A weapon that stacks like ordinary paper usually feels wrong unless that oddness is deliberate.</li>
-</ul>
-<p>This is also where RP and gameplay start to overlap. A sacred knife and a guild hammer can both be combat items, but they should not accidentally share the same inventory feeling just because no one thought about the base item early enough.</p>
-
-<h2>The stat layer: damage, speed, durability, and role clarity</h2>
-<p>In modern Minecraft workflows, weapon feel usually comes from attribute modifiers. The two values that matter first are attack damage and attack speed:</p>
-<ul>
-    <li><strong>Attack damage</strong> changes how hard each hit lands.</li>
-    <li><strong>Attack speed</strong> changes how quickly the player can swing again.</li>
-</ul>
-<p>If you start from a non-weapon base item, you may also want to think about durability. A ritual feather that can suddenly hit like a battleaxe may still need a <code>max_damage</code> style layer if you want it to behave like gear rather than like an infinitely reusable trinket.</p>
-
-<p>Here is the kind of attribute structure you are aiming for conceptually when building a slower, heavier weapon:</p>
-<pre><code>attribute_modifiers = {
-  modifiers: [
-    {
-      id: "guild_hammer_damage",
-      type: "minecraft:generic.attack_damage",
-      amount: 9,
-      operation: "add_value",
-      slot: "mainhand"
-    },
-    {
-      id: "guild_hammer_speed",
-      type: "minecraft:generic.attack_speed",
-      amount: -2.8,
-      operation: "add_value",
-      slot: "mainhand"
-    }
-  ],
-  show_in_tooltip: true
-}</code></pre>
-<p>The exact command wrapper around that block can vary by version, which is why the safest workflow is not “memorize one magic line forever,” but “separate display, identity, and stat logic clearly enough that you can adapt the wrapper when needed.”</p>
-
-<h2>Custom stats should be paired with a readable visual identity</h2>
-<p>A weapon that hits differently should also read differently. If two items share the same texture, name shape, and silhouette, players will keep confusing them no matter how elegant your backend logic is. This is where the resource-pack side becomes as important as the numbers.</p>
-<p>Use the <a href='/resource-pack-generator/'>Resource Pack Generator</a> to package the art cleanly and connect it to the correct model hook. A heavy hammer, fast dagger, faction spear, or cursed blade should be visually readable before the player ever notices its stats. That readability matters in inventories, in hotbars, and especially in roleplay scenes where weapons are part of character identity, not just combat throughput.</p>
-
-<h2>What our tools can already handle cleanly</h2>
-<p>Today the site already helps a lot with the shell around the weapon, even if some combat-specific attribute tweaking may still be finalized in the command layer afterwards.</p>
-<ul>
-    <li><strong><a href='/custom-item-builder/'>Custom Item Builder</a></strong> is great for the item shell: visible name, lore, hidden item ID, version-aware give syntax, and model hooks.</li>
-    <li><strong><a href='/resource-pack-generator/'>Resource Pack Generator</a></strong> handles the pack-facing side so the weapon actually looks unique.</li>
-    <li><strong><a href='/custom-villager-trades/'>Villager Trades</a></strong> becomes useful once that weapon should enter shops, quest rewards, or faction economies.</li>
-</ul>
-<p>In other words, our tools already remove most of the annoying repetition even when your final combat tuning still needs an extra attribute layer in the command itself.</p>
-
-<h2>A practical workflow for making a custom weapon</h2>
-<ol>
-    <li><strong>Define the role.</strong> Decide whether the weapon is fast, heavy, ceremonial, rare, disposable, or progression-gated.</li>
-    <li><strong>Choose the base item.</strong> Pick something whose stack behavior and inventory feel match the role.</li>
-    <li><strong>Build the visual.</strong> Create or import the model and texture, then package them through the <a href='/resource-pack-generator/'>Resource Pack Generator</a>.</li>
-    <li><strong>Create the item shell.</strong> In the <a href='/custom-item-builder/'>Custom Item Builder</a>, set the visible name, lore, hidden ID, and model hook.</li>
-    <li><strong>Add the combat layer.</strong> Apply the attribute modifier structure that fits your version and intended balance.</li>
-    <li><strong>Test in real use.</strong> Do not stop at a creative-mode swing. Test in hotbar, inventory, RP scenes, and any real reward flow that will deliver the weapon.</li>
-</ol>
-
-<h2>The most common custom weapon mistakes</h2>
-<ul>
-    <li><strong>Only changing damage.</strong> A weapon with high damage but no thought behind speed, readability, or delivery still feels shallow.</li>
-    <li><strong>Ignoring the base item.</strong> The wrong vanilla base can make a custom weapon feel awkward even if the stats are fine.</li>
-    <li><strong>Forgetting the visual layer.</strong> If the weapon still looks like a default item, players will not read it as special.</li>
-    <li><strong>Overdesigning numbers without testing.</strong> The spreadsheet version of a weapon and the in-game feeling of a weapon are not always the same thing.</li>
-    <li><strong>Losing track of version syntax.</strong> The stat idea may be right while the wrapper command is wrong for the version you are actually running.</li>
-</ul>
-
-<h2>Frequently Asked Questions</h2>
-<div class='faq-section'>
-    <h3>Can I make a non-sword item deal damage?</h3>
-    <p>Yes. Attribute modifiers can make almost any base item function like a weapon. The question is less “can I” and more “does that base item fit the fantasy and handling I want?”</p>
-</div>
-<div class='faq-section'>
-    <h3>Will a custom-damage item lose durability?</h3>
-    <p>If the base item already uses durability, it will normally behave like equipment. If the base item is something simple like paper or a feather, you need an additional durability-style layer if you want it to behave like breakable gear.</p>
-</div>
-<div class='faq-section'>
-    <h3>Do I need a custom model for every unique weapon?</h3>
-    <p>No, but it helps a lot. If two weapons are supposed to feel different, giving them distinct silhouettes and textures dramatically improves usability and roleplay readability.</p>
-</div>
-<div class='faq-section'>
-    <h3>Should I balance weapons only with damage numbers?</h3>
-    <p>No. Attack speed, durability, rarity, delivery method, and visual readability all influence how powerful a weapon feels in practice.</p>
-</div>
-<div class='faq-section'>
-    <h3>Can I still use the builder even if I finalize attributes manually?</h3>
-    <p>Absolutely. The builder still saves time on naming, lore, hidden IDs, model hooks, and version-aware item structure. That alone removes a lot of repetitive work.</p>
-</div>
+        <p><strong>Checked for versions:</strong> Java Edition 1.20 to 26.3.</p>
+        <h2 id="numbers">The numbers behind every melee weapon</h2>
+        <p>A player starts with 1 attack damage and an attack speed of 4. A weapon adds modifiers on top: a vanilla iron sword adds +5 damage and −2.4 speed, which is where its 6 damage and 1.6 speed come from. So to hit for 7, add 6; to swing 1.6 times a second, add −2.4.</p>
+        <table class="compact-table">
+            <thead><tr><th>Role</th><th>Feels like</th><th>Damage / speed</th><th>Modifiers</th><th>Damage per second</th></tr></thead>
+            <tbody>
+                <tr><td>Dagger</td><td>Fast, light, pressure</td><td>4 / 2.0</td><td>+3 / −2.0</td><td>8</td></tr>
+                <tr><td>Longsword</td><td>Balanced and readable</td><td>7 / 1.6</td><td>+6 / −2.4</td><td>11.2</td></tr>
+                <tr><td>War hammer</td><td>Slow, heavy, punishing</td><td>11 / 0.8</td><td>+10 / −3.2</td><td>8.8</td></tr>
+                <tr><td>Ritual staff</td><td>Mostly a prop</td><td>3 / 1.2</td><td>+2 / −2.8</td><td>3.6</td></tr>
+            </tbody>
+        </table>
+        <p>Damage per second is damage times speed at full charge. It shows why a hammer that hits hardest is not the strongest weapon in a long fight, and why its big single hits feel different in a duel.</p>
+        <h2 id="replace">Setting modifiers replaces the defaults</h2>
+        <p>Once you give an item attribute modifiers, its built-in ones are gone. A diamond sword given only +2 luck hits like an empty hand. Always set both damage and speed, even when you only meant to change one.</p>
+        <p>Use the IDs <code>minecraft:base_attack_damage</code> and <code>minecraft:base_attack_speed</code> for those two modifiers and the tooltip shows totals, "7 Attack Damage", the way a vanilla sword does; with any other ID it shows "+6 Attack Damage".</p>
+        <h2 id="commands">The same longsword in each version</h2>
+        <p>1.21.5 – 26.x: modifiers are a plain list and attribute IDs have no prefix.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name={text:"Guild longsword",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <p>1.21.2 – 1.21.4: the list sits inside <code>{modifiers:[…]}</code> and the name is a JSON string. On 1.21 – 1.21.1, also write the attribute types as <code>minecraft:generic.attack_damage</code> and <code>minecraft:generic.attack_speed</code>.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name='{"text":"Guild longsword","italic":false}',minecraft:attribute_modifiers={modifiers:[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]}] 1</code></pre>
+        <p>Before 1.20.5: NBT with a name and a UUID per modifier.</p>
+        <pre><code>/give @p minecraft:iron_sword{display:{Name:'{"text":"Guild longsword","italic":false}'},AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"guild_damage",Amount:6,Operation:0,UUID:[I;1,1,1,1],Slot:"mainhand"},{AttributeName:"generic.attack_speed",Name:"guild_speed",Amount:-2.4,Operation:0,UUID:[I;1,1,1,2],Slot:"mainhand"}]} 1</code></pre>
+        <p>1.20.5 – 1.20.6 sit in between: components like 1.21, but each modifier needs a <code>uuid</code> and a <code>name</code> instead of an <code>id</code>.</p>
+        <h2 id="base">Choosing the base item</h2>
+        <ul>
+            <li><strong>A sword or an axe</strong> already behaves like a weapon: it has durability, takes weapon enchantments in an anvil, and an axe knocks a raised shield out of use.</li>
+            <li><strong>A stick, a bone or a blaze rod</strong> works for props and staffs, but has no durability and stacks. Add <code>max_stack_size=1</code> and <code>max_damage</code>; a command that makes an item both stackable and damageable is refused. From 1.21.5 the <code>weapon</code> component sets how much durability each hit costs.</li>
+        </ul>
+        <pre><code>/give @p minecraft:stick[minecraft:max_stack_size=1,minecraft:max_damage=250,minecraft:weapon={item_damage_per_attack:1},minecraft:custom_name={text:"Ritual staff",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:2,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.8,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <h2 id="look">A weapon players can recognise</h2>
+        <p>If two weapons share the same texture, players will mix them up whatever their stats are. Give each one its own model: from 1.21.4 the item points to an item definition with <code>item_model</code> (the <a href="/item-model-builder/">item model builder</a> writes that file), before that a CustomModelData number picks a model through the pack's overrides. A short name and one lore line about what the weapon is for do the rest.</p>
+        <h2 id="tooltip">Hiding the stat lines</h2>
+        <p>For a mystery relic you may not want the numbers in the tooltip. From 1.21.5 add <code>tooltip_display={hidden_components:["minecraft:attribute_modifiers"]}</code>; on 1.20.5 – 1.21.4 put <code>show_in_tooltip:false</code> inside <code>attribute_modifiers</code>; before 1.20.5 use <code>HideFlags:2</code>.</p>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Can a weapon be unbreakable?</h3><p>Yes, add <code>unbreakable={}</code>. On a server economy that removes a reason to replace it, so keep it for rare rewards.</p></div>
+        <div class="faq-section"><h3>Do enchantments still work on top?</h3><p>Yes. Sharpness and the rest add to the modified damage; the <a href="/wiki-enchantment-conflicts/">conflicts article</a> lists which ones cannot go together.</p></div>
+        <div class="faq-section"><h3>How do I balance several custom weapons?</h3><p>Put them in one table with damage, speed and damage per second, then test each in the same fight. The spreadsheet version and the in-game feel are rarely the same on the first try.</p></div>
     </article>
 </main>
+
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

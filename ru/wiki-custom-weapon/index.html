@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Пошаговое руководство: создание уникального оружия с характеристиками | Cube in Square</title>
+    <title>Как сделать кастомное оружие в Minecraft: урон, скорость атаки и узнаваемый вид | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.">
+    <meta name="description" content="Выберите роль оружия, переведите её в модификаторы урона и скорости атаки с правильными числами и напишите команду /give под свою версию Minecraft.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-weapon/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-weapon/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-weapon/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Пошаговое руководство: создание уникального оружия с характеристиками | Cube in Square">
-    <meta property="og:description" content="Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.">
+    <meta property="og:title" content="Как сделать кастомное оружие в Minecraft: урон, скорость атаки и узнаваемый вид | Cube in Square">
+    <meta property="og:description" content="Выберите роль оружия, переведите её в модификаторы урона и скорости атаки с правильными числами и напишите команду /give под свою версию Minecraft.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-custom-weapon/">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Пошаговое руководство: создание уникального оружия с характеристиками | Cube in Square">
-    <meta name="twitter:description" content="Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Как сделать кастомное оружие в Minecraft: урон, скорость атаки и узнаваемый вид | Cube in Square">
+    <meta name="twitter:description" content="Выберите роль оружия, переведите её в модификаторы урона и скорости атаки с правильными числами и напишите команду /give под свою версию Minecraft.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,282 +72,135 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#article",
-      "headline": "Пошаговое руководство: создание уникального оружия с характеристиками",
-      "name": "Пошаговое руководство: создание уникального оружия с характеристиками",
-      "description": "Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#webpage" },
-      "inLanguage": "ru",
-      "url": "https://cubeinsquare.com/ru/wiki-custom-weapon/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#webpage",
-      "url": "https://cubeinsquare.com/ru/wiki-custom-weapon/",
-      "name": "Пошаговое руководство: создание уникального оружия с характеристиками",
-      "description": "Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "ru",
-      "mainEntity": { "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cubeinsquare.com/ru/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Вики",
-          "item": "https://cubeinsquare.com/ru/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#article",
+            "headline": "Как сделать кастомное оружие: урон, скорость атаки и вид, который узнают игроки",
+            "description": "Выберите роль оружия, переведите её в модификаторы урона и скорости атаки с правильными числами и напишите команду /give под свою версию Minecraft.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-weapon/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Пошаговое руководство: создание уникального оружия с характеристиками",
-          "item": "https://cubeinsquare.com/ru/wiki-custom-weapon/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-weapon/",
+            "name": "Как сделать кастомное оружие: урон, скорость атаки и вид, который узнают игроки",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-weapon/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Кастомное оружие",
+                    "item": "https://cubeinsquare.com/ru/wiki-custom-weapon/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-custom-weapon/">Пошаговое руководство: создание уникального оружия с характеристиками</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-weapon/"><strong>Пошаговое руководство: создание уникального оружия с характеристиками</strong><span>Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="/ru/wiki-custom-weapon/">RU</a><a href="/wiki-custom-weapon/">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a href="/de/wiki-custom-weapon/">DE</a></div>
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-custom-weapon/">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a href="/de/wiki-custom-weapon/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
-    <section class="page-hero"><h1>Пошаговое руководство: создание уникального оружия с характеристиками</h1><p class="page-lead">Узнайте, как создавать кастомное оружие с собственным уроном, скоростью атаки и визуальными моделями в Minecraft.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Хочешь перейти от статьи к рабочему предмету?</p>
-        <p class="article-cta-text">Собери визуальную часть в генераторе ресурспаков, а командную и логическую — в конструкторе кастомных предметов. Так легче проверить и внешний вид, и серверную логику без ручной каши.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
-            <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть конструктор предметов</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Как сделать кастомное оружие: урон, скорость атаки и вид, который узнают игроки</h1>
+        <p class="page-lead">Кастомное оружие — это ванильный предмет с модификаторами атрибутов для урона и скорости, именем и обычно своей моделью. С числами проще, чем кажется, если знать, с чего начинает игрок, а команда в разных версиях отличается в основном записью модификаторов.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/custom-item-builder/">Конструктор кастомных предметов</a><a class="tool-button tool-button-secondary" href="/ru/enchantment-randomizer/">Рандомайзер зачарований и атрибутов</a></div>
+    </section>
     <article>
-        <h2>Уникальное оружие начинается не с цифры урона, а с роли</h2>
-<p>Когда люди впервые решают делать кастомное оружие в Minecraft, они обычно сразу спрашивают: “как выдать предмету больше урона?” Это важный вопрос, но не самый полезный старт. Хорошее кастомное оружие — это не только стат-блок. У него есть ритм, роль, силуэт и место внутри мира или экономики сервера.</p>
-<p>Кинжал, ритуальный нож, ржавый тесак, гильдейское копьё и механический молот формально могут быть просто “оружием ближнего боя”, но ощущаться обязаны по-разному. Один должен давить скоростью, другой — тяжестью, третий вообще может сначала быть почти ролевым пропом, а потом раскрыться как настоящий боевой предмет. Поэтому сильное оружие всегда строится из трёх слоёв: боевые характеристики, визуальная идентичность и чистая логика предмета.</p>
-
-<h2>Сначала придумай архетип оружия, а уже потом трогай атрибуты</h2>
-<p>Самый быстрый путь к скучному оружию — думать только числами. До любых команд стоит понять, каким оружие должно ощущаться.</p>
-
-<table class="compact-table">
-    <thead>
-        <tr><th>Тип оружия</th><th>Как оно должно чувствоваться</th><th>Обычное направление статов</th><th>Визуальная идея</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Кинжал</td><td>Быстрый, лёгкий, давящий темпом</td><td>Ниже урон, выше скорость атаки</td><td>Компактный силуэт, острая форма</td></tr>
-        <tr><td>Длинный меч</td><td>Ровный и понятный</td><td>Средний урон, средняя скорость</td><td>Читаемый классический профиль</td></tr>
-        <tr><td>Боевой молот</td><td>Тяжёлый, медленный, наказующий</td><td>Выше урон, ниже скорость атаки</td><td>Массивная голова, короткие грубые пропорции</td></tr>
-        <tr><td>Ритуальный посох</td><td>Гибридный или символический</td><td>Иногда слабее как melee, но сильнее как образ</td><td>Модель важна не меньше цифр</td></tr>
-    </tbody>
-</table>
-
-<p>Такой первый выбор экономит время позже. Когда ты уже понимаешь, должен ли предмет ощущаться как нажимной быстрый инструмент, как тяжёлый финишер или как сюжетная реликвия, дальше гораздо легче решать и визуал, и характеристики, и способ выдачи.</p>
-
-<h2>Базовый ванильный предмет влияет сильнее, чем кажется</h2>
-<p>Под кастомным оружием всё равно живёт какой-то обычный предмет Minecraft. И он влияет на то, как оружие ведёт себя в инвентаре и в руках. Предметы с прочностью ощущаются естественнее как экипировка. Бумага, палки и прочие “странные” основы тоже можно превратить в оружие, но тогда им часто нужно больше дополнительных слоёв, чтобы ощущаться убедительно.</p>
-<ul>
-    <li><strong>Мечи и инструменты</strong> удобны, если ты хочешь, чтобы оружие сразу вело себя как оружие.</li>
-    <li><strong>Необычные базовые предметы</strong> годятся, если это проклятая реликвия, магический символ или намеренно странный боевой объект.</li>
-    <li><strong>Стакуемость важна.</strong> Оружие, которое стакается как обычная бумага, почти всегда ощущается странно, если это не специальный дизайнерский ход.</li>
-</ul>
-<p>Здесь как раз пересекаются RP и геймплей. Священный нож и гильдейский молот могут оба наносить урон, но не должны ощущаться одинаково только потому, что никто заранее не подумал о базе предмета.</p>
-
-<h2>Слой характеристик: урон, скорость, прочность и ясность роли</h2>
-<p>В современных версиях ощущение оружия в основном строится через модификаторы атрибутов. Первые два параметра, на которые стоит смотреть, — это attack damage и attack speed:</p>
-<ul>
-    <li><strong>Attack damage</strong> определяет, насколько сильно бьёт каждое попадание.</li>
-    <li><strong>Attack speed</strong> определяет, как быстро игрок может снова атаковать.</li>
-</ul>
-<p>Если ты стартуешь не с оружейной базы, а с обычного предмета, стоит подумать и о прочности. Ритуальное перо, которое вдруг бьёт как молот, возможно, ещё должно получить отдельный слой с логикой поломки, если ты хочешь, чтобы оно вело себя как реальная экипировка, а не как бесконечный артефакт.</p>
-
-<p>Вот примерно такой формы ты добиваешься в атрибутном слое, если хочешь сделать медленное, тяжёлое оружие:</p>
-<pre><code>attribute_modifiers = {
-  modifiers: [
-    {
-      id: "guild_hammer_damage",
-      type: "minecraft:generic.attack_damage",
-      amount: 9,
-      operation: "add_value",
-      slot: "mainhand"
-    },
-    {
-      id: "guild_hammer_speed",
-      type: "minecraft:generic.attack_speed",
-      amount: -2.8,
-      operation: "add_value",
-      slot: "mainhand"
-    }
-  ],
-  show_in_tooltip: true
-}</code></pre>
-<p>Это не “магическая единственная строка на все времена”, а скорее форма мысли. Внешняя команда может отличаться между версиями, поэтому надёжнее не зубрить один старый пример, а чётко разделять: где у тебя оболочка предмета, где визуал, а где боевой слой.</p>
-
-<h2>Кастомные статы должны идти вместе с читаемым визуалом</h2>
-<p>Если предмет бьёт по-другому, он должен и читаться по-другому. Когда два оружия имеют одинаковую иконку, похожий силуэт и почти одинаковое имя, игроки будут путаться, даже если за кулисами у них идеальная логика. Поэтому визуальный слой здесь не вторичен, а равноправен статам.</p>
-<p>Через <a href='/ru/resource-pack-generator/'>генератор ресурспаков</a> удобно собрать модель и текстуру в чистую pack-структуру. Тяжёлый молот, быстрый кинжал, фракционное копьё или проклятый клинок должны различаться уже на уровне силуэта в инвентаре и в руке. Для RP-сервера это важно не меньше, чем для чистого боя.</p>
-
-<h2>Что наши инструменты уже умеют снимать с твоих плеч</h2>
-<p>Сегодня сайт уже хорошо закрывает оболочку оружия, даже если тонкую настройку боевых атрибутов иногда ещё удобнее довести прямо на уровне итоговой команды.</p>
-<ul>
-    <li><strong><a href='/ru/custom-item-builder/'>Custom item builder</a></strong> хорошо закрывает оболочку: имя, лор, hidden ID, версионный синтаксис и модельные хуки.</li>
-    <li><strong><a href='/ru/resource-pack-generator/'>Генератор ресурспаков</a></strong> закрывает pack-сторону, чтобы оружие реально выглядело уникально.</li>
-    <li><strong><a href='/ru/custom-villager-trades/'>Торги жителей</a></strong> пригодятся, когда это оружие должно войти в магазины, награды или серверную экономику.</li>
-</ul>
-<p>То есть даже если финальный блок с уроном и скоростью ты ещё дописываешь сверху, большая часть рутинной и раздражающей работы уже снимается интерфейсом.</p>
-
-<h2>Практичный путь к кастомному оружию</h2>
-<ol>
-    <li><strong>Определи роль.</strong> Оружие должно быть быстрым, тяжёлым, редким, сюжетным или одноразовым?</li>
-    <li><strong>Выбери базовый предмет.</strong> Пусть его поведение в инвентаре и в руке совпадает с задуманной ролью.</li>
-    <li><strong>Собери визуал.</strong> Нарисуй или импортируй модель и текстуру, затем упакуй это через <a href='/ru/resource-pack-generator/'>генератор ресурспаков</a>.</li>
-    <li><strong>Собери оболочку предмета.</strong> В <a href='/ru/custom-item-builder/'>item builder</a> задай имя, лор, hidden ID и модельный хук.</li>
-    <li><strong>Добавь боевой слой.</strong> Настрой модификаторы атрибутов под нужную версию и нужный баланс.</li>
-    <li><strong>Тестируй в реальном контексте.</strong> Не ограничивайся одним ударом в креативе: проверь инвентарь, хотбар, сценки RP и реальный способ получения предмета.</li>
-</ol>
-
-<h2>Самые частые ошибки</h2>
-<ul>
-    <li><strong>Меняют только урон.</strong> Оружие с большим уроном, но без мысли о скорости, читаемости и выдаче всё равно ощущается плоским.</li>
-    <li><strong>Игнорируют базовый предмет.</strong> Неподходящая ванильная база может испортить ощущение даже при хороших цифрах.</li>
-    <li><strong>Забывают про визуал.</strong> Если предмет всё ещё выглядит как обычный ванильный объект, игроки не будут считывать его как нечто особое.</li>
-    <li><strong>Балансируют только в голове или на бумаге.</strong> То, что кажется красивым набором чисел, может ощущаться совсем иначе в игре.</li>
-    <li><strong>Теряют из виду версию синтаксиса.</strong> Сама идея статов может быть правильной, а вот обёртка команды — нет.</li>
-</ul>
-
-<h2>Часто задаваемые вопросы</h2>
-<div class='faq-section'>
-    <h3>Можно ли заставить наносить урон предмет, который вообще не похож на оружие?</h3>
-    <p>Да. Модификаторы атрибутов позволяют превратить почти любой предмет в боевой. Но вопрос не только в возможности, а ещё и в том, подходит ли такая база задуманному ощущению оружия.</p>
-</div>
-<div class='faq-section'>
-    <h3>Будет ли кастомное оружие ломаться?</h3>
-    <p>Если базовый предмет уже работает с прочностью, он обычно и дальше ощущается как экипировка. Если основа — простая вещь вроде бумаги или пера, для поведения “как у оружия” может понадобиться дополнительный слой логики.</p>
-</div>
-<div class='faq-section'>
-    <h3>Нужна ли отдельная модель для каждого уникального оружия?</h3>
-    <p>Не обязательно, но это очень помогает. Если оружие должно ощущаться иначе, отдельный силуэт и текстура резко повышают читаемость и в бою, и в RP-сценах.</p>
-</div>
-<div class='faq-section'>
-    <h3>Стоит ли балансировать оружие только через урон?</h3>
-    <p>Нет. Скорость атаки, прочность, редкость, способ получения и визуальная читаемость влияют на реальное ощущение не меньше самого урона.</p>
-</div>
-<div class='faq-section'>
-    <h3>Имеет ли смысл использовать builder, если атрибуты всё равно донастраиваются вручную?</h3>
-    <p>Да. Он всё равно экономит время на имени, лоре, hidden ID, модельном хуке и версионной структуре предмета. Это уже снимает большой кусок рутины.</p>
-</div>
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.20–26.3.</p>
+        <h2 id="numbers">Числа за любым оружием ближнего боя</h2>
+        <p>У игрока изначально 1 урона и скорость атаки 4. Оружие добавляет модификаторы сверху: ванильный железный меч даёт +5 к урону и −2,4 к скорости — отсюда его 6 урона и скорость 1,6. Чтобы бить на 7, добавьте 6; чтобы бить 1,6 раза в секунду, добавьте −2,4.</p>
+        <table class="compact-table">
+            <thead><tr><th>Роль</th><th>Ощущается как</th><th>Урон / скорость</th><th>Модификаторы</th><th>Урон в секунду</th></tr></thead>
+            <tbody>
+                <tr><td>Кинжал</td><td>Быстрый, лёгкий, давит темпом</td><td>4 / 2,0</td><td>+3 / −2,0</td><td>8</td></tr>
+                <tr><td>Длинный меч</td><td>Ровный и понятный</td><td>7 / 1,6</td><td>+6 / −2,4</td><td>11,2</td></tr>
+                <tr><td>Боевой молот</td><td>Медленный, тяжёлый, наказывающий</td><td>11 / 0,8</td><td>+10 / −3,2</td><td>8,8</td></tr>
+                <tr><td>Ритуальный посох</td><td>В основном реквизит</td><td>3 / 1,2</td><td>+2 / −2,8</td><td>3,6</td></tr>
+            </tbody>
+        </table>
+        <p>Урон в секунду — это урон, умноженный на скорость при полном заряде удара. Он показывает, почему молот, бьющий сильнее всех, не самое сильное оружие в долгом бою и почему его тяжёлые удары по-другому ощущаются на дуэли.</p>
+        <h2 id="replace">Свои модификаторы заменяют стандартные</h2>
+        <p>Как только предмету заданы модификаторы атрибутов, встроенные пропадают. Алмазный меч, которому дали только +2 удачи, бьёт как пустая рука. Всегда задавайте и урон, и скорость, даже если хотели поменять что-то одно.</p>
+        <p>Используйте для этих двух модификаторов ID <code>minecraft:base_attack_damage</code> и <code>minecraft:base_attack_speed</code> — тогда подсказка покажет итог, «7 урона», как у ванильного меча; с любым другим ID она покажет «+6 к урону».</p>
+        <h2 id="commands">Один и тот же длинный меч в каждой версии</h2>
+        <p>1.21.5 – 26.x: модификаторы — обычный список, у ID атрибутов нет префикса.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name={text:"Guild longsword",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <p>1.21.2 – 1.21.4: список лежит внутри <code>{modifiers:[…]}</code>, а имя — строка JSON. В 1.21 – 1.21.1 ещё и типы атрибутов пишутся как <code>minecraft:generic.attack_damage</code> и <code>minecraft:generic.attack_speed</code>.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name='{"text":"Guild longsword","italic":false}',minecraft:attribute_modifiers={modifiers:[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]}] 1</code></pre>
+        <p>До 1.20.5: NBT с именем и UUID у каждого модификатора.</p>
+        <pre><code>/give @p minecraft:iron_sword{display:{Name:'{"text":"Guild longsword","italic":false}'},AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"guild_damage",Amount:6,Operation:0,UUID:[I;1,1,1,1],Slot:"mainhand"},{AttributeName:"generic.attack_speed",Name:"guild_speed",Amount:-2.4,Operation:0,UUID:[I;1,1,1,2],Slot:"mainhand"}]} 1</code></pre>
+        <p>1.20.5 – 1.20.6 посередине: компоненты как в 1.21, но каждому модификатору нужны <code>uuid</code> и <code>name</code> вместо <code>id</code>.</p>
+        <h2 id="base">Как выбрать базовый предмет</h2>
+        <ul>
+            <li><strong>Меч или топор</strong> уже ведёт себя как оружие: у него есть прочность, он принимает боевые зачарования на наковальне, а топор выбивает поднятый щит.</li>
+            <li><strong>Палка, кость или огненный стержень</strong> годятся для реквизита и посохов, но у них нет прочности и они стакаются. Добавьте <code>max_stack_size=1</code> и <code>max_damage</code>: команду, которая делает предмет одновременно стакающимся и изнашиваемым, игра не примет. С 1.21.5 компонент <code>weapon</code> задаёт, сколько прочности стоит каждый удар.</li>
+        </ul>
+        <pre><code>/give @p minecraft:stick[minecraft:max_stack_size=1,minecraft:max_damage=250,minecraft:weapon={item_damage_per_attack:1},minecraft:custom_name={text:"Ritual staff",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:2,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.8,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <h2 id="look">Оружие, которое узнают</h2>
+        <p>Если у двух видов оружия одна текстура, игроки будут их путать, какими бы ни были характеристики. Дайте каждому свою модель: с 1.21.4 предмет указывает на item definition через <code>item_model</code> (этот файл пишет <a href="/ru/item-model-builder/">конструктор item_model</a>), раньше модель выбирало число CustomModelData через overrides пака. Короткое имя и одна строка лора о том, для чего оружие, сделают остальное.</p>
+        <h2 id="tooltip">Как скрыть строки характеристик</h2>
+        <p>Для загадочной реликвии цифры в подсказке могут быть лишними. С 1.21.5 добавьте <code>tooltip_display={hidden_components:["minecraft:attribute_modifiers"]}</code>; в 1.20.5 – 1.21.4 положите <code>show_in_tooltip:false</code> внутрь <code>attribute_modifiers</code>; до 1.20.5 используйте <code>HideFlags:2</code>.</p>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>Можно сделать оружие неразрушимым?</h3><p>Да, добавьте <code>unbreakable={}</code>. В экономике сервера это убирает причину его менять, так что оставьте это для редких наград.</p></div>
+        <div class="faq-section"><h3>Зачарования работают поверх?</h3><p>Да. Острота и остальные прибавляются к изменённому урону; какие из них не сочетаются, перечислено в <a href="/ru/wiki-enchantment-conflicts/">статье о несовместимости</a>.</p></div>
+        <div class="faq-section"><h3>Как сбалансировать несколько видов оружия?</h3><p>Сведите их в одну таблицу с уроном, скоростью и уроном в секунду, а потом проверьте каждое в одном и том же бою. Табличная версия и ощущение в игре с первого раза совпадают редко.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON | Cube in Square</title>
+    <title>Guide du constructeur d’objets custom : objets Minecraft sans JSON écrit à la main | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.">
+    <meta name="description" content="Construire la commande d’un objet custom avec le constructeur : objet de base, nom et lore, ID caché dans custom_data, item_model et cases custom_model_data, pour quatre plages de versions.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-no-json/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-no-json/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-no-json/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON | Cube in Square">
-    <meta property="og:description" content="Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.">
+    <meta property="og:title" content="Guide du constructeur d’objets custom : objets Minecraft sans JSON écrit à la main | Cube in Square">
+    <meta property="og:description" content="Construire la commande d’un objet custom avec le constructeur : objet de base, nom et lore, ID caché dans custom_data, item_model et cases custom_model_data, pour quatre plages de versions.">
     <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-custom-item-no-json/">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:locale:alternate" content="ru_RU">
-    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON | Cube in Square">
-    <meta name="twitter:description" content="Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Guide du constructeur d’objets custom : objets Minecraft sans JSON écrit à la main | Cube in Square">
+    <meta name="twitter:description" content="Construire la commande d’un objet custom avec le constructeur : objet de base, nom et lore, ID caché dans custom_data, item_model et cases custom_model_data, pour quatre plages de versions.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,293 +72,144 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#article",
-      "headline": "Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON",
-      "name": "Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON",
-      "description": "Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#webpage" },
-      "inLanguage": "fr",
-      "url": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#webpage",
-      "url": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/",
-      "name": "Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON",
-      "description": "Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "fr",
-      "mainEntity": { "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Accueil",
-          "item": "https://cubeinsquare.com/fr/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wiki",
-          "item": "https://cubeinsquare.com/fr/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#article",
+            "headline": "Utiliser le constructeur d’objets custom : des objets sans écrire la commande à la main",
+            "description": "Construire la commande d’un objet custom avec le constructeur : objet de base, nom et lore, ID caché dans custom_data, item_model et cases custom_model_data, pour quatre plages de versions.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#webpage"
+            },
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON",
-          "item": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/",
+            "name": "Utiliser le constructeur d’objets custom : des objets sans écrire la commande à la main",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://cubeinsquare.com/fr/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/fr/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Guide du constructeur d’objets custom",
+                    "item": "https://cubeinsquare.com/fr/wiki-custom-item-no-json/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-custom-item-no-json/">Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-item-no-json/"><strong>Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON</strong><span>Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-item-no-json/">RU</a><a href="/wiki-custom-item-no-json/">EN</a><a class="is-active" href="/fr/wiki-custom-item-no-json/">FR</a><a href="/de/wiki-custom-item-no-json/">DE</a></div>
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Langue"><a href="/ru/wiki-custom-item-no-json/">RU</a><a href="/wiki-custom-item-no-json/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-custom-item-no-json/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
-    <section class="page-hero"><h1>Créer un objet personnalisé dans Minecraft 1.20.5+ sans JSON</h1><p class="page-lead">Découvrez comment créer facilement des objets avec les nouveaux composants de données de Minecraft 1.21.4+ sans écrire de JSON.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Envie de passer de l’article à un objet vraiment utilisable ?</p>
-        <p class="article-cta-text">Construisez la partie visuelle dans le générateur de packs, puis assemblez la commande et la logique dans le constructeur d’objets. C’est le chemin le plus simple pour tester à la fois l’apparence et le comportement serveur.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/fr/resource-pack-generator/">Ouvrir le générateur de packs</a>
-            <a class="tool-button tool-button-secondary" href="/fr/custom-item-builder/">Ouvrir le constructeur d’objets</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Utiliser le constructeur d’objets custom : des objets sans écrire la commande à la main</h1>
+        <p class="page-lead">Un objet custom dans Minecraft est un objet vanilla avec quelques composants en plus : un nom et un lore pour les joueurs, un ID caché pour votre logique et un hook de modèle pour le resource pack. Le constructeur écrit cette commande /give à partir d’un formulaire, dans la syntaxe de la version choisie : guillemets et crochets ne sont plus votre problème.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/custom-item-builder/">Ouvrir le constructeur</a><a class="tool-button tool-button-secondary" href="/fr/wiki-give-command-not-working/">Pourquoi /give ne marche pas</a></div>
+    </section>
     <article>
-        <h2>“Sans JSON” ne veut pas dire “sans logique”</h2>
-        <p>Quand quelqu'un dit qu'il veut créer un objet personnalisé “sans JSON”, cela ne signifie pas qu'il espère un miracle sans structure. En général, cela veut simplement dire qu'il ne veut pas taper à la main la partie la plus fragile du processus. Un item moderne peut porter un nom visible, une lore, un identifiant caché, un hook de modèle, des effets, des attributs et parfois une logique serveur complète. Tout cela peut être écrit à la main, mais plus l'objet est riche, plus il devient facile de le casser avec un seul crochet ou une seule citation mal placée.</p>
-        <p>Depuis Minecraft 1.20.5, ce ressenti est encore plus fort. L'ancien NBT des objets a laissé la place aux composants de données, et même une commande simple demande maintenant plus de précision. “Sans JSON”, dans un bon workflow, signifie donc plutôt “sans souffrir ligne par ligne sur chaque symbole” que “sans structure du tout”.</p>
-
-        <h2>De quoi un objet personnalisé est-il réellement composé ?</h2>
-        <p>Il est souvent plus utile de penser un objet comme un assemblage de couches plutôt que comme une seule commande géante :</p>
-
+        <p><strong>Vérifié pour les versions :</strong> Java Edition 1.20 à 26.3.</p>
+        <h2 id="layers">De quoi est fait un objet custom</h2>
         <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Couche</th>
-                    <th>Ce qu'elle contrôle</th>
-                    <th>Exemple</th>
-                    <th>Pourquoi elle compte</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Couche</th><th>Où elle vit</th><th>Qui la lit</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>Objet de base</td>
-                    <td>L'item vanilla sous la surface</td>
-                    <td><code>minecraft:paper</code>, <code>minecraft:iron_sword</code></td>
-                    <td>Le jeu doit toujours savoir ce que l'objet est techniquement.</td>
-                </tr>
-                <tr>
-                    <td>Identité visible</td>
-                    <td>Nom et lore lisibles par le joueur</td>
-                    <td>“Guild Pass”, “Contrat scellé”</td>
-                    <td>C'est ce qui rend l'objet compréhensible et vivant.</td>
-                </tr>
-                <tr>
-                    <td>Identité cachée</td>
-                    <td>ID ou marqueur pour la logique serveur</td>
-                    <td><code>quest_pass</code>, <code>rp_currency_tier_1</code></td>
-                    <td>Évite de confondre deux jolis objets qui n'ont pas la même fonction.</td>
-                </tr>
-                <tr>
-                    <td>Hook visuel</td>
-                    <td>Lien vers modèle ou texture</td>
-                    <td><code>custom_model_data</code>, <code>item_model</code></td>
-                    <td>Relie la commande au resource pack.</td>
-                </tr>
+                <tr><td>Objet de base</td><td>L’identifiant, comme <code>minecraft:paper</code></td><td>Le jeu : taille de pile, animation, durabilité</td></tr>
+                <tr><td>Nom et lore</td><td><code>custom_name</code>, <code>lore</code></td><td>Les joueurs</td></tr>
+                <tr><td>ID caché</td><td><code>custom_data={item_id:"…"}</code></td><td>Vos commandes, quêtes, boutiques et villageois</td></tr>
+                <tr><td>Hook de modèle</td><td><code>item_model</code>, <code>custom_model_data</code></td><td>Le resource pack</td></tr>
             </tbody>
         </table>
-
-        <h2>Étape par étape : construire un objet utile</h2>
-        <p>Imaginons que vous vouliez créer un laissez-passer de guilde pour un serveur RP. Il n'est pas nécessaire de commencer par une commande monstrueuse. Commencez par le rôle de l'objet.</p>
+        <p>Séparer les couches rend l’objet facile à maintenir : on peut le renommer pour une nouvelle saison sans casser la quête qui vérifie son ID caché, et changer son apparence sans toucher ni l’un ni l’autre.</p>
+        <h2 id="steps">Pas à pas</h2>
         <ol>
-            <li><strong>Choisissez un objet de base.</strong> Le papier marche très bien pour les passes, billets, lettres et contrats, car il est neutre et facile à remplacer visuellement plus tard.</li>
-            <li><strong>Définissez le nom visible.</strong> Le joueur doit comprendre d'un coup d'oeil ce qu'il a dans la main.</li>
-            <li><strong>Ajoutez de la lore seulement si elle aide.</strong> Tout objet n'a pas besoin d'un mur de texte.</li>
-            <li><strong>Attribuez une identité cachée.</strong> Si le serveur doit distinguer ce pass d'un simple papier, mieux vaut le faire explicitement.</li>
-            <li><strong>Reliez l'objet à un hook visuel.</strong> C'est ici que la connexion vers la texture ou le modèle apparaît.</li>
-            <li><strong>Testez l'objet en jeu.</strong> Regardez son rendu en inventaire, au sol et dans le contexte réel où il sera utilisé.</li>
+            <li><strong>Version de la commande.</strong> Choisissez 1.21.5 – 26.x, 1.21.4, 1.20.5 – 1.21.3 ou avant 1.20.5. Le formulaire n’affiche que les champs que cette version comprend.</li>
+            <li><strong>Objet de base et quantité.</strong> Choisissez la base pour son comportement, pas seulement son aspect : le papier s’empile par 64, un livre ne s’ouvre pas comme un livre écrit, une carotte sur un bâton s’utilise.</li>
+            <li><strong>ID caché.</strong> Un identifiant stable et sobre comme <code>rp.guild.pass</code>. Depuis la 1.20.5, il va dans <code>custom_data</code> ; avant, le constructeur l’écrit comme tag NBT personnel.</li>
+            <li><strong>Nom et lore.</strong> Une ligne de lore par ligne du champ. Le constructeur ajoute <code>italic:false</code> pour que le nom ne ressemble pas à un renommage à l’enclume.</li>
+            <li><strong>Modèle.</strong> Avant la 1.21.4, c’est un seul nombre CustomModelData auquel réagissent les <code>overrides</code> du pack. Depuis la 1.21.4, <code>item_model</code> nomme une item definition : <code>cubeinsquare:item/paper/guild_pass</code> lit <code>assets/cubeinsquare/items/item/paper/guild_pass.json</code>, et les cases float, string, flag et color sont des valeurs sur lesquelles ce fichier peut basculer.</li>
+            <li><strong>Copier et tester.</strong> Le résumé affiche la longueur : au-delà de 256 caractères, la commande demande un bloc de commande plutôt que le chat.</li>
         </ol>
-
-        <h2>Une commande générée reste une vraie commande</h2>
-        <p>Le fait qu'un builder assemble la ligne ne rend pas la commande “moins réelle”. Elle reste une commande Minecraft normale, simplement construite dans un ordre plus sûr. Une sortie moderne pour un pass simple peut ressembler à ceci :</p>
-        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
-        <p>Bien sûr, vous pourriez taper cela à la main. La vraie question est plutôt : est-ce une bonne utilisation de votre attention quand vous êtes aussi en train de choisir le sens de l'objet, de dessiner sa texture, de relier le pack et de décider de sa place dans le serveur ? La plupart du temps, non.</p>
-
-        <h2>Comment le builder se connecte au resource pack</h2>
-        <p>Un objet personnalisé ne devient vraiment cohérent que lorsque la partie commande et la partie visuelle racontent la même chose. Si la commande pointe vers un hook de modèle et que le pack en attend un autre, l'objet peut être donné correctement tout en ressemblant encore à du papier ou à une épée vanilla. C'est pour cela que le <a href='/custom-item-builder/'>Custom Item Builder</a> et le <a href='/resource-pack-generator/'>Resource Pack Generator</a> sont particulièrement utiles ensemble.</p>
-        <p>Le builder porte l'identité de commande. Le générateur de pack gère la structure des modèles et des textures. Lorsque les deux côtés sont alignés, l'objet peut être réutilisé proprement dans des trades, des récompenses, des quêtes ou des blocs de commande sans repartir de zéro à chaque fois.</p>
-
-        <h2>Les différences de version comptent plus qu'on ne le pense</h2>
-        <p>Beaucoup de problèmes du type “je veux juste un custom item” sont en réalité des problèmes de version.</p>
-
-        <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Version</th>
-                    <th>Ce qui change</th>
-                    <th>Ce que les débutants cassent souvent</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Avant 1.20.5</td>
-                    <td>NBT d'objet classique</td>
-                    <td>Coller de la syntaxe de composants dans un serveur legacy.</td>
-                </tr>
-                <tr>
-                    <td>1.20.5–1.21.3</td>
-                    <td>Les composants de données remplacent le NBT des objets</td>
-                    <td>Continuer à penser en accolades et en vieux snippets.</td>
-                </tr>
-                <tr>
-                    <td>1.21.4+</td>
-                    <td>Même monde de composants, mais avec des workflows de modèles encore plus modernes</td>
-                    <td>Oublier que la commande et la structure du pack doivent évoluer ensemble.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Erreurs courantes quand on improvise “sans JSON”</h2>
+        <h2 id="example">L’exemple, expliqué</h2>
+        <p>« Charger un exemple » remplit le formulaire avec un laissez-passer de guilde. Dans la branche 1.21.5 – 26.x, on obtient :</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name={text:"Guild archive pass",italic:false},minecraft:lore=[{text:"Stamped for the old city archive.",italic:false}],minecraft:item_model="cubeinsquare:item/paper/guild_pass",minecraft:custom_data={item_id:"rp.guild.pass"},minecraft:custom_model_data={floats:[2047.0f],strings:["guild_pass"],flags:[true],colors:[6138367]}] 1</code></pre>
         <ul>
-            <li><strong>Ne pas écrire de fichier JSON, mais continuer à écrire des commandes fragiles à la main.</strong></li>
-            <li><strong>Donner un joli nom à l'objet sans lui donner une identité cachée.</strong></li>
-            <li><strong>Construire d'abord l'art visuel puis réfléchir à la commande ensuite.</strong></li>
-            <li><strong>Tout tester uniquement dans le chat alors que les grosses commandes devraient déjà vivre dans un bloc de commande.</strong></li>
-            <li><strong>Oublier le sélecteur de version et s'étonner qu'une commande presque correcte ne fonctionne pas.</strong></li>
+            <li><code>custom_name</code> et <code>lore</code> sont des composants de texte en SNBT, la forme arrivée avec la 1.21.5.</li>
+            <li><code>item_model</code> pointe vers l’item definition du pack.</li>
+            <li><code>custom_data</code> porte l’ID caché auquel le serveur peut se fier.</li>
+            <li><code>custom_model_data</code> porte des valeurs que l’item definition peut tester : un flottant pour <code>range_dispatch</code>, une chaîne pour <code>select</code>, un drapeau pour <code>condition</code>, une couleur pour les teintes.</li>
         </ul>
-
-        <h2>Pourquoi c'est particulièrement utile pour les serveurs RP et no-mod</h2>
-        <p>Un serveur no-mod a besoin d'objets qui transportent du sens sans exiger l'installation d'un modpack. Monnaies, lettres, reliques, doses médicales, jetons, passes ou trophées de quête doivent ressembler à de vrais objets du monde, pas à du simple remplissage renommé. C'est exactement là qu'un workflow centré sur un builder devient précieux : le site et le serveur restent accessibles pour les joueurs, tandis que l'équipe garde une structure interne propre.</p>
-        <p>Au lieu d'obliger chaque membre de l'équipe à mémoriser toute la grammaire des composants, vous obtenez un processus répétable. Une personne fait l'art, une autre pense la mécanique, une autre assemble la commande. Le résultat reste un objet Minecraft normal, mais sans le chaos des fautes de ponctuation faites à la main.</p>
-
-        <h2>FAQ</h2>
-        <div class='faq-section'>
-            <h3>Dois-je connaître le JSON pour utiliser CustomModelData ?</h3>
-            <p>Non. Comprendre l'idée de l'objet aide, mais il n'est pas nécessaire d'écrire des fichiers JSON ou toute la syntaxe de composants à la main pour obtenir un objet fonctionnel.</p>
-
-            <h3>Qu'est-ce qui a changé dans Minecraft 1.20.5 pour les objets ?</h3>
-            <p>Mojang a remplacé l'ancien NBT des objets par des composants de données. À cause de cela, beaucoup d'anciens tutoriels utilisent maintenant une syntaxe dépassée pour les serveurs modernes.</p>
-
-            <h3>Puis-je utiliser ce workflow si je veux seulement un objet renommé ?</h3>
-            <p>Oui, et c'est même un très bon point de départ. Un simple objet renommé permet de comprendre le flux moderne avant d'ajouter modèle, lore ou logique cachée.</p>
-
-            <h3>Et si je veux aussi une texture personnalisée ?</h3>
-            <p>Dans ce cas, combinez le <a href='/custom-item-builder/'>Custom Item Builder</a> avec le <a href='/resource-pack-generator/'>Resource Pack Generator</a>. L'un gère l'identité de commande, l'autre la structure du pack.</p>
-
-            <h3>Le mode “sans JSON” est-il seulement pour les débutants ?</h3>
-            <p>Non. Même des créateurs expérimentés gagnent du temps avec une itération plus sûre et plus rapide. L'objectif n'est pas d'éviter la compréhension, mais d'investir votre attention dans le design plutôt que dans la ponctuation.</p>
-        </div>
+        <p>Le même laissez-passer avant la 1.20.5 tient dans un seul bloc NBT :</p>
+        <pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild archive pass","italic":false}',Lore:['{"text":"Stamped for the old city archive.","italic":false}']},cube_item_id:"rp.guild.pass"} 1</code></pre>
+        <h2 id="check">Vérifier l’ID caché en jeu</h2>
+        <p>Depuis la 1.20.5, les prédicats d’objet testent <code>custom_data</code> directement. La première ligne réagit à chaque joueur qui tient le laissez-passer en main principale ; la seconde en retire un au joueur, ce qui permet à une porte ou une boutique de le « dépenser » :</p>
+        <pre><code>execute as @a if items entity @s weapon.mainhand *[custom_data~{item_id:"rp.guild.pass"}] run say I carry the guild pass
+clear @s *[custom_data~{item_id:"rp.guild.pass"}] 1</code></pre>
+        <p>Un papier vanilla renommé échoue aux deux tests : le nom n’est pas ce qui est vérifié.</p>
+        <h2 id="mistakes">Erreurs fréquentes</h2>
+        <ul>
+            <li><strong>Changer l’ID caché après coup.</strong> Chaque quête, boutique et échange qui le vérifie cesse de reconnaître les anciens objets. Changez plutôt le nom visible.</li>
+            <li><strong>item_model qui pointe vers un modèle.</strong> Depuis la 1.21.4, il nomme un fichier dans <code>items/</code>, qui nomme ensuite des modèles dans <code>models/</code>. Viser directement un modèle affiche la texture de modèle manquant.</li>
+            <li><strong>Une commande pour toutes les versions.</strong> Les quatre branches existent parce que la syntaxe diffère vraiment : une commande 1.21.4 nomme l’objet <code>{"text":…}</code> en 1.21.5.</li>
+        </ul>
+        <h2 id="faq">Questions fréquentes</h2>
+        <div class="faq-section"><h3>Faut-il un resource pack ?</h3><p>Seulement pour une apparence propre. Nom, lore et ID caché marchent en vanilla sans pack.</p></div>
+        <div class="faq-section"><h3>À quoi sert la case couleur ?</h3><p>Une item definition peut teinter une couche de modèle avec les couleurs de <code>custom_model_data</code> : un seul modèle sert plusieurs couleurs de faction.</p></div>
+        <div class="faq-section"><h3>Un villageois peut-il n’accepter que le vrai objet ?</h3><p>Oui : mettez le même <code>custom_data</code> dans le prix de l’échange. Le <a href="/fr/custom-villager-trades/">constructeur d’échanges</a> et <a href="/fr/wiki-rp-economy-custom-data/">l’article sur l’économie</a> montrent comment.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

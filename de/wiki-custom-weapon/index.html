@@ -2,10 +2,10 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen | Cube in Square</title>
+    <title>Eine eigene Waffe in Minecraft bauen: Schaden, Angriffsgeschwindigkeit und klares Aussehen | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.">
+    <meta name="description" content="Wähl eine Waffenrolle, übersetz sie mit den richtigen Zahlen in Modifikatoren für Angriffsschaden und Angriffsgeschwindigkeit und schreib den /give-Befehl für deine Minecraft-Version.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-weapon/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-weapon/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-weapon/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen | Cube in Square">
-    <meta property="og:description" content="Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.">
+    <meta property="og:title" content="Eine eigene Waffe in Minecraft bauen: Schaden, Angriffsgeschwindigkeit und klares Aussehen | Cube in Square">
+    <meta property="og:description" content="Wähl eine Waffenrolle, übersetz sie mit den richtigen Zahlen in Modifikatoren für Angriffsschaden und Angriffsgeschwindigkeit und schreib den /give-Befehl für deine Minecraft-Version.">
     <meta property="og:url" content="https://cubeinsquare.com/de/wiki-custom-weapon/">
     <meta property="og:locale" content="de_DE">
     <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen | Cube in Square">
-    <meta name="twitter:description" content="Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Eine eigene Waffe in Minecraft bauen: Schaden, Angriffsgeschwindigkeit und klares Aussehen | Cube in Square">
+    <meta name="twitter:description" content="Wähl eine Waffenrolle, übersetz sie mit den richtigen Zahlen in Modifikatoren für Angriffsschaden und Angriffsgeschwindigkeit und schreib den /give-Befehl für deine Minecraft-Version.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,282 +72,135 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#article",
-      "headline": "Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen",
-      "name": "Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen",
-      "description": "Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#webpage" },
-      "inLanguage": "de",
-      "url": "https://cubeinsquare.com/de/wiki-custom-weapon/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#webpage",
-      "url": "https://cubeinsquare.com/de/wiki-custom-weapon/",
-      "name": "Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen",
-      "description": "Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "de",
-      "mainEntity": { "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Startseite",
-          "item": "https://cubeinsquare.com/de/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Wiki",
-          "item": "https://cubeinsquare.com/de/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#article",
+            "headline": "Eine eigene Waffe bauen: Schaden, Angriffsgeschwindigkeit und ein Aussehen, das Spieler erkennen",
+            "description": "Wähl eine Waffenrolle, übersetz sie mit den richtigen Zahlen in Modifikatoren für Angriffsschaden und Angriffsgeschwindigkeit und schreib den /give-Befehl für deine Minecraft-Version.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#webpage"
+            },
+            "inLanguage": "de",
+            "url": "https://cubeinsquare.com/de/wiki-custom-weapon/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen",
-          "item": "https://cubeinsquare.com/de/wiki-custom-weapon/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#webpage",
+            "url": "https://cubeinsquare.com/de/wiki-custom-weapon/",
+            "name": "Eine eigene Waffe bauen: Schaden, Angriffsgeschwindigkeit und ein Aussehen, das Spieler erkennen",
+            "inLanguage": "de"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/wiki-custom-weapon/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Startseite",
+                    "item": "https://cubeinsquare.com/de/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/de/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Eigene Waffen",
+                    "item": "https://cubeinsquare.com/de/wiki-custom-weapon/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-custom-weapon/">Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-weapon/"><strong>Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen</strong><span>Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-weapon/">RU</a><a href="/wiki-custom-weapon/">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a class="is-active" href="/de/wiki-custom-weapon/">DE</a></div>
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Seite durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Sprache"><a href="/ru/wiki-custom-weapon/">RU</a><a href="/wiki-custom-weapon/">EN</a><a href="/fr/wiki-custom-weapon/">FR</a><a class="is-active" href="#">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
-    <section class="page-hero"><h1>Schritt-für-Schritt: Erstellen einzigartiger Waffen mit eigenen Attributen</h1><p class="page-lead">Erfahre, wie du benutzerdefinierte Waffen mit spezifischem Angriffsschaden, Geschwindigkeit und visuellen Effekten in Minecraft erstellst.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Willst du von der Theorie zu einem wirklich nutzbaren Item springen?</p>
-        <p class="article-cta-text">Baue die visuelle Seite im Pack-Generator und setze Befehl plus Logik danach im Custom Item Builder zusammen. So lassen sich Aussehen und Serververhalten ohne Handsalat am saubersten testen.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/de/resource-pack-generator/">Pack-Generator öffnen</a>
-            <a class="tool-button tool-button-secondary" href="/de/custom-item-builder/">Item-Builder öffnen</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Eine eigene Waffe bauen: Schaden, Angriffsgeschwindigkeit und ein Aussehen, das Spieler erkennen</h1>
+        <p class="page-lead">Eine eigene Waffe ist ein Vanilla-Item mit Attributmodifikatoren für Schaden und Geschwindigkeit, einem Namen und meist einem eigenen Modell. Die Zahlen sind einfacher, als sie aussehen, wenn du weißt, womit der Spieler startet, und der Befehl unterscheidet sich zwischen den Versionen vor allem in der Schreibweise der Modifikatoren.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/custom-item-builder/">Custom-Item-Builder</a><a class="tool-button tool-button-secondary" href="/de/enchantment-randomizer/">Verzauberungs- & Attribut-Randomizer</a></div>
+    </section>
     <article>
-        <h2>Eine einzigartige Waffe beginnt mit Identität, nicht mit einer Schadenszahl</h2>
-<p>Wenn Menschen zum ersten Mal benutzerdefinierte Waffen bauen wollen, lautet die erste Frage oft: „Wie gebe ich diesem Item mehr Schaden?“ Das ist wichtig, aber nicht der beste Startpunkt. Eine gute Custom-Waffe ist nicht nur ein Wert. Sie ist eine Rolle, ein Rhythmus, eine Silhouette und ein Teil der Welt oder der Serverökonomie.</p>
-<p>Ein Dolch, ein Ritualmesser, ein rostiger Spalter, ein Gildenspeer und ein mechanischer Hammer können alle Nahkampfwaffen sein, ohne sich gleich anfühlen zu müssen. Das eine Ding soll schnell Druck machen, das nächste langsam und brutal treffen, ein drittes lebt vielleicht erst einmal als RP-Relikt, bevor es wirklich zur Waffe wird. Deshalb braucht eine starke Waffe immer drei Ebenen: Kampfdaten, visuelle Identität und saubere Item-Logik.</p>
-
-<h2>Lege den Waffen-Archetyp fest, bevor du Attribute anfasst</h2>
-<p>Der schnellste Weg zu einer langweiligen Waffe ist, nur auf Schadenswerte zu schauen. Vor jedem Befehl sollte klar sein, welches Gefühl die Waffe erzeugen soll.</p>
-
-<table class="compact-table">
-    <thead>
-        <tr><th>Waffentyp</th><th>Gewünschtes Gefühl</th><th>Typische Stat-Richtung</th><th>Visuelle Idee</th></tr>
-    </thead>
-    <tbody>
-        <tr><td>Dolch</td><td>Schnell, leicht, druckvoll</td><td>Weniger Schaden, mehr Angriffsgeschwindigkeit</td><td>Kleine Klinge, scharfe Silhouette</td></tr>
-        <tr><td>Langschwert</td><td>Ausgewogen und sofort lesbar</td><td>Mittlerer Schaden, mittlere Geschwindigkeit</td><td>Klares klassisches Waffenprofil</td></tr>
-        <tr><td>Kriegshammer</td><td>Schwer, langsam, bestrafend</td><td>Mehr Schaden, weniger Geschwindigkeit</td><td>Massiver Kopf, brutale Proportionen</td></tr>
-        <tr><td>Ritualstab</td><td>Hybrid oder symbolisch</td><td>Vielleicht schwächer als Nahkampfwaffe, stärker als Identitätsobjekt</td><td>Das Modell ist so wichtig wie die Werte</td></tr>
-    </tbody>
-</table>
-
-<p>Diese frühe Entscheidung spart später viel Arbeit. Wer weiß, ob ein Gegenstand Tempo, Wucht oder eher eine rituelle Aura tragen soll, trifft automatisch bessere Entscheidungen bei Basisitem, Modell, Name und Balance.</p>
-
-<h2>Das Vanilla-Basisitem ist wichtiger, als es aussieht</h2>
-<p>Unter jeder Custom-Waffe steckt immer noch ein normales Minecraft-Item. Und dieses Item beeinflusst, wie sich die Waffe im Inventar und in der Hand anfühlt. Basisgegenstände mit Haltbarkeit wirken natürlicher als richtige Ausrüstung. Papier, Sticks oder andere ungewöhnliche Dinge lassen sich zwar ebenfalls zu Waffen machen, brauchen aber meist mehr Zusatzlogik, um überzeugend zu wirken.</p>
-<ul>
-    <li><strong>Schwerter und Werkzeuge</strong> sind ideal, wenn die Waffe sich sofort wie Ausrüstung anfühlen soll.</li>
-    <li><strong>Ungewöhnliche Basisitems</strong> funktionieren gut für verfluchte Relikte, magische Symbole oder absichtlich seltsame Waffenideen.</li>
-    <li><strong>Stack-Verhalten zählt.</strong> Eine Waffe, die sich wie gewöhnliches Papier stapelt, wirkt fast immer falsch, wenn das nicht bewusst gewollt ist.</li>
-</ul>
-<p>Hier treffen RP und Gameplay besonders stark aufeinander. Zwei Gegenstände können beide Schaden machen und trotzdem völlig unterschiedliche Präsenz haben müssen.</p>
-
-<h2>Die Stat-Schicht: Schaden, Geschwindigkeit, Haltbarkeit und Rollen-Klarheit</h2>
-<p>In modernen Versionen entsteht das Gefühl einer Waffe vor allem durch Attribut-Modifikatoren. Die beiden ersten Werte, die wirklich zählen, sind Angriffsschaden und Angriffsgeschwindigkeit:</p>
-<ul>
-    <li><strong>Attack damage</strong> bestimmt, wie hart ein Treffer einschlägt.</li>
-    <li><strong>Attack speed</strong> bestimmt, wie schnell der nächste Schlag folgen kann.</li>
-</ul>
-<p>Wenn du nicht mit einer klassischen Waffenbasis arbeitest, solltest du auch an Haltbarkeit denken. Eine rituelle Feder, die plötzlich wie ein Hammer zuschlägt, braucht eventuell noch eine zusätzliche Haltbarkeitslogik, wenn sie sich wie echte Ausrüstung verhalten soll.</p>
-
-<p>Eine typische Struktur für eine schwere, langsame Waffe sieht konzeptionell etwa so aus:</p>
-<pre><code>attribute_modifiers = {
-  modifiers: [
-    {
-      id: "guild_hammer_damage",
-      type: "minecraft:generic.attack_damage",
-      amount: 9,
-      operation: "add_value",
-      slot: "mainhand"
-    },
-    {
-      id: "guild_hammer_speed",
-      type: "minecraft:generic.attack_speed",
-      amount: -2.8,
-      operation: "add_value",
-      slot: "mainhand"
-    }
-  ],
-  show_in_tooltip: true
-}</code></pre>
-<p>Die exakte Befehlshülle darum herum hängt von der Version ab. Deshalb ist es sicherer, nicht eine einzige magische Zeile auswendig zu lernen, sondern klar zu trennen: Wo endet die Item-Hülle, wo beginnt die visuelle Ebene, und wo sitzt die eigentliche Kampflogik?</p>
-
-<h2>Custom-Stats brauchen eine klar lesbare visuelle Identität</h2>
-<p>Eine Waffe, die anders zuschlägt, sollte auch anders aussehen. Wenn zwei Gegenstände dieselbe Textur, eine ähnliche Silhouette und fast denselben Namen teilen, werden Spieler sie ständig verwechseln, egal wie sauber die interne Logik ist. Darum ist die Resource-Pack-Seite hier genauso wichtig wie die Zahlen.</p>
-<p>Der <a href='/de/resource-pack-generator/'>Resource Pack Generator</a> hilft dabei, Modell und Textur sauber zu verpacken. Ein schneller Dolch, ein schwerer Hammer, ein Fraktionsspeer oder eine verfluchte Klinge sollten bereits im Hotbar und Inventar lesbar verschieden wirken. Gerade für RP-Server ist das fast genauso wichtig wie die eigentliche Kampfbalance.</p>
-
-<h2>Was unsere Tools heute schon sauber übernehmen</h2>
-<p>Die Website deckt bereits einen großen Teil der Waffen-Hülle ab, selbst wenn das feine Austarieren der Kampfattribute am Ende manchmal noch direkt in der finalen Befehlsschicht landet.</p>
-<ul>
-    <li><strong><a href='/de/custom-item-builder/'>Custom Item Builder</a></strong> ist stark für sichtbaren Namen, Lore, Hidden IDs, versionsbewusste Give-Struktur und Modell-Hooks.</li>
-    <li><strong><a href='/de/resource-pack-generator/'>Resource Pack Generator</a></strong> übernimmt die Pack-Seite, damit die Waffe auch visuell einzigartig wird.</li>
-    <li><strong><a href='/de/custom-villager-trades/'>Villager-Trades</a></strong> sind nützlich, sobald die Waffe in Shops, Belohnungen oder Fraktionsökonomien auftauchen soll.</li>
-</ul>
-<p>Selbst wenn die endgültige Schadens- und Geschwindigkeitsfeinheit später noch manuell ergänzt wird, nimmt die Seite bereits den nervigsten Teil der Wiederholungsarbeit ab.</p>
-
-<h2>Ein praktischer Workflow für eine benutzerdefinierte Waffe</h2>
-<ol>
-    <li><strong>Lege die Rolle fest.</strong> Soll die Waffe schnell, schwer, selten, rituell oder progression-gebunden sein?</li>
-    <li><strong>Wähle das Basisitem.</strong> Inventarverhalten und Handgefühl sollten zur Rolle passen.</li>
-    <li><strong>Baue die visuelle Ebene.</strong> Modell und Textur laufen anschließend durch den <a href='/de/resource-pack-generator/'>Resource Pack Generator</a>.</li>
-    <li><strong>Erzeuge die Item-Hülle.</strong> Im <a href='/de/custom-item-builder/'>Custom Item Builder</a> setzt du Namen, Lore, Hidden ID und Modell-Hook.</li>
-    <li><strong>Ergänze die Kampfattribute.</strong> Füge die Attribut-Modifikatoren passend zur Zielversion und zur gewünschten Balance hinzu.</li>
-    <li><strong>Teste im echten Nutzungskontext.</strong> Nicht nur ein Schlag im Kreativmodus, sondern auch Inventar, Hotbar, RP-Szenen und der tatsächliche Belohnungsweg zählen.</li>
-</ol>
-
-<h2>Die häufigsten Fehler</h2>
-<ul>
-    <li><strong>Nur den Schaden zu ändern.</strong> Eine Waffe mit großer Zahl, aber ohne Gedanken zu Geschwindigkeit, Lesbarkeit oder Verteilung, fühlt sich trotzdem flach an.</li>
-    <li><strong>Das Basisitem zu ignorieren.</strong> Eine schlechte Vanilla-Basis kann das Gefühl ruinieren, selbst wenn die Zahlen stimmen.</li>
-    <li><strong>Die visuelle Ebene zu vergessen.</strong> Wenn die Waffe wie ein Standard-Item aussieht, wird sie selten als besonders wahrgenommen.</li>
-    <li><strong>Nur auf dem Papier zu balancieren.</strong> Saubere Zahlen bedeuten nicht automatisch gutes Ingame-Gefühl.</li>
-    <li><strong>Die Versionssyntax aus dem Blick zu verlieren.</strong> Die Waffenidee kann richtig sein, während die konkrete Befehlsform nicht zur realen Version passt.</li>
-</ul>
-
-<h2>Häufig gestellte Fragen</h2>
-<div class='faq-section'>
-    <h3>Kann ein Item, das keine klassische Waffe ist, trotzdem Schaden machen?</h3>
-    <p>Ja. Mit Attribut-Modifikatoren kann fast jede Basis offensiv werden. Die wichtigere Frage ist, ob diese Basis wirklich zum gewünschten Waffen-Gefühl passt.</p>
-</div>
-<div class='faq-section'>
-    <h3>Wird eine Custom-Waffe Haltbarkeit verlieren?</h3>
-    <p>Wenn das Basisitem bereits mit Haltbarkeit arbeitet, verhält es sich normalerweise wie Ausrüstung. Bei einfachen Basen wie Papier oder Federn braucht es oft eine zusätzliche Logik, wenn du dasselbe Gefühl erzeugen willst.</p>
-</div>
-<div class='faq-section'>
-    <h3>Braucht jede besondere Waffe ein eigenes Modell?</h3>
-    <p>Nicht zwingend, aber es hilft enorm. Eine eigene Silhouette und Textur verbessern sowohl die Bedienbarkeit als auch die RP-Lesbarkeit stark.</p>
-</div>
-<div class='faq-section'>
-    <h3>Sollte ich Waffen nur über den Schadenswert balancieren?</h3>
-    <p>Nein. Angriffsgeschwindigkeit, Haltbarkeit, Seltenheit, Beschaffungsweg und visuelle Klarheit beeinflussen die tatsächliche Wahrnehmung ebenso stark.</p>
-</div>
-<div class='faq-section'>
-    <h3>Hat der Builder noch Sinn, wenn ich Attribute später per Hand ergänze?</h3>
-    <p>Ja. Er spart dir bereits viel Arbeit bei Name, Lore, Hidden ID, Modell-Hook und versionsabhängiger Item-Struktur.</p>
-</div>
+        <p><strong>Geprüft für die Versionen:</strong> Java Edition 1.20 bis 26.3.</p>
+        <h2 id="numbers">Die Zahlen hinter jeder Nahkampfwaffe</h2>
+        <p>Ein Spieler startet mit 1 Angriffsschaden und einer Angriffsgeschwindigkeit von 4. Eine Waffe legt Modifikatoren obendrauf: Ein Vanilla-Eisenschwert gibt +5 Schaden und −2,4 Geschwindigkeit – daher seine 6 Schaden und 1,6 Geschwindigkeit. Für 7 Schaden addierst du 6, für 1,6 Schläge pro Sekunde −2,4.</p>
+        <table class="compact-table">
+            <thead><tr><th>Rolle</th><th>Fühlt sich an wie</th><th>Schaden / Tempo</th><th>Modifikatoren</th><th>Schaden pro Sekunde</th></tr></thead>
+            <tbody>
+                <tr><td>Dolch</td><td>Schnell, leicht, macht Druck</td><td>4 / 2,0</td><td>+3 / −2,0</td><td>8</td></tr>
+                <tr><td>Langschwert</td><td>Ausgewogen und lesbar</td><td>7 / 1,6</td><td>+6 / −2,4</td><td>11,2</td></tr>
+                <tr><td>Kriegshammer</td><td>Langsam, schwer, gnadenlos</td><td>11 / 0,8</td><td>+10 / −3,2</td><td>8,8</td></tr>
+                <tr><td>Ritualstab</td><td>Vor allem ein Requisit</td><td>3 / 1,2</td><td>+2 / −2,8</td><td>3,6</td></tr>
+            </tbody>
+        </table>
+        <p>Schaden pro Sekunde ist Schaden mal Geschwindigkeit bei voll aufgeladenem Schlag. Daran sieht man, warum der Hammer mit dem härtesten Schlag in einem langen Kampf nicht die stärkste Waffe ist und warum sich seine schweren Treffer im Duell anders anfühlen.</p>
+        <h2 id="replace">Eigene Modifikatoren ersetzen die Standardwerte</h2>
+        <p>Sobald ein Item Attributmodifikatoren bekommt, sind die eingebauten weg. Ein Diamantschwert, das nur +2 Glück erhält, schlägt wie eine leere Hand. Setz immer Schaden und Geschwindigkeit, auch wenn du nur eins ändern wolltest.</p>
+        <p>Nimm für diese beiden Modifikatoren die IDs <code>minecraft:base_attack_damage</code> und <code>minecraft:base_attack_speed</code>, dann zeigt der Tooltip Gesamtwerte wie „7 Angriffsschaden“, so wie bei einem Vanilla-Schwert; mit jeder anderen ID zeigt er „+6“.</p>
+        <h2 id="commands">Dasselbe Langschwert in jeder Version</h2>
+        <p>1.21.5 – 26.x: Modifikatoren sind eine einfache Liste, Attribut-IDs haben kein Präfix.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name={text:"Guild longsword",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <p>1.21.2 – 1.21.4: Die Liste steht in <code>{modifiers:[…]}</code>, der Name ist ein JSON-String. In 1.21 – 1.21.1 schreibst du außerdem die Typen als <code>minecraft:generic.attack_damage</code> und <code>minecraft:generic.attack_speed</code>.</p>
+        <pre><code>/give @p minecraft:iron_sword[minecraft:custom_name='{"text":"Guild longsword","italic":false}',minecraft:attribute_modifiers={modifiers:[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:6,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.4,operation:"add_value",slot:"mainhand"}]}] 1</code></pre>
+        <p>Vor 1.20.5: NBT mit Namen und UUID pro Modifikator.</p>
+        <pre><code>/give @p minecraft:iron_sword{display:{Name:'{"text":"Guild longsword","italic":false}'},AttributeModifiers:[{AttributeName:"generic.attack_damage",Name:"guild_damage",Amount:6,Operation:0,UUID:[I;1,1,1,1],Slot:"mainhand"},{AttributeName:"generic.attack_speed",Name:"guild_speed",Amount:-2.4,Operation:0,UUID:[I;1,1,1,2],Slot:"mainhand"}]} 1</code></pre>
+        <p>1.20.5 – 1.20.6 liegen dazwischen: Komponenten wie in 1.21, aber jeder Modifikator braucht eine <code>uuid</code> und einen <code>name</code> statt einer <code>id</code>.</p>
+        <h2 id="base">Das Basisitem wählen</h2>
+        <ul>
+            <li><strong>Ein Schwert oder eine Axt</strong> verhält sich schon wie eine Waffe: Haltbarkeit, Waffenverzauberungen am Amboss, und eine Axt setzt einen erhobenen Schild außer Gefecht.</li>
+            <li><strong>Ein Stock, ein Knochen oder eine Lohenrute</strong> passt für Requisiten und Stäbe, hat aber keine Haltbarkeit und stapelt sich. Füg <code>max_stack_size=1</code> und <code>max_damage</code> hinzu: Einen Befehl, der ein Item zugleich stapelbar und abnutzbar macht, lehnt das Spiel ab. Ab 1.21.5 legt die Komponente <code>weapon</code> fest, wie viel Haltbarkeit jeder Treffer kostet.</li>
+        </ul>
+        <pre><code>/give @p minecraft:stick[minecraft:max_stack_size=1,minecraft:max_damage=250,minecraft:weapon={item_damage_per_attack:1},minecraft:custom_name={text:"Ritual staff",italic:false},minecraft:attribute_modifiers=[{type:"minecraft:attack_damage",id:"minecraft:base_attack_damage",amount:2,operation:"add_value",slot:"mainhand"},{type:"minecraft:attack_speed",id:"minecraft:base_attack_speed",amount:-2.8,operation:"add_value",slot:"mainhand"}]] 1</code></pre>
+        <h2 id="look">Eine Waffe, die man erkennt</h2>
+        <p>Teilen zwei Waffen dieselbe Textur, verwechseln Spieler sie, egal wie die Werte sind. Gib jeder ein eigenes Modell: Ab 1.21.4 zeigt das Item mit <code>item_model</code> auf eine Item-Definition (die schreibt der <a href="/de/item-model-builder/">item_model-Builder</a>), davor wählte eine CustomModelData-Zahl über die Overrides des Packs ein Modell. Ein kurzer Name und eine Lore-Zeile dazu, wofür die Waffe gedacht ist, erledigen den Rest.</p>
+        <h2 id="tooltip">Die Wertezeilen ausblenden</h2>
+        <p>Bei einem geheimnisvollen Relikt willst du die Zahlen vielleicht nicht im Tooltip. Ab 1.21.5 fügst du <code>tooltip_display={hidden_components:["minecraft:attribute_modifiers"]}</code> hinzu; in 1.20.5 – 1.21.4 kommt <code>show_in_tooltip:false</code> in <code>attribute_modifiers</code>; vor 1.20.5 nutzt du <code>HideFlags:2</code>.</p>
+        <h2 id="faq">Häufige Fragen</h2>
+        <div class="faq-section"><h3>Kann eine Waffe unzerstörbar sein?</h3><p>Ja, mit <code>unbreakable={}</code>. In einer Server-Ökonomie fällt damit ein Grund weg, sie zu ersetzen – heb das für seltene Belohnungen auf.</p></div>
+        <div class="faq-section"><h3>Wirken Verzauberungen zusätzlich?</h3><p>Ja. Schärfe und die anderen kommen auf den veränderten Schaden; der <a href="/de/wiki-enchantment-conflicts/">Artikel zu Konflikten</a> listet, welche sich ausschließen.</p></div>
+        <div class="faq-section"><h3>Wie balanciere ich mehrere eigene Waffen?</h3><p>Trag sie mit Schaden, Tempo und Schaden pro Sekunde in eine Tabelle ein und teste jede im selben Kampf. Tabellenversion und Spielgefühl stimmen beim ersten Versuch selten überein.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

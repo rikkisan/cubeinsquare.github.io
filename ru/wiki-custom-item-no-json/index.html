@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON | Cube in Square</title>
+    <title>Гайд по конструктору кастомных предметов: предметы Minecraft без ручного JSON | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.">
+    <meta name="description" content="Как собрать команду кастомного предмета в конструкторе: базовый предмет, имя и лор, скрытый ID в custom_data, item_model и ячейки custom_model_data — для четырёх диапазонов версий.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -19,18 +19,18 @@
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-item-no-json/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-item-no-json/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-item-no-json/">
-<meta property="og:site_name" content="Cube in Square">
+    <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON | Cube in Square">
-    <meta property="og:description" content="Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.">
+    <meta property="og:title" content="Гайд по конструктору кастомных предметов: предметы Minecraft без ручного JSON | Cube in Square">
+    <meta property="og:description" content="Как собрать команду кастомного предмета в конструкторе: базовый предмет, имя и лор, скрытый ID в custom_data, item_model и ячейки custom_model_data — для четырёх диапазонов версий.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-custom-item-no-json/">
     <meta property="og:locale" content="ru_RU">
-    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
-<meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON | Cube in Square">
-    <meta name="twitter:description" content="Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Гайд по конструктору кастомных предметов: предметы Minecraft без ручного JSON | Cube in Square">
+    <meta name="twitter:description" content="Как собрать команду кастомного предмета в конструкторе: базовый предмет, имя и лор, скрытый ID в custom_data, item_model и ячейки custom_model_data — для четырёх диапазонов версий.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -72,293 +72,144 @@
     <link rel="stylesheet" href="/assets/styles.css">
     <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://cubeinsquare.com/#organization",
-      "name": "Cube in Square",
-      "alternateName": "Kub v kvadrate",
-      "url": "https://cubeinsquare.com/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://cubeinsquare.com/assets/server-icon.png"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "url": "https://cubeinsquare.com/about/",
-        "contactType": "editorial support",
-        "availableLanguage": ["ru", "en", "fr", "de"]
-      }
-    },
-    {
-      "@type": "Article",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#article",
-      "headline": "Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON",
-      "name": "Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON",
-      "description": "Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.",
-      "author": { "@id": "https://cubeinsquare.com/#organization" },
-      "publisher": { "@id": "https://cubeinsquare.com/#organization" },
-      "mainEntityOfPage": { "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#webpage" },
-      "inLanguage": "ru",
-      "url": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/",
-      "image": ["https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"],
-      "datePublished": "2026-04-23",
-      "dateModified": "2026-04-29"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#webpage",
-      "url": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/",
-      "name": "Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON",
-      "description": "Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.",
-      "isPartOf": { "@id": "https://cubeinsquare.com/#website" },
-      "about": { "@id": "https://cubeinsquare.com/#organization" },
-      "inLanguage": "ru",
-      "mainEntity": { "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#article" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#breadcrumb",
-      "itemListElement": [
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cubeinsquare.com/ru/"
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Вики",
-          "item": "https://cubeinsquare.com/ru/wiki/"
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#article",
+            "headline": "Как пользоваться конструктором кастомных предметов: предметы без ручного написания команды",
+            "description": "Как собрать команду кастомного предмета в конструкторе: базовый предмет, имя и лор, скрытый ID в custom_data, item_model и ячейки custom_model_data — для четырёх диапазонов версий.",
+            "author": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/",
+            "datePublished": "2026-04-23",
+            "dateModified": "2026-10-25"
         },
         {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON",
-          "item": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/"
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/",
+            "name": "Как пользоваться конструктором кастомных предметов: предметы без ручного написания команды",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Гайд по конструктору кастомных предметов",
+                    "item": "https://cubeinsquare.com/ru/wiki-custom-item-no-json/"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+    </script>
 </head>
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a>
-            <div class="steam-dropdown-panel steam-mega-panel">
-                <div class="mega-list mega-list-tree">
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#general-wiki">General articles</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-custom-item-no-json/">Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON</a>
-                            <a href="/wiki/#resource-pack-paths">Resource pack structure</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#resource-pack-generator-wiki">Minecraft Resource Pack Generator</a>
-                        <div class="mega-sublist">
-                            <a href="/wiki-resource-pack-generator/">How to use the generator</a>
-                        </div>
-                    </div>
-                    <div class="mega-group">
-                        <a class="mega-group-title" href="/wiki/#other-tools-wiki">Other tools</a>
-                        <div class="mega-sublist">
-                            <a href="/tools/">Tools catalog</a><a href="/wiki-custom-potions/">Custom potions</a>
-                            <a href="/wiki-custom-villager-trades/">Villager trades</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/wiki-custom-item-no-json/"><strong>Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON</strong><span>Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.</span></a>
-                    <a class="mega-card" href="/wiki-resource-pack-generator/"><strong>Generator guide</strong><span>Step-by-step pack creation workflow.</span></a>
-                    <a class="mega-card" href="/wiki/#resource-pack-paths"><strong>Resource pack structure</strong><span>A compact map of textures, models, and blockstates folders.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/tools/">Tools</a>
-            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
-                <div class="mega-list">
-                    <a href="/resource-pack-generator/">Minecraft Resource Pack Generator</a>
-                    <a href="/custom-villager-trades/">Custom villager trades</a>
-                    <a href="/custom-potions/">Custom potions</a>
-                </div>
-                <div class="mega-feature">
-                    <a class="mega-card" href="/resource-pack-generator/"><strong>Pack Generator</strong><span>Items, blocks, armor, CustomModelData, and preview.</span></a>
-                    <a class="mega-card" href="/custom-potions/"><strong>Custom potions</strong><span>Builder for potion contents, custom effects, color, lore, and give commands.</span></a>
-                    <a class="mega-card" href="/custom-villager-trades/"><strong>Villager trades</strong><span>Build trades with prices, rewards, limits, and a summon command.</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="steam-nav-menu">
-            <a class="steam-nav-dropdown" href="/about/">Project</a>
-            <div class="steam-dropdown-panel steam-dropdown-panel--small">
-                <a href="/about/">Cube in Square</a>
-                <a href="/privacy-policy/">Privacy Policy</a>
-            </div>
-        </div>
-        <form class="steam-search" action="/wiki/" method="get">
-            <input type="text" name="q" placeholder="Search the site...">
-            <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
-        </form>
-        <div class="language-switch" aria-label="Language"><a class="is-active" href="/ru/wiki-custom-item-no-json/">RU</a><a href="/wiki-custom-item-no-json/">EN</a><a href="/fr/wiki-custom-item-no-json/">FR</a><a href="/de/wiki-custom-item-no-json/">DE</a></div>
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-custom-item-no-json/">EN</a><a href="/fr/wiki-custom-item-no-json/">FR</a><a href="/de/wiki-custom-item-no-json/">DE</a></div>
     </div>
-</div><main class="page-shell wiki-article">
+</div>
+<main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
-    <section class="page-hero"><h1>Как создать кастомный предмет в Minecraft 1.20.5+ без знания JSON</h1><p class="page-lead">Узнайте, как легко создавать предметы с новой системой компонентов в Minecraft 1.21.4+, не прописывая JSON вручную.</p></section>
-    <!-- article-cta -->
-    <div class="article-cta-panel">
-        <p class="article-cta-title">Хочешь перейти от статьи к рабочему предмету?</p>
-        <p class="article-cta-text">Собери визуальную часть в генераторе ресурспаков, а командную и логическую — в конструкторе кастомных предметов. Так легче проверить и внешний вид, и серверную логику без ручной каши.</p>
-        <div class="tool-button-row">
-            <a class="tool-button" href="/ru/resource-pack-generator/">Открыть генератор паков</a>
-            <a class="tool-button tool-button-secondary" href="/ru/custom-item-builder/">Открыть конструктор предметов</a>
-        </div>
-    </div>
-    <!-- /article-cta -->
+    <section class="page-hero">
+        <h1>Как пользоваться конструктором кастомных предметов: предметы без ручного написания команды</h1>
+        <p class="page-lead">Кастомный предмет в Minecraft — это ванильный предмет с несколькими компонентами: имя и лор для игроков, скрытый ID для вашей логики и хук модели для ресурс-пака. Конструктор пишет такую команду /give по форме в синтаксисе выбранной версии, и правила кавычек и скобок перестают быть вашей заботой.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/custom-item-builder/">Открыть конструктор</a><a class="tool-button tool-button-secondary" href="/ru/wiki-give-command-not-working/">Почему не работает /give</a></div>
+    </section>
     <article>
-        <h2>“Без JSON” не значит “без логики”</h2>
-        <p>Когда люди говорят, что хотят создать кастомный предмет “без JSON”, они обычно не просят волшебства. Они просят убрать самую хрупкую часть процесса. Современный предмет в Minecraft может нести в себе видимое имя, лор, скрытый идентификатор, модельную привязку, характеристики, эффекты и ещё серверную логику. Всё это можно собрать вручную, но чем больше в предмете смысла, тем легче его сломать одной скобкой или одной кавычкой.</p>
-        <p>После Minecraft 1.20.5 это стало ощущаться ещё сильнее. Старый предметный NBT уступил место компонентам данных, и теперь даже простая команда уже требует больше аккуратности. Поэтому “без JSON” в нормальном смысле означает не “совсем без структуры”, а “без ручного страдания по каждому символу”.</p>
-
-        <h2>Из чего на самом деле состоит кастомный предмет</h2>
-        <p>Полезно думать о кастомном предмете не как об одной гигантской команде, а как о нескольких слоях:</p>
-
+        <p><strong>Проверено на версиях:</strong> Java Edition 1.20–26.3.</p>
+        <h2 id="layers">Из чего состоит кастомный предмет</h2>
         <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Слой</th>
-                    <th>За что отвечает</th>
-                    <th>Пример</th>
-                    <th>Зачем нужен</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Слой</th><th>Где хранится</th><th>Кто его читает</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>Базовый предмет</td>
-                    <td>Обычный ванильный item, на котором всё держится</td>
-                    <td><code>minecraft:paper</code>, <code>minecraft:iron_sword</code></td>
-                    <td>Игра всё равно должна понимать, что это за предмет под капотом.</td>
-                </tr>
-                <tr>
-                    <td>Видимая идентичность</td>
-                    <td>Имя и лор, которые видит игрок</td>
-                    <td>“Guild Pass”, “Запечатанный контракт”</td>
-                    <td>Даёт предмету читабельность и атмосферу.</td>
-                </tr>
-                <tr>
-                    <td>Скрытая идентичность</td>
-                    <td>ID или маркер, который использует сервер</td>
-                    <td><code>quest_pass</code>, <code>rp_currency_tier_1</code></td>
-                    <td>Позволяет отличать два красивых предмета с разной логикой.</td>
-                </tr>
-                <tr>
-                    <td>Визуальный хук</td>
-                    <td>Привязка к модели или текстуре</td>
-                    <td><code>custom_model_data</code>, <code>item_model</code></td>
-                    <td>Соединяет команду и ресурс-пак.</td>
-                </tr>
+                <tr><td>Базовый предмет</td><td>ID предмета, например <code>minecraft:paper</code></td><td>Игра: размер стака, анимация, прочность</td></tr>
+                <tr><td>Имя и лор</td><td><code>custom_name</code>, <code>lore</code></td><td>Игроки</td></tr>
+                <tr><td>Скрытый ID</td><td><code>custom_data={item_id:"…"}</code></td><td>Ваши команды, квесты, магазины и жители</td></tr>
+                <tr><td>Хук модели</td><td><code>item_model</code>, <code>custom_model_data</code></td><td>Ресурс-пак</td></tr>
             </tbody>
         </table>
-
-        <h2>Пошагово: как собрать один полезный предмет</h2>
-        <p>Представим, что тебе нужен пропуск для гильдии. Не надо начинать с монструозной команды. Начни с роли предмета.</p>
+        <p>Раздельные слои и делают предмет удобным в поддержке: его можно переименовать к новому сезону, не сломав квест, который проверяет скрытый ID, и сменить арт, не трогая ни того, ни другого.</p>
+        <h2 id="steps">По шагам</h2>
         <ol>
-            <li><strong>Выбери базовый предмет.</strong> Для пропусков, писем, билетов и контрактов бумага часто идеальна: она нейтральна и легко заменяется на кастомную модель позже.</li>
-            <li><strong>Задай видимое имя.</strong> Игрок должен по одному взгляду понимать, что у него в руках.</li>
-            <li><strong>Добавь лор только если он помогает.</strong> Не надо превращать каждый предмет в простыню ради простыни.</li>
-            <li><strong>Назначь скрытый идентификатор.</strong> Если серверу нужно отличать этот пропуск от обычной бумаги, это лучше сделать явно.</li>
-            <li><strong>Подключи визуальный хук.</strong> Тут и появляется связь с моделью или текстурой.</li>
-            <li><strong>Проверь предмет в игре.</strong> Посмотри, как он выглядит в инвентаре, на земле и в тех местах, где реально будет использоваться.</li>
+            <li><strong>Версия команды.</strong> Выберите 1.21.5 – 26.x, 1.21.4, 1.20.5 – 1.21.3 или до 1.20.5. Форма показывает только поля, которые эта версия умеет.</li>
+            <li><strong>Базовый предмет и количество.</strong> Выбирайте основу по поведению, а не только по виду: бумага стакается до 64, книга не открывается как написанная, удочку с морковкой можно использовать.</li>
+            <li><strong>Скрытый ID.</strong> Стабильный и скучный, например <code>rp.guild.pass</code>. С 1.20.5 он ложится в <code>custom_data</code>; до этого конструктор пишет его своим тегом NBT.</li>
+            <li><strong>Имя и лор.</strong> Одна строка лора — одна строка поля. Конструктор добавляет <code>italic:false</code>, чтобы имя не выглядело переименованием на наковальне.</li>
+            <li><strong>Модель.</strong> До 1.21.4 это одно число CustomModelData, на которое реагируют <code>overrides</code> пака. С 1.21.4 <code>item_model</code> называет item definition: <code>cubeinsquare:item/paper/guild_pass</code> читает <code>assets/cubeinsquare/items/item/paper/guild_pass.json</code>, а ячейки float, string, flag и color — значения, по которым этот файл может переключаться.</li>
+            <li><strong>Скопируйте и проверьте.</strong> Сводка показывает длину: больше 256 символов — команде нужен командный блок вместо чата.</li>
         </ol>
-
-        <h2>Сгенерированная команда — всё ещё настоящая команда</h2>
-        <p>То, что команду собрал билдер, не делает её игрушечной. Она остаётся обычной рабочей командой Minecraft, просто собранной в безопасном порядке. Например, современная запись для простого пропуска может выглядеть так:</p>
-        <pre><code>/give @p minecraft:paper[minecraft:custom_name='{"text":"Guild Pass","italic":false}',minecraft:custom_model_data=2047]</code></pre>
-        <p>Да, это можно написать руками. Но вопрос в другом: стоит ли тратить внимание на ручную пунктуацию, когда ты параллельно ещё придумываешь смысл предмета, рисуешь текстуру, связываешь его с паком и решаешь, как он будет жить на сервере? В большинстве случаев нет.</p>
-
-        <h2>Как билдер соединяется с ресурс-паком</h2>
-        <p>Кастомный предмет начинает ощущаться цельным только тогда, когда командная и визуальная части совпадают. Если команда смотрит в один модельный хук, а пак ждёт другой, предмет может выдаваться правильно, но всё равно выглядеть как обычная бумага или обычный меч. Именно поэтому <a href='/custom-item-builder/'>Custom Item Builder</a> и <a href='/resource-pack-generator/'>Resource Pack Generator</a> хорошо работают в паре.</p>
-        <p>Билдер отвечает за командную идентичность. Генератор пака — за структуру моделей и текстур. Когда обе части согласованы, предмет уже можно безопасно использовать в торгах, наградах, квестах и командных блоках без ручной пересборки каждый раз.</p>
-
-        <h2>Разница версий важнее, чем кажется новичкам</h2>
-        <p>Очень многие проблемы “я просто хочу кастомный предмет” на самом деле оказываются проблемами версии.</p>
-
-        <table class="compact-table">
-            <thead>
-                <tr>
-                    <th>Версия</th>
-                    <th>Что меняется</th>
-                    <th>Что обычно ломают</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>До 1.20.5</td>
-                    <td>Классический предметный NBT</td>
-                    <td>Пытаются вставить современный компонентный синтаксис в legacy-сервер.</td>
-                </tr>
-                <tr>
-                    <td>1.20.5–1.21.3</td>
-                    <td>Компоненты данных заменяют item NBT</td>
-                    <td>Тянут в новый синтаксис старые привычки с фигурными скобками.</td>
-                </tr>
-                <tr>
-                    <td>1.21.4+</td>
-                    <td>Тот же компонентный мир, но важнее становится новый item-model workflow</td>
-                    <td>Забывают, что команда и структура пака должны обновляться вместе.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Частые ошибки, когда люди пытаются “обойтись без JSON” сами</h2>
+        <h2 id="example">Пример по частям</h2>
+        <p>«Загрузить пример» заполняет форму пропуском гильдии. В ветке 1.21.5 – 26.x получается:</p>
+        <pre><code>/give @p minecraft:paper[minecraft:custom_name={text:"Guild archive pass",italic:false},minecraft:lore=[{text:"Stamped for the old city archive.",italic:false}],minecraft:item_model="cubeinsquare:item/paper/guild_pass",minecraft:custom_data={item_id:"rp.guild.pass"},minecraft:custom_model_data={floats:[2047.0f],strings:["guild_pass"],flags:[true],colors:[6138367]}] 1</code></pre>
         <ul>
-            <li><strong>Они не пишут JSON-файлы, но всё ещё вручную собирают хрупкие команды.</strong></li>
-            <li><strong>Они дают предмету красивое имя, но не дают скрытый ID.</strong></li>
-            <li><strong>Они сначала делают визуал, а уже потом думают о команде.</strong></li>
-            <li><strong>Они тестируют всё только через чат, хотя крупные команды уже давно должны жить в командном блоке.</strong></li>
-            <li><strong>Они пропускают выбор версии и удивляются, что почти правильная команда не работает.</strong></li>
+            <li><code>custom_name</code> и <code>lore</code> — текстовые компоненты в SNBT, в форме, которая появилась в 1.21.5.</li>
+            <li><code>item_model</code> указывает на item definition в паке.</li>
+            <li><code>custom_data</code> несёт скрытый ID, которому может доверять сервер.</li>
+            <li><code>custom_model_data</code> несёт значения, которые проверяет item definition: float для <code>range_dispatch</code>, строку для <code>select</code>, флаг для <code>condition</code>, цвет для окраски.</li>
         </ul>
-
-        <h2>Почему это особенно полезно для RP и no-mod серверов</h2>
-        <p>No-mod серверу нужны предметы, которые несут смысл без обязательной установки модпака. Валюта, письма, реликвии, медицинские дозы, жетоны культа, пропуска, квестовые трофеи — всё это должно ощущаться не как переименованный мусор, а как настоящие объекты мира. Именно тут builder-first workflow особенно хорош: он оставляет сайт и сервер дружелюбными для игроков, но при этом даёт команде аккуратную внутреннюю структуру.</p>
-        <p>Вместо того чтобы заставлять каждого члена команды помнить всю компонентную грамматику, вы получаете повторяемый процесс. Один человек рисует. Другой придумывает механику. Третий собирает команду. И в итоге выходит всё тот же обычный Minecraft-предмет, но уже без хаоса из ручной синтаксической борьбы.</p>
-
-        <h2>Часто задаваемые вопросы (FAQ)</h2>
-        <div class='faq-section'>
-            <h3>Нужно ли мне учить JSON, чтобы использовать CustomModelData?</h3>
-            <p>Нет. Полезно понимать саму идею предмета, но не обязательно вручную писать JSON-файлы или полную компонентную запись только ради того, чтобы сделать рабочий объект.</p>
-
-            <h3>Что изменилось в Minecraft 1.20.5 для предметов?</h3>
-            <p>Mojang заменили старый предметный NBT системой компонентов данных. Из-за этого многие старые туториалы по предметам больше не соответствуют современным версиям.</p>
-
-            <h3>Можно ли использовать этот workflow, если мне нужен просто переименованный предмет?</h3>
-            <p>Да, и это даже хороший старт. Переименованный предмет — удобный маленький тест, чтобы почувствовать современный синтаксис, прежде чем добавлять модель, лор и скрытую логику.</p>
-
-            <h3>Что делать, если мне нужна ещё и кастомная текстура?</h3>
-            <p>Тогда связывай <a href='/custom-item-builder/'>Custom Item Builder</a> с <a href='/resource-pack-generator/'>Resource Pack Generator</a>. Один закрывает командную сторону, второй — структуру пака.</p>
-
-            <h3>Подход “без JSON” — это только для новичков?</h3>
-            <p>Нет. Даже опытным админам и билдерам выгодно быстрее и безопаснее итерировать предметы, а не тратить время на ручную пунктуацию там, где можно сосредоточиться на дизайне и логике.</p>
-        </div>
+        <p>Тот же пропуск до 1.20.5 — один блок NBT:</p>
+        <pre><code>/give @p minecraft:paper{CustomModelData:2047,display:{Name:'{"text":"Guild archive pass","italic":false}',Lore:['{"text":"Stamped for the old city archive.","italic":false}']},cube_item_id:"rp.guild.pass"} 1</code></pre>
+        <h2 id="check">Как проверить скрытый ID в игре</h2>
+        <p>С 1.20.5 предикаты предметов умеют проверять <code>custom_data</code> напрямую. Первая строка срабатывает на каждого игрока с пропуском в основной руке; вторая забирает у игрока один пропуск — так дверь или магазин могут его «потратить»:</p>
+        <pre><code>execute as @a if items entity @s weapon.mainhand *[custom_data~{item_id:"rp.guild.pass"}] run say I carry the guild pass
+clear @s *[custom_data~{item_id:"rp.guild.pass"}] 1</code></pre>
+        <p>Переименованная ванильная бумага не проходит ни одну проверку: имя здесь не проверяется.</p>
+        <h2 id="mistakes">Частые ошибки</h2>
+        <ul>
+            <li><strong>Сменить скрытый ID потом.</strong> Все квесты, магазины и сделки, которые его проверяют, перестают узнавать старые предметы. Меняйте видимое имя.</li>
+            <li><strong>item_model указывает на модель.</strong> С 1.21.4 он называет файл в <code>items/</code>, а тот уже называет модели в <code>models/</code>. Путь сразу на модель даёт текстуру отсутствующей модели.</li>
+            <li><strong>Одна команда для всех версий.</strong> Четыре ветки существуют потому, что синтаксис действительно разный: команда для 1.21.4 в 1.21.5 назовёт предмет <code>{"text":…}</code>.</li>
+        </ul>
+        <h2 id="faq">Частые вопросы</h2>
+        <div class="faq-section"><h3>Нужен ли ресурс-пак?</h3><p>Только для своего вида. Имя, лор и скрытый ID работают в ванилле без пака.</p></div>
+        <div class="faq-section"><h3>Зачем ячейка цвета?</h3><p>Item definition может окрашивать слой модели цветами из <code>custom_model_data</code>, и одна модель служит нескольким фракционным цветам.</p></div>
+        <div class="faq-section"><h3>Может ли житель принимать только настоящий предмет?</h3><p>Да: положите тот же <code>custom_data</code> в цену сделки. Как это сделать, показывают <a href="/ru/custom-villager-trades/">конструктор торгов</a> и <a href="/ru/wiki-rp-economy-custom-data/">статья про экономику</a>.</p></div>
     </article>
 </main>
-<footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
-    <script src="/assets/site.js"></script>
-    <script src="/assets/tracking-config.js"></script>
-    <script src="/assets/tracking.js"></script>
+
+<footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

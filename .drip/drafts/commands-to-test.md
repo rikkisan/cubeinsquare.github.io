@@ -135,3 +135,16 @@
 | B34 | `/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]}] 1` | 26.3 | То же | |
 | B35 | B33 на 26.3 и B32 на 1.21.4 | 26.3, 1.21.4 | На 26.3 имя видно как `{"text":…}`; на 1.21.4 — ошибка разбора на `custom_model_data=12` | |
 | B36 | `/give @p minecraft:paper[minecraft:custom_name={text:"Guild Pass",italic:false},minecraft:custom_model_data={floats:[12f]},minecraft:custom_data={role:"guard"}] 1`, затем `/data get entity @s SelectedItem` | 26.3 | В данных предмета видно `custom_data` с `role:"guard"` | |
+
+## Волна Б: гайд конструктора предметов и статья об оружии
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B37 | Пропуск из B26 в руке; `/execute as @a if items entity @s weapon.mainhand *[custom_data~{item_id:"rp.guild.pass"}] run say I carry the guild pass` | 26.3 | Сообщение в чате; с переименованной обычной бумагой — нет | |
+| B38 | `/clear @s *[custom_data~{item_id:"rp.guild.pass"}] 1` | 26.3 | Забирает ровно один пропуск | |
+| B39 | Длинный меч из статьи (ветка 1.21.5 – 26.x, ID `minecraft:base_attack_damage` / `base_attack_speed`) | 26.3 | В подсказке «7 Attack Damage», «1.6 Attack Speed» как у ванильного меча | |
+| B40 | Тот же меч с `id:"cube:x"` вместо base-ID | 26.3 | Подсказка показывает «+6 Attack Damage» | |
+| B41 | Посох из статьи (`stick` с `max_stack_size=1`, `max_damage=250`, `weapon={item_damage_per_attack:1}`), ударить моба | 26.3 | Появилась полоска прочности, каждый удар −1 | |
+| B42 | Та же команда без `max_stack_size=1` | 26.3 | Команда отклонена (предмет не может быть и стакаемым, и изнашиваемым) | |
+| B43 | Меч в ветке 1.21.2 – 1.21.4 из статьи | 1.21.4 | Тот же результат, что B39 | |
+| B44 | Меч в форме до 1.20.5 из статьи (NBT с UUID) | 1.20.4 | Урон 7, скорость 1.6 | |
