@@ -276,6 +276,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the randomizer</h2>
+        <p class="section-intro">Choose an item and the output, set how much may roll, and press Randomize as often as you like; every press is a new roll inside your limits.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Item and category</h3><p>The base item ID and its category decide which enchantments are possible and which slot attribute modifiers use: main hand for weapons and tools, the matching slot for each armor piece.</p></article>
+            <article class="resource-card"><h3>Output</h3><p>A /give command for one item, or a loot table entry where every unlocked range stays a <code>minecraft:uniform</code> number provider, so each drop rolls fresh.</p></article>
+            <article class="resource-card"><h3>Item format</h3><p>Four branches: 1.21.5 – 26.x, 1.21.2 – 1.21.4, 1.21 – 1.21.1 and before 1.20.5. Pick the one your server runs; the command shape differs between them.</p></article>
+            <article class="resource-card"><h3>Basic or advanced</h3><p>Basic rolls inside the ranges you set. Advanced adds a weight per enchantment and attribute, and Lock keeps an enchantment at a fixed level on every reroll.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Before you hand the item out</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Modifiers replace the defaults</h3><p>Setting attribute modifiers replaces the item's built-in ones. A sword that only gets +2 luck hits like an empty hand, so add the attack damage and speed you want to keep.</p></article>
+            <article class="resource-card"><h3>Conflicts and caps</h3><p>Respect vanilla conflicts keeps pairs like sharpness and smite apart. Commands accept levels up to 255, but how much an extra level does depends on the enchantment.</p></article>
+            <article class="resource-card"><h3>Operations</h3><p><code>add_value</code> adds a flat amount, <code>add_multiplied_base</code> adds a share of the base value (0.1 is +10%), <code>add_multiplied_total</code> multiplies the result after the others.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">1.21.5 removed the <code>{levels:…}</code> and <code>{modifiers:…}</code> wrappers, 1.21.2 dropped the <code>generic.</code> prefix from attribute IDs, and 1.21 gave modifiers a namespaced <code>id</code>. 1.20.5–1.20.6 have no branch of their own: attribute modifiers there need a UUID and a name instead of an id.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-enchantment-randomizer/">Randomizer guide</a><a class="tool-button tool-button-secondary" href="/wiki-enchantment-conflicts/">Which enchantments cannot combine</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

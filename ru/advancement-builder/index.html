@@ -288,6 +288,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться конструктором</h2>
+        <p class="section-intro">Заполните файл, отображение, триггер и награды — JSON, путь и команда выдачи обновляются во время ввода.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Начните с пресета</h3><p>Quest step использует триггер impossible, и выполнить его может только ваша команда. Recipe unlock нужен, чтобы кастомный рецепт попал в книгу рецептов. Hunt challenge выполняется, когда игрок убивает выбранного моба.</p></article>
+            <article class="resource-card"><h3>Файл и родитель</h3><p>Пространство имён и имя файла дают путь и ID. Если поле родителя пустое, достижение становится корнем со своей вкладкой и фоном; если указать ID родителя, например <code>harbor:harbor_quest_1</code>, оно станет шагом в этом дереве.</p></article>
+            <article class="resource-card"><h3>Отображение</h3><p>Название, описание и значок — то, что видят игроки. Рамка тоже важна: task — простой квадрат, goal — скруглённая, а challenge получает шипастую рамку, своё всплывающее окно и звук. Уведомление, сообщение в чат и скрытость — переключатели.</p></article>
+            <article class="resource-card"><h3>Триггер</h3><p><code>impossible</code> сам никогда не срабатывает. <code>tick</code> срабатывает в следующем тике у каждого игрока — подходит корню, который должен быть виден сразу. <code>player_killed_entity</code> ждёт убийства указанного типа сущности.</p></article>
+            <article class="resource-card"><h3>Награды</h3><p>Опыт, функция, которая выполняется от лица игрока, и рецепты для открытия. Команда под JSON выдаёт достижение вручную.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">На чём спотыкаются</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Нет родителя</h3><p>Достижение, ID родителя которого не существует, вообще не загружается. Если шаг не появляется, проверьте путь родителя.</p></article>
+            <article class="resource-card"><h3>Скрытое прячет ветку</h3><p>Скрытое достижение не видно на экране вместе со всеми потомками, пока его не выполнят.</p></article>
+            <article class="resource-card"><h3>Шум в чате</h3><p>Сообщение в чат включено по умолчанию. На людном сервере выключайте его для мелких шагов и оставляйте для тех, что стоит отметить.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Java Edition 1.20–26.3. В 1.20.5 поле значка переименовали из <code>item</code> в <code>id</code>, а папка называется <code>advancement</code> с 1.21 и <code>advancements</code> до неё; выбор версии учитывает оба изменения. Чтобы повторить проверку, <code>/advancement revoke @s only &lt;id&gt;</code> забирает достижение, а награды снова сработают при следующей выдаче.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-advancement-builder/">Гайд по достижениям</a><a class="tool-button tool-button-secondary" href="/ru/recipe-generator/">Генератор рецептов</a><a class="tool-button tool-button-secondary" href="/ru/datapack-generator/">Генератор датапаков</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

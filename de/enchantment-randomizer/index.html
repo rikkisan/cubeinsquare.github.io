@@ -274,6 +274,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Randomizer</h2>
+        <p class="section-intro">Wähl Item und Ausgabe, leg fest, wie viel fallen darf, und drück so oft auf Würfeln, wie du willst – jeder Klick ist ein neuer Wurf innerhalb deiner Grenzen.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Item und Kategorie</h3><p>Item-ID und Kategorie bestimmen, welche Verzauberungen möglich sind und welchen Slot Attributmodifikatoren nutzen: Haupthand für Waffen und Werkzeuge, den passenden Slot für jedes Rüstungsteil.</p></article>
+            <article class="resource-card"><h3>Ausgabe</h3><p>Ein /give-Befehl für ein Item oder ein Beutetabellen-Eintrag, in dem jeder nicht gesperrte Bereich ein <code>minecraft:uniform</code>-Number-Provider bleibt, sodass jeder Drop neu würfelt.</p></article>
+            <article class="resource-card"><h3>Item-Format</h3><p>Vier Zweige: 1.21.5 – 26.x, 1.21.2 – 1.21.4, 1.21 – 1.21.1 und vor 1.20.5. Nimm den deines Servers; die Befehlsform unterscheidet sich.</p></article>
+            <article class="resource-card"><h3>Einfach oder erweitert</h3><p>Einfach würfelt in deinen Bereichen. Erweitert gibt jeder Verzauberung und jedem Attribut ein Gewicht, und Sperren hält eine Verzauberung bei jedem Wurf auf festem Level.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Bevor du das Item herausgibst</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Modifikatoren ersetzen die Standardwerte</h3><p>Eigene Attributmodifikatoren ersetzen die eingebauten. Ein Schwert, das nur +2 Glück bekommt, schlägt wie eine leere Hand – füg also Angriffsschaden und -geschwindigkeit hinzu, die bleiben sollen.</p></article>
+            <article class="resource-card"><h3>Konflikte und Obergrenzen</h3><p>Vanilla-Konflikte berücksichtigen hält Paare wie Schärfe und Bann getrennt. Befehle nehmen Level bis 255 an, aber was ein zusätzliches Level bringt, hängt von der Verzauberung ab.</p></article>
+            <article class="resource-card"><h3>Operationen</h3><p><code>add_value</code> addiert einen festen Wert, <code>add_multiplied_base</code> einen Anteil des Grundwerts (0.1 sind +10 %), <code>add_multiplied_total</code> multipliziert das Ergebnis nach den anderen.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">1.21.5 hat die Hüllen <code>{levels:…}</code> und <code>{modifiers:…}</code> entfernt, 1.21.2 das Präfix <code>generic.</code> aus Attribut-IDs gestrichen, und 1.21 gab Modifikatoren eine namensraumbasierte <code>id</code>. 1.20.5–1.20.6 haben keinen eigenen Zweig: Dort brauchen Modifikatoren eine UUID und einen Namen statt einer id.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-enchantment-randomizer/">Anleitung zum Randomizer</a><a class="tool-button tool-button-secondary" href="/de/wiki-enchantment-conflicts/">Welche Verzauberungen sich ausschließen</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

@@ -285,6 +285,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Builder</h2>
+        <p class="section-intro">Wähl, wie das Item sein Modell aussucht, füll Pfade und Zweige aus und kopier eine einzige Item-Definition.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Schnellstarts</h3><p>Single display model ist ein festes Aussehen. Selected state wechselt per Bedingung auf <code>selected</code>. Charge stages läuft mit <code>range_dispatch</code> durch die Abklingzeit. Main-hand context nutzt <code>select</code> auf die Hand.</p></article>
+            <article class="resource-card"><h3>Pfad der Definition</h3><p>Namensraum und Pfad ergeben <code>assets/&lt;namespace&gt;/items/&lt;path&gt;.json</code>. Ein Item nutzt sie über seine Komponente <code>item_model</code>; eine Datei mit dem Namen eines Vanilla-Items im Namensraum <code>minecraft</code> ersetzt dessen Aussehen.</p></article>
+            <article class="resource-card"><h3>Fallback</h3><p>Das Modell, wenn kein Zweig passt. Zeig auf etwas, das existiert, etwa das Vanilla-Modell, damit ein fehlender Fall nie als lila-schwarze Fehlertextur erscheint.</p></article>
+            <article class="resource-card"><h3>Eigenschaft und Index</h3><p>Bei <code>custom_model_data</code> wählt der Index den Slot: den n-ten String für <code>select</code>, den n-ten Float für <code>range_dispatch</code>.</p></article>
+            <article class="resource-card"><h3>Zweige</h3><p>Bei select ist ein Zweig ein Wert und ein Modell. Bei range_dispatch eine Schwelle und ein Modell: Es gewinnt die höchste Schwelle, die den Wert nicht übersteigt. Bei condition gilt der erste Zweig für true, der zweite für false.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Prüfen, bevor das Pack rausgeht</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Die Modelle müssen existieren</h3><p>Jeder Pfad in der Datei führt zu <code>assets/&lt;namespace&gt;/models/&lt;path&gt;.json</code>. Ein Tippfehler zeigt die Fehlertextur, keine Meldung.</p></article>
+            <article class="resource-card"><h3>Strings gegen Strings</h3><p>Ein select auf custom_model_data vergleicht Text: Gib dem Item <code>custom_model_data={strings:["novice"]}</code> und schreib <code>novice</code> in den Zweig.</p></article>
+            <article class="resource-card"><h3>Abnutzung zählt von 0 bis 1</h3><p><code>minecraft:damage</code> ist standardmäßig normalisiert, 0.25 heißt also, ein Viertel der Haltbarkeit ist verbraucht, nicht 25 Punkte.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Item-Definitionen gibt es seit 1.21.4, und sie gelten bis 26.3. Vor 1.21.4 wählten Modelle ihre Varianten über <code>overrides</code> in <code>models/item</code>-Dateien, dort bewirkt diese Datei also nichts. Passender Befehl: <code>/give @p minecraft:book[item_model="cubeinsquare:book/formulary",custom_model_data={strings:["novice"]}]</code>.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-item-model-builder/">Anleitung zum item_model-Builder</a><a class="tool-button tool-button-secondary" href="/de/wiki-item-model-branch-choices/">select, range_dispatch oder condition?</a><a class="tool-button tool-button-secondary" href="/de/wiki-custom-model-data/">Was ist CustomModelData</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
 <script src="/assets/site.js"></script>

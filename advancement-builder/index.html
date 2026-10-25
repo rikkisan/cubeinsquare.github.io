@@ -288,6 +288,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the builder</h2>
+        <p class="section-intro">Fill in the file, display, trigger and rewards; the JSON, its path and a grant command update as you type.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Start from a preset</h3><p>Quest step uses the impossible trigger, so only your own command completes it. Recipe unlock exists to put a custom recipe into the recipe book. Hunt challenge completes when the player kills a chosen mob.</p></article>
+            <article class="resource-card"><h3>File and parent</h3><p>Namespace and file name give the path and the ID. Leave the parent empty and the advancement becomes a root with its own tab and background; enter a parent ID such as <code>harbor:harbor_quest_1</code> and it becomes a step in that tree.</p></article>
+            <article class="resource-card"><h3>Display</h3><p>Title, description and icon are what players see. The frame matters too: task is a plain square, goal is rounded, and challenge gets a spiked frame and its own toast and sound. Toast, chat announcement and hidden are switches.</p></article>
+            <article class="resource-card"><h3>Trigger</h3><p><code>impossible</code> never fires by itself. <code>tick</code> fires on the next tick for every player, which suits a root that should be visible from the start. <code>player_killed_entity</code> waits for a kill of the entity type you name.</p></article>
+            <article class="resource-card"><h3>Rewards</h3><p>Experience, a function that runs as the player, and recipes to unlock. The grant command below the JSON completes the advancement by hand.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Things that trip people up</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Missing parent</h3><p>An advancement whose parent ID does not exist is not loaded at all. Check the parent path when a step never appears.</p></article>
+            <article class="resource-card"><h3>Hidden hides the branch</h3><p>A hidden advancement stays out of the screen, together with all its children, until it is completed.</p></article>
+            <article class="resource-card"><h3>Chat noise</h3><p>Announce in chat is on by default. On a busy server, turn it off for small steps and keep it for the ones worth celebrating.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 to 26.3. 1.20.5 renamed the icon field from <code>item</code> to <code>id</code>, and the folder is <code>advancement</code> from 1.21 and <code>advancements</code> before; the version selector handles both. To repeat a test, <code>/advancement revoke @s only &lt;id&gt;</code> takes it back, and the rewards run again on the next grant.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-advancement-builder/">Advancement guide</a><a class="tool-button tool-button-secondary" href="/recipe-generator/">Recipe generator</a><a class="tool-button tool-button-secondary" href="/datapack-generator/">Data pack generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>

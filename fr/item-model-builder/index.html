@@ -285,6 +285,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le constructeur</h2>
+        <p class="section-intro">Choisissez comment l’objet sélectionne son modèle, remplissez chemins et branches, et copiez un seul fichier d’item definition.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Bases rapides</h3><p>Single display model donne un aspect fixe. Selected state bascule avec une condition sur <code>selected</code>. Charge stages suit le temps de recharge avec <code>range_dispatch</code>. Main-hand context utilise <code>select</code> sur la main.</p></article>
+            <article class="resource-card"><h3>Chemin de la définition</h3><p>Espace de noms et chemin donnent <code>assets/&lt;namespace&gt;/items/&lt;path&gt;.json</code>. Un objet l’utilise via son composant <code>item_model</code> ; un fichier portant le nom d’un objet vanilla dans l’espace <code>minecraft</code> remplace l’apparence de cet objet.</p></article>
+            <article class="resource-card"><h3>Modèle de repli</h3><p>Le modèle affiché quand aucune branche ne correspond. Visez un modèle qui existe, par exemple le vanilla, pour qu’un cas manquant ne s’affiche jamais en texture d’erreur violette et noire.</p></article>
+            <article class="resource-card"><h3>Propriété et index</h3><p>Pour <code>custom_model_data</code>, l’index choisit la case : la n-ième chaîne pour <code>select</code>, le n-ième flottant pour <code>range_dispatch</code>.</p></article>
+            <article class="resource-card"><h3>Branches</h3><p>Pour select, une branche est une valeur et un modèle. Pour range_dispatch, un seuil et un modèle : le seuil le plus haut sans dépasser la valeur l’emporte. Pour condition, la première branche sert si vrai, la seconde si faux.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Vérifications avant de publier le pack</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Les modèles doivent exister</h3><p>Chaque chemin du fichier mène à <code>assets/&lt;namespace&gt;/models/&lt;path&gt;.json</code>. Une faute de frappe donne la texture d’erreur, pas un message.</p></article>
+            <article class="resource-card"><h3>Des chaînes contre des chaînes</h3><p>Un select sur custom_model_data compare du texte : donnez à l’objet <code>custom_model_data={strings:["novice"]}</code> et écrivez <code>novice</code> dans la branche.</p></article>
+            <article class="resource-card"><h3>L’usure va de 0 à 1</h3><p><code>minecraft:damage</code> est normalisé par défaut : 0.25 veut dire qu’un quart de la durabilité est usé, pas 25 points.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Les item definitions existent depuis la 1.21.4 et restent actuelles jusqu’en 26.3. Avant la 1.21.4, les modèles choisissaient leurs variantes via des <code>overrides</code> dans les fichiers <code>models/item</code> : ce fichier n’y fait rien. Commande associée : <code>/give @p minecraft:book[item_model="cubeinsquare:book/formulary",custom_model_data={strings:["novice"]}]</code>.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-item-model-builder/">Guide du constructeur item_model</a><a class="tool-button tool-button-secondary" href="/fr/wiki-item-model-branch-choices/">select, range_dispatch ou condition ?</a><a class="tool-button tool-button-secondary" href="/fr/wiki-custom-model-data/">Qu’est-ce que CustomModelData</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script src="/assets/site.js"></script>

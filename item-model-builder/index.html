@@ -245,6 +245,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">How to use the builder</h2>
+        <p class="section-intro">Choose how the item picks its model, fill in the paths and branches, and copy one item definition file.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Quick starts</h3><p>Single display model is one fixed look. Selected state switches with a condition on <code>selected</code>. Charge stages steps through cooldown with <code>range_dispatch</code>. Main-hand context uses <code>select</code> on the hand.</p></article>
+            <article class="resource-card"><h3>Definition path</h3><p>Namespace and path give <code>assets/&lt;namespace&gt;/items/&lt;path&gt;.json</code>. An item uses it through its <code>item_model</code> component; a file named after a vanilla item in the <code>minecraft</code> namespace replaces that item's look.</p></article>
+            <article class="resource-card"><h3>Fallback</h3><p>The model shown when no branch matches. Point it at something that exists, such as the vanilla model, so a missing case never renders as the purple and black error texture.</p></article>
+            <article class="resource-card"><h3>Property and index</h3><p>For <code>custom_model_data</code> the index picks the slot: the n-th string for <code>select</code>, the n-th float for <code>range_dispatch</code>.</p></article>
+            <article class="resource-card"><h3>Branches</h3><p>For select, each branch is a value and a model. For range_dispatch, a threshold and a model: the highest threshold not above the value wins. For condition, the first branch is used when true, the second when false.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Checks before you ship the pack</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>The models must exist</h3><p>Every path in the file points to <code>assets/&lt;namespace&gt;/models/&lt;path&gt;.json</code>. A typo there shows the error texture, not an error message.</p></article>
+            <article class="resource-card"><h3>Strings match strings</h3><p>A select on custom_model_data compares text: give the item <code>custom_model_data={strings:["novice"]}</code> and write <code>novice</code> in the branch.</p></article>
+            <article class="resource-card"><h3>Damage counts from 0 to 1</h3><p><code>minecraft:damage</code> is normalized by default, so 0.25 means a quarter of the durability is used up, not 25 points.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Item definitions exist from 1.21.4 and are current up to 26.3. Before 1.21.4, models chose variants through <code>overrides</code> inside <code>models/item</code> files instead, so this file does nothing there. A matching command: <code>/give @p minecraft:book[item_model="cubeinsquare:book/formulary",custom_model_data={strings:["novice"]}]</code>.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/wiki-item-model-builder/">Item model builder guide</a><a class="tool-button tool-button-secondary" href="/wiki-item-model-branch-choices/">select, range_dispatch or condition?</a><a class="tool-button tool-button-secondary" href="/wiki-resource-pack-migration-1-21-4/">Migrating packs to 1.21.4</a></div>
+    </section>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><a href="/privacy-policy/">Privacy Policy</a></footer>
 <script src="/assets/site.js"></script>

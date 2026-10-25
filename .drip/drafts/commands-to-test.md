@@ -101,3 +101,13 @@
 | B18 | Та же команда, что B17, но `type:"minecraft:generic.attack_damage"` (ветка 1.21 – 1.21.1) | 1.21.1 | То же | |
 | B19 | Команда из B17 на 26.3 | 26.3 | Для сравнения: ошибка разбора — поэтому нужны отдельные ветки | |
 | B20 | `/give @p minecraft:iron_sword[minecraft:enchantments={"minecraft:vanishing_curse":1}] 1` | 26.3 | Проклятие утраты в подсказке (раньше инструмент писал несуществующий `curse_of_vanishing`) | |
+
+## Волна Б: достижения, рандомайзер, item_model
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| B21 | `/give @p minecraft:diamond_sword[minecraft:attribute_modifiers=[{type:"minecraft:luck",id:"harbor:roll_0",amount:2,operation:"add_value",slot:"mainhand"}]] 1`, ударить моба | 26.3 | В подсказке нет урона меча (+2 удачи); удар как пустой рукой — встроенные модификаторы заменены | |
+| B22 | Достижение-ребёнок с `"hidden": true` и ещё одним ребёнком под ним; открыть экран достижений | 26.3 | Ни скрытого, ни его потомка не видно, пока скрытое не выполнено | |
+| B23 | Достижение с несуществующим `parent`, `/reload` | 26.3 | Не загружается (в логе ошибка), в экране его нет | |
+| B24 | Конструктор item_model, пресет Selected… / select по custom_model_data, ветка `novice`; пак с моделью; `/give @p minecraft:book[item_model="cubeinsquare:book/formulary",custom_model_data={strings:["novice"]}]` | 26.3 и 1.21.4 | Книга с моделью ветки novice на обеих версиях | |
+| B25 | Ветка select со значением `1` и `custom_model_data={strings:["1"]}` | 26.3 | Срабатывает (раньше инструмент писал `"when": 1` числом, и ветка не совпадала) | |

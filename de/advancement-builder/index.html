@@ -288,6 +288,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">So benutzt du den Builder</h2>
+        <p class="section-intro">Füll Datei, Anzeige, Auslöser und Belohnungen aus – JSON, Pfad und ein Vergabebefehl aktualisieren sich beim Tippen.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Mit einer Vorlage starten</h3><p>Quest step nutzt den Auslöser impossible, also schließt nur dein eigener Befehl ihn ab. Recipe unlock bringt ein eigenes Rezept ins Rezeptbuch. Hunt challenge ist erledigt, wenn der Spieler einen gewählten Mob tötet.</p></article>
+            <article class="resource-card"><h3>Datei und Elternteil</h3><p>Namensraum und Dateiname ergeben Pfad und ID. Ohne Elternteil wird der Fortschritt eine Wurzel mit eigenem Reiter und Hintergrund; mit einer Eltern-ID wie <code>harbor:harbor_quest_1</code> wird er ein Schritt in diesem Baum.</p></article>
+            <article class="resource-card"><h3>Anzeige</h3><p>Titel, Beschreibung und Symbol sehen die Spieler. Auch der Rahmen zählt: task ist ein schlichtes Quadrat, goal abgerundet, challenge bekommt einen Zackenrahmen, eine eigene Einblendung und einen eigenen Sound. Einblendung, Chatmeldung und versteckt sind Schalter.</p></article>
+            <article class="resource-card"><h3>Auslöser</h3><p><code>impossible</code> löst nie von selbst aus. <code>tick</code> löst im nächsten Tick bei jedem Spieler aus – passend für eine Wurzel, die von Anfang an sichtbar sein soll. <code>player_killed_entity</code> wartet auf das Töten des genannten Wesentyps.</p></article>
+            <article class="resource-card"><h3>Belohnungen</h3><p>Erfahrung, eine Funktion, die als Spieler läuft, und freizuschaltende Rezepte. Der Befehl unter dem JSON vergibt den Fortschritt von Hand.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Typische Stolperfallen</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Fehlendes Elternteil</h3><p>Ein Fortschritt, dessen Eltern-ID nicht existiert, wird gar nicht geladen. Prüf den Elternpfad, wenn ein Schritt nie auftaucht.</p></article>
+            <article class="resource-card"><h3>Versteckt versteckt den Zweig</h3><p>Ein versteckter Fortschritt bleibt samt allen Kindern vom Bildschirm fern, bis er erledigt ist.</p></article>
+            <article class="resource-card"><h3>Lärm im Chat</h3><p>Die Chatmeldung ist standardmäßig an. Auf einem vollen Server schaltest du sie für kleine Schritte ab und behältst sie für die, die gefeiert werden sollen.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versionen</h2>
+        <p class="section-intro">Java Edition 1.20 bis 26.3. 1.20.5 hat das Symbolfeld von <code>item</code> in <code>id</code> umbenannt, und der Ordner heißt ab 1.21 <code>advancement</code>, davor <code>advancements</code>; die Versionsauswahl berücksichtigt beides. Für einen neuen Test nimmt <code>/advancement revoke @s only &lt;id&gt;</code> den Fortschritt zurück, und die Belohnungen laufen bei der nächsten Vergabe erneut.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/de/wiki-advancement-builder/">Anleitung zu Fortschritten</a><a class="tool-button tool-button-secondary" href="/de/recipe-generator/">Rezept-Generator</a><a class="tool-button tool-button-secondary" href="/de/datapack-generator/">Datenpaket-Generator</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>

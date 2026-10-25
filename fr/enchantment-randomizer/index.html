@@ -274,6 +274,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le randomiseur</h2>
+        <p class="section-intro">Choisissez un objet et la sortie, fixez ce qui peut tomber, puis appuyez sur Randomiser autant que vous voulez : chaque clic est un nouveau tirage dans vos limites.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Objet et catégorie</h3><p>L’identifiant de l’objet et sa catégorie décident des enchantements possibles et de l’emplacement des modificateurs d’attributs : main principale pour armes et outils, l’emplacement correspondant pour chaque pièce d’armure.</p></article>
+            <article class="resource-card"><h3>Sortie</h3><p>Une commande /give pour un objet, ou une entrée de table de butin où chaque plage non verrouillée reste un number provider <code>minecraft:uniform</code>, pour que chaque butin soit tiré à nouveau.</p></article>
+            <article class="resource-card"><h3>Format d’objet</h3><p>Quatre branches : 1.21.5 – 26.x, 1.21.2 – 1.21.4, 1.21 – 1.21.1 et avant 1.20.5. Prenez celle de votre serveur : la forme de la commande diffère.</p></article>
+            <article class="resource-card"><h3>Basique ou avancé</h3><p>Le mode basique tire dans vos plages. L’avancé ajoute un poids par enchantement et attribut, et Verrou garde un enchantement à un niveau fixe à chaque tirage.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Avant de donner l’objet</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Les modificateurs remplacent ceux d’origine</h3><p>Définir des modificateurs d’attributs remplace ceux de l’objet. Une épée qui n’obtient que +2 de chance frappe comme une main nue : ajoutez les dégâts et la vitesse d’attaque à conserver.</p></article>
+            <article class="resource-card"><h3>Conflits et plafonds</h3><p>Respecter les incompatibilités vanilla sépare des paires comme tranchant et châtiment. Les commandes acceptent des niveaux jusqu’à 255, mais l’effet d’un niveau de plus dépend de l’enchantement.</p></article>
+            <article class="resource-card"><h3>Opérations</h3><p><code>add_value</code> ajoute une valeur fixe, <code>add_multiplied_base</code> une part de la valeur de base (0.1 donne +10 %), <code>add_multiplied_total</code> multiplie le total après les autres.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">La 1.21.5 a supprimé les enveloppes <code>{levels:…}</code> et <code>{modifiers:…}</code>, la 1.21.2 a retiré le préfixe <code>generic.</code> des identifiants d’attributs, et la 1.21 a donné aux modificateurs un <code>id</code> avec espace de noms. Les 1.20.5–1.20.6 n’ont pas de branche : les modificateurs y demandent un UUID et un nom au lieu d’un id.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-enchantment-randomizer/">Guide du randomiseur</a><a class="tool-button tool-button-secondary" href="/fr/wiki-enchantment-conflicts/">Les enchantements incompatibles</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

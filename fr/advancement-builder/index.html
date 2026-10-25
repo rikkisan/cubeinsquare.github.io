@@ -288,6 +288,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Utiliser le constructeur</h2>
+        <p class="section-intro">Remplissez le fichier, l’affichage, le déclencheur et les récompenses : le JSON, son chemin et une commande d’attribution se mettent à jour pendant la saisie.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Partir d’un préréglage</h3><p>Quest step utilise le déclencheur impossible : seule votre commande le valide. Recipe unlock sert à faire entrer une recette custom dans le livre de recettes. Hunt challenge se valide quand le joueur tue un mob choisi.</p></article>
+            <article class="resource-card"><h3>Fichier et parent</h3><p>Espace de noms et nom de fichier donnent le chemin et l’identifiant. Sans parent, le progrès devient une racine avec son onglet et son fond ; avec un parent comme <code>harbor:harbor_quest_1</code>, il devient une étape de cet arbre.</p></article>
+            <article class="resource-card"><h3>Affichage</h3><p>Titre, description et icône sont ce que voient les joueurs. Le cadre compte aussi : task est un carré simple, goal est arrondi, challenge a un cadre à pointes, sa propre notification et son son. Notification, annonce dans le chat et masquage sont des interrupteurs.</p></article>
+            <article class="resource-card"><h3>Déclencheur</h3><p><code>impossible</code> ne se déclenche jamais seul. <code>tick</code> se déclenche au tick suivant pour chaque joueur, utile pour une racine visible d’emblée. <code>player_killed_entity</code> attend la mort du type d’entité indiqué.</p></article>
+            <article class="resource-card"><h3>Récompenses</h3><p>Expérience, une fonction exécutée en tant que joueur et des recettes à débloquer. La commande sous le JSON attribue le progrès à la main.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Les pièges courants</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Parent introuvable</h3><p>Un progrès dont l’identifiant parent n’existe pas n’est pas chargé du tout. Vérifiez le chemin du parent quand une étape n’apparaît jamais.</p></article>
+            <article class="resource-card"><h3>Masqué cache la branche</h3><p>Un progrès masqué reste hors de l’écran, avec tous ses enfants, tant qu’il n’est pas accompli.</p></article>
+            <article class="resource-card"><h3>Bruit dans le chat</h3><p>L’annonce dans le chat est activée par défaut. Sur un serveur chargé, coupez-la pour les petites étapes et gardez-la pour celles qui méritent d’être fêtées.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Versions</h2>
+        <p class="section-intro">Java Edition 1.20 à 26.3. La 1.20.5 a renommé le champ de l’icône de <code>item</code> en <code>id</code>, et le dossier s’appelle <code>advancement</code> depuis la 1.21 et <code>advancements</code> avant ; le sélecteur de version gère les deux. Pour refaire un test, <code>/advancement revoke @s only &lt;id&gt;</code> retire le progrès, et les récompenses rejouent à la prochaine attribution.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/fr/wiki-advancement-builder/">Guide des progrès</a><a class="tool-button tool-button-secondary" href="/fr/recipe-generator/">Générateur de recettes</a><a class="tool-button tool-button-secondary" href="/fr/datapack-generator/">Générateur de data packs</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

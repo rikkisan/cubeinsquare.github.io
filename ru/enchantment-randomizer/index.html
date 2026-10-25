@@ -274,6 +274,31 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться рандомайзером</h2>
+        <p class="section-intro">Выберите предмет и формат вывода, задайте, сколько может выпасть, и жмите «Рандомизировать» сколько угодно — каждое нажатие даёт новый бросок в ваших пределах.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Предмет и категория</h3><p>ID базового предмета и категория решают, какие зачарования возможны и в какой слот идут модификаторы атрибутов: основная рука для оружия и инструментов, свой слот для каждой части брони.</p></article>
+            <article class="resource-card"><h3>Формат вывода</h3><p>Команда /give для одного предмета или запись для таблицы лута, где каждый незакреплённый диапазон остаётся number provider <code>minecraft:uniform</code>, и каждый дроп бросается заново.</p></article>
+            <article class="resource-card"><h3>Формат предмета</h3><p>Четыре ветки: 1.21.5 – 26.x, 1.21.2 – 1.21.4, 1.21 – 1.21.1 и до 1.20.5. Выберите ту, на которой работает сервер: форма команды у них разная.</p></article>
+            <article class="resource-card"><h3>Базовый или продвинутый</h3><p>Базовый режим бросает в заданных диапазонах. Продвинутый добавляет вес каждому зачарованию и атрибуту, а галочка «Фикс.» оставляет зачарование с фиксированным уровнем при каждом броске.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Прежде чем выдать предмет</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Модификаторы заменяют стандартные</h3><p>Свои модификаторы атрибутов заменяют встроенные. Меч, которому выпала только удача +2, бьёт как пустая рука, поэтому добавьте урон и скорость атаки, которые хотите сохранить.</p></article>
+            <article class="resource-card"><h3>Конфликты и пределы</h3><p>«Учитывать ванильную несовместимость» не даёт сочетать, например, остроту и небесную кару. Команды принимают уровни до 255, но что даёт лишний уровень, зависит от зачарования.</p></article>
+            <article class="resource-card"><h3>Операции</h3><p><code>add_value</code> добавляет число, <code>add_multiplied_base</code> — долю базового значения (0.1 — это +10%), <code>add_multiplied_total</code> умножает итог после остальных.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">В 1.21.5 убрали обёртки <code>{levels:…}</code> и <code>{modifiers:…}</code>, в 1.21.2 у ID атрибутов пропал префикс <code>generic.</code>, а в 1.21 модификаторы получили <code>id</code> с пространством имён. Для 1.20.5–1.20.6 отдельной ветки нет: там модификаторам нужны UUID и имя вместо id.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-enchantment-randomizer/">Гайд по рандомайзеру</a><a class="tool-button tool-button-secondary" href="/ru/wiki-enchantment-conflicts/">Какие зачарования не сочетаются</a></div>
+    </section>
 </main>
 
 <footer class="site-footer"><span>Cube in Square</span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

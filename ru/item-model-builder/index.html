@@ -285,6 +285,32 @@
             </div>
         </aside>
     </section>
+    <section class="page-section" id="tool-usage">
+        <h2 class="section-title">Как пользоваться конструктором</h2>
+        <p class="section-intro">Выберите, как предмет выбирает модель, заполните пути и ветки и скопируйте один файл item definition.</p>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Заготовки</h3><p>Single display model — один постоянный вид. Selected state переключается условием по <code>selected</code>. Charge stages идёт по ступеням перезарядки через <code>range_dispatch</code>. Main-hand context использует <code>select</code> по руке.</p></article>
+            <article class="resource-card"><h3>Путь файла</h3><p>Пространство имён и путь дают <code>assets/&lt;namespace&gt;/items/&lt;path&gt;.json</code>. Предмет подключает файл через компонент <code>item_model</code>; файл с именем ванильного предмета в пространстве <code>minecraft</code> заменяет вид этого предмета.</p></article>
+            <article class="resource-card"><h3>Запасная модель</h3><p>Модель на случай, когда ни одна ветка не подошла. Укажите существующую, например ванильную, чтобы пропущенный вариант не превращался в фиолетово-чёрную текстуру ошибки.</p></article>
+            <article class="resource-card"><h3>Свойство и индекс</h3><p>Для <code>custom_model_data</code> индекс выбирает ячейку: n-ю строку для <code>select</code>, n-е дробное число для <code>range_dispatch</code>.</p></article>
+            <article class="resource-card"><h3>Ветки</h3><p>У select ветка — это значение и модель. У range_dispatch — порог и модель: побеждает наибольший порог, не превышающий значение. У condition первая ветка используется при true, вторая — при false.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-pitfalls">
+        <h2 class="section-title">Проверьте перед выпуском пака</h2>
+        <div class="resource-grid">
+            <article class="resource-card"><h3>Модели должны существовать</h3><p>Каждый путь в файле ведёт к <code>assets/&lt;namespace&gt;/models/&lt;path&gt;.json</code>. Опечатка даёт текстуру ошибки, а не сообщение.</p></article>
+            <article class="resource-card"><h3>Строки сравниваются со строками</h3><p>Select по custom_model_data сравнивает текст: выдайте предмету <code>custom_model_data={strings:["novice"]}</code> и напишите в ветке <code>novice</code>.</p></article>
+            <article class="resource-card"><h3>Прочность считается от 0 до 1</h3><p><code>minecraft:damage</code> по умолчанию нормализован, поэтому 0.25 — это израсходованная четверть прочности, а не 25 единиц.</p></article>
+        </div>
+    </section>
+
+    <section class="page-section" id="tool-versions">
+        <h2 class="section-title">Версии</h2>
+        <p class="section-intro">Item definitions появились в 1.21.4 и актуальны до 26.3. До 1.21.4 модели выбирали варианты через <code>overrides</code> внутри файлов <code>models/item</code>, так что там этот файл ничего не делает. Подходящая команда: <code>/give @p minecraft:book[item_model="cubeinsquare:book/formulary",custom_model_data={strings:["novice"]}]</code>.</p>
+        <div class="tool-button-row"><a class="tool-button" href="/ru/wiki-item-model-builder/">Гайд по конструктору item_model</a><a class="tool-button tool-button-secondary" href="/ru/wiki-item-model-branch-choices/">select, range_dispatch или condition?</a><a class="tool-button tool-button-secondary" href="/ru/wiki-custom-model-data/">Что такое CustomModelData</a></div>
+    </section>
 </main>
 <footer class="site-footer">
     <span>Куб в квадрате</span>
