@@ -390,6 +390,7 @@
 
     <section class="page-section">
         <h2 class="section-title">Ein praktischer Weg vom PNG zum fertigen Pack</h2>
+        <p class="section-intro">Wenn du nicht weißt, in welcher Reihenfolge du vorgehen sollst, hält diese Abfolge das Projekt sauber und senkt das Risiko, ein Pack zu exportieren, das sich zwar baut, aber später schwer zu debuggen ist.</p>
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>1. Benenne das Pack wie ein echtes Projekt</h3>
@@ -404,8 +405,34 @@
                 <p>Viele Pack-Probleme sind keine Renderfehler, sondern Folge davon, dass das Ziel-Item oder die Zieltextur mitten im Prozess gewechselt wurde. Dann stimmt plötzlich die Dokumentation oder die spätere Command-Seite nicht mehr mit dem Pack überein.</p>
             </article>
             <article class="resource-card">
-                <h3>4. Vorschau vor dem Export prüfen</h3>
+                <h3>4. Schneide den Atlas erst, wenn er fertig ist</h3>
+                <p>Der Texturatlas-Schneider ist am stärksten, wenn du schon weißt, wo jede Fläche liegt. Ändert sich der Atlas noch alle paar Minuten, schneide später – sonst debuggst du Auswahlrahmen statt des Packs.</p>
+            </article>
+            <article class="resource-card">
+                <h3>5. Vorschau vor dem Export prüfen</h3>
                 <p>Die 3D-Vorschau fängt schnell unangenehme Fehler ab: verdrehte Blockseiten, schlechte Transparenz, ein schwacher Silhouette-Look oder eine Textur, die im Atlas gut wirkt und im eigentlichen Einsatz trotzdem auseinanderfällt.</p>
+            </article>
+            <article class="resource-card">
+                <h3>6. Das ZIP ist das Ergebnis</h3>
+                <p>Sieht das Pack richtig aus, exportiere es und teste genau dieses ZIP in Minecraft. Das verwenden deine Spieler, dein Team oder der Aufbau eines Events tatsächlich – und nur dieser Stand zählt wirklich.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Fehler, vor denen dich diese Seite bewahrt</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Item-Icons und Blocktexturen ohne Plan mischen</h3>
+                <p>Ein Item-Icon muss auf einen Blick lesbar sein. Eine Blocktextur muss sich wiederholen, ohne gekachelt unruhig zu wirken. Zeichnest du beides mit denselben Gewohnheiten, leidet meist eines davon. Der Generator trennt diese beiden Wege von Anfang an.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Zu lange mit Platzhalter-Dateinamen testen</h3>
+                <p>„final-final-wirklich-diese.png“ ist witzig, bis du fünf davon hast. Saubere Zielnamen und vorhersehbare Slots zählen, weil sie in deine Pack-Struktur, deine Befehlsnotizen und dein eigenes Gedächtnis wandern.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Die Befehlsseite vergessen</h3>
+                <p>Viele bauen zuerst das Pack und merken erst später, dass sie noch einen sauberen Item-Befehl, einen Dorfbewohner-Handel oder eine Belohnungskette brauchen. Wenn das Pack zum Spielen und nicht nur für Screenshots gedacht ist, denk die Befehle gleich mit. Deshalb funktioniert dieses Werkzeug am besten zusammen mit dem <a href="/de/custom-item-builder/">Custom-Item-Generator</a>, dem <a href="/de/custom-villager-trades/">Dorfbewohner-Handel</a> und den <a href="/de/custom-potions/">Tränken</a>.</p>
             </article>
         </div>
     </section>
@@ -420,6 +447,10 @@
             <article class="resource-card">
                 <h3>Brauche ich vor diesem Schritt Blockbench?</h3>
                 <p>Nicht unbedingt. Für einfache Texturersetzungen und saubere Pack-Erstellung reicht diese Seite. Wenn du komplexere 3D-Arbeit machst, passt Blockbench sehr gut davor in denselben Workflow.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Sollte ich alle Texturen vorher außerhalb des Generators vorbereiten?</h3>
+                <p>Meistens ja. Zeichnen und Überarbeiten geht im <a href="/de/texture-painter/">Textur-Editor</a> leichter; hierher bringst du dann die fertigen PNGs, wenn du sie an Vanilla-Ziele binden und das Pack exportieren willst.</p>
             </article>
             <article class="resource-card">
                 <h3>Was öffne ich danach, wenn der Pack für Gameplay gedacht ist?</h3>

@@ -62,34 +62,67 @@
     </section>
     <article>
         <h2>Starte mit der Aufgabe, nicht mit der Zahl</h2>
-        <p>Die richtige Größe hängt davon ab, wie sich das Pack insgesamt anfühlen soll. Größer ist nicht automatisch besser. Wenn der Rest des Projekts nah an Vanilla-Lesbarkeit bleiben soll, können zu große Texturen einen einzelnen Block schön aussehen lassen und trotzdem das Gesamtbild auseinanderziehen.</p>
-        <h2>16x16, 32x32, 64x64, 128x128</h2>
-        <p><strong>16x16</strong> ist der Vanilla-Standard: schnell zu zeichnen, klar zu lesen, wenig Rauschen. <strong>32x32</strong> ist oft der beste Kompromiss für mehr Tiefe ohne ausufernden Aufwand. <strong>64x64</strong> lohnt sich, wenn die künstlerische Richtung schon stark ist und zusätzlicher Detailgrad wirklich gebraucht wird. <strong>128x128</strong> und darüber sollten einen klaren Grund haben, sonst steigt die Arbeit schneller als der echte Nutzen.</p>
-        <h2>Item-Icons und Blockflächen</h2>
-        <p>Ein Inventar-Icon muss in einem kleinen Slot sofort verstanden werden. Eine Blocktextur wiederholt sich dagegen über Flächen, daher sind Kanten, Tiling, Kontrast und Rhythmus dort viel wichtiger. Dasselbe PNG wird also je nach Einsatz völlig anders gelesen.</p>
+        <p>Die richtige Texturgröße hängt davon ab, wie sich das Pack anfühlen soll. Größer ist nicht automatisch besser. Soll das Projekt nah an Vanilla-Minecraft bleiben, können sehr große Texturen einen einzelnen Block für sich wunderschön aussehen lassen und das Pack in Bewegung trotzdem uneinheitlich wirken lassen.</p>
+        <h2>16x16</h2>
+        <p>Das ist die Vanilla-Basis. Schnell gemalt, aus der Entfernung gut lesbar und ideal für Packs, die klare Silhouetten und wenig Rauschen wollen.</p>
+        <h2>32x32</h2>
+        <p>Für viele eigene Packs der beste Kompromiss: genug Platz für saubere Schattierung und kleine Details, ohne dass jede Textur zum großen Kunstprojekt wird.</p>
+        <h2>64x64</h2>
+        <p>Lohnt sich, wenn das Pack eine starke künstlerische Richtung hat und der zusätzliche Detailgrad wirklich zählt. Das passt gut für Hauptgegenstände, eigene Icons und stilisierte Blockfamilien, kostet aber mehr Zeit, damit jede Fläche einheitlich bleibt.</p>
+        <h2>128x128 und mehr</h2>
+        <p>Hohe Auflösung braucht einen klaren Grund. Für Showcase-Bauten kann sie toll aussehen, sie erhöht aber den Aufwand und macht Stilbrüche viel wahrscheinlicher. Sind nur ein oder zwei Texturen riesig und der Rest des Packs bleibt schlicht, wirkt das Ergebnis oft zusammengewürfelt.</p>
+        <h2>Items und Blöcke</h2>
+        <p>Items und Blöcke sind beides nur PNGs, werden vom Spieler aber unterschiedlich gelesen. Ein Item-Icon muss in einem Inventarslot sofort verständlich sein. Eine Blocktextur wiederholt sich über Flächen, deshalb zählen Kachelung, Kontrast und das Verhalten an den Kanten viel mehr.</p>
         <h2>Wie man Blocktexturen zeichnet</h2>
+        <p>Fang mit dem Gesamteindruck an. Auf einer Blockfläche bemerken Spieler zuerst das Material und erst dann die Details. Leg zuerst die großen Farbgruppen und den Helligkeitskontrast an und füge Absplitterungen, Risse, Maserung, Erzformen, Moos oder andere Oberflächendetails erst hinzu, wenn das Material schon richtig gelesen wird.</p>
         <ul>
-            <li>Zuerst die großen Materialformen aufbauen.</li>
-            <li>Kanten früh testen, damit die Textur sauber tilet.</li>
-            <li>Details lieber in Clustern als als zufälliges Einzelpixelrauschen setzen.</li>
-            <li>Regelmäßig herauszoomen, um zu prüfen, ob das Material noch klar lesbar ist.</li>
+            <li>Prüf die vier Kanten früh, damit die Textur sauber kachelt.</li>
+            <li>Pack nicht den ganzen Kontrast in die Mitte und lass die Ränder flach.</li>
+            <li>Wiederholt sich die Textur oft, entferne zufällige Einzelpixel-Lichter, die in der Welt sichtbares Gitterrauschen erzeugen.</li>
+            <li>Bei 16x16 und 32x32 kann ein einziges Pixel den Rhythmus einer Fläche komplett ändern, also zoom oft heraus.</li>
         </ul>
-        <p>Wenn du nicht nur eine wiederholte Fläche, sondern einen ganzen Würfel planen willst, nutze die <a href="/de/texture-painter/">Blockvorlage im Texture Painter</a>. Sie öffnet ein leeres <code>64x64</code>-Layout mit nur im Editor sichtbaren Hilfslinien, damit du Wand-Tiling und Würfelvorschau prüfen kannst, ohne Markierungen in das finale PNG zu brennen.</p>
         <h2>Wie man Inventar-Icons zeichnet</h2>
+        <p>Ein Inventar-Icon wird nicht wie ein Gemälde beurteilt, sondern danach, ob der Spieler es in einem kleinen Slot sofort versteht. Silhouette, Kontrast und das zentrale Detail zählen deshalb mehr als Mikrodekoration.</p>
         <ul>
-            <li>Mit einer klaren Silhouette beginnen.</li>
-            <li>Den stärksten Kontrast an der Fokusstelle bündeln.</li>
-            <li>Kleine Icons nicht mit zu viel Mikrodeko überladen.</li>
-            <li>Für seltene oder magische Items meist lieber einen starken Akzent als Glanz überall setzen.</li>
+            <li>Halte zuerst die äußere Form lesbar: Klinge, Flasche, Edelstein, Papier, Schlüssel, Ring oder Splitter.</li>
+            <li>Setz den stärksten Kontrast an die Fokuskante, nicht überall gleichzeitig.</li>
+            <li>Schattiere kleine Items bei 16x16 nicht zu stark: Zu viel inneres Rauschen lässt das Icon zu Matsch verschwimmen.</li>
+            <li>Soll ein Icon magisch oder selten wirken, nimm einen einzigen hellen Akzent, statt jede Ecke mit Glanzpixeln zu füllen.</li>
         </ul>
+        <h2>Ablauf für Inventar-Icons</h2>
+        <ol>
+            <li>Wähle die Leinwandgröße, die zum Rest des Packs passt.</li>
+            <li>Leg die Silhouette als eine flache Form an.</li>
+            <li>Füge eine Schattenfamilie und eine Lichtfamilie hinzu.</li>
+            <li>Zoom auf echte Größe zurück und prüf, ob das Item im Slot noch eindeutig ist.</li>
+            <li>Erst dann kommen Gravuren, Edelsteine, Beschriftungen, Leuchtakzente oder Kantenverschleiß dazu.</li>
+        </ol>
+        <h2>Ablauf für Blocktexturen</h2>
+        <ol>
+            <li>Wähle die Grundfarben des Materials.</li>
+            <li>Leg zuerst die größten Formen an.</li>
+            <li>Teste Kanten und Ecken auf Kachelung.</li>
+            <li>Setz kleinere Detailgruppen statt zufälliger Einzelpixel.</li>
+            <li>Schau dir die Textur mehrfach wiederholt an, bevor du exportierst.</li>
+        </ol>
+        <p>Wenn du nicht nur eine wiederholte Fläche, sondern einen ganzen Würfel planen willst, nutze die <a href="/de/texture-painter/">Blockvorlage im Textur-Editor</a>. Sie öffnet ein leeres <code>64x64</code>-Würfelblatt mit nur im Editor sichtbaren Hilfslinien, damit du Wand-Kachelung und Würfelvorschau prüfen kannst, ohne Markierungen ins finale PNG zu brennen.</p>
         <h2>Empfohlener Workflow</h2>
         <ol>
-            <li>Die Leinwandgröße wählen.</li>
-            <li>Entscheiden, ob ein Inventar-Icon oder eine wiederholbare Blockfläche entsteht.</li>
-            <li>Das PNG im Browser zeichnen.</li>
-            <li>Erst exportieren, wenn Silhouette, Kontrast und Kanten auf echter Größe geprüft wurden.</li>
-            <li>Das Ergebnis anschließend in den <a href="/de/resource-pack-generator/">Resource-Pack-Generator</a> übernehmen.</li>
+            <li>Wähle zuerst die Leinwandgröße.</li>
+            <li>Entscheide, ob du ein Inventar-Icon oder eine wiederholbare Blockfläche zeichnest.</li>
+            <li>Mal die Textur als einzelnes PNG im Browser.</li>
+            <li>Exportiere sie, wenn Silhouette, Kanten und Kontrast in echter Größe stimmen.</li>
+            <li>Öffne den <a href="/de/resource-pack-generator/">Resource-Pack-Generator</a> und leg das PNG in den richtigen Item- oder Block-Slot.</li>
+            <li>Lade das ZIP herunter und teste die Textur im Spiel, bevor du das ganze Set malst.</li>
         </ol>
+        <h2>Schnelle Prüfung vor dem Export</h2>
+        <ul>
+            <li>Ist das Item-Icon in Inventargröße noch klar lesbar?</li>
+            <li>Kachelt die Blocktextur ohne sichtbare Nähte?</li>
+            <li>Passt die Auflösung zum Rest des Packs?</li>
+            <li>Ist der Kontrast stark genug für die Beleuchtung in Minecraft?</li>
+            <li>Würde ein Spieler, der sie nur eine halbe Sekunde sieht, sie noch verstehen?</li>
+        </ul>
 
         <h2>Das Skin eines Mobs neu bemalen</h2>
         <p>Mobs funktionieren anders als Items und Blöcke: Ihre Form lässt sich in der Regel nicht per Resource Pack ändern, nur ihre Textur. Ein konkretes Beispiel &mdash; inklusive dem Fall, dass ein Mob mehr als eine Texturebene hat &mdash; steht in <a href="/de/wiki-sulfur-cube-texture/">wie die Textur des Sulfur Cube funktioniert</a>.</p>

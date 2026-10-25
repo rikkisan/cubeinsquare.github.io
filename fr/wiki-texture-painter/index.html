@@ -62,34 +62,67 @@
     </section>
     <article>
         <h2>Commencer par la question, pas par le chiffre</h2>
-        <p>La bonne taille dépend de ce que le pack doit ressentir en jeu. Plus grand ne veut pas automatiquement dire meilleur. Si tout le projet cherche une lisibilité proche du vanilla, des textures trop grandes peuvent embellir un bloc isolé tout en cassant l’unité du pack.</p>
-        <h2>16x16, 32x32, 64x64, 128x128</h2>
-        <p><strong>16x16</strong> reste la base vanilla : rapide à peindre, propre à lire, peu de bruit visuel. <strong>32x32</strong> est souvent le meilleur compromis pour ajouter de la matière sans transformer chaque texture en gros chantier. <strong>64x64</strong> devient intéressant quand la direction artistique est déjà forte et que le détail supplémentaire sert vraiment l’objet ou le matériau. <strong>128x128</strong> et plus doivent avoir une raison claire, sinon la charge de travail monte plus vite que la qualité réelle du pack.</p>
-        <h2>Icônes d’inventaire et textures de blocs</h2>
-        <p>Une icône d’objet doit être comprise immédiatement dans un petit slot. Une texture de bloc se répète sur les surfaces, donc ses bords, son contraste et son rythme comptent beaucoup plus. Le même PNG n’est pas lu de la même façon par le joueur selon l’usage.</p>
-        <h2>Comment dessiner une face de bloc</h2>
+        <p>La bonne taille de texture dépend de ce que le pack doit faire ressentir. Plus grand n’est pas automatiquement mieux. Si le projet doit rester proche de Minecraft vanilla, des textures très grandes peuvent rendre un bloc magnifique pris seul, tout en donnant un pack incohérent en mouvement.</p>
+        <h2>16x16</h2>
+        <p>C’est la base vanilla. Rapide à peindre, lisible de loin, idéale pour les packs qui veulent des silhouettes nettes et peu de bruit.</p>
+        <h2>32x32</h2>
+        <p>Le juste milieu pour beaucoup de packs personnalisés : assez de place pour un ombrage plus propre et de petits détails, sans transformer chaque texture en gros projet artistique.</p>
+        <h2>64x64</h2>
+        <p>À utiliser quand le pack a une direction artistique forte et que le détail supplémentaire compte vraiment. Cela marche bien pour les objets phares, les icônes personnalisées et les familles de blocs stylisées, mais garder chaque face cohérente prend plus de temps.</p>
+        <h2>128x128 et plus</h2>
+        <p>La haute résolution demande une vraie raison. Elle peut être superbe pour des constructions vitrines, mais elle alourdit le travail et rend la dérive de style beaucoup plus facile. Si une ou deux textures seulement sont énormes alors que le reste du pack reste simple, le résultat paraît souvent décousu.</p>
+        <h2>Objets et blocs</h2>
+        <p>Objets et blocs restent de simples PNG, mais le joueur ne les lit pas de la même façon. Une icône d’objet doit être lisible immédiatement dans une case d’inventaire. Une texture de bloc se répète sur des surfaces : la mosaïque, le contraste et le comportement des bords comptent beaucoup plus.</p>
+        <h2>Comment dessiner une texture de bloc</h2>
+        <p>Commencez par la lecture d’ensemble. Sur une face de bloc, le joueur remarque le matériau avant les détails. Posez d’abord les grands groupes de couleurs et le contraste de valeurs, puis ajoutez éclats, fissures, grain, formes de minerai, mousse ou autres détails de surface une fois que le matériau se lit déjà correctement.</p>
         <ul>
-            <li>Construisez d’abord les grandes masses de couleur.</li>
-            <li>Vérifiez tôt les quatre bords pour que la texture tile proprement.</li>
-            <li>Ajoutez les détails par petits groupes, pas par bruit pixel aléatoire.</li>
-            <li>Dézoomez souvent pour voir si le matériau se lit encore correctement.</li>
+            <li>Vérifiez tôt les quatre bords pour que la texture se répète proprement.</li>
+            <li>Ne concentrez pas tout le contraste au centre en laissant les bords plats.</li>
+            <li>Si la texture se répète souvent, supprimez les reflets accidentels d’un seul pixel qui créent un bruit de grille visible dans le monde.</li>
+            <li>En 16x16 et 32x32, un pixel de plus peut changer tout le rythme d’une face : dézoomez souvent.</li>
         </ul>
-        <p>Si vous préparez un cube entier plutôt qu’une seule face répétée, utilisez le <a href="/fr/texture-painter/">modèle de bloc dans le texture painter</a>. Il ouvre une feuille <code>64x64</code> vide avec des repères visibles seulement dans l’éditeur, pour vérifier le mur répété et le cube sans graver de marques d’aide dans le PNG final.</p>
         <h2>Comment dessiner une icône d’inventaire</h2>
+        <p>Une icône d’inventaire ne se juge pas comme un tableau, mais à la vitesse à laquelle le joueur la comprend dans une petite case. La silhouette, le contraste et le détail principal comptent donc plus que la micro-décoration.</p>
         <ul>
-            <li>Faites d’abord une silhouette lisible.</li>
-            <li>Réservez le contraste le plus fort à la zone focale.</li>
-            <li>Évitez de surcharger une petite icône avec trop de décor interne.</li>
-            <li>Pour un objet rare ou magique, un seul accent lumineux vaut souvent mieux qu’un éclat partout.</li>
+            <li>Gardez d’abord la forme extérieure lisible : lame, fiole, gemme, papier, clé, anneau ou éclat.</li>
+            <li>Placez le contraste le plus fort près du bord principal, pas partout à la fois.</li>
+            <li>N’ombrez pas trop les petits objets en 16x16 : trop de bruit interne transforme l’icône en bouillie.</li>
+            <li>Si une icône doit paraître magique ou rare, utilisez un seul accent lumineux au lieu de remplir chaque coin de pixels brillants.</li>
         </ul>
+        <h2>Étapes pour une icône d’inventaire</h2>
+        <ol>
+            <li>Choisissez la taille de toile qui correspond au reste du pack.</li>
+            <li>Posez la silhouette en une seule forme plate.</li>
+            <li>Ajoutez une famille d’ombres et une famille de lumières.</li>
+            <li>Revenez à la taille réelle et vérifiez que l’objet reste évident dans une case.</li>
+            <li>Ensuite seulement, ajoutez gravures, gemmes, étiquettes, lueurs ou usure des bords.</li>
+        </ol>
+        <h2>Étapes pour une texture de bloc</h2>
+        <ol>
+            <li>Choisissez les couleurs de base du matériau.</li>
+            <li>Posez d’abord les plus grandes formes.</li>
+            <li>Testez les bords et les coins pour la répétition.</li>
+            <li>Ajoutez de petits groupes de détails plutôt que des pixels isolés au hasard.</li>
+            <li>Prévisualisez la texture répétée plusieurs fois avant d’exporter.</li>
+        </ol>
+        <p>Si vous préparez un cube entier plutôt qu’une face répétée, utilisez le <a href="/fr/texture-painter/">modèle de bloc de l’éditeur de textures</a>. Il ouvre une planche de cube vierge en <code>64x64</code> avec des repères de faces visibles uniquement dans l’éditeur : vous vérifiez le mur en mosaïque et l’aperçu du cube sans graver de marques d’aide dans le PNG final.</p>
         <h2>Workflow conseillé</h2>
         <ol>
-            <li>Choisir la taille du canevas.</li>
-            <li>Décider si l’on dessine une icône ou une texture de bloc répétée.</li>
-            <li>Peindre le PNG dans le navigateur.</li>
-            <li>Exporter seulement quand silhouette, contraste et bords sont validés à l’échelle réelle.</li>
-            <li>Envoyer ensuite le PNG vers le <a href="/fr/resource-pack-generator/">générateur de resource packs</a>.</li>
+            <li>Choisissez d’abord la taille de toile.</li>
+            <li>Décidez si vous dessinez une icône d’inventaire ou une face de bloc répétée.</li>
+            <li>Peignez la texture comme un seul PNG dans le navigateur.</li>
+            <li>Exportez-la quand la silhouette, les bords et le contraste tiennent à taille réelle.</li>
+            <li>Ouvrez le <a href="/fr/resource-pack-generator/">générateur de resource pack</a> et placez ce PNG dans le bon emplacement d’objet ou de bloc.</li>
+            <li>Téléchargez le ZIP et testez la texture en jeu avant de peindre toute la série.</li>
         </ol>
+        <h2>Vérification rapide avant l’export</h2>
+        <ul>
+            <li>L’icône reste-t-elle lisible à la taille d’une case d’inventaire ?</li>
+            <li>La texture de bloc se répète-t-elle sans raccords visibles ?</li>
+            <li>La résolution correspond-elle au reste du pack ?</li>
+            <li>Le contraste est-il assez fort pour survivre à l’éclairage de Minecraft ?</li>
+            <li>Un joueur qui ne la voit qu’une demi-seconde la comprendrait-il encore ?</li>
+        </ul>
 
         <h2>Repeindre le skin d’un mob</h2>
         <p>Les mobs fonctionnent différemment des objets et des blocs : leur forme n’est généralement pas modifiable via un resource pack, seule leur texture l’est. Pour un exemple concret &mdash; y compris ce qui se passe quand un mob a plusieurs couches de texture &mdash; voir <a href="/fr/wiki-sulfur-cube-texture/">comment fonctionne la texture du Sulfur Cube</a>.</p>

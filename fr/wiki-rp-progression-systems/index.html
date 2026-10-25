@@ -80,19 +80,28 @@
         <p class="article-byline">Par <a href="/fr/about/#team">Rikki</a></p>
     </section>
     <article>
-        <h2>Commencez par un artefact central</h2>
-        <p>Les systèmes sans mods les plus lisibles s'appuient souvent sur un objet d'identité: un croc, un coeur mécanique, un jeton de classe, un livre maudit ou un noyau de relique. Cet objet porte l'état, le nom, le lore et parfois le modèle visuel du chemin.</p>
-        <p>Pour l'équipe, c'est aussi plus simple. Quand un pouvoir se comporte mal, on inspecte l'artefact au lieu de chercher des morceaux d'état dans dix systèmes séparés.</p>
-        <h2>La puissance doit rester liée au monde</h2>
-        <p>Une puissance permanente et gratuite devient vite invisible. Les systèmes qui durent utilisent du carburant, des charges, des trophées, des réparations, des rituels, des temps de récupération ou une forme d'entretien. Le but n'est pas de punir le joueur, mais de donner à la puissance une présence dans le jeu.</p>
-        <h2>Les améliorations doivent se comprendre vite</h2>
-        <p>Un joueur devrait pouvoir expliquer son prochain palier en une phrase. Un chemin linéaire est facile à tester, un arbre de choix crée plus d'identité, et une carte d'adjacence convient bien aux machines ou aux rituels. Mais la logique doit rester lisible.</p>
-        <h2>Les limites font partie de la classe</h2>
-        <p>Une classe devient mémorable quand elle refuse quelque chose. Une machine craint l'eau, un chasseur risque de perdre sa progression, un mage évite l'armure lourde, une relique maudite donne plus de force contre un prix. Ces limites donnent une forme RP et des leviers d'équilibrage.</p>
-        <h2>Préparez les contrôles admin</h2>
-        <p>Avant le lancement, l'équipe doit pouvoir donner l'artefact, lire son état, changer son niveau, réinitialiser un délai, désactiver une capacité et retirer proprement un chemin. Sans ces outils, chaque problème devient une urgence.</p>
-        <h2>Reliez la progression au pack de ressources</h2>
-        <p>La progression devient plus convaincante quand l'objet change visuellement. Vous pouvez préparer la partie visuelle avec le <a href="/fr/resource-pack-generator/">générateur de packs</a> et la partie commande avec le <a href="/fr/custom-item-builder/">constructeur d'objets</a>.</p>
+        <h2>Commencez par un artefact, pas par dix interrupteurs cachés</h2>
+        <p>Les systèmes de progression sans mods les plus clairs commencent souvent par un seul objet d’identité : un croc, un cœur mécanique, un jeton de classe, un livre maudit ou un noyau de relique. Cet objet devient l’ancre visible du parcours du personnage. Il peut stocker un état caché dans <code>custom_data</code>, porter un nom et une description lisibles, pointer vers un modèle personnalisé, et il donne au joueur une seule chose à comprendre au lieu d’une piste de commandes éparpillées.</p>
+        <p>Ce schéma aide aussi l’équipe. Quand quelque chose casse, vous inspectez l’artefact et son état. Inutile de vous rappeler si l’amélioration vivait à la fois dans un scoreboard, un bloc de commande, un flag de région et une note Discord.</p>
+        <h2>La progression a besoin de friction</h2>
+        <p>Un pouvoir permanent et gratuit enthousiasme une semaine, puis devient un bruit de fond. Les systèmes qui tiennent une saison comportent en général une boucle d’entretien : carburant, charges, temps de recharge, réparation, corruption, oxydation, épuisement, trophées de chasse, composants rituels ou accès social. Le but n’est pas de punir le joueur, mais de garder le pouvoir relié au monde.</p>
+        <p>Une classe mécanique peut exiger du cuivre pour son entretien. Une voie de chasseur, des trophées de mobs précis. Un livre magique, de l’encre, un sacrifice ou du temps près d’une structure rituelle. Ces boucles donnent aux autres joueurs des raisons d’interagir avec la classe au lieu de la voir comme un pouvoir de menu privé.</p>
+        <h2>Des améliorations lisibles</h2>
+        <p>Un joueur doit pouvoir expliquer son prochain palier en une phrase. Un bon parcours peut être linéaire, ramifié ou fondé sur l’adjacence, mais il ne doit jamais ressembler à un tableur que seul l’auteur du plugin comprend. Des noms d’amélioration courts, une description visible et peu de choix, mais des choix qui comptent.</p>
+        <ul>
+            <li><strong>Linéaire :</strong> plus sûr pour une première saison, facile à équilibrer et à expliquer.</li>
+            <li><strong>Ramifié :</strong> meilleur pour l’identité de classe, mais demande des limites plus fermes.</li>
+            <li><strong>Adjacence :</strong> idéal pour les systèmes mécaniques ou rituels, à condition d’avoir une carte visuelle claire.</li>
+        </ul>
+        <h2>Les limites font partie du fantasme</h2>
+        <p>Une classe devient mémorable quand elle sait dire non. Si chaque voie peut sprinter, voler, se soigner, frapper fort et ignorer le danger, le système perd sa forme. Les restrictions créent l’identité : la machine craint l’eau, le chasseur perd sa progression à la mort, le mage ne porte pas d’armure lourde, la relique maudite gagne en force à un prix.</p>
+        <p>Écrivez les restrictions comme des règles de design, pas comme des rustines. Elles disent aux joueurs comment jouer ce pouvoir en roleplay et offrent à l’équipe un levier d’équilibrage plus sain que de baisser des chiffres après le lancement.</p>
+        <h2>Préparez les contrôles admin avant le lancement</h2>
+        <p>La première version doit avoir des garde-fous. L’équipe doit pouvoir inspecter l’état, réinitialiser un objet cassé, désactiver une capacité, ajuster les coûts et retirer une voie à un joueur sans détruire tout son inventaire. Si ces contrôles n’existent pas avant le premier test public, chaque problème d’équilibre devient une opération d’urgence.</p>
+        <p>Au minimum, préparez des commandes ou des procédures pour donner l’artefact, lire son état, changer son niveau, effacer les temps de recharge, désactiver une capacité et consigner les grandes améliorations.</p>
+        <h2>Reliez la progression au resource pack</h2>
+        <p>La progression paraît plus profonde quand l’objet change visuellement. Une relique de premier palier peut rester sobre, puis gagner des fissures, des symboles, des pièces de métal, des variations de couleur ou des accents qui semblent animés à mesure que la voie avance. Le côté visuel se construit avec le <a href="/fr/resource-pack-generator/">générateur de resource pack</a>, et les objets côté commandes avec le <a href="/fr/custom-item-builder/">générateur d’objets personnalisés</a>.</p>
+
         <h2>FAQ</h2>
         <div class="faq-accordion">
             <details open><summary>Faut-il un mod pour une progression profonde?</summary><p>Non. Les plugins Paper, les commandes, les objets personnalisés et les packs de ressources suffisent déjà pour une progression RP solide.</p></details>
