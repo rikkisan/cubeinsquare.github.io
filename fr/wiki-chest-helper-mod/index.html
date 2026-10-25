@@ -2,37 +2,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mod Chest Helper pour les stockages Minecraft | Cube in Square</title>
+    <title>Chest Helper : une liste consultable de tout ce que contiennent vos coffres (mod Minecraft) | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pourquoi il devient important de se souvenir des coffres déjà ouverts sur les mondes longs, et comment Chest Helper transforme des conteneurs dispersés en liste searchable.">
+    <!-- Search metadata -->
+    <meta name="description" content="Ce que mémorise le mod Chest Helper, comment chercher et prendre des objets, ses contrôles et réglages, et quelle version installer pour Fabric, Quilt, Forge ou NeoForge.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-    <meta name="author" content="Cube in Square">
+    <meta name="author" content="Mark">
     <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-chest-helper-mod/">
-    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-chest-helper-mod/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Mod Chest Helper pour les stockages Minecraft | Cube in Square">
-    <meta property="og:description" content="Guide pratique du mod qui mémorise les conteneurs ouverts et transforme le chaos des coffres en liste d’objets searchable.">
+    <meta property="og:title" content="Chest Helper : une liste consultable de tout ce que contiennent vos coffres (mod Minecraft) | Cube in Square">
+    <meta property="og:description" content="Ce que mémorise le mod Chest Helper, comment chercher et prendre des objets, ses contrôles et réglages, et quelle version installer pour Fabric, Quilt, Forge ou NeoForge.">
     <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-chest-helper-mod/">
     <meta property="og:locale" content="fr_FR">
-    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Mod Chest Helper pour les stockages Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Ce que fait Chest Helper, pourquoi il aide sur les mondes longs, et pourquoi il s’inscrit naturellement dans l’histoire de Cube in Square.">
+    <meta name="twitter:title" content="Chest Helper : une liste consultable de tout ce que contiennent vos coffres (mod Minecraft) | Cube in Square">
+    <meta name="twitter:description" content="Ce que mémorise le mod Chest Helper, comment chercher et prendre des objets, ses contrôles et réglages, et quelle version installer pour Fabric, Quilt, Forge ou NeoForge.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -76,7 +78,6 @@
             "@type": "Organization",
             "@id": "https://cubeinsquare.com/#organization",
             "name": "Cube in Square",
-            "alternateName": "Kub v kvadrate",
             "url": "https://cubeinsquare.com/",
             "logo": {
                 "@type": "ImageObject",
@@ -86,11 +87,11 @@
         {
             "@type": "Article",
             "@id": "https://cubeinsquare.com/fr/wiki-chest-helper-mod/#article",
-            "headline": "Mod Chest Helper pour les stockages Minecraft",
-            "name": "Mod Chest Helper pour les stockages Minecraft",
-            "description": "Pourquoi il devient important de se souvenir des coffres déjà ouverts sur les mondes longs, et comment Chest Helper transforme des conteneurs dispersés en liste searchable.",
+            "headline": "Chest Helper : chercher dans tous les coffres que vous avez ouverts",
+            "description": "Ce que mémorise le mod Chest Helper, comment chercher et prendre des objets, ses contrôles et réglages, et quelle version installer pour Fabric, Quilt, Forge ou NeoForge.",
             "author": {
-                "@id": "https://cubeinsquare.com/#organization"
+                "@type": "Person",
+                "name": "Mark"
             },
             "publisher": {
                 "@id": "https://cubeinsquare.com/#organization"
@@ -100,25 +101,15 @@
             },
             "inLanguage": "fr",
             "url": "https://cubeinsquare.com/fr/wiki-chest-helper-mod/",
-            "image": [
-                "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
-            ],
             "datePublished": "2026-05-09",
-            "dateModified": "2026-05-09"
+            "dateModified": "2026-10-25"
         },
         {
             "@type": "WebPage",
             "@id": "https://cubeinsquare.com/fr/wiki-chest-helper-mod/#webpage",
             "url": "https://cubeinsquare.com/fr/wiki-chest-helper-mod/",
-            "name": "Mod Chest Helper pour les stockages Minecraft | Cube in Square",
-            "description": "Pourquoi il devient important de se souvenir des coffres déjà ouverts sur les mondes longs, et comment Chest Helper transforme des conteneurs dispersés en liste searchable.",
-            "about": {
-                "@id": "https://cubeinsquare.com/#organization"
-            },
-            "inLanguage": "fr",
-            "mainEntity": {
-                "@id": "https://cubeinsquare.com/fr/wiki-chest-helper-mod/#article"
-            }
+            "name": "Chest Helper : chercher dans tous les coffres que vous avez ouverts",
+            "inLanguage": "fr"
         },
         {
             "@type": "BreadcrumbList",
@@ -151,58 +142,100 @@
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/fr" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
-        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
-        <div class="language-switch" aria-label="Language"><a href="/wiki-chest-helper-mod/">EN</a><a href="/ru/wiki-chest-helper-mod/">RU</a><a class="is-active" href="#">FR</a><a href="/de/wiki-chest-helper-mod/">DE</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Langue"><a href="/ru/wiki-chest-helper-mod/">RU</a><a href="/wiki-chest-helper-mod/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-chest-helper-mod/">DE</a></div>
     </div>
 </div>
-
 <main class="page-shell wiki-article">
     <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
     <section class="page-hero">
-        <h1>Mod Chest Helper pour les stockages Minecraft</h1>
-        <p class="page-lead">Imaginez une forme de chaos moins dramatique, mais très réelle. La base a grandi, la salle de stockage existe, et pourtant tout le monde continue à demander où sont passées les lanternes, les cartes, les bougies ou les petits objets de quête. Chest Helper répond à cette friction précise. D’après sa description publique sur Modrinth, c’est un mod Fabric côté client qui mémorise les conteneurs déjà ouverts et les transforme en liste d’objets searchable.</p>
-        <a class="resource-link" href="https://modrinth.com/mod/chest-helper" target="_blank" rel="noopener noreferrer">Ouvrir Chest Helper sur Modrinth</a>
+        <h1>Chest Helper : chercher dans tous les coffres que vous avez ouverts</h1>
+        <p class="page-lead">Chest Helper est un mod côté client publié par Cube in Square : il mémorise les coffres, tonneaux et boîtes de Shulker que vous ouvrez et en fait une seule liste d’objets avec recherche. Depuis cette liste, vous pouvez prendre des objets dans les conteneurs proches sans les ouvrir un par un. Il tourne sur Minecraft Java 1.21.1, 1.21.11, 26.1.x et 26.2, avec des loaders différents selon la version.</p>
+        <p class="article-byline">Par Mark</p>
+        <div class="tool-button-row"><a class="tool-button" href="https://modrinth.com/mod/chest-helper">Chest Helper sur Modrinth</a><a class="tool-button tool-button-secondary" href="/fr/wiki-armorhide-mod/">ArmorHide</a></div>
     </section>
-
     <article>
-
-        <h2>Pourquoi le stockage cesse d’être un détail</h2>
-        <p>Sur un monde neuf, le stockage reste simple parce que la mémoire bat encore le mur de coffres. On sait où sont le fer, la nourriture ou les outils. Sur un vieux monde, une base partagée ou un serveur de rôle, cela se casse très vite. Une pièce devient à la fois archive, pantry, atelier, vestiaire et réserve de décor.</p>
-        <p>À ce stade, le problème n’est plus l’existence de l’objet. Le problème est de pouvoir le retrouver sans casser le rythme de la session. Une bonne base doit soutenir le jeu, pas obliger les joueurs à rouvrir douze coffres parce que personne ne se souvient où les cartes vides ou les sacs d’encre brillants ont été rangés.</p>
-
-        <h2>Ce que fait réellement Chest Helper</h2>
-        <p>La description publique est très claire. Chest Helper est un mod Fabric côté client qui mémorise les conteneurs déjà ouverts et les transforme en liste d’objets searchable. Le mod ne remplace donc pas tout le système de stockage. Il ajoute une couche de mémoire et de recherche par-dessus le monde de coffres qui existe déjà.</p>
-        <p>C’est exactement là que réside sa valeur. Il ne s’agit pas d’une automatisation voyante, mais d’une réduction très concrète du moment où quelqu’un dit : « je sais qu’on en a, mais je ne me souviens plus du coffre ».</p>
-
-        <h2>Pourquoi cela compte pour les bases partagées et les serveurs RP</h2>
-        <p>Les serveurs RP, les villages de survie et les mondes qui durent accumulent beaucoup plus d’objets nommés qu’ils ne l’imaginent. Ingrédients de rituels, papiers de quête, uniformes, blocs décoratifs pour les réparations, et tout le stock de survie classique en dessous. Plus un monde accumule d’histoire, plus le stockage devient un problème d’usage plutôt qu’un simple problème de tri.</p>
-        <p>Chest Helper s’insère très bien dans cette réalité. Il aide la couche pratique du monde à rester lisible alors même que le serveur gagne en complexité. C’est pourquoi il se place naturellement à côté des outils de Cube in Square, qui servent à créer les objets, pendant que le mod aide à les retrouver.</p>
-
-        <h2>Il aide la mémoire, pas la puissance</h2>
-        <p>C’est aussi ce qui rend ce mod plus sain que beaucoup d’idées de « confort de stockage ». Il ne rend pas les ressources rares moins rares, n’efface pas le besoin d’une vraie infrastructure et ne supprime pas l’organisation. Il évite simplement qu’un oubli banal devienne la partie la plus agaçante d’une base mature.</p>
-        <p>Pour un serveur qui veut garder de la logistique et du danger, mais pas la fatigue de l’oubli, c’est un très bon compromis.</p>
-
-        <h2>Pourquoi il a sa place à côté du reste du site</h2>
-        <p>ArmorHide est né d’une douleur visuelle. Chest Helper vient d’une autre douleur, plus discrète : le moment où un monde devient assez riche pour avoir besoin d’outils autour de lui. Quand un serveur possède déjà des items customs, des textures, des potions, des monnaies, des livres et des accessoires, il a aussi besoin de moyens pour ne pas perdre tout cela dans les réserves.</p>
-        <p>C’est pour cela qu’un storage helper vit très bien à côté du <a href="/fr/resource-pack-generator/">générateur de resource packs</a>, du <a href="/fr/custom-item-builder/">constructeur d’objets</a> ou des <a href="/fr/custom-villager-trades/">échanges de villageois</a>. Le site réduit la friction de création, et Chest Helper réduit la friction de récupération.</p>
-
-        <h2>Utile pour les builders, les intendants et les grands stockeurs</h2>
-        <p>Si vous construisez de grandes bases, gérez des stocks partagés, préparez du matériel pour des événements ou gardez simplement trop de blocs utiles pour vous fier à la mémoire, Chest Helper est exactement le genre de mod qui fait gagner du temps sans demander au monde entier de changer autour de lui.</p>
-
-        <h2>Source</h2>
-        <p>Cette page est un guide site-side du release public :<br><a href="https://modrinth.com/mod/chest-helper" target="_blank" rel="noopener noreferrer">Chest Helper sur Modrinth</a></p>
-    
+        <p><strong>Vérifié sur :</strong> Chest Helper 1.0.11 – 1.0.16, sa page Modrinth et les notes de version jusqu’au 24 juillet 2026.</p>
+        <h2 id="versions">Quel fichier installer</h2>
+        <p>Chaque loader n’existe pas pour chaque version de Minecraft. Trouvez la ligne de votre jeu :</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Minecraft</th><th>Loader</th><th>Dernière version</th></tr></thead>
+            <tbody>
+                <tr><td>26.2</td><td>Fabric</td><td>1.0.15 (21/07/2026)</td></tr>
+                <tr><td>26.1, 26.1.1, 26.1.2</td><td>NeoForge</td><td>1.0.11 (02/05/2026)</td></tr>
+                <tr><td>1.21.11</td><td>Fabric, Quilt, Forge, NeoForge</td><td>1.0.11 (02/05/2026)</td></tr>
+                <tr><td>1.21.1</td><td>NeoForge</td><td>1.0.16 (24/07/2026)</td></tr>
+            </tbody>
+        </table>
+        <p>Chest Helper tourne uniquement côté client : les serveurs n’en ont pas besoin. Modrinth n’indique aucune dépendance obligatoire. La licence est « tous droits réservés » (All Rights Reserved).</p>
+        <h2 id="remembers">Ce qu’il mémorise</h2>
+        <ul>
+            <li>Les coffres, tonneaux et boîtes de Shulker que vous ouvrez, séparément pour chaque serveur, monde et dimension.</li>
+            <li>La mémoire est conservée d’une session de jeu à l’autre.</li>
+            <li>Les objets sont comparés avec leurs composants : objets renommés, équipement enchanté, potions, livres, outils et boîtes de Shulker remplies ne sont pas fusionnés juste parce qu’ils partagent un ID.</li>
+        </ul>
+        <p>Il ne connaît que ce que vous avez vu. Un conteneur jamais ouvert n’apparaît pas dans la liste, et le mod met sa mémoire à jour quand vous prenez ou déplacez des objets. Si quelqu’un d’autre modifie un coffre, la liste montre ce qu’il contenait la dernière fois que vous l’avez ouvert.</p>
+        <h2 id="list">La liste d’objets</h2>
+        <p>Appuyez sur <strong>B</strong> pour l’ouvrir. Chaque ligne affiche le nom et l’icône de l’objet, la quantité totale dans les conteneurs mémorisés et ce qui se trouve dans les conteneurs proches. Les grands nombres sont abrégés : 125, 1k, 1.5k. Les coordonnées peuvent être affichées ou masquées.</p>
+        <p>Les captures de la liste, des réglages et de la mise en surbrillance d’un conteneur sont dans la <a href="https://modrinth.com/mod/chest-helper/gallery">galerie Modrinth</a>.</p>
+        <h2 id="taking">Prendre et ranger des objets</h2>
+        <p>Chest Helper prend des objets dans les conteneurs mémorisés à 6 blocs ou moins, avec les mêmes actions d’inventaire que vous. Pendant ce temps, il masque l’écran du conteneur et affiche à la place un court message de résultat.</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Action</th><th>Résultat</th></tr></thead>
+            <tbody>
+                <tr><td>Clic gauche sur une ligne</td><td>Prendre une pile dans les conteneurs proches</td></tr>
+                <tr><td>Clic droit sur une ligne</td><td>Prendre la quantité choisie</td></tr>
+                <tr><td>Maj + molette</td><td>Changer la quantité du clic droit</td></tr>
+                <tr><td>Maj + clic sur une ligne</td><td>Prendre tous les objets correspondants des conteneurs proches</td></tr>
+                <tr><td>Flèche haut</td><td>Déposer les objets correspondants de l’inventaire dans les conteneurs proches qui contiennent déjà cet objet</td></tr>
+                <tr><td>Flèche bas</td><td>Retirer les objets correspondants des conteneurs proches vers l’inventaire</td></tr>
+                <tr><td>Bouton œil près d’un emplacement</td><td>Surligner ce conteneur à travers les murs pendant 5 secondes</td></tr>
+            </tbody>
+        </table>
+        <h2 id="settings">Réglages</h2>
+        <ul>
+            <li><strong>Reopen Chest Helper after taking items</strong> : revient à la liste après une prise.</li>
+            <li><strong>Ignore ender chests</strong> : laisse de côté les coffres de l’Ender.</li>
+            <li><strong>List radius</strong> : masque de la liste les conteneurs plus éloignés que cette distance. 160 blocs par défaut.</li>
+            <li><strong>Coordonnées</strong> : les afficher ou non dans les lignes.</li>
+        </ul>
+        <p>La liste propose aussi de réinitialiser les données enregistrées et d’ouvrir le dossier où elles sont stockées.</p>
+        <h2 id="changes">Ce qui a changé dans les dernières versions</h2>
+        <ul>
+            <li><strong>1.0.15</strong> (Fabric 26.2, NeoForge 1.21.1) : les coffres ne sont plus oubliés quand vous sortez du rayon de la liste ; les autres mods ne peuvent plus fermer ni remplacer l’écran de Chest Helper pendant une recherche ; B ou E pendant la saisie ne le ferment plus.</li>
+            <li><strong>1.0.16</strong> (NeoForge 1.21.1 uniquement) : raccourcis « Deposit Matching » et « Withdraw Matching » ; Maj + clic molette verrouille un emplacement, et les emplacements verrouillés sont ignorés lors des transferts ; intégration JEI qui prend les ingrédients d’une recette dans les coffres et les place dans la grille d’artisanat.</li>
+        </ul>
+        <p>Les fonctions les plus récentes n’existent donc que sur NeoForge 1.21.1. Les versions pour 1.21.11 et 26.1 en sont encore à 1.0.11.</p>
+        <h2 id="install">Installation</h2>
+        <ol>
+            <li>Repérez votre version de Minecraft et votre loader dans le tableau ci-dessus. Si votre combinaison n’y est pas, il n’existe pas de version pour elle.</li>
+            <li>Téléchargez ce fichier dans l’onglet Versions de Modrinth.</li>
+            <li>Placez le <code>.jar</code> dans le dossier <code>mods</code> du jeu ou de l’instance du launcher.</li>
+            <li>Lancez le jeu avec ce loader, ouvrez quelques conteneurs et appuyez sur <strong>B</strong>.</li>
+        </ol>
+        <h2 id="limits">Limites</h2>
+        <ul>
+            <li>Il ne connaît que les conteneurs que vous avez ouverts, avec leur contenu à ce moment-là.</li>
+            <li>Prendre et ranger fonctionnent à 6 blocs ou moins. La liste, elle, montre les conteneurs jusqu’au rayon de la liste.</li>
+            <li>Modrinth cite les coffres, tonneaux et boîtes de Shulker ; les coffres de l’Ender comptent aussi, sauf si vous activez « Ignore ender chests ».</li>
+            <li>Les versions diffèrent : verrouillage d’emplacement, raccourcis et prise en charge de JEI sont en 1.0.16, qui n’existe que pour NeoForge 1.21.1.</li>
+        </ul>
+        <h2 id="why">Pourquoi nous l’avons fait</h2>
+        <p>Chest Helper est le deuxième mod public de Cube in Square. Il règle un problème plus discret qu’<a href="/fr/wiki-armorhide-mod/">ArmorHide</a> : dans une vieille base partagée, personne ne se souvient lequel des quarante coffres contient les bougies, les cartes ou les pièces de costume de rechange. Le mod ne trie rien à votre place ; il se souvient de ce que vous avez vu.</p>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Le serveur a-t-il besoin de Chest Helper ?</h3><p>Non. C’est un mod côté client.</p></div>
+        <div class="faq-section"><h3>Voit-il dans les coffres que je n’ai pas ouverts ?</h3><p>Non. Il ne liste que les conteneurs que vous avez ouverts vous-même, avec le contenu que vous y avez vu.</p></div>
+        <div class="faq-section"><h3>Pourquoi n’y a-t-il pas de version pour la mienne ?</h3><p>Chaque version de Minecraft a ses propres fichiers, listés dans le tableau : la 1.21.11 a les quatre loaders, la 26.2 a Fabric, la 26.1.x et la 1.21.1 ont NeoForge.</p></div>
+        <div class="faq-section"><h3>Fonctionne-t-il avec JEI ?</h3><p>La version 1.0.16 pour NeoForge 1.21.1 ajoute une intégration JEI : elle prend les ingrédients d’une recette dans les coffres et les place dans la grille d’artisanat.</p></div>
+        <p><strong>Source :</strong> <a href="https://modrinth.com/mod/chest-helper">Chest Helper sur Modrinth</a>, publié par Cube in Square : description, liste des versions et notes de version.</p>
     </article>
 </main>
 
-<footer class="site-footer">
-    <span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span>
-    <a href="/fr/privacy-policy/">Politique de confidentialité</a>
-</footer>
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>

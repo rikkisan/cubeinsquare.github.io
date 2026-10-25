@@ -1791,6 +1791,35 @@
             color: #ffffff;
         }
 
+        .article-byline {
+            margin: 12px 0 0;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .article-byline a {
+            color: inherit;
+            font-weight: 700;
+        }
+
+        .article-figure {
+            margin: 24px 0;
+        }
+
+        .article-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+        }
+
+        .article-figure figcaption {
+            margin-top: 8px;
+            color: var(--text-dim);
+            font-size: 0.92rem;
+        }
+
         .site-footer {
             width: 90%;
             max-width: 980px;
@@ -2820,6 +2849,15 @@
             .compact-table th,
             .compact-table td {
                 white-space: nowrap;
+            }
+
+            .prose-table {
+                display: table;
+            }
+
+            .prose-table th,
+            .prose-table td {
+                white-space: normal;
             }
 
             .copy-example {

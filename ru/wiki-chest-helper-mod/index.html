@@ -2,37 +2,39 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мод Chest Helper для хранилищ Minecraft | Cube in Square</title>
+    <title>Chest Helper: один список с поиском по всем вашим сундукам (мод Minecraft) | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Почему на длинных Minecraft-сессиях становится важно помнить уже открытые сундуки, и как Chest Helper превращает разрозненные контейнеры в список с поиском.">
+    <!-- Search metadata -->
+    <meta name="description" content="Что запоминает мод Chest Helper, как искать и забирать предметы, управление и настройки, и какую сборку ставить на Fabric, Quilt, Forge или NeoForge.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-    <meta name="author" content="Cube in Square">
+    <meta name="author" content="Марк">
     <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-chest-helper-mod/">
-    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-chest-helper-mod/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-chest-helper-mod/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-chest-helper-mod/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Мод Chest Helper для хранилищ Minecraft | Cube in Square">
-    <meta property="og:description" content="Практический разбор мода, который запоминает открытые контейнеры и превращает складской хаос в список вещей с поиском.">
+    <meta property="og:title" content="Chest Helper: один список с поиском по всем вашим сундукам (мод Minecraft) | Cube in Square">
+    <meta property="og:description" content="Что запоминает мод Chest Helper, как искать и забирать предметы, управление и настройки, и какую сборку ставить на Fabric, Quilt, Forge или NeoForge.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-chest-helper-mod/">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Мод Chest Helper для хранилищ Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Что делает Chest Helper, почему он полезен на длинных мирах и как он ложится в общую историю Cube in Square.">
+    <meta name="twitter:title" content="Chest Helper: один список с поиском по всем вашим сундукам (мод Minecraft) | Cube in Square">
+    <meta name="twitter:description" content="Что запоминает мод Chest Helper, как искать и забирать предметы, управление и настройки, и какую сборку ставить на Fabric, Quilt, Forge или NeoForge.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -76,7 +78,6 @@
             "@type": "Organization",
             "@id": "https://cubeinsquare.com/#organization",
             "name": "Cube in Square",
-            "alternateName": "Kub v kvadrate",
             "url": "https://cubeinsquare.com/",
             "logo": {
                 "@type": "ImageObject",
@@ -86,11 +87,11 @@
         {
             "@type": "Article",
             "@id": "https://cubeinsquare.com/ru/wiki-chest-helper-mod/#article",
-            "headline": "Мод Chest Helper для хранилищ Minecraft",
-            "name": "Мод Chest Helper для хранилищ Minecraft",
-            "description": "Почему на длинных Minecraft-сессиях становится важно помнить уже открытые сундуки, и как Chest Helper превращает разрозненные контейнеры в список с поиском.",
+            "headline": "Chest Helper: поиск по всем сундукам, которые вы открывали",
+            "description": "Что запоминает мод Chest Helper, как искать и забирать предметы, управление и настройки, и какую сборку ставить на Fabric, Quilt, Forge или NeoForge.",
             "author": {
-                "@id": "https://cubeinsquare.com/#organization"
+                "@type": "Person",
+                "name": "Марк"
             },
             "publisher": {
                 "@id": "https://cubeinsquare.com/#organization"
@@ -100,25 +101,15 @@
             },
             "inLanguage": "ru",
             "url": "https://cubeinsquare.com/ru/wiki-chest-helper-mod/",
-            "image": [
-                "https://cubeinsquare.com/assets/gallery/server-gallery-intro-01.png"
-            ],
             "datePublished": "2026-05-09",
-            "dateModified": "2026-05-09"
+            "dateModified": "2026-10-25"
         },
         {
             "@type": "WebPage",
             "@id": "https://cubeinsquare.com/ru/wiki-chest-helper-mod/#webpage",
             "url": "https://cubeinsquare.com/ru/wiki-chest-helper-mod/",
-            "name": "Мод Chest Helper для хранилищ Minecraft | Cube in Square",
-            "description": "Почему на длинных Minecraft-сессиях становится важно помнить уже открытые сундуки, и как Chest Helper превращает разрозненные контейнеры в список с поиском.",
-            "about": {
-                "@id": "https://cubeinsquare.com/#organization"
-            },
-            "inLanguage": "ru",
-            "mainEntity": {
-                "@id": "https://cubeinsquare.com/ru/wiki-chest-helper-mod/#article"
-            }
+            "name": "Chest Helper: поиск по всем сундукам, которые вы открывали",
+            "inLanguage": "ru"
         },
         {
             "@type": "BreadcrumbList",
@@ -151,58 +142,100 @@
 <body>
 <div class="steam-navbar">
     <div class="steam-navbar-inner">
-        <a class="site-icon-link" href="/ru" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
         <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
-        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
-        <div class="language-switch" aria-label="Language"><a href="/wiki-chest-helper-mod/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-chest-helper-mod/">FR</a><a href="/de/wiki-chest-helper-mod/">DE</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-chest-helper-mod/">EN</a><a href="/fr/wiki-chest-helper-mod/">FR</a><a href="/de/wiki-chest-helper-mod/">DE</a></div>
     </div>
 </div>
-
 <main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
     <section class="page-hero">
-        <h1>Мод Chest Helper для хранилищ Minecraft</h1>
-        <p class="page-lead">Представьте не сценическую, а более тихую и бытовую версию серверного хаоса. База уже разрослась, склад вроде бы построен, а люди всё равно спрашивают, где лежат фонари, карты, запасные свечи или нужные квестовые мелочи. Chest Helper закрывает именно такую боль. По публичному описанию на Modrinth это client-side Fabric-мод, который запоминает уже открытые контейнеры и превращает их в список вещей с поиском.</p>
-        <a class="resource-link" href="https://modrinth.com/mod/chest-helper" target="_blank" rel="noopener noreferrer">Открыть Chest Helper на Modrinth</a>
+        <h1>Chest Helper: поиск по всем сундукам, которые вы открывали</h1>
+        <p class="page-lead">Chest Helper — клиентский мод от Cube in Square: он запоминает открытые вами сундуки, бочки и шалкеры и собирает их содержимое в один список с поиском. Из этого списка можно забирать предметы из ближайших контейнеров, не открывая каждый. Мод работает на Minecraft Java 1.21.1, 1.21.11, 26.1.x и 26.2, причём набор загрузчиков на каждой версии свой.</p>
+        <p class="article-byline">Автор: Марк</p>
+        <div class="tool-button-row"><a class="tool-button" href="https://modrinth.com/mod/chest-helper">Chest Helper на Modrinth</a><a class="tool-button tool-button-secondary" href="/ru/wiki-armorhide-mod/">ArmorHide</a></div>
     </section>
-
     <article>
-
-        <h2>Почему хранение перестаёт быть пустяком</h2>
-        <p>На новом мире всё просто, потому что память ещё сильнее стены из сундуков. Вы помните, где железо, где еда, где лишние инструменты. На старых мирах, общих базах и ролевых серверах это быстро ломается. Одна комната становится сразу архивом, кладовой, гардеробом, мастерской и местом для сюжетного реквизита.</p>
-        <p>В этот момент боль уже не в том, что предмета нет. Боль в том, что мир не даёт быстро найти его без лишней возни. Хорошая база должна поддерживать игру, а не заставлять заново открывать десять сундуков только потому, что никто не помнит, куда вчера переложили пустые карты или светящиеся чернила.</p>
-
-        <h2>Что именно делает Chest Helper</h2>
-        <p>Публичное описание у мода очень прямое. Chest Helper, это client-side Fabric-мод, который запоминает контейнеры, которые вы уже открывали, и превращает их в searchable-список предметов. То есть мод не переделывает хранение с нуля. Он просто добавляет память и поиск поверх того складского мира, который у вас уже существует.</p>
-        <p>Именно это делает его полезным. Ценность не в показной автоматизации, а в том, что обычная игровая сессия меньше вязнет в фразе: «я точно знаю, что это у нас есть, но не помню, в каком сундуке».</p>
-
-        <h2>Почему это важно для общих баз и RP-серверов</h2>
-        <p>Ролевые сервера, выживательные поселения и долгие миры очень быстро обрастают named-предметами. Появляются ингредиенты для ритуалов, квестовые бумаги, униформы фракций, декоративные блоки для починки локаций, а под всем этим ещё лежит обычный выживательный запас. Чем больше у мира истории, тем больше хранение становится не сортировкой, а вопросом удобства.</p>
-        <p>Chest Helper хорошо попадает именно в эту реальность. Он помогает практическому слою мира оставаться управляемым, даже когда сам сервер становится сложнее. А значит, мод естественно ложится рядом с инструментами Cube in Square, которые помогают создавать кастомные вещи, пока сам Chest Helper помогает потом их находить.</p>
-
-        <h2>Это про память, а не про силу</h2>
-        <p>Поэтому мод ощущается здоровее многих идей вокруг «удобного хранения». Он не делает редкие предметы дешевле, не убирает необходимость в нормальной базе и не отменяет организацию вообще. Он просто не даёт забывчивости становиться самым раздражающим врагом взрослого мира.</p>
-        <p>Для сервера, где по-прежнему важны логистика, опасность и живая рутина, это очень хороший баланс. Остаётся трение мира, но уходит бессмысленная скука от постоянного переоткрывания сундуков.</p>
-
-        <h2>Почему ему есть место рядом с остальным сайтом</h2>
-        <p>ArmorHide вырос из одной ранней визуальной боли. Chest Helper вырос из другой, более тихой: мир становится настолько насыщенным, что вокруг него уже нужны дополнительные инструменты. Когда на сервере есть кастомные предметы, текстуры, зелья, валюта, книги, реквизит и сюжетные комнаты, ему нужны и способы не терять всё это среди складов.</p>
-        <p>Поэтому storage-helper естественно живёт рядом с <a href="/ru/resource-pack-generator/">генератором ресурспаков</a>, <a href="/ru/custom-item-builder/">конструктором кастомных предметов</a> и <a href="/ru/custom-villager-trades/">торгами жителей</a>. Сайт убирает боль создания, а Chest Helper убирает боль поиска.</p>
-
-        <h2>Хорош для билдeров, кладовщиков и накопителей</h2>
-        <p>Если вы строите большие базы, держите общие склады, ведёте запасы для событий или просто слишком любите складывать полезные блоки «на потом», Chest Helper как раз тот мод, который тихо экономит время, не требуя ради себя перестраивать весь сервер. Он не кричит о себе, и именно поэтому ценен.</p>
-
-        <h2>Источник</h2>
-        <p>Эта страница, это site-side разбор публичного релиза:<br><a href="https://modrinth.com/mod/chest-helper" target="_blank" rel="noopener noreferrer">Chest Helper на Modrinth</a></p>
-    
+        <p><strong>Сверено с:</strong> Chest Helper 1.0.11 – 1.0.16, страницей мода на Modrinth и списками изменений до 24 июля 2026.</p>
+        <h2 id="versions">Какой файл ставить</h2>
+        <p>Не каждый загрузчик собран под каждую версию Minecraft. Найдите строку для своей игры:</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Minecraft</th><th>Загрузчик</th><th>Последняя версия</th></tr></thead>
+            <tbody>
+                <tr><td>26.2</td><td>Fabric</td><td>1.0.15 (21.07.2026)</td></tr>
+                <tr><td>26.1, 26.1.1, 26.1.2</td><td>NeoForge</td><td>1.0.11 (02.05.2026)</td></tr>
+                <tr><td>1.21.11</td><td>Fabric, Quilt, Forge, NeoForge</td><td>1.0.11 (02.05.2026)</td></tr>
+                <tr><td>1.21.1</td><td>NeoForge</td><td>1.0.16 (24.07.2026)</td></tr>
+            </tbody>
+        </table>
+        <p>Chest Helper работает только на клиенте, серверу он не нужен. Обязательных зависимостей Modrinth не указывает. Лицензия — «Все права защищены» (All Rights Reserved).</p>
+        <h2 id="remembers">Что мод запоминает</h2>
+        <ul>
+            <li>Сундуки, бочки и шалкеры, которые вы открываете, — отдельно для каждого сервера, мира и измерения.</li>
+            <li>Память сохраняется между игровыми сессиями.</li>
+            <li>Предметы сравниваются вместе с компонентами, поэтому переименованные вещи, зачарованное снаряжение, зелья, книги, инструменты и заполненные шалкеры не сливаются в одну строку только из-за общего ID.</li>
+        </ul>
+        <p>Мод знает только то, что вы видели. Контейнера, который вы ни разу не открывали, в списке нет, а память обновляется, когда вы забираете или перекладываете предметы. Если сундук изменил кто-то другой, в списке будет то, что лежало в нём, когда вы открывали его в последний раз.</p>
+        <h2 id="list">Список предметов</h2>
+        <p>Открывается клавишей <strong>B</strong>. В каждой строке — название и иконка предмета, сколько его всего в запомненных контейнерах и сколько в контейнерах рядом с вами. Большие числа сокращаются: 125, 1k, 1.5k. Координаты в строках можно показать или скрыть.</p>
+        <p>Скриншоты списка, настроек и подсветки контейнера — в <a href="https://modrinth.com/mod/chest-helper/gallery">галерее на Modrinth</a>.</p>
+        <h2 id="taking">Как забирать и складывать</h2>
+        <p>Chest Helper забирает предметы из запомненных контейнеров в радиусе 6 блоков, теми же действиями с инвентарём, что и вы. На это время он скрывает экран контейнера и вместо него показывает короткое сообщение о результате.</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Действие</th><th>Результат</th></tr></thead>
+            <tbody>
+                <tr><td>ЛКМ по строке</td><td>Забрать один стак из ближайших контейнеров</td></tr>
+                <tr><td>ПКМ по строке</td><td>Забрать выбранное количество</td></tr>
+                <tr><td>Shift + колесо мыши</td><td>Изменить количество для ПКМ</td></tr>
+                <tr><td>Shift + клик по строке</td><td>Забрать все такие предметы из ближайших контейнеров</td></tr>
+                <tr><td>Стрелка вверх</td><td>Разложить такие же предметы из инвентаря по ближайшим запомненным контейнерам, где этот предмет уже лежит</td></tr>
+                <tr><td>Стрелка вниз</td><td>Забрать такие же предметы из ближайших контейнеров в инвентарь</td></tr>
+                <tr><td>Кнопка с глазом у координат</td><td>Подсветить этот контейнер сквозь стены на 5 секунд</td></tr>
+            </tbody>
+        </table>
+        <h2 id="settings">Настройки</h2>
+        <ul>
+            <li><strong>Reopen Chest Helper after taking items</strong> — возвращаться к списку после того, как предмет забран.</li>
+            <li><strong>Ignore ender chests</strong> — не учитывать сундуки Края.</li>
+            <li><strong>List radius</strong> — скрывать из списка контейнеры дальше этого расстояния. По умолчанию 160 блоков.</li>
+            <li><strong>Координаты</strong> — показывать их в строках или нет.</li>
+        </ul>
+        <p>Ещё в списке есть кнопки, чтобы сбросить сохранённые данные и открыть папку, где они лежат.</p>
+        <h2 id="changes">Что изменилось в последних версиях</h2>
+        <ul>
+            <li><strong>1.0.15</strong> (Fabric 26.2, NeoForge 1.21.1): сундуки больше не забываются, когда вы уходите за радиус списка; другие моды больше не могут закрыть или подменить экран Chest Helper во время поиска; B или E при наборе текста больше не закрывают его.</li>
+            <li><strong>1.0.16</strong> (только NeoForge 1.21.1): горячие клавиши «Deposit Matching» и «Withdraw Matching»; Shift + средняя кнопка мыши блокирует слот, и заблокированные слоты пропускаются при переносе; интеграция с JEI — ингредиенты рецепта берутся из сундуков и кладутся в сетку крафта.</li>
+        </ul>
+        <p>То есть самые новые функции есть только на NeoForge 1.21.1. Сборки для 1.21.11 и 26.1 пока на версии 1.0.11.</p>
+        <h2 id="install">Установка</h2>
+        <ol>
+            <li>Найдите в таблице выше свою версию Minecraft и загрузчик. Если вашей пары там нет, сборки для неё нет.</li>
+            <li>Скачайте этот файл на вкладке Versions на Modrinth.</li>
+            <li>Положите <code>.jar</code> в папку <code>mods</code> игры или инстанса в лаунчере.</li>
+            <li>Запустите игру с этим загрузчиком, откройте несколько контейнеров и нажмите <strong>B</strong>.</li>
+        </ol>
+        <h2 id="limits">Ограничения</h2>
+        <ul>
+            <li>Мод знает только открытые вами контейнеры и только то, что в них было в тот момент.</li>
+            <li>Забирать и складывать можно в радиусе 6 блоков. Сам список показывает контейнеры в пределах радиуса списка.</li>
+            <li>Modrinth называет сундуки, бочки и шалкеры; сундуки Края тоже учитываются, если не включить «Ignore ender chests».</li>
+            <li>Сборки различаются: блокировка слотов, горячие клавиши и поддержка JEI есть в 1.0.16, а она выходит только для NeoForge 1.21.1.</li>
+        </ul>
+        <h2 id="why">Зачем мы его сделали</h2>
+        <p>Chest Helper — второй публичный мод Cube in Square. Он решает задачу тише, чем <a href="/ru/wiki-armorhide-mod/">ArmorHide</a>: на старой общей базе никто не помнит, в котором из сорока сундуков свечи, карты или запасные детали костюмов. Мод ничего не сортирует за вас — он помнит то, что вы видели.</p>
+        <h2 id="faq">Вопросы</h2>
+        <div class="faq-section"><h3>Нужен ли Chest Helper на сервере?</h3><p>Нет, это клиентский мод.</p></div>
+        <div class="faq-section"><h3>Видит ли он сундуки, которые я не открывал?</h3><p>Нет. В списке только контейнеры, которые вы открыли сами, и то, что вы в них видели.</p></div>
+        <div class="faq-section"><h3>Почему нет сборки под мою версию?</h3><p>У каждой версии Minecraft свой набор сборок, он в таблице: на 1.21.11 есть все четыре загрузчика, на 26.2 — Fabric, на 26.1.x и 1.21.1 — NeoForge.</p></div>
+        <div class="faq-section"><h3>Работает ли он с JEI?</h3><p>Версия 1.0.16 для NeoForge 1.21.1 добавляет интеграцию с JEI: берёт ингредиенты рецепта из сундуков и кладёт их в сетку крафта.</p></div>
+        <p><strong>Источник:</strong> <a href="https://modrinth.com/mod/chest-helper">Chest Helper на Modrinth</a>, опубликован Cube in Square: описание, список версий и изменения.</p>
     </article>
 </main>
 
-<footer class="site-footer">
-    <span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span>
-    <a href="/ru/privacy-policy/">Политика конфиденциальности</a>
-</footer>
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>

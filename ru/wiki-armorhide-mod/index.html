@@ -2,33 +2,39 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мод ArmorHide для ролевых серверов Minecraft | Cube in Square</title>
+    <title>ArmorHide: скрыть или сделать прозрачной броню игроков в Minecraft 1.21.11 (Fabric) | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Зачем на RP-сервере вообще скрывать видимую броню, почему незерит ломает ролевые сцены и как ArmorHide вырос из этой боли.">
+    <!-- Search metadata -->
+    <meta name="description" content="Что делает мод ArmorHide, как поставить его на Fabric 1.21.11, все пункты экрана настроек и чего он не меняет. Клиентский мод, версия 1.0.3.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-    <meta name="author" content="Cube in Square">
+    <meta name="author" content="Марк">
+    <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-armorhide-mod/">
-    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-armorhide-mod/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Мод ArmorHide для ролевых серверов Minecraft | Cube in Square">
-    <meta property="og:description" content="Почему на ролевом сервере хочется сохранить опасность мира, но не прятать каждый красивый скин под одной и той же тяжёлой бронёй.">
+    <meta property="og:title" content="ArmorHide: скрыть или сделать прозрачной броню игроков в Minecraft 1.21.11 (Fabric) | Cube in Square">
+    <meta property="og:description" content="Что делает мод ArmorHide, как поставить его на Fabric 1.21.11, все пункты экрана настроек и чего он не меняет. Клиентский мод, версия 1.0.3.">
     <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-armorhide-mod/">
     <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Мод ArmorHide для ролевых серверов Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Суд, ритуалы, дипломатия, угроза резни в любой момент и тот самый вопрос: можно ли сохранить красоту скинов, не снимая броню?">
+    <meta name="twitter:title" content="ArmorHide: скрыть или сделать прозрачной броню игроков в Minecraft 1.21.11 (Fabric) | Cube in Square">
+    <meta name="twitter:description" content="Что делает мод ArmorHide, как поставить его на Fabric 1.21.11, все пункты экрана настроек и чего он не меняет. Клиентский мод, версия 1.0.3.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -64,49 +70,157 @@
     <!-- /consent-defaults -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Мод ArmorHide для ролевых серверов Minecraft","description":"Зачем на RP-сервере вообще скрывать видимую броню, почему незерит ломает ролевые сцены и как ArmorHide вырос из этой боли.","inLanguage":"ru","url":"https://cubeinsquare.com/ru/wiki-armorhide-mod/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://cubeinsquare.com/ru/"},{"@type":"ListItem","position":2,"name":"Вики","item":"https://cubeinsquare.com/ru/wiki/"},{"@type":"ListItem","position":3,"name":"ArmorHide","item":"https://cubeinsquare.com/ru/wiki-armorhide-mod/"}]}]}</script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-armorhide-mod/#article",
+            "headline": "ArmorHide: как скрыть или сделать полупрозрачной броню игроков",
+            "description": "Что делает мод ArmorHide, как поставить его на Fabric 1.21.11, все пункты экрана настроек и чего он не меняет. Клиентский мод, версия 1.0.3.",
+            "author": {
+                "@type": "Person",
+                "name": "Марк"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-armorhide-mod/#webpage"
+            },
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-armorhide-mod/",
+            "datePublished": "2026-05-03",
+            "dateModified": "2026-10-25"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-armorhide-mod/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-armorhide-mod/",
+            "name": "ArmorHide: как скрыть или сделать полупрозрачной броню игроков",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-armorhide-mod/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "ArmorHide",
+                    "item": "https://cubeinsquare.com/ru/wiki-armorhide-mod/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru/" aria-label="Домой" title="Домой"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-armorhide-mod/">EN</a><a class="is-active" href="#">RU</a><a href="/fr/wiki-armorhide-mod/">FR</a><a href="/de/wiki-armorhide-mod/">DE</a></div></div></div>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Язык"><a class="is-active" href="#">RU</a><a href="/wiki-armorhide-mod/">EN</a><a href="/fr/wiki-armorhide-mod/">FR</a><a href="/de/wiki-armorhide-mod/">DE</a></div>
+    </div>
+</div>
 <main class="page-shell wiki-article">
     <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
     <section class="page-hero">
-        <h1>Мод ArmorHide для ролевых серверов Minecraft</h1>
-        <p class="page-lead">Представьте сцену суда на опасном сервере. Все понимают, что резня может начаться в любую секунду, но при этом весь зал всё равно сплющен одной и той же тяжёлой незеритовой формой. ArmorHide родился ровно из этого противоречия: оставить реальную угрозу с настоящей бронёй, но перестать прятать под ней все скины и костюмы.</p>
-        <a class="resource-link" href="https://modrinth.com/mod/armorhide-mod" target="_blank" rel="noopener noreferrer">Открыть ArmorHide на Modrinth</a>
+        <h1>ArmorHide: как скрыть или сделать полупрозрачной броню игроков</h1>
+        <p class="page-lead">ArmorHide — клиентский мод от Cube in Square для Fabric: он рисует броню игроков полупрозрачной или не рисует совсем, чтобы скины и костюмы оставались видны. Версия 1.0.3 работает на Minecraft Java 1.21.11. Мод меняет то, как броня выглядит у вас на экране, а не саму броню.</p>
+        <p class="article-byline">Автор: Марк</p>
+        <div class="tool-button-row"><a class="tool-button" href="https://modrinth.com/mod/armorhide-mod">ArmorHide на Modrinth</a><a class="tool-button tool-button-secondary" href="/ru/skin-editor/">Редактор скинов</a></div>
     </section>
     <article>
-        <h2>Почему эта боль вообще важна</h2>
-        <p>На RP-сервере броня — это не просто цифры защиты. Это ещё и визуальное решение, которое может тихо переехать всё остальное в кадре. Можно часами рисовать скин, собирать внешний вид фракции, придумывать ритуальный костюм или дворянский силуэт, а потом потерять всё это в тот момент, когда поверх надевается позднеигровая броня.</p>
-        <p>Поэтому это не жалоба в духе «хочу покрасивее». Это проблема читаемости сцены. Суд, переговоры, похороны, допросы, религиозные ритуалы, трактирные разговоры и походные привалы работают хуже, когда все персонажи превращаются в один и тот же тяжёлый бронесилуэт.</p>
-
-        <h2>Почему «ну просто снимите броню» не решает вопрос</h2>
-        <p>Самый очевидный ответ — заставить игроков снимать броню во время красивых сцен. Звучит просто до тех пор, пока мир остаётся опасным. Если в любой момент возможны засада, чудовище, дуэль, предательство или внезапное PvP, то снятая броня перестаёт быть эстетикой и становится прямым штрафом за участие в ролевой сцене.</p>
-        <p>ArmorHide вырос именно из этого напряжения. Хотелось сохранить красоту момента, но не делать её зависимой от того, что мир внезапно притворился безопасным.</p>
-
-        <h2>Что именно меняет ArmorHide</h2>
-        <p>Идея у мода очень простая: оставить защитную часть экипировки, но перестать позволять видимой броне доминировать в каждой сцене. Так персонаж, скин и костюм снова становятся читаемыми, а практический слой угрозы остаётся на месте.</p>
-        <p>Для RP это меняет удивительно много. Тёмный маг снова выглядит как тёмный маг. Друид остаётся друидом. Механист или культист Великой шестерни продолжает нести визуальный язык своей фракции, а не растворяется в одинаковом ванильном силуэте.</p>
-
-        <h2>Почему мод вырос из той же истории, что и сам сайт</h2>
-        <p>ArmorHide — один из самых ранних болевых узлов, который вообще сдвинул проект с места. До сайта, до генератора паков, до редакторов уже было это ощущение, что ванильная подача спорит с теми сценами, которые сервер хочет ставить.</p>
-        <p>Сначала из этой боли родился сам мод на скрытие брони. Потом та же логика начала расширяться дальше: если игрокам важно видеть свои скины, им нужны лучшие скины; если предметы и фракции должны выглядеть по-особому, нужны лучшие текстуры и кастомные модели; если вручную перепаковывать всё это мучительно, значит нужен уже целый набор инструментов.</p>
-
-        <h2>Почему это особенно важно, когда у вас уже есть скины и пропы</h2>
-        <p>Чем больше сервер вкладывается во внешний вид, тем дороже начинает стоить видимая броня. Она скрывает не только лицо персонажа. Она закрывает книги, значки, ремни, знаки статуса, фракционные детали и те мелочи, по которым персонаж читается с первого взгляда.</p>
-        <p>Поэтому ArmorHide так естественно сочетается с остальным workflow Cube in Square. Если вы уже рисуете персонажей в <a href="/ru/skin-editor/">редакторе скинов</a>, собираете предметные визуалы в <a href="/ru/texture-painter/">редакторе текстур</a> и упаковываете всё это через <a href="/ru/resource-pack-generator/">генератор ресурспаков</a>, то скрытие брони — это тот шаг, который вообще позволяет этой работе оставаться видимой в игре.</p>
-
-        <h2>Хорошей сцене нужны и красота, и опасность</h2>
-        <p>Самые сильные ролевые миры обычно не выбирают между иммерсией и угрозой. Они держат оба слоя сразу. Переговоры интереснее, когда предательство реально возможно. Суд острее, когда вооружённая расправа не исключена. Ритуал становится страннее и напряжённее, когда он происходит в мире, который по-настоящему может сорваться в насилие.</p>
-        <p>ArmorHide поддерживает именно такую постановку. Он не просит сцену стать безопасной. Он просит её остаться читаемой.</p>
-
-        <h2>Почему такой релиз вообще полезен проекту</h2>
-        <p>Здесь важен и более широкий слой доверия. ArmorHide — это не случайный довесок, добавленный ради вида. Это выпущенный кусок той же самой логики: убрать трение, которое мешает ролевому серверу выглядеть и ощущаться так, как он должен. Поэтому он органично живёт и на Modrinth, и рядом с инструментами этого сайта.</p>
-
-        <h2>Источник</h2>
-        <p>Эта страница — сайтовый разбор публичного релиза мода:<br><a href="https://modrinth.com/mod/armorhide-mod" target="_blank" rel="noopener noreferrer">ArmorHide на Modrinth</a></p>
+        <p><strong>Сверено с:</strong> ArmorHide 1.0.3 (28 апреля 2026), страницей мода на Modrinth и экраном настроек из его галереи.</p>
+        <h2 id="facts">Коротко</h2>
+        <table class="compact-table prose-table">
+            <tbody>
+                <tr><th scope="row">Версия</th><td>1.0.3, вышла 28.04.2026</td></tr>
+                <tr><th scope="row">Minecraft</th><td>Java Edition 1.21.11</td></tr>
+                <tr><th scope="row">Загрузчик</th><td>Fabric</td></tr>
+                <tr><th scope="row">Где работает</th><td>Только на клиенте, серверу мод не нужен</td></tr>
+                <tr><th scope="row">Лицензия</th><td>Apache License 2.0</td></tr>
+                <tr><th scope="row">Скачать</th><td><a href="https://modrinth.com/mod/armorhide-mod/versions">Modrinth, вкладка Versions</a></td></tr>
+            </tbody>
+        </table>
+        <h2 id="what">Что делает мод</h2>
+        <ul>
+            <li>Делает броню прозрачной на выбранную вами степень или прячет её.</li>
+            <li>Отдельно настраивается для вашей модели и для других игроков: можно скрыть броню на себе, на остальных или везде.</li>
+            <li>Работает по частям: у шлема, нагрудника, поножей и ботинок свои переключатели.</li>
+            <li>Не трогает мобов и стойки для брони — только игроков.</li>
+            <li>Если вас ударил другой игрок, скрытая броня становится видна на 10 секунд.</li>
+        </ul>
+        <p>Мод клиентский, поэтому меняется только то, что рисует ваша игра. Игроки без мода видят броню как обычно, а сама броня остаётся надетой: меняется картинка, а не предмет.</p>
+        <figure class="article-figure"><img src="/assets/mods/armorhide-in-game.webp" width="1280" height="720" alt="ArmorHide в игре: броня на игроке впереди нарисована полупрозрачной" loading="lazy"><figcaption>ArmorHide в игре. Скриншот из галереи мода на Modrinth.</figcaption></figure>
+        <h2 id="install">Установка</h2>
+        <ol>
+            <li>Поставьте Fabric Loader для Minecraft 1.21.11 установщиком с <a href="https://fabricmc.net/use/installer/">fabricmc.net</a> или создайте инстанс Fabric 1.21.11 в лаунчере, который это умеет.</li>
+            <li>Скачайте ArmorHide 1.0.3 на вкладке Versions на Modrinth. Обязательных зависимостей Modrinth для него не указывает.</li>
+            <li>Положите файл <code>.jar</code> в папку <code>mods</code>: <code>.minecraft/mods</code> для официального лаунчера или папку <code>mods</code> самого инстанса.</li>
+            <li>Запустите игру с профилем Fabric 1.21.11. Серверам, на которые вы заходите, мод не нужен.</li>
+        </ol>
+        <h2 id="settings">Настройки</h2>
+        <p>На экране настроек из галереи Modrinth такие пункты (в игре они подписаны по-английски):</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Пункт</th><th>Что делает</th></tr></thead>
+            <tbody>
+                <tr><td>Mod</td><td>Включает и выключает ArmorHide.</td></tr>
+                <tr><td>Reveal after player hit</td><td>Если включено, скрытая броня становится видна на 10 секунд после удара другого игрока.</td></tr>
+                <tr><td>Hide on self</td><td>Скрывает броню на вашей модели.</td></tr>
+                <tr><td>Hide on others</td><td>Скрывает броню на других игроках.</td></tr>
+                <tr><td>Transparency</td><td>Насколько сильно скрытая броня становится прозрачной. Ползунок, на скриншоте 50%.</td></tr>
+                <tr><td>Helmet, Chestplate, Leggings, Boots</td><td>Скрыта ли каждая часть: шлем, нагрудник, поножи, ботинки.</td></tr>
+            </tbody>
+        </table>
+        <p>Ещё мод добавляет свою клавишу, по умолчанию <strong>H</strong>. Переназначить её можно в «Настройки → Управление → Привязки клавиш», как любую другую.</p>
+        <figure class="article-figure"><img src="/assets/mods/armorhide-settings.png" width="1920" height="1080" alt="Экран настроек ArmorHide: Mod, Reveal after player hit, Hide on self и Hide on others включены, Transparency 50%, шлем, нагрудник, поножи и ботинки в положении Hidden" loading="lazy"><figcaption>Экран настроек из галереи Modrinth.</figcaption></figure>
+        <h2 id="limits">Ограничения</h2>
+        <ul>
+            <li>Только Fabric и только Minecraft 1.21.11: версия 1.0.3 — единственный файл на Modrinth.</li>
+            <li>Меняется только ваш экран. Чтобы сцена выглядела одинаково для всех, мод с похожими настройками нужен каждому игроку.</li>
+            <li>Мобы и стойки для брони всегда показывают броню.</li>
+            <li>Удар другого игрока возвращает скрытую броню на 10 секунд, если не выключить «Reveal after player hit».</li>
+        </ul>
+        <h2 id="why">Зачем мы его сделали</h2>
+        <p>ArmorHide вырос из ролевого сервера Cube in Square. Тяжёлая броня закрывала скины и костюмы, по которым другие игроки узнают персонажа, а просить всех снимать броню в опасном мире — не решение. Если прятать её только на экране, остаётся и защита, и читаемая сцена. Если вы рисуете такие скины, на сайте есть <a href="/ru/skin-editor/">редактор скинов</a> и <a href="/ru/wiki-skin-editor/">гайд к нему</a>.</p>
+        <h2 id="faq">Вопросы</h2>
+        <div class="faq-section"><h3>Нужен ли ArmorHide на сервере?</h3><p>Нет. На Modrinth он отмечен как клиентский мод: ставьте его только в свою игру.</p></div>
+        <div class="faq-section"><h3>Увидят ли другие игроки мою броню скрытой?</h3><p>Только если у них самих стоит ArmorHide с включённым «Hide on others». Без мода они видят вашу броню как обычно.</p></div>
+        <div class="faq-section"><h3>Скрывает ли он броню на мобах и стойках?</h3><p>Нет, мод работает только с игроками.</p></div>
+        <div class="faq-section"><h3>Есть ли версия для Forge, NeoForge или другой версии Minecraft?</h3><p>В версии 1.0.3 нет. На Modrinth один файл — для Fabric на 1.21.11.</p></div>
+        <p><strong>Источник:</strong> <a href="https://modrinth.com/mod/armorhide-mod">ArmorHide на Modrinth</a>, опубликован Cube in Square. Скриншоты взяты из его галереи, мод распространяется по лицензии Apache 2.0.</p>
     </article>
 </main>
+
 <footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>

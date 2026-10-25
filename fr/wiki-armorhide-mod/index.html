@@ -2,33 +2,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>ArmorHide pour les serveurs RP Minecraft | Cube in Square</title>
+    <title>ArmorHide : masquer ou estomper l’armure des joueurs dans Minecraft 1.21.11 (Fabric) | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pourquoi cacher l'armure visible compte autant sur un serveur RP Minecraft, et comment ArmorHide est né de ce problème très concret.">
+    <!-- Search metadata -->
+    <meta name="description" content="Ce que fait le mod ArmorHide, comment l’installer sur Fabric 1.21.11, chaque option de son écran de réglages et ce qu’il ne change pas. Mod client, version 1.0.3.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
     <meta name="google-adsense-account" content="ca-pub-6745837623494230">
-    <meta name="author" content="Cube in Square">
+    <meta name="author" content="Mark">
+    <meta name="application-name" content="Cube in Square">
     <meta name="theme-color" content="#0f172a">
     <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-armorhide-mod/">
-    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-armorhide-mod/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-armorhide-mod/">
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-armorhide-mod/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="ArmorHide pour les serveurs RP Minecraft | Cube in Square">
-    <meta property="og:description" content="Pourquoi une scène de procès, de rituel ou de négociation perd de sa force quand tout le monde disparaît sous la même silhouette d'armure.">
+    <meta property="og:title" content="ArmorHide : masquer ou estomper l’armure des joueurs dans Minecraft 1.21.11 (Fabric) | Cube in Square">
+    <meta property="og:description" content="Ce que fait le mod ArmorHide, comment l’installer sur Fabric 1.21.11, chaque option de son écran de réglages et ce qu’il ne change pas. Mod client, version 1.0.3.">
     <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-armorhide-mod/">
     <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="ArmorHide pour les serveurs RP Minecraft | Cube in Square">
-    <meta name="twitter:description" content="Un guide sur le problème RP que résout ArmorHide et sur la place du mod dans l'histoire du projet.">
+    <meta name="twitter:title" content="ArmorHide : masquer ou estomper l’armure des joueurs dans Minecraft 1.21.11 (Fabric) | Cube in Square">
+    <meta name="twitter:description" content="Ce que fait le mod ArmorHide, comment l’installer sur Fabric 1.21.11, chaque option de son écran de réglages et ce qu’il ne change pas. Mod client, version 1.0.3.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
     <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
     <script>
         // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
@@ -64,49 +70,157 @@
     <!-- /consent-defaults -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/assets/styles.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"ArmorHide pour les serveurs RP Minecraft","description":"Pourquoi cacher l'armure visible compte autant sur un serveur RP Minecraft, et comment ArmorHide est né de ce problème très concret.","inLanguage":"fr","url":"https://cubeinsquare.com/fr/wiki-armorhide-mod/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://cubeinsquare.com/fr/"},{"@type":"ListItem","position":2,"name":"Wiki","item":"https://cubeinsquare.com/fr/wiki/"},{"@type":"ListItem","position":3,"name":"ArmorHide","item":"https://cubeinsquare.com/fr/wiki-armorhide-mod/"}]}]}</script>
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-armorhide-mod/#article",
+            "headline": "ArmorHide : masquer ou estomper l’armure des joueurs",
+            "description": "Ce que fait le mod ArmorHide, comment l’installer sur Fabric 1.21.11, chaque option de son écran de réglages et ce qu’il ne change pas. Mod client, version 1.0.3.",
+            "author": {
+                "@type": "Person",
+                "name": "Mark"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/fr/wiki-armorhide-mod/#webpage"
+            },
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-armorhide-mod/",
+            "datePublished": "2026-05-03",
+            "dateModified": "2026-10-25"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-armorhide-mod/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-armorhide-mod/",
+            "name": "ArmorHide : masquer ou estomper l’armure des joueurs",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-armorhide-mod/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://cubeinsquare.com/fr/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/fr/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "ArmorHide",
+                    "item": "https://cubeinsquare.com/fr/wiki-armorhide-mod/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
 </head>
 <body>
-<div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Recherche"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a href="/wiki-armorhide-mod/">EN</a><a href="/ru/wiki-armorhide-mod/">RU</a><a class="is-active" href="#">FR</a><a href="/de/wiki-armorhide-mod/">DE</a></div></div></div>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Langue"><a href="/ru/wiki-armorhide-mod/">RU</a><a href="/wiki-armorhide-mod/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-armorhide-mod/">DE</a></div>
+    </div>
+</div>
 <main class="page-shell wiki-article">
     <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
     <section class="page-hero">
-        <h1>ArmorHide pour les serveurs RP Minecraft</h1>
-        <p class="page-lead">Imaginez une scène de tribunal sur un serveur dangereux. Tout le monde sait qu'un bain de sang peut éclater à n'importe quel moment, mais toute la salle est quand même écrasée par la même silhouette lourde de netherite. ArmorHide est né de cette contradiction précise: garder le danger du véritable équipement sans laisser l'armure visible enterrer chaque skin sous la même coque.</p>
-        <a class="resource-link" href="https://modrinth.com/mod/armorhide-mod" target="_blank" rel="noopener noreferrer">Ouvrir ArmorHide sur Modrinth</a>
+        <h1>ArmorHide : masquer ou estomper l’armure des joueurs</h1>
+        <p class="page-lead">ArmorHide est un mod Fabric côté client publié par Cube in Square : il affiche l’armure des joueurs en transparence, ou plus du tout, pour que les skins et les costumes restent lisibles. La version 1.0.3 tourne sur Minecraft Java 1.21.11. Il change l’apparence de l’armure sur votre écran, pas l’armure elle-même.</p>
+        <p class="article-byline">Par Mark</p>
+        <div class="tool-button-row"><a class="tool-button" href="https://modrinth.com/mod/armorhide-mod">ArmorHide sur Modrinth</a><a class="tool-button tool-button-secondary" href="/fr/skin-editor/">Éditeur de skins</a></div>
     </section>
     <article>
-        <h2>Pourquoi ce problème compte vraiment</h2>
-        <p>Sur un serveur RP, l'armure n'est pas seulement une statistique. C'est aussi une décision visuelle qui peut écraser tout le reste de l'image. On peut passer des heures à dessiner un skin, préparer une silhouette de faction ou construire un costume rituel, puis voir tout ce travail disparaître dès qu'une armure de fin de jeu recouvre le personnage.</p>
-        <p>Ce n'est donc pas une plainte décorative. C'est un problème de lisibilité. Procès, négociations, funérailles, interrogatoires, rites religieux, scènes d'auberge ou bivouacs perdent en force quand tout le monde finit par ressembler au même guerrier blindé.</p>
-
-        <h2>Pourquoi “il suffit d'enlever l'armure” ne marche pas</h2>
-        <p>La réponse la plus simple serait de demander aux joueurs de retirer leur armure pendant les scènes importantes. Cela semble élégant tant que le monde cesse d'être dangereux. Mais si une embuscade, un duel, un monstre, une trahison ou un PvP soudain restent possibles, enlever son armure n'est plus un choix esthétique: c'est une pénalité de survie.</p>
-        <p>ArmorHide vient exactement de cette tension. Il fallait garder la beauté de la scène sans faire semblant que le monde était devenu inoffensif.</p>
-
-        <h2>Ce que ArmorHide change réellement</h2>
-        <p>L'idée est simple: conserver la partie protectrice de l'équipement, mais empêcher le modèle d'armure visible de dominer toutes les scènes. Le skin, la silhouette et le costume redeviennent lisibles, tandis que la couche de danger reste bien réelle.</p>
-        <p>Pour le RP, l'effet est immense. Un mage noir peut toujours ressembler à un mage noir. Un druide reste lisible comme druide. Un mécaniste ou un cultiste de la Grande Roue continue de porter le langage visuel de sa faction au lieu de disparaître dans la même forme vanilla que tout le monde.</p>
-
-        <h2>Pourquoi ce mod appartient à la même histoire que le site</h2>
-        <p>ArmorHide est l'un des premiers points de friction qui ont fait avancer tout le projet. Avant le site, avant le générateur de packs, avant les éditeurs, il y avait déjà cette impression que la présentation vanilla se battait contre le type de scènes que le serveur voulait produire.</p>
-        <p>Le mod de dissimulation d'armure est arrivé en premier. Ensuite la même logique a continué: si les skins doivent rester visibles, il faut de meilleurs skins; si les objets et les factions doivent avoir leur propre langage visuel, il faut de meilleures textures et de meilleurs modèles; si remballer tout cela à la main devient insupportable, alors le workflow lui-même doit recevoir ses outils.</p>
-
-        <h2>Pourquoi c'est encore plus important quand on soigne déjà les visuels</h2>
-        <p>Plus un serveur investit dans son identité visuelle, plus l'armure visible devient coûteuse au sens créatif. Elle ne cache pas seulement un skin. Elle recouvre aussi des livres, des badges, des accessoires, des signes de rang et toutes les petites décisions qui rendent un personnage lisible en un coup d'œil.</p>
-        <p>C'est pour cela qu'ArmorHide se marie naturellement avec le reste du workflow Cube in Square. Si vous dessinez déjà vos personnages dans l'<a href="/fr/skin-editor/">éditeur de skins</a>, vos objets dans l'<a href="/fr/texture-painter/">éditeur de textures</a> et votre pack dans le <a href="/fr/resource-pack-generator/">générateur de packs</a>, alors cacher l'armure est le geste qui permet enfin à ce travail de rester visible en jeu.</p>
-
-        <h2>Une bonne scène a besoin de beauté et de danger</h2>
-        <p>Les mondes RP les plus forts ne choisissent pas entre immersion et menace. Ils gardent les deux. Une négociation est plus intéressante quand la trahison reste possible. Un procès est plus tendu quand la violence n'est pas exclue. Un rituel est plus étrange quand il se déroule dans un monde qui peut encore basculer dans le chaos.</p>
-        <p>ArmorHide soutient exactement cette mise en scène. Le mod ne demande pas à la scène de devenir sûre. Il lui permet de rester lisible.</p>
-
-        <h2>Pourquoi ce genre de release renforce le projet</h2>
-        <p>Il y a aussi une couche plus large de confiance ici. ArmorHide n'est pas un accessoire lancé au hasard pour faire joli. C'est une pièce déjà publiée de la même philosophie de design: enlever les frottements qui empêchent un serveur RP de ressembler à ce qu'il veut vraiment être. C'est pour cela que le mod a sa place sur Modrinth et ici, aux côtés des autres outils du projet.</p>
-
-        <h2>Source</h2>
-        <p>Cette page est un guide côté site vers la release publique du mod:<br><a href="https://modrinth.com/mod/armorhide-mod" target="_blank" rel="noopener noreferrer">ArmorHide sur Modrinth</a></p>
+        <p><strong>Vérifié sur :</strong> ArmorHide 1.0.3 (28 avril 2026), sa page Modrinth et l’écran de réglages de sa galerie.</p>
+        <h2 id="facts">L’essentiel</h2>
+        <table class="compact-table prose-table">
+            <tbody>
+                <tr><th scope="row">Version</th><td>1.0.3, sortie le 28/04/2026</td></tr>
+                <tr><th scope="row">Minecraft</th><td>Java Edition 1.21.11</td></tr>
+                <tr><th scope="row">Loader</th><td>Fabric</td></tr>
+                <tr><th scope="row">Où il tourne</th><td>Côté client uniquement ; le serveur n’en a pas besoin</td></tr>
+                <tr><th scope="row">Licence</th><td>Apache License 2.0</td></tr>
+                <tr><th scope="row">Téléchargement</th><td><a href="https://modrinth.com/mod/armorhide-mod/versions">Modrinth, onglet Versions</a></td></tr>
+            </tbody>
+        </table>
+        <h2 id="what">Ce qu’il fait</h2>
+        <ul>
+            <li>Estompe l’armure selon la transparence choisie, ou la masque.</li>
+            <li>Traite séparément votre propre modèle et les autres joueurs : armure masquée sur vous, sur les autres, ou partout.</li>
+            <li>Fonctionne pièce par pièce : casque, plastron, jambières et bottes ont chacun leur interrupteur.</li>
+            <li>Ne touche ni aux mobs ni aux supports d’armure. Seuls les joueurs sont concernés.</li>
+            <li>Si un autre joueur vous inflige des dégâts, l’armure masquée redevient visible pendant 10 secondes.</li>
+        </ul>
+        <p>Comme le mod est côté client, il ne change que ce que votre jeu dessine. Les joueurs sans le mod voient l’armure normalement, et l’armure reste équipée : c’est l’image qui change, pas l’objet.</p>
+        <figure class="article-figure"><img src="/assets/mods/armorhide-in-game.webp" width="1280" height="720" alt="ArmorHide en jeu : l’armure du joueur au premier plan est affichée en transparence" loading="lazy"><figcaption>En jeu avec ArmorHide. Capture tirée de la galerie Modrinth du mod.</figcaption></figure>
+        <h2 id="install">Installation</h2>
+        <ol>
+            <li>Installez Fabric Loader pour Minecraft 1.21.11 avec l’installateur de <a href="https://fabricmc.net/use/installer/">fabricmc.net</a>, ou créez une instance Fabric 1.21.11 dans un launcher qui le permet.</li>
+            <li>Téléchargez ArmorHide 1.0.3 dans l’onglet Versions de Modrinth. Modrinth n’indique aucune dépendance obligatoire.</li>
+            <li>Placez le fichier <code>.jar</code> dans le dossier <code>mods</code> : <code>.minecraft/mods</code> pour le launcher officiel, ou le dossier <code>mods</code> de l’instance.</li>
+            <li>Lancez le jeu avec le profil Fabric 1.21.11. Les serveurs que vous rejoignez n’ont pas besoin du mod.</li>
+        </ol>
+        <h2 id="settings">Réglages</h2>
+        <p>L’écran de réglages de la galerie Modrinth propose ces options (libellées en anglais dans le jeu) :</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Option</th><th>Effet</th></tr></thead>
+            <tbody>
+                <tr><td>Mod</td><td>Active ou désactive ArmorHide.</td></tr>
+                <tr><td>Reveal after player hit</td><td>Si activé, l’armure masquée redevient visible 10 secondes après des dégâts infligés par un autre joueur.</td></tr>
+                <tr><td>Hide on self</td><td>Masque l’armure sur votre propre modèle.</td></tr>
+                <tr><td>Hide on others</td><td>Masque l’armure des autres joueurs.</td></tr>
+                <tr><td>Transparency</td><td>Intensité de la transparence de l’armure masquée. Un curseur ; la capture montre 50 %.</td></tr>
+                <tr><td>Helmet, Chestplate, Leggings, Boots</td><td>Pour chaque pièce (casque, plastron, jambières, bottes), si elle est masquée.</td></tr>
+            </tbody>
+        </table>
+        <p>Le mod ajoute aussi une touche, <strong>H</strong> par défaut. Elle se change dans Options → Contrôles → Commandes, comme n’importe quelle autre.</p>
+        <figure class="article-figure"><img src="/assets/mods/armorhide-settings.png" width="1920" height="1080" alt="Écran de réglages d’ArmorHide : Mod, Reveal after player hit, Hide on self et Hide on others activés, Transparency à 50 %, casque, plastron, jambières et bottes sur Hidden" loading="lazy"><figcaption>L’écran de réglages, tiré de la galerie Modrinth.</figcaption></figure>
+        <h2 id="limits">Limites</h2>
+        <ul>
+            <li>Fabric uniquement, et Minecraft 1.21.11 uniquement : la version 1.0.3 est le seul fichier sur Modrinth.</li>
+            <li>Seul votre écran change. Pour qu’une scène ait le même aspect pour tous, chaque joueur a besoin du mod avec des réglages proches.</li>
+            <li>Les mobs et les supports d’armure montrent toujours leur armure.</li>
+            <li>Un coup d’un autre joueur fait réapparaître l’armure masquée pendant 10 secondes, sauf si vous désactivez « Reveal after player hit ».</li>
+        </ul>
+        <h2 id="why">Pourquoi nous l’avons fait</h2>
+        <p>ArmorHide vient du serveur roleplay Cube in Square. L’armure lourde recouvrait les skins et les costumes qui permettent aux autres de reconnaître un personnage, et demander à tout le monde de retirer son armure dans un monde dangereux n’était pas une vraie solution. La masquer à l’écran garde à la fois la protection et une scène lisible. Si vous dessinez ces skins, l’<a href="/fr/skin-editor/">éditeur de skins</a> et <a href="/fr/wiki-skin-editor/">son guide</a> sont sur ce site.</p>
+        <h2 id="faq">FAQ</h2>
+        <div class="faq-section"><h3>Le serveur a-t-il besoin d’ArmorHide ?</h3><p>Non. Modrinth l’indique comme mod côté client : installez-le seulement dans votre jeu.</p></div>
+        <div class="faq-section"><h3>Les autres joueurs verront-ils mon armure masquée ?</h3><p>Seulement s’ils utilisent eux-mêmes ArmorHide avec « Hide on others » activé. Sans le mod, ils voient votre armure normalement.</p></div>
+        <div class="faq-section"><h3>Masque-t-il l’armure des mobs ou des supports d’armure ?</h3><p>Non, il ne concerne que les joueurs.</p></div>
+        <div class="faq-section"><h3>Existe-t-il une version Forge, NeoForge ou pour une autre version de Minecraft ?</h3><p>Pas en 1.0.3. Modrinth propose un seul fichier, pour Fabric en 1.21.11.</p></div>
+        <p><strong>Source :</strong> <a href="https://modrinth.com/mod/armorhide-mod">ArmorHide sur Modrinth</a>, publié par Cube in Square. Les captures viennent de sa galerie ; le mod est sous licence Apache 2.0.</p>
     </article>
 </main>
+
 <footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
