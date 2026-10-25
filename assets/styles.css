@@ -1774,7 +1774,8 @@
         }
 
         /* Long file paths in inline code would otherwise push phone layouts sideways. */
-        main :not(pre) > code {
+        main :not(pre) > code,
+        .tool-note-card strong {
             overflow-wrap: anywhere;
         }
 

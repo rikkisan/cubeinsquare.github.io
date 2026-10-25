@@ -130,7 +130,9 @@
         type: 'minecraft:select',
         property: propertyInput.value,
         cases: branches.map((branch) => ({
-          when: /^-?\d+(\.\d+)?$/.test(branch.when) ? Number(branch.when) : branch.when,
+          // Every select property offered here (custom_model_data strings, main_hand, display_context)
+          // compares strings, so "1" must stay "1" rather than become the number 1.
+          when: String(branch.when),
           model: { type: 'minecraft:model', model: branch.model }
         })),
         fallback: { type: 'minecraft:model', model: fallbackModel }
