@@ -194,7 +194,8 @@ resource pack are left for the owner. What the run found:
   (a crafter made the recipe generator's output), `/enchant` conflicts, the hide-effects tooltip in every branch.
 - Analytics: Google's consent message is published (since 2026-10-24) but AdSense counts 0 impressions, most likely
   because the site is not approved. So for every visitor, not only in the EEA, the site banner now appears after a
-  5 s wait instead of at once, which most likely explains the GA4 drop below.
+  5 s wait instead of at once, which most likely explains the GA4 drop below. The wait is 1.5 s since 2026-11-19
+  (owner's decision); compare GA4 consented views by day before and after that date to confirm.
 
 **Search Console pass, done 2026-11-19**
 

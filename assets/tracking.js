@@ -152,7 +152,10 @@
     // answer in time (ad blocker, message not published, page without the AdSense tag), where the
     // site's own banner asks. 'pending' until one of the two is known.
     let consentAuthority = 'pending';
-    const CMP_API_WAIT_MS = 5000;
+    // Every visitor waits this long for the site banner while Google's CMP is silent, which it is on
+    // every page view until AdSense approves the site (0 message impressions on 2026-11-19). A CMP that
+    // answers later still takes over and removes the banner, so a short wait costs nothing there.
+    const CMP_API_WAIT_MS = 1500;
     const CMP_DATA_WAIT_MS = 5000;
 
     function hasMeasurementIds() {

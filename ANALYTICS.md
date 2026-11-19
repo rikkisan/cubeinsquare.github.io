@@ -184,7 +184,7 @@ loaded by `adsbygoogle.js`, so it only exists on pages with the AdSense tag.
 | --- | --- | --- |
 | `gdprApplies: true` | `cmp` | No site banner (removed if it already shows); `tracking.js` sends no consent update; `cube_cookie_consent` is deleted |
 | `gdprApplies: false` | `site` | The stored answer is sent as `gtag('consent', 'update')`; no answer means an explicit `denied` update and the banner |
-| nothing within 5 s, or the API loads but reports nothing within 5 more seconds | `site` | as above |
+| nothing within 1.5 s (5 s until 2026-11-19), or the API loads but reports nothing within 5 more seconds | `site` | as above |
 | no AdSense tag on the page | `site` | at once |
 | `gdprApplies: true` after the page already went `site` | `cmp` | the site banner disappears; its earlier update stays until the CMP sends its own |
 
@@ -349,11 +349,12 @@ code does. This is one browser and one network; read 0/3 as "cannot be relied on
 - `tool-coming-soon/` (four locales) and the `en/index.html` redirect stub load no analytics.
 - Google's consent message picks its language from the visitor's device, not from the page: a visitor on `/fr/` with an
   English browser sees it in English.
-- An EEA visitor whose CMP answers only after the 5 s fallback gets the site's update first (their old banner answer, or
+- An EEA visitor whose CMP answers only after the 1.5 s fallback gets the site's update first (their old banner answer, or
   `denied`); it stays until the CMP sends its own update.
 - Google's consent message has been published since 2026-10-24, but AdSense showed 0 impressions on 2026-11-19, most
   likely because the site is not approved yet, so the CMP never answers. Until it does, every visitor, in any country,
-  sees the site's banner only after the 5 s `CMP_API_WAIT_MS` wait (before 2026-10-24 it appeared at once). GA4 counts
+  saw the site's banner only after the 5 s `CMP_API_WAIT_MS` wait (before 2026-10-24 it appeared at once). GA4 counts
   only consented page views, so this probably explains the drop in GA4 views from that date while Search Console
-  clicks rose (RELEASE_ROADMAP.md, "Search Console pass").
+  clicks rose (RELEASE_ROADMAP.md, "Search Console pass"). On 2026-11-19 the wait went down to 1.5 s at the owner's
+  request; once the CMP works, an EEA visitor may see the site banner for a moment before Google's message replaces it.
 - The custom-item catalog's JSON import and the basic/advanced switch of the enchantment randomizer have no event.
