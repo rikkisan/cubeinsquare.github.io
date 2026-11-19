@@ -58,7 +58,20 @@
     return Object.prototype.hasOwnProperty.call(GENERATION_IDS, value) ? GENERATION_IDS[value] : 0;
   }
 
-  function modernCommand(pages) {
+  // Before 1.21.5 a quoted SNBT string knows only the backslash and quote escapes, so "\n" is a
+  // parse error ("Invalid escape sequence"). JSON text therefore goes in single quotes with its
+  // backslashes doubled: SNBT turns "\\n" back into "\n", which JSON reads as a line break.
+  function oldSnbtJson(value) {
+    return "'" + JSON.stringify(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+  }
+
+  // A plain string in that SNBT cannot carry a line break at all, so it becomes a space.
+  function oldSnbtString(text) {
+    return '"' + String(text).replace(/\s*\n\s*/g, ' ').replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+  }
+
+  // 1.21.5 - 26.x: pages are SNBT text components, which accept \n (checked on 26.3).
+  function latestCommand(pages) {
     const target = (targetInput.value || '@p').trim();
     const isSigned = typeInput.value === 'signed';
     const item = isSigned ? 'minecraft:written_book' : 'minecraft:writable_book';
@@ -68,6 +81,17 @@
     return '/give ' + target + ' ' + item + '[written_book_content={title:"' + escapeText(titleInput.value || '') + '",author:"' + escapeText(authorInput.value || '') + '",generation:' + generationId() + ',pages:[' + pages.map((page) => JSON.stringify({ raw: page })).join(',') + ']}] 1';
   }
 
+  // 1.20.5 - 1.21.4: components, but text is a JSON string and the old SNBT escapes apply.
+  function modernCommand(pages) {
+    const target = (targetInput.value || '@p').trim();
+    const isSigned = typeInput.value === 'signed';
+    const item = isSigned ? 'minecraft:written_book' : 'minecraft:writable_book';
+    if (!isSigned) {
+      return '/give ' + target + ' ' + item + '[minecraft:writable_book_content={pages:[' + pages.map(oldSnbtString).join(',') + ']}] 1';
+    }
+    return '/give ' + target + ' ' + item + '[written_book_content={title:' + oldSnbtString(titleInput.value || '') + ',author:' + oldSnbtString(authorInput.value || '') + ',generation:' + generationId() + ',pages:[' + pages.map((page) => oldSnbtJson({ text: page })).join(',') + ']}] 1';
+  }
+
   function legacyCommand(pages) {
     const target = (targetInput.value || '@p').trim();
     const isSigned = typeInput.value === 'signed';
@@ -75,19 +99,15 @@
 
     if (!isSigned) {
       // A book and quill stores its pages as plain strings.
-      const plainPages = '[' + pages.map((page) => '"' + escapeText(page) + '"').join(',') + ']';
-      return '/give ' + target + ' ' + item + '{pages:' + plainPages + '} 1';
+      return '/give ' + target + ' ' + item + '{pages:[' + pages.map(oldSnbtString).join(',') + ']} 1';
     }
 
     // A signed book stores each page as a JSON text component, so the page has
     // to be wrapped rather than written as bare text.
-    const jsonPages = '[' + pages
-      .map((page) => "'" + JSON.stringify({ text: page }).replace(/'/g, "\\'") + "'")
-      .join(',') + ']';
-    return '/give ' + target + ' ' + item + '{title:"' + escapeText(titleInput.value || '')
-      + '",author:"' + escapeText(authorInput.value || '')
-      + '",generation:' + generationId()
-      + ',pages:' + jsonPages + '} 1';
+    return '/give ' + target + ' ' + item + '{title:' + oldSnbtString(titleInput.value || '')
+      + ',author:' + oldSnbtString(authorInput.value || '')
+      + ',generation:' + generationId()
+      + ',pages:[' + pages.map((page) => oldSnbtJson({ text: page })).join(',') + ']} 1';
   }
 
   function formatSummary(pageCount) {
@@ -101,13 +121,14 @@
     const pages = pageData();
     versionNote.textContent = (copy.versionNotes && copy.versionNotes[versionInput.value]) || '';
     summary.textContent = formatSummary(pages.length);
-    output.value = versionInput.value === 'legacy' ? legacyCommand(pages) : modernCommand(pages);
+    const builders = { latest: latestCommand, modern: modernCommand, legacy: legacyCommand };
+    output.value = (builders[versionInput.value] || latestCommand)(pages);
   }
 
   function applyPreset(name) {
     const preset = (copy.exampleData || {})[name];
     if (!preset) return;
-    versionInput.value = preset.version || 'modern';
+    versionInput.value = preset.version || 'latest';
     typeInput.value = preset.type || 'signed';
     titleInput.value = preset.title || '';
     authorInput.value = preset.author || '';
