@@ -307,7 +307,8 @@
         'custom-item-catalog',
         'dialogue-builder',
         'book-letter-builder',
-        'bossbar-builder'
+        'bossbar-builder',
+        'announcement-builder'
     ];
 
     // These three tool pages reported their own slug as page_type before tool_id existed.

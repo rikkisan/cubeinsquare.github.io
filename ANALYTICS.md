@@ -57,9 +57,10 @@ used to report `page`.
 `item_format` is the command syntax generation of the tools that offer one: `latest` (1.21.5–26.x components, text
 components in SNBT), `modern` (1.21.4 components), `current` (1.20.5–1.21.3 components), `legacy` (before 1.20.5, NBT).
 The custom item builder, custom potions and villager trades offer all four (`latest` since 2026-10-25; before that
-`modern` meant 1.21.4+). Book & letter offers only `modern` (1.20.5+ components) and `legacy`. The enchantment
-randomizer sends `latest` for its 1.21.5–26.x branch and `modern` for 1.21.2–1.21.4 and 1.21–1.21.1, with the
-branch's first version as `mc_version` (`1.21.5`, `1.21.2`, `1.21`).
+`modern` meant 1.21.4+). Book & letter offers `latest` (1.21.5–26.x, since 2026-11-19), `modern` (1.20.5–1.21.4;
+before 2026-11-19 it meant all of 1.20.5+) and `legacy`. The enchantment randomizer sends `latest` for its 26.3+ and
+1.21.5–26.2 branches and `modern` for 1.21.2–1.21.4 and 1.21–1.21.1, with the branch's first version as `mc_version`
+(`26.3`, `1.21.5`, `1.21.2`, `1.21`).
 
 | Tool | `tool_copy` `output_kind` | `tool_download` `file_kind` | `tool_example_load` | version parameter |
 | --- | --- | --- | --- | --- |
@@ -75,6 +76,7 @@ branch's first version as `mc_version` (`1.21.5`, `1.21.2`, `1.21`).
 | dialogue-builder | `command`, `message_command` (second panel) | — | presets (both panels) | — |
 | book-letter-builder | `command` | — | presets | `item_format` |
 | bossbar-builder | `command` | — | presets | — |
+| announcement-builder | `command`, `file_content` | `zip` | presets | `mc_version` |
 | custom-item-builder | `command` | — | example | `item_format` |
 | custom-potions | `command`, `command_block_give` | — | example | `item_format` |
 | custom-villager-trades | `command`, `command_block_give` | — | — | `item_format` |
