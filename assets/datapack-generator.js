@@ -155,7 +155,9 @@
         content: jsonFile({
           type: 'minecraft:chest',
           pools: [{
-            rolls: { min: 1, max: 3 },
+            // The {min, max} shorthand without a type is a registry error on 26.3 that stops the
+            // world from loading; the explicit uniform provider works in every version.
+            rolls: { type: 'minecraft:uniform', min: 1, max: 3 },
             entries: [
               { type: 'minecraft:item', name: 'minecraft:iron_ingot', weight: 8 },
               { type: 'minecraft:item', name: 'minecraft:diamond', weight: 1 }
