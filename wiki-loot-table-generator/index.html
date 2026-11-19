@@ -149,9 +149,8 @@ gold_ingot  weight  5
 diamond     weight  1</code></pre>
         <p>The total is 16, so iron comes up 10/16 of the time — about 62%, not 10%. Add a fourth entry with weight 84 and iron drops to 10/100 without you touching its number. Every weight in a pool is relative to its neighbours, so adding one entry silently reprices everything else in that pool.</p>
         <p>If you want a real percentage, that is a different mechanism: a <code>random_chance</code> condition on the entry.</p>
-        <pre><code>"conditions": [
-  { "condition": "minecraft:random_chance", "chance": 0.15 }
-]</code></pre>
+        <pre><code>"condition": { "type": "minecraft:random_chance", "chance": 0.15 }</code></pre>
+        <p>That is the 26.3 form. From 1.21 to 26.2 the same condition sits in a list: <code>"conditions": [{ "condition": "minecraft:random_chance", "chance": 0.15 }]</code>.</p>
         <p>That is a genuine 15%, evaluated independently of weight. The two combine in a way worth being deliberate about: the entry first has to win its weighted pick, and only then does the 15% roll happen.</p>
 
         <h2>Count is a separate step from picking</h2>
@@ -160,13 +159,12 @@ diamond     weight  1</code></pre>
   "type": "minecraft:item",
   "name": "minecraft:iron_ingot",
   "weight": 10,
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
-    }
-  ]
+  "modifier": {
+    "type": "minecraft:set_count",
+    "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
+  }
 }</code></pre>
+        <p>That is the 26.3 form; from 1.21 to 26.2 it is <code>"functions": [{ "function": "minecraft:set_count", … }]</code>, a list even for one step.</p>
         <p>Without <code>set_count</code> you get exactly one. That object under <code>count</code> is a <em>number provider</em>, the same shape used by <code>rolls</code>. Learning it once covers both.</p>
 
         <h2>The table type is a contract, not a label</h2>
@@ -180,6 +178,14 @@ diamond     weight  1</code></pre>
             <tr><td><code>minecraft:gift</code></td><td>A villager or cat brings a gift</td></tr>
         </table>
         <p>If a table behaves correctly in testing but never fires in the world, check that its type matches how it is actually being triggered.</p>
+
+        <h2>26.3 renamed the keys, and the old ones fail silently</h2>
+        <p>Minecraft 26.3 changed how an entry lists its steps and checks. Several modifiers can still go in a list under <code>modifier</code>, and several conditions are combined with an <code>all_of</code> condition.</p>
+        <table class="compact-table prose-table"><thead><tr><th>What</th><th>1.21 – 26.2</th><th>26.3+</th></tr></thead><tbody>
+        <tr><td>Count, name, enchantments</td><td><code>"functions": [{"function": "minecraft:set_count", …}]</code></td><td><code>"modifier": {"type": "minecraft:set_count", …}</code></td></tr>
+        <tr><td>Drop chance and other checks</td><td><code>"conditions": [{"condition": "minecraft:random_chance", …}]</code></td><td><code>"condition": {"type": "minecraft:random_chance", …}</code></td></tr>
+        </tbody></table>
+        <p>Neither version complains about the other's keys: it skips them. We ran the Rare mob drop preset on a 26.3 server in the old form, and all 100 test zombies dropped the sword, without its name; in the 26.3 form, 15 of 100 did, named "Guard blade". So if a table on 26.3 drops too much and every stack has one item, check these keys first. The generator's <em>Game version</em> list writes the right form.</p>
 
         <h2>Testing without hunting for a chest</h2>
         <p>You do not have to find a real dungeon to see your odds. The <code>/loot</code> command rolls an existing table on demand:</p>

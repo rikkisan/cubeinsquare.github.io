@@ -282,6 +282,8 @@
    * {modifiers:...,show_in_tooltip} wrappers (tooltips moved to tooltip_display).
    */
   const ITEM_VERSIONS = {
+    // 26.3 writes the same /give as 1.21.5; only loot-table modifiers changed shape.
+    v263: { components: true, simplified: true, plainAttributes: true, lootModifier: true, mc: '26.3' },
     v1215: { components: true, simplified: true, plainAttributes: true, mc: '1.21.5' },
     v1212: { components: true, simplified: false, plainAttributes: true, mc: '1.21.2' },
     v121: { components: true, simplified: false, plainAttributes: false, mc: '1.21' },
@@ -337,11 +339,14 @@
    * fixed value, so the game rolls it fresh on every drop.
    */
   function buildLootEntry(item, enchantments, attributes, version) {
+    // 26.3 names each modifier by "type" and puts them under "modifier"; the older keys are
+    // ignored there without an error, which would drop every enchantment and attribute.
+    const key = version.lootModifier ? 'type' : 'function';
     const functions = [];
 
     if (enchantments.length) {
       functions.push({
-        function: 'minecraft:set_enchantments',
+        [key]: 'minecraft:set_enchantments',
         enchantments: Object.fromEntries(enchantments.map((e) => [
           `minecraft:${e.id}`,
           e.locked ? e.level : numberProvider(e.level, e.levelRange)
@@ -350,7 +355,7 @@
     }
     if (attributes.length) {
       functions.push({
-        function: 'minecraft:set_attributes',
+        [key]: 'minecraft:set_attributes',
         // Before 1.21 a modifier was named, not given a namespaced id.
         modifiers: attributes.map((a) => ({
           attribute: attributeId(a, version),
@@ -362,6 +367,11 @@
       });
     }
 
+    if (version.lootModifier) {
+      const entry = { type: 'minecraft:item', name: item };
+      if (functions.length) entry.modifier = functions.length === 1 ? functions[0] : functions;
+      return entry;
+    }
     return { type: 'minecraft:item', name: item, functions };
   }
 
@@ -377,8 +387,8 @@
 
   function currentVersion() {
     const active = root.querySelector('[data-er-version].is-active');
-    const key = active ? active.dataset.erVersion : 'v1215';
-    return ITEM_VERSIONS[key] || ITEM_VERSIONS.v1215;
+    const key = active ? active.dataset.erVersion : 'v263';
+    return ITEM_VERSIONS[key] || ITEM_VERSIONS.v263;
   }
 
   /** item_format as documented in ANALYTICS.md; the exact branch goes into mc_version. */

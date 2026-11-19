@@ -149,9 +149,8 @@ gold_ingot  Gewicht  5
 diamond     Gewicht  1</code></pre>
         <p>Die Summe ist 16, also kommt Eisen in 10/16 der Fälle — etwa 62 %, nicht 10 %. Füge einen vierten Eintrag mit Gewicht 84 hinzu, und Eisen fällt auf 10/100, ohne dass du seine Zahl angefasst hast. Jedes Gewicht in einem Pool ist relativ zu seinen Nachbarn: Ein zusätzlicher Eintrag bepreist den ganzen Rest des Pools still neu.</p>
         <p>Wer einen echten Prozentwert will, braucht einen anderen Mechanismus: eine <code>random_chance</code>-Bedingung am Eintrag.</p>
-        <pre><code>"conditions": [
-  { "condition": "minecraft:random_chance", "chance": 0.15 }
-]</code></pre>
+        <pre><code>"condition": { "type": "minecraft:random_chance", "chance": 0.15 }</code></pre>
+        <p>Das ist die Form für 26.3. Von 1.21 bis 26.2 steht dieselbe Bedingung in einer Liste: <code>"conditions": [{ "condition": "minecraft:random_chance", "chance": 0.15 }]</code>.</p>
         <p>Das sind echte 15 %, unabhängig vom Gewicht ausgewertet. Beide greifen so ineinander, dass man es bewusst entscheiden sollte: Der Eintrag muss zuerst die gewichtete Auswahl gewinnen, und erst danach findet der 15-%-Wurf statt.</p>
 
         <h2>Die Anzahl ist ein eigener Schritt nach der Auswahl</h2>
@@ -160,13 +159,12 @@ diamond     Gewicht  1</code></pre>
   "type": "minecraft:item",
   "name": "minecraft:iron_ingot",
   "weight": 10,
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
-    }
-  ]
+  "modifier": {
+    "type": "minecraft:set_count",
+    "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
+  }
 }</code></pre>
+        <p>Das ist die Form für 26.3; von 1.21 bis 26.2 heißt es <code>"functions": [{ "function": "minecraft:set_count", … }]</code>, auch für einen einzigen Schritt als Liste.</p>
         <p>Ohne <code>set_count</code> bekommst du genau eines. Das Objekt unter <code>count</code> ist ein <em>Number Provider</em> — dieselbe Struktur, die auch <code>rolls</code> verwendet. Einmal verstanden, deckt es beides ab.</p>
 
         <h2>Der Tabellentyp ist ein Vertrag, kein Etikett</h2>
@@ -180,6 +178,14 @@ diamond     Gewicht  1</code></pre>
             <tr><td><code>minecraft:gift</code></td><td>Ein Dorfbewohner oder eine Katze ein Geschenk bringt</td></tr>
         </table>
         <p>Verhält sich eine Tabelle im Test richtig, löst aber in der Welt nie aus, prüfe, ob ihr Typ dazu passt, wie sie tatsächlich ausgelöst wird.</p>
+
+        <h2>26.3 hat die Schlüssel umbenannt, und die alten scheitern lautlos</h2>
+        <p>Minecraft 26.3 hat geändert, wie ein Eintrag seine Schritte und Prüfungen aufführt. Mehrere Modifikatoren können weiterhin als Liste unter <code>modifier</code> stehen, mehrere Bedingungen verbindet eine <code>all_of</code>-Bedingung.</p>
+        <table class="compact-table prose-table"><thead><tr><th>Was</th><th>1.21 – 26.2</th><th>26.3+</th></tr></thead><tbody>
+        <tr><td>Anzahl, Name, Verzauberungen</td><td><code>"functions": [{"function": "minecraft:set_count", …}]</code></td><td><code>"modifier": {"type": "minecraft:set_count", …}</code></td></tr>
+        <tr><td>Drop-Chance und andere Prüfungen</td><td><code>"conditions": [{"condition": "minecraft:random_chance", …}]</code></td><td><code>"condition": {"type": "minecraft:random_chance", …}</code></td></tr>
+        </tbody></table>
+        <p>Keine Version beschwert sich über die Schlüssel der anderen, sie überspringt sie einfach. Wir haben das Preset Rare mob drop auf einem 26.3-Server in der alten Form laufen lassen: Alle 100 Test-Zombies ließen das Schwert fallen, ohne Namen; in der Form für 26.3 waren es 15 von 100, mit dem Namen „Guard blade“. Gibt eine Tabelle auf 26.3 zu viel her und liegt in jedem Stapel nur ein Item, prüf zuerst diese Schlüssel. Die Liste <em>Spielversion</em> im Generator schreibt die richtige Form.</p>
 
         <h2>Testen, ohne eine Truhe zu suchen</h2>
         <p>Du musst kein echtes Dungeon finden, um deine Chancen zu sehen. Der Befehl <code>/loot</code> würfelt eine vorhandene Tabelle auf Zuruf:</p>

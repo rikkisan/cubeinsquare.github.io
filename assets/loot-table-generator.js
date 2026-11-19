@@ -88,6 +88,11 @@
     return min === max ? min : { type: 'minecraft:uniform', min, max };
   }
 
+  function lootFormat() {
+    const select = $('lt-version');
+    return select && select.value === '1.21' ? '1.21' : '26.3';
+  }
+
   function buildTable() {
     const table = { type: $('lt-type').value, pools: [] };
 
@@ -105,21 +110,32 @@
           weight: num(entry.weight, 1, 1, 1000)
         };
 
+        // 26.3 renamed the keys: an entry's "functions" list became "modifier" (one object, or
+        // a list), "conditions" became "condition", and both identify themselves with "type".
+        // Older versions ignore the new keys and 26.3 ignores the old ones, without an error,
+        // so the wrong branch silently drops every count, name and drop chance.
+        const modern = lootFormat() === '26.3';
+        const key = modern ? 'type' : 'function';
         const functions = [];
         if (min !== 1 || max !== 1) {
-          functions.push({ function: 'minecraft:set_count', count: countProvider(min, max) });
+          functions.push({ [key]: 'minecraft:set_count', count: countProvider(min, max) });
         }
         if (String(entry.name || '').trim()) {
           functions.push({
-            function: 'minecraft:set_name',
-            name: { text: String(entry.name).trim(), italic: false }
+            [key]: 'minecraft:set_name',
+            name: { text: String(entry.name).trim(), italic: false },
+            target: 'custom_name'
           });
         }
-        if (functions.length) built.functions = functions;
+        if (functions.length) {
+          if (modern) built.modifier = functions.length === 1 ? functions[0] : functions;
+          else built.functions = functions;
+        }
 
         const chance = Number(entry.chance);
         if (Number.isFinite(chance) && chance > 0 && chance < 1) {
-          built.conditions = [{ condition: 'minecraft:random_chance', chance: chance }];
+          if (modern) built.condition = { type: 'minecraft:random_chance', chance: chance };
+          else built.conditions = [{ condition: 'minecraft:random_chance', chance: chance }];
         }
 
         entries.push(built);
@@ -291,7 +307,7 @@
   });
 
   root.addEventListener('change', (event) => {
-    if (event.target && event.target.id === 'lt-type') update();
+    if (event.target && (event.target.id === 'lt-type' || event.target.id === 'lt-version')) update();
   });
   $('lt-namespace').addEventListener('input', update);
   $('lt-file').addEventListener('input', update);

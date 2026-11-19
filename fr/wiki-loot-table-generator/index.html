@@ -149,9 +149,8 @@ gold_ingot  poids  5
 diamond     poids  1</code></pre>
         <p>Le total fait 16, donc le fer sort 10/16 du temps — environ 62 %, pas 10 %. Ajoutez une quatrième entrée de poids 84 et le fer tombe à 10/100 sans que vous ayez touché à son nombre. Chaque poids d’un pool est relatif à ses voisins : ajouter une entrée reprice silencieusement tout le reste du pool.</p>
         <p>Si vous voulez un vrai pourcentage, c’est un autre mécanisme : une condition <code>random_chance</code> sur l’entrée.</p>
-        <pre><code>"conditions": [
-  { "condition": "minecraft:random_chance", "chance": 0.15 }
-]</code></pre>
+        <pre><code>"condition": { "type": "minecraft:random_chance", "chance": 0.15 }</code></pre>
+        <p>C'est la forme 26.3. De 1.21 à 26.2, la même condition est dans une liste : <code>"conditions": [{ "condition": "minecraft:random_chance", "chance": 0.15 }]</code>.</p>
         <p>Ce sont là de vrais 15 %, évalués indépendamment du poids. Les deux se combinent d’une manière qui mérite d’être choisie sciemment : l’entrée doit d’abord gagner le tirage pondéré, et seulement ensuite le jet à 15 % a lieu.</p>
 
         <h2>La quantité est une étape distincte du choix</h2>
@@ -160,13 +159,12 @@ diamond     poids  1</code></pre>
   "type": "minecraft:item",
   "name": "minecraft:iron_ingot",
   "weight": 10,
-  "functions": [
-    {
-      "function": "minecraft:set_count",
-      "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
-    }
-  ]
+  "modifier": {
+    "type": "minecraft:set_count",
+    "count": { "type": "minecraft:uniform", "min": 1, "max": 4 }
+  }
 }</code></pre>
+        <p>C'est la forme 26.3 ; de 1.21 à 26.2 on écrit <code>"functions": [{ "function": "minecraft:set_count", … }]</code>, une liste même pour une seule étape.</p>
         <p>Sans <code>set_count</code>, vous obtenez exactement un exemplaire. Cet objet sous <code>count</code> est un <em>number provider</em>, la même structure que celle utilisée par <code>rolls</code>. L’apprendre une fois couvre les deux.</p>
 
         <h2>Le type de table est un contrat, pas une étiquette</h2>
@@ -180,6 +178,14 @@ diamond     poids  1</code></pre>
             <tr><td><code>minecraft:gift</code></td><td>Un villageois ou un chat apporte un cadeau</td></tr>
         </table>
         <p>Si une table se comporte correctement en test mais ne se déclenche jamais dans le monde, vérifiez que son type correspond à la façon dont elle est réellement déclenchée.</p>
+
+        <h2>La 26.3 a renommé les clés, et les anciennes échouent en silence</h2>
+        <p>Minecraft 26.3 a changé la façon dont une entrée liste ses étapes et ses vérifications. Plusieurs modificateurs peuvent toujours aller dans une liste sous <code>modifier</code>, et plusieurs conditions se combinent avec une condition <code>all_of</code>.</p>
+        <table class="compact-table prose-table"><thead><tr><th>Quoi</th><th>1.21 – 26.2</th><th>26.3+</th></tr></thead><tbody>
+        <tr><td>Quantité, nom, enchantements</td><td><code>"functions": [{"function": "minecraft:set_count", …}]</code></td><td><code>"modifier": {"type": "minecraft:set_count", …}</code></td></tr>
+        <tr><td>Probabilité et autres vérifications</td><td><code>"conditions": [{"condition": "minecraft:random_chance", …}]</code></td><td><code>"condition": {"type": "minecraft:random_chance", …}</code></td></tr>
+        </tbody></table>
+        <p>Aucune version ne se plaint des clés de l'autre : elle les ignore. Nous avons lancé le préréglage Rare mob drop sur un serveur 26.3 dans l'ancienne forme : les 100 zombies de test ont lâché l'épée, sans son nom ; dans la forme 26.3, 15 sur 100 l'ont lâchée, nommée « Guard blade ». Si une table en 26.3 donne trop et que chaque pile ne contient qu'un objet, vérifiez d'abord ces clés. La liste <em>Version du jeu</em> du générateur écrit la bonne forme.</p>
 
         <h2>Tester sans courir après un coffre</h2>
         <p>Nul besoin de trouver un vrai donjon pour voir vos probabilités. La commande <code>/loot</code> tire une table existante à la demande :</p>

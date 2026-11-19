@@ -178,7 +178,7 @@
                 </div>
                 <p class="tool-summary">Item format</p>
                 <div class="tool-chip-row">
-                    <button class="tool-chip-button is-active" type="button" data-er-version="v1215">1.21.5 – 26.x</button><button class="tool-chip-button" type="button" data-er-version="v1212">1.21.2 – 1.21.4</button><button class="tool-chip-button" type="button" data-er-version="v121">1.21 – 1.21.1</button>
+                    <button class="tool-chip-button is-active" type="button" data-er-version="v263">26.3+</button><button class="tool-chip-button" type="button" data-er-version="v1215">1.21.5 – 26.2</button><button class="tool-chip-button" type="button" data-er-version="v1212">1.21.2 – 1.21.4</button><button class="tool-chip-button" type="button" data-er-version="v121">1.21 – 1.21.1</button>
                     <button class="tool-chip-button" type="button" data-er-version="legacy">Before 1.20.5 (NBT)</button>
                 </div>
             </div>
@@ -282,7 +282,7 @@
         <div class="resource-grid">
             <article class="resource-card"><h3>Item and category</h3><p>The base item ID and its category decide which enchantments are possible and which slot attribute modifiers use: main hand for weapons and tools, the matching slot for each armor piece.</p></article>
             <article class="resource-card"><h3>Output</h3><p>A /give command for one item, or a loot table entry where every unlocked range stays a <code>minecraft:uniform</code> number provider, so each drop rolls fresh.</p></article>
-            <article class="resource-card"><h3>Item format</h3><p>Four branches: 1.21.5 – 26.x, 1.21.2 – 1.21.4, 1.21 – 1.21.1 and before 1.20.5. Pick the one your server runs; the command shape differs between them.</p></article>
+            <article class="resource-card"><h3>Item format</h3><p>Five branches: 26.3+, 1.21.5 – 26.2, 1.21.2 – 1.21.4, 1.21 – 1.21.1 and before 1.20.5. Pick the one your server runs; the command shape differs between them, and 26.3 changed how a loot table entry lists its modifiers (<code>modifier</code> and <code>type</code> instead of <code>functions</code> and <code>function</code>).</p></article>
             <article class="resource-card"><h3>Basic or advanced</h3><p>Basic rolls inside the ranges you set. Advanced adds a weight per enchantment and attribute, and Lock keeps an enchantment at a fixed level on every reroll.</p></article>
         </div>
     </section>
