@@ -1,0 +1,502 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft-Wiki für Resource Packs und Tools | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Minecraft-Wiki zu Resource Packs, CustomModelData, Skin-Editor, Textur-Editor, Custom-Potions, Dorfbewohner-Handel und RP-Mechaniken auf dem Server.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/wiki/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft-Wiki für Resource Packs und Tools | Cube in Square">
+    <meta property="og:description" content="Minecraft-Wiki zu Resource Packs, CustomModelData, Skin-Editor, Textur-Editor, Custom-Potions, Dorfbewohner-Handel und RP-Mechaniken auf dem Server.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/wiki/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft-Wiki für Resource Packs und Tools | Cube in Square">
+    <meta name="twitter:description" content="Minecraft-Wiki zu Resource Packs, CustomModelData, Skin-Editor, Textur-Editor, Custom-Potions, Dorfbewohner-Handel und RP-Mechaniken auf dem Server.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown is-active" href="/de/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#general-wiki">Erst einmal hier</a><div class="mega-sublist"><a href="/de/wiki-custom-model-data/">CustomModelData</a><a href="/de/wiki-resource-pack-structure/">Pack-Struktur</a><a href="/de/privacy-policy/">Datenschutzerklärung</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#resource-pack-generator-wiki">Pack-Workflow</a><div class="mega-sublist"><a href="/de/wiki-resource-pack-generator/">Pack-Generator</a><a href="/de/wiki-skin-editor/">Skin-Editor</a><a href="/de/wiki-texture-painter/">Textur-Editor</a><a href="/de/wiki-sphere-generator/">Kugel-Generator</a></div></div>
+                    <div class="mega-group"><a class="mega-group-title" href="/de/wiki/#advanced-rp-guides">Server-Systeme</a><div class="mega-sublist"><a href="/de/wiki-mechanism-plugin/">Mechanism Plugin</a><a href="/de/wiki-headhunter-plugin/">HeadHunter Plugin</a><a href="/de/wiki-darkmage-plugin/">DarkMage Plugin</a></div></div>
+                </div>
+                <div class="mega-feature"><a class="mega-card" href="/de/wiki-resource-pack-generator/"><strong>Pack-Generator</strong><span>Von PNGs und Modellen bis zu einem brauchbaren ZIP.</span></a><a class="mega-card" href="/de/wiki-skin-editor/"><strong>Skin-Editor</strong><span>Atlas und 3D-Modell gemeinsam bemalen.</span></a><a class="mega-card" href="/de/wiki-mechanism-plugin/"><strong>Mechanism Plugin</strong><span>Technische Progression, Wartung und ritualisierte Maschinen.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list"><a href="/de/resource-pack-generator/">Minecraft Resource-Pack-Generator</a><a href="/de/skin-editor/">Minecraft Skin-Editor</a><a href="/de/texture-painter/">Textur-Editor</a><a href="/de/custom-villager-trades/">Benutzerdefinierter Dorfbewohner-Handel</a><a href="/de/custom-potions/">Custom-Potions</a></div>
+                <div class="mega-feature"><a class="mega-card" href="/de/texture-painter/"><strong>Textur-Editor</strong><span>Leinwand wählen, PNG malen und in den Pack-Workflow schicken.</span></a><a class="mega-card" href="/de/skin-editor/"><strong>Skin-Editor</strong><span>Auf dem Atlas oder direkt auf dem 3D-Spielermodell zeichnen.</span></a><a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, Blöcke, Rüstung, CustomModelData und Vorschau.</span></a></div>
+            </div>
+        </div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/de/about/">Projekt</a><div class="steam-dropdown-panel steam-dropdown-panel--small"><a href="/de/about/">Cube in Square</a><a href="/de/privacy-policy/">Datenschutzerklärung</a></div></div>
+        <form class="steam-search" action="/de/wiki/" method="get"><input type="text" name="q" placeholder="Website durchsuchen..."><button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki/">RU</a><a href="/wiki/">EN</a><a href="/fr/wiki/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-docs-shell">
+    <section class="page-hero">
+        <h1>Minecraft-Wiki für Resource Packs und Tools</h1>
+        <p class="page-lead">Eine Arbeitsbibliothek für Leute, die Resource Packs, RP-Items, Händler, Texturen und Skins bauen. Links steht das Regal mit den Themen, rechts liegen die Zusammenfassungen und Einstiege in die eigentlichen Artikel.</p>
+    </section>
+
+    <section class="wiki-layout">
+        <aside class="wiki-sidebar">
+            <div class="wiki-sidebar-card">
+                <p class="wiki-sidebar-eyebrow">Bibliothek</p>
+                <div class="wiki-sidebar-nav">
+                    <div class="wiki-sidebar-group">
+                        <h2>Erst einmal hier</h2>
+                        <a href="/de/wiki-custom-model-data/">Was ist CustomModelData?</a>
+                        <a href="/de/wiki-resource-pack-structure/">Pack-Struktur</a>
+                        <a href="/de/wiki-string-ids-custom-model-data/">Einzigartige RP-Items mit String-IDs</a>
+                        <a href="/de/wiki-custom-item-id-naming/">Benutzerdefinierte Items ohne Duplikate benennen</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Packs, Texturen und runde Bauten</h2>
+                        <a href="/de/wiki-resource-pack-generator/">Pack-Generator</a>
+                        <a href="/de/wiki-skin-editor/">Skin-Editor</a>
+                        <a href="/de/wiki-texture-painter/">Textur-Editor</a>
+                        <a href="/de/wiki-sulfur-cube-texture/">Wie die Textur des Sulfur Cube funktioniert</a>
+                        <a href="/de/wiki-sphere-generator/">Kugel-Generator</a>
+                        <a href="/de/wiki-circle-dome-planner/">Kreis- und Kuppelplaner</a>
+                        <a href="/de/wiki-round-build-shape-choice/">Kreis, Ring, Bogen, Kuppel oder Kugel?</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Items, Tränke und Handel</h2>
+                        <a href="/de/wiki-custom-potions/">Custom-Potions</a>
+                        <a href="/de/wiki-custom-villager-trades/">Dorfbewohner-Handel</a>
+                        <a href="/de/wiki-item-model-builder/">item_model-Builder</a>
+                        <a href="/de/wiki-item-model-branch-choices/">select, range_dispatch oder condition?</a>
+                        <a href="/de/wiki-custom-item-catalog/">Katalog für Custom-Items</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Bücher, Dialoge und Event-Anzeigen</h2>
+                        <a href="/de/wiki-book-letter-builder/">Buch- und Brief-Builder</a>
+                        <a href="/de/wiki-readable-minecraft-books/">Bücher, die Spieler wirklich lesen</a>
+                        <a href="/de/wiki-dialogue-builder/">Dialog-Builder</a>
+                        <a href="/de/wiki-readable-minecraft-dialogue/">Dialoge, die Spieler wirklich lesen</a>
+                        <a href="/de/wiki-minecraft-server-announcements/">Serverankündigungen: Befehle</a>
+                        <a href="/de/wiki-announcement-builder/">Ankündigungs-Generator</a>
+                        <a href="/de/wiki-bossbar-builder/">Bossbar-Builder</a>
+                        <a href="/de/wiki-minecraft-bossbar-events/">Bossleisten für Events und Countdowns</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Item-Befehle und Komponenten</h2>
+                        <a href="/de/wiki-components-vs-nbt/">Komponenten statt NBT</a>
+                        <a href="/de/wiki-give-command-not-working/">Warum dein /give nicht funktioniert</a>
+                        <a href="/de/wiki-custom-item-no-json/">Anleitung zum Custom-Item-Builder</a>
+                        <a href="/de/wiki-blockbench-custom-model/">Vom Blockbench-Modell zum Item</a>
+                        <a href="/de/wiki-custom-weapon/">Custom-Waffen mit eigenen Werten</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Datenpakete, Beute und Fortschritt</h2>
+                        <a href="/de/wiki-datapack-generator/">Datapacks statt Befehle</a>
+                        <a href="/de/wiki-loot-table-generator/">Wie Loot-Tabellen würfeln</a>
+                        <a href="/de/wiki-recipe-generator/">Warum ein Rezept nicht auftaucht</a>
+                        <a href="/de/wiki-advancement-builder/">Fortschritte als Questsystem</a>
+                        <a href="/de/wiki-enchantment-randomizer/">Anleitung zum Verzauberungs-Randomizer</a>
+                        <a href="/de/wiki-enchantment-conflicts/">Verzauberungs-Konflikte erklärt</a>
+                        <a href="/de/wiki-rp-economy-custom-data/">RP-Ökonomie mit custom_data</a>
+                        <a href="/de/wiki-rp-progression-systems/">RP-Progression auf einem Paper-Server</a>
+                    </div>
+                    <div class="wiki-sidebar-group">
+                        <h2>Unsere Plugins und Mods</h2>
+                        <a href="/de/wiki-mechanism-plugin/">Mechanism Plugin</a>
+                        <a href="/de/wiki-darkmage-plugin/">DarkMage Plugin</a>
+                        <a href="/de/wiki-headhunter-plugin/">HeadHunter Plugin</a>
+                        <a href="/de/wiki-armorhide-mod/">ArmorHide-Mod</a>
+                        <a href="/de/wiki-chest-helper-mod/">Chest-Helper-Mod</a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="wiki-main">
+            <section class="page-section" id="general-wiki">
+                <h2 class="section-title">Erst einmal hier</h2>
+                <p class="section-intro">Diese Artikel setzen die wichtigsten Grundlagen: was CustomModelData wirklich verändert, wo Dateien im Pack landen und welche praktischen Regeln der Seite man vorher kennen sollte.</p>
+                <div class="resource-grid">
+                    <article class="resource-card" id="article-cmd">
+                        <p class="wiki-card-kicker">Grundkonzept</p>
+                        <h3>Was ist CustomModelData und wie funktioniert es?</h3>
+                        <p>Wie ein einziges Vanilla-Item zu einem Katana, Becher, Token, Quest-Prop oder jedem anderen Modell werden kann, ganz ohne clientseitige Mods.</p>
+                        <a class="resource-link" href="/de/wiki-custom-model-data/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-structure">
+                        <p class="wiki-card-kicker">Referenz</p>
+                        <h3>Resource-Pack-Struktur</h3>
+                        <p>Eine schnelle Karte der Ordner <code>textures</code>, <code>models</code>, <code>blockstates</code> und der Dateinamen, die man nachts am häufigsten nachschlagen muss.</p>
+                        <a class="resource-link" href="/de/wiki-resource-pack-structure/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-string-ids">
+                        <p class="wiki-card-kicker">Fortgeschrittene Anleitung</p>
+                        <h3>Einzigartige RP-Items mit String-IDs</h3>
+                        <p>Warum eine riesige Liste durchnummerierter CustomModelData-Werte irgendwann zusammenbricht, und wie eine lesbare String-ID in custom_data das behebt, ohne den Modell-Hook aufzugeben.</p>
+                        <a class="resource-link" href="/de/wiki-string-ids-custom-model-data/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-item-naming">
+                        <p class="wiki-card-kicker">Fortgeschrittene Anleitung</p>
+                        <h3>Benutzerdefinierte Items ohne Duplikate benennen</h3>
+                        <p>Ein Muster aus Kategorie + Familie + Variante für interne IDs, sichtbare Namen und Visual Hooks, das auch bei vielen Items noch trägt.</p>
+                        <a class="resource-link" href="/de/wiki-custom-item-id-naming/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="resource-pack-generator-wiki">
+                <h2 class="section-title">Packs, Texturen und runde Bauten</h2>
+                <p class="section-intro">Der Resource-Pack-Generator, die Skin- und Textur-Editoren und die Planer für Kugeln, Kreise und Kuppeln.</p>
+                <div class="resource-grid">
+                    <article class="resource-card" id="article-generator">
+                        <p class="wiki-card-kicker">Werkzeug-Anleitung</p>
+                        <h3>So verwendest du den Resource-Pack-Generator</h3>
+                        <p>Version wählen, Items, Blöcke und Rüstung hinzufügen, Texturen hochladen, Ergebnis prüfen und ein ZIP herunterladen, das nicht erst nachträglich gerettet werden muss.</p>
+                        <a class="resource-link" href="/de/wiki-resource-pack-generator/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-skin">
+                        <p class="wiki-card-kicker">Editor-Anleitung</p>
+                        <h3>Skin-Editor</h3>
+                        <p>Wie das klassische 64x64-Layout funktioniert, wofür die Overlay-Schicht da ist und warum das Malen direkt auf dem Modell bei Ärmeln, Hüten, Stiefeln und verdeckten Seiten hilft.</p>
+                        <a class="resource-link" href="/de/wiki-skin-editor/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-texture">
+                        <p class="wiki-card-kicker">Editor-Anleitung</p>
+                        <h3>Textur-Editor</h3>
+                        <p>Wie die Texturgröße Lesbarkeit, Detaildichte und Arbeitsaufwand verändert und wie ein PNG danach scharf in den Pack-Workflow zurückgeht.</p>
+                        <a class="resource-link" href="/de/wiki-texture-painter/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-sulfur-texture">
+                        <p class="wiki-card-kicker">Editor-Anleitung</p>
+                        <h3>Wie die Textur des Sulfur Cube funktioniert</h3>
+                        <p>Was wir in der echten Client-jar-Datei von Minecraft 26.x gefunden haben: zwei Texturebenen, kein editierbares Modell, und wie man eine eigene malt.</p>
+                        <a class="resource-link" href="/de/wiki-sulfur-cube-texture/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-sphere">
+                        <p class="wiki-card-kicker">Bauanleitung</p>
+                        <h3>Kugel-Generator</h3>
+                        <p>Wie man zwischen Kreisen, Kuppeln, hohlen Schalen und vollen Kugeln wählt und sie Ebene für Ebene baut, statt die Silhouette später im Spiel zu retten.</p>
+                        <a class="resource-link" href="/de/wiki-sphere-generator/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Planungs-Anleitung</p>
+                        <h3>Kreis- und Kuppelplaner</h3>
+                        <p>Wie du zuerst die Grundfläche festlegst, die Ringstärke bewusst wählst und vom 2D-Plan zum Kuppelprofil wechselst.</p>
+                        <a class="resource-link" href="/de/wiki-circle-dome-planner/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>Kreis, Ring, Bogen, Kuppel oder Kugel?</h3>
+                        <p>Wie du erkennst, welcher Teil eines Baus wirklich rund ist, das leichtere Werkzeug wählst, den Radius festlegst und den Umriss im Spiel testest.</p>
+                        <a class="resource-link" href="/de/wiki-round-build-shape-choice/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="other-tools-wiki">
+                <h2 class="section-title">Items, Tränke und Handel</h2>
+                <p class="section-intro">Befehle für Tränke und Dorfbewohner-Handel, Item-Definitionen für Modelle und ein Katalog, der eine wachsende Itemliste ordentlich hält.</p>
+                <div class="resource-grid">
+                    <article class="resource-card" id="article-potions">
+                        <p class="wiki-card-kicker">Befehls-Builder</p>
+                        <h3>Custom-Potions</h3>
+                        <p>Wie du einen Trank mit <code>potion_contents</code>, eigenen Effekten, Flaschenfarbe, Lore, CustomModelData und der passenden give-Zeile für die richtige Version baust.</p>
+                        <a class="resource-link" href="/de/wiki-custom-potions/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-villagers">
+                        <p class="wiki-card-kicker">Befehls-Builder</p>
+                        <h3>Benutzerdefinierter Dorfbewohner-Handel</h3>
+                        <p>Wie Offers, Recipes, Preise, Belohnungen, Limits, CustomModelData und summon-Befehle zusammenspielen, wenn ein Händler Teil eines echten Systems sein soll.</p>
+                        <a class="resource-link" href="/de/wiki-custom-villager-trades/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>item_model-Builder</h3>
+                        <p>Wann model, select, range_dispatch oder condition passt und wie die Definition sauber im items-Ordner landet.</p>
+                        <a class="resource-link" href="/de/wiki-item-model-builder/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>select, range_dispatch oder condition?</h3>
+                        <p>Den Zweigtyp einer Item-Definition wählen: benannte Zustände, Zahlenschwellen oder Ja/Nein-Bedingungen, an drei Beispielen.</p>
+                        <a class="resource-link" href="/de/wiki-item-model-branch-choices/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Katalog-Anleitung</p>
+                        <h3>Katalog für Custom-Items</h3>
+                        <p>Wie du IDs, Anzeigenamen, Basisitems und Pack-Hooks lesbar hältst, sobald dein Server mehr als zehn Custom-Items hat.</p>
+                        <a class="resource-link" href="/de/wiki-custom-item-catalog/">Anleitung lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="how-to-guides">
+                <h2 class="section-title">Bücher, Dialoge und Event-Anzeigen</h2>
+                <p class="section-intro">Beschriebene Bücher und Briefe, Nachrichten im Chat und als Titel und Bossleisten für Zustände, die alle Spieler teilen.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>Buch- und Brief-Builder</h3>
+                        <p>Beschriebene Bücher, Briefe, Notizen und Verträge Seite für Seite, mit dem /give-Befehl für deine Version.</p>
+                        <a class="resource-link" href="/de/wiki-book-letter-builder/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>Bücher, die Spieler wirklich lesen</h3>
+                        <p>Ein Takt pro Seite, erst das Objekt wählen, Quest-Requisiten vom Vertrag bis zum Hinweis und was das Signieren ändert.</p>
+                        <a class="resource-link" href="/de/wiki-readable-minecraft-books/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>Dialog-Builder</h3>
+                        <p>Tellraw-Zeilen, Titel, Untertitel und Actionbar-Takte für Minecraft-Szenen und wann welcher Kanal passt.</p>
+                        <a class="resource-link" href="/de/wiki-dialogue-builder/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>Dialoge, die Spieler wirklich lesen</h3>
+                        <p>Zeilen im laufenden Spiel takten, den Kanal wählen und Szenentext in einem vollen Chat lesbar halten.</p>
+                        <a class="resource-link" href="/de/wiki-readable-minecraft-dialogue/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>Ankündigungen auf dem Server machen</h3>
+                        <p>/say, tellraw mit Links, Titel, Aktionsleiste und Bossleisten, mit Befehlen für 1.21.5 – 26.x und älter, dazu eine Durchsage im Takt per Datenpaket.</p>
+                        <a class="resource-link" href="/de/wiki-minecraft-server-announcements/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>Ankündigungs-Generator</h3>
+                        <p>Was jede Datei des Durchsage-Pakets tut, wie der Zeitplan sie wiederholt, Chat, Aktionsleiste oder Titel und Links, die von 1.20 bis 26.3 funktionieren.</p>
+                        <a class="resource-link" href="/de/wiki-announcement-builder/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>Bossbar-Builder</h3>
+                        <p>Was jeder der sieben /bossbar-Befehle tut, Farben und Stile, wo sie hingehören und wie man eine Leiste sauber entfernt.</p>
+                        <a class="resource-link" href="/de/wiki-bossbar-builder/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Artikel</p>
+                        <h3>Bossleisten für Events und Countdowns</h3>
+                        <p>Wann eine Leiste Chat und Titel schlägt, vier Muster für RP-Events und ein Countdown mit Befehlsblöcken oder Datenpaket.</p>
+                        <a class="resource-link" href="/de/wiki-minecraft-bossbar-events/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="item-commands">
+                <h2 class="section-title">Item-Befehle und Komponenten</h2>
+                <p class="section-intro">Wie sich /give mit den Datenkomponenten in 1.20.5 und erneut in 1.21.4 geändert hat, warum alte Befehle brechen und wie Custom-Items ohne handgeschriebenes JSON entstehen.</p>
+                <div class="resource-grid">
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Grundlagen</p>
+                        <h3>Komponenten statt NBT</h3>
+                        <p>Was sich in 1.20.5 an Item-Befehlen geändert hat, ein alter Befehl neben seiner Komponenten-Version und was auf einem Server zuerst bricht.</p>
+                        <a class="resource-link" href="/de/wiki-components-vs-nbt/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Fehler</p>
+                        <h3>Warum dein /give nicht funktioniert</h3>
+                        <p>Zuerst die Zielversion prüfen, die häufigsten Fehler, an denen /give scheitert, und wie man die rote Fehlermeldung liest.</p>
+                        <a class="resource-link" href="/de/wiki-give-command-not-working/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Items erstellen</p>
+                        <h3>Anleitung zum Custom-Item-Builder</h3>
+                        <p>Der Befehl für ein Custom-Item Schritt für Schritt: Basisitem, Name und Lore, versteckte ID in custom_data, item_model und Modell-Slots, Prüfung im Spiel.</p>
+                        <a class="resource-link" href="/de/wiki-custom-item-no-json/">Anleitung lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Modelle</p>
+                        <h3>Vom Blockbench-Modell zum Item</h3>
+                        <p>Die vier Teile einer Custom-Modell-Kette, wo das Modell im Pack liegt und wie das Item darauf verweist.</p>
+                        <a class="resource-link" href="/de/wiki-blockbench-custom-model/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Waffen</p>
+                        <h3>Custom-Waffen mit eigenen Werten</h3>
+                        <p>Erst Rolle und Basisitem der Waffe wählen, dann Angriffsschaden, Angriffsgeschwindigkeit und ein Aussehen, an dem man sie erkennt.</p>
+                        <a class="resource-link" href="/de/wiki-custom-weapon/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="advanced-rp-guides">
+                <h2 class="section-title">Datenpakete, Beute und Fortschritt</h2>
+                <p class="section-intro">Beutetabellen, Rezepte, Fortschritte und Verzauberungen als Dateien eines Datenpakets, dazu Ökonomie und Fortschritt für RP-Server.</p>
+                <div class="resource-grid">
+                    <article class="resource-card" id="article-datapacks">
+                        <p class="wiki-card-kicker">Konzept-Anleitung</p>
+                        <h3>Datapacks statt Befehle</h3>
+                        <p>Warum sich eine Loot-Tabelle oder ein Rezept nicht per Befehl erstellen lässt, wie der Pack-Ordner aufgebaut ist, und welche Umbenennung in 1.21 Packs still lahmlegt, ohne eine einzige Fehlermeldung.</p>
+                        <a class="resource-link" href="/de/wiki-datapack-generator/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-loot-tables">
+                        <p class="wiki-card-kicker">Fortgeschrittener Guide</p>
+                        <h3>Wie Loot-Tabellen würfeln</h3>
+                        <p>Pools, Rolls und Number Provider — und warum Gewicht 10 keine 10-%-Chance ist. Genau deshalb sind die meisten „kaputten“ Tabellen in Wahrheit nur falsch gewichtet.</p>
+                        <a class="resource-link" href="/de/wiki-loot-table-generator/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-recipes">
+                        <p class="wiki-card-kicker">Fortgeschrittener Guide</p>
+                        <h3>Warum ein Rezept nicht auftaucht</h3>
+                        <p>Aufgefüllte Muster, Item-Tags als Zutaten und die zwei Formatwechsel, an denen ein kopiertes Beispiel ohne sichtbaren Grund scheitert.</p>
+                        <a class="resource-link" href="/de/wiki-recipe-generator/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-advancements">
+                        <p class="wiki-card-kicker">Fortgeschrittener Guide</p>
+                        <h3>Fortschritte als Questsystem</h3>
+                        <p>Warum der Auslöser, der nie feuert, das Rückgrat eigener Quests ist, und welche Belohnung ein Rezept endlich ins Buch bringt.</p>
+                        <a class="resource-link" href="/de/wiki-advancement-builder/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-enchant-randomizer">
+                        <p class="wiki-card-kicker">Builder-Anleitung</p>
+                        <h3>So benutzt du den Verzauberungs- &amp; Attribut-Randomizer</h3>
+                        <p>Einfache oder erweiterte Randomisierung, /give gegen einen Loot-Table-Eintrag mit den Bereichen als Number Provider.</p>
+                        <a class="resource-link" href="/de/wiki-enchantment-randomizer/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-enchant-conflicts">
+                        <p class="wiki-card-kicker">Fortgeschrittene Anleitung</p>
+                        <h3>Welche Verzauberungen sich nicht kombinieren lassen, und warum</h3>
+                        <p>Alle Vanilla-Unverträglichkeitsgruppen, Schatz-Verzauberungen, und warum das Level-Limit eine Entscheidung der Befehlsseite ist, keine feste Wand.</p>
+                        <a class="resource-link" href="/de/wiki-enchantment-conflicts/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-economy">
+                        <p class="wiki-card-kicker">Fortgeschrittener Guide</p>
+                        <h3>RP-Ökonomie mit custom_data</h3>
+                        <p>Wie du gefälschte Scheine, Pässe und Token aus deiner Dorfbewohner-Ökonomie heraushältst, wenn Währung bei dir ein echtes RP-Objekt ist.</p>
+                        <a class="resource-link" href="/de/wiki-rp-economy-custom-data/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Fortgeschritten</p>
+                        <h3>RP-Progression auf einem Paper-Server</h3>
+                        <p>Artefakte, Unterhaltsschleifen, Klassenzweige, Einschränkungen und Admin-Regler für Fortschritt ohne Client-Mods.</p>
+                        <a class="resource-link" href="/de/wiki-rp-progression-systems/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="rp-server-plugins-wiki">
+                <h2 class="section-title">Unsere Plugins und Mods</h2>
+                <p class="section-intro">Für den Server Cube in Square gebaut. ArmorHide und Chest Helper sind öffentlich auf Modrinth, DarkMage und Mechanism gibt es über unser Patreon, und HeadHunter läuft nur auf unserem Server.</p>
+                <div class="resource-grid">
+                    <article class="resource-card" id="article-mechanism">
+                        <p class="wiki-card-kicker">Plugin-Artikel</p>
+                        <h3>Mechanism Plugin</h3>
+                        <p>Ein kompakter Guide zur technischen Progression rund um Gear Heart, Oxidation, Wartung, Überlastung und ritualisierte Maschinen auf einem Paper-Server.</p>
+                        <a class="resource-link" href="/de/wiki-mechanism-plugin/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-darkmage">
+                        <p class="wiki-card-kicker">Plugin-Artikel</p>
+                        <h3>DarkMage Plugin</h3>
+                        <p>Ein Guide zu Blutkosten, Flaschen, Ritualdruck und dazu, wie dunkle Magie zu einem sozialen Hebel wird statt nur zu einer weiteren Spruchsammlung.</p>
+                        <a class="resource-link" href="/de/wiki-darkmage-plugin/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card" id="article-headhunter">
+                        <p class="wiki-card-kicker">Plugin-Artikel</p>
+                        <h3>HeadHunter Plugin</h3>
+                        <p>Wie Trophäen-Progression, Monsterfähigkeiten und Verlustrisiko eine Jagdschleife aufbauen, die trotzdem an Survival und Konsequenzen geerdet bleibt.</p>
+                        <a class="resource-link" href="/de/wiki-headhunter-plugin/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Mod des Projekts</p>
+                        <h3>ArmorHide-Mod</h3>
+                        <p>Ein clientseitiger Fabric-Mod, der Rüstung an Spielern ausblendet oder durchscheinend macht, damit Skins und Kostüme in RP-Szenen sichtbar bleiben. Auf Modrinth.</p>
+                        <a class="resource-link" href="/de/wiki-armorhide-mod/">Artikel lesen</a>
+                    </article>
+                    <article class="resource-card">
+                        <p class="wiki-card-kicker">Mod des Projekts</p>
+                        <h3>Chest-Helper-Mod</h3>
+                        <p>Ein clientseitiger Mod, der geöffnete Behälter speichert und daraus eine durchsuchbare Itemliste macht. Auf Modrinth.</p>
+                        <a class="resource-link" href="/de/wiki-chest-helper-mod/">Artikel lesen</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="page-section" id="resource-pack-paths">
+                <h2 class="section-title">Pfadreferenz</h2>
+                <p class="section-intro">Wenn du nur den richtigen Ordner und einen Beispielnamen brauchst, geht diese Tabelle schneller als jeder lange Umweg über einen Vollartikel.</p>
+                <table class="compact-table">
+                    <tr><th>Typ</th><th>Pack-Pfad</th><th>Beispiel</th></tr>
+                    <tr><td>Item</td><td><code>assets/minecraft/textures/item</code></td><td><div class="copy-example"><code>diamond_sword.png</code><button class="copy-button" type="button" data-copy-text="diamond_sword.png" data-copy-label="Kopieren" data-copy-copied-label="Kopiert">Kopieren</button></div></td></tr>
+                    <tr><td>Block</td><td><code>assets/minecraft/textures/block</code></td><td><div class="copy-example"><code>oak_planks.png</code><button class="copy-button" type="button" data-copy-text="oak_planks.png" data-copy-label="Kopieren" data-copy-copied-label="Kopiert">Kopieren</button></div></td></tr>
+                    <tr><td>Item-Modell</td><td><code>assets/minecraft/models/item</code></td><td><div class="copy-example"><code>custom_diamond_sword_1.json</code><button class="copy-button" type="button" data-copy-text="custom_diamond_sword_1.json" data-copy-label="Kopieren" data-copy-copied-label="Kopiert">Kopieren</button></div></td></tr>
+                    <tr><td>Blockstate</td><td><code>assets/minecraft/blockstates</code></td><td><div class="copy-example"><code>crafting_table.json</code><button class="copy-button" type="button" data-copy-text="crafting_table.json" data-copy-label="Kopieren" data-copy-copied-label="Kopiert">Kopieren</button></div></td></tr>
+                    <tr><td>Rüstungslayer</td><td><code>assets/minecraft/textures/models/armor</code></td><td><div class="copy-example"><code>diamond_layer_1.png</code><button class="copy-button" type="button" data-copy-text="diamond_layer_1.png" data-copy-label="Kopieren" data-copy-copied-label="Kopiert">Kopieren</button></div></td></tr>
+                </table>
+            </section>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/de/about/">Über das Projekt</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <script>
+        (function () {
+            if (/\/index\.html$/i.test(window.location.pathname)) {
+                window.location.replace(window.location.pathname.replace(/index\.html$/i, '') + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
+    <title>Minecraft-Tools, Resource-Pack-Generator, Skin-Editor und Wiki | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="19 Browser-Werkzeuge für Minecraft Java, jedes mit Guide: /give-Befehle, Datapack-Dateien, Resource-Packs, Skins, Texturen und Baupläne, vom Team eines modfreien RP-Servers.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Cube in Square">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/de/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Minecraft-Tools, Resource-Pack-Generator, Skin-Editor und Wiki | Cube in Square">
+    <meta property="og:description" content="19 Browser-Werkzeuge für Minecraft Java, jedes mit Guide: /give-Befehle, Datapack-Dateien, Resource-Packs, Skins, Texturen und Baupläne, vom Team eines modfreien RP-Servers.">
+    <meta property="og:url" content="https://cubeinsquare.com/de/">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Minecraft-Tools, Resource-Pack-Generator, Skin-Editor und Wiki | Cube in Square">
+    <meta name="twitter:description" content="19 Browser-Werkzeuge für Minecraft Java, jedes mit Guide: /give-Befehle, Datapack-Dateien, Resource-Packs, Skins, Texturen und Baupläne, vom Team eines modfreien RP-Servers.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/de/#organization",
+            "name": "Cube in Square",
+            "alternateName": "Kub v kvadrate",
+            "url": "https://cubeinsquare.com/de/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "url": "https://cubeinsquare.com/de/about/",
+                "contactType": "community support",
+                "availableLanguage": ["ru", "en", "fr", "de"]
+            }
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://cubeinsquare.com/de/#website",
+            "url": "https://cubeinsquare.com/de/",
+            "name": "Cube in Square",
+            "publisher": {
+                "@id": "https://cubeinsquare.com/de/#organization"
+            }
+        },
+        {
+            "@type": "CollectionPage",
+            "@id": "https://cubeinsquare.com/de/#webpage",
+            "url": "https://cubeinsquare.com/de/",
+            "name": "Minecraft-Tools, Resource-Pack-Generator, Skin-Editor und Wiki | Cube in Square",
+            "description": "19 Browser-Werkzeuge für Minecraft Java, jedes mit Guide: /give-Befehle, Datapack-Dateien, Resource-Packs, Skins, Texturen und Baupläne, vom Team eines modfreien RP-Servers.",
+            "isPartOf": {
+                "@id": "https://cubeinsquare.com/de/#website"
+            },
+            "about": {
+                "@id": "https://cubeinsquare.com/de/#organization"
+            },
+            "inLanguage": "de",
+            "hasPart": [
+                { "@id": "https://cubeinsquare.com/de/resource-pack-generator/#application" },
+                { "@id": "https://cubeinsquare.com/de/wiki/" },
+                { "@id": "https://cubeinsquare.com/de/about/" }
+            ]
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/de/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Startseite",
+                    "item": "https://cubeinsquare.com/de/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/de/" aria-label="Startseite" title="Startseite"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/wiki/">Wiki</a>
+            <div class="steam-dropdown-panel steam-mega-panel">
+                <div class="mega-list mega-list-tree">
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#general-wiki">Allgemeine Artikel</a>
+                        <div class="mega-sublist">
+                            <a href="/de/wiki-custom-model-data/">CustomModelData</a>
+                            <a href="/de/wiki/#resource-pack-paths">Resource-Pack-Struktur</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#resource-pack-generator-wiki">Minecraft Resource-Pack-Generator</a>
+                        <div class="mega-sublist">
+                            <a href="/de/wiki-resource-pack-generator/">Generator verwenden</a>
+                        </div>
+                    </div>
+                    <div class="mega-group">
+                        <a class="mega-group-title" href="/de/wiki/#other-tools-wiki">Andere Werkzeuge</a>
+                        <div class="mega-sublist">
+                            <a href="/de/tools/">Werkzeugkatalog</a>
+                            <a href="/de/wiki-skin-editor/">Skin-Editor</a>
+                            <a href="/de/wiki-texture-painter/">Textur-Editor</a>
+                            <a href="/de/wiki-custom-potions/">Custom-Potions</a>
+                            <a href="/de/wiki-custom-villager-trades/">Dorfbewohner-Handel</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/de/wiki-custom-model-data/"><strong>CustomModelData</strong><span>Wie ein einzelnes Item ohne Mods zu vielen Modellen wird.</span></a>
+                    <a class="mega-card" href="/de/wiki-resource-pack-generator/"><strong>Generator-Guide</strong><span>Schritt-für-Schritt-Workflow für den Packbau.</span></a>
+                    <a class="mega-card" href="/de/wiki-skin-editor/"><strong>Skin-Editor</strong><span>Auf dem Atlas und direkt auf dem 3D-Spielermodell zeichnen.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/tools/">Werkzeuge</a>
+            <div class="steam-dropdown-panel steam-mega-panel steam-mega-panel--tools">
+                <div class="mega-list">
+                    <a href="/de/resource-pack-generator/">Minecraft Resource-Pack-Generator</a>
+                    <a href="/de/skin-editor/">Minecraft Skin-Editor</a>
+                    <a href="/de/texture-painter/">Textur-Editor</a>
+                    <a href="/de/custom-villager-trades/">Benutzerdefinierter Dorfbewohner-Handel</a>
+                    <a href="/de/custom-potions/">Custom-Potions</a>
+                </div>
+                <div class="mega-feature">
+                    <a class="mega-card" href="/de/texture-painter/"><strong>Textur-Editor</strong><span>Wähle eine Leinwandgröße, male dein PNG und schicke es direkt in deinen Pack-Workflow.</span></a>
+                    <a class="mega-card" href="/de/skin-editor/"><strong>Skin-Editor</strong><span>Zeichne auf dem Atlas oder direkt auf dem 3D-Spielermodell.</span></a>
+                    <a class="mega-card" href="/de/resource-pack-generator/"><strong>Pack-Generator</strong><span>Items, Blöcke, Rüstung, CustomModelData und Vorschau.</span></a>
+                    <a class="mega-card" href="/de/custom-potions/"><strong>Custom-Potions</strong><span>Builder für potion contents, Effekte, Farbe, Lore und Give-Befehle.</span></a>
+                    <a class="mega-card" href="/de/custom-villager-trades/"><strong>Dorfbewohner-Handel</strong><span>Erstelle Handel mit Preisen, Belohnungen, Limits und Summon-Befehl.</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="steam-nav-menu">
+            <a class="steam-nav-dropdown" href="/de/about/">Projekt</a>
+            <div class="steam-dropdown-panel steam-dropdown-panel--small">
+                <a href="/de/about/">Cube in Square</a>
+                <a href="/de/privacy-policy/">Datenschutzerklärung</a>
+            </div>
+        </div>
+        <form class="steam-search" action="/de/wiki/" method="get">
+            <input type="text" name="q" placeholder="Website durchsuchen...">
+            <button type="submit" aria-label="Suchen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+        </form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/">RU</a><a href="/">EN</a><a href="/fr/">FR</a><a class="is-active" href="#">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell">
+    <section class="page-hero home-hero">
+        <div class="home-hero-copy">
+            <span class="section-kicker">Minecraft-Tool-Hub</span>
+            <h1>Minecraft-Tools, Resource-Pack-Generator und Wiki</h1>
+            <p class="page-lead">Achtzehn Browser-Werkzeuge für alle, die Inhalte für Minecraft Java bauen oder einen Server betreiben. Jedes erzeugt etwas, das du ins Spiel einfügst oder ablegst: einen Befehl, eine JSON-Datei, ein ZIP-Pack oder ein PNG. Befehle und Datapack-Dateien folgen der Syntax der Version, die du wählst, und zu jedem Werkzeug gibt es im Wiki einen Guide, der das Ergebnis erklärt.</p>
+            <p class="page-lead">Geschrieben wurden die Werkzeuge zuerst für Cube in Square, einen modfreien RP-Server. Seine zweite Staffel ist vorbei, die dritte ist in Entwicklung.</p>
+            <div class="hero-pill-row">
+                <span class="hero-pill">/give-Befehle</span>
+                <span class="hero-pill">Datapacks</span>
+                <span class="hero-pill">Resource-Packs</span>
+                <span class="hero-pill">Skins und Texturen</span>
+                <span class="hero-pill">Bücher und Dialoge</span>
+                <span class="hero-pill">Bauplanung</span>
+            </div>
+            <div class="tool-button-row">
+                <a class="resource-link" href="/de/tools/">Werkzeuge öffnen</a>
+                <a class="resource-link resource-link-secondary" href="/de/wiki/">Guides lesen</a>
+            </div>
+        </div>
+        <article class="resource-card hero-visual-card">
+            <img class="hero-visual-image" src="/assets/gallery/server-gallery-intro-01.png" fetchpriority="high" alt="Halle des Cube in Square Servers mit leuchtender Steinarchitektur und Figuren">
+            <div class="hero-visual-copy">
+                <strong>Gebaut für einen echten Server</strong>
+                <p>Screenshot von Cube in Square. Für die Requisiten, Quests und Events dieses Servers sind die meisten Werkzeuge entstanden.</p>
+            </div>
+            <div class="hero-metric-grid">
+                <div class="hero-metric"><strong>19</strong><span>verfügbare Browser-Tools</span></div>
+                <div class="hero-metric"><strong>4</strong><span>Sprachen für jedes Tool</span></div>
+                <div class="hero-metric"><strong>Wiki</strong><span>Ein Guide zu jedem Werkzeug</span></div>
+            </div>
+        </article>
+    </section>
+
+    <section class="page-section" id="tools-by-task">
+        <h2 class="section-title">Werkzeuge nach Aufgabe</h2>
+        <p class="section-intro">Bei jedem Eintrag steht, was du bekommst. Der Link „Guide“ erklärt das Ergebnis und wohin es gehört.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Items, Tränke und Händler</h3>
+                <p>Befehle, die Spielern etwas Neues in die Hand geben.</p>
+                <ul>
+                    <li><a href="/de/custom-item-builder/"><strong>Custom-Item-Generator</strong></a>: ein <code>/give</code>-Befehl mit Name, Beschreibung, Modell und versteckter ID, in der Syntax deiner Version (<a href="/de/wiki-custom-item-no-json/">Guide</a>)</li>
+                    <li><a href="/de/custom-potions/"><strong>Custom-Potions</strong></a>: Tränke, Wurf- und Verweiltränke mit eigenen Effekten, Farbe und Namen (<a href="/de/wiki-custom-potions/">Guide</a>)</li>
+                    <li><a href="/de/custom-villager-trades/"><strong>Dorfbewohner-Handel</strong></a>: ein <code>/summon</code>-Befehl für einen Dorfbewohner mit eigenen Angeboten, Preisen und Limits (<a href="/de/wiki-custom-villager-trades/">Guide</a>)</li>
+                    <li><a href="/de/enchantment-randomizer/"><strong>Verzauberungs- & Attribut-Randomizer</strong></a>: eine zufällige Auswahl an Verzauberungen und Attributmodifikatoren für Beute und Belohnungen (<a href="/de/wiki-enchantment-randomizer/">Guide</a>)</li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3>Texte, die Spieler lesen</h3>
+                <p>Bücher, NPC-Zeilen und Ereignisse auf dem Bildschirm.</p>
+                <ul>
+                    <li><a href="/de/book-letter-builder/"><strong>Buch- und Brief-Builder</strong></a>: beschriebene Bücher, Briefe und Notizen als <code>/give</code>-Befehl, Seite für Seite (<a href="/de/wiki-book-letter-builder/">Guide</a>)</li>
+                    <li><a href="/de/dialogue-builder/"><strong>Dialog-Builder</strong></a>: NPC-Zeilen, Erzähltext, Actionbar und Titel als <code>tellraw</code>- und <code>title</code>-Befehle (<a href="/de/wiki-dialogue-builder/">Guide</a>)</li>
+                    <li><a href="/de/bossbar-builder/"><strong>Bossbar-Builder</strong></a>: Bossbar-Befehle für Events, Phasen und Countdowns (<a href="/de/wiki-bossbar-builder/">Guide</a>)</li>
+                    <li><a href="/de/announcement-builder/"><strong>Ankündigungs-Generator</strong></a>: Servernachrichten im Takt in Chat, Aktionsleiste oder als Titel, als Datenpaket (<a href="/de/wiki-announcement-builder/">Guide</a>)</li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3>Datapack-Dateien</h3>
+                <p>Die JSON-Dateien eines Datapacks und das Pack drumherum.</p>
+                <ul>
+                    <li><a href="/de/datapack-generator/"><strong>Datapack-Generator</strong></a>: der Pack-Ordner und <code>pack.mcmeta</code> mit dem richtigen Format für deine Version (<a href="/de/wiki-datapack-generator/">Guide</a>)</li>
+                    <li><a href="/de/loot-table-generator/"><strong>Loot-Tabellen-Generator</strong></a>: Kistenbeute, Mob-Drops und Angelfänge mit Pools, Gewichten und Chancen (<a href="/de/wiki-loot-table-generator/">Guide</a>)</li>
+                    <li><a href="/de/recipe-generator/"><strong>Rezept-Generator</strong></a>: Handwerksrezepte, auf einem Raster gelegt und als JSON gespeichert (<a href="/de/wiki-recipe-generator/">Guide</a>)</li>
+                    <li><a href="/de/advancement-builder/"><strong>Fortschritts-Builder</strong></a>: Questketten und Rezeptfreischaltungen als Fortschrittsdateien (<a href="/de/wiki-advancement-builder/">Guide</a>)</li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3>Resource-Packs und Modelle</h3>
+                <p>Wie eigene Items aussehen, und wie du den Überblick behältst.</p>
+                <ul>
+                    <li><a href="/de/resource-pack-generator/"><strong>Resource-Pack-Generator</strong></a>: ein ZIP-Pack mit deinen Item- und Blocktexturen in den richtigen Ordnern (<a href="/de/wiki-resource-pack-generator/">Guide</a>)</li>
+                    <li><a href="/de/item-model-builder/"><strong>item_model-Builder</strong></a>: die Item-Definitionen, die 1.21.4 und neuer aus <code>assets/&lt;namespace&gt;/items/</code> lesen (<a href="/de/wiki-item-model-builder/">Guide</a>)</li>
+                    <li><a href="/de/custom-item-catalog/"><strong>Custom-Item-Katalog</strong></a>: eine Liste der eigenen Items deines Servers: IDs, Basis-Items und Modelle (<a href="/de/wiki-custom-item-catalog/">Guide</a>)</li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3>Skins und Texturen</h3>
+                <p>Die PNG-Dateien selbst zeichnen.</p>
+                <ul>
+                    <li><a href="/de/skin-editor/"><strong>Skin-Editor</strong></a>: ein 64×64-Spielerskin, gemalt auf dem Atlas oder direkt am 3D-Modell (<a href="/de/wiki-skin-editor/">Guide</a>)</li>
+                    <li><a href="/de/texture-painter/"><strong>Textur-Editor</strong></a>: Item- und Blocktexturen von 16×16 bis 128×128, fertig für ein Pack (<a href="/de/wiki-texture-painter/">Guide</a>)</li>
+                </ul>
+            </article>
+            <article class="resource-card">
+                <h3>Bauten planen</h3>
+                <p>Pläne Schicht für Schicht, bevor du den ersten Block setzt.</p>
+                <ul>
+                    <li><a href="/de/sphere-generator/"><strong>Kugel-Generator</strong></a>: volle und hohle Kugeln und Kuppeln, Schicht für Schicht (<a href="/de/wiki-sphere-generator/">Guide</a>)</li>
+                    <li><a href="/de/circle-dome-planner/"><strong>Kreis- und Kuppelplaner</strong></a>: Kreise, dicke Ringe, Bögen und Kuppelprofile (<a href="/de/wiki-circle-dome-planner/">Guide</a>)</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Guides für den Einstieg</h2>
+        <p class="section-intro">Die Fragen, an denen man zuerst hängen bleibt: warum ein Befehl scheitert, was sich an Item-Daten geändert hat, wie Packs aufgebaut sind.</p>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Warum dein /give nicht funktioniert</h3>
+                <p>Zuerst die Zielversion prüfen, die häufigsten Fehler, an denen /give scheitert, und wie man die rote Fehlermeldung liest.</p>
+                <a class="resource-link" href="/de/wiki-give-command-not-working/">Artikel lesen</a>
+            </article>
+            <article class="resource-card">
+                <h3>Komponenten statt NBT</h3>
+                <p>Was sich in 1.20.5 an Item-Befehlen geändert hat, ein alter Befehl neben seiner Komponenten-Version und was auf einem Server zuerst bricht.</p>
+                <a class="resource-link" href="/de/wiki-components-vs-nbt/">Artikel lesen</a>
+            </article>
+            <article class="resource-card">
+                <h3>Was ist CustomModelData und wie funktioniert es?</h3>
+                <p>Wie ein einziges Vanilla-Item zu einem Katana, Becher, Token, Quest-Prop oder jedem anderen Modell werden kann, ganz ohne clientseitige Mods.</p>
+                <a class="resource-link" href="/de/wiki-custom-model-data/">Artikel lesen</a>
+            </article>
+            <article class="resource-card">
+                <h3>Resource-Pack-Struktur</h3>
+                <p>Eine schnelle Karte der Ordner <code>textures</code>, <code>models</code>, <code>blockstates</code> und der Dateinamen, die man nachts am häufigsten nachschlagen muss.</p>
+                <a class="resource-link" href="/de/wiki-resource-pack-structure/">Artikel lesen</a>
+            </article>
+            <article class="resource-card">
+                <h3>Datapacks statt Befehle</h3>
+                <p>Warum sich eine Loot-Tabelle oder ein Rezept nicht per Befehl erstellen lässt, wie der Pack-Ordner aufgebaut ist, und welche Umbenennung in 1.21 Packs still lahmlegt, ohne eine einzige Fehlermeldung.</p>
+                <a class="resource-link" href="/de/wiki-datapack-generator/">Artikel lesen</a>
+            </article>
+            <article class="resource-card">
+                <h3>Welche Verzauberungen sich nicht kombinieren lassen, und warum</h3>
+                <p>Alle Vanilla-Unverträglichkeitsgruppen, Schatz-Verzauberungen, und warum das Level-Limit eine Entscheidung der Befehlsseite ist, keine feste Wand.</p>
+                <a class="resource-link" href="/de/wiki-enchantment-conflicts/">Artikel lesen</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Der Server hinter den Werkzeugen</h2>
+        <p class="section-intro">Screenshots von Cube in Square. Staffel zwei ist vorbei, Staffel drei ist in Entwicklung; die Seite <a href="/de/about/">Über das Projekt</a> erzählt von den Staffeln und dem Team.</p>
+        <div class="server-slideshow" data-slideshow data-slide-interval="5000">
+            <button class="slideshow-btn slideshow-btn-prev" type="button" data-slide-prev aria-label="Vorheriges Bild">&lsaquo;</button>
+            <div class="server-slides">
+                <img class="is-active" src="/assets/gallery/server-gallery-intro-01.png" alt="Halle des Cube in Square Servers mit Steinarchitektur und Figuren">
+                <img src="/assets/gallery/server-gallery-intro-02.png" alt="Figur neben einer violetten Magiebarriere in einem Dungeon" loading="lazy">
+                <img src="/assets/gallery/server-gallery-intro-03.png" alt="Nachtszene mit cyanfarbenem Feuer und einer Figur auf dem Server" loading="lazy">
+                <img src="/assets/gallery/server-gallery-01.png" alt="Unterwasserbereich des Cube in Square Servers in blauer Regenatmosphäre" loading="lazy">
+                <img src="/assets/gallery/server-gallery-02.png" alt="Roleplay-Szene an einem Tisch mit Karte, Kuchen und Spielern" loading="lazy">
+                <img src="/assets/gallery/server-gallery-03.png" alt="Steintor zwischen Hügeln auf dem Server" loading="lazy">
+                <img src="/assets/gallery/server-gallery-04.png" alt="Großer Baum über einer Waldsiedlung" loading="lazy">
+                <img src="/assets/gallery/server-gallery-05.png" alt="Nacht-Turm mit kaltem Licht unter einem Sternenhimmel" loading="lazy">
+                <img src="/assets/gallery/server-gallery-06.png" alt="Nächtliche Draufsicht auf einen beleuchteten kreisförmigen Bauplatz" loading="lazy">
+            </div>
+            <button class="slideshow-btn slideshow-btn-next" type="button" data-slide-next aria-label="Nächstes Bild">&rsaquo;</button>
+            <div class="slideshow-dots" data-slide-dots aria-label="Bild auswählen"></div>
+        </div>
+    </section>
+
+    <section class="page-section">
+        <h2 class="section-title">Häufige Fragen</h2>
+        <div class="resource-grid">
+            <article class="resource-card">
+                <h3>Brauche ich Mods für diese Werkzeuge?</h3>
+                <p>Nein. Die Werkzeuge erzeugen Vanilla-Befehle, Datapack-Dateien, Resource-Packs und PNGs. Die einzigen Mods auf der Seite sind zwei optionale Client-Mods von uns, <a href="/de/wiki-armorhide-mod/">ArmorHide</a> und <a href="/de/wiki-chest-helper-mod/">Chest Helper</a>.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Welche Minecraft-Versionen werden abgedeckt?</h3>
+                <p>Java Edition. Die Befehls- und Datapack-Werkzeuge fragen nach deiner Version und schreiben die passende Syntax, vom NBT vor 1.20.5 bis zu den Komponenten von 1.21.5 und 26.x; jede Seite sagt, was sich dazwischen geändert hat. Der Resource-Pack-Generator baut Packs im Format von 1.20, und seine Seite erklärt, was das auf neueren Versionen bedeutet.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Werden meine Dateien hochgeladen?</h3>
+                <p>Nein. Zeichnen, Packs bauen und Befehle erzeugen läuft in deinem Browser, deine PNGs und ZIP-Packs bleiben auf deinem Gerät.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Ein Befehl von hier funktioniert nicht. Was jetzt?</h3>
+                <p>Prüf zuerst die Version: Die meisten kaputten Befehle wurden für eine andere geschrieben. <a href="/de/wiki-give-command-not-working/">Dieser Guide</a> zeigt denselben Befehl für jede Version und die Fehler, die beim Mischen entstehen. Wenn ein Werkzeug für deine Version etwas Falsches ausgibt, schreib an <a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a>, mit Version und Befehl.</p>
+            </article>
+            <article class="resource-card">
+                <h3>Wie kann ich das Projekt unterstützen?</h3>
+                <p>Über <a href="https://www.patreon.com/c/Cubeinaquare?vanity=user" target="_blank" rel="noopener noreferrer">Patreon</a>, wo auch unsere Plugins DarkMage und Mechanism erscheinen.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/de/about/">Über das Projekt</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/de/privacy-policy/">Datenschutzerklärung</a></footer>
+    <script src="/assets/site.js"></script>
+    <script src="/assets/tracking-config.js"></script>
+    <script src="/assets/tracking.js"></script>
+</body>
+</html>

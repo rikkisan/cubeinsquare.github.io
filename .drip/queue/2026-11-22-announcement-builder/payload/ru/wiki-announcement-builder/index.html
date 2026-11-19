@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по конструктору объявлений: автоматическая рассылка на сервере | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Как конструктор объявлений превращает несколько строк в датапак, который повторяет их по таймеру: что делает каждый файл, как работает расписание, чат, строка над хотбаром или заголовок, ссылки в 1.20 – 26.3, запуск и остановка.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Рикки">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Гайд по конструктору объявлений: автоматическая рассылка на сервере | Cube in Square">
+    <meta property="og:description" content="Как конструктор объявлений превращает несколько строк в датапак, который повторяет их по таймеру: что делает каждый файл, как работает расписание, чат, строка над хотбаром или заголовок, ссылки в 1.20 – 26.3, запуск и остановка.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-announcement-builder/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Гайд по конструктору объявлений: автоматическая рассылка на сервере | Cube in Square">
+    <meta name="twitter:description" content="Как конструктор объявлений превращает несколько строк в датапак, который повторяет их по таймеру: что делает каждый файл, как работает расписание, чат, строка над хотбаром или заголовок, ссылки в 1.20 – 26.3, запуск и остановка.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-announcement-builder/#article",
+            "headline": "Автоматические объявления на сервере с конструктором объявлений",
+            "description": "Как конструктор объявлений превращает несколько строк в датапак, который повторяет их по таймеру: что делает каждый файл, как работает расписание, чат, строка над хотбаром или заголовок, ссылки в 1.20 – 26.3, запуск и остановка.",
+            "author": {
+                "@type": "Person",
+                "name": "Рикки",
+                "url": "https://cubeinsquare.com/ru/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-announcement-builder/#webpage"
+            },
+            "datePublished": "2026-11-22",
+            "dateModified": "2026-11-22",
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-announcement-builder/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-announcement-builder/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-announcement-builder/",
+            "name": "Автоматические объявления на сервере с конструктором объявлений",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-announcement-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Гайд по конструктору объявлений",
+                    "item": "https://cubeinsquare.com/ru/wiki-announcement-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-announcement-builder/">EN</a><a href="/fr/wiki-announcement-builder/">FR</a><a href="/de/wiki-announcement-builder/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Автоматические объявления на сервере с конструктором объявлений</h1>
+        <p class="page-lead">Почти каждый сервер повторяет одни и те же строки: где рынок, где правила, когда следующее событие. <a href="/ru/announcement-builder/">Конструктор объявлений</a> превращает их в небольшой датапак, который сам показывает их каждые несколько минут, без плагинов и без часов на командных блоках.</p>
+        <p class="article-byline">Автор: <a href="/ru/about/#team">Рикки</a></p>
+    </section>
+
+    <article>
+        <h2>Что лежит в паке</h2>
+        <p>Скачивается обычный датапак. У каждого файла одна задача:</p>        <table class="compact-table prose-table"><thead><tr><th>Файл</th><th>Что делает</th></tr></thead><tbody>
+        <tr><td><code>pack.mcmeta</code></td><td>Говорит игре, для какой версии пак: <code>pack_format</code> до 1.21.8, <code>min_format</code> и <code>max_format</code> с 1.21.9.</td></tr>
+        <tr><td><code>function/start.mcfunction</code></td><td>Создаёт счёт, который помнит последнее сообщение, и назначает первое.</td></tr>
+        <tr><td><code>function/next.mcfunction</code></td><td>Выбирает следующее сообщение, показывает его и назначает следующий вызов.</td></tr>
+        <tr><td><code>function/stop.mcfunction</code></td><td>Отменяет назначенный вызов, то есть останавливает рассылку.</td></tr>
+        <tr><td><code>tags/function/load.json</code></td><td>Запускает <code>start</code> при каждом <code>/reload</code> и загрузке мира. Если опцию выключить, ничего не начнётся, пока вы не запустите вручную.</td></tr>
+        </tbody></table>
+
+        <h2>Как работает таймер</h2>
+        <p>Каждый тик ничего не выполняется. <code>next</code> в конце сам назначает себя снова через <code>/schedule</code>:</p><pre><code>execute if score #next announce.broadcast matches 1 run tellraw @a […]
+execute if score #next announce.broadcast matches 2 run tellraw @a […]
+schedule function announce:next 6000t replace</code></pre><p>Интервал задаётся в игровых тиках, 1200 в минуту, так что пять минут — это <code>6000t</code>. Важен <code>replace</code>: когда <code>/reload</code> снова запускает <code>start</code>, назначенный вызов заменяется, а не добавляется второй, и сообщения не удваиваются. Первое сообщение приходит через один интервал после перезагрузки, а не сразу. Расписание считает игровое время, поэтому на лагающем сервере паузы немного растягиваются, и оно идёт, даже когда никого нет онлайн: <code>@a</code> тогда просто никого не находит.</p>
+
+        <h2>Чат, строка над хотбаром или заголовок</h2>
+        <p>Чат сохраняет запись, к которой можно вернуться, и только там ссылку можно нажать. Строка над хотбаром тише и гаснет через несколько секунд. Заголовок занимает центр экрана; префикс конструктор ставит в маленький подзаголовок над ним, поэтому хорошо работает что-нибудь вроде <em>Суббота, 18:00</em> над <em>БИТВА НА АРЕНЕ</em>. Заголовок каждые пять минут утомляет, ставьте ему большой интервал. <a href="/ru/wiki-minecraft-server-announcements/">Статья о командах для объявлений</a> сравнивает каналы подробнее.</p>
+
+        <h2>По очереди или вразброс</h2>
+        <p>«По очереди» каждый раз прибавляет к счёту единицу и после последнего сообщения возвращается к первому. «Вразброс» каждый раз бросает число через <code>/random</code>, так что одно сообщение может прийти дважды подряд; при трёх и больше сообщениях это редко заметно. <code>/random</code> есть с 1.20.2, поэтому для 1.20 – 1.20.1 конструктор пишет вариант по очереди и предупреждает об этом.</p>
+
+        <h2>Ссылки и подсказки</h2>
+        <p>Сообщение со ссылкой получает обе записи полей наведения и клика: <code>hoverEvent</code>/<code>clickEvent</code> для версий до 1.21.5 и <code>hover_event</code>/<code>click_event</code> для 1.21.5 и новее. Каждая версия берёт свою пару, а чужую отбрасывает, поэтому один и тот же пак работает по обе стороны переименования. Мы проверили это на серверах 1.21.4 и 26.3. Перед открытием ссылки игрок подтверждает переход, а у тех, кто выключил веб-ссылки в настройках чата, она не откроется вовсе.</p>
+
+        <h2>Запуск, остановка и изменения</h2>
+        <p>С пространством имён по умолчанию команды такие: <code>function announce:start</code>, <code>function announce:stop</code> и <code>function announce:next</code> (показывает следующее сообщение сразу, удобно для проверки). Чтобы потом поменять интервал, исправьте число тиков в <code>start</code> и в <code>next</code>. Чтобы убрать рассылку, удалите пак или выполните <code>/datapack disable "file/&lt;имя пака&gt;"</code>, а затем <code>function announce:stop</code>. Два пака с одним пространством имён перезаписывают друг друга, поэтому второй рассылке, например для одной команды через <code>@a[team=red]</code>, дайте своё.</p>
+
+        <h2>Версии</h2>
+        <p>Java Edition от 1.20 до 26.3. В 1.21 <code>functions</code> стала <code>function</code>, а <code>tags/functions</code> — <code>tags/function</code>; пак со старыми папками на 1.21+ загружается и ничего не делает. В 1.21.9 <code>pack.mcmeta</code> перешёл на <code>min_format</code> и <code>max_format</code>. Текст записан с ключами в кавычках: до 1.21.5 это JSON, после — SNBT. Перед публикацией мы запустили паки конструктора на серверах 26.3, 1.21.4 и 1.20.4.</p>
+
+        <h2>Часто задаваемые вопросы</h2>
+        <div class="faq-section">
+            <h3>Плагин справится лучше?</h3>
+            <p>Плагины вроде EssentialsX тоже умеют автоматические сообщения. Датапаку ничего не нужно ставить, он работает и в одиночной игре, и на Paper или Spigot, и переживает обновления, если пересобрать его под новую версию.</p>
+            <h3>Почему после /reload ничего не произошло?</h3>
+            <p>Первое сообщение ждёт один интервал. Выполните <code>function announce:next</code>, чтобы увидеть сообщение сразу, или на время проверки поставьте интервал в одну минуту.</p>
+            <h3>/reload сбросит порядок?</h3>
+            <p>Да. <code>start</code> обнуляет счёт, и список начинается с первого сообщения.</p>
+        </div>
+
+        <h2>Куда идти дальше</h2>
+        <p>Откройте <a href="/ru/announcement-builder/">конструктор объявлений</a> или прочитайте, <a href="/ru/wiki-minecraft-server-announcements/">как работают команды для объявлений</a>, если хотите написать разовое сообщение вручную. Для полосы, которая висит на экране во время события, есть <a href="/ru/bossbar-builder/">конструктор боссбаров</a>.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Guide du générateur d’annonces : messages serveur automatiques | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Comment le générateur d’annonces transforme quelques lignes en un data pack qui les répète à intervalle régulier : le rôle de chaque fichier, le fonctionnement du minuteur, chat, barre d’action ou titre, les liens de 1.20 à 26.3, démarrer et arrêter.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Rikki">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Guide du générateur d’annonces : messages serveur automatiques | Cube in Square">
+    <meta property="og:description" content="Comment le générateur d’annonces transforme quelques lignes en un data pack qui les répète à intervalle régulier : le rôle de chaque fichier, le fonctionnement du minuteur, chat, barre d’action ou titre, les liens de 1.20 à 26.3, démarrer et arrêter.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-announcement-builder/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Guide du générateur d’annonces : messages serveur automatiques | Cube in Square">
+    <meta name="twitter:description" content="Comment le générateur d’annonces transforme quelques lignes en un data pack qui les répète à intervalle régulier : le rôle de chaque fichier, le fonctionnement du minuteur, chat, barre d’action ou titre, les liens de 1.20 à 26.3, démarrer et arrêter.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-announcement-builder/#article",
+            "headline": "Des annonces serveur automatiques avec le générateur d’annonces",
+            "description": "Comment le générateur d’annonces transforme quelques lignes en un data pack qui les répète à intervalle régulier : le rôle de chaque fichier, le fonctionnement du minuteur, chat, barre d’action ou titre, les liens de 1.20 à 26.3, démarrer et arrêter.",
+            "author": {
+                "@type": "Person",
+                "name": "Rikki",
+                "url": "https://cubeinsquare.com/fr/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/fr/wiki-announcement-builder/#webpage"
+            },
+            "datePublished": "2026-11-22",
+            "dateModified": "2026-11-22",
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-announcement-builder/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-announcement-builder/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-announcement-builder/",
+            "name": "Des annonces serveur automatiques avec le générateur d’annonces",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-announcement-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://cubeinsquare.com/fr/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/fr/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Guide du générateur d’annonces",
+                    "item": "https://cubeinsquare.com/fr/wiki-announcement-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-announcement-builder/">RU</a><a href="/wiki-announcement-builder/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-announcement-builder/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Des annonces serveur automatiques avec le générateur d’annonces</h1>
+        <p class="page-lead">La plupart des serveurs répètent les mêmes quelques lignes : où est le marché, où lire le règlement, quand a lieu le prochain événement. Le <a href="/fr/announcement-builder/">générateur d’annonces</a> transforme ces lignes en un petit data pack qui les affiche tout seul toutes les quelques minutes, sans plugin et sans horloge de blocs de commande.</p>
+        <p class="article-byline">Par <a href="/fr/about/#team">Rikki</a></p>
+    </section>
+
+    <article>
+        <h2>Ce que contient le pack</h2>
+        <p>Le téléchargement est un data pack ordinaire. Chaque fichier a un rôle :</p>        <table class="compact-table prose-table"><thead><tr><th>Fichier</th><th>Ce qu’il fait</th></tr></thead><tbody>
+        <tr><td><code>pack.mcmeta</code></td><td>Indique au jeu la version visée : <code>pack_format</code> jusqu’à 1.21.8, <code>min_format</code> et <code>max_format</code> depuis 1.21.9.</td></tr>
+        <tr><td><code>function/start.mcfunction</code></td><td>Crée le score qui retient le dernier message et programme le premier.</td></tr>
+        <tr><td><code>function/next.mcfunction</code></td><td>Choisit le message suivant, l’affiche et programme l’appel d’après.</td></tr>
+        <tr><td><code>function/stop.mcfunction</code></td><td>Annule l’appel programmé, ce qui arrête la diffusion.</td></tr>
+        <tr><td><code>tags/function/load.json</code></td><td>Lance <code>start</code> à chaque <code>/reload</code> et au chargement du monde. Sans cette option, rien ne démarre tant que vous ne le lancez pas.</td></tr>
+        </tbody></table>
+
+        <h2>Comment marche le minuteur</h2>
+        <p>Rien ne tourne à chaque tick. <code>next</code> se reprogramme lui-même à la fin avec <code>/schedule</code> :</p><pre><code>execute if score #next announce.broadcast matches 1 run tellraw @a […]
+execute if score #next announce.broadcast matches 2 run tellraw @a […]
+schedule function announce:next 6000t replace</code></pre><p>L’intervalle est en ticks de jeu, 1200 par minute : cinq minutes font <code>6000t</code>. <code>replace</code> compte : quand <code>/reload</code> relance <code>start</code>, l’appel programmé est remplacé au lieu d’en ajouter un second, donc les messages ne se doublent jamais. Le premier message arrive un intervalle après le rechargement, pas tout de suite. Le minuteur compte le temps de jeu : sur un serveur qui rame, les pauses s’allongent un peu, et il continue sans personne en ligne ; <code>@a</code> ne trouve alors simplement personne.</p>
+
+        <h2>Chat, barre d’action ou titre</h2>
+        <p>Le chat garde une trace qu’on peut relire, et c’est le seul endroit où un lien se clique. La barre d’action est une ligne plus discrète au-dessus de la barre d’objets, qui s’efface au bout de quelques secondes. Un titre occupe le centre de l’écran ; le générateur met votre préfixe dans le petit sous-titre au-dessus, donc <em>Samedi, 18 h</em> au-dessus de <em>ÉVÉNEMENT ARÈNE</em> fonctionne bien. Un titre toutes les cinq minutes lasse les joueurs : donnez-lui un long intervalle. <a href="/fr/wiki-minecraft-server-announcements/">L’article sur les commandes d’annonce</a> compare les canaux plus en détail.</p>
+
+        <h2>Dans l’ordre ou au hasard</h2>
+        <p>« Dans l’ordre » ajoute un au score à chaque fois et revient au premier message après le dernier. « Au hasard » tire un nombre avec <code>/random</code> à chaque fois, donc un message peut revenir deux fois de suite ; avec trois messages ou plus, cela se remarque rarement. <code>/random</code> existe depuis 1.20.2 : pour 1.20 – 1.20.1, le générateur écrit la version dans l’ordre et le signale.</p>
+
+        <h2>Liens et texte au survol</h2>
+        <p>Un message avec un lien reçoit les deux écritures des champs de survol et de clic : <code>hoverEvent</code>/<code>clickEvent</code> pour les versions avant 1.21.5 et <code>hover_event</code>/<code>click_event</code> pour 1.21.5 et plus. Chaque version garde sa paire et ignore l’autre, donc le même pack marche des deux côtés du changement. Nous l’avons vérifié sur des serveurs 1.21.4 et 26.3. Le joueur confirme avant qu’un lien s’ouvre, et ceux qui ont désactivé les liens web dans les paramètres du chat ne peuvent pas l’ouvrir du tout.</p>
+
+        <h2>Démarrer, arrêter et modifier</h2>
+        <p>Avec l’espace de noms par défaut, les trois commandes sont <code>function announce:start</code>, <code>function announce:stop</code> et <code>function announce:next</code> (affiche tout de suite le message suivant, pratique pour tester). Pour changer l’intervalle plus tard, modifiez le nombre de ticks dans <code>start</code> et dans <code>next</code>. Pour retirer la diffusion, supprimez le pack ou lancez <code>/datapack disable "file/&lt;nom du pack&gt;"</code>, puis <code>function announce:stop</code>. Deux packs avec le même espace de noms s’écrasent : donnez le sien à une seconde diffusion, par exemple pour une seule équipe avec <code>@a[team=red]</code>.</p>
+
+        <h2>Versions</h2>
+        <p>Java Edition de 1.20 à 26.3. La 1.21 a renommé <code>functions</code> en <code>function</code> et <code>tags/functions</code> en <code>tags/function</code> ; un pack avec les anciens dossiers se charge en 1.21+ et ne fait rien. La 1.21.9 a fait passer <code>pack.mcmeta</code> à <code>min_format</code> et <code>max_format</code>. Le texte utilise des clés entre guillemets, du JSON avant 1.21.5 et du SNBT après. Nous avons lancé les packs du générateur sur des serveurs 26.3, 1.21.4 et 1.20.4 avant publication.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Un plugin fait-il mieux ?</h3>
+            <p>Des plugins comme EssentialsX proposent aussi des messages automatiques. Un data pack ne demande rien à installer, marche en solo comme sur Paper ou Spigot, et passe les mises à jour tant que vous le reconstruisez pour la nouvelle version.</p>
+            <h3>Pourquoi rien après /reload ?</h3>
+            <p>Le premier message attend un intervalle. Lancez <code>function announce:next</code> pour en voir un tout de suite, ou réglez l’intervalle sur une minute pendant les tests.</p>
+            <h3>/reload remet-il l’ordre à zéro ?</h3>
+            <p>Oui. <code>start</code> remet le score à zéro, donc la liste repart du premier message.</p>
+        </div>
+
+        <h2>Pour aller plus loin</h2>
+        <p>Ouvrez le <a href="/fr/announcement-builder/">générateur d’annonces</a>, ou lisez <a href="/fr/wiki-minecraft-server-announcements/">comment fonctionnent les commandes d’annonce</a> pour écrire un message ponctuel à la main. Pour une barre qui reste à l’écran pendant un événement, voyez le <a href="/fr/bossbar-builder/">générateur de barres de boss</a>.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

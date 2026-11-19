@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Announcement Builder Guide: Automatic Server Broadcasts | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="How the announcement builder turns a few lines into a data pack that repeats them on a timer: what each file does, how the schedule works, chat vs action bar vs title, links on 1.20 – 26.3, and how to start and stop it.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Rikki">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-announcement-builder/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-announcement-builder/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Announcement Builder Guide: Automatic Server Broadcasts | Cube in Square">
+    <meta property="og:description" content="How the announcement builder turns a few lines into a data pack that repeats them on a timer: what each file does, how the schedule works, chat vs action bar vs title, links on 1.20 – 26.3, and how to start and stop it.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-announcement-builder/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Announcement Builder Guide: Automatic Server Broadcasts | Cube in Square">
+    <meta name="twitter:description" content="How the announcement builder turns a few lines into a data pack that repeats them on a timer: what each file does, how the schedule works, chat vs action bar vs title, links on 1.20 – 26.3, and how to start and stop it.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-announcement-builder/#article",
+            "headline": "Automatic server announcements with the announcement builder",
+            "description": "How the announcement builder turns a few lines into a data pack that repeats them on a timer: what each file does, how the schedule works, chat vs action bar vs title, links on 1.20 – 26.3, and how to start and stop it.",
+            "author": {
+                "@type": "Person",
+                "name": "Rikki",
+                "url": "https://cubeinsquare.com/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-announcement-builder/#webpage"
+            },
+            "datePublished": "2026-11-22",
+            "dateModified": "2026-11-22",
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-announcement-builder/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-announcement-builder/#webpage",
+            "url": "https://cubeinsquare.com/wiki-announcement-builder/",
+            "name": "Automatic server announcements with the announcement builder",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-announcement-builder/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Announcement builder guide",
+                    "item": "https://cubeinsquare.com/wiki-announcement-builder/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-announcement-builder/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-announcement-builder/">FR</a><a href="/de/wiki-announcement-builder/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Automatic server announcements with the announcement builder</h1>
+        <p class="page-lead">Most servers repeat the same few lines: where the market is, where to read the rules, when the next event starts. The <a href="/announcement-builder/">announcement builder</a> turns those lines into a small data pack that shows them every few minutes by itself, with no plugin and no command block clock.</p>
+        <p class="article-byline">By <a href="/about/#team">Rikki</a></p>
+    </section>
+
+    <article>
+        <h2>What is in the pack</h2>
+        <p>The download is a normal data pack. Each file has one job:</p>        <table class="compact-table prose-table"><thead><tr><th>File</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>pack.mcmeta</code></td><td>Tells the game which version the pack is for: <code>pack_format</code> up to 1.21.8, <code>min_format</code> and <code>max_format</code> from 1.21.9.</td></tr>
+        <tr><td><code>function/start.mcfunction</code></td><td>Creates the score that remembers the last message and books the first one.</td></tr>
+        <tr><td><code>function/next.mcfunction</code></td><td>Picks the next message, shows it, and books the call after it.</td></tr>
+        <tr><td><code>function/stop.mcfunction</code></td><td>Cancels the booked call, which stops the broadcast.</td></tr>
+        <tr><td><code>tags/function/load.json</code></td><td>Runs <code>start</code> on every <code>/reload</code> and when the world loads. Leave the option off and nothing starts until you run it.</td></tr>
+        </tbody></table>
+
+        <h2>How the timer works</h2>
+        <p>Nothing runs every tick. <code>next</code> ends by booking itself again with <code>/schedule</code>:</p><pre><code>execute if score #next announce.broadcast matches 1 run tellraw @a […]
+execute if score #next announce.broadcast matches 2 run tellraw @a […]
+schedule function announce:next 6000t replace</code></pre><p>The interval is in game ticks, 1200 per minute, so five minutes is <code>6000t</code>. <code>replace</code> matters: when <code>/reload</code> runs <code>start</code> again, it replaces the booked call instead of adding a second one, so the messages never double. The first message comes one interval after a reload, not straight away. The schedule counts game time, so on a lagging server the gaps stretch a little, and it keeps running with nobody online; <code>@a</code> then simply finds no one.</p>
+
+        <h2>Chat, action bar or title</h2>
+        <p>Chat keeps a record players can scroll back to, and it is the only place a link can be clicked. The action bar is a quieter line above the hotbar that fades after a few seconds. A title fills the middle of the screen; the builder puts your prefix in the small subtitle above it, so something like <em>Saturday, 18:00</em> over <em>ARENA EVENT</em> works well. A title every five minutes wears players out, so give it a long interval. <a href="/wiki-minecraft-server-announcements/">The announcement commands article</a> compares the channels in more detail.</p>
+
+        <h2>In order or at random</h2>
+        <p>In order adds one to the score each time and goes back to the first message after the last. At random rolls a number with <code>/random</code> each time, so a message can come twice in a row; with three or more messages that rarely matters. <code>/random</code> exists from 1.20.2, so for 1.20 – 1.20.1 the builder writes the in-order version and says so.</p>
+
+        <h2>Links and hover text</h2>
+        <p>A message with a link gets both namings of the hover and click fields: <code>hoverEvent</code>/<code>clickEvent</code> for versions before 1.21.5 and <code>hover_event</code>/<code>click_event</code> for 1.21.5 and newer. Each version keeps its own pair and drops the other, so the same pack works on both sides of the rename. We checked that on 1.21.4 and 26.3 servers. Players confirm a link before it opens, and players who turned web links off in their chat settings cannot open it at all.</p>
+
+        <h2>Starting, stopping and changing it</h2>
+        <p>With the default namespace the three commands are <code>function announce:start</code>, <code>function announce:stop</code> and <code>function announce:next</code> (shows the next message now, handy for testing). To change the interval later, edit the tick number in both <code>start</code> and <code>next</code>. To remove the broadcast, delete the pack or run <code>/datapack disable "file/&lt;pack name&gt;"</code> and then <code>function announce:stop</code>. Two packs with the same namespace overwrite each other, so give a second broadcast, for example one for a single team with <code>@a[team=red]</code>, its own namespace.</p>
+
+        <h2>Versions</h2>
+        <p>Java Edition 1.20 to 26.3. 1.21 renamed <code>functions</code> to <code>function</code> and <code>tags/functions</code> to <code>tags/function</code>; a pack with the old folder names loads on 1.21+ and does nothing. 1.21.9 moved <code>pack.mcmeta</code> to <code>min_format</code> and <code>max_format</code>. The text components use quoted keys, which work as JSON before 1.21.5 and as SNBT after it. We ran the builder's packs on 26.3, 1.21.4 and 1.20.4 servers before publishing.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Does a plugin do this better?</h3>
+            <p>Plugins such as EssentialsX add automatic messages too. A data pack needs nothing installed, works in single player and on Paper or Spigot alike, and keeps working through updates as long as you rebuild it for the new version.</p>
+            <h3>Why did nothing happen after /reload?</h3>
+            <p>The first message waits one interval. Run <code>function announce:next</code> to see one now, or set the interval to one minute while testing.</p>
+            <h3>Will /reload reset the order?</h3>
+            <p>Yes. <code>start</code> sets the score back to zero, so the list starts again from the first message.</p>
+        </div>
+
+        <h2>Where to go next</h2>
+        <p>Open the <a href="/announcement-builder/">announcement builder</a>, or read <a href="/wiki-minecraft-server-announcements/">how the announcement commands work</a> if you want to write a one-off message by hand. For a bar that stays on screen during an event, see the <a href="/bossbar-builder/">bossbar builder</a>.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/about/">About</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

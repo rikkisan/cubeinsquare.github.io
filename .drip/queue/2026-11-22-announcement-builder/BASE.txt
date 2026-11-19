@@ -1,0 +1,24 @@
+# Live versions this bundle's payload was prepared against.
+# Written by .github/scripts/drip-base.sh; do not edit by hand.
+# drip-validate.sh rejects the bundle when a listed file has changed live since.
+-  announcement-builder/index.html
+-  assets/announcement-builder.js
+-  de/announcement-builder/index.html
+bf3e6a997b347b3b4cdb744f83ffbb66d18ce373  de/index.html
+f8d0c126c5b11418b02e3d87450371163a85905b  de/tools/index.html
+-  de/wiki-announcement-builder/index.html
+61f4db0f2eeb4dc62c85dc390a66dba420f09fc0  de/wiki/index.html
+-  fr/announcement-builder/index.html
+bbec532f1d03609e27f64233466d7e13a5792f3e  fr/index.html
+7f1a8d2235252d81234360c148e85e5cf6a2c975  fr/tools/index.html
+-  fr/wiki-announcement-builder/index.html
+1fbda0cb09af17b31913a6302a3a65c65c0dcfd5  fr/wiki/index.html
+94f179464d5f7d34e6e473cae3e99255b05450a2  index.html
+-  ru/announcement-builder/index.html
+b9c2f74efdc22dea998d035beaa2fb611b842b4f  ru/index.html
+c0b02fa584ecfcbbb7cd2dc95cd04571e969c4dd  ru/tools/index.html
+-  ru/wiki-announcement-builder/index.html
+57b9fb13856fc7faefcd48cf3645311d286ceb03  ru/wiki/index.html
+ff2d94494ab32350d679945560cf52fe37500955  tools/index.html
+-  wiki-announcement-builder/index.html
+44c143163868be75d2a281f3983892d4f62e7d0e  wiki/index.html
