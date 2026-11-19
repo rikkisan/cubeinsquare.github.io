@@ -172,3 +172,14 @@
 | B51 | `assets/minecraft/items/paper.json` с `range_dispatch` (пороги 12 и 13) из статьи о миграции; `/give @p minecraft:paper[minecraft:custom_model_data={floats:[12f]}] 1` и `{floats:[13f]}` | 26.3 | Модели pass и receipt; бумага без данных — ванильная | |
 | B52 | `/give @p minecraft:paper[minecraft:item_model="cubeinsquare:archive_pass"] 1` при файле `assets/cubeinsquare/items/archive_pass.json` | 26.3 и 1.21.4 | Модель archive_pass | |
 | B53 | Обе команды из статьи о Data Components (ветки 1.21.4 и 1.21.5 – 26.x) на своих версиях | 1.21.4, 26.3 | Бумага «Guild Pass» с серым лором | |
+
+## Ноябрь: скрытие эффектов зелья
+
+Страницы: `/custom-potions/` (переключатель «Скрыть эффекты в подсказке»), `/wiki-custom-potions/#hide-effects` (все 4 локали).
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| C1 | `/give @p minecraft:potion[potion_contents={custom_effects:[{id:"minecraft:nausea",duration:2400}]},item_name="Suspicious Tonic",tooltip_display={hidden_components:["potion_contents"]}] 1`, выпить | 26.3 | Бутылка «Suspicious Tonic» без строки «Тошнота (2:00)» в подсказке; после глотка эффект есть | |
+| C2 | Конструктор зелий, ветка 1.21.4, включить «Скрыть эффекты»: в команде `hide_additional_tooltip={}` | 1.21.4 | Эффектов в подсказке нет | |
+| C3 | Команда из C2 | 26.3 | Ошибка о неизвестном компоненте `hide_additional_tooltip` (поэтому у 1.21.5+ своя запись) | |
+| C4 | Ветка «до 1.20.5», включить «Скрыть эффекты»: в NBT `HideFlags:32` | 1.20.4 | Эффектов в подсказке нет | |

@@ -252,6 +252,16 @@
         <tr><td><code>show_particles</code>, <code>show_icon</code>, <code>ambient</code></td><td>La visibilité de l’effet</td><td>Particules et icône s’affichent sauf si on les passe à false ; <code>ambient</code> rend les particules plus discrètes, comme celles d’une balise.</td></tr>
         </tbody></table>
         <p>Quelques habitudes gardent ces fioles lisibles en jeu. Accordez la couleur au rôle dans l’histoire, pour qu’une teinture de soigneur ne partage jamais la nuance d’un poison. Laissez le nom dire ce qu’est la fiole dans le monde : l’infobulle indique déjà ce qu’elle fait. Arrêtez-vous à deux ou trois effets, car au-delà les joueurs ne lisent plus la liste. Fioles RP typiques construites ainsi : la teinture du soigneur (légère vitesse et régénération), l’élixir de l’enquêteur (vision nocturne et brève invisibilité), des toniques de faction aux mêmes effets mais de couleurs différentes, et des breuvages de quête avec un nom clair et leur propre modèle.</p>
+        <h2 id="hide-effects">Masquer les effets dans l'infobulle</h2>
+        <p>Une potion mystère fonctionne mieux quand l'infobulle ne dévoile pas son contenu. Chaque tranche de versions a son propre réglage, et l'option « Masquer les effets dans l'infobulle » du générateur écrit le bon selon la syntaxe choisie :</p>
+        <table class="compact-table"><thead><tr><th>Version</th><th>À ajouter à l'objet</th><th>Ce qui est masqué en plus</th></tr></thead><tbody>
+        <tr><td>1.21.5 – 26.x</td><td><code>tooltip_display={hidden_components:["potion_contents"]}</code></td><td>Rien d'autre : seuls les composants listés disparaissent de l'infobulle.</td></tr>
+        <tr><td>1.20.5 – 1.21.4</td><td><code>hide_additional_tooltip={}</code></td><td>Les autres lignes « supplémentaires » aussi, comme l'auteur d'un livre ou les étoiles d'une fusée.</td></tr>
+        <tr><td>Avant 1.20.5</td><td><code>HideFlags:32</code> dans le NBT</td><td>Le même groupe de lignes supplémentaires.</td></tr>
+        </tbody></table>
+        <p>Une potion de nausée de deux minutes (2400 ticks) aux effets masqués, pour 1.21.5 – 26.x :</p>
+        <pre><code>/give @p minecraft:potion[potion_contents={custom_effects:[{id:"minecraft:nausea",duration:2400}]},item_name="Tonique suspect",tooltip_display={hidden_components:["potion_contents"]}] 1</code></pre>
+        <p>Le masquage ne change que le texte de l'infobulle. La potion applique toujours ses effets et, tant qu'ils durent, le joueur les voit dans l'inventaire, avec leurs icônes à l'écran sauf si vous mettez <code>show_icon:false</code>. Depuis 1.21.5, <code>hide_additional_tooltip</code> n'existe plus : une ancienne commande qui l'utilise échoue avec une erreur de composant inconnu. C'est en général pour cela que l'astuce « ne marche plus » après une mise à jour.</p>
         <h2>Différence entre les versions</h2>
         <p>Depuis Minecraft 1.20.5, les items sont passés aux Data Components. En pratique, les potions personnalisées ont maintenant deux formats principaux :</p>
         <ul>

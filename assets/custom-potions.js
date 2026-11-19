@@ -425,6 +425,7 @@
         const color = normalizeHex(fieldValue('pp-color-hex', references.colorPicker ? references.colorPicker.value : '#7c3aed'));
         const colorValue = hexToDecimal(color);
         const customModelData = intValue(fieldValue('pp-custom-model-data', '0'), 0, 0, 2147483647);
+        const hideEffects = boolValue('pp-hide-effects');
         const effects = collectEffects(version);
 
         if (!basePotion && !effects.parts.length) {
@@ -446,6 +447,8 @@
             if (loreLines.length) displayParts.push(`Lore:[${loreLines.map(jsonTextLiteral).join(',')}]`);
             if (displayParts.length) tags.push(`display:{${displayParts.join(',')}}`);
             if (customModelData > 0) tags.push(`CustomModelData:${customModelData}`);
+            // HideFlags bit 32 ("other information") covers the potion effect lines.
+            if (hideEffects) tags.push('HideFlags:32');
 
             return {
                 command: `/give @p minecraft:${itemType}{${tags.join(',')}} ${count}`,
@@ -470,6 +473,13 @@
             components.push(version === 'modern' || version === 'latest'
                 ? `custom_model_data={floats:[${customModelData}f]}`
                 : `custom_model_data=${customModelData}`);
+        }
+        if (hideEffects) {
+            // 1.21.5 replaced hide_additional_tooltip with tooltip_display, which hides
+            // the tooltip lines of the components it lists.
+            components.push(version === 'latest'
+                ? 'tooltip_display={hidden_components:["potion_contents"]}'
+                : 'hide_additional_tooltip={}');
         }
 
         const suffix = components.length ? `[${components.join(',')}]` : '';

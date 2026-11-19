@@ -252,6 +252,16 @@
         <tr><td><code>show_particles</code>, <code>show_icon</code>, <code>ambient</code></td><td>Wie sichtbar der Effekt ist</td><td>Partikel und Symbol erscheinen, solange du sie nicht auf false setzt; <code>ambient</code> macht die Partikel blasser, wie bei einem Leuchtfeuer.</td></tr>
         </tbody></table>
         <p>Ein paar Gewohnheiten halten solche Flaschen im Spiel lesbar. Stimm die Farbe auf die Rolle in der Geschichte ab, damit eine Heilertinktur nie denselben Ton hat wie ein Gift. Lass den Namen sagen, was die Flasche in der Welt ist; was sie tut, zeigt der Tooltip ohnehin. Hör bei zwei oder drei Effekten auf, denn eine längere Liste lesen Spieler nicht mehr. Typische RP-Flaschen nach diesem Muster: die Tinktur des Heilers (leichte Schnelligkeit und Regeneration), das Elixier des Ermittlers (Nachtsicht und kurze Unsichtbarkeit), Fraktionstonika mit gleichen Effekten in verschiedenen Farben und Questtränke mit klarem Namen und eigenem Modell.</p>
+        <h2 id="hide-effects">Effekte im Tooltip ausblenden</h2>
+        <p>Ein Mystery-Trank wirkt besser, wenn der Tooltip nicht verrät, was drin ist. Dafür hat jeder Versionsbereich seinen eigenen Schalter, und die Option „Effekte im Tooltip ausblenden“ im Generator schreibt den passenden für die gewählte Syntax:</p>
+        <table class="compact-table"><thead><tr><th>Version</th><th>Am Item ergänzen</th><th>Was zusätzlich verschwindet</th></tr></thead><tbody>
+        <tr><td>1.21.5 – 26.x</td><td><code>tooltip_display={hidden_components:["potion_contents"]}</code></td><td>Nichts weiter: Nur die aufgelisteten Komponenten verschwinden aus dem Tooltip.</td></tr>
+        <tr><td>1.20.5 – 1.21.4</td><td><code>hide_additional_tooltip={}</code></td><td>Auch andere „zusätzliche“ Zeilen, etwa der Autor eines Buchs oder die Sterne einer Feuerwerksrakete.</td></tr>
+        <tr><td>Vor 1.20.5</td><td><code>HideFlags:32</code> im NBT</td><td>Dieselbe Gruppe zusätzlicher Zeilen.</td></tr>
+        </tbody></table>
+        <p>Ein Übelkeitstrank für zwei Minuten (2400 Ticks) mit ausgeblendeten Effekten, für 1.21.5 – 26.x:</p>
+        <pre><code>/give @p minecraft:potion[potion_contents={custom_effects:[{id:"minecraft:nausea",duration:2400}]},item_name="Verdächtiges Tonikum",tooltip_display={hidden_components:["potion_contents"]}] 1</code></pre>
+        <p>Das Ausblenden ändert nur den Text im Tooltip. Der Trank wirkt weiterhin, und solange die Effekte laufen, siehst du sie im Inventar und ihre Symbole im HUD, außer du setzt <code>show_icon:false</code>. Ab 1.21.5 gibt es <code>hide_additional_tooltip</code> nicht mehr; ein alter Befehl damit scheitert mit einem Fehler zu einer unbekannten Komponente. Meist ist das der Grund, warum der Trick nach einem Update „nicht mehr geht“.</p>
         <h2>Versionsunterschied</h2>
         <p>Seit Minecraft 1.20.5 arbeiten Items mit Data Components. Für Custom-Tränke bedeutet das in der Praxis zwei Hauptformate:</p>
         <ul>
