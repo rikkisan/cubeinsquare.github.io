@@ -71,15 +71,18 @@ for the individual commits.
 
 ## Queued releases
 
-None. `.drip/queue/` contains only `.gitkeep`, and the last publish was 2026-10-04, so every Sunday since then
-(through 2026-11-15) released nothing. The bot prints "Queue is running low" in the run summary
-whenever fewer than two bundles remain. Candidates: a 26.4 update article once 26.4 is released (it was at
-26.4-snapshot-10 on 2026-11-19), and the Notification Builder below (announcement searches are a real cluster,
-see "Search Console pass").
+- **2026-11-22 — Announcement builder** (`.drip/queue/2026-11-22-announcement-builder`): timed server announcements
+  (chat, action bar or title, in order or at random) as a data pack for 1.20 – 26.3, its guide, cards on the tools,
+  wiki and home hubs (home metric 19), menu entry via `TOOL_META.js`. Requested by the owner on 2026-11-19. The hubs
+  were taken with `drip-base.sh --copy` that day: a push to any `index.html`, `tools/index.html` or `wiki/index.html`
+  before the publish turns Checks red until `drip-base.sh --update` is run on the bundle. After the publish: add the
+  slug to `constructorPath` in `site.js` and to `tests/constructor-nodes.browser.js` if it should get the node editor.
+- After that the queue is empty again. A 26.4 article fits once 26.4 is released (26.4-snapshot-10 on 2026-11-19).
 
 ## Ideas, not yet queued
 
-- **Notification Builder.**
+- **Notification Builder.** Covered by the announcement builder queued for 2026-11-22; a separate tool only if
+  one-off notifications (title, toast, sound) turn out to need more than the dialogue builder gives.
 - **Quest Journal / Objective Tracker.** Overlaps with the Advancement builder, which already builds quest
   chains; decide what the journal adds (book or scoreboard based tracking) before starting.
 - **Map art builder** and **Pixel-art palette.** Their "soon" cards were removed from `/tools/` on 2026-10-24 (AdSense
@@ -170,6 +173,27 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
   server jars' `version.json` did confirm data pack formats 121 (26.3) and 61 (1.21.4) for B7/B8. Two tool changes wait for that run: the
   dialogue page's message designer writes `hoverEvent`/`clickEvent` (renamed in 1.21.5, checks B2–B4), and the book
   builder's component output may not suit 1.20.5–1.21.4 (B5).
+
+**Headless server run, done 2026-11-19**
+
+The owner allowed running vanilla servers (26.3, 26.2, 1.21.4, 1.21.1, 1.20.6, 1.20.4; Java 25 for 26.x) over RCON.
+Results are in `.drip/drafts/commands-to-test.md` ("Итоги прогона"); only checks that need a player's screen or a
+resource pack are left for the owner. What the run found:
+
+- **26.3 changed data formats silently.** Loot tables: an entry's `functions`/`function` became `modifier`/`type` and
+  `conditions`/`condition` became `condition`/`type`; each version ignores the other's keys without an error. Loot
+  condition objects in advancements and predicates changed the same way, and 26.2 had already renamed the entity
+  predicate's `type` to `minecraft:entity_type`. On 26.3 a data pack file that fails to parse is a registry error: the
+  server does not start with that pack.
+- Fixed from that: the loot table generator (version list, 26.3 by default), the randomizer's loot output (26.3+
+  branch), the advancement builder's kill-entity condition (per version), the data pack generator's example loot table
+  (`rolls` without a type stopped 26.3 from starting), the loot and advancement guides.
+- Also fixed: the message designer (writes both hover/click namings, works on 1.20 – 26.x), the book builder (three
+  branches; any line break failed before 1.21.5), and the enchantment article (`/reload` is enough for a tag override).
+- Checked and fine: bossbars and both countdowns, potions, items, swords and staffs, trades, books on 26.3, recipes
+  (a crafter made the recipe generator's output), `/enchant` conflicts, the hide-effects tooltip in every branch.
+- Analytics side note: `ANALYTICS.md` records that Google's consent message is not published in AdSense, so in the
+  EEA the site banner appears only after the 5–10 s CMP wait. That supports the GA4 "falling views" explanation below.
 
 **Search Console pass, done 2026-11-19**
 
