@@ -83,7 +83,18 @@
     const criterion = {};
     criterion.trigger = trigger;
     if (trigger === 'minecraft:player_killed_entity') {
-      criterion.conditions = { entity: { type: namespaced($('ad-entity').value, 'minecraft:zombie') } };
+      // The same check in the form each version's own advancements use. 26.2 renamed the entity
+      // predicate's "type" to "minecraft:entity_type" (the old key stops the file loading), and
+      // 26.3 made a condition one object keyed by "type"; there a file in an older form stops
+      // the whole data pack from loading.
+      const entityType = namespaced($('ad-entity').value, 'minecraft:zombie');
+      if (fmt >= 121) {
+        criterion.conditions = { entity: { type: 'minecraft:entity_properties', entity: 'this', predicate: { 'minecraft:entity_type': entityType } } };
+      } else if (fmt >= 107) {
+        criterion.conditions = { entity: [{ condition: 'minecraft:entity_properties', entity: 'this', predicate: { 'minecraft:entity_type': entityType } }] };
+      } else {
+        criterion.conditions = { entity: [{ condition: 'minecraft:entity_properties', entity: 'this', predicate: { type: entityType } }] };
+      }
     }
     advancement.criteria = { [safeId($('ad-criterion').value, 'requirement')]: criterion };
 

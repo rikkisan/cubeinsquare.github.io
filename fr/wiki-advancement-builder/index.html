@@ -171,13 +171,15 @@
 /advancement revoke @s only harbor:harbor_quest_1</code></pre>
         <p>Remplacez <code>only</code> par <code>until</code>, <code>from</code> ou <code>through</code> pour déplacer toute une branche d’un coup, ce qui épargne beaucoup de clics quand on teste une chaîne de cinq étapes. Le revoke permet de rejouer la même étape sans créer un nouveau monde.</p>
 
-        <h2>Deux renommages qui cassent les anciens exemples</h2>
+        <h2>Trois renommages qui cassent les anciens exemples</h2>
         <table class="compact-table">
             <tr><th>Changement</th><th>Avant</th><th>Après</th></tr>
             <tr><td>Dossier, en 1.21</td><td><code>advancements/</code></td><td><code>advancement/</code></td></tr>
             <tr><td>Icône, en 1.20.5</td><td><code>{"item": "minecraft:map"}</code></td><td><code>{"id": "minecraft:map"}</code></td></tr>
+            <tr><td>Vérification d'entité, en 26.2 et 26.3</td><td><code>"entity": {"type": "minecraft:zombie"}</code></td><td>26.2 : <code>[{"condition": "minecraft:entity_properties", "entity": "this", "predicate": {"minecraft:entity_type": …}}]</code> ; 26.3 : la même chose en un seul objet avec <code>"type": "minecraft:entity_properties"</code></td></tr>
         </table>
-        <p>Le renommage de dossier est le plus vicieux des deux, comme pour les tables de butin : le pack se charge, s’affiche comme activé, et le progrès n’est simplement pas là. Le renommage de l’icône a au moins tendance à se plaindre dans le log.</p>
+        <p>Des deux premiers, le renommage de dossier est le plus vicieux, comme pour les tables de butin : le pack se charge, s’affiche comme activé, et le progrès n’est simplement pas là. Le renommage de l’icône a au moins tendance à se plaindre dans le log.</p>
+        <p>La vérification d'entité est la pire des trois. En 26.2, un progrès dans l'ancienne forme ne se charge tout simplement pas ; en 26.3, c'est une erreur de registre et le serveur refuse de démarrer avec ce data pack. Nous avons testé les trois formes sur des serveurs 26.2 et 26.3 ; la liste de versions du générateur écrit celle que chaque version charge.</p>
 
         <h2>Petites choses qui coûtent une soirée</h2>
         <ul>

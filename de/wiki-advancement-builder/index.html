@@ -171,13 +171,15 @@
 /advancement revoke @s only harbor:harbor_quest_1</code></pre>
         <p>Tausche <code>only</code> gegen <code>until</code>, <code>from</code> oder <code>through</code>, um einen ganzen Ast auf einmal zu bewegen — das spart beim Testen einer fünfstufigen Kette viele Klicks. Mit revoke lässt sich derselbe Schritt erneut durchspielen, ohne eine neue Welt anzulegen.</p>
 
-        <h2>Zwei Umbenennungen, die alte Beispiele brechen</h2>
+        <h2>Drei Umbenennungen, die alte Beispiele brechen</h2>
         <table class="compact-table">
             <tr><th>Änderung</th><th>Vorher</th><th>Nachher</th></tr>
             <tr><td>Ordner, in 1.21</td><td><code>advancements/</code></td><td><code>advancement/</code></td></tr>
             <tr><td>Anzeige-Icon, in 1.20.5</td><td><code>{"item": "minecraft:map"}</code></td><td><code>{"id": "minecraft:map"}</code></td></tr>
+            <tr><td>Entity-Prüfung, in 26.2 und 26.3</td><td><code>"entity": {"type": "minecraft:zombie"}</code></td><td>26.2: <code>[{"condition": "minecraft:entity_properties", "entity": "this", "predicate": {"minecraft:entity_type": …}}]</code>; 26.3: dasselbe als ein Objekt mit <code>"type": "minecraft:entity_properties"</code></td></tr>
         </table>
-        <p>Die Ordner-Umbenennung ist die üblere von beiden, genau wie bei Loot-Tabellen: das Pack lädt, gilt als aktiviert, und der Fortschritt ist schlicht nicht da. Die Icon-Umbenennung meldet sich immerhin meist im Log.</p>
+        <p>Von den ersten beiden ist die Ordner-Umbenennung die üblere, genau wie bei Loot-Tabellen: das Pack lädt, gilt als aktiviert, und der Fortschritt ist schlicht nicht da. Die Icon-Umbenennung meldet sich immerhin meist im Log.</p>
+        <p>Die Entity-Prüfung ist die schlimmste der drei. Auf 26.2 lädt ein Fortschritt in der alten Form einfach nicht; auf 26.3 ist es ein Registry-Fehler, und der Server startet mit diesem Datenpaket gar nicht. Wir haben alle drei Formen auf 26.2- und 26.3-Servern geprüft; die Versionsliste im Generator schreibt die Form, die jede Version lädt.</p>
 
         <h2>Kleinigkeiten, die einen Abend kosten</h2>
         <ul>

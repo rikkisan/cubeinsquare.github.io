@@ -171,13 +171,15 @@
 /advancement revoke @s only harbor:harbor_quest_1</code></pre>
         <p>Swap <code>only</code> for <code>until</code>, <code>from</code> or <code>through</code> to move a whole branch at once, which saves a lot of clicking when you are testing a five-step chain. Revoke is what lets you run the same step again without a fresh world.</p>
 
-        <h2>Two renames that break older examples</h2>
+        <h2>Three renames that break older examples</h2>
         <table class="compact-table">
             <tr><th>Change</th><th>Before</th><th>After</th></tr>
             <tr><td>Folder, in 1.21</td><td><code>advancements/</code></td><td><code>advancement/</code></td></tr>
             <tr><td>Display icon, in 1.20.5</td><td><code>{"item": "minecraft:map"}</code></td><td><code>{"id": "minecraft:map"}</code></td></tr>
+            <tr><td>Entity check, in 26.2 and 26.3</td><td><code>"entity": {"type": "minecraft:zombie"}</code></td><td>26.2: <code>[{"condition": "minecraft:entity_properties", "entity": "this", "predicate": {"minecraft:entity_type": …}}]</code>; 26.3: the same as one object with <code>"type": "minecraft:entity_properties"</code></td></tr>
         </table>
-        <p>The folder rename is the nastier of the two, in the same way it is for loot tables: the pack still loads and reports as enabled, and the advancement simply is not there. The icon rename at least tends to complain in the log.</p>
+        <p>Of the first two, the folder rename is the nastier, in the same way it is for loot tables: the pack still loads and reports as enabled, and the advancement simply is not there. The icon rename at least tends to complain in the log.</p>
+        <p>The entity check is the worst of the three. On 26.2 an advancement in the old form simply fails to load; on 26.3 it is a registry error, and the server refuses to start with that data pack. We checked all three forms on 26.2 and 26.3 servers; the builder's version list writes the one each version loads.</p>
 
         <h2>Small things that cost an evening</h2>
         <ul>
