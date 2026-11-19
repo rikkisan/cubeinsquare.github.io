@@ -192,8 +192,9 @@ resource pack are left for the owner. What the run found:
   branches; any line break failed before 1.21.5), and the enchantment article (`/reload` is enough for a tag override).
 - Checked and fine: bossbars and both countdowns, potions, items, swords and staffs, trades, books on 26.3, recipes
   (a crafter made the recipe generator's output), `/enchant` conflicts, the hide-effects tooltip in every branch.
-- Analytics side note: `ANALYTICS.md` records that Google's consent message is not published in AdSense, so in the
-  EEA the site banner appears only after the 5–10 s CMP wait. That supports the GA4 "falling views" explanation below.
+- Analytics: Google's consent message is published (since 2026-10-24) but AdSense counts 0 impressions, most likely
+  because the site is not approved. So for every visitor, not only in the EEA, the site banner now appears after a
+  5 s wait instead of at once, which most likely explains the GA4 drop below.
 
 **Search Console pass, done 2026-11-19**
 

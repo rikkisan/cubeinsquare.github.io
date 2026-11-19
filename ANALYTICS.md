@@ -269,7 +269,8 @@ were blocked so no ad request for the publisher ID left the machine; Google's CM
 
 No page errors on any page. Banner and footer looked right in both designs (`modern`, `classic`) at 360, 768 and 1440 px in
 `ru` and `de`; the privacy pages have no horizontal scroll at 360 px. The real Google message only shows on
-`cubeinsquare.com` once the owner publishes it; it was not seen here.
+`cubeinsquare.com`; it was not seen here. (It was published that day, but on 2026-11-19 AdSense still counted 0
+impressions; see Known gaps.)
 
 ### Performance
 
@@ -350,6 +351,9 @@ code does. This is one browser and one network; read 0/3 as "cannot be relied on
   English browser sees it in English.
 - An EEA visitor whose CMP answers only after the 5 s fallback gets the site's update first (their old banner answer, or
   `denied`); it stays until the CMP sends its own update.
-- Whether Google's CMP answers `gdprApplies: false` quickly outside the EEA is not verified yet (the message is not
-  published). If it does not, visitors there see the site's banner after the 5 s wait.
+- Google's consent message has been published since 2026-10-24, but AdSense showed 0 impressions on 2026-11-19, most
+  likely because the site is not approved yet, so the CMP never answers. Until it does, every visitor, in any country,
+  sees the site's banner only after the 5 s `CMP_API_WAIT_MS` wait (before 2026-10-24 it appeared at once). GA4 counts
+  only consented page views, so this probably explains the drop in GA4 views from that date while Search Console
+  clicks rose (RELEASE_ROADMAP.md, "Search Console pass").
 - The custom-item catalog's JSON import and the basic/advanced switch of the enchantment randomizer have no event.
