@@ -71,9 +71,11 @@ for the individual commits.
 
 ## Queued releases
 
-None. `.drip/queue/` contains only `.gitkeep`, and the last publish was 2026-10-04, so the Sundays since then
-(and the next one, 2026-10-25) released nothing. The bot prints "Queue is running low" in the run summary
-whenever fewer than two bundles remain.
+None. `.drip/queue/` contains only `.gitkeep`, and the last publish was 2026-10-04, so every Sunday since then
+(through 2026-11-15) released nothing. The bot prints "Queue is running low" in the run summary
+whenever fewer than two bundles remain. Candidates: a 26.4 update article once 26.4 is released (it was at
+26.4-snapshot-10 on 2026-11-19), and the Notification Builder below (announcement searches are a real cluster,
+see "Search Console pass").
 
 ## Ideas, not yet queued
 
@@ -162,13 +164,38 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
 
 - Owner answers: who wrote the HeadHunter article (its four pages have no byline yet); who Mark is on the About
   team list, so his byline can link there; what ArmorHide's H key does (the Modrinth page only names the binding).
-- The privacy policy still gives the Discord nick "kvaasssssssss" as the contact. The owner edits that page.
-- The owner runs `.drip/drafts/commands-to-test.md` in game (53 checks). Two tool changes wait for that run: the
+- The owner runs `.drip/drafts/commands-to-test.md` in game (53 checks from October, plus sections C–F added on
+  2026-11-19). An attempt on 2026-11-19 to run most of them on headless vanilla servers over RCON was blocked by
+  the session's permission filter (it would have downloaded a Java 25 runtime for 26.3 and started servers); the
+  server jars' `version.json` did confirm data pack formats 121 (26.3) and 61 (1.21.4) for B7/B8. Two tool changes wait for that run: the
   dialogue page's message designer writes `hoverEvent`/`clickEvent` (renamed in 1.21.5, checks B2–B4), and the book
   builder's component output may not suit 1.20.5–1.21.4 (B5).
-- Not part of the resubmission, but the biggest remaining gap in value: the resource pack generator still builds
-  1.20-format packs with `overrides` and the pre-1.21.2 armor folder, so its CustomModelData variants and armor do not
-  work on 1.21.4 and newer. Updating it is an engineering task of its own.
+
+**Search Console pass, done 2026-11-19**
+
+The owner reported falling views. Search Console (queries, last 28 days against the previous 28) showed Google
+clicks *up*: the top 30 queries gave 433 clicks against 346. So the drop is in GA4, not in search. The likeliest
+cause is measurement: on 2026-10-24 (`9f21f4b`) the EEA, UK and Switzerland moved to Google's consent message, GA4
+records only consented page views, and `cmp` mode deletes the old `accepted` answer. Not yet confirmed: it needs
+GA4 views by country (EEA against the rest) before and after 2026-10-24, and a check that Google's message
+actually shows while AdSense has not approved the site. Changes made from the query data:
+
+- Potion builder: "Hide effect lines in the tooltip" (`tooltip_display` 1.21.5+, `hide_additional_tooltip`
+  1.20.5–1.21.4, `HideFlags:32` older) and a `#hide-effects` section in the guide (x4); searchers on 26.3 asked for it.
+- Sphere generator: title and description say it counts blocks per layer (2.5k impressions, 0.44% CTR, position 8).
+- Resource pack generator: builds for the chosen version, 1.20 – 26.3 (pack format, `min_format`/`max_format`
+  from 1.21.9, armor in `textures/entity/equipment` from 1.21.2, CMD variants as an `items/` definition with
+  `range_dispatch` from 1.21.4, matching `/give`). This closes the "biggest remaining gap" noted in October. The
+  English page also had garbled emoji since April (`9beab42`), fixed; a site-wide scan found no other case.
+- `wiki-enchantment-conflicts` (x4) rewritten from the 26.3 `exclusive_set` tags: it had missed Infinity vs
+  Mending, wrongly grouped Loyalty with Channeling, left Impaling/Density/Breach out and called Channeling
+  treasure. The randomizer carried the same two data errors; fixed.
+- `wiki-minecraft-server-announcements` (x4) went from 391 words with no commands to a how-to with /say, /tellraw
+  (old and 1.21.5+ hover/click fields), /title, action bar, boss bars and a scheduled broadcast.
+- Privacy policy (x4) gives the email instead of the Discord nick.
+- `styles.css`: `.prose-table` cells break long words on phones (12 pages had German/Russian tables wider than 360 px).
+- Still open from this pass: the dialogue page's message designer writes `hoverEvent`/`clickEvent`, which 26.x
+  ignores (B2–B4); the fix waits for the in-game run, as decided in October.
 
 ## Known issues
 
