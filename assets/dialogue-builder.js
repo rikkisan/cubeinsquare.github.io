@@ -335,8 +335,17 @@
     if (style === 'bold') component.bold = true;
     if (style === 'italic') component.italic = true;
     if (style === 'underlined') component.underlined = true;
-    if (firstInteractive && hover.value.trim()) component.hoverEvent = { action: 'show_text', value: hover.value.trim() };
-    if (firstInteractive && click.value.trim()) component.clickEvent = { action: 'run_command', value: click.value.trim() };
+    // 1.21.5 renamed hoverEvent/clickEvent to hover_event/click_event (and value to command for
+    // run_command); 26.x silently drops the old keys. Each version ignores the other's keys, so
+    // writing both pairs gives one command that works from 1.20 to 26.x (checked on 1.21.4 and 26.3).
+    if (firstInteractive && hover.value.trim()) {
+      component.hoverEvent = { action: 'show_text', contents: hover.value.trim() };
+      component.hover_event = { action: 'show_text', value: hover.value.trim() };
+    }
+    if (firstInteractive && click.value.trim()) {
+      component.clickEvent = { action: 'run_command', value: click.value.trim() };
+      component.click_event = { action: 'run_command', command: click.value.trim() };
+    }
     return component;
   }
 
