@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Как делать читаемые объявления сервера в Minecraft | Cube in Square</title>
+  <title>Как делать объявления на сервере Minecraft (Java 26.x) | Cube in Square</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Практический гайд по tellraw, title, subtitle и actionbar объявлениям Minecraft, которые игроки успевают прочитать во время событий.">
+  <meta name="description" content="Пять ванильных способов сообщить что-то всем игрокам: /say, /tellraw со ссылками, /title, строка над хотбаром и боссбар, плюс рассылка по таймеру из датапака. Команды для 1.21.5 – 26.x и старых версий.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -20,13 +20,13 @@
   <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
   <meta property="og:site_name" content="Cube in Square">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Как делать читаемые объявления сервера в Minecraft | Cube in Square">
-  <meta property="og:description" content="Практический гайд по tellraw, title, subtitle и actionbar объявлениям Minecraft, которые игроки успевают прочитать во время событий.">
+  <meta property="og:title" content="Как делать объявления на сервере Minecraft (Java 26.x) | Cube in Square">
+  <meta property="og:description" content="Пять ванильных способов сообщить что-то всем игрокам: /say, /tellraw со ссылками, /title, строка над хотбаром и боссбар, плюс рассылка по таймеру из датапака. Команды для 1.21.5 – 26.x и старых версий.">
   <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/">
   <meta property="og:locale" content="ru_RU">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Как делать читаемые объявления сервера в Minecraft | Cube in Square">
-  <meta name="twitter:description" content="Практический гайд по tellraw, title, subtitle и actionbar объявлениям Minecraft, которые игроки успевают прочитать во время событий.">
+  <meta name="twitter:title" content="Как делать объявления на сервере Minecraft (Java 26.x) | Cube in Square">
+  <meta name="twitter:description" content="Пять ванильных способов сообщить что-то всем игрокам: /say, /tellraw со ссылками, /title, строка над хотбаром и боссбар, плюс рассылка по таймеру из датапака. Команды для 1.21.5 – 26.x и старых версий.">
   <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -65,20 +65,86 @@
     <!-- /consent-defaults -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/assets/styles.css">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Как делать читаемые объявления сервера в Minecraft", "description": "Практический гайд по tellraw, title, subtitle и actionbar объявлениям Minecraft, которые игроки успевают прочитать во время событий.", "inLanguage": "ru", "url": "https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/", "author": {"@type": "Person", "name": "Рикки", "url": "https://cubeinsquare.com/ru/about/#team"}, "publisher": {"@type": "Organization", "name": "Cube in Square", "url": "https://cubeinsquare.com/ru/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cubeinsquare.com/ru/"}, {"@type": "ListItem", "position": 2, "name": "Вики", "item": "https://cubeinsquare.com/ru/wiki/"}, {"@type": "ListItem", "position": 3, "name": "Как делать читаемые объявления сервера в Minecraft", "item": "https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/"}]}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Как делать объявления на сервере Minecraft", "description": "Пять ванильных способов сообщить что-то всем игрокам: /say, /tellraw со ссылками, /title, строка над хотбаром и боссбар, плюс рассылка по таймеру из датапака. Команды для 1.21.5 – 26.x и старых версий.", "inLanguage": "ru", "url": "https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/", "author": {"@type": "Person", "name": "Рикки", "url": "https://cubeinsquare.com/ru/about/#team"}, "publisher": {"@type": "Organization", "name": "Cube in Square", "url": "https://cubeinsquare.com/ru/"}, "dateModified": "2026-11-19"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cubeinsquare.com/ru/"}, {"@type": "ListItem", "position": 2, "name": "Вики", "item": "https://cubeinsquare.com/ru/wiki/"}, {"@type": "ListItem", "position": 3, "name": "Как делать объявления на сервере Minecraft", "item": "https://cubeinsquare.com/ru/wiki-minecraft-server-announcements/"}]}]}</script>
 </head>
 <body>
 <div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/ru" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div><form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/wiki-minecraft-server-announcements/">EN</a><a class="is-active" href="/ru/wiki-minecraft-server-announcements/">RU</a><a class="" href="/fr/wiki-minecraft-server-announcements/">FR</a><a class="" href="/de/wiki-minecraft-server-announcements/">DE</a></div></div></div>
 <main class="page-shell wiki-article">
   <article class="wiki-article">
     <a class="back-link" href="/ru/wiki/">&larr; Все статьи</a>
-    <h1>Как делать читаемые объявления сервера в Minecraft</h1>
-    <p class="page-lead">У серверного объявления одна задача: чтобы все игроки поняли одно и то же в один и тот же момент. На практике это сложнее, потому что чат движется, событие шумит, а половина игроков уже куда-то бежит. Хорошее объявление в Minecraft короткое, попадает в правильный канал и использует оформление только для направления внимания.</p>
+    <h1>Как делать объявления на сервере Minecraft</h1>
+    <p class="page-lead">В ванильном Minecraft пять способов сообщить что-то всем игрокам сразу: строка в чате через /say, оформленное сообщение через /tellraw, крупный текст на экране через /title, строка над хотбаром и боссбар. Все они работают из консоли сервера, командного блока или функции датапака, без плагинов. Ниже команды для 1.21.5 – 26.x, отличия старых версий и способ повторять сообщение по таймеру.</p>
     <p class="article-byline">Автор: <a href="/ru/about/#team">Рикки</a></p>
     <div class="tool-button-row"><a class="tool-button" href="/ru/dialogue-builder/">Открыть Message Designer</a><a class="tool-button tool-button-secondary" href="/ru/wiki-dialogue-builder/">Читать гайд по командам</a><a class="tool-button tool-button-secondary" href="/ru/wiki-readable-minecraft-dialogue/">Статья о ритме диалогов</a></div>
-    <h2>Начинайте с канала, а не с украшений</h2><div class="article-block">Канал решает, как сообщение ощущается. Tellraw хорош для объявлений, которые должны остаться в истории чата. Title нужен для редких драматичных ударов. Subtitle поддерживает title, а не заменяет абзац текста. Actionbar лучше всего подходит для предупреждений, таймеров и давления, которое не должно забивать чат.</div><h2>Используйте цвет как структуру</h2><div class="article-block">Цвет должен помогать быстро разобрать сообщение. Красный может отмечать опасность, золотой - власть или суд, бирюзовый - цель, серый - вторичный контекст. Если каждое слово разного цвета, объявление превращается в украшение вместо коммуникации.</div><h2>Держите большой экранный текст коротким</h2><div class="article-block">Title обычно должен быть фразой, а не полноценным предложением. Игрок читает его во время движения, боя или реакции на сцену. Если нужны детали, дайте заголовок в title, а объяснение - в tellraw или книге.</div><h2>Hover и click используйте осторожно</h2><div class="article-block">Hover text и click commands полезны для дополнительного контекста: открыть warp, показать правило или подготовить следующую команду. Но важная информация не должна прятаться в них, потому что во время события многие игроки не будут останавливаться и наводиться.</div>
-    <h2>Тип сообщения</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Тип сообщения</th><th>Лучший канал</th><th>Почему работает</th></tr></thead><tbody><tr><td>Предупреждение о рестарте</td><td>actionbar + tellraw</td><td>Actionbar держит давление на экране, tellraw оставляет запись.</td></tr><tr><td>Квест завершён</td><td>actionbar</td><td>Короткая награда не должна спамить чат.</td></tr><tr><td>Ритуал начался</td><td>title + subtitle</td><td>Момент должен ощущаться общим и тяжёлым.</td></tr><tr><td>Вердикт суда</td><td>title, затем tellraw</td><td>Title ставит удар, чат несёт точную формулировку.</td></tr></tbody></table></div>
-    <h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Можно ли использовать title для каждого объявления?</h3><p>Можно, но он быстро станет шумом. Title лучше работает, когда остаётся редким.</p><h3>Click events безопасны для команд?</h3><p>Они полезны как удобство, но не как обязательный слой смысла. Игрок должен понять объявление и без клика.</p><h3>Длинные объявления лучше делить?</h3><p>Да. Дайте короткий title или actionbar, а детали вынесите в читаемый tellraw.</p></div></div>
+    <h2>Сначала выберите канал</h2>
+    <p>То, где появляется сообщение, решает, как его воспримут. Чат остаётся в истории, текст на экране прерывает игру, а полоса висит, пока вы её не уберёте.</p>
+    <table class="compact-table prose-table"><thead><tr><th>Команда</th><th>Где игроки это видят</th><th>Для чего</th></tr></thead><tbody>
+      <tr><td><code>/say</code></td><td>В чате, строкой [Server] или с вашим ником</td><td>Быстрая заметка из консоли</td></tr>
+      <tr><td><code>/tellraw</code></td><td>В чате, с цветами, подсказками и ссылками</td><td>Правила, ссылки, всё, к чему вернутся в истории чата</td></tr>
+      <tr><td><code>/title … title</code></td><td>Крупный текст в центре экрана</td><td>Редкие большие моменты: начало события, приговор</td></tr>
+      <tr><td><code>/title … actionbar</code></td><td>Строка над хотбаром</td><td>Таймеры, предупреждения, короткий отклик</td></tr>
+      <tr><td><code>/bossbar</code></td><td>Полоса вверху экрана</td><td>События на несколько минут, общий отсчёт</td></tr>
+    </tbody></table>
+    <h2>/say: самый быстрый способ</h2>
+    <p>В консоли сервера команды пишутся без слэша, в чате и командном блоке — со слэшем:</p>
+    <pre><code>say Сервер перезапустится через 10 минут</code></pre>
+    <p>Из консоли игроки увидят <code>[Server] Сервер перезапустится через 10 минут</code>. От игрока строка придёт с его ником, от командного блока — с именем блока (<code>@</code>, если вы его не переименовали). Цветов /say не понимает, а селектор вроде <code>@a</code> в тексте превращается в список ников.</p>
+    <h2>/tellraw: цвета, подсказки и ссылки</h2>
+    <p>/tellraw отправляет текстовый компонент выбранным игрокам. С ключами в кавычках одна и та же команда работает во всех версиях от 1.20 до 26.x: для старых версий это правильный JSON, для 1.21.5 и новее — правильный SNBT:</p>
+    <pre><code>tellraw @a {"text":"Сервер перезапустится через 10 минут","color":"gold","bold":true}</code></pre>
+    <p>Части с разным оформлением записываются списком:</p>
+    <pre><code>tellraw @a [{"text":"[Событие] ","color":"red"},{"text":"Арена откроется в 18:00","color":"white"}]</code></pre>
+    <p>Подсказки при наведении и кликабельные ссылки — то место, где версии расходятся. В 1.21.5 поля переименовали, поэтому команда из старого гайда показывает текст, но на наведение и клик не реагирует:</p>
+    <p><strong>1.21.5 – 26.x</strong></p>
+    <pre><code>tellraw @a {"text":"Прочитать правила","color":"aqua","underlined":true,"hover_event":{"action":"show_text","value":"Откроет страницу с правилами"},"click_event":{"action":"open_url","url":"https://example.com/rules"}}</code></pre>
+    <p><strong>1.20 – 1.21.4</strong></p>
+    <pre><code>tellraw @a {"text":"Прочитать правила","color":"aqua","underlined":true,"hoverEvent":{"action":"show_text","contents":"Откроет страницу с правилами"},"clickEvent":{"action":"open_url","value":"https://example.com/rules"}}</code></pre>
+    <p>Остальные действия по клику изменились так же: с 1.21.5 <code>run_command</code> и <code>suggest_command</code> берут <code>command</code> вместо <code>value</code>. Перед открытием ссылки игрок подтверждает переход, а у того, кто выключил веб-ссылки в настройках чата, ничего не откроется.</p>
+    <h2>/title: крупный текст, подзаголовок и строка над хотбаром</h2>
+    <p>Заголовок задаётся в три шага: тайминг, подзаголовок, сам заголовок. Подзаголовок ждёт, пока придёт заголовок, поэтому его отправляют первым:</p>
+    <pre><code>title @a times 10 70 20
+title @a subtitle {"text":"Арена откроется через минуту","color":"gray"}
+title @a title {"text":"СОБЫТИЕ","color":"gold","bold":true}</code></pre>
+    <p>Числа — это появление, показ и исчезание в тиках (20 тиков — одна секунда), так что этот заголовок висит около пяти секунд. Оставляйте в нём слово-два: игрок читает его на бегу. Строка над хотбаром (action bar) звучит тише:</p>
+    <pre><code>title @a actionbar {"text":"PvP выключен до 18:00","color":"green"}</code></pre>
+    <p>Она гаснет через несколько секунд. Чтобы строка держалась, например для таймера или предупреждения, отправляйте её заново каждую секунду из функции вроде той, что ниже. <code>title @a clear</code> убирает текст с экрана, а <code>title @a reset</code> ещё и сбрасывает тайминг.</p>
+    <h2>Боссбары для долгих событий</h2>
+    <p>Боссбар держится вверху экрана, пока вы его не удалите, поэтому он хорош для событий и отсчётов:</p>
+    <pre><code>bossbar add cube:event {"text":"Осада северных ворот"}
+bossbar set cube:event color red
+bossbar set cube:event players @a
+bossbar remove cube:event</code></pre>
+    <p><a href="/ru/bossbar-builder/">Конструктор боссбаров</a> соберёт полный набор команд со значением и стилем, а статья <a href="/ru/wiki-minecraft-bossbar-events/">о боссбарах для событий</a> показывает рабочий обратный отсчёт.</p>
+    <h2>Повтор сообщения по таймеру</h2>
+    <p>Функция датапака может запустить сама себя позже через /schedule. Сохраните это как <code>data/cube/function/broadcast.mcfunction</code> (до 1.21 папка называется <code>functions</code>):</p>
+    <pre><code>tellraw @a {"text":"Следующее событие: суббота, 18:00 на арене","color":"gray"}
+schedule function cube:broadcast 6000t</code></pre>
+    <p>Выполните <code>function cube:broadcast</code> один раз, и сообщение будет повторяться каждые 6000 тиков, то есть каждые пять минут при 20 тиках в секунду. Остановит его <code>schedule clear cube:broadcast</code>. Чтобы подсказки менялись, бросьте число через <code>random</code> (1.20.2 и новее) и выберите строку:</p>
+    <pre><code>execute store result score #tip announce run random value 1..3
+execute if score #tip announce matches 1 run tellraw @a {"text":"Совет: рынок на спавне открывается каждый вечер","color":"gray"}
+execute if score #tip announce matches 2 run tellraw @a {"text":"Совет: правила висят на доске у спавна","color":"gray"}
+execute if score #tip announce matches 3 run tellraw @a {"text":"Совет: следующее событие в субботу","color":"gray"}
+schedule function cube:broadcast 6000t</code></pre>
+    <p>Счёт создаётся один раз: <code>scoreboard objectives add announce dummy</code>. <a href="/ru/datapack-generator/">Генератор датапаков</a> соберёт папку и <code>pack.mcmeta</code> под вашу версию.</p>
+    <h2>Чтобы объявление читали</h2>
+    <p>Цвет должен помогать разобрать сообщение, а не украшать его: красный — опасность, золотой — голос сервера, бирюзовый — цели, серый — второстепенное. Подсказки и ссылки — дополнение: посреди события их никто не изучает, так что главное в них не прячьте. Если нужны подробности, выведите заголовок на экран, а детали — в чат.</p>
+    <table class="compact-table prose-table"><thead><tr><th>Сообщение</th><th>Канал</th><th>Почему работает</th></tr></thead><tbody>
+      <tr><td>Предупреждение о перезапуске</td><td>action bar + tellraw</td><td>Строка над хотбаром держит напряжение, tellraw остаётся в истории.</td></tr>
+      <tr><td>Задание выполнено</td><td>action bar</td><td>Короткому отклику не нужно засорять чат.</td></tr>
+      <tr><td>Начало ритуала</td><td>title + subtitle</td><td>Момент должен ощущаться весомым и общим.</td></tr>
+      <tr><td>Приговор суда</td><td>title, затем tellraw</td><td>Заголовок объявляет решение, в чате остаётся точная формулировка.</td></tr>
+    </tbody></table>
+    <h2>Часто задаваемые вопросы</h2>
+    <div class="faq-section">
+      <h3>Как отправить объявление из консоли сервера?</h3>
+      <p>Напишите команду без слэша: <code>say …</code> или <code>tellraw @a …</code>. У консоли полные права, так что там работает любая команда с этой страницы.</p>
+      <h3>Почему моя ссылка не кликается?</h3>
+      <p>В 1.21.5 и новее поля называются <code>click_event</code> и <code>url</code>; <code>clickEvent</code> и <code>value</code> из старых гайдов игнорируются. Проверьте ещё, что у игрока включены веб-ссылки в настройках чата.</p>
+      <h3>Можно ли написать только части игроков?</h3>
+      <p>Поменяйте селектор: <code>@a[team=red]</code> для одной команды, <code>@a[distance=..50]</code> для игроков рядом с командным блоком или <code>execute in minecraft:the_nether run tellraw @a[distance=0..] …</code> для всех, кто в Незере.</p>
+      <h3>Плагины делают это лучше?</h3>
+      <p>Плагины вроде EssentialsX добавляют /broadcast и автоматические списки сообщений. Ванильные команды с этой страницы работают и на Paper, и на Spigot, и ставить ничего не нужно.</p>
+    </div>
   </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>

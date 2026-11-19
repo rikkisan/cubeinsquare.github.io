@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Créer des annonces serveur Minecraft lisibles | Cube in Square</title>
+  <title>Comment faire des annonces sur un serveur Minecraft (Java 26.x) | Cube in Square</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Guide pratique pour des annonces Minecraft en tellraw, title, subtitle et actionbar que les joueurs peuvent lire pendant un vrai événement.">
+  <meta name="description" content="Cinq façons vanilla d'annoncer quelque chose à tous les joueurs : /say, /tellraw avec liens, /title, la barre d'action et les barres de boss, plus une annonce répétée par un data pack. Commandes pour 1.21.5 – 26.x et les versions plus anciennes.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -20,13 +20,13 @@
   <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-minecraft-server-announcements/">
   <meta property="og:site_name" content="Cube in Square">
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Créer des annonces serveur Minecraft lisibles | Cube in Square">
-  <meta property="og:description" content="Guide pratique pour des annonces Minecraft en tellraw, title, subtitle et actionbar que les joueurs peuvent lire pendant un vrai événement.">
+  <meta property="og:title" content="Comment faire des annonces sur un serveur Minecraft (Java 26.x) | Cube in Square">
+  <meta property="og:description" content="Cinq façons vanilla d'annoncer quelque chose à tous les joueurs : /say, /tellraw avec liens, /title, la barre d'action et les barres de boss, plus une annonce répétée par un data pack. Commandes pour 1.21.5 – 26.x et les versions plus anciennes.">
   <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/">
   <meta property="og:locale" content="fr_FR">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Créer des annonces serveur Minecraft lisibles | Cube in Square">
-  <meta name="twitter:description" content="Guide pratique pour des annonces Minecraft en tellraw, title, subtitle et actionbar que les joueurs peuvent lire pendant un vrai événement.">
+  <meta name="twitter:title" content="Comment faire des annonces sur un serveur Minecraft (Java 26.x) | Cube in Square">
+  <meta name="twitter:description" content="Cinq façons vanilla d'annoncer quelque chose à tous les joueurs : /say, /tellraw avec liens, /title, la barre d'action et les barres de boss, plus une annonce répétée par un data pack. Commandes pour 1.21.5 – 26.x et les versions plus anciennes.">
   <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -65,20 +65,86 @@
     <!-- /consent-defaults -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/assets/styles.css">
-    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Créer des annonces serveur Minecraft lisibles", "description": "Guide pratique pour des annonces Minecraft en tellraw, title, subtitle et actionbar que les joueurs peuvent lire pendant un vrai événement.", "inLanguage": "fr", "url": "https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/", "author": {"@type": "Person", "name": "Rikki", "url": "https://cubeinsquare.com/fr/about/#team"}, "publisher": {"@type": "Organization", "name": "Cube in Square", "url": "https://cubeinsquare.com/fr/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cubeinsquare.com/fr/"}, {"@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/fr/wiki/"}, {"@type": "ListItem", "position": 3, "name": "Créer des annonces serveur Minecraft lisibles", "item": "https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/"}]}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "Comment faire des annonces sur un serveur Minecraft", "description": "Cinq façons vanilla d'annoncer quelque chose à tous les joueurs : /say, /tellraw avec liens, /title, la barre d'action et les barres de boss, plus une annonce répétée par un data pack. Commandes pour 1.21.5 – 26.x et les versions plus anciennes.", "inLanguage": "fr", "url": "https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/", "author": {"@type": "Person", "name": "Rikki", "url": "https://cubeinsquare.com/fr/about/#team"}, "publisher": {"@type": "Organization", "name": "Cube in Square", "url": "https://cubeinsquare.com/fr/"}, "dateModified": "2026-11-19"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://cubeinsquare.com/fr/"}, {"@type": "ListItem", "position": 2, "name": "Wiki", "item": "https://cubeinsquare.com/fr/wiki/"}, {"@type": "ListItem", "position": 3, "name": "Comment faire des annonces sur un serveur Minecraft", "item": "https://cubeinsquare.com/fr/wiki-minecraft-server-announcements/"}]}]}</script>
 </head>
 <body>
 <div class="steam-navbar"><div class="steam-navbar-inner"><a class="site-icon-link" href="/fr" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a><div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div><div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div><form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form><div class="language-switch" aria-label="Language"><a class="" href="/wiki-minecraft-server-announcements/">EN</a><a class="" href="/ru/wiki-minecraft-server-announcements/">RU</a><a class="is-active" href="/fr/wiki-minecraft-server-announcements/">FR</a><a class="" href="/de/wiki-minecraft-server-announcements/">DE</a></div></div></div>
 <main class="page-shell wiki-article">
   <article class="wiki-article">
     <a class="back-link" href="/fr/wiki/">&larr; Tous les articles</a>
-    <h1>Créer des annonces serveur Minecraft lisibles</h1>
-    <p class="page-lead">Une annonce serveur doit faire comprendre la même chose à tous les joueurs au même moment. C’est simple en théorie, mais le chat bouge, l’événement fait du bruit et une partie des joueurs est déjà en mouvement. Une bonne annonce Minecraft est courte, placée dans le bon canal et stylée juste assez pour guider l’attention.</p>
+    <h1>Comment faire des annonces sur un serveur Minecraft</h1>
+    <p class="page-lead">Minecraft vanilla offre cinq façons de prévenir tous les joueurs à la fois : une ligne de chat avec /say, un message mis en forme avec /tellraw, un grand texte à l'écran avec /title, une ligne au-dessus de la barre d'objets et une barre de boss. Toutes fonctionnent depuis la console du serveur, un bloc de commande ou une fonction de data pack, sans plugin. Voici les commandes pour 1.21.5 – 26.x, ce qui change dans les versions plus anciennes et comment répéter un message à intervalle régulier.</p>
     <p class="article-byline">Par <a href="/fr/about/#team">Rikki</a></p>
     <div class="tool-button-row"><a class="tool-button" href="/fr/dialogue-builder/">Ouvrir le Message Designer</a><a class="tool-button tool-button-secondary" href="/fr/wiki-dialogue-builder/">Lire le guide des commandes</a><a class="tool-button tool-button-secondary" href="/fr/wiki-readable-minecraft-dialogue/">Article sur le rythme du dialogue</a></div>
-    <h2>Commencez par le canal, pas par la décoration</h2><div class="article-block">Le canal décide de la sensation du message. Tellraw convient aux annonces qui doivent rester dans l’historique du chat. Title sert aux rares moments dramatiques. Subtitle soutient le title, sans porter un paragraphe. Actionbar est idéal pour les avertissements, minuteurs et pressions qui ne doivent pas encombrer le chat.</div><h2>Utilisez la couleur comme structure</h2><div class="article-block">La couleur doit aider à lire vite. Rouge pour le danger, or pour l’autorité, aqua pour l’objectif, gris pour le contexte secondaire. Si chaque mot change de couleur, l’annonce devient décorative au lieu d’être claire.</div><h2>Gardez les grands textes très courts</h2><div class="article-block">Un title devrait souvent être une phrase courte, pas une explication. Le joueur le lit en bougeant, en combattant ou en réagissant. Si le message a besoin de détails, mettez le titre à l’écran et l’explication dans tellraw ou dans un livre.</div><h2>Utilisez hover et clic avec retenue</h2><div class="article-block">Les textes au survol et commandes au clic sont utiles pour un contexte optionnel : ouvrir un warp, montrer une règle ou préparer une commande. Mais l’information essentielle ne doit jamais être cachée là, car beaucoup de joueurs ne s’arrêteront pas pour inspecter le message pendant l’événement.</div>
-    <h2>Type de message</h2><div class="article-block"><table class="compact-table"><thead><tr><th>Type de message</th><th>Meilleur canal</th><th>Pourquoi</th></tr></thead><tbody><tr><td>Alerte de redémarrage</td><td>actionbar + tellraw</td><td>L’actionbar garde la pression visible, tellraw laisse une trace.</td></tr><tr><td>Quête terminée</td><td>actionbar</td><td>Le retour de récompense court ne doit pas spammer le chat.</td></tr><tr><td>Début du rituel</td><td>title + subtitle</td><td>Le moment doit sembler lourd et partagé.</td></tr><tr><td>Verdict du tribunal</td><td>title, puis tellraw</td><td>Le title donne l’impact, le chat porte la formule exacte.</td></tr></tbody></table></div>
-    <h2>FAQ</h2><div class="article-block"><div class="faq-section"><h3>Faut-il utiliser title pour toutes les annonces ?</h3><p>Non, pas toujours. Il devient vite bruyant s’il apparaît tout le temps.</p><h3>Les click events sont-ils utiles ?</h3><p>Oui, mais comme confort. Le joueur doit comprendre le message même sans cliquer.</p><h3>Faut-il diviser les longues annonces ?</h3><p>Oui. Gardez un title ou actionbar court, puis mettez les détails dans un tellraw lisible.</p></div></div>
+    <h2>Choisissez d'abord le canal</h2>
+    <p>L'endroit où le message apparaît décide de la façon dont il est reçu. Le chat reste dans l'historique, le texte à l'écran interrompt, et une barre reste affichée jusqu'à ce que vous la retiriez.</p>
+    <table class="compact-table prose-table"><thead><tr><th>Commande</th><th>Où les joueurs le voient</th><th>Pour quoi faire</th></tr></thead><tbody>
+      <tr><td><code>/say</code></td><td>Dans le chat, en ligne [Server] ou avec votre pseudo</td><td>Une note rapide tapée dans la console</td></tr>
+      <tr><td><code>/tellraw</code></td><td>Dans le chat, avec couleurs, infobulles et liens</td><td>Règles, liens, tout ce qu'on relira dans l'historique</td></tr>
+      <tr><td><code>/title … title</code></td><td>Grand texte au centre de l'écran</td><td>Les grands moments rares : début d'événement, verdict</td></tr>
+      <tr><td><code>/title … actionbar</code></td><td>Une ligne au-dessus de la barre d'objets</td><td>Minuteurs, alertes, retours courts</td></tr>
+      <tr><td><code>/bossbar</code></td><td>Une barre en haut de l'écran</td><td>Événements de plusieurs minutes, comptes à rebours partagés</td></tr>
+    </tbody></table>
+    <h2>/say : le plus rapide</h2>
+    <p>Dans la console du serveur, on tape les commandes sans barre oblique ; dans le chat ou un bloc de commande, avec :</p>
+    <pre><code>say Le serveur redémarre dans 10 minutes</code></pre>
+    <p>Depuis la console, les joueurs voient <code>[Server] Le serveur redémarre dans 10 minutes</code>. Envoyée par un joueur, la ligne porte son pseudo, et depuis un bloc de commande le nom du bloc (<code>@</code> si vous ne l'avez pas renommé). /say ne gère pas les couleurs, et un sélecteur comme <code>@a</code> dans le texte devient une liste de pseudos.</p>
+    <h2>/tellraw : couleurs, infobulles et liens</h2>
+    <p>/tellraw envoie un composant de texte aux joueurs choisis. Avec des clés entre guillemets, la même commande marche dans toutes les versions de 1.20 à 26.x : c'est du JSON valide pour les anciennes versions et du SNBT valide à partir de 1.21.5 :</p>
+    <pre><code>tellraw @a {"text":"Le serveur redémarre dans 10 minutes","color":"gold","bold":true}</code></pre>
+    <p>Les morceaux aux styles différents se mettent dans une liste :</p>
+    <pre><code>tellraw @a [{"text":"[Événement] ","color":"red"},{"text":"L'arène ouvre à 18 h","color":"white"}]</code></pre>
+    <p>Les infobulles et les liens cliquables sont l'endroit où les versions divergent. La 1.21.5 a renommé les champs : une commande copiée d'un ancien guide affiche son texte mais ne réagit ni au survol ni au clic :</p>
+    <p><strong>1.21.5 – 26.x</strong></p>
+    <pre><code>tellraw @a {"text":"Lire le règlement","color":"aqua","underlined":true,"hover_event":{"action":"show_text","value":"Ouvre la page du règlement"},"click_event":{"action":"open_url","url":"https://example.com/rules"}}</code></pre>
+    <p><strong>1.20 – 1.21.4</strong></p>
+    <pre><code>tellraw @a {"text":"Lire le règlement","color":"aqua","underlined":true,"hoverEvent":{"action":"show_text","contents":"Ouvre la page du règlement"},"clickEvent":{"action":"open_url","value":"https://example.com/rules"}}</code></pre>
+    <p>Les autres actions de clic ont changé de la même façon : depuis la 1.21.5, <code>run_command</code> et <code>suggest_command</code> prennent <code>command</code> au lieu de <code>value</code>. Le joueur confirme avant qu'un lien s'ouvre, et rien ne s'ouvre s'il a désactivé les liens web dans les paramètres du chat.</p>
+    <h2>/title : grand texte, sous-titre et barre d'action</h2>
+    <p>Un titre se règle en trois temps : la durée, le sous-titre, puis le titre. Le sous-titre attend l'arrivée d'un titre, il faut donc l'envoyer en premier :</p>
+    <pre><code>title @a times 10 70 20
+title @a subtitle {"text":"L'arène ouvre dans une minute","color":"gray"}
+title @a title {"text":"ÉVÉNEMENT","color":"gold","bold":true}</code></pre>
+    <p>Les nombres sont l'apparition, l'affichage et la disparition en ticks (20 ticks font une seconde) : ce titre reste donc environ cinq secondes. Limitez-le à un ou deux mots, le joueur le lit en bougeant. La barre d'action est une ligne plus discrète au-dessus de la barre d'objets :</p>
+    <pre><code>title @a actionbar {"text":"PvP désactivé jusqu'à 18 h","color":"green"}</code></pre>
+    <p>Elle s'efface au bout de quelques secondes. Pour garder une ligne affichée, pour un minuteur ou une alerte, renvoyez-la chaque seconde depuis une fonction comme celle ci-dessous. <code>title @a clear</code> efface l'écran, et <code>title @a reset</code> remet aussi la durée par défaut.</p>
+    <h2>Des barres de boss pour les événements qui durent</h2>
+    <p>Une barre de boss reste en haut de l'écran jusqu'à ce que vous la retiriez, ce qui convient aux événements et aux comptes à rebours :</p>
+    <pre><code>bossbar add cube:event {"text":"Siège de la porte nord"}
+bossbar set cube:event color red
+bossbar set cube:event players @a
+bossbar remove cube:event</code></pre>
+    <p>Le <a href="/fr/bossbar-builder/">générateur de barres de boss</a> écrit l'ensemble complet avec valeur et style, et l'article sur les <a href="/fr/wiki-minecraft-bossbar-events/">barres de boss pour les événements</a> montre un compte à rebours qui fonctionne.</p>
+    <h2>Répéter un message à intervalle régulier</h2>
+    <p>Une fonction de data pack peut se relancer plus tard avec /schedule. Enregistrez ceci sous <code>data/cube/function/broadcast.mcfunction</code> (le dossier s'appelle <code>functions</code> avant la 1.21) :</p>
+    <pre><code>tellraw @a {"text":"Prochain événement : samedi, 18 h à l'arène","color":"gray"}
+schedule function cube:broadcast 6000t</code></pre>
+    <p>Lancez <code>function cube:broadcast</code> une fois et le message revient toutes les 6000 ticks, soit cinq minutes à 20 ticks par seconde ; <code>schedule clear cube:broadcast</code> l'arrête. Pour faire tourner des astuces, tirez un nombre avec <code>random</code> (1.20.2 et plus) et choisissez une ligne :</p>
+    <pre><code>execute store result score #tip announce run random value 1..3
+execute if score #tip announce matches 1 run tellraw @a {"text":"Astuce : le marché du spawn ouvre chaque soir","color":"gray"}
+execute if score #tip announce matches 2 run tellraw @a {"text":"Astuce : le règlement est affiché au spawn","color":"gray"}
+execute if score #tip announce matches 3 run tellraw @a {"text":"Astuce : le prochain événement a lieu samedi","color":"gray"}
+schedule function cube:broadcast 6000t</code></pre>
+    <p>Créez le score une seule fois avec <code>scoreboard objectives add announce dummy</code>. Le <a href="/fr/datapack-generator/">générateur de data pack</a> crée le dossier et le <code>pack.mcmeta</code> pour votre version.</p>
+    <h2>Rester lisible</h2>
+    <p>La couleur doit aider à trier le message, pas le décorer : rouge pour le danger, or pour la voix du serveur, cyan pour les objectifs, gris pour le secondaire. Infobulles et liens sont des extras ; personne ne s'arrête pour les lire en plein événement, alors n'y cachez jamais l'essentiel. Si le message demande des détails, mettez le titre à l'écran et les détails dans le chat.</p>
+    <table class="compact-table prose-table"><thead><tr><th>Message</th><th>Canal</th><th>Pourquoi ça marche</th></tr></thead><tbody>
+      <tr><td>Alerte de redémarrage</td><td>barre d'action + tellraw</td><td>La barre d'action garde la pression visible, tellraw laisse une trace.</td></tr>
+      <tr><td>Quête terminée</td><td>barre d'action</td><td>Un retour court n'a pas besoin de remplir le chat.</td></tr>
+      <tr><td>Début du rituel</td><td>title + subtitle</td><td>Le moment doit paraître solennel et partagé.</td></tr>
+      <tr><td>Verdict du tribunal</td><td>title, puis tellraw</td><td>Le titre annonce le verdict, le chat garde la formulation exacte.</td></tr>
+    </tbody></table>
+    <h2>FAQ</h2>
+    <div class="faq-section">
+      <h3>Comment envoyer une annonce depuis la console du serveur ?</h3>
+      <p>Tapez la commande sans barre oblique : <code>say …</code> ou <code>tellraw @a …</code>. La console a tous les droits, donc chaque commande de cette page y fonctionne.</p>
+      <h3>Pourquoi mon lien cliquable ne fait rien ?</h3>
+      <p>En 1.21.5 et plus, les champs s'appellent <code>click_event</code> et <code>url</code> ; <code>clickEvent</code> et <code>value</code> des anciens guides sont ignorés. Vérifiez aussi que les liens web sont activés dans les paramètres du chat du joueur.</p>
+      <h3>Peut-on annoncer à une partie des joueurs seulement ?</h3>
+      <p>Changez le sélecteur : <code>@a[team=red]</code> pour une équipe, <code>@a[distance=..50]</code> pour les joueurs proches d'un bloc de commande, ou <code>execute in minecraft:the_nether run tellraw @a[distance=0..] …</code> pour tous ceux qui sont dans le Nether.</p>
+      <h3>Les plugins font-ils mieux ?</h3>
+      <p>Des plugins comme EssentialsX ajoutent /broadcast et des listes de messages automatiques. Les commandes vanilla de cette page marchent aussi sur Paper et Spigot, sans rien installer.</p>
+    </div>
   </article>
 </main>
 <footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>

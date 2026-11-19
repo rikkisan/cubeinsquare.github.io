@@ -197,3 +197,27 @@
 | D4 | Версия 1.21 – 1.21.1: то же | 1.21.1 | Свой меч; броня из `textures/models/armor` | |
 | D5 | Кожаная броня с загруженным слоем, покрасить кожаный нагрудник красителем | 26.3 | Видна загруженная текстура без окраски (база прозрачная, оверлей не красится) | |
 | D6 | Черепаший шлем со своим слоем 1 | 26.3 | Свой шлем на голове (`humanoid/turtle_scute.png`) | |
+
+## Ноябрь: статья о несовместимых зачарованиях (переписана по данным 26.3)
+
+Страница: `/wiki-enchantment-conflicts/` (все 4 локали). Группы взяты из тегов `exclusive_set` в jar 26.3.
+
+| # | Что сделать | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| E1 | Лук с Бесконечностью + книга Починки на наковальне | 26.3 | Починка не переносится | |
+| E2 | `/give @p minecraft:trident[minecraft:enchantments={"minecraft:loyalty":3,"minecraft:channeling":1}] 1`, затем с этим трезубцем в руке `/enchant @p minecraft:riptide 1` | 26.3 | Трезубец с Верностью и Громовержцем; `/enchant` отказывает | |
+| E3 | Датапак с `data/minecraft/tags/enchantment/exclusive_set/bow.json` = `{"replace": true, "values": []}`, перезапуск мира; лук с Бесконечностью + книга Починки на наковальне | 26.3 | Починка переносится. Записать, хватает ли одного `/reload` (в статье осторожно сказано «может не хватить») | |
+| E4 | Трезубец на столе зачарований несколько раз | 26.3 | Громовержец иногда предлагается (он не сокровищный) | |
+
+## Ноябрь: статья об объявлениях на сервере (переписана с командами)
+
+Страница: `/wiki-minecraft-server-announcements/` (все 4 локали).
+
+| # | Что запустить | Версии | Ожидаемый результат | Итог |
+|---|---|---|---|---|
+| F1 | `say Server restarts in 10 minutes` из консоли | 26.3 | В чате `[Server] Server restarts in 10 minutes` | |
+| F2 | `tellraw @a {"text":"Read the rules","color":"aqua","underlined":true,"hover_event":{"action":"show_text","value":"Opens the rules page"},"click_event":{"action":"open_url","url":"https://example.com/rules"}}` | 26.3 | Подсказка при наведении, по клику окно подтверждения ссылки | |
+| F3 | Та же ссылка в старой форме (`hoverEvent` / `contents`, `clickEvent` / `value`) | 1.21.4 и 26.3 | На 1.21.4 работает; на 26.3 текст есть, наведения и клика нет | |
+| F4 | `title @a times 10 70 20`, затем subtitle и title из статьи | 26.3 | Заголовок с подзаголовком около 5 секунд | |
+| F5 | `title @a actionbar {"text":"PvP is off until 18:00","color":"green"}` | 26.3 | Зелёная строка над хотбаром, гаснет через несколько секунд | |
+| F6 | Функция `cube:broadcast` из статьи (с `random value 1..3`), `scoreboard objectives add announce dummy`, `function cube:broadcast` | 26.3 | Случайная подсказка сразу и затем каждые 5 минут; `schedule clear cube:broadcast` останавливает | |
