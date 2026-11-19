@@ -49,18 +49,18 @@
     { id: 'power', maxLevel: 5, treasure: false, weight: 10, categories: ['bow'], conflicts: [] },
     { id: 'punch', maxLevel: 2, treasure: false, weight: 5, categories: ['bow'], conflicts: [] },
     { id: 'flame', maxLevel: 1, treasure: false, weight: 2, categories: ['bow'], conflicts: [] },
-    { id: 'infinity', maxLevel: 1, treasure: false, weight: 1, categories: ['bow'], conflicts: [] },
+    { id: 'infinity', maxLevel: 1, treasure: false, weight: 1, categories: ['bow'], conflicts: ['mending'] },
     { id: 'multishot', maxLevel: 1, treasure: false, weight: 2, categories: ['crossbow'], conflicts: ['piercing'] },
     { id: 'piercing', maxLevel: 4, treasure: false, weight: 10, categories: ['crossbow'], conflicts: ['multishot'] },
     { id: 'quick_charge', maxLevel: 3, treasure: false, weight: 5, categories: ['crossbow'], conflicts: [] },
     { id: 'loyalty', maxLevel: 3, treasure: false, weight: 10, categories: ['trident'], conflicts: ['riptide'] },
     { id: 'riptide', maxLevel: 3, treasure: false, weight: 2, categories: ['trident'], conflicts: ['loyalty', 'channeling'] },
-    { id: 'channeling', maxLevel: 1, treasure: true, weight: 1, categories: ['trident'], conflicts: ['riptide'] },
+    { id: 'channeling', maxLevel: 1, treasure: false, weight: 1, categories: ['trident'], conflicts: ['riptide'] },
     { id: 'impaling', maxLevel: 5, treasure: false, weight: 5, categories: ['trident'], conflicts: [] },
     { id: 'luck_of_the_sea', maxLevel: 3, treasure: false, weight: 2, categories: ['fishing_rod'], conflicts: [] },
     { id: 'lure', maxLevel: 3, treasure: false, weight: 2, categories: ['fishing_rod'], conflicts: [] },
     { id: 'unbreaking', maxLevel: 3, treasure: false, weight: 5, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] },
-    { id: 'mending', maxLevel: 1, treasure: true, weight: 2, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] },
+    { id: 'mending', maxLevel: 1, treasure: true, weight: 2, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: ['infinity'] },
     { id: 'vanishing_curse', maxLevel: 1, treasure: true, weight: 1, categories: ['sword', 'tool', 'bow', 'crossbow', 'trident', 'fishing_rod', 'armor_head', 'armor_chest', 'armor_legs', 'armor_feet'], conflicts: [] }
   ];
 

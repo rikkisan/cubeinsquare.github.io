@@ -2,10 +2,10 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Welche Minecraft-Verzauberungen sich nicht kombinieren lassen &mdash; und warum | Cube in Square</title>
+    <title>Welche Minecraft-Verzauberungen sich nicht vertragen (Java 26.x) | Cube in Square</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Search metadata -->
-    <meta name="description" content="Alle Vanilla-Unverträglichkeitsgruppen, welche Verzauberungen reine Schatz-Verzauberungen sind, und warum ein Befehl ein Level vergeben kann, das ein Zaubertisch niemals geben würde.">
+    <meta name="description" content="Alle sieben Gruppen unverträglicher Verzauberungen der Java Edition, aus den Spieldaten von 26.3: Unendlichkeit und Reparatur, Sog und Treue, Glück und Behutsamkeit, Schärfe und Bann, Item für Item.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
@@ -21,16 +21,16 @@
     <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-enchantment-conflicts/">
     <meta property="og:site_name" content="Cube in Square">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Welche Minecraft-Verzauberungen sich nicht kombinieren lassen | Cube in Square">
-    <meta property="og:description" content="Alle Unverträglichkeitsgruppen, Schatz-Verzauberungen, und Level-Limits, die nur Befehlen offenstehen.">
+    <meta property="og:title" content="Welche Minecraft-Verzauberungen sich nicht vertragen (Java 26.x) | Cube in Square">
+    <meta property="og:description" content="Alle unverträglichen Verzauberungspaare in Java 26.x aus den Spieldaten, mit einer Liste pro Item und einem Datenpaket, das die Regeln ändert.">
     <meta property="og:url" content="https://cubeinsquare.com/de/wiki-enchantment-conflicts/">
     <meta property="og:locale" content="de_DE">
     <meta property="og:locale:alternate" content="en_US">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="fr_FR">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Welche Minecraft-Verzauberungen sich nicht kombinieren lassen | Cube in Square">
-    <meta name="twitter:description" content="Alle Unverträglichkeitsgruppen, Schatz-Verzauberungen, und Level-Limits, die nur Befehlen offenstehen.">
+    <meta name="twitter:title" content="Welche Minecraft-Verzauberungen sich nicht vertragen (Java 26.x) | Cube in Square">
+    <meta name="twitter:description" content="Alle unverträglichen Verzauberungspaare in Java 26.x aus den Spieldaten, mit einer Liste pro Item und einem Datenpaket, das die Regeln ändert.">
     <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/server-icon.png">
@@ -84,8 +84,9 @@
         {
             "@type": "Article",
             "@id": "https://cubeinsquare.com/de/wiki-enchantment-conflicts/#article",
-            "headline": "Welche Minecraft-Verzauberungen sich nicht kombinieren lassen, und warum",
-            "description": "Alle Unverträglichkeitsgruppen, Schatz-Verzauberungen, und Level-Limits, die nur Befehlen offenstehen.",
+            "headline": "Welche Minecraft-Verzauberungen sich nicht vertragen",
+            "description": "Alle unverträglichen Verzauberungspaare in Java 26.x aus den Spieldaten, mit einer Liste pro Item und einem Datenpaket, das die Regeln ändert.",
+            "dateModified": "2026-11-19",
             "author": {"@type": "Person", "name": "Rikki", "url": "https://cubeinsquare.com/de/about/#team"},
             "publisher": { "@id": "https://cubeinsquare.com/#organization" },
             "mainEntityOfPage": { "@id": "https://cubeinsquare.com/de/wiki-enchantment-conflicts/#webpage" },
@@ -96,7 +97,7 @@
             "@type": "WebPage",
             "@id": "https://cubeinsquare.com/de/wiki-enchantment-conflicts/#webpage",
             "url": "https://cubeinsquare.com/de/wiki-enchantment-conflicts/",
-            "name": "Welche Minecraft-Verzauberungen sich nicht kombinieren lassen, und warum",
+            "name": "Welche Minecraft-Verzauberungen sich nicht vertragen",
             "inLanguage": "de"
         },
         {
@@ -127,57 +128,82 @@
 <main class="page-shell wiki-article">
     <a class="article-back" href="/de/wiki/">&larr; Alle Artikel</a>
     <section class="page-hero">
-        <h1>Welche Minecraft-Verzauberungen sich nicht kombinieren lassen, und warum</h1>
-        <p class="page-lead">Ein Zaubertisch wird dir niemals Schärfe und Schaden gegen Untote am selben Schwert anbieten. Das ist kein Zufall &mdash; Vanilla kodiert eine kurze Liste von Unverträglichkeitsgruppen fest, und jede davon wird vom Spiel selbst erzwungen, nicht nur durch Konvention. Diese Liste zu kennen verhindert, eine Kombination zu würfeln (oder von Hand zu bauen), die ein Survival-Spieler nie hätte bekommen können.</p>
+        <h1>Welche Minecraft-Verzauberungen sich nicht vertragen</h1>
+        <p class="page-lead">In der Java Edition schließen sich sieben Gruppen von Verzauberungen gegenseitig aus. Aus jeder Gruppe trägt ein Item nur eine: eine Schutzart pro Rüstungsteil, eine Schadensverzauberung pro Waffe, Glück oder Behutsamkeit, Unendlichkeit oder Reparatur. Die Listen unten stammen aus den Datendateien des Spiels in 26.3, wo jede Gruppe ein Verzauberungs-Tag ist.</p>
         <p class="article-byline">Von <a href="/de/about/#team">Rikki</a></p>
     </section>
 
     <article>
-        <h2>Die Unverträglichkeitsgruppen</h2>
-        <table class="compact-table">
-            <tr><th>Gruppe</th><th>Verzauberungen</th><th>Warum</th></tr>
-            <tr><td>Rüstungsschutz</td><td>Schutz, Feuerschutz, Explosionsschutz, Projektilschutz</td><td>Alle verringern eingehenden Schaden auf dieselbe Weise; zwei zu stapeln würde dieselbe Minderung doppelt zählen.</td></tr>
-            <tr><td>Schwertschaden</td><td>Schärfe, Verwüstung, Schaden gegen Gliederfüßer</td><td>Alle verändern denselben Nahkampf-Schadenswurf für eine jeweils andere Zielart.</td></tr>
-            <tr><td>Abbauen oder Sammeln</td><td>Behutsamkeit, Glück</td><td>Behutsamkeit ersetzt den Drop komplett, sodass für Glück nichts zum Vervielfachen bleibt.</td></tr>
-            <tr><td>Dreizack-Bewegung</td><td>Fluttritt, Loyalität, Kanalisierung</td><td>Fluttritt schleudert den Spieler beim Treffer vorwärts und kann mit keiner Verzauberung koexistieren, die davon ausgeht, dass der Dreizack geworfen wird.</td></tr>
-            <tr><td>Armbrust-Projektile</td><td>Mehrfachschuss, Durchschlag</td><td>Beide verändern, wie viele Wesen ein einzelner Bolzen treffen kann, auf unvereinbare Weise.</td></tr>
-            <tr><td>Stiefel-Bewegung</td><td>Tiefensteher, Frostwanderer</td><td>Tiefensteher beschleunigt das Schwimmen; Frostwanderer verhindert jede Berührung mit Wasser.</td></tr>
+        <h2>Alle sieben Gruppen</h2>
+        <p>Jede Gruppe ist ein Tag in den Spieldaten (<code>exclusive_set/…</code>). Ein Item kann aus einer Gruppe nur eine Verzauberung tragen.</p>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Gruppe</th><th>Verzauberungen</th><th>Wo es zählt</th></tr></thead>
+            <tbody>
+            <tr><td>Schaden</td><td>Schärfe, Bann, Nemesis der Gliederfüßer, Harpune, Dichte (<code>density</code>), Durchbruch (<code>breach</code>)</td><td>Schwert, Axt, Speer und Streitkolben bekommen eine Schadensverzauberung. Harpune steht auch in der Gruppe, aber nur der Dreizack nimmt sie an.</td></tr>
+            <tr><td>Rüstung</td><td>Schutz, Feuerschutz, Explosionsschutz, Schusssicher</td><td>Eine Schutzart pro Rüstungsteil.</td></tr>
+            <tr><td>Abbau</td><td>Glück, Behutsamkeit</td><td>Spitzhacke, Axt, Schaufel und Hacke: mehr Drops oder der Block selbst, nicht beides.</td></tr>
+            <tr><td>Bogen</td><td>Unendlichkeit, Reparatur</td><td>Ein Bogen nimmt eine von beiden.</td></tr>
+            <tr><td>Armbrust</td><td>Mehrfachschuss, Durchschuss</td><td>Eine Armbrust nimmt eine von beiden.</td></tr>
+            <tr><td>Stiefel</td><td>Wasserläufer, Eisläufer</td><td>Stiefel nehmen eine von beiden.</td></tr>
+            <tr><td>Sog</td><td>Sog gegen Treue und gegen Entladung</td><td>Dreizack. Treue und Entladung passen zusammen; nur Sog schließt sie aus.</td></tr>
+            </tbody>
         </table>
-        <p>Außerhalb dieser Gruppen kombinieren sich Vanilla-Verzauberungen frei &mdash; Haltbarkeit, Reparatur und Fluch des Verschwindens gelten für fast jedes verzauberbare Item und stehen nie in Konflikt mit irgendetwas.</p>
+        <p>Alles außerhalb dieser Gruppen lässt sich frei kombinieren: Haltbarkeit, Effizienz, Plünderung, Verbrennung, Federfall, Dornen, Windstoß, <code>lunge</code> und beide Flüche haben gar keine Konflikte. Reparatur erwischt viele: Sie passt auf alles, nur nicht auf einen Bogen mit Unendlichkeit.</p>
 
-        <h2>Praxisbeispiel: Was passiert, wenn man es trotzdem erzwingt</h2>
-        <p>Versuche, Schärfe und Verwüstung an einem Zaubertisch, einem Amboss oder mit zwei verzauberten Büchern zu kombinieren, und die Oberfläche lässt es einfach nicht zu &mdash; die zweite Verzauberung ist ausgegraut, oder der Amboss verweigert die Kombination. Diese Blockade steckt im Crafting-Code, nicht in den Item-Daten. Schreibe beide direkt in ein Item, und das Spiel hält dich nicht auf:</p>
-        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1</code></pre>
-        <p>Das ist die Form für 1.21.5 – 26.x; in 1.20.5 – 1.21.4 stehen dieselben Paare in <code>{levels:{…}}</code>.</p>
-        <p>Dieses Item existiert, beide Verzauberungen erscheinen im Tooltip, und beide wenden ihren Schadensbonus im Kampf an. Kein Survival-Spieler hätte es je durch normales Spielen bekommen können &mdash; genau deshalb wirkt es sofort erkennbar untypisch: ein nützliches Signal für ein von einem Admin erzeugtes Relikt, und ein verräterisches Detail, falls das Item eigentlich legitim von einem Spieler stammen sollte.</p>
+        <h2>Item für Item</h2>
+        <table class="compact-table prose-table">
+            <thead><tr><th>Item</th><th>Nur eine von</th><th>Passt zu allem</th></tr></thead>
+            <tbody>
+            <tr><td>Schwert</td><td>Schärfe, Bann, Nemesis der Gliederfüßer</td><td>Verbrennung, Rückstoß, Plünderung, Schwungkraft, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Axt</td><td>Schärfe, Bann, Nemesis der Gliederfüßer; dazu Glück oder Behutsamkeit</td><td>Effizienz, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Speer (1.21.11+)</td><td>Schärfe, Bann, Nemesis der Gliederfüßer</td><td><code>lunge</code>, Rückstoß, Plünderung, Verbrennung, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Streitkolben</td><td>Bann, Nemesis der Gliederfüßer, Dichte, Durchbruch (Schärfe passt nicht auf einen Streitkolben)</td><td>Windstoß, Verbrennung, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Dreizack</td><td>Sog oder Treue und Entladung (die beiden passen zusammen)</td><td>Harpune, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Bogen</td><td>Unendlichkeit, Reparatur</td><td>Stärke, Schlag, Flamme, Haltbarkeit</td></tr>
+            <tr><td>Armbrust</td><td>Mehrfachschuss, Durchschuss</td><td>Schnellladen, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Spitzhacke, Schaufel, Hacke</td><td>Glück, Behutsamkeit</td><td>Effizienz, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Helm, Brustpanzer, Hose</td><td>Die vier Schutzarten</td><td>Atmung und Wasseraffinität (Helm), Huschen (Hose), Dornen, Haltbarkeit, Reparatur</td></tr>
+            <tr><td>Stiefel</td><td>Die vier Schutzarten; dazu Wasserläufer oder Eisläufer</td><td>Federfall, Seelenläufer, Dornen, Haltbarkeit, Reparatur</td></tr>
+            </tbody>
+        </table>
 
-        <h2>Wo das außerhalb des Zaubertischs auftaucht</h2>
-        <p>Dieselben Gruppen spielen an drei weiteren Stellen eine Rolle, auf die Ersteller stoßen:</p>
+        <h2>Wie das Spiel es durchsetzt</h2>
+        <p>Zwei Verzauberungen vertragen sich nicht, wenn eine von beiden die andere in ihrer Gruppe nennt; die Prüfung läuft also in beide Richtungen. Reparatur hat keine eigene Gruppe und schließt Unendlichkeit trotzdem aus, weil die Gruppe von Unendlichkeit sie nennt. Das Spiel prüft an drei Stellen:</p>
         <ul>
-            <li><strong>Amboss-Kombination.</strong> Das Kombinieren zweier Bücher oder eines Items mit einem Buch am Amboss weist die zweite Verzauberung zurück, wenn sie mit einer bereits vorhandenen auf dem Ziel im Konflikt steht &mdash; genau wie der Zaubertisch.</li>
-            <li><strong>Loot-Tables.</strong> Eine <code>minecraft:set_enchantments</code>-Funktion mit einer handgeschriebenen Liste prüft keine Konflikte &mdash; das sind einfach nur Daten. Eine Loot-Table kann durchaus Schärfe und Verwüstung auf demselben Schwert würfeln, sofern der Ersteller der Tabelle das nicht bewusst vermieden hat.</li>
-            <li><strong>Befehlsblöcke und Mob-Spawner.</strong> Jeder <code>/give</code>-Befehl, <code>/item modify</code> oder Spawn mit Ausrüstung hat dieselbe Freiheit und dieselbe Verantwortung &mdash; das Spiel warnt dich nicht, wenn eine Kombination natürlich nie hätte entstehen können.</li>
+            <li><strong>Zaubertisch:</strong> Er bietet nie eine zweite Verzauberung aus einer Gruppe an, die das Item schon nutzt.</li>
+            <li><strong>Amboss:</strong> Eine Verzauberung vom Buch oder zweiten Item, die mit einer schon vorhandenen kollidiert, wird nicht übertragen.</li>
+            <li><strong><code>/enchant</code>:</strong> Der Befehl lehnt eine Verzauberung ab, die mit einer vorhandenen kollidiert.</li>
         </ul>
+        <p>Die Item-Daten selbst kennen diese Regel nicht. <code>/give</code>, die Funktion <code>set_enchantments</code> einer Beutetabelle und <code>/item modify</code> schreiben alles, was du angibst:</p>
+        <pre><code>/give @p minecraft:diamond_sword[minecraft:enchantments={"minecraft:sharpness":5,"minecraft:smite":5}] 1</code></pre>
+        <p>Das ist die Form für 1.21.5 – 26.x; in 1.20.5 – 1.21.4 stehen die Paare in <code>{levels:{…}}</code>. Beide Verzauberungen bleiben auf dem Schwert und stehen im Tooltip. Im Überlebensmodus kann niemand so ein Item herstellen. Damit ist es das klare Zeichen eines Admin-Relikts und verrät ein Item, das eigentlich wie selbst erspielt aussehen soll. Mit Leveln ist es genauso: Die Komponente nimmt jedes Level von 1 bis 255, während Zaubertisch und Amboss beim Vanilla-Maximum aufhören, etwa bei Schärfe V.</p>
 
-        <h2>Schatz-Verzauberungen</h2>
-        <p>Eine Handvoll Verzauberungen kann niemals von einem Zaubertisch kommen, auf keinem Level, egal wie viel Lapis oder wie viele Bücherregale drumherum stehen: Reparatur, Frostwanderer, Fluch der Bindung, Fluch des Verschwindens, Seelenschnelligkeit, Leises Schleichen und Kanalisierung. Das sind "Schatz"-Verzauberungen, nur durch Angeln, Handel, Struktur-Loot oder einen <code>/give</code>-Befehl erhältlich. Ein Randomizer oder eine Loot-Table, die eine davon auf ein gewöhnliches Item würfelt, ist bewusst großzügig &mdash; genau die Art von Sache, die man absichtlich tun sollte, nicht aus Versehen.</p>
+        <h2>Die Regeln mit einem Datenpaket ändern</h2>
+        <p>Seit 1.21 sind Verzauberungen Daten, und jede Gruppe ist ein Tag in <code>data/minecraft/tags/enchantment/exclusive_set/</code>: <code>armor</code>, <code>boots</code>, <code>bow</code>, <code>crossbow</code>, <code>damage</code>, <code>mining</code> und <code>riptide</code>. Ein Datenpaket, das eins davon ersetzt, ändert die Regel für die ganze Welt. Damit Unendlichkeit und Reparatur auf einen Bogen passen, leerst du die Bogen-Gruppe. Speichere dafür diese Datei als <code>data/minecraft/tags/enchantment/exclusive_set/bow.json</code>:</p>
+        <pre><code>{
+  "replace": true,
+  "values": []
+}</code></pre>
+        <p>Verzauberungen werden beim Laden der Welt gelesen. Starte Welt oder Server nach dem Hinzufügen also neu, denn <code>/reload</code> allein reicht womöglich nicht. Danach akzeptieren Zaubertisch, Amboss und <code>/enchant</code> das Paar. Der <a href="/de/datapack-generator/">Datenpaket-Generator</a> baut den Ordner und die <code>pack.mcmeta</code> für deine Version; die Tag-Datei kommt dort hinein.</p>
 
-        <h2>Level-Limits sind ein Vorschlag, keine Wand</h2>
-        <p>Schärfe V ist das Maximum, das ein Zaubertisch oder eine Amboss-Kombination je erzeugen wird, aber dieses Limit gehört zur Verzauberungs-Oberfläche, nicht zur Verzauberung selbst. Ein <code>/give</code>-Befehl oder die Funktion <code>set_enchantments</code> einer Loot-Table kann jede beliebige Ganzzahl als Level in die Item-Daten schreiben, und das Spiel wendet Schärfe 100 ohne Weiteres an. Es gibt nirgendwo in den Item-Daten selbst eine Begrenzung &mdash; nur die Crafting-Systeme, die Verzauberungen vergeben, entscheiden sich dafür, beim Vanilla-Limit aufzuhören.</p>
+        <h2>Verzauberungen, die der Tisch nie anbietet</h2>
+        <p>Schatz-Verzauberungen kommen nie vom Zaubertisch: Reparatur, Eisläufer, Seelenläufer, Huschen, Windstoß, Fluch der Bindung und Fluch des Verschwindens (das Tag <code>treasure</code> in 26.3). Du findest sie in Truhen, beim Angeln und im Handel, wobei kein Bibliothekar Seelenläufer, Huschen oder Windstoß verkauft. Entladung ist keine Schatz-Verzauberung: Ein Dreizack bekommt sie auch am Tisch. Schatz und Gruppe sind zwei getrennte Regeln, deshalb schließt Eisläufer weiterhin Wasserläufer aus.</p>
 
-        <h2>Was das für einen Randomizer bedeutet</h2>
-        <p>Ein Tool, das Verzauberungen würfelt, hat drei ehrliche Optionen: innerhalb der Vanilla-Gruppen und Level-Limits bleiben, um etwas zu erzeugen, das ein Zaubertisch hätte hervorbringen können; Schatz-Verzauberungen erlauben und das klar kennzeichnen; oder Level über dem Limit erlauben und das ebenfalls kennzeichnen. Alle drei sind legitim, je nachdem, was gebaut wird &mdash; eine "realistische" Loot-Table für einen Survival-Server will die erste, eine Boss-Belohnung für eine Abenteuerkarte vielleicht die dritte. Der <a href="/de/enchantment-randomizer/">Verzauberungs- &amp; Attribut-Randomizer</a> berücksichtigt die Gruppen standardmäßig, mit einer expliziten Checkbox, um das abzuschalten.</p>
+        <h2>Im Randomizer</h2>
+        <p>Der <a href="/de/enchantment-randomizer/">Verzauberungs- und Attribut-Randomizer</a> würfelt standardmäßig innerhalb dieser Gruppen und legt deshalb nie Unendlichkeit und Reparatur oder Schärfe und Bann auf ein Item, solange du die Prüfung nicht abschaltest.</p>
 
         <h2>FAQ</h2>
         <div class="faq-section">
-            <h3>Können zwei Schatz-Verzauberungen miteinander in Konflikt stehen?</h3>
-            <p>Ja &mdash; "nur als Schatz erhältlich" und die Zugehörigkeit zu einer Unverträglichkeitsgruppe sind getrennte Regeln. Frostwanderer und Kanalisierung sind beide Schatz-Verzauberungen, aber Frostwanderer steht trotzdem im Konflikt mit Tiefensteher, und Kanalisierung mit Fluttritt, genau wie bei gewöhnlichen Verzauberungen.</p>
-            <h3>Nutzt Bedrock Edition dieselben Gruppen?</h3>
-            <p>Die Gruppen selbst sind dieselbe kurze Liste; diese Seite und der Randomizer sind für die Java-Edition-Syntax geschrieben und getestet, auf die die meisten Datapack- und Befehlsblock-Workflows abzielen.</p>
-            <h3>Kann ein Datapack diese Gruppen legitim überschreiben?</h3>
-            <p>Benutzerdefinierte Verzauberungen, die über das datengetriebene Verzauberungssystem definiert werden, können eigene exklusive Gruppen deklarieren, getrennt von denen von Vanilla. Das ist ein eigenes Thema der Datapack-Erstellung, außerhalb dessen, was ein auf Vanilla ausgerichteter Randomizer abdeckt.</p>
-            <h3>Warum berücksichtigt der Randomizer die Gruppen standardmäßig, statt sie zu ignorieren?</h3>
-            <p>Weil die häufigere Anfrage lautet: "gib mir etwas, das ein Spieler plausibel gefunden haben könnte", und das gilt nur, wenn die Gruppen eingehalten werden. Großzügigkeit darüber hinaus sollte eine bewusste Entscheidung sein, kein Zufall.</p>
+            <h3>Welche zwei Verzauberungen gehen nicht zusammen auf einen Bogen?</h3>
+            <p>Unendlichkeit und Reparatur. Stärke, Schlag, Flamme und Haltbarkeit passen zu beiden.</p>
+            <h3>Welche Dreizack-Verzauberungen sind unverträglich?</h3>
+            <p>Sog mit Treue und Sog mit Entladung. Treue und Entladung funktionieren zusammen, und Harpune passt zu allen dreien.</p>
+            <h3>Welche Schwert-Verzauberungen schließen sich aus?</h3>
+            <p>Schärfe, Bann und Nemesis der Gliederfüßer: Ein Schwert nimmt nur eine davon. Verbrennung, Rückstoß, Plünderung, Schwungkraft, Haltbarkeit und Reparatur passen dazu.</p>
+            <h3>Warum kann eine Spitzhacke nicht Glück und Behutsamkeit haben?</h3>
+            <p>Beide bilden eine Gruppe. Behutsamkeit liefert den Block selbst, Glück vervielfacht den normalen Drop, also erlaubt das Spiel nur eins pro Werkzeug.</p>
+            <h3>Nutzt die Bedrock Edition dieselben Gruppen?</h3>
+            <p>Größtenteils dieselben Paare, aber diese Seite ist nur gegen die Daten der Java Edition geprüft. Teste in Bedrock, bevor du dich auf eine Kombination verlässt.</p>
         </div>
 
         <h2>Weiterlesen</h2>
