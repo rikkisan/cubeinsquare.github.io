@@ -310,12 +310,25 @@
     </div>
 
     <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Version cible du jeu :</label>
+        <label for="gameVersionSelect" style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Version du jeu :</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">Avant 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5 – 1.21.3 (syntaxe Components : [custom_model_data=1])</option>
+            <option value="26.3" selected>26.3</option>
+            <option value="26.2">26.2</option>
+            <option value="26.1">26.1 – 26.1.2</option>
+            <option value="1.21.11">1.21.11</option>
+            <option value="1.21.9">1.21.9 – 1.21.10</option>
+            <option value="1.21.7">1.21.7 – 1.21.8</option>
+            <option value="1.21.6">1.21.6</option>
+            <option value="1.21.5">1.21.5</option>
+            <option value="1.21.4">1.21.4</option>
+            <option value="1.21.2">1.21.2 – 1.21.3</option>
+            <option value="1.21">1.21 – 1.21.1</option>
+            <option value="1.20.5">1.20.5 – 1.20.6</option>
+            <option value="1.20.3">1.20.3 – 1.20.4</option>
+            <option value="1.20.2">1.20.2</option>
+            <option value="1.20">1.20 – 1.20.1</option>
         </select>
-        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Le pack utilise le format de la 1.20 – 1.20.1 ; les versions récentes le chargent après un avertissement « version plus ancienne ». Les textures d’objets et de blocs remplacées marchent partout. Les variantes CustomModelData reposent sur les overrides de modèles, que Minecraft ignore depuis la 1.21.4 (utilisez-y le <a href="/fr/item-model-builder/">constructeur item_model</a>), et l’armure va dans le dossier <code>textures/models/armor</code>, remplacé en 1.21.2.</p>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Choisissez la version à laquelle vous jouez. Le générateur écrit son format de pack (<code>min_format</code> et <code>max_format</code> depuis la 1.21.9), place l'armure là où cette version la lit (<code>textures/entity/equipment</code> depuis la 1.21.2) et construit les variantes CustomModelData en définition d'objet dans <code>items/</code> depuis la 1.21.4, en overrides de modèle avant. Les commandes <code>/give</code> sous chaque objet suivent le même choix.</p>
     </div>
 
     <div class="tabs">
@@ -382,8 +395,8 @@
                 <p>Vous n'avez pas besoin de tout faire ici. Beaucoup de créateurs dessinent d'abord l'icône dans le texture painter, retravaillent ailleurs si besoin, puis reviennent ici pour lier le rendu à un item, un bloc ou une couche d'armure et exporter un ZIP propre.</p>
             </article>
             <article class="resource-card">
-                <h3>Encore plus utile après 1.20.5+</h3>
-                <p>Les nouvelles versions pardonnent moins les vieux tutos approximatifs. Quand la structure du pack, la logique des modèles et les commandes commencent à diverger, un workflow navigateur cohérent apporte beaucoup plus de valeur qu'un vieux guide copié-collé.</p>
+                <h3>Une structure de pack par version</h3>
+                <p>Minecraft a déplacé trois choses dont dépend un pack : les textures d'armure ont quitté <code>textures/models/armor</code> pour <code>textures/entity/equipment</code> en 1.21.2, les variantes CustomModelData sont passées des overrides de modèle aux définitions d'objet dans <code>items/</code> en 1.21.4, et <code>pack.mcmeta</code> est passé à <code>min_format</code> et <code>max_format</code> en 1.21.9. La version choisie règle les trois points, si bien que la structure d'un vieux tuto ne se retrouve jamais dans un pack pour un jeu récent.</p>
             </article>
         </div>
     </section>

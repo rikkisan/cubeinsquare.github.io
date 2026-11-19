@@ -305,12 +305,25 @@
     </div>
 
     <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Target game version:</label>
+        <label for="gameVersionSelect" style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Game version:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">Before 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5 – 1.21.3 (Components syntax: [custom_model_data=1])</option>
+            <option value="26.3" selected>26.3</option>
+            <option value="26.2">26.2</option>
+            <option value="26.1">26.1 – 26.1.2</option>
+            <option value="1.21.11">1.21.11</option>
+            <option value="1.21.9">1.21.9 – 1.21.10</option>
+            <option value="1.21.7">1.21.7 – 1.21.8</option>
+            <option value="1.21.6">1.21.6</option>
+            <option value="1.21.5">1.21.5</option>
+            <option value="1.21.4">1.21.4</option>
+            <option value="1.21.2">1.21.2 – 1.21.3</option>
+            <option value="1.21">1.21 – 1.21.1</option>
+            <option value="1.20.5">1.20.5 – 1.20.6</option>
+            <option value="1.20.3">1.20.3 – 1.20.4</option>
+            <option value="1.20.2">1.20.2</option>
+            <option value="1.20">1.20 – 1.20.1</option>
         </select>
-        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">The pack uses the format of 1.20 – 1.20.1; newer versions load it after an "older version" warning. Replaced item and block textures work in every version. CustomModelData variants rely on model overrides, which Minecraft ignores from 1.21.4 (use the <a href="/item-model-builder/">item model builder</a> there), and armor goes to the <code>textures/models/armor</code> folder that 1.21.2 replaced.</p>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Pick the version you play. The generator writes its pack format (<code>min_format</code> and <code>max_format</code> from 1.21.9), puts armor where that version reads it (<code>textures/entity/equipment</code> from 1.21.2) and builds CustomModelData variants as an item definition in <code>items/</code> from 1.21.4, or as model overrides before that. The <code>/give</code> commands under each item follow the same choice.</p>
     </div>
 
     <div class="tabs">
@@ -378,8 +391,8 @@
                 <p>You do not need to choose between “I use a pack tool” and “I do everything by hand”. Many creators sketch icons in the texture painter, refine skins or sprites elsewhere, then come back here to attach the right vanilla item, block face, or armor layer and export a clean archive.</p>
             </article>
             <article class="resource-card">
-                <h3>Especially helpful after 1.20.5+</h3>
-                <p>Modern Minecraft content is less forgiving than older tutorials make it seem. Once item syntax, model definitions, and resource-pack paths start diverging from old examples, a browser workflow that keeps the pieces aligned becomes a lot more valuable than another half-broken copy-paste guide.</p>
+                <h3>One pack layout per version</h3>
+                <p>Minecraft moved three things a pack depends on: armor textures left <code>textures/models/armor</code> for <code>textures/entity/equipment</code> in 1.21.2, CustomModelData variants moved from model overrides to item definitions in <code>items/</code> in 1.21.4, and <code>pack.mcmeta</code> switched to <code>min_format</code> and <code>max_format</code> in 1.21.9. The version you pick settles all three, so an old tutorial's layout never ends up in a pack for a new game.</p>
             </article>
         </div>
     </section>

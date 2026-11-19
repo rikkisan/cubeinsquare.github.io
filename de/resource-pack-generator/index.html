@@ -310,12 +310,25 @@
     </div>
 
     <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Ziel-Spielversion:</label>
+        <label for="gameVersionSelect" style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Spielversion:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">Vor 1.20.5 (NBT syntax: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5 – 1.21.3 (Components-Syntax: [custom_model_data=1])</option>
+            <option value="26.3" selected>26.3</option>
+            <option value="26.2">26.2</option>
+            <option value="26.1">26.1 – 26.1.2</option>
+            <option value="1.21.11">1.21.11</option>
+            <option value="1.21.9">1.21.9 – 1.21.10</option>
+            <option value="1.21.7">1.21.7 – 1.21.8</option>
+            <option value="1.21.6">1.21.6</option>
+            <option value="1.21.5">1.21.5</option>
+            <option value="1.21.4">1.21.4</option>
+            <option value="1.21.2">1.21.2 – 1.21.3</option>
+            <option value="1.21">1.21 – 1.21.1</option>
+            <option value="1.20.5">1.20.5 – 1.20.6</option>
+            <option value="1.20.3">1.20.3 – 1.20.4</option>
+            <option value="1.20.2">1.20.2</option>
+            <option value="1.20">1.20 – 1.20.1</option>
         </select>
-        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Das Pack nutzt das Format von 1.20 – 1.20.1; neuere Versionen laden es nach einer Warnung „ältere Version“. Ersetzte Item- und Blocktexturen funktionieren in jeder Version. CustomModelData-Varianten beruhen auf Modell-Overrides, die Minecraft ab 1.21.4 ignoriert (nutz dort den <a href="/de/item-model-builder/">item_model-Builder</a>), und Rüstung landet im Ordner <code>textures/models/armor</code>, den 1.21.2 ersetzt hat.</p>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Wähle die Version, die du spielst. Der Generator schreibt ihr Pack-Format (ab 1.21.9 <code>min_format</code> und <code>max_format</code>), legt die Rüstung dorthin, wo diese Version sie liest (ab 1.21.2 <code>textures/entity/equipment</code>), und baut CustomModelData-Varianten ab 1.21.4 als Item-Definition in <code>items/</code>, davor als Modell-Overrides. Die <code>/give</code>-Befehle unter jedem Item folgen derselben Wahl.</p>
     </div>
 
     <div class="tabs">
@@ -382,8 +395,8 @@
                 <p>Du musst nicht alles an einem Ort zeichnen. Viele bauen das Icon zuerst im Texture Painter, verfeinern später etwas extern und kommen dann hierher zurück, um das Ergebnis an ein Item, einen Block oder eine Rüstungsebene zu hängen und ein ordentliches ZIP zu exportieren.</p>
             </article>
             <article class="resource-card">
-                <h3>Besonders wertvoll seit 1.20.5+</h3>
-                <p>Je weiter moderne Minecraft-Versionen sich von alten Tutorials entfernen, desto hilfreicher wird ein Browser-Workflow, der Pack-Struktur und Befehlsebene zusammenhält. Der Generator ersetzt kein Verständnis, aber er reduziert sehr effektiv das Chaos in wiederholten Schritten.</p>
+                <h3>Eine Pack-Struktur pro Version</h3>
+                <p>Minecraft hat drei Dinge verschoben, von denen ein Pack abhängt: Rüstungstexturen sind in 1.21.2 von <code>textures/models/armor</code> nach <code>textures/entity/equipment</code> umgezogen, CustomModelData-Varianten in 1.21.4 von Modell-Overrides zu Item-Definitionen in <code>items/</code>, und <code>pack.mcmeta</code> nutzt seit 1.21.9 <code>min_format</code> und <code>max_format</code>. Die gewählte Version entscheidet alle drei Punkte, damit die Struktur eines alten Tutorials nie in einem Pack für ein neues Spiel landet.</p>
             </article>
         </div>
     </section>

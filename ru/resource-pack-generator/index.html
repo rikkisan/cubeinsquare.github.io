@@ -310,12 +310,25 @@
     </div>
 
     <div style="margin-bottom: 20px; text-align: center; width: 100%;">
-        <label style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Версия целевой игры:</label>
+        <label for="gameVersionSelect" style="font-weight: bold; color: var(--text-dim); margin-right: 10px;">Версия игры:</label>
         <select id="gameVersionSelect" style="background: rgba(0,0,0,0.5); color: white; border: 1px solid #475569; padding: 8px 15px; border-radius: 4px; font-size: 1rem; outline: none; cursor: pointer;" onchange="updateAllGiveCommands()">
-            <option value="1.20.4">До 1.20.5 (Синтаксис NBT: {CustomModelData:1})</option>
-            <option value="1.20.5">1.20.5 – 1.21.3 (Синтаксис Components: [custom_model_data=1])</option>
+            <option value="26.3" selected>26.3</option>
+            <option value="26.2">26.2</option>
+            <option value="26.1">26.1 – 26.1.2</option>
+            <option value="1.21.11">1.21.11</option>
+            <option value="1.21.9">1.21.9 – 1.21.10</option>
+            <option value="1.21.7">1.21.7 – 1.21.8</option>
+            <option value="1.21.6">1.21.6</option>
+            <option value="1.21.5">1.21.5</option>
+            <option value="1.21.4">1.21.4</option>
+            <option value="1.21.2">1.21.2 – 1.21.3</option>
+            <option value="1.21">1.21 – 1.21.1</option>
+            <option value="1.20.5">1.20.5 – 1.20.6</option>
+            <option value="1.20.3">1.20.3 – 1.20.4</option>
+            <option value="1.20.2">1.20.2</option>
+            <option value="1.20">1.20 – 1.20.1</option>
         </select>
-        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Пак собирается в формате 1.20 – 1.20.1; новые версии загружают его после предупреждения о старой версии. Заменённые текстуры предметов и блоков работают в любой версии. Варианты CustomModelData держатся на overrides моделей, которые Minecraft игнорирует с 1.21.4 (там используйте <a href="/ru/item-model-builder/">конструктор item_model</a>), а броня кладётся в папку <code>textures/models/armor</code>, которую заменили в 1.21.2.</p>
+        <p class="tool-summary" style="max-width: 760px; margin: 10px auto 0;">Выберите версию, на которой играете. Генератор запишет её формат пака (с 1.21.9 — <code>min_format</code> и <code>max_format</code>), положит броню туда, где её читает эта версия (с 1.21.2 — <code>textures/entity/equipment</code>), а варианты CustomModelData с 1.21.4 соберёт как определение предмета в папке <code>items/</code>, до неё — как overrides моделей. Команды <code>/give</code> под каждым предметом следуют тому же выбору.</p>
     </div>
 
     <div class="tabs">
@@ -382,8 +395,8 @@
                 <p>Не нужно выбирать между «делаю всё руками» и «живу только в генераторе». Часто удобнее набросать иконку в редакторе текстур, потом вернуться сюда, привязать её к предмету, блоку или слою брони и уже отсюда экспортировать аккуратный архив.</p>
             </article>
             <article class="resource-card">
-                <h3>Особенно полезен после 1.20.5+</h3>
-                <p>Чем дальше Minecraft уходит от старых туториалов, тем ценнее становится браузерный workflow, который удерживает pack-структуру и командную часть в одном направлении. Генератор не заменяет понимание системы, но очень хорошо убирает хаос из повторяющихся шагов.</p>
+                <h3>Своя структура пака для каждой версии</h3>
+                <p>Minecraft перенёс три вещи, от которых зависит пак: текстуры брони в 1.21.2 переехали из <code>textures/models/armor</code> в <code>textures/entity/equipment</code>, варианты CustomModelData в 1.21.4 — из overrides моделей в определения предметов в папке <code>items/</code>, а <code>pack.mcmeta</code> в 1.21.9 перешёл на <code>min_format</code> и <code>max_format</code>. Выбранная версия решает все три вопроса, поэтому структура из старого туториала не попадёт в пак для новой игры.</p>
             </article>
         </div>
     </section>

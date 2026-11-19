@@ -423,6 +423,27 @@
         });
     }
 
+    // Resource pack format of each release, keyed by the <option> values of #gameVersionSelect
+    // (26.3, 1.21.11 and 1.21.4 read from the game's version.json, the rest from the wiki table).
+    const RESOURCE_PACK_FORMATS = {
+        '26.3': 97, '26.2': 88, '26.1': 84, '1.21.11': 75, '1.21.9': 69, '1.21.7': 64, '1.21.6': 63,
+        '1.21.5': 55, '1.21.4': 46, '1.21.2': 42, '1.21': 34, '1.20.5': 32, '1.20.3': 22, '1.20.2': 18, '1.20': 15
+    };
+
+    function getTargetVersion() {
+        const select = document.getElementById('gameVersionSelect');
+        const id = select && RESOURCE_PACK_FORMATS[select.value] ? select.value : '26.3';
+        const format = RESOURCE_PACK_FORMATS[id];
+        return {
+            id,
+            format,
+            nbtGive: format < 32,           // before 1.20.5 items carry NBT, not components
+            itemDefinitions: format >= 46,  // 1.21.4: items/*.json replaces model overrides; CMD becomes {floats:[…]}
+            equipment: format >= 42,        // 1.21.2: armor textures live in textures/entity/equipment
+            minMaxFormat: format >= 65      // 1.21.9: pack.mcmeta takes min_format and max_format
+        };
+    }
+
     function updateGiveCommand(id) {
         const itemInput = document.getElementById(`input_${id}`);
         const cmdInput = document.getElementById(`cmd_${id}`);
@@ -431,19 +452,20 @@
 
         let itemName = itemInput.value.trim();
         let cmd = cmdInput ? cmdInput.value.trim() : "";
-        
+
         if (!itemName) {
             givePreview.style.display = 'none';
             return;
         }
-        
-        const versionSelect = document.getElementById('gameVersionSelect');
-        const version = versionSelect ? versionSelect.value : '1.20.4';
+
+        const target = getTargetVersion();
         givePreview.style.display = 'block';
 
         if (cmd) {
-            if (version === '1.20.4') {
+            if (target.nbtGive) {
                 givePreview.innerText = `/give @p minecraft:${itemName}{CustomModelData:${cmd}} 1`;
+            } else if (target.itemDefinitions) {
+                givePreview.innerText = `/give @p minecraft:${itemName}[minecraft:custom_model_data={floats:[${cmd}f]}] 1`;
             } else {
                 givePreview.innerText = `/give @p minecraft:${itemName}[minecraft:custom_model_data=${cmd}] 1`;
             }
@@ -599,24 +621,31 @@
         
         let safeFileName = packName.replace(/[^a-z0-9а-яё_-]/gi, '_');
 
-        // MCMETA
+        // MCMETA: the format of the chosen version; 1.21.9 replaced pack_format with
+        // min_format/max_format, and a bare major number in max_format accepts its minor versions.
+        const target = getTargetVersion();
+        const description = `§b${packName}\n§7${packDescription || UI_TEXT.createdWith}`;
         zip.file("pack.mcmeta", JSON.stringify({
-            pack: { 
-                pack_format: 15, 
-                description: `§b${packName}\n§7${packDescription || UI_TEXT.createdWith}` 
-            }
+            pack: target.minMaxFormat
+                ? { min_format: target.format, max_format: target.format, description }
+                : { pack_format: target.format, description }
         }, null, 2));
 
+        // Paths are written in full, so JSZip only creates the folders a file actually needs.
         const assetsFolder = zip.folder("assets/minecraft");
-        const armorFolder = assetsFolder.folder("textures/models/armor");
-        const itemFolder = assetsFolder.folder("textures/item");
-        const blockFolder = assetsFolder.folder("textures/block");
-        const blockModelFolder = assetsFolder.folder("models/block");
-        const blockStateFolder = assetsFolder.folder("blockstates");
+        const armorFolder = { file: (name, ...rest) => assetsFolder.file(`textures/models/armor/${name}`, ...rest) };
+        const itemFolder = { file: (name, ...rest) => assetsFolder.file(`textures/item/${name}`, ...rest) };
+        const blockFolder = { file: (name, ...rest) => assetsFolder.file(`textures/block/${name}`, ...rest) };
+        const blockModelFolder = { file: (name, ...rest) => assetsFolder.file(`models/block/${name}`, ...rest) };
+        const blockStateFolder = { file: (name, ...rest) => assetsFolder.file(`blockstates/${name}`, ...rest) };
 
         // --- БРОНЯ ---
         const emptyImageBase64 = TRANSPARENT_PIXEL;
         let leatherEmptyGenerated = false;
+        // From 1.21.2 armor is drawn from equipment textures: layer 1 is "humanoid", layer 2
+        // (leggings) is "humanoid_leggings", and the turtle helmet's texture is "turtle_scute".
+        const equipmentTextureNames = { turtle: 'turtle_scute' };
+        const equipmentLayerFolders = { layer_1: 'humanoid', layer_2: 'humanoid_leggings' };
 
         document.querySelectorAll('#armor-container .dynamic-row').forEach(row => {
             const rowId = row.id.replace('row_', '');
@@ -624,7 +653,16 @@
 
             ['layer_1', 'layer_2'].forEach(layer => {
                 const fileId = `${rowId}_${layer}`;
-                if (filesData[fileId]) {
+                if (filesData[fileId] && target.equipment) {
+                    const folder = `textures/entity/equipment/${equipmentLayerFolders[layer]}`;
+                    if (material === 'leather') {
+                        // The dyed base goes transparent so the upload (the undyed overlay) is what shows.
+                        assetsFolder.file(`${folder}/leather_overlay.png`, filesData[fileId], {base64: true});
+                        assetsFolder.file(`${folder}/leather.png`, emptyImageBase64, {base64: true});
+                    } else {
+                        assetsFolder.file(`${folder}/${equipmentTextureNames[material] || material}.png`, filesData[fileId], {base64: true});
+                    }
+                } else if (filesData[fileId]) {
                     if (material === 'leather') {
                         // Используем _overlay для кожи
                         armorFolder.file(`${material}_${layer}_overlay.png`, filesData[fileId], {base64: true});
@@ -669,7 +707,7 @@
         });
 
         // --- ПРЕДМЕТЫ ---
-        const itemModelFolder = assetsFolder.folder("models").folder("item");
+        const itemModelFolder = { file: (name, ...rest) => assetsFolder.file(`models/item/${name}`, ...rest) };
         const itemOverrides = {};
 
         document.querySelectorAll('#items-container .dynamic-row').forEach(row => {
@@ -677,13 +715,14 @@
             let val = document.getElementById(`input_${id}`).value.trim();
             const cmdInput = document.getElementById(`cmd_${id}`);
             const cmdVal = cmdInput ? cmdInput.value.trim() : '';
-            
+            const cmdNumber = parseInt(cmdVal, 10);
+
             if (val && filesData[id]) {
                 const baseItem = val.replace('.png', '');
-                
-                if (cmdVal) {
+
+                if (Number.isFinite(cmdNumber) && cmdNumber > 0) {
                     if (!itemOverrides[baseItem]) itemOverrides[baseItem] = [];
-                    itemOverrides[baseItem].push({ cmd: parseInt(cmdVal), fileId: id });
+                    itemOverrides[baseItem].push({ cmd: cmdNumber, fileId: id });
                 } else {
                     itemFolder.file(`${baseItem}.png`, filesData[id], {base64: true});
                 }
@@ -715,8 +754,27 @@
                 itemModelFolder.file(`${customModelName}.json`, JSON.stringify(customModelJson, null, 2));
                 itemFolder.file(`${customModelName}.png`, filesData[ov.fileId], {base64: true});
             });
-            
-            itemModelFolder.file(`${baseItem}.json`, JSON.stringify(baseModelJson, null, 2));
+
+            if (target.itemDefinitions) {
+                // 1.21.4 ignores model overrides. An item definition picks the model instead:
+                // range_dispatch takes the entry with the highest threshold not above
+                // custom_model_data floats[0], and the vanilla model otherwise.
+                const definition = {
+                    model: {
+                        type: "minecraft:range_dispatch",
+                        property: "minecraft:custom_model_data",
+                        index: 0,
+                        fallback: { type: "minecraft:model", model: `minecraft:item/${baseItem}` },
+                        entries: overrides.map(ov => ({
+                            threshold: ov.cmd,
+                            model: { type: "minecraft:model", model: `minecraft:item/custom_${baseItem}_${ov.cmd}` }
+                        }))
+                    }
+                };
+                assetsFolder.file(`items/${baseItem}.json`, JSON.stringify(definition, null, 2));
+            } else {
+                itemModelFolder.file(`${baseItem}.json`, JSON.stringify(baseModelJson, null, 2));
+            }
         }
 
         // --- БЛОКИ ---
@@ -798,7 +856,8 @@
         });
 
         // Проверка: есть ли хоть один файл (помимо mcmeta)
-        if(Object.keys(zip.files).length <= 1) {
+        // Folder entries count in zip.files too, so count files only.
+        if (Object.values(zip.files).filter(entry => !entry.dir).length <= 1) {
             trackEvent('resource_pack_build_blocked_empty', getResourcePackStats());
             alert(UI_TEXT.emptyAlert);
             return;
