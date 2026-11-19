@@ -184,7 +184,7 @@
   "replace": true,
   "values": []
 }</code></pre>
-        <p>Enchantments are read when the world loads, so restart the world or server after adding the file; <code>/reload</code> alone may not pick it up. After that the table, the anvil and <code>/enchant</code> all accept the pair. The <a href="/datapack-generator/">data pack generator</a> builds the folder and <code>pack.mcmeta</code> for your version; the tag file goes inside it.</p>
+        <p>No restart is needed: <code>/reload</code> picks the file up (we checked on a 26.3 server). After that the table, the anvil and <code>/enchant</code> all accept the pair. The <a href="/datapack-generator/">data pack generator</a> builds the folder and <code>pack.mcmeta</code> for your version; the tag file goes inside it.</p>
 
         <h2>Enchantments the table never offers</h2>
         <p>Treasure enchantments never come from an enchanting table: Mending, Frost Walker, Soul Speed, Swift Sneak, Wind Burst, Curse of Binding and Curse of Vanishing (the <code>treasure</code> tag in 26.3). They come from loot chests, fishing and trading, and no librarian sells Soul Speed, Swift Sneak or Wind Burst. Channeling is not a treasure enchantment: a trident can get it from the table. Being treasure and being in a group are separate rules, so Frost Walker still excludes Depth Strider.</p>
