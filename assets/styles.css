@@ -2858,6 +2858,14 @@
             .prose-table th,
             .prose-table td {
                 white-space: normal;
+                overflow-wrap: anywhere;
+                hyphens: auto;
+                padding: 10px 8px;
+            }
+
+            .prose-table th:first-child,
+            .prose-table td:first-child {
+                min-width: 6.5em;
             }
 
             .copy-example {
