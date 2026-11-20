@@ -51,6 +51,8 @@ for the individual commits.
 | 2026-10-24 | AdSense wave A: bossbar pages rewritten, four short articles merged or closed, "coming soon" removed, complete tools and wiki hubs (see "AdSense resubmission" below). |
 | 2026-10-25 | AdSense waves B and C: text for the 12 thin tools, version fixes across articles and tools, contact email in every footer, bylines, mod pages rewritten as documentation. |
 | 2026-11-20 | `styles.css`: a `textarea.command-output` outside a `.tool-field` had no width rule, so nine live tools (advancement, book and letter, bossbar, data pack, dialogue, enchantment randomizer, item model, loot table, recipe) showed their commands in a 168 px box since launch. It now has the field look at full width; `.tool-checkline` shares the `.tool-check` chip look (`2fa3172`). |
+| 2026-11-20 | Recipe generator (x4): in the modern (default) theme the slot inputs showed the raw ID over the slot caption on a dark box since the August release; the page's slot rule now outranks the theme (`42e3381`). The tool has no item library: IDs are typed. The only block and item library with pictures is the resource pack generator's (`assets/data.js`). |
+| 2026-11-20 | Skin editor (x4): a left drag on the empty space around the 3D model turns it (a drag on the model still paints), Orbit renamed Rotate / Вращение / Rotation / Drehen, a line under the 3D view explains turning and zoom (`597a94f`). |
 
 ### Pipeline incidents worth remembering
 
