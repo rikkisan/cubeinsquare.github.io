@@ -2122,7 +2122,8 @@
 
         .tool-field input,
         .tool-field select,
-        .tool-field textarea {
+        .tool-field textarea,
+        .command-output {
             width: 100%;
             box-sizing: border-box;
             border: 1px solid rgba(148, 163, 184, 0.28);
@@ -2136,7 +2137,8 @@
 
         .tool-field input:focus,
         .tool-field select:focus,
-        .tool-field textarea:focus {
+        .tool-field textarea:focus,
+        .command-output:focus {
             border-color: rgba(96, 165, 250, 0.72);
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16);
         }
@@ -2256,7 +2258,8 @@
             margin-top: 16px;
         }
 
-        .tool-check {
+        .tool-check,
+        .tool-checkline {
             display: flex;
             align-items: center;
             gap: 9px;
@@ -2269,14 +2272,21 @@
             transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
         }
 
-        .tool-check:hover {
+        .tool-check:hover,
+        .tool-checkline:hover {
             border-color: rgba(148, 163, 184, 0.34);
             background: rgba(30, 41, 59, 0.56);
         }
 
-        .tool-check:has(input[type="checkbox"]:checked) {
+        .tool-check:has(input[type="checkbox"]:checked),
+        .tool-checkline:has(input[type="checkbox"]:checked) {
             border-color: rgba(88, 101, 242, 0.58);
             background: rgba(88, 101, 242, 0.12);
+        }
+
+        /* Next to labelled fields, sit on the input row instead of stretching over the label. */
+        .tool-form-grid:has(> .tool-field) > .tool-checkline {
+            align-self: end;
         }
 
         .tool-field input[type="checkbox"],
