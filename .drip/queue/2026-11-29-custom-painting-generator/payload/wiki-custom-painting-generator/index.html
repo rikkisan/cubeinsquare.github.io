@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Paintings in Minecraft 1.21+: Painting Generator Guide | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="How custom paintings work from 1.21 to 26.3: the resource pack and data pack the generator builds, sizes up to 16 x 16 blocks, give commands per version, the placeable list, replacing vanilla paintings on 1.20, and what we checked on servers.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Rikki">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Custom Paintings in Minecraft 1.21+: Painting Generator Guide | Cube in Square">
+    <meta property="og:description" content="How custom paintings work from 1.21 to 26.3: the resource pack and data pack the generator builds, sizes up to 16 x 16 blocks, give commands per version, the placeable list, replacing vanilla paintings on 1.20, and what we checked on servers.">
+    <meta property="og:url" content="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Custom Paintings in Minecraft 1.21+: Painting Generator Guide | Cube in Square">
+    <meta name="twitter:description" content="How custom paintings work from 1.21 to 26.3: the resource pack and data pack the generator builds, sizes up to 16 x 16 blocks, give commands per version, the placeable list, replacing vanilla paintings on 1.20, and what we checked on servers.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/wiki-custom-painting-generator/#article",
+            "headline": "Custom paintings in Minecraft: how the painting generator builds them",
+            "description": "How custom paintings work from 1.21 to 26.3: the resource pack and data pack the generator builds, sizes up to 16 x 16 blocks, give commands per version, the placeable list, replacing vanilla paintings on 1.20, and what we checked on servers.",
+            "author": {
+                "@type": "Person",
+                "name": "Rikki",
+                "url": "https://cubeinsquare.com/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/wiki-custom-painting-generator/#webpage"
+            },
+            "datePublished": "2026-11-29",
+            "dateModified": "2026-11-29",
+            "inLanguage": "en",
+            "url": "https://cubeinsquare.com/wiki-custom-painting-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/wiki-custom-painting-generator/#webpage",
+            "url": "https://cubeinsquare.com/wiki-custom-painting-generator/",
+            "name": "Custom paintings in Minecraft: how the painting generator builds them",
+            "inLanguage": "en"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/wiki-custom-painting-generator/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://cubeinsquare.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Custom paintings guide",
+                    "item": "https://cubeinsquare.com/wiki-custom-painting-generator/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/" aria-label="Home" title="Home"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/tools/">Tools</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/about/">Project</a></div>
+        <form class="steam-search" action="/wiki/" method="get"><input type="text" name="q" placeholder="Search the site..."><button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-painting-generator/">RU</a><a class="is-active" href="#">EN</a><a href="/fr/wiki-custom-painting-generator/">FR</a><a href="/de/wiki-custom-painting-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/wiki/">&larr; All articles</a>
+    <section class="page-hero">
+        <h1>Custom paintings in Minecraft: how the painting generator builds them</h1>
+        <p class="page-lead">Since 1.21 paintings are no longer a fixed list inside the game: a data pack can add new ones of any size up to 16 × 16 blocks, and a resource pack gives them a picture. The <a href="/custom-painting-generator/">custom painting generator</a> builds both packs from your images. This guide explains what is inside them, how to get the paintings onto a wall, and what usually goes wrong.</p>
+        <p class="article-byline">By <a href="/about/#team">Rikki</a></p>
+    </section>
+
+    <article>
+        <h2>New paintings or replaced ones</h2>
+        <p>There are two ways to put your own picture in a frame, and they suit different situations.</p>
+        <table class="compact-table prose-table"><thead><tr><th></th><th>New painting</th><th>Replaced vanilla painting</th></tr></thead><tbody>
+        <tr><td>Versions</td><td>1.21 – 26.3</td><td>1.20 – 26.3</td></tr>
+        <tr><td>Packs</td><td>Resource pack and data pack</td><td>Resource pack only</td></tr>
+        <tr><td>Size</td><td>Your choice, 1 to 16 blocks each way</td><td>Fixed by the painting it replaces</td></tr>
+        <tr><td>Vanilla paintings</td><td>All of them stay</td><td>The replaced one changes for everyone using the pack</td></tr>
+        <tr><td>Players without the resource pack</td><td>See purple and black squares</td><td>See the original painting</td></tr>
+        </tbody></table>
+        <p>Replacing is the quick option for a single player world, or for a server you do not run, because a resource pack only changes what you see. A new painting suits a server or a map: it exists in the world for everyone and can have its own size, title and author.</p>
+
+        <h2>What is in the two packs</h2>
+        <p>For new paintings the generator writes a resource pack and a data pack with the same namespace (<code>paintings</code> unless you change it):</p>
+        <table class="compact-table prose-table"><thead><tr><th>File</th><th>What it does</th></tr></thead><tbody>
+        <tr><td><code>assets/paintings/textures/painting/&lt;id&gt;.png</code></td><td>The picture. The game finds it through the painting's <code>asset_id</code>.</td></tr>
+        <tr><td><code>pack.png</code></td><td>The icon in the resource pack list, cut from your first painting.</td></tr>
+        <tr><td><code>data/paintings/painting_variant/&lt;id&gt;.json</code></td><td>Registers the painting: its picture, size in blocks, title and author.</td></tr>
+        <tr><td><code>data/minecraft/tags/painting_variant/placeable.json</code></td><td>Lets the painting turn up when someone hangs a plain painting. Left out when no painting is marked for it.</td></tr>
+        <tr><td><code>pack.mcmeta</code> (both packs)</td><td>The pack format of your version: <code>pack_format</code> up to 1.21.8, <code>min_format</code> and <code>max_format</code> from 1.21.9.</td></tr>
+        </tbody></table>
+        <p>A painting definition is short:</p>
+<pre><code>{
+  "asset_id": "paintings:sunset_lake",
+  "width": 3,
+  "height": 2,
+  "title": { "text": "Sunset lake", "color": "yellow" },
+  "author": { "text": "Cube in Square", "color": "gray" }
+}</code></pre>
+        <p><code>asset_id</code> points to <code>assets/paintings/textures/painting/sunset_lake.png</code>. <code>width</code> and <code>height</code> are in blocks, from 1 to 16. Title and author are text components for the tooltip; they exist from 1.21.2, so for 1.21 – 1.21.1 the generator leaves them out. Yellow and gray are the colors the vanilla paintings use.</p>
+
+        <h2>Size, pixels and colors</h2>
+        <p>The texture is the size in blocks times the pixels per block: a 3 × 2 painting at 16 pixels per block is a 48 × 32 picture. Vanilla paintings use 16, which is why a photo at that setting turns into chunky pixel art that looks at home next to them. The game stretches the texture over the whole painting, so 32, 64 or 128 pixels per block simply give a sharper picture. Beyond about 1024 pixels on a side the difference is hard to see, while the textures keep growing in players' graphics memory.</p>
+        <p>The color setting reduces the picture to 32, 16 or 8 colors taken from the image itself. With few colors, dithering mixes neighbouring pixels so a sky stays a gradient instead of breaking into bands; without it you get flat areas, like a poster. Contrast and saturation are applied before the colors are reduced. Paintings are drawn opaque, so transparent parts of a PNG are filled with the border color.</p>
+        <p>Crop to fill keeps the frame full and cuts the picture to the painting's shape; the two sliders move the cut. Whole image keeps everything and fills the rest with a border. Match the image shape changes the size in blocks to follow the picture, keeping the longer side.</p>
+
+        <h2>Putting the painting on a wall</h2>
+        <p>The give command depends on the version, and the generator writes the right one:</p>
+        <table class="compact-table prose-table"><thead><tr><th>Version</th><th>Command</th></tr></thead><tbody>
+        <tr><td>1.21.5 – 26.3</td><td><code>give @p minecraft:painting[minecraft:painting/variant="paintings:sunset_lake"]</code></td></tr>
+        <tr><td>1.20.5 – 1.21.4</td><td><code>give @p minecraft:painting[minecraft:entity_data={id:"minecraft:painting",variant:"paintings:sunset_lake"}]</code></td></tr>
+        <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (vanilla paintings only)</td></tr>
+        </tbody></table>
+        <p>From 1.21.5 the game checks the name: a typo gives <em>Failed to get element</em> instead of an item. Earlier versions accept any name, and a painting with an unknown name comes out as a vanilla one.</p>
+        <p>A plain painting from the crafting table works differently. When you hang it, the game takes every painting from the <code>placeable</code> list that fits the free wall and picks one at random. With Can appear when a plain painting is hung ticked, the generator adds yours to that list, but among more than forty vanilla paintings they come up rarely. Tick When a plain painting is hung, choose only from mine and the tag gets <code>"replace": true</code>: only your paintings are candidates. A wall where none of them fits then gets no painting at all, so keep at least one small painting in the set.</p>
+
+        <h2>Installing</h2>
+        <ol class="article-list">
+            <li>Resource pack: into <code>.minecraft/resourcepacks/</code>, then Options → Resource Packs. On a server every player needs it, so offer it as the server resource pack (<code>resource-pack</code> in <code>server.properties</code>) or share the file.</li>
+            <li>Data pack: into <code>&lt;world&gt;/datapacks/</code>, or add it on the data pack screen when you create a world.</li>
+            <li>Leave the world and open it again, or restart the server.</li>
+        </ol>
+        <p>The last step is the one people skip. Painting definitions are read only when the world loads. On 1.21.4 and 26.3 we added the pack to a running server and ran <code>/reload</code>: <code>/datapack list</code> showed it as enabled, but the paintings did not exist, and the <code>placeable</code> tag failed to load altogether because it named paintings the game did not know yet. After a restart everything worked.</p>
+
+        <h2>Replacing vanilla paintings</h2>
+        <p>A replacement only swaps the texture at <code>assets/minecraft/textures/painting/&lt;name&gt;.png</code>. The size stays the vanilla one, so pick a painting whose shape matches your picture; the generator lists the paintings your version has and suggests the closest shape.</p>
+        <table class="compact-table prose-table"><thead><tr><th>Size</th><th>Paintings</th></tr></thead><tbody>
+        <tr><td>1 × 1</td><td>kebab, aztec, alban, aztec2, bomb, plant, wasteland, meditative*</td></tr>
+        <tr><td>2 × 1</td><td>pool, courbet, sea, sunset, creebet</td></tr>
+        <tr><td>1 × 2</td><td>wanderer, graham, prairie_ride*</td></tr>
+        <tr><td>2 × 2</td><td>match, bust, stage, void, skull_and_roses, wither, earth, wind, water, fire, baroque*, humble*</td></tr>
+        <tr><td>4 × 2</td><td>fighters, changing*, finding*, lowmist*, passage*</td></tr>
+        <tr><td>3 × 3</td><td>bouquet*, cavebird*, cotan*, endboss*, fern*, owlemons*, sunflowers*, tides*, dennis (1.21.11+)</td></tr>
+        <tr><td>3 × 4</td><td>backyard*, pond*</td></tr>
+        <tr><td>4 × 3</td><td>skeleton, donkey_kong</td></tr>
+        <tr><td>4 × 4</td><td>pointer, pigscene, burning_skull, orb*, unpacked*</td></tr>
+        </tbody></table>
+        <p>* added in 1.21. Earth, wind, water and fire are not in the <code>placeable</code> list, so a plain painting never turns into them. We read the list from the server files of each version.</p>
+
+        <h2>What we checked</h2>
+        <p>We loaded packs in this format on vanilla servers 1.20.4, 1.20.6, 1.21.1, 1.21.2, 1.21.4, 1.21.5, 1.21.11, 26.1, 26.2 and 26.3, and the generator's own downloads on 1.21.1, 1.21.4, 1.21.5 and 26.3:</p>
+        <ul class="article-list">
+            <li>On 1.20.x a <code>painting_variant</code> folder is ignored, and a painting asked for by a new name becomes kebab. That is why the generator only replaces paintings there.</li>
+            <li>From 1.21, paintings of 3 × 2, 2 × 2 and 16 × 16 blocks load, hang on a wall and stay there.</li>
+            <li>A painting 17 blocks wide stops the world from loading: the server logs <em>Failed to load datapacks, can't proceed with server load</em> and refuses every pack. The generator caps both sides at 16.</li>
+            <li><code>painting/variant</code> works from 1.21.5; on 1.21.4 it is an unknown component. <code>entity_data</code> works on 1.20.5 – 1.21.4.</li>
+            <li>A <code>placeable</code> tag with <code>"replace": true</code> loads without errors.</li>
+        </ul>
+        <p>How the picture looks on screen needs a player, so check the first painting in your own world before you hand the packs to a server.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Do players on my server need the resource pack?</h3>
+            <p>Yes. The data pack tells the server the painting exists; each player's game needs the picture. Without the resource pack they see purple and black squares where the painting hangs.</p>
+            <h3>Can new paintings use the minecraft namespace?</h3>
+            <p>The generator does not allow it: a new painting called <code>minecraft:sunset</code> would take the place of the vanilla one. Your own namespace keeps them apart and makes the pack easy to find and remove.</p>
+            <h3>Can I change a painting after it is hung?</h3>
+            <p>The picture, yes: build the resource pack again with the same ID and namespace, and every painting already on a wall shows the new picture. The size belongs to the data pack; after changing it, restart the world and hang the painting again.</p>
+            <h3>Does it work on Bedrock?</h3>
+            <p>No. Bedrock packs work differently and have no paintings defined by data packs; this generator is for Java Edition.</p>
+        </div>
+
+        <h2>Where to go next</h2>
+        <p>Open the <a href="/custom-painting-generator/">custom painting generator</a>. To draw a painting pixel by pixel instead of converting a photo, use the <a href="/texture-painter/">texture painter</a> and load the result as the image. <a href="/wiki-resource-pack-structure/">The resource pack structure guide</a> explains where everything else in a resource pack lives.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/about/">About</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/privacy-policy/">Privacy Policy</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

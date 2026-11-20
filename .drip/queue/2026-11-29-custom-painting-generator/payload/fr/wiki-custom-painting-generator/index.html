@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableaux personnalisés dans Minecraft 1.21+ : guide du générateur | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Comment fonctionnent les tableaux personnalisés de 1.21 à 26.3 : le pack de ressources et le data pack du générateur, des tailles jusqu’à 16 × 16 blocs, la commande give selon la version, la liste placeable, le remplacement en 1.20 et ce que nous avons vérifié sur serveur.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Rikki">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/fr/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Tableaux personnalisés dans Minecraft 1.21+ : guide du générateur | Cube in Square">
+    <meta property="og:description" content="Comment fonctionnent les tableaux personnalisés de 1.21 à 26.3 : le pack de ressources et le data pack du générateur, des tailles jusqu’à 16 × 16 blocs, la commande give selon la version, la liste placeable, le remplacement en 1.20 et ce que nous avons vérifié sur serveur.">
+    <meta property="og:url" content="https://cubeinsquare.com/fr/wiki-custom-painting-generator/">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tableaux personnalisés dans Minecraft 1.21+ : guide du générateur | Cube in Square">
+    <meta name="twitter:description" content="Comment fonctionnent les tableaux personnalisés de 1.21 à 26.3 : le pack de ressources et le data pack du générateur, des tailles jusqu’à 16 × 16 blocs, la commande give selon la version, la liste placeable, le remplacement en 1.20 et ce que nous avons vérifié sur serveur.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/#article",
+            "headline": "Tableaux personnalisés dans Minecraft : comment le générateur les construit",
+            "description": "Comment fonctionnent les tableaux personnalisés de 1.21 à 26.3 : le pack de ressources et le data pack du générateur, des tailles jusqu’à 16 × 16 blocs, la commande give selon la version, la liste placeable, le remplacement en 1.20 et ce que nous avons vérifié sur serveur.",
+            "author": {
+                "@type": "Person",
+                "name": "Rikki",
+                "url": "https://cubeinsquare.com/fr/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/#webpage"
+            },
+            "datePublished": "2026-11-29",
+            "dateModified": "2026-11-29",
+            "inLanguage": "fr",
+            "url": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/#webpage",
+            "url": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/",
+            "name": "Tableaux personnalisés dans Minecraft : comment le générateur les construit",
+            "inLanguage": "fr"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Accueil",
+                    "item": "https://cubeinsquare.com/fr/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Wiki",
+                    "item": "https://cubeinsquare.com/fr/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Guide des tableaux personnalisés",
+                    "item": "https://cubeinsquare.com/fr/wiki-custom-painting-generator/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/fr/" aria-label="Accueil" title="Accueil"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/fr/wiki/">Wiki</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/tools/">Outils</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/fr/about/">Projet</a></div>
+        <form class="steam-search" action="/fr/wiki/" method="get"><input type="text" name="q" placeholder="Rechercher sur le site..."><button type="submit" aria-label="Rechercher"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a href="/ru/wiki-custom-painting-generator/">RU</a><a href="/wiki-custom-painting-generator/">EN</a><a class="is-active" href="#">FR</a><a href="/de/wiki-custom-painting-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/fr/wiki/">&larr; Tous les articles</a>
+    <section class="page-hero">
+        <h1>Tableaux personnalisés dans Minecraft : comment le générateur les construit</h1>
+        <p class="page-lead">Depuis la 1.21, les tableaux ne forment plus une liste figée dans le jeu : un data pack peut en ajouter de nouveaux, de n’importe quelle taille jusqu’à 16 × 16 blocs, et un pack de ressources leur donne une image. Le <a href="/fr/custom-painting-generator/">générateur de tableaux</a> construit les deux packs à partir de vos images. Ce guide explique ce qu’ils contiennent, comment mettre un tableau au mur et ce qui coince le plus souvent.</p>
+        <p class="article-byline">Par <a href="/fr/about/#team">Rikki</a></p>
+    </section>
+
+    <article>
+        <h2>Nouveau tableau ou tableau remplacé</h2>
+        <p>Il y a deux façons d’encadrer votre propre image, et elles ne servent pas au même usage.</p>
+        <table class="compact-table prose-table"><thead><tr><th></th><th>Nouveau tableau</th><th>Tableau du jeu remplacé</th></tr></thead><tbody>
+        <tr><td>Versions</td><td>1.21 – 26.3</td><td>1.20 – 26.3</td></tr>
+        <tr><td>Packs</td><td>Pack de ressources et data pack</td><td>Pack de ressources seul</td></tr>
+        <tr><td>Taille</td><td>Au choix, de 1 à 16 blocs dans chaque sens</td><td>Celle du tableau remplacé</td></tr>
+        <tr><td>Tableaux du jeu</td><td>Tous restent</td><td>Le tableau remplacé change pour tous ceux qui ont le pack</td></tr>
+        <tr><td>Joueurs sans le pack de ressources</td><td>Voient un damier violet et noir</td><td>Voient le tableau d’origine</td></tr>
+        </tbody></table>
+        <p>Remplacer est l’option rapide pour un monde solo, ou pour un serveur qui n’est pas le vôtre, puisqu’un pack de ressources ne change que ce que vous voyez. Un nouveau tableau convient à un serveur ou à une map : il existe dans le monde pour tout le monde et peut avoir sa propre taille, son titre et son auteur.</p>
+
+        <h2>Le contenu des deux packs</h2>
+        <p>Pour de nouveaux tableaux, le générateur écrit un pack de ressources et un data pack avec le même espace de noms (<code>paintings</code>, sauf si vous le changez) :</p>
+        <table class="compact-table prose-table"><thead><tr><th>Fichier</th><th>Rôle</th></tr></thead><tbody>
+        <tr><td><code>assets/paintings/textures/painting/&lt;id&gt;.png</code></td><td>L’image. Le jeu la trouve grâce à l’<code>asset_id</code> du tableau.</td></tr>
+        <tr><td><code>pack.png</code></td><td>L’icône dans la liste des packs de ressources, découpée dans votre premier tableau.</td></tr>
+        <tr><td><code>data/paintings/painting_variant/&lt;id&gt;.json</code></td><td>Déclare le tableau : son image, sa taille en blocs, son titre et son auteur.</td></tr>
+        <tr><td><code>data/minecraft/tags/painting_variant/placeable.json</code></td><td>Permet au tableau de sortir quand on accroche un tableau ordinaire. Absent si aucun tableau n’est coché pour cela.</td></tr>
+        <tr><td><code>pack.mcmeta</code> (les deux packs)</td><td>Le format du pack pour votre version : <code>pack_format</code> jusqu’à la 1.21.8, <code>min_format</code> et <code>max_format</code> depuis la 1.21.9.</td></tr>
+        </tbody></table>
+        <p>La définition d’un tableau tient en quelques lignes :</p>
+<pre><code>{
+  "asset_id": "paintings:sunset_lake",
+  "width": 3,
+  "height": 2,
+  "title": { "text": "Lac au couchant", "color": "yellow" },
+  "author": { "text": "Cube in Square", "color": "gray" }
+}</code></pre>
+        <p><code>asset_id</code> renvoie à <code>assets/paintings/textures/painting/sunset_lake.png</code>. <code>width</code> et <code>height</code> sont en blocs, de 1 à 16. Le titre et l’auteur sont des composants de texte affichés dans l’infobulle ; ils existent depuis la 1.21.2, donc pour 1.21 – 1.21.1 le générateur les omet. Le jaune et le gris sont les couleurs des tableaux du jeu.</p>
+
+        <h2>Taille, pixels et couleurs</h2>
+        <p>La texture mesure la taille en blocs multipliée par les pixels par bloc : un tableau de 3 × 2 à 16 pixels par bloc est une image de 48 × 32. Les tableaux du jeu utilisent 16, c’est pourquoi une photo réglée ainsi devient un pixel art bien carré qui se fond parmi eux. Le jeu étire la texture sur tout le tableau, donc 32, 64 ou 128 pixels par bloc donnent simplement une image plus nette. Au-delà d’environ 1024 pixels de côté, la différence se voit à peine, alors que les textures continuent de peser sur la mémoire graphique des joueurs.</p>
+        <p>Le réglage des couleurs réduit l’image à 32, 16 ou 8 couleurs prises dans l’image elle-même. Avec peu de couleurs, le tramage mélange les pixels voisins pour qu’un ciel reste un dégradé au lieu de se découper en bandes ; sans lui, on obtient des aplats, comme sur une affiche. Le contraste et la saturation s’appliquent avant la réduction des couleurs. Les tableaux sont dessinés opaques : les zones transparentes d’un PNG prennent la couleur de la bordure.</p>
+        <p>« Rogner pour remplir » occupe tout le cadre et coupe l’image à la forme du tableau ; les deux curseurs déplacent la coupe. « Image entière avec bordure » garde tout et remplit le reste par une bordure. « Suivre la forme de l’image » change la taille en blocs selon les proportions de l’image, en gardant le côté le plus long.</p>
+
+        <h2>Mettre le tableau au mur</h2>
+        <p>La commande give dépend de la version, et le générateur écrit la bonne :</p>
+        <table class="compact-table prose-table"><thead><tr><th>Version</th><th>Commande</th></tr></thead><tbody>
+        <tr><td>1.21.5 – 26.3</td><td><code>give @p minecraft:painting[minecraft:painting/variant="paintings:sunset_lake"]</code></td></tr>
+        <tr><td>1.20.5 – 1.21.4</td><td><code>give @p minecraft:painting[minecraft:entity_data={id:"minecraft:painting",variant:"paintings:sunset_lake"}]</code></td></tr>
+        <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (tableaux du jeu seulement)</td></tr>
+        </tbody></table>
+        <p>Depuis la 1.21.5, le jeu vérifie le nom : une faute de frappe donne <em>Failed to get element</em> au lieu d’un objet. Les versions plus anciennes acceptent n’importe quel nom, et un tableau au nom inconnu sort sous la forme d’un tableau du jeu.</p>
+        <p>Un tableau ordinaire fabriqué à l’établi fonctionne autrement. Quand vous l’accrochez, le jeu prend dans la liste <code>placeable</code> tous les tableaux qui tiennent sur le mur libre et en tire un au hasard. Avec « Peut sortir quand on accroche un tableau ordinaire » coché, le générateur ajoute les vôtres à cette liste, mais parmi plus de quarante tableaux du jeu ils sortent rarement. Cochez « Quand on accroche un tableau ordinaire, choisir parmi les miens seulement » et le tag reçoit <code>"replace": true</code> : seuls vos tableaux sont tirés. Un mur où aucun ne tient ne reçoit alors aucun tableau, gardez donc au moins un petit tableau dans l’ensemble.</p>
+
+        <h2>Installation</h2>
+        <ol class="article-list">
+            <li>Pack de ressources : dans <code>.minecraft/resourcepacks/</code>, puis Options → Packs de ressources. Sur un serveur, chaque joueur en a besoin : proposez-le comme pack de ressources du serveur (<code>resource-pack</code> dans <code>server.properties</code>) ou partagez le fichier.</li>
+            <li>Data pack : dans <code>&lt;monde&gt;/datapacks/</code>, ou dans l’écran des data packs à la création d’un monde.</li>
+            <li>Quittez le monde et rouvrez-le, ou redémarrez le serveur.</li>
+        </ol>
+        <p>C’est la dernière étape qu’on oublie. Les définitions de tableaux ne sont lues qu’au chargement du monde. En 1.21.4 et en 26.3, nous avons ajouté le pack à un serveur en marche puis lancé <code>/reload</code> : <code>/datapack list</code> le montrait activé, mais les tableaux n’existaient pas, et le tag <code>placeable</code> ne se chargeait plus du tout, parce qu’il citait des tableaux que le jeu ne connaissait pas encore. Après un redémarrage, tout fonctionnait.</p>
+
+        <h2>Remplacer les tableaux du jeu</h2>
+        <p>Un remplacement change seulement la texture <code>assets/minecraft/textures/painting/&lt;nom&gt;.png</code>. La taille reste celle du jeu : choisissez un tableau dont la forme correspond à votre image. Le générateur propose les tableaux de votre version et suggère la forme la plus proche.</p>
+        <table class="compact-table prose-table"><thead><tr><th>Taille</th><th>Tableaux</th></tr></thead><tbody>
+        <tr><td>1 × 1</td><td>kebab, aztec, alban, aztec2, bomb, plant, wasteland, meditative*</td></tr>
+        <tr><td>2 × 1</td><td>pool, courbet, sea, sunset, creebet</td></tr>
+        <tr><td>1 × 2</td><td>wanderer, graham, prairie_ride*</td></tr>
+        <tr><td>2 × 2</td><td>match, bust, stage, void, skull_and_roses, wither, earth, wind, water, fire, baroque*, humble*</td></tr>
+        <tr><td>4 × 2</td><td>fighters, changing*, finding*, lowmist*, passage*</td></tr>
+        <tr><td>3 × 3</td><td>bouquet*, cavebird*, cotan*, endboss*, fern*, owlemons*, sunflowers*, tides*, dennis (1.21.11+)</td></tr>
+        <tr><td>3 × 4</td><td>backyard*, pond*</td></tr>
+        <tr><td>4 × 3</td><td>skeleton, donkey_kong</td></tr>
+        <tr><td>4 × 4</td><td>pointer, pigscene, burning_skull, orb*, unpacked*</td></tr>
+        </tbody></table>
+        <p>* ajoutés en 1.21. Earth, wind, water et fire ne sont pas dans la liste <code>placeable</code> : un tableau ordinaire ne devient jamais l’un d’eux. Nous avons lu la liste dans les fichiers serveur de chaque version.</p>
+
+        <h2>Ce que nous avons vérifié</h2>
+        <p>Nous avons chargé des packs de ce format sur des serveurs vanilla 1.20.4, 1.20.6, 1.21.1, 1.21.2, 1.21.4, 1.21.5, 1.21.11, 26.1, 26.2 et 26.3, et les téléchargements du générateur lui-même en 1.21.1, 1.21.4, 1.21.5 et 26.3 :</p>
+        <ul class="article-list">
+            <li>En 1.20.x, un dossier <code>painting_variant</code> est ignoré, et un tableau demandé sous un nouveau nom devient kebab. C’est pourquoi le générateur ne fait que remplacer dans ces versions.</li>
+            <li>Depuis la 1.21, des tableaux de 3 × 2, 2 × 2 et 16 × 16 blocs se chargent, s’accrochent et restent au mur.</li>
+            <li>Un tableau de 17 blocs de large empêche le monde de se charger : le serveur note <em>Failed to load datapacks, can't proceed with server load</em> et refuse tous les packs. Le générateur limite les deux côtés à 16.</li>
+            <li><code>painting/variant</code> fonctionne depuis la 1.21.5 ; en 1.21.4, c’est un composant inconnu. <code>entity_data</code> fonctionne de 1.20.5 à 1.21.4.</li>
+            <li>Un tag <code>placeable</code> avec <code>"replace": true</code> se charge sans erreur.</li>
+        </ul>
+        <p>Le rendu à l’écran demande un joueur : regardez le premier tableau dans votre propre monde avant de confier les packs à un serveur.</p>
+
+        <h2>FAQ</h2>
+        <div class="faq-section">
+            <h3>Les joueurs de mon serveur ont-ils besoin du pack de ressources ?</h3>
+            <p>Oui. Le data pack dit au serveur que le tableau existe ; c’est le jeu de chaque joueur qui a besoin de l’image. Sans le pack de ressources, ils voient un damier violet et noir à la place du tableau.</p>
+            <h3>Peut-on créer un nouveau tableau dans l’espace de noms minecraft ?</h3>
+            <p>Le générateur ne le permet pas : un nouveau tableau <code>minecraft:sunset</code> prendrait la place de celui du jeu. Votre propre espace de noms les sépare et rend le pack facile à retrouver et à retirer.</p>
+            <h3>Peut-on modifier un tableau déjà accroché ?</h3>
+            <p>L’image, oui : reconstruisez le pack de ressources avec le même ID et le même espace de noms, et chaque tableau déjà au mur affiche la nouvelle image. La taille dépend du data pack : après l’avoir changée, redémarrez le monde et raccrochez le tableau.</p>
+            <h3>Est-ce que ça marche sur Bedrock ?</h3>
+            <p>Non. Les packs Bedrock fonctionnent autrement et n’ont pas de tableaux définis par data pack ; ce générateur est fait pour Java Edition.</p>
+        </div>
+
+        <h2>Pour aller plus loin</h2>
+        <p>Ouvrez le <a href="/fr/custom-painting-generator/">générateur de tableaux</a>. Pour dessiner un tableau pixel par pixel plutôt que convertir une photo, utilisez l’<a href="/fr/texture-painter/">éditeur de textures</a> puis chargez le résultat comme image. <a href="/fr/wiki-resource-pack-structure/">Le guide de la structure d’un pack de ressources</a> explique où se range tout le reste.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/fr/about/">À propos</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/fr/privacy-policy/">Politique de confidentialité</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

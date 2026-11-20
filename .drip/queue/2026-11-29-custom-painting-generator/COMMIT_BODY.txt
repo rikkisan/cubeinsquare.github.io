@@ -1,0 +1,6 @@
+New tool: images turned into Minecraft paintings (1 to 16 blocks a side, crop,
+pixels per block, palette and dithering), downloaded as a resource pack and a
+data pack for 1.21 - 26.3, or as a resource pack that replaces vanilla
+paintings on 1.20 - 26.3. Four locales, with its guide; the tools, wiki and
+home hubs list it and the home metric says 20. Its packs were run on vanilla
+servers 1.20.4 to 26.3 on 2026-11-20.

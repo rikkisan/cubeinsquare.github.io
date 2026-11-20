@@ -1,0 +1,1 @@
+Publish the custom painting generator (tool, guide, hub cards, menu entry)

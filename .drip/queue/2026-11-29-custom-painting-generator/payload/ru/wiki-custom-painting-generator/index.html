@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Свои картины в Minecraft 1.21+: гайд по генератору картин | Cube in Square</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Search metadata -->
+    <meta name="description" content="Как работают свои картины в Minecraft 1.21 – 26.3: какие ресурс-пак и датапак собирает генератор, размеры до 16 × 16 блоков, команды выдачи для каждой версии, список placeable, замена ванильных картин на 1.20 и что мы проверили на серверах.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="google-site-verification" content="9X3TpaBigSKmsGW07mCY-HuGO1DJyw6Nn2cKm1Qx2Z4">
+    <meta name="google-adsense-account" content="ca-pub-6745837623494230">
+    <meta name="author" content="Рикки">
+    <meta name="application-name" content="Cube in Square">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://cubeinsquare.com/ru/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="ru" href="https://cubeinsquare.com/ru/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="en" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="fr" href="https://cubeinsquare.com/fr/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="de" href="https://cubeinsquare.com/de/wiki-custom-painting-generator/">
+    <link rel="alternate" hreflang="x-default" href="https://cubeinsquare.com/wiki-custom-painting-generator/">
+    <meta property="og:site_name" content="Cube in Square">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Свои картины в Minecraft 1.21+: гайд по генератору картин | Cube in Square">
+    <meta property="og:description" content="Как работают свои картины в Minecraft 1.21 – 26.3: какие ресурс-пак и датапак собирает генератор, размеры до 16 × 16 блоков, команды выдачи для каждой версии, список placeable, замена ванильных картин на 1.20 и что мы проверили на серверах.">
+    <meta property="og:url" content="https://cubeinsquare.com/ru/wiki-custom-painting-generator/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:locale:alternate" content="de_DE">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Свои картины в Minecraft 1.21+: гайд по генератору картин | Cube in Square">
+    <meta name="twitter:description" content="Как работают свои картины в Minecraft 1.21 – 26.3: какие ресурс-пак и датапак собирает генератор, размеры до 16 × 16 блоков, команды выдачи для каждой версии, список placeable, замена ванильных картин на 1.20 и что мы проверили на серверах.">
+    <link rel="icon" href="/server-icon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/assets/server-icon.png">
+    <!-- /Search metadata -->
+    <!-- consent-defaults: copied from scripts/consent-defaults.txt by scripts/apply-consent-defaults.mjs, edit it there -->
+    <script>
+        // Consent Mode defaults, set before any Google tag can read them (ANALYTICS.md, "Consent").
+        // EEA, UK and Switzerland: denied until Google's consent message updates them. Elsewhere: the
+        // answer given in the site's own banner, and "declined" also asks AdSense for non-personalized ads.
+        (function () {
+            const eea = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'HU',
+                'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'IS', 'LI', 'NO', 'GB', 'CH'];
+            let choice = '';
+            try {
+                choice = window.localStorage.getItem('cube_cookie_consent') || '';
+            } catch (error) {
+                choice = '';
+            }
+            const state = (value) => ({
+                ad_storage: value,
+                ad_user_data: value,
+                ad_personalization: value,
+                analytics_storage: value,
+                personalization_storage: value,
+                functionality_storage: 'granted',
+                security_storage: 'granted',
+                wait_for_update: 500
+            });
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+            window.gtag('consent', 'default', { ...state('denied'), region: eea });
+            window.gtag('consent', 'default', state(choice === 'accepted' ? 'granted' : 'denied'));
+            if (choice === 'declined') (window.adsbygoogle = window.adsbygoogle || []).requestNonPersonalizedAds = 1;
+            window.cubeConsentDefaults = true;
+        })();
+    </script>
+    <!-- /consent-defaults -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6745837623494230" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Organization",
+            "@id": "https://cubeinsquare.com/#organization",
+            "name": "Cube in Square",
+            "url": "https://cubeinsquare.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cubeinsquare.com/assets/server-icon.png"
+            }
+        },
+        {
+            "@type": "Article",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/#article",
+            "headline": "Свои картины в Minecraft: как их собирает генератор картин",
+            "description": "Как работают свои картины в Minecraft 1.21 – 26.3: какие ресурс-пак и датапак собирает генератор, размеры до 16 × 16 блоков, команды выдачи для каждой версии, список placeable, замена ванильных картин на 1.20 и что мы проверили на серверах.",
+            "author": {
+                "@type": "Person",
+                "name": "Рикки",
+                "url": "https://cubeinsquare.com/ru/about/#team"
+            },
+            "publisher": {
+                "@id": "https://cubeinsquare.com/#organization"
+            },
+            "mainEntityOfPage": {
+                "@id": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/#webpage"
+            },
+            "datePublished": "2026-11-29",
+            "dateModified": "2026-11-29",
+            "inLanguage": "ru",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/"
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/#webpage",
+            "url": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/",
+            "name": "Свои картины в Minecraft: как их собирает генератор картин",
+            "inLanguage": "ru"
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Главная",
+                    "item": "https://cubeinsquare.com/ru/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Вики",
+                    "item": "https://cubeinsquare.com/ru/wiki/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Гайд по своим картинам",
+                    "item": "https://cubeinsquare.com/ru/wiki-custom-painting-generator/"
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+<div class="steam-navbar">
+    <div class="steam-navbar-inner">
+        <a class="site-icon-link" href="/ru/" aria-label="Главная" title="Главная"><img src="/assets/server-icon.png" alt=""></a>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown is-active" href="/ru/wiki/">Вики</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/tools/">Инструменты</a></div>
+        <div class="steam-nav-menu"><a class="steam-nav-dropdown" href="/ru/about/">О проекте</a></div>
+        <form class="steam-search" action="/ru/wiki/" method="get"><input type="text" name="q" placeholder="Поиск по сайту..."><button type="submit" aria-label="Поиск"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button></form>
+        <div class="language-switch" aria-label="Language"><a class="is-active" href="#">RU</a><a href="/wiki-custom-painting-generator/">EN</a><a href="/fr/wiki-custom-painting-generator/">FR</a><a href="/de/wiki-custom-painting-generator/">DE</a></div>
+    </div>
+</div>
+
+<main class="page-shell wiki-article">
+    <a class="article-back" href="/ru/wiki/">&larr; Все статьи</a>
+    <section class="page-hero">
+        <h1>Свои картины в Minecraft: как их собирает генератор картин</h1>
+        <p class="page-lead">С версии 1.21 картины больше не зашиты в игру намертво: датапак может добавить новые любого размера до 16 × 16 блоков, а ресурс-пак даёт им изображение. <a href="/ru/custom-painting-generator/">Генератор картин</a> собирает оба пака из ваших картинок. Здесь разобрано, что лежит внутри, как повесить картину на стену и что чаще всего идёт не так.</p>
+        <p class="article-byline">Автор: <a href="/ru/about/#team">Рикки</a></p>
+    </section>
+
+    <article>
+        <h2>Новая картина или замена ванильной</h2>
+        <p>Повесить свою картинку в раму можно двумя способами, и подходят они для разного.</p>
+        <table class="compact-table prose-table"><thead><tr><th></th><th>Новая картина</th><th>Замена ванильной</th></tr></thead><tbody>
+        <tr><td>Версии</td><td>1.21 – 26.3</td><td>1.20 – 26.3</td></tr>
+        <tr><td>Паки</td><td>Ресурс-пак и датапак</td><td>Только ресурс-пак</td></tr>
+        <tr><td>Размер</td><td>Любой, от 1 до 16 блоков по каждой стороне</td><td>Как у заменяемой картины</td></tr>
+        <tr><td>Ванильные картины</td><td>Остаются все</td><td>Заменённая выглядит иначе у всех, у кого стоит пак</td></tr>
+        <tr><td>Игроки без ресурс-пака</td><td>Видят фиолетово-чёрные клетки</td><td>Видят исходную картину</td></tr>
+        </tbody></table>
+        <p>Замена — быстрый вариант для одиночного мира или чужого сервера: ресурс-пак меняет только то, что видите вы. Новая картина подходит для своего сервера или карты: она есть в мире у всех, и у неё может быть собственный размер, название и автор.</p>
+
+        <h2>Что лежит в двух паках</h2>
+        <p>Для новых картин генератор собирает ресурс-пак и датапак с одним пространством имён (<code>paintings</code>, если вы его не поменяли):</p>
+        <table class="compact-table prose-table"><thead><tr><th>Файл</th><th>Зачем он</th></tr></thead><tbody>
+        <tr><td><code>assets/paintings/textures/painting/&lt;id&gt;.png</code></td><td>Само изображение. Игра находит его по <code>asset_id</code> картины.</td></tr>
+        <tr><td><code>pack.png</code></td><td>Значок в списке ресурс-паков, вырезанный из первой картины.</td></tr>
+        <tr><td><code>data/paintings/painting_variant/&lt;id&gt;.json</code></td><td>Регистрирует картину: изображение, размер в блоках, название и автора.</td></tr>
+        <tr><td><code>data/minecraft/tags/painting_variant/placeable.json</code></td><td>Позволяет картине выпадать, когда вешают обычную картину. Если ни одна картина для этого не отмечена, файла нет.</td></tr>
+        <tr><td><code>pack.mcmeta</code> (в обоих паках)</td><td>Формат пака для вашей версии: <code>pack_format</code> до 1.21.8, <code>min_format</code> и <code>max_format</code> с 1.21.9.</td></tr>
+        </tbody></table>
+        <p>Описание картины короткое:</p>
+<pre><code>{
+  "asset_id": "paintings:sunset_lake",
+  "width": 3,
+  "height": 2,
+  "title": { "text": "Закат над озером", "color": "yellow" },
+  "author": { "text": "Cube in Square", "color": "gray" }
+}</code></pre>
+        <p><code>asset_id</code> указывает на <code>assets/paintings/textures/painting/sunset_lake.png</code>. <code>width</code> и <code>height</code> задаются в блоках, от 1 до 16. Название и автор — текстовые компоненты для подсказки. Они появились в 1.21.2, поэтому для 1.21 – 1.21.1 генератор их не пишет. Жёлтый и серый — те же цвета, что у ванильных картин.</p>
+
+        <h2>Размер, пиксели и цвета</h2>
+        <p>Размер текстуры — это размер в блоках, умноженный на число пикселей на блок: картина 3 × 2 при 16 пикселях на блок — это изображение 48 × 32. У ванильных картин 16, поэтому фото с такой настройкой превращается в крупный пиксель-арт и смотрится рядом с ними естественно. Игра растягивает текстуру на всю картину, так что 32, 64 или 128 пикселей на блок просто дают более чёткое изображение. Дальше 1024 пикселей по стороне разница почти не видна, а текстуры продолжают занимать видеопамять игроков.</p>
+        <p>Настройка цветов сводит изображение к 32, 16 или 8 цветам, взятым из самой картинки. При малом числе цветов дизеринг смешивает соседние пиксели, и небо остаётся плавным переходом, а не распадается на полосы. Без дизеринга получаются ровные пятна, как на плакате. Контраст и насыщенность применяются до сокращения цветов. Картины рисуются непрозрачными, поэтому прозрачные части PNG заливаются цветом рамки.</p>
+        <p>«Обрезать по размеру» заполняет рамку целиком и подрезает изображение под форму картины, а два ползунка сдвигают кадр. «Целиком, с рамкой» сохраняет всё изображение и заполняет остаток полями. «Подогнать под форму картинки» меняет размер в блоках по пропорциям изображения, сохраняя длинную сторону.</p>
+
+        <h2>Как повесить картину</h2>
+        <p>Команда выдачи зависит от версии, генератор пишет нужную:</p>
+        <table class="compact-table prose-table"><thead><tr><th>Версия</th><th>Команда</th></tr></thead><tbody>
+        <tr><td>1.21.5 – 26.3</td><td><code>give @p minecraft:painting[minecraft:painting/variant="paintings:sunset_lake"]</code></td></tr>
+        <tr><td>1.20.5 – 1.21.4</td><td><code>give @p minecraft:painting[minecraft:entity_data={id:"minecraft:painting",variant:"paintings:sunset_lake"}]</code></td></tr>
+        <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (только ванильные картины)</td></tr>
+        </tbody></table>
+        <p>С 1.21.5 игра проверяет имя: при опечатке вместо предмета будет ошибка <em>Failed to get element</em>. Более старые версии принимают любое имя, а картина с неизвестным именем на стене оказывается ванильной.</p>
+        <p>Обычная картина с верстака работает по-другому. Когда её вешают, игра берёт из списка <code>placeable</code> все картины, которые помещаются на свободную стену, и выбирает одну случайно. С галочкой «Может выпасть, когда вешают обычную картину» генератор добавляет вашу картину в этот список, но среди сорока с лишним ванильных она будет попадаться редко. Включите «Когда вешают обычную картину, выбирать только из моих», и тег получит <code>"replace": true</code>: выбор будет только из ваших. Тогда на стену, куда не помещается ни одна из них, картина не повесится вовсе, так что держите в наборе хотя бы одну маленькую.</p>
+
+        <h2>Установка</h2>
+        <ol class="article-list">
+            <li>Ресурс-пак: в <code>.minecraft/resourcepacks/</code>, затем «Настройки» → «Пакеты ресурсов». На сервере он нужен каждому игроку, поэтому раздайте его как ресурс-пак сервера (<code>resource-pack</code> в <code>server.properties</code>) или передайте файл.</li>
+            <li>Датапак: в <code>&lt;мир&gt;/datapacks/</code> или на экране наборов данных при создании мира.</li>
+            <li>Выйдите из мира и зайдите снова или перезапустите сервер.</li>
+        </ol>
+        <p>Последний шаг чаще всего пропускают. Описания картин игра читает только при загрузке мира. На 1.21.4 и 26.3 мы добавили пак на работающий сервер и выполнили <code>/reload</code>: <code>/datapack list</code> показал его включённым, но картин не появилось, а тег <code>placeable</code> вообще не загрузился, потому что в нём были картины, которых игра ещё не знала. После перезапуска всё заработало.</p>
+
+        <h2>Замена ванильных картин</h2>
+        <p>Замена меняет только текстуру <code>assets/minecraft/textures/painting/&lt;имя&gt;.png</code>. Размер остаётся ванильным, поэтому выбирайте картину, форма которой подходит к вашему изображению. Генератор показывает картины, которые есть в вашей версии, и сам предлагает самую близкую по форме.</p>
+        <table class="compact-table prose-table"><thead><tr><th>Размер</th><th>Картины</th></tr></thead><tbody>
+        <tr><td>1 × 1</td><td>kebab, aztec, alban, aztec2, bomb, plant, wasteland, meditative*</td></tr>
+        <tr><td>2 × 1</td><td>pool, courbet, sea, sunset, creebet</td></tr>
+        <tr><td>1 × 2</td><td>wanderer, graham, prairie_ride*</td></tr>
+        <tr><td>2 × 2</td><td>match, bust, stage, void, skull_and_roses, wither, earth, wind, water, fire, baroque*, humble*</td></tr>
+        <tr><td>4 × 2</td><td>fighters, changing*, finding*, lowmist*, passage*</td></tr>
+        <tr><td>3 × 3</td><td>bouquet*, cavebird*, cotan*, endboss*, fern*, owlemons*, sunflowers*, tides*, dennis (1.21.11+)</td></tr>
+        <tr><td>3 × 4</td><td>backyard*, pond*</td></tr>
+        <tr><td>4 × 3</td><td>skeleton, donkey_kong</td></tr>
+        <tr><td>4 × 4</td><td>pointer, pigscene, burning_skull, orb*, unpacked*</td></tr>
+        </tbody></table>
+        <p>* появились в 1.21. Earth, wind, water и fire не входят в список <code>placeable</code>, поэтому обычная картина ими не станет. Список мы взяли из серверных файлов каждой версии.</p>
+
+        <h2>Что мы проверили</h2>
+        <p>Паки такого формата мы загружали на ванильные серверы 1.20.4, 1.20.6, 1.21.1, 1.21.2, 1.21.4, 1.21.5, 1.21.11, 26.1, 26.2 и 26.3, а паки, скачанные из самого генератора, — на 1.21.1, 1.21.4, 1.21.5 и 26.3:</p>
+        <ul class="article-list">
+            <li>На 1.20.x папка <code>painting_variant</code> игнорируется, а картина с новым именем превращается в kebab. Поэтому для этих версий генератор только заменяет картины.</li>
+            <li>С 1.21 картины 3 × 2, 2 × 2 и 16 × 16 блоков загружаются, вешаются на стену и не падают.</li>
+            <li>Картина шириной 17 блоков не даёт миру загрузиться: сервер пишет <em>Failed to load datapacks, can't proceed with server load</em> и отклоняет все паки. Генератор ограничивает обе стороны 16 блоками.</li>
+            <li><code>painting/variant</code> работает с 1.21.5, на 1.21.4 это неизвестный компонент. <code>entity_data</code> работает на 1.20.5 – 1.21.4.</li>
+            <li>Тег <code>placeable</code> с <code>"replace": true</code> загружается без ошибок.</li>
+        </ul>
+        <p>Как картина выглядит на экране, проверить может только игрок, поэтому посмотрите на первую картину в своём мире, прежде чем ставить паки на сервер.</p>
+
+        <h2>Вопросы и ответы</h2>
+        <div class="faq-section">
+            <h3>Нужен ли игрокам на сервере ресурс-пак?</h3>
+            <p>Да. Датапак сообщает серверу, что картина существует, а изображение нужно игре каждого игрока. Без ресурс-пака на месте картины будут фиолетово-чёрные клетки.</p>
+            <h3>Можно ли сделать новую картину в пространстве имён minecraft?</h3>
+            <p>Генератор этого не даёт: новая картина <code>minecraft:sunset</code> заняла бы место ванильной. Своё пространство имён разводит их и помогает потом найти и убрать пак.</p>
+            <h3>Можно ли изменить картину, когда она уже висит?</h3>
+            <p>Изображение — да: соберите ресурс-пак заново с тем же ID и пространством имён, и все картины на стенах покажут новое изображение. Размер задаёт датапак: после его изменения перезапустите мир и перевесьте картину.</p>
+            <h3>Работает ли это на Bedrock?</h3>
+            <p>Нет. Паки Bedrock устроены иначе, и картин из датапаков там нет. Генератор сделан для Java Edition.</p>
+        </div>
+
+        <h2>Что дальше</h2>
+        <p>Откройте <a href="/ru/custom-painting-generator/">генератор картин</a>. Если хотите нарисовать картину по пикселям, а не переводить фото, воспользуйтесь <a href="/ru/texture-painter/">редактором текстур</a> и загрузите результат как изображение. Где лежит всё остальное в ресурс-паке, объясняет <a href="/ru/wiki-resource-pack-structure/">гайд по структуре ресурс-пака</a>.</p>
+    </article>
+</main>
+
+<footer class="site-footer"><span>Cube in Square</span><span class="site-footer-links"><a href="/ru/about/">О проекте</a><a href="mailto:cubeinsquare@proton.me">cubeinsquare@proton.me</a></span><a href="/ru/privacy-policy/">Политика конфиденциальности</a></footer>
+<script src="/assets/site.js"></script>
+<script src="/assets/tracking-config.js"></script>
+<script src="/assets/tracking.js"></script>
+</body>
+</html>

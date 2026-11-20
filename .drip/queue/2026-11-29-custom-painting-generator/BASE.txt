@@ -1,0 +1,13 @@
+# Live versions this bundle's payload was prepared against.
+# Written by .github/scripts/drip-base.sh; do not edit by hand.
+# drip-validate.sh rejects the bundle when a listed file has changed live since.
+-  assets/custom-painting-generator.css
+-  assets/custom-painting-generator.js
+-  custom-painting-generator/index.html
+-  de/custom-painting-generator/index.html
+-  de/wiki-custom-painting-generator/index.html
+-  fr/custom-painting-generator/index.html
+-  fr/wiki-custom-painting-generator/index.html
+-  ru/custom-painting-generator/index.html
+-  ru/wiki-custom-painting-generator/index.html
+-  wiki-custom-painting-generator/index.html

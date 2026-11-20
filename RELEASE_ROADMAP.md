@@ -77,6 +77,18 @@ for the individual commits.
   were taken with `drip-base.sh --copy` that day: a push to any `index.html`, `tools/index.html` or `wiki/index.html`
   before the publish turns Checks red until `drip-base.sh --update` is run on the bundle. After the publish: add the
   slug to `constructorPath` in `site.js` and to `tests/constructor-nodes.browser.js` if it should get the node editor.
+- **2026-11-29 (on HOLD) — Custom painting generator** (`.drip/queue/2026-11-29-custom-painting-generator`): images
+  as paintings of 1 to 16 blocks a side (crop, pixels per block, palette, dithering), a resource pack plus a data pack
+  for 1.21 – 26.3, or a resource pack replacing vanilla paintings on 1.20 – 26.3; guide in four locales, menu entry via
+  `TOOL_META.js`, slug already in `TOOL_SLUGS`. Requested by the owner on 2026-11-20. The `HOLD` file lists what is
+  left: the hubs (tools, wiki, home with the metric at 20) are taken with `drip-base.sh --copy` only after the
+  2026-11-22 publish, which carries the same hubs, and the owner confirms the date against the AdSense resubmission.
+  Server run of 2026-11-20 (vanilla 1.20.4, 1.20.6, 1.21.1, 1.21.2, 1.21.4, 1.21.5, 1.21.11, 26.1, 26.2, 26.3):
+  `painting_variant` is ignored before 1.21; `title`/`author` exist from 1.21.2; the item takes `entity_data`
+  1.20.5 – 1.21.4 and `painting/variant` from 1.21.5 (unknown names are rejected there); 16 × 16 hangs and stays,
+  17 wide stops the world from loading; `/reload` does not register new paintings and breaks the `placeable` tag
+  until a restart. The generator's own downloads loaded on 1.21.1, 1.21.4, 1.21.5 and 26.3. How the pictures look
+  in game still needs the owner's check in a client.
 - After that the queue is empty again. A 26.4 article fits once 26.4 is released (26.4-snapshot-10 on 2026-11-19).
 
 ## Ideas, not yet queued
