@@ -17,7 +17,8 @@
 .painting-page .pg-mode-note[hidden] { display: none; }
 .painting-page .pg-options { margin-top: 14px; }
 .painting-page .pg-subhead { margin: 18px 0 10px; color: var(--text-main); font-size: 0.98rem; }
-.painting-page .pg-check { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 8px; background: rgba(15, 23, 42, 0.55); color: var(--text-main); font-size: 0.92rem; font-weight: 700; line-height: 1.35; cursor: pointer; }
+.painting-page .pg-check { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 8px; background: rgba(15, 23, 42, 0.55); color: var(--text-main); font-size: 0.92rem; font-weight: 700; line-height: 1.35; }
+.painting-page .pg-check-label { display: flex; flex: 1 1 auto; align-items: center; gap: 10px; min-width: 0; cursor: pointer; }
 .painting-page .pg-check[hidden], .painting-page .tool-field[hidden] { display: none; }
 .painting-page .pg-check input { width: 18px; height: 18px; flex: 0 0 auto; margin: 0; accent-color: var(--accent); }
 .painting-page .tool-field input[type="color"] { height: 44px; padding: 4px 6px; cursor: pointer; }
@@ -25,6 +26,23 @@
 .painting-page .tool-button:disabled { opacity: 0.55; cursor: not-allowed; }
 :root[data-design="modern"] .painting-page .pg-drop { background: rgba(0, 0, 0, 0.18); border-color: rgba(255, 255, 255, 0.18); }
 :root[data-design="modern"] .painting-page .pg-check { background: #1e1f22; border-color: rgba(255, 255, 255, 0.1); }
+.painting-page .pg-label-row { display: flex; align-items: center; gap: 6px; min-height: 24px; }
+.painting-page .pg-label-row label { color: inherit; font-size: inherit; font-weight: inherit; }
+.painting-page .pg-help { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 24px; height: 24px; margin: 0; padding: 0; border: 1px solid rgba(148, 163, 184, 0.5); border-radius: 50%; background: transparent; color: var(--text-dim); font: 700 0.8rem/1 system-ui, sans-serif; cursor: help; }
+.painting-page .pg-help:hover, .painting-page .pg-help.is-open { border-color: var(--accent); background: rgba(59, 130, 246, 0.18); color: var(--text-main); }
+.painting-page .pg-help:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.painting-page .pg-check .pg-help { margin-left: auto; }
+.painting-page .pg-load .pg-help { margin-left: 2px; vertical-align: middle; }
+.painting-page .pg-help-text { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+.painting-page .pg-card-warnings:empty, .painting-page .pg-load-warnings:empty { display: none; }
+.painting-page .pg-card-warnings, .painting-page .pg-load-warnings { display: grid; gap: 8px; margin-top: 14px; padding: 10px 12px; border-left: 3px solid #fbbf24; border-radius: 6px; background: rgba(251, 191, 36, 0.08); }
+.painting-page .pg-load[hidden] { display: none; }
+.pg-tip { position: fixed; z-index: 1000; box-sizing: border-box; max-width: min(320px, calc(100vw - 16px)); padding: 10px 12px; border: 1px solid rgba(148, 163, 184, 0.4); border-radius: 8px; background: #0b1222; color: var(--text-main, #f8fafc); font-size: 0.88rem; font-weight: 400; line-height: 1.45; text-align: left; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.75); }
+.pg-tip[hidden] { display: none; }
+.pg-tip::before { content: ""; position: absolute; top: -6px; left: var(--pg-tip-arrow, 50%); width: 10px; height: 10px; margin-left: -5px; border-top: inherit; border-left: inherit; background: inherit; transform: rotate(45deg); }
+.pg-tip.is-above::before { top: auto; bottom: -6px; transform: rotate(225deg); }
+:root[data-design="modern"] .pg-tip { border-color: #3f4147; background: #111214; }
+:root[data-design="modern"] .painting-page .pg-help:hover, :root[data-design="modern"] .painting-page .pg-help.is-open { background: rgba(88, 101, 242, 0.22); }
 @media (max-width: 760px) {
   .painting-page .pg-card-body { grid-template-columns: minmax(0, 1fr); }
   .painting-page .pg-drop { min-height: 160px; }

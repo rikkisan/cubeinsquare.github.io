@@ -196,6 +196,11 @@
         <p>Die Farbeinstellung reduziert das Bild auf 32, 16 oder 8 Farben, die aus dem Bild selbst stammen. Bei wenigen Farben mischt Dithering benachbarte Pixel, damit ein Himmel ein Verlauf bleibt, statt in Streifen zu zerfallen; ohne Dithering entstehen glatte Flächen wie auf einem Plakat. Kontrast und Sättigung werden vor dem Reduzieren angewendet. Gemälde werden deckend gezeichnet, deshalb füllt die Randfarbe durchsichtige Stellen eines PNG.</p>
         <p>„Zuschneiden und füllen“ füllt den Rahmen ganz und schneidet das Bild auf die Form des Gemäldes zu; die beiden Regler verschieben den Ausschnitt. „Ganzes Bild mit Rand“ behält alles und füllt den Rest mit einem Rand. „An die Bildform anpassen“ ändert die Größe in Blöcken nach den Proportionen des Bildes und behält dabei die längere Seite.</p>
 
+        <h2>Was ein großes Gemälde kostet</h2>
+        <p>Für den Server spielt die Größe kaum eine Rolle. Ein Gemälde ist ein einziges Objekt, egal wie groß; alle 5 Sekunden prüft es, ob die Blöcke dahinter noch fest sind und an seiner Stelle nichts anderes hängt. Auf einem 26.3-Server haben wir 512 Gemälde mit 16 × 16 Blöcken aufgehängt: Sie brauchten 0,15 ms der 50 ms, die ein Tick hat, gegenüber 0,03 ms für 512 Gemälde mit 1 × 1, und alle 512 zusammen machten den Weltspeicher um weniger als 80 KB größer.</p>
+        <p>Die Kosten tragen die Spieler. Das Spiel legt die Texturen aller Gemälde in ein einziges Bild im Grafikspeicher, mit 4 Byte pro Pixel. Ein Gemälde mit 16 × 16 Blöcken bei 128 Pixeln pro Block hat 2048 × 2048 Pixel, etwa 16 MB, und jeder Spieler mit dem Paket hält sie im Speicher. Wird dieses gemeinsame Bild größer als die größte Textur, die die Grafikkarte halten kann, stürzt das Spiel beim Laden des Pakets mit einem <em>Stitching</em>-Fehler ab: Viele ältere Karten schaffen höchstens 8192 Pixel, die meisten aktuellen 16384. Der Generator rechnet das in der Zeile Last unter der Dateiliste zusammen und warnt, bevor es so weit ist.</p>
+        <p>Ein großes Gemälde braucht auch eine große Wand: eine glatte Fläche aus festen Blöcken in seiner Größe, ohne Rahmen oder andere Gemälde darauf. Wird ein Block dahinter abgebaut, fällt es innerhalb von 5 Sekunden herunter.</p>
+
         <h2>Das Gemälde an die Wand bringen</h2>
         <p>Der Give-Befehl hängt von der Version ab, der Generator schreibt den passenden:</p>
         <table class="compact-table prose-table"><thead><tr><th>Version</th><th>Befehl</th></tr></thead><tbody>
@@ -204,7 +209,7 @@
         <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (nur Gemälde aus dem Spiel)</td></tr>
         </tbody></table>
         <p>Ab 1.21.5 prüft das Spiel den Namen: Ein Tippfehler ergibt <em>Failed to get element</em> statt eines Items. Ältere Versionen nehmen jeden Namen an, und ein Gemälde mit unbekanntem Namen wird zu einem aus dem Spiel.</p>
-        <p>Ein normales Gemälde von der Werkbank funktioniert anders. Beim Aufhängen nimmt das Spiel aus der Liste <code>placeable</code> alle Gemälde, die auf die freie Wand passen, und wählt eins zufällig. Mit „Kann erscheinen, wenn ein normales Gemälde aufgehängt wird“ setzt der Generator deine auf diese Liste, aber unter mehr als vierzig Gemälden aus dem Spiel kommen sie selten. Hak „Beim Aufhängen eines normalen Gemäldes nur aus meinen wählen“ an, dann bekommt der Tag <code>"replace": true</code> und nur deine Gemälde kommen infrage. Eine Wand, auf die keins davon passt, bekommt dann gar kein Gemälde, also behalte mindestens ein kleines im Set.</p>
+        <p>Ein normales Gemälde von der Werkbank funktioniert anders. Beim Aufhängen nimmt das Spiel aus der Liste <code>placeable</code> alle Gemälde, die auf die freie Wand passen, behält nur die größten und lost eins davon aus. Das haben wir im Spielcode von 26.3 nachgelesen, und es heißt: Die Größe entscheidet. Mit „Kann erscheinen, wenn ein normales Gemälde aufgehängt wird“ setzt der Generator deine auf diese Liste. Ein Gemälde größer als 4 × 4 gewinnt dann an jeder Wand, auf die es passt, weil kein Gemälde aus dem Spiel so groß ist; eines mit 2 × 2 teilt sich die Auslosung mit den acht 2 × 2 aus dem Spiel und erscheint nur, wo nichts Größeres passt. Hak „Beim Aufhängen eines normalen Gemäldes nur aus meinen wählen“ an, dann bekommt der Tag <code>"replace": true</code> und nur deine Gemälde kommen infrage. Eine Wand, auf die keins davon passt, bekommt dann gar kein Gemälde, also behalte mindestens ein kleines im Set.</p>
 
         <h2>Installieren</h2>
         <ol class="article-list">
@@ -235,6 +240,7 @@
             <li>In 1.20.x wird ein Ordner <code>painting_variant</code> ignoriert, und ein Gemälde mit neuem Namen wird zu kebab. Deshalb ersetzt der Generator dort nur Gemälde.</li>
             <li>Ab 1.21 laden Gemälde mit 3 × 2, 2 × 2 und 16 × 16 Blöcken, lassen sich aufhängen und bleiben hängen.</li>
             <li>Ein Gemälde mit 17 Blöcken Breite verhindert, dass die Welt lädt: Der Server meldet <em>Failed to load datapacks, can't proceed with server load</em> und lehnt alle Pakete ab. Der Generator begrenzt beide Seiten auf 16.</li>
+            <li>Auf einem 26.3-Server blieben 512 Gemälde mit 16 × 16 Blöcken an ihren Wänden und kosteten 0,15 ms pro Tick.</li>
             <li><code>painting/variant</code> funktioniert ab 1.21.5; in 1.21.4 ist es eine unbekannte Komponente. <code>entity_data</code> funktioniert von 1.20.5 bis 1.21.4.</li>
             <li>Ein Tag <code>placeable</code> mit <code>"replace": true</code> lädt ohne Fehler.</li>
         </ul>
@@ -244,6 +250,8 @@
         <div class="faq-section">
             <h3>Brauchen die Spieler auf meinem Server das Ressourcenpaket?</h3>
             <p>Ja. Das Datenpaket sagt dem Server, dass es das Gemälde gibt; das Bild braucht das Spiel jedes einzelnen Spielers. Ohne Ressourcenpaket sehen sie lila-schwarze Kacheln, wo das Gemälde hängt.</p>
+            <h3>Bremsen große Gemälde einen Server aus?</h3>
+            <p>Nein. Ein Gemälde mit 16 × 16 Blöcken ist ein einziges Objekt, wie eines mit 1 × 1; in unserem Test kosteten 512 davon 0,15 ms pro Tick. Mit der Größe wachsen die Textur, die die Spieler laden, und die Wand, die das Gemälde braucht.</p>
             <h3>Können neue Gemälde den Namensraum minecraft nutzen?</h3>
             <p>Der Generator lässt das nicht zu: Ein neues Gemälde <code>minecraft:sunset</code> würde das aus dem Spiel verdrängen. Ein eigener Namensraum hält beide getrennt und macht das Paket leicht zu finden und zu entfernen.</p>
             <h3>Kann ich ein Gemälde ändern, das schon hängt?</h3>

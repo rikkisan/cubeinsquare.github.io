@@ -88,7 +88,11 @@ for the individual commits.
   1.20.5 – 1.21.4 and `painting/variant` from 1.21.5 (unknown names are rejected there); 16 × 16 hangs and stays,
   17 wide stops the world from loading; `/reload` does not register new paintings and breaks the `placeable` tag
   until a restart. The generator's own downloads loaded on 1.21.1, 1.21.4, 1.21.5 and 26.3. How the pictures look
-  in game still needs the owner's check in a client.
+  in game still needs the owner's check in a client. Load, same day on 26.3: 512 paintings of 16 × 16 cost 0.15 ms
+  per tick (512 of 1 × 1: 0.03 ms) and under 80 KB of world save, so the page warns about the client side instead:
+  video memory (4 bytes per pixel), the painting atlas against 8192 / 16384 px (26.3 client code: a failed stitch is a
+  "Stitching" crash) and the pack size. The 26.3 code also showed that a plain painting takes the largest placeable
+  painting that fits, which the guide now says. Every field has a "?" help bubble (hover, focus or tap).
 - After that the queue is empty again. A 26.4 article fits once 26.4 is released (26.4-snapshot-10 on 2026-11-19).
 
 ## Ideas, not yet queued

@@ -196,6 +196,11 @@
         <p>Le réglage des couleurs réduit l’image à 32, 16 ou 8 couleurs prises dans l’image elle-même. Avec peu de couleurs, le tramage mélange les pixels voisins pour qu’un ciel reste un dégradé au lieu de se découper en bandes ; sans lui, on obtient des aplats, comme sur une affiche. Le contraste et la saturation s’appliquent avant la réduction des couleurs. Les tableaux sont dessinés opaques : les zones transparentes d’un PNG prennent la couleur de la bordure.</p>
         <p>« Rogner pour remplir » occupe tout le cadre et coupe l’image à la forme du tableau ; les deux curseurs déplacent la coupe. « Image entière avec bordure » garde tout et remplit le reste par une bordure. « Suivre la forme de l’image » change la taille en blocs selon les proportions de l’image, en gardant le côté le plus long.</p>
 
+        <h2>Ce que coûte un grand tableau</h2>
+        <p>Pour le serveur, la taille compte à peine. Un tableau est une seule entité, quelle que soit sa taille ; toutes les 5 secondes, il vérifie que les blocs derrière lui sont toujours pleins et que rien d’autre n’est accroché à sa place. Sur un serveur 26.3, nous avons accroché 512 tableaux de 16 × 16 blocs : ils ont pris 0,15 ms sur les 50 ms d’un tick, contre 0,03 ms pour 512 tableaux de 1 × 1, et tous ensemble ont ajouté moins de 80 Ko à la sauvegarde du monde.</p>
+        <p>Le coût est du côté des joueurs. Le jeu range les textures de tous les tableaux dans une seule image en mémoire vidéo, à 4 octets par pixel. Un tableau de 16 × 16 à 128 pixels par bloc fait 2048 × 2048 pixels, environ 16 Mo, que chaque joueur équipé du pack garde en mémoire. Si cette image commune dépasse la plus grande texture que la carte graphique peut contenir, le jeu plante avec une erreur <em>Stitching</em> en chargeant le pack : beaucoup de cartes anciennes s’arrêtent à 8192 pixels, la plupart des cartes actuelles à 16384. Le générateur fait le compte dans la ligne Charge sous la liste des fichiers et prévient avant d’en arriver là.</p>
+        <p>Un grand tableau demande aussi un grand mur : une surface plane de blocs pleins de la taille du tableau, sans cadre ni autre tableau dessus. Cassez un bloc derrière lui et il tombe dans les 5 secondes.</p>
+
         <h2>Mettre le tableau au mur</h2>
         <p>La commande give dépend de la version, et le générateur écrit la bonne :</p>
         <table class="compact-table prose-table"><thead><tr><th>Version</th><th>Commande</th></tr></thead><tbody>
@@ -204,7 +209,7 @@
         <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (tableaux du jeu seulement)</td></tr>
         </tbody></table>
         <p>Depuis la 1.21.5, le jeu vérifie le nom : une faute de frappe donne <em>Failed to get element</em> au lieu d’un objet. Les versions plus anciennes acceptent n’importe quel nom, et un tableau au nom inconnu sort sous la forme d’un tableau du jeu.</p>
-        <p>Un tableau ordinaire fabriqué à l’établi fonctionne autrement. Quand vous l’accrochez, le jeu prend dans la liste <code>placeable</code> tous les tableaux qui tiennent sur le mur libre et en tire un au hasard. Avec « Peut sortir quand on accroche un tableau ordinaire » coché, le générateur ajoute les vôtres à cette liste, mais parmi plus de quarante tableaux du jeu ils sortent rarement. Cochez « Quand on accroche un tableau ordinaire, choisir parmi les miens seulement » et le tag reçoit <code>"replace": true</code> : seuls vos tableaux sont tirés. Un mur où aucun ne tient ne reçoit alors aucun tableau, gardez donc au moins un petit tableau dans l’ensemble.</p>
+        <p>Un tableau ordinaire fabriqué à l’établi fonctionne autrement. Quand vous l’accrochez, le jeu prend dans la liste <code>placeable</code> tous les tableaux qui tiennent sur le mur libre, ne garde que les plus grands et en tire un au hasard. Nous l’avons lu dans le code du jeu en 26.3, et cela veut dire que la taille décide. Avec « Peut sortir quand on accroche un tableau ordinaire » coché, le générateur ajoute les vôtres à cette liste. Un tableau de plus de 4 × 4 sort alors sur chaque mur où il tient, puisqu’aucun tableau du jeu n’est aussi grand ; un 2 × 2 partage le tirage avec les huit tableaux 2 × 2 du jeu et ne sort que là où rien de plus grand ne tient. Cochez « Quand on accroche un tableau ordinaire, choisir parmi les miens seulement » et le tag reçoit <code>"replace": true</code> : seuls vos tableaux sont tirés. Un mur où aucun ne tient ne reçoit alors aucun tableau, gardez donc au moins un petit tableau dans l’ensemble.</p>
 
         <h2>Installation</h2>
         <ol class="article-list">
@@ -235,6 +240,7 @@
             <li>En 1.20.x, un dossier <code>painting_variant</code> est ignoré, et un tableau demandé sous un nouveau nom devient kebab. C’est pourquoi le générateur ne fait que remplacer dans ces versions.</li>
             <li>Depuis la 1.21, des tableaux de 3 × 2, 2 × 2 et 16 × 16 blocs se chargent, s’accrochent et restent au mur.</li>
             <li>Un tableau de 17 blocs de large empêche le monde de se charger : le serveur note <em>Failed to load datapacks, can't proceed with server load</em> et refuse tous les packs. Le générateur limite les deux côtés à 16.</li>
+            <li>Sur un serveur 26.3, 512 tableaux de 16 × 16 blocs sont restés au mur et ont coûté 0,15 ms par tick.</li>
             <li><code>painting/variant</code> fonctionne depuis la 1.21.5 ; en 1.21.4, c’est un composant inconnu. <code>entity_data</code> fonctionne de 1.20.5 à 1.21.4.</li>
             <li>Un tag <code>placeable</code> avec <code>"replace": true</code> se charge sans erreur.</li>
         </ul>
@@ -244,6 +250,8 @@
         <div class="faq-section">
             <h3>Les joueurs de mon serveur ont-ils besoin du pack de ressources ?</h3>
             <p>Oui. Le data pack dit au serveur que le tableau existe ; c’est le jeu de chaque joueur qui a besoin de l’image. Sans le pack de ressources, ils voient un damier violet et noir à la place du tableau.</p>
+            <h3>Les grands tableaux ralentissent-ils un serveur ?</h3>
+            <p>Non. Un tableau de 16 × 16 est une seule entité, comme un 1 × 1 ; dans notre test, 512 d’entre eux ont coûté 0,15 ms par tick. Ce qui grandit avec la taille, c’est la texture que chargent les joueurs et le mur dont le tableau a besoin.</p>
             <h3>Peut-on créer un nouveau tableau dans l’espace de noms minecraft ?</h3>
             <p>Le générateur ne le permet pas : un nouveau tableau <code>minecraft:sunset</code> prendrait la place de celui du jeu. Votre propre espace de noms les sépare et rend le pack facile à retrouver et à retirer.</p>
             <h3>Peut-on modifier un tableau déjà accroché ?</h3>

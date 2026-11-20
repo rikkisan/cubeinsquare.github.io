@@ -196,6 +196,11 @@
         <p>The color setting reduces the picture to 32, 16 or 8 colors taken from the image itself. With few colors, dithering mixes neighbouring pixels so a sky stays a gradient instead of breaking into bands; without it you get flat areas, like a poster. Contrast and saturation are applied before the colors are reduced. Paintings are drawn opaque, so transparent parts of a PNG are filled with the border color.</p>
         <p>Crop to fill keeps the frame full and cuts the picture to the painting's shape; the two sliders move the cut. Whole image keeps everything and fills the rest with a border. Match the image shape changes the size in blocks to follow the picture, keeping the longer side.</p>
 
+        <h2>What a big painting costs</h2>
+        <p>For the server, size hardly matters. A painting is one entity whatever its size; every 5 seconds it checks that the blocks behind it are still solid and that nothing else hangs in its place. On a 26.3 server we hung 512 paintings of 16 × 16 blocks: they took 0.15 ms of the 50 ms each tick has, against 0.03 ms for 512 paintings of 1 × 1, and all 512 together added less than 80 KB to the world save.</p>
+        <p>The cost is on the players' side. The game puts the textures of all paintings into one image in video memory, at 4 bytes per pixel. A 16 × 16 painting at 128 pixels per block is 2048 × 2048 pixels, about 16 MB, and every player with the pack holds it. If that shared image grows beyond the largest texture the graphics card can hold, the game crashes with a <em>Stitching</em> error while it loads the pack: many older cards stop at 8192 pixels, most current ones at 16384. The generator adds this up in the Load line under the list of files and warns before you get there.</p>
+        <p>A big painting also needs a big wall: a flat area of solid blocks the size of the painting, with no item frame or other painting on it. Break one block behind it and it drops within 5 seconds.</p>
+
         <h2>Putting the painting on a wall</h2>
         <p>The give command depends on the version, and the generator writes the right one:</p>
         <table class="compact-table prose-table"><thead><tr><th>Version</th><th>Command</th></tr></thead><tbody>
@@ -204,7 +209,7 @@
         <tr><td>1.20 – 1.20.4</td><td><code>give @p minecraft:painting{EntityTag:{variant:"minecraft:kebab"}}</code> (vanilla paintings only)</td></tr>
         </tbody></table>
         <p>From 1.21.5 the game checks the name: a typo gives <em>Failed to get element</em> instead of an item. Earlier versions accept any name, and a painting with an unknown name comes out as a vanilla one.</p>
-        <p>A plain painting from the crafting table works differently. When you hang it, the game takes every painting from the <code>placeable</code> list that fits the free wall and picks one at random. With Can appear when a plain painting is hung ticked, the generator adds yours to that list, but among more than forty vanilla paintings they come up rarely. Tick When a plain painting is hung, choose only from mine and the tag gets <code>"replace": true</code>: only your paintings are candidates. A wall where none of them fits then gets no painting at all, so keep at least one small painting in the set.</p>
+        <p>A plain painting from the crafting table works differently. When you hang it, the game takes every painting from the <code>placeable</code> list that fits the free wall, keeps only the largest of them and picks one of those at random. We read this in the game code of 26.3, and it means size decides. With Can appear when a plain painting is hung ticked, the generator adds yours to that list. A painting bigger than 4 × 4 then wins on every wall where it fits, because no vanilla painting is that big; a 2 × 2 one shares the draw with the eight vanilla 2 × 2 paintings and comes up only where nothing larger fits. Tick When a plain painting is hung, choose only from mine and the tag gets <code>"replace": true</code>: only your paintings are candidates. A wall where none of them fits then gets no painting at all, so keep at least one small painting in the set.</p>
 
         <h2>Installing</h2>
         <ol class="article-list">
@@ -235,6 +240,7 @@
             <li>On 1.20.x a <code>painting_variant</code> folder is ignored, and a painting asked for by a new name becomes kebab. That is why the generator only replaces paintings there.</li>
             <li>From 1.21, paintings of 3 × 2, 2 × 2 and 16 × 16 blocks load, hang on a wall and stay there.</li>
             <li>A painting 17 blocks wide stops the world from loading: the server logs <em>Failed to load datapacks, can't proceed with server load</em> and refuses every pack. The generator caps both sides at 16.</li>
+            <li>On a 26.3 server, 512 paintings of 16 × 16 blocks stayed on their walls and cost 0.15 ms per tick.</li>
             <li><code>painting/variant</code> works from 1.21.5; on 1.21.4 it is an unknown component. <code>entity_data</code> works on 1.20.5 – 1.21.4.</li>
             <li>A <code>placeable</code> tag with <code>"replace": true</code> loads without errors.</li>
         </ul>
@@ -244,6 +250,8 @@
         <div class="faq-section">
             <h3>Do players on my server need the resource pack?</h3>
             <p>Yes. The data pack tells the server the painting exists; each player's game needs the picture. Without the resource pack they see purple and black squares where the painting hangs.</p>
+            <h3>Do big paintings slow a server down?</h3>
+            <p>No. A 16 × 16 painting is one entity, like a 1 × 1 one; in our test 512 of them cost 0.15 ms per tick. What grows with size is the texture players load and the wall the painting needs.</p>
             <h3>Can new paintings use the minecraft namespace?</h3>
             <p>The generator does not allow it: a new painting called <code>minecraft:sunset</code> would take the place of the vanilla one. Your own namespace keeps them apart and makes the pack easy to find and remove.</p>
             <h3>Can I change a painting after it is hung?</h3>
