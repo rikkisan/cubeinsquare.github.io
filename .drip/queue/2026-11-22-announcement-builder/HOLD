@@ -1,0 +1,6 @@
+On hold until Google answers the AdSense resubmission (sent 2026-11-19); the owner wants no new tool published during the review.
+
+When the result is in:
+- Rename the folder to the new Sunday (YYYY-MM-DD-announcement-builder) and set data-released in tools/index.html x4 to that date.
+- Run bash .github/scripts/drip-check-base.sh on the bundle; if a hub changed live, run drip-base.sh --update and read the +N/-M line.
+- Delete this file. The painting generator (2026-11-29 bundle) goes out one Sunday later, after this one.
