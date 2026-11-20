@@ -13,7 +13,7 @@
                 brush: 'brush',
                 eraser: 'eraser',
                 picker: 'picker',
-                orbit: 'orbit'
+                orbit: 'rotate'
             },
             layers: {
                 base: 'base',
@@ -38,7 +38,7 @@
                 brush: 'кисть',
                 eraser: 'ластик',
                 picker: 'пипетка',
-                orbit: 'орбита'
+                orbit: 'вращение'
             },
             layers: {
                 base: 'база',
@@ -63,7 +63,7 @@
                 brush: 'pinceau',
                 eraser: 'gomme',
                 picker: 'pipette',
-                orbit: 'orbite'
+                orbit: 'rotation'
             },
             layers: {
                 base: 'base',
@@ -88,7 +88,7 @@
                 brush: 'pinsel',
                 eraser: 'radierer',
                 picker: 'pipette',
-                orbit: 'orbit'
+                orbit: 'drehen'
             },
             layers: {
                 base: 'basis',
@@ -1808,15 +1808,22 @@
     function bindPreviewPainting() {
         const canvas = skinViewer.canvas;
 
+        // Turns the model for one drag: the right button anywhere, or the left button (one finger on a
+        // phone) on the empty space around the model, so painting tools never need a switch to rotate.
+        // Runs in the capture phase, before OrbitControls reads `enabled` on the same pointerdown.
         const startTemporaryOrbit = (event) => {
-            if (event.button !== 2 || !skinViewer || !skinViewer.controls) return;
+            if (!skinViewer || !skinViewer.controls) return;
+            const onEmptySpace = event.button === 0 && state.tool !== 'orbit' && !previewEventToIntersection(event);
+            if (event.button !== 2 && !onEmptySpace) return;
             state.previewOrbiting = true;
             skinViewer.controls.enabled = true;
+            canvas.style.cursor = 'grabbing';
         };
 
         const stopTemporaryOrbit = () => {
             if (!state.previewOrbiting) return;
             state.previewOrbiting = false;
+            canvas.style.cursor = 'grab';
             if (skinViewer && skinViewer.controls) {
                 skinViewer.controls.enabled = state.tool === 'orbit';
             }
@@ -1834,9 +1841,12 @@
         canvas.addEventListener('pointermove', (event) => {
             if (state.previewOrbiting || state.tool === 'orbit') {
                 updatePreviewHoverCell(null);
+                canvas.style.cursor = state.previewOrbiting ? 'grabbing' : 'grab';
                 return;
             }
-            updatePreviewHoverCell(previewEventToIntersection(event));
+            const hit = previewEventToIntersection(event);
+            updatePreviewHoverCell(hit);
+            if (!state.previewPainting) canvas.style.cursor = hit ? 'crosshair' : 'grab';
         });
 
         canvas.addEventListener('pointerdown', (event) => {

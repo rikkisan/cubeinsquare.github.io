@@ -249,7 +249,7 @@
                         <button class="resource-link skin-tool-button is-active" type="button" data-skin-tool="brush">Кисть</button>
                         <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="eraser">Ластик</button>
                         <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="picker">Пипетка</button>
-                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit">Орбита</button>
+                        <button class="resource-link resource-link-secondary skin-tool-button" type="button" data-skin-tool="orbit" title="Любое перетаскивание поворачивает модель, ничего не закрашивается">Вращение</button>
                     </div>
 
                     <div class="tool-field">
@@ -379,6 +379,7 @@
             <section class="tool-panel skin-preview-card">
                 <h2>3D-поверхность для рисования</h2>
                 <div class="skin-preview-stage" id="skinPreview"></div>
+                <p class="skin-preview-note">Чтобы повернуть модель, тяните за пустое место вокруг неё (на телефоне одним пальцем) или зажмите правую кнопку мыши где угодно; колесо приближает.</p>
                 <p class="skin-preview-note">Сначала рисуйте прямо по модели игрока. Атлас ниже остаётся синхронизированным, так что вы всё ещё можете проверить точные пиксели и экспортировать стандартный PNG-скин Minecraft.</p>
             </section>
 
@@ -512,7 +513,7 @@
         <div class="resource-grid">
             <article class="resource-card">
                 <h3>Покрутите модель и проверьте неловкие углы</h3>
-                <p>Фронтальный вид добрый. Именно бок торса, задняя часть руки и верх головы чаще всего ломают впечатление. Если после быстрой орбиты дизайн всё ещё держится, скин обычно уже в хорошем состоянии.</p>
+                <p>Фронтальный вид добрый. Именно бок торса, задняя часть руки и верх головы чаще всего ломают впечатление. Если после полного оборота модели дизайн всё ещё держится, скин обычно уже в хорошем состоянии.</p>
             </article>
             <article class="resource-card">
                 <h3>Скрывайте части тела перед тем, как объявить участок готовым</h3>
@@ -567,6 +568,6 @@
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
-<script src="/assets/skin-editor.js?v=20260514"></script>
+<script src="/assets/skin-editor.js?v=20261120"></script>
 </body>
 </html>
