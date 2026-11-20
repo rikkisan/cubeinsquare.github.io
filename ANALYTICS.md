@@ -77,6 +77,7 @@ before 2026-11-19 it meant all of 1.20.5+) and `legacy`. The enchantment randomi
 | book-letter-builder | `command` | — | presets | `item_format` |
 | bossbar-builder | `command` | — | presets | — |
 | announcement-builder | `command`, `file_content` | `zip` | presets | `mc_version` |
+| custom-painting-generator | `command`, `file_content` | `zip` (resource pack and data pack) | sample picture | `mc_version` |
 | custom-item-builder | `command` | — | example | `item_format` |
 | custom-potions | `command`, `command_block_give` | — | example | `item_format` |
 | custom-villager-trades | `command`, `command_block_give` | — | — | `item_format` |

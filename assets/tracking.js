@@ -311,7 +311,8 @@
         'dialogue-builder',
         'book-letter-builder',
         'bossbar-builder',
-        'announcement-builder'
+        'announcement-builder',
+        'custom-painting-generator'
     ];
 
     // These three tool pages reported their own slug as page_type before tool_id existed.
