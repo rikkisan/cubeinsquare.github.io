@@ -1,8 +1,10 @@
-Hub cards and home metric not added yet: take the hubs with drip-base.sh --copy after the 2026-11-22 publish, and wait for the owner to confirm the release date (AdSense resubmission timing).
+On hold until the AdSense review answers (resubmitted 2026-11-19) and the announcement builder bundle is published; hub cards and the release date are not set yet.
+
+The folder date (2026-11-29) is a placeholder. Order: the announcement builder goes out first, this tool one Sunday later.
 
 Remaining before removing this file:
-- bash .github/scripts/drip-base.sh --copy .drip/queue/2026-11-29-custom-painting-generator index.html ru/index.html fr/index.html de/index.html tools/index.html ru/tools/index.html fr/tools/index.html de/tools/index.html wiki/index.html ru/wiki/index.html fr/wiki/index.html de/wiki/index.html
+- After the announcement builder publish: bash .github/scripts/drip-base.sh --copy .drip/queue/2026-11-29-custom-painting-generator index.html ru/index.html fr/index.html de/index.html tools/index.html ru/tools/index.html fr/tools/index.html de/tools/index.html wiki/index.html ru/wiki/index.html fr/wiki/index.html de/wiki/index.html
 - tools/index.html x4: a resource-card with pill new and data-released set to the publish date.
 - wiki/index.html x4: a card in #resource-pack-generator-wiki next to the texture painter guide, and its sidebar link.
 - index.html x4: the tool in its homepage group, and the metric from 19 to 20.
-- Rename the folder if the owner picks another date.
+- Rename the folder to the real publish date (YYYY-MM-DD-custom-painting-generator).

@@ -12,6 +12,10 @@ the root, plus `ru/`, `fr/`, `de/`. New tools and articles are mostly published 
 `.drip/queue/` (Sundays). Pages carry AdSense and GA4 (`assets/tracking.js`). Consent: Google's consent message (TCF CMP,
 set up in AdSense) in the EEA, the UK and Switzerland, the site's own banner elsewhere ([ANALYTICS.md](ANALYTICS.md#consent)).
 
+**State on 2026-11-20:** AdSense was resubmitted on 2026-11-19 and is under review. Both queued bundles
+(announcement builder, then painting generator) carry `HOLD` until the answer; fixes to live pages may still land.
+What waits on whom: [RELEASE_ROADMAP.md](RELEASE_ROADMAP.md) ("Queued releases", "AdSense resubmission").
+
 **Start of every session** (details: [COLLABORATION.md](COLLABORATION.md) §1): `git pull --rebase origin main`,
 `git status --short`, `git log --oneline -5`, `ls .drip/queue`. `main` moves under you: the Sunday
 bot and parallel sessions both push to it, and a parallel session may have uncommitted work in

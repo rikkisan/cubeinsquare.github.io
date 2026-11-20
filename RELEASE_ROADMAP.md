@@ -1,7 +1,7 @@
 # Cube in Square release roadmap
 
 This file tracks what has shipped, what is queued, and what is only an idea.
-Updated 2026-10-25. Sources of truth, in case this file drifts:
+Updated 2026-11-20. Sources of truth, in case this file drifts:
 
 - **queue:** `.drip/queue/` (the folders there are the only scheduled releases)
 - **drip publishes:** `PUBLISHED.md` (written by the bot; starts 2026-08-02) and `git log`
@@ -50,6 +50,7 @@ for the individual commits.
 | 2026-10-24 | The publisher no longer writes the bot identity into the local `.git/config`. |
 | 2026-10-24 | AdSense wave A: bossbar pages rewritten, four short articles merged or closed, "coming soon" removed, complete tools and wiki hubs (see "AdSense resubmission" below). |
 | 2026-10-25 | AdSense waves B and C: text for the 12 thin tools, version fixes across articles and tools, contact email in every footer, bylines, mod pages rewritten as documentation. |
+| 2026-11-20 | `styles.css`: a `textarea.command-output` outside a `.tool-field` had no width rule, so nine live tools (advancement, book and letter, bossbar, data pack, dialogue, enchantment randomizer, item model, loot table, recipe) showed their commands in a 168 px box since launch. It now has the field look at full width; `.tool-checkline` shares the `.tool-check` chip look (`2fa3172`). |
 
 ### Pipeline incidents worth remembering
 
@@ -71,18 +72,26 @@ for the individual commits.
 
 ## Queued releases
 
-- **2026-11-22 — Announcement builder** (`.drip/queue/2026-11-22-announcement-builder`): timed server announcements
+**Both bundles are on HOLD until Google answers the AdSense resubmission** (the owner sent it on 2026-11-19 and
+wants no new tool published during the review; decided 2026-11-20). When the answer comes: the announcement builder
+goes out first, on the next Sunday, and the painting generator one Sunday later, because it takes its hub copies
+from the live hubs after the announcement builder has changed them. Each bundle's `HOLD` file lists its steps
+(rename the folder to the real date, `data-released` on the catalog cards, `drip-check-base.sh`, delete `HOLD`).
+
+- **2026-11-22 (on HOLD) — Announcement builder** (`.drip/queue/2026-11-22-announcement-builder`): timed server announcements
   (chat, action bar or title, in order or at random) as a data pack for 1.20 – 26.3, its guide, cards on the tools,
   wiki and home hubs (home metric 19), menu entry via `TOOL_META.js`. Requested by the owner on 2026-11-19. The hubs
   were taken with `drip-base.sh --copy` that day: a push to any `index.html`, `tools/index.html` or `wiki/index.html`
   before the publish turns Checks red until `drip-base.sh --update` is run on the bundle. After the publish: add the
   slug to `constructorPath` in `site.js` and to `tests/constructor-nodes.browser.js` if it should get the node editor.
-- **2026-11-29 (on HOLD) — Custom painting generator** (`.drip/queue/2026-11-29-custom-painting-generator`): images
+  Its narrow output boxes and bare checkbox lines were a gap in the shared `styles.css`, fixed live on 2026-11-20
+  (`2fa3172`, see "Other notable changes"); the payload needed no change.
+- **Date to be set (on HOLD) — Custom painting generator** (`.drip/queue/2026-11-29-custom-painting-generator`): images
   as paintings of 1 to 16 blocks a side (crop, pixels per block, palette, dithering), a resource pack plus a data pack
   for 1.21 – 26.3, or a resource pack replacing vanilla paintings on 1.20 – 26.3; guide in four locales, menu entry via
   `TOOL_META.js`, slug already in `TOOL_SLUGS`. Requested by the owner on 2026-11-20. The `HOLD` file lists what is
   left: the hubs (tools, wiki, home with the metric at 20) are taken with `drip-base.sh --copy` only after the
-  2026-11-22 publish, which carries the same hubs, and the owner confirms the date against the AdSense resubmission.
+  announcement builder is published, since it carries the same hubs; the folder keeps its placeholder date until then.
   Server run of 2026-11-20 (vanilla 1.20.4, 1.20.6, 1.21.1, 1.21.2, 1.21.4, 1.21.5, 1.21.11, 26.1, 26.2, 26.3):
   `painting_variant` is ignored before 1.21; `title`/`author` exist from 1.21.2; the item takes `entity_data`
   1.20.5 – 1.21.4 and `painting/variant` from 1.21.5 (unknown names are rejected there); 16 × 16 hangs and stays,
@@ -97,7 +106,7 @@ for the individual commits.
 
 ## Ideas, not yet queued
 
-- **Notification Builder.** Covered by the announcement builder queued for 2026-11-22; a separate tool only if
+- **Notification Builder.** Covered by the queued announcement builder; a separate tool only if
   one-off notifications (title, toast, sound) turn out to need more than the dialogue builder gives.
 - **Quest Journal / Objective Tracker.** Overlaps with the Advancement builder, which already builds quest
   chains; decide what the journal adds (book or scoreboard based tracking) before starting.
@@ -118,6 +127,10 @@ repeated one generated paragraph under every heading, many articles still taught
 1.21.5+), and the English wiki hub listed only half of the articles. The owner decided not to resubmit until items
 1–8 of the audit's top list are done. Work runs in waves; commands added or fixed along the way are listed with the
 expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
+
+**Resubmitted 2026-11-19; the review is running.** Until Google answers, no new tool or article goes live (both queued
+bundles carry `HOLD`, see "Queued releases"). Fixes to existing pages may still land. Record the answer and its
+date here; on a refusal, read the reason before releasing anything.
 
 **Wave A, done 2026-10-24**
 
@@ -179,7 +192,7 @@ expected result in `.drip/drafts/commands-to-test.md` for an in-game run.
 - `/custom-potions/` no longer scrolls sideways on phones and tablets (the CustomModelData help popover ran past
   the right edge in every locale).
 
-**Still to do before resubmitting**
+**Still open from before the resubmission** (it went in without these)
 
 - Owner answers: who wrote the HeadHunter article (its four pages have no byline yet); who Mark is on the About
   team list, so his byline can link there; what ArmorHide's H key does (the Modrinth page only names the binding).
@@ -247,7 +260,8 @@ keeps `sitemap.xml` current.
 
 ## Operating rules
 
-AdSense declined the site and a resubmission is planned (owner, 2026-10-24), so content quality comes first:
+AdSense declined the site; it was resubmitted on 2026-11-19 and is under review, so content quality comes first and
+nothing new is published until the answer:
 
 - Prefer content depth, documentation and queue work. Avoid large live-page restructuring unless it fixes a real bug.
 - Do not add thin placeholder pages; every new release should include a tool or article with enough context, navigation, and sitemap coverage.
