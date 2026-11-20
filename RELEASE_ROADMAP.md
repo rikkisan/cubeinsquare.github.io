@@ -122,6 +122,8 @@ from the live hubs after the announcement builder has changed them. Each bundle'
   `texture-painter/index.html` pages.
 - **Author's own writing** for the skin editor and texture painter pages, as laid out in
   `PIXEL_ART_AUTHOR_BRIEF.md`. It waits on the author; nothing in the repo tracks whether it has been written.
+- **Bedrock section.** A second section with Bedrock commands and pack files, for when the Java ideas run out
+  (owner, 2026-11-20). Research, tool-by-tool mapping and phases: `BEDROCK_IDEAS.md`.
 
 ## AdSense resubmission
 

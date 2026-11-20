@@ -145,3 +145,4 @@ Browser checks never reach the live GA4: local hosts and `file://` only log to t
 | [ANALYTICS.md](ANALYTICS.md) | GA4 events and parameters, consent (Google CMP vs site banner, the `<head>` block), custom dimensions, the test-traffic rule, how to add a tool to tracking |
 | [TEXTURE_PAINTER_STATUS.md](TEXTURE_PAINTER_STATUS.md) | Live versus outstanding texture painter changes |
 | [PIXEL_ART_AUTHOR_BRIEF.md](PIXEL_ART_AUTHOR_BRIEF.md) | Where the author's own writing goes on the skin editor and texture painter pages |
+| [BEDROCK_IDEAS.md](BEDROCK_IDEAS.md) | Future Bedrock section: what each tool becomes on Bedrock, Bedrock-only tool ideas, open questions (idea only) |
