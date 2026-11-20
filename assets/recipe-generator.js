@@ -38,6 +38,11 @@
           libFound: (n) => `Found: ${n}.`, libNone: 'No item matches.', libSince: (v) => `Since ${v}`,
           libMissing: (list, v) => `Not in ${v}: ${list}. Pick a newer version or another item.`,
           compBadJson: 'Other components: not a JSON object, so they were left out.',
+          benchTitle: { shapeless: 'Crafting grid, any order', 'minecraft:smelting': 'Furnace', 'minecraft:blasting': 'Blast furnace',
+            'minecraft:smoking': 'Smoker', 'minecraft:campfire_cooking': 'Campfire', 'minecraft:stonecutting': 'Stonecutter' },
+          hintShapeless: 'Put the ingredients in any slots: a shapeless recipe ignores where they lie. Click a slot and then an item in the library below, drag an item onto a slot, or type an id. Prefix # for an item tag.',
+          hintCook: 'Put the item to cook in the slot. Click it and pick an item in the library below, drag one onto it, or type an id. Prefix # for an item tag. Fuel is not part of the recipe.',
+          hintCut: 'Put the block the stonecutter takes in the slot. Click it and pick an item in the library below, drag one onto it, or type an id. Prefix # for an item tag.',
           compBadEnch: (line) => `Enchantment line not understood: "${line}".` },
     ru: { copied: 'Скопировано', empty: 'Сначала заполните сетку или список ингредиентов.',
           shaped: (n) => `Разных ингредиентов в сетке: ${n}.`,
@@ -48,6 +53,11 @@
           libFound: (n) => `Найдено: ${n}.`, libNone: 'Ничего не нашлось.', libSince: (v) => `С версии ${v}`,
           libMissing: (list, v) => `Нет в версии ${v}: ${list}. Выберите версию новее или другой предмет.`,
           compBadJson: 'Другие компоненты: это не JSON-объект, поэтому они пропущены.',
+          benchTitle: { shapeless: 'Сетка крафта, порядок не важен', 'minecraft:smelting': 'Печь', 'minecraft:blasting': 'Плавильная печь',
+            'minecraft:smoking': 'Коптильня', 'minecraft:campfire_cooking': 'Костёр', 'minecraft:stonecutting': 'Камнерез' },
+          hintShapeless: 'Положите ингредиенты в любые слоты: в бесформенном рецепте их расположение не важно. Нажмите на слот и выберите предмет в библиотеке ниже, перетащите предмет на слот или впишите ID. Префикс # означает тег предмета.',
+          hintCook: 'Положите в слот то, что нужно приготовить или переплавить. Нажмите на слот и выберите предмет в библиотеке ниже, перетащите его на слот или впишите ID. Префикс # означает тег предмета. Топливо в рецепт не входит.',
+          hintCut: 'Положите в слот блок, который режет камнерез. Нажмите на слот и выберите предмет в библиотеке ниже, перетащите его на слот или впишите ID. Префикс # означает тег предмета.',
           compBadEnch: (line) => `Не понял строку зачарования: «${line}».` },
     fr: { copied: 'Copié', empty: 'Remplissez d’abord la grille ou la liste.',
           shaped: (n) => `${n} ingrédient(s) distinct(s) dans la grille.`,
@@ -58,6 +68,11 @@
           libFound: (n) => `Trouvés : ${n}.`, libNone: 'Aucun objet ne correspond.', libSince: (v) => `Depuis la ${v}`,
           libMissing: (list, v) => `Absent en ${v} : ${list}. Choisissez une version plus récente ou un autre objet.`,
           compBadJson: 'Autres composants : ce n’est pas un objet JSON, ils ont été ignorés.',
+          benchTitle: { shapeless: 'Grille de fabrication, ordre libre', 'minecraft:smelting': 'Four', 'minecraft:blasting': 'Haut fourneau',
+            'minecraft:smoking': 'Fumoir', 'minecraft:campfire_cooking': 'Feu de camp', 'minecraft:stonecutting': 'Tailleur de pierre' },
+          hintShapeless: 'Placez les ingrédients dans n’importe quelles cases : une recette sans forme ignore leur position. Cliquez sur une case puis sur un objet de la bibliothèque ci-dessous, glissez un objet sur une case ou tapez un identifiant. Le préfixe # désigne un tag d’objets.',
+          hintCook: 'Placez dans la case ce qu’il faut cuire ou fondre. Cliquez dessus puis choisissez un objet dans la bibliothèque ci-dessous, glissez-en un ou tapez un identifiant. Le préfixe # désigne un tag d’objets. Le combustible ne fait pas partie de la recette.',
+          hintCut: 'Placez dans la case le bloc que prend le tailleur de pierre. Cliquez dessus puis choisissez un objet dans la bibliothèque ci-dessous, glissez-en un ou tapez un identifiant. Le préfixe # désigne un tag d’objets.',
           compBadEnch: (line) => `Ligne d’enchantement incomprise : « ${line} ».` },
     de: { copied: 'Kopiert', empty: 'Fülle zuerst das Raster oder die Zutatenliste.',
           shaped: (n) => `${n} verschiedene Zutat(en) im Raster.`,
@@ -68,10 +83,18 @@
           libFound: (n) => `Gefunden: ${n}.`, libNone: 'Kein Item passt.', libSince: (v) => `Seit ${v}`,
           libMissing: (list, v) => `Nicht in ${v}: ${list}. Wähle eine neuere Version oder ein anderes Item.`,
           compBadJson: 'Weitere Komponenten: kein JSON-Objekt, daher weggelassen.',
+          benchTitle: { shapeless: 'Werkbankraster, beliebige Reihenfolge', 'minecraft:smelting': 'Ofen', 'minecraft:blasting': 'Schmelzofen',
+            'minecraft:smoking': 'Räucherofen', 'minecraft:campfire_cooking': 'Lagerfeuer', 'minecraft:stonecutting': 'Steinsäge' },
+          hintShapeless: 'Leg die Zutaten in beliebige Felder: Bei einem formlosen Rezept zählt die Lage nicht. Klick ein Feld an und dann ein Item in der Bibliothek unten, zieh ein Item auf ein Feld oder tippe eine ID. Das Präfix # steht für ein Item-Tag.',
+          hintCook: 'Leg in das Feld, was gegart oder geschmolzen werden soll. Klick es an und wähl ein Item in der Bibliothek unten, zieh eins darauf oder tippe eine ID. Das Präfix # steht für ein Item-Tag. Brennstoff gehört nicht zum Rezept.',
+          hintCut: 'Leg in das Feld den Block, den die Steinsäge nimmt. Klick es an und wähl ein Item in der Bibliothek unten, zieh eins darauf oder tippe eine ID. Das Präfix # steht für ein Item-Tag.',
           compBadEnch: (line) => `Verzauberungszeile nicht verstanden: „${line}“.` }
   };
   const t = T[LOCALE] || T.en;
 
+  // The shaped title and hint are the page's own markup; the other types swap in text from T.
+  const shapedTitle = $('rc-grid-title') ? $('rc-grid-title').textContent : '';
+  const shapedHint = $('rc-grid-hint') ? $('rc-grid-hint').innerHTML : '';
   const COOKING = ['minecraft:smelting', 'minecraft:blasting', 'minecraft:smoking', 'minecraft:campfire_cooking'];
   const KEY_CHARS = '#XABCDEFG';
 
@@ -213,11 +236,19 @@
     return { pattern, key, count: distinct.length };
   }
 
-  function listIngredients() {
-    return String($('rc-ingredients').value || '')
-      .split(/[\n,]+/)
-      .map((line) => namespacedItem(line))
-      .filter(Boolean);
+  const SINGLE_CELL = 4;
+  /** Cooking and stonecutting take one input, the middle slot. */
+  function isSingleType(type) {
+    return COOKING.includes(type) || type === 'minecraft:stonecutting';
+  }
+
+  /** Ingredients of a shapeless, cooking or stonecutting recipe, read from the slots. */
+  function slotIngredients() {
+    if (isSingleType($('rc-type').value)) {
+      const id = namespacedItem($('rc-cell-' + SINGLE_CELL).value);
+      return id ? [id] : [];
+    }
+    return gridItems().filter(Boolean);
   }
 
   function buildRecipe() {
@@ -243,7 +274,7 @@
     }
 
     if (type === 'minecraft:crafting_shapeless') {
-      const items = listIngredients();
+      const items = slotIngredients();
       if (!items.length) return { json: null, note: t.empty };
       const recipe = { type: type };
       if (category) recipe.category = category;
@@ -253,7 +284,7 @@
     }
 
     if (COOKING.includes(type)) {
-      const items = listIngredients();
+      const items = slotIngredients();
       if (!items.length) return { json: null, note: t.empty };
       const recipe = { type: type };
       if (category) recipe.category = category;
@@ -267,7 +298,7 @@
     }
 
     // stonecutting
-    const items = listIngredients();
+    const items = slotIngredients();
     if (!items.length) return { json: null, note: t.empty };
     const recipe = { type: type, ingredient: ingredient(items[0], fmt) };
     recipe.result = fmt >= 41
@@ -291,8 +322,10 @@
     const isCooking = COOKING.includes(type);
     const isStonecutting = type === 'minecraft:stonecutting';
 
-    $('rc-grid-panel').hidden = !isShaped;
-    $('rc-list-panel').hidden = isShaped;
+    document.querySelector('.craft-grid').classList.toggle('is-single', isCooking || isStonecutting);
+    $('rc-grid-title').textContent = isShaped ? shapedTitle : t.benchTitle[isCooking || isStonecutting ? type : 'shapeless'];
+    if (isShaped) $('rc-grid-hint').innerHTML = shapedHint;
+    else $('rc-grid-hint').textContent = isStonecutting ? t.hintCut : (isCooking ? t.hintCook : t.hintShapeless);
     $('rc-cooking-fields').hidden = !isCooking;
     $('rc-category-field').hidden = isStonecutting;
     $('rc-result-count-field').hidden = isCooking;
@@ -301,9 +334,6 @@
     $('rc-components-fields').hidden = !withComponents;
     $('rc-components-off').hidden = withComponents;
     $('rc-light-field').hidden = namespacedItem($('rc-result').value) !== 'minecraft:light';
-    $('rc-list-label').textContent = (isCooking || isStonecutting)
-      ? $('rc-list-panel').dataset.singleLabel
-      : $('rc-list-panel').dataset.multiLabel;
   }
 
   /** Short slot caption: "minecraft:iron_ingot" -> "iron ingot". */
@@ -407,37 +437,15 @@
     slot.prepend(holder);
   }
 
-  /** Icons under the ingredient list for the recipe types that use it. */
-  function paintListIcons() {
-    const strip = $('rc-list-icons');
-    if (!strip) return;
-    const key = listIngredients().join('|');
-    if (strip.dataset.key === key) return;
-    strip.dataset.key = key;
-    strip.replaceChildren();
-    listIngredients().forEach((id) => {
-      const entry = libraryEntry(id);
-      const cell = document.createElement('span');
-      cell.className = 'rc-list-icon';
-      cell.title = entry ? `${entry.name} (${id})` : id;
-      if (entry) cell.append(itemIcon(entry, 32, false));
-      else cell.textContent = shortLabel(id).charAt(0).toUpperCase() || '?';
-      strip.append(cell);
-    });
-  }
-
   function targetLabel() {
-    if (target.kind === 'cell') return t.libSlot(target.index + 1);
-    return target.kind === 'result' ? t.libResult : t.libList;
+    if (target.kind === 'result') return t.libResult;
+    return isSingleType($('rc-type').value) ? t.libSlot(1) : t.libSlot(target.index + 1);
   }
 
   function paintTarget() {
     document.querySelectorAll('.craft-slot.is-target, .rc-list-field.is-target').forEach((el) => el.classList.remove('is-target'));
-    let el = null;
-    if (target.kind === 'cell') el = $('rc-cell-' + target.index)?.parentElement;
-    else if (target.kind === 'result') el = $('rc-result-preview');
-    else el = $('rc-ingredients')?.closest('.tool-field');
-    if (el) el.classList.add('is-target', target.kind === 'list' ? 'rc-list-field' : 'craft-slot');
+    const el = target.kind === 'cell' ? $('rc-cell-' + target.index)?.parentElement : $('rc-result-preview');
+    if (el) el.classList.add('is-target');
     const label = $('rc-lib-target');
     if (label) {
       label.replaceChildren(t.libTarget + ' ');
@@ -454,23 +462,26 @@
 
   /** Keep the target on something visible when the recipe type changes. */
   function fitTarget() {
-    const shaped = $('rc-type').value === 'minecraft:crafting_shaped';
-    if (shaped && target.kind === 'list') setTarget({ kind: 'cell', index: 0 });
-    else if (!shaped && target.kind === 'cell') setTarget({ kind: 'list' });
+    if (target.kind !== 'cell') return;
+    if (isSingleType($('rc-type').value) && target.index !== SINGLE_CELL) setTarget({ kind: 'cell', index: SINGLE_CELL });
+    else paintTarget();
   }
 
   function placeItem(entry, where, advance) {
     const id = 'minecraft:' + entry.id;
     if (where.kind === 'cell') {
       $('rc-cell-' + where.index).value = id;
-      if (advance && where.index < 8) setTarget({ kind: 'cell', index: where.index + 1 });
-    } else if (where.kind === 'result') {
-      $('rc-result').value = id;
+      const type = $('rc-type').value;
+      if (advance && type === 'minecraft:crafting_shapeless') {
+        // Order does not matter, so move on to the next empty slot.
+        const order = [1, 2, 3, 4, 5, 6, 7, 8].map((step) => (where.index + step) % 9);
+        const next = order.find((i) => !$('rc-cell-' + i).value.trim());
+        if (next !== undefined) setTarget({ kind: 'cell', index: next });
+      } else if (advance && !isSingleType(type) && where.index < 8) {
+        setTarget({ kind: 'cell', index: where.index + 1 });
+      }
     } else {
-      const field = $('rc-ingredients');
-      const single = $('rc-type').value !== 'minecraft:crafting_shapeless';
-      const lines = listIngredients();
-      field.value = single ? id : lines.concat(id).slice(0, 9).join('\n');
+      $('rc-result').value = id;
     }
     update();
   }
@@ -616,7 +627,6 @@
       $('rc-cell-' + i).addEventListener('focus', () => setTarget({ kind: 'cell', index: i }));
     }
     $('rc-result').addEventListener('focus', () => setTarget({ kind: 'result' }));
-    $('rc-ingredients').addEventListener('focus', () => setTarget({ kind: 'list' }));
     const preview = $('rc-result-preview');
     preview.tabIndex = 0;
     preview.setAttribute('role', 'button');
@@ -633,7 +643,6 @@
     const dropTargets = [];
     for (let i = 0; i < 9; i++) dropTargets.push([$('rc-cell-' + i).parentElement, { kind: 'cell', index: i }]);
     dropTargets.push([preview, { kind: 'result' }]);
-    dropTargets.push([$('rc-ingredients').closest('.tool-field'), { kind: 'list' }]);
     dropTargets.forEach(([el, where]) => {
       el.addEventListener('dragover', (event) => {
         if (!event.dataTransfer.types.includes('application/x-cube-item')) return;
@@ -659,7 +668,7 @@
     if (!LIB) return '';
     const max = versionIndex();
     const type = $('rc-type').value;
-    const used = (type === 'minecraft:crafting_shaped' ? gridItems() : listIngredients()).concat(namespacedItem($('rc-result').value));
+    const used = (type === 'minecraft:crafting_shaped' ? gridItems() : slotIngredients()).concat(namespacedItem($('rc-result').value));
     const missing = [];
     used.forEach((value) => {
       const entry = libraryEntry(value);
@@ -690,14 +699,13 @@
     preview.classList.toggle('is-filled', Boolean(label));
     setSlotIcon(preview, entry, 56);
     const count = Math.max(1, Math.min(64, Number($('rc-result-count').value) || 1));
-    preview.dataset.count = count > 1 ? String(count) : '';
+    preview.dataset.count = count > 1 && !COOKING.includes($('rc-type').value) ? String(count) : '';
   }
 
   function update() {
     syncVisibility();
     fitTarget();
     paintGrid();
-    paintListIcons();
     filterLibrary();
     const built = buildRecipe();
     $('rc-output').value = built.json ? JSON.stringify(built.json, null, 2) : '';
@@ -716,14 +724,14 @@
     },
     shapeless: () => {
       $('rc-type').value = 'minecraft:crafting_shapeless';
-      $('rc-ingredients').value = 'minecraft:paper\nminecraft:ink_sac';
+      ['minecraft:paper', 'minecraft:ink_sac', '', '', '', '', '', '', ''].forEach((v, i) => { $('rc-cell-' + i).value = v; });
       $('rc-result').value = 'minecraft:written_book';
       $('rc-result-count').value = 1;
       $('rc-file').value = 'quick_note';
     },
     smelting: () => {
       $('rc-type').value = 'minecraft:smelting';
-      $('rc-ingredients').value = 'minecraft:cobblestone';
+      for (let i = 0; i < 9; i++) $('rc-cell-' + i).value = i === SINGLE_CELL ? 'minecraft:cobblestone' : '';
       $('rc-result').value = 'minecraft:stone';
       $('rc-experience').value = '0.1';
       $('rc-cookingtime').value = '200';

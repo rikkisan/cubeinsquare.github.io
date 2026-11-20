@@ -217,8 +217,8 @@
             </div>
 
             <div class="tool-panel" id="rc-grid-panel">
-                <h2>Handwerksraster</h2>
-                <p class="tool-summary">Trage in die benötigten Felder eine Item-ID ein, den Rest lässt du leer — leere Randreihen und -spalten werden automatisch zugeschnitten. Ein <code>#</code> davor bezeichnet einen Item-Tag, etwa <code>#minecraft:planks</code>.</p>
+                <h2 id="rc-grid-title">Handwerksraster</h2>
+                <p class="tool-summary" id="rc-grid-hint">Trage in die benötigten Felder eine Item-ID ein, den Rest lässt du leer — leere Randreihen und -spalten werden automatisch zugeschnitten. Ein <code>#</code> davor bezeichnet einen Item-Tag, etwa <code>#minecraft:planks</code>.</p>
                                 <div class="craft-bench">
                     <div class="craft-grid">
                         <label class="craft-slot"><input id="rc-cell-0" type="text" aria-label="1"></label>
@@ -238,15 +238,6 @@
                 <div class="tool-button-row">
                     <button id="rc-clear-grid" class="tool-button tool-button-secondary" type="button">Raster leeren</button>
                 </div>
-            </div>
-
-            <div class="tool-panel" id="rc-list-panel" data-single-label="Zutat" data-multi-label="Zutaten, eine pro Zeile">
-                <h2 id="rc-list-label">Zutaten, eine pro Zeile</h2>
-                <label class="tool-field">
-                    <span>Item-IDs</span>
-                    <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
-                </label>
-                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
             </div>
 
             <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
@@ -337,7 +328,7 @@
     </section>
     <section class="page-section" id="tool-usage">
         <h2 class="section-title">So benutzt du den Generator</h2>
-        <p class="section-intro">Wähl Rezepttyp und Version, füll das Raster oder die Zutatenliste und kopier oder lad das JSON mitsamt Pfad herunter.</p>
+        <p class="section-intro">Wähl Rezepttyp und Version, füll die Felder aus der Item-Bibliothek oder per ID und kopier oder lad das JSON mitsamt Pfad herunter.</p>
         <div class="resource-grid">
             <article class="resource-card"><h3>Rezepttyp und Version</h3><p>Geformte und formlose Rezepte, die vier Kocharten und der Steinschneider haben jeweils eigene Felder; die Zielversion entscheidet, in welcher Form das JSON geschrieben wird.</p></article>
             <article class="resource-card"><h3>Kategorie</h3><p>Der Reiter im Rezeptbuch, in dem das Rezept erscheint. Handwerk nutzt building, redstone, equipment und misc, Kochen food, blocks und misc. Der Steinschneider hat keine.</p></article>

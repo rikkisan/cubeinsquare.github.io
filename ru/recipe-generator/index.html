@@ -217,8 +217,8 @@
             </div>
 
             <div class="tool-panel" id="rc-grid-panel">
-                <h2>Сетка крафта</h2>
-                <p class="tool-summary">Впишите ID предмета в нужные слоты, остальные оставьте пустыми — пустые крайние ряды и столбцы обрежутся сами. Префикс <code>#</code> означает тег предмета, например <code>#minecraft:planks</code>.</p>
+                <h2 id="rc-grid-title">Сетка крафта</h2>
+                <p class="tool-summary" id="rc-grid-hint">Впишите ID предмета в нужные слоты, остальные оставьте пустыми — пустые крайние ряды и столбцы обрежутся сами. Префикс <code>#</code> означает тег предмета, например <code>#minecraft:planks</code>.</p>
                                 <div class="craft-bench">
                     <div class="craft-grid">
                         <label class="craft-slot"><input id="rc-cell-0" type="text" aria-label="1"></label>
@@ -238,15 +238,6 @@
                 <div class="tool-button-row">
                     <button id="rc-clear-grid" class="tool-button tool-button-secondary" type="button">Очистить сетку</button>
                 </div>
-            </div>
-
-            <div class="tool-panel" id="rc-list-panel" data-single-label="Ингредиент" data-multi-label="Ингредиенты, по одному в строке">
-                <h2 id="rc-list-label">Ингредиенты, по одному в строке</h2>
-                <label class="tool-field">
-                    <span>ID предметов</span>
-                    <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
-                </label>
-                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
             </div>
 
             <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
@@ -337,7 +328,7 @@
     </section>
     <section class="page-section" id="tool-usage">
         <h2 class="section-title">Как пользоваться генератором</h2>
-        <p class="section-intro">Выберите тип рецепта и версию, заполните сетку или список ингредиентов и скопируйте или скачайте JSON вместе с путём.</p>
+        <p class="section-intro">Выберите тип рецепта и версию, заполните слоты из библиотеки предметов или впишите ID, затем скопируйте или скачайте JSON вместе с путём.</p>
         <div class="resource-grid">
             <article class="resource-card"><h3>Тип рецепта и версия</h3><p>У рецептов с формой, без формы, четырёх видов готовки и камнереза свои поля; версия решает, в какой форме будет записан JSON.</p></article>
             <article class="resource-card"><h3>Категория</h3><p>Вкладка книги рецептов, где появится рецепт. У крафта — building, redstone, equipment и misc; у готовки — food, blocks и misc. У камнереза категории нет.</p></article>

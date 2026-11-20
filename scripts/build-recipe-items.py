@@ -180,7 +180,7 @@ SPECIAL = {
     'creeper_head': {'p': 'entity/creeper/creeper', 'c': [8, 8, 8, 8], 's': [64, 32]},
     'piglin_head': {'p': 'entity/piglin/piglin', 'c': [8, 8, 10, 8], 's': [64, 64]},
     'dragon_head': {'p': 'entity/enderdragon/dragon', 'c': [192, 60, 16, 16], 's': [256, 256]},
-    'shield': {'p': 'entity/shield/base', 'c': [1, 1, 12, 22], 's': [64, 64]},
+    'shield': {'p': 'entity/shield/shield_base', 'c': [14, 1, 12, 22], 's': [64, 64]},
     'chest': {'p': 'entity/chest/normal', 'c': [14, 33, 14, 10], 's': [64, 64]},
     'trapped_chest': {'p': 'entity/chest/trapped', 'c': [14, 33, 14, 10], 's': [64, 64]},
     'ender_chest': {'p': 'entity/chest/ender', 'c': [14, 33, 14, 10], 's': [64, 64]},

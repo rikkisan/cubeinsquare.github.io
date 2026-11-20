@@ -970,7 +970,7 @@
             
             el.innerHTML = `
                 <div style="position:relative; display:flex; justify-content:center; align-items:center;">
-                    <img loading="lazy" src="${texUrl}" style="${imgStyle}" onerror="this.src='data:image/png;base64,${TRANSPARENT_PIXEL}'">
+                    <img loading="lazy" src="${texUrl}" style="${imgStyle}" onload="if(this.naturalHeight>this.naturalWidth){this.style.objectFit='cover';this.style.objectPosition='top';}" onerror="this.src='data:image/png;base64,${TRANSPARENT_PIXEL}'">
                     ${badge}
                 </div>
                 <span>${item.name}</span>

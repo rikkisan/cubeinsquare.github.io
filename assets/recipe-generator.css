@@ -56,6 +56,16 @@
     background: #c6c6c6;
 }
 
+/* styles.css hides every span in .gallery-item (the resource pack library's captions); the cropped
+   and letter icons here are spans, so they need to win that back. */
+.gallery-item.rc-lib-item span.rc-icon-crop {
+    display: block;
+}
+
+.gallery-item.rc-lib-item span.rc-icon-fallback {
+    display: flex;
+}
+
 .rc-icon {
     display: block;
     flex: none;
@@ -109,8 +119,7 @@
     box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd, 0 0 0 3px #facc15;
 }
 
-.craft-slot.is-drop,
-.rc-list-field.is-drop textarea {
+.craft-slot.is-drop {
     box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd, 0 0 0 3px #22c55e;
 }
 
@@ -118,37 +127,18 @@
     cursor: pointer;
 }
 
-#rc-result-preview:focus-visible {
-    outline: 2px solid #facc15;
-    outline-offset: 3px;
+/* Cooking and stonecutting use one input: only the middle slot stays. */
+.craft-grid.is-single {
+    grid-template-columns: auto;
 }
 
-.rc-list-field.is-target textarea {
-    border-color: #facc15;
-    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.35);
-}
-
-.rc-list-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 10px;
-}
-
-.rc-list-icons:empty {
+.craft-grid.is-single > .craft-slot:not(:nth-child(5)) {
     display: none;
 }
 
-.rc-list-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: #8b8b8b;
-    box-shadow: inset 2px 2px 0 #373737, inset -2px -2px 0 #fdfdfd;
-    color: #f1f1f1;
-    font-weight: 800;
+#rc-result-preview:focus-visible {
+    outline: 2px solid #facc15;
+    outline-offset: 3px;
 }
 
 @media (max-width: 520px) {

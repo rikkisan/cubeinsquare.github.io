@@ -217,8 +217,8 @@
             </div>
 
             <div class="tool-panel" id="rc-grid-panel">
-                <h2>Grille d’artisanat</h2>
-                <p class="tool-summary">Saisissez un identifiant d’objet dans les cases voulues et laissez les autres vides — les lignes et colonnes vides en bordure sont rognées automatiquement. Le préfixe <code>#</code> désigne un tag d’objet, comme <code>#minecraft:planks</code>.</p>
+                <h2 id="rc-grid-title">Grille d’artisanat</h2>
+                <p class="tool-summary" id="rc-grid-hint">Saisissez un identifiant d’objet dans les cases voulues et laissez les autres vides — les lignes et colonnes vides en bordure sont rognées automatiquement. Le préfixe <code>#</code> désigne un tag d’objet, comme <code>#minecraft:planks</code>.</p>
                                 <div class="craft-bench">
                     <div class="craft-grid">
                         <label class="craft-slot"><input id="rc-cell-0" type="text" aria-label="1"></label>
@@ -238,15 +238,6 @@
                 <div class="tool-button-row">
                     <button id="rc-clear-grid" class="tool-button tool-button-secondary" type="button">Vider la grille</button>
                 </div>
-            </div>
-
-            <div class="tool-panel" id="rc-list-panel" data-single-label="Ingrédient" data-multi-label="Ingrédients, un par ligne">
-                <h2 id="rc-list-label">Ingrédients, un par ligne</h2>
-                <label class="tool-field">
-                    <span>Identifiants d’objets</span>
-                    <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
-                </label>
-                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
             </div>
 
             <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
@@ -337,7 +328,7 @@
     </section>
     <section class="page-section" id="tool-usage">
         <h2 class="section-title">Utiliser le générateur</h2>
-        <p class="section-intro">Choisissez un type de recette et une version, remplissez la grille ou la liste d’ingrédients, puis copiez ou téléchargez le JSON avec son chemin.</p>
+        <p class="section-intro">Choisissez un type de recette et une version, remplissez les cases depuis la bibliothèque d’objets ou en tapant les identifiants, puis copiez ou téléchargez le JSON avec son chemin.</p>
         <div class="resource-grid">
             <article class="resource-card"><h3>Type et version</h3><p>Recettes avec ou sans forme, quatre types de cuisson et tailleur de pierre ont chacun leurs champs ; la version décide de la forme du JSON écrit.</p></article>
             <article class="resource-card"><h3>Catégorie</h3><p>L’onglet du livre de recettes où elle apparaît. L’artisanat utilise building, redstone, equipment et misc ; la cuisson food, blocks et misc. Le tailleur de pierre n’en a pas.</p></article>

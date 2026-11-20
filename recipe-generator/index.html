@@ -217,8 +217,8 @@
             </div>
 
             <div class="tool-panel" id="rc-grid-panel">
-                <h2>Crafting grid</h2>
-                <p class="tool-summary">Type an item id in each slot you need. Leave the rest empty &mdash; empty edge rows and columns are trimmed automatically. Prefix with <code>#</code> for an item tag, like <code>#minecraft:planks</code>.</p>
+                <h2 id="rc-grid-title">Crafting grid</h2>
+                <p class="tool-summary" id="rc-grid-hint">Type an item id in each slot you need. Leave the rest empty &mdash; empty edge rows and columns are trimmed automatically. Prefix with <code>#</code> for an item tag, like <code>#minecraft:planks</code>.</p>
                                 <div class="craft-bench">
                     <div class="craft-grid">
                         <label class="craft-slot"><input id="rc-cell-0" type="text" aria-label="1"></label>
@@ -238,15 +238,6 @@
                 <div class="tool-button-row">
                     <button id="rc-clear-grid" class="tool-button tool-button-secondary" type="button">Clear grid</button>
                 </div>
-            </div>
-
-            <div class="tool-panel" id="rc-list-panel" data-single-label="Ingredient" data-multi-label="Ingredients, one per line">
-                <h2 id="rc-list-label">Ingredients, one per line</h2>
-                <label class="tool-field">
-                    <span>Item ids</span>
-                    <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
-                </label>
-                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
             </div>
 
             <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
@@ -337,7 +328,7 @@
     </section>
     <section class="page-section" id="tool-usage">
         <h2 class="section-title">How to use the generator</h2>
-        <p class="section-intro">Choose a recipe type and version, fill the grid or the ingredient list, and copy or download the JSON with its path.</p>
+        <p class="section-intro">Choose a recipe type and version, fill the slots from the item library or by typing ids, and copy or download the JSON with its path.</p>
         <div class="resource-grid">
             <article class="resource-card"><h3>Recipe type and version</h3><p>Shaped, shapeless, the four cooking types and stonecutting each have their own fields; the target version decides which JSON shape is written.</p></article>
             <article class="resource-card"><h3>Category</h3><p>The recipe book tab the recipe appears in. Crafting uses building, redstone, equipment and misc; cooking uses food, blocks and misc. Stonecutting has none.</p></article>
