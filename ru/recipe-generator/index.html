@@ -135,6 +135,7 @@
         font-size: 13px; font-weight: 700; color: #fff; text-shadow: 2px 2px 0 #3f3f3f; z-index: 1; }
     @media (max-width: 520px) { .craft-slot { width: 56px; height: 56px; } .craft-slot--result { width: 64px; height: 64px; } }
     </style>
+    <link rel="stylesheet" href="/assets/recipe-generator.css">
 </head>
 <body>
 <div class="steam-navbar">
@@ -245,6 +246,18 @@
                     <span>ID предметов</span>
                     <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
                 </label>
+                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
+            </div>
+
+            <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
+                <h2>Библиотека предметов</h2>
+                <p class="tool-summary">Выберите слот в сетке (или результат), затем нажмите на предмет, и он встанет туда. Предметы можно и перетаскивать на слоты. В библиотеке только те предметы, что есть в выбранной выше версии игры, а при наведении видно ID предмета.</p>
+                <div class="rc-lib-bar">
+                    <label class="tool-field"><span>Поиск</span><input id="rc-lib-search" type="search" placeholder="алмаз, дубовое бревно, шерсть…" autocomplete="off" spellcheck="false"></label>
+                </div>
+                <p class="rc-lib-target" id="rc-lib-target" aria-live="polite"></p>
+                <div class="gallery-grid rc-lib-grid" id="rc-lib-grid" role="group" aria-label="Предметы"></div>
+                <p class="tool-summary" id="rc-lib-status" aria-live="polite"></p>
             </div>
 
             <div class="tool-panel">
@@ -338,6 +351,8 @@
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
+<script src="/assets/recipe-items.js"></script>
+<script src="/assets/recipe-items-ru.js"></script>
 <script src="/assets/recipe-generator.js"></script>
 </body>
 </html>

@@ -135,6 +135,7 @@
         font-size: 13px; font-weight: 700; color: #fff; text-shadow: 2px 2px 0 #3f3f3f; z-index: 1; }
     @media (max-width: 520px) { .craft-slot { width: 56px; height: 56px; } .craft-slot--result { width: 64px; height: 64px; } }
     </style>
+    <link rel="stylesheet" href="/assets/recipe-generator.css">
 </head>
 <body>
 <div class="steam-navbar">
@@ -245,6 +246,18 @@
                     <span>Item ids</span>
                     <textarea id="rc-ingredients" class="command-output" rows="5">minecraft:cobblestone</textarea>
                 </label>
+                <div class="rc-list-icons" id="rc-list-icons" aria-hidden="true"></div>
+            </div>
+
+            <div class="tool-panel rc-library" id="rc-library" data-nv-skip>
+                <h2>Item library</h2>
+                <p class="tool-summary">Click a slot in the grid (or the result), then click an item to put it there. You can also drag items onto the slots. The library lists only the items that exist in the game version picked above, and hovering an item shows its id.</p>
+                <div class="rc-lib-bar">
+                    <label class="tool-field"><span>Search</span><input id="rc-lib-search" type="search" placeholder="diamond, oak log, wool…" autocomplete="off" spellcheck="false"></label>
+                </div>
+                <p class="rc-lib-target" id="rc-lib-target" aria-live="polite"></p>
+                <div class="gallery-grid rc-lib-grid" id="rc-lib-grid" role="group" aria-label="Items"></div>
+                <p class="tool-summary" id="rc-lib-status" aria-live="polite"></p>
             </div>
 
             <div class="tool-panel">
@@ -338,6 +351,7 @@
 <script src="/assets/site.js"></script>
 <script src="/assets/tracking-config.js"></script>
 <script src="/assets/tracking.js"></script>
+<script src="/assets/recipe-items.js"></script>
 <script src="/assets/recipe-generator.js"></script>
 </body>
 </html>

@@ -23,19 +23,44 @@
   ];
 
   const LOCALE = (document.documentElement.lang || 'en').slice(0, 2);
+  const ruItems = (n) => {
+    const a = n % 10, b = n % 100;
+    if (a === 1 && b !== 11) return 'предмет';
+    return a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'предмета' : 'предметов';
+  };
   const T = {
     en: { copied: 'Copied', empty: 'Fill the grid or ingredient list first.',
           shaped: (n) => `${n} distinct ingredient(s) in the grid.`,
-          list: (n) => `${n} ingredient(s).` },
+          list: (n) => `${n} ingredient(s).`,
+          libTarget: 'Next item goes to:', libSlot: (n) => `slot ${n}`, libResult: 'the result',
+          libList: 'the ingredient list', libResultLabel: 'Result slot',
+          libCount: (n, v) => `${n.toLocaleString('en')} items exist in ${v}.`,
+          libFound: (n) => `Found: ${n}.`, libNone: 'No item matches.', libSince: (v) => `Since ${v}`,
+          libMissing: (list, v) => `Not in ${v}: ${list}. Pick a newer version or another item.` },
     ru: { copied: 'Скопировано', empty: 'Сначала заполните сетку или список ингредиентов.',
           shaped: (n) => `Разных ингредиентов в сетке: ${n}.`,
-          list: (n) => `Ингредиентов: ${n}.` },
+          list: (n) => `Ингредиентов: ${n}.`,
+          libTarget: 'Следующий предмет пойдёт в:', libSlot: (n) => `слот ${n}`, libResult: 'результат',
+          libList: 'список ингредиентов', libResultLabel: 'Слот результата',
+          libCount: (n, v) => `В версии ${v} есть ${n.toLocaleString('ru')} ${ruItems(n)}.`,
+          libFound: (n) => `Найдено: ${n}.`, libNone: 'Ничего не нашлось.', libSince: (v) => `С версии ${v}`,
+          libMissing: (list, v) => `Нет в версии ${v}: ${list}. Выберите версию новее или другой предмет.` },
     fr: { copied: 'Copié', empty: 'Remplissez d’abord la grille ou la liste.',
           shaped: (n) => `${n} ingrédient(s) distinct(s) dans la grille.`,
-          list: (n) => `${n} ingrédient(s).` },
+          list: (n) => `${n} ingrédient(s).`,
+          libTarget: 'Le prochain objet ira dans :', libSlot: (n) => `la case ${n}`, libResult: 'le résultat',
+          libList: 'la liste d’ingrédients', libResultLabel: 'Case du résultat',
+          libCount: (n, v) => `${n.toLocaleString('fr')} objets existent en ${v}.`,
+          libFound: (n) => `Trouvés : ${n}.`, libNone: 'Aucun objet ne correspond.', libSince: (v) => `Depuis la ${v}`,
+          libMissing: (list, v) => `Absent en ${v} : ${list}. Choisissez une version plus récente ou un autre objet.` },
     de: { copied: 'Kopiert', empty: 'Fülle zuerst das Raster oder die Zutatenliste.',
           shaped: (n) => `${n} verschiedene Zutat(en) im Raster.`,
-          list: (n) => `${n} Zutat(en).` }
+          list: (n) => `${n} Zutat(en).`,
+          libTarget: 'Das nächste Item kommt in:', libSlot: (n) => `Feld ${n}`, libResult: 'das Ergebnis',
+          libList: 'die Zutatenliste', libResultLabel: 'Ergebnisfeld',
+          libCount: (n, v) => `In ${v} gibt es ${n.toLocaleString('de')} Items.`,
+          libFound: (n) => `Gefunden: ${n}.`, libNone: 'Kein Item passt.', libSince: (v) => `Seit ${v}`,
+          libMissing: (list, v) => `Nicht in ${v}: ${list}. Wähle eine neuere Version oder ein anderes Item.` }
   };
   const t = T[LOCALE] || T.en;
 
@@ -213,6 +238,361 @@
     return id.replace(/^#/, '').split(':').pop().replace(/_/g, ' ');
   }
 
+  // ---- Item library ------------------------------------------------------------------------
+  // Every 26.3 item with its icon, from assets/recipe-items.js (and recipe-items-<lang>.js for
+  // local names). Icons load from the texture mirror; a failed icon falls back to a letter.
+  const LIB = window.RECIPE_ITEM_LIBRARY || null;
+  const LOCAL_NAMES = window.RECIPE_ITEM_NAMES || {};
+  const library = LIB ? LIB.items.map(([id, tex, since, en]) => {
+    const local = LOCAL_NAMES[id] || '';
+    return { id, tex, since, en, name: local || en,
+      search: [id.replace(/_/g, ' '), en, local].join(' ').toLowerCase() };
+  }) : [];
+  const libraryById = new Map(library.map((entry) => [entry.id, entry]));
+  let target = { kind: 'cell', index: 0 };
+
+  function libraryEntry(value) {
+    const id = namespacedItem(value);
+    if (!id || id.startsWith('#') || !id.startsWith('minecraft:')) return null;
+    return libraryById.get(id.slice(10)) || null;
+  }
+
+  function versionIndex() {
+    if (!LIB) return Infinity;
+    const index = LIB.versions.indexOf($('rc-version').value);
+    return index < 0 ? LIB.versions.length - 1 : index;
+  }
+
+  function versionLabel() {
+    const option = $('rc-version').selectedOptions[0];
+    return option ? option.textContent.trim() : $('rc-version').value;
+  }
+
+  function texturePath(entry) {
+    if (entry.tex === '') return 'item/' + entry.id;
+    if (entry.tex === '=') return 'block/' + entry.id;
+    return entry.tex;
+  }
+
+  function fallbackIcon(entry, size) {
+    const span = document.createElement('span');
+    span.className = 'rc-icon rc-icon-fallback';
+    span.style.width = span.style.height = size + 'px';
+    span.textContent = (entry.name || entry.id).charAt(0).toUpperCase();
+    return span;
+  }
+
+  /** An icon element for a library entry, `size` px on its longer side. */
+  function itemIcon(entry, size, lazy) {
+    if (!LIB || entry.tex === '-') return fallbackIcon(entry, size);
+    if (entry.tex && typeof entry.tex === 'object') {
+      // Entity-drawn items (heads, chests, banners, the shield): one face cropped from the entity texture.
+      const [x, y, w, h] = entry.tex.c;
+      const [tw, th] = entry.tex.s;
+      const scale = size / Math.max(w, h);
+      const span = document.createElement('span');
+      span.className = 'rc-icon rc-icon-crop';
+      span.style.width = Math.round(w * scale) + 'px';
+      span.style.height = Math.round(h * scale) + 'px';
+      span.style.backgroundImage = `url("${LIB.textureBase}${entry.tex.p}.png")`;
+      span.style.backgroundSize = `${tw * scale}px ${th * scale}px`;
+      span.style.backgroundPosition = `${-x * scale}px ${-y * scale}px`;
+      if (entry.tex.t) {
+        span.style.backgroundColor = entry.tex.t;
+        span.style.backgroundBlendMode = 'multiply';
+      }
+      return span;
+    }
+    const img = document.createElement('img');
+    img.className = 'rc-icon';
+    img.width = size;
+    img.height = size;
+    img.alt = '';
+    img.decoding = 'async';
+    img.referrerPolicy = 'no-referrer';
+    if (lazy) img.loading = 'lazy';
+    img.addEventListener('error', () => img.replaceWith(fallbackIcon(entry, size)), { once: true });
+    img.src = LIB.textureBase + texturePath(entry) + '.png';
+    return img;
+  }
+
+  /** Draw (or clear) the icon inside a slot when its item changes. */
+  function setSlotIcon(slot, entry, size) {
+    const id = entry ? entry.id : '';
+    if (slot.dataset.iconId === id) return;
+    slot.dataset.iconId = id;
+    const old = slot.querySelector(':scope > .rc-slot-icon');
+    if (old) old.remove();
+    slot.classList.toggle('has-icon', Boolean(entry));
+    if (!entry) return;
+    const holder = document.createElement('span');
+    holder.className = 'rc-slot-icon';
+    holder.setAttribute('aria-hidden', 'true');
+    holder.append(itemIcon(entry, size, false));
+    slot.prepend(holder);
+  }
+
+  /** Icons under the ingredient list for the recipe types that use it. */
+  function paintListIcons() {
+    const strip = $('rc-list-icons');
+    if (!strip) return;
+    const key = listIngredients().join('|');
+    if (strip.dataset.key === key) return;
+    strip.dataset.key = key;
+    strip.replaceChildren();
+    listIngredients().forEach((id) => {
+      const entry = libraryEntry(id);
+      const cell = document.createElement('span');
+      cell.className = 'rc-list-icon';
+      cell.title = entry ? `${entry.name} (${id})` : id;
+      if (entry) cell.append(itemIcon(entry, 32, false));
+      else cell.textContent = shortLabel(id).charAt(0).toUpperCase() || '?';
+      strip.append(cell);
+    });
+  }
+
+  function targetLabel() {
+    if (target.kind === 'cell') return t.libSlot(target.index + 1);
+    return target.kind === 'result' ? t.libResult : t.libList;
+  }
+
+  function paintTarget() {
+    document.querySelectorAll('.craft-slot.is-target, .rc-list-field.is-target').forEach((el) => el.classList.remove('is-target'));
+    let el = null;
+    if (target.kind === 'cell') el = $('rc-cell-' + target.index)?.parentElement;
+    else if (target.kind === 'result') el = $('rc-result-preview');
+    else el = $('rc-ingredients')?.closest('.tool-field');
+    if (el) el.classList.add('is-target', target.kind === 'list' ? 'rc-list-field' : 'craft-slot');
+    const label = $('rc-lib-target');
+    if (label) {
+      label.replaceChildren(t.libTarget + ' ');
+      const strong = document.createElement('strong');
+      strong.textContent = targetLabel();
+      label.append(strong);
+    }
+  }
+
+  function setTarget(next) {
+    target = next;
+    paintTarget();
+  }
+
+  /** Keep the target on something visible when the recipe type changes. */
+  function fitTarget() {
+    const shaped = $('rc-type').value === 'minecraft:crafting_shaped';
+    if (shaped && target.kind === 'list') setTarget({ kind: 'cell', index: 0 });
+    else if (!shaped && target.kind === 'cell') setTarget({ kind: 'list' });
+  }
+
+  function placeItem(entry, where, advance) {
+    const id = 'minecraft:' + entry.id;
+    if (where.kind === 'cell') {
+      $('rc-cell-' + where.index).value = id;
+      if (advance && where.index < 8) setTarget({ kind: 'cell', index: where.index + 1 });
+    } else if (where.kind === 'result') {
+      $('rc-result').value = id;
+    } else {
+      const field = $('rc-ingredients');
+      const single = $('rc-type').value !== 'minecraft:crafting_shapeless';
+      const lines = listIngredients();
+      field.value = single ? id : lines.concat(id).slice(0, 9).join('\n');
+    }
+    update();
+  }
+
+  const libGrid = $('rc-lib-grid');
+  const libButtons = [];
+  const tooltip = document.createElement('div');
+
+  function showTooltip(entry, event) {
+    tooltip.replaceChildren();
+    const title = document.createElement('div');
+    title.className = 'tt-title';
+    title.textContent = entry.name;
+    const idLine = document.createElement('div');
+    idLine.className = 'tt-id';
+    idLine.textContent = 'minecraft:' + entry.id;
+    tooltip.append(title, idLine);
+    if (entry.since > 0) {
+      const since = document.createElement('div');
+      since.className = 'tt-since';
+      since.textContent = t.libSince(LIB.versions[entry.since]);
+      tooltip.append(since);
+    }
+    tooltip.style.display = 'flex';
+    moveTooltip(event);
+  }
+
+  function moveTooltip(event) {
+    if (tooltip.style.display !== 'flex') return;
+    const box = tooltip.getBoundingClientRect();
+    const x = Math.min(event.clientX + 14, window.innerWidth - box.width - 8);
+    const y = Math.min(event.clientY + 14, window.innerHeight - box.height - 8);
+    tooltip.style.left = Math.max(8, x) + 'px';
+    tooltip.style.top = Math.max(8, y) + 'px';
+  }
+
+  function hideTooltip() {
+    tooltip.style.display = 'none';
+  }
+
+  function visibleButtons() {
+    return libButtons.filter((button) => !button.hidden);
+  }
+
+  /** One tab stop for the whole grid; arrow keys move inside it. */
+  function setRovingFocus(button, focus) {
+    libButtons.forEach((b) => { b.tabIndex = -1; });
+    if (!button) return;
+    button.tabIndex = 0;
+    if (focus) button.focus();
+  }
+
+  function filterLibrary() {
+    if (!libGrid) return;
+    const query = ($('rc-lib-search').value || '').trim().toLowerCase().replace(/_/g, ' ');
+    const max = versionIndex();
+    let shown = 0;
+    libButtons.forEach((button) => {
+      const entry = libraryById.get(button.dataset.id);
+      const visible = entry.since <= max && (!query || entry.search.includes(query));
+      button.hidden = !visible;
+      if (visible) shown += 1;
+    });
+    const first = visibleButtons()[0];
+    if (!libButtons.some((b) => b.tabIndex === 0 && !b.hidden)) setRovingFocus(first, false);
+    $('rc-lib-status').textContent = query ? (shown ? t.libFound(shown) : t.libNone) : t.libCount(shown, versionLabel());
+  }
+
+  function buildLibrary() {
+    if (!libGrid || !library.length) {
+      const panel = $('rc-library');
+      if (panel) panel.hidden = true;
+      return;
+    }
+    tooltip.className = 'mc-tooltip';
+    document.body.append(tooltip);
+    const fragment = document.createDocumentFragment();
+    library.forEach((entry) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'gallery-item rc-lib-item';
+      button.dataset.id = entry.id;
+      button.draggable = true;
+      button.tabIndex = -1;
+      button.setAttribute('aria-label', entry.name);
+      button.append(itemIcon(entry, 32, true));
+      libButtons.push(button);
+      fragment.append(button);
+    });
+    libGrid.append(fragment);
+
+    libGrid.addEventListener('click', (event) => {
+      const button = event.target.closest('.rc-lib-item');
+      if (!button) return;
+      setRovingFocus(button, false);
+      placeItem(libraryById.get(button.dataset.id), target, true);
+    });
+    libGrid.addEventListener('pointerover', (event) => {
+      const button = event.target.closest('.rc-lib-item');
+      if (button && event.pointerType === 'mouse') showTooltip(libraryById.get(button.dataset.id), event);
+    });
+    libGrid.addEventListener('pointermove', moveTooltip);
+    libGrid.addEventListener('pointerleave', hideTooltip);
+    libGrid.addEventListener('scroll', hideTooltip, { passive: true });
+    libGrid.addEventListener('dragstart', (event) => {
+      const button = event.target.closest('.rc-lib-item');
+      if (!button) return;
+      hideTooltip();
+      event.dataTransfer.setData('application/x-cube-item', button.dataset.id);
+      event.dataTransfer.setData('text/plain', 'minecraft:' + button.dataset.id);
+      event.dataTransfer.effectAllowed = 'copy';
+    });
+    libGrid.addEventListener('keydown', (event) => {
+      const list = visibleButtons();
+      const index = list.indexOf(document.activeElement);
+      if (index < 0) return;
+      const columns = list.filter((b) => b.offsetTop === list[0].offsetTop).length || 1;
+      const moves = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: columns, ArrowUp: -columns };
+      let next = null;
+      if (event.key in moves) next = list[Math.max(0, Math.min(list.length - 1, index + moves[event.key]))];
+      else if (event.key === 'Home') next = list[0];
+      else if (event.key === 'End') next = list[list.length - 1];
+      if (!next) return;
+      event.preventDefault();
+      setRovingFocus(next, true);
+    });
+
+    const search = $('rc-lib-search');
+    search.addEventListener('input', filterLibrary);
+    search.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const first = visibleButtons()[0];
+        if (first) placeItem(libraryById.get(first.dataset.id), target, true);
+      } else if (event.key === 'ArrowDown') {
+        const first = visibleButtons()[0];
+        if (first) { event.preventDefault(); setRovingFocus(first, true); }
+      }
+    });
+
+    // Where the next item goes: the slot, result or list the user last touched.
+    for (let i = 0; i < 9; i++) {
+      $('rc-cell-' + i).addEventListener('focus', () => setTarget({ kind: 'cell', index: i }));
+    }
+    $('rc-result').addEventListener('focus', () => setTarget({ kind: 'result' }));
+    $('rc-ingredients').addEventListener('focus', () => setTarget({ kind: 'list' }));
+    const preview = $('rc-result-preview');
+    preview.tabIndex = 0;
+    preview.setAttribute('role', 'button');
+    preview.setAttribute('aria-label', t.libResultLabel);
+    preview.addEventListener('click', () => setTarget({ kind: 'result' }));
+    preview.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setTarget({ kind: 'result' });
+      }
+    });
+
+    // Drops: library items onto a slot, the result or the ingredient list.
+    const dropTargets = [];
+    for (let i = 0; i < 9; i++) dropTargets.push([$('rc-cell-' + i).parentElement, { kind: 'cell', index: i }]);
+    dropTargets.push([preview, { kind: 'result' }]);
+    dropTargets.push([$('rc-ingredients').closest('.tool-field'), { kind: 'list' }]);
+    dropTargets.forEach(([el, where]) => {
+      el.addEventListener('dragover', (event) => {
+        if (!event.dataTransfer.types.includes('application/x-cube-item')) return;
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+        el.classList.add('is-drop');
+      });
+      el.addEventListener('dragleave', () => el.classList.remove('is-drop'));
+      el.addEventListener('drop', (event) => {
+        const id = event.dataTransfer.getData('application/x-cube-item');
+        el.classList.remove('is-drop');
+        if (!id || !libraryById.has(id)) return;
+        event.preventDefault();
+        placeItem(libraryById.get(id), where, false);
+      });
+    });
+
+    paintTarget();
+  }
+
+  /** Items in the recipe that the chosen version does not have yet. */
+  function missingInVersion() {
+    if (!LIB) return '';
+    const max = versionIndex();
+    const type = $('rc-type').value;
+    const used = (type === 'minecraft:crafting_shaped' ? gridItems() : listIngredients()).concat(namespacedItem($('rc-result').value));
+    const missing = [];
+    used.forEach((value) => {
+      const entry = libraryEntry(value);
+      if (entry && entry.since > max && !missing.includes(entry.name)) missing.push(entry.name);
+    });
+    return missing.length ? t.libMissing(missing.join(', '), versionLabel()) : '';
+  }
+
   /** Reflect what is typed into the grid onto the crafting-table visual. */
   function paintGrid() {
     for (let i = 0; i < 9; i++) {
@@ -220,25 +600,33 @@
       if (!input) continue;
       const slot = input.parentElement;
       const label = shortLabel(input.value);
+      const entry = libraryEntry(input.value);
       slot.classList.toggle('is-filled', Boolean(label));
       slot.dataset.label = label;
-      input.title = input.value.trim();
+      input.title = entry ? `${entry.name} (${input.value.trim()})` : input.value.trim();
+      setSlotIcon(slot, entry, 48);
     }
     const preview = $('rc-result-preview');
     if (!preview) return;
     const label = shortLabel($('rc-result').value);
+    const entry = libraryEntry($('rc-result').value);
     preview.dataset.label = label;
+    preview.title = entry ? entry.name : label;
     preview.classList.toggle('is-filled', Boolean(label));
+    setSlotIcon(preview, entry, 56);
     const count = Math.max(1, Math.min(64, Number($('rc-result-count').value) || 1));
     preview.dataset.count = count > 1 ? String(count) : '';
   }
 
   function update() {
     syncVisibility();
+    fitTarget();
     paintGrid();
+    paintListIcons();
+    filterLibrary();
     const built = buildRecipe();
     $('rc-output').value = built.json ? JSON.stringify(built.json, null, 2) : '';
-    $('rc-summary').textContent = built.note;
+    $('rc-summary').textContent = [built.note, missingInVersion()].filter(Boolean).join(' ');
     $('rc-path').textContent = filePath();
   }
 
@@ -320,6 +708,7 @@
     track('tool_download', { file_kind: 'json', mc_version: $('rc-version').value });
   });
 
+  buildLibrary();
   PRESETS.shaped();
   update();
 })();

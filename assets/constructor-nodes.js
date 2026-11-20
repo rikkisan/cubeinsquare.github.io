@@ -15,6 +15,7 @@
   const source = main && main.querySelector('.tool-layout, .item-builder-layout, .potion-layout');
   if (!source) return;
   const controls = 'input:not([type="hidden"]):not([type="file"]):not([type="submit"]):not([type="button"]), select, textarea';
+  // Anything inside [data-nv-skip] (the recipe generator's item library) stays a form-only helper.
   const groups = '.tool-panel, .trade-card, .effect-card, .blb-page-card, .dg-line-card, .imb-branch-card, .message-part, .item-version-group';
   const repeat = '.effect-card, .blb-page-card, .dg-line-card, .imb-branch-card, [data-trade-card], .message-part';
   const el = (tag, cls, content) => { const e=document.createElement(tag); if(cls) e.className=cls; if(content) e.textContent=content; return e; };
@@ -67,7 +68,7 @@
   function collect(){
     const map=new Map();
     source.querySelectorAll(controls).forEach(f=>{
-      if(f.readOnly||!shown(f))return;
+      if(f.readOnly||!shown(f)||f.closest('[data-nv-skip]'))return;
       const group=f.closest(groups)||source;
       if(!map.has(group))map.set(group,[]);
       map.get(group).push(f);
@@ -131,7 +132,7 @@
   function refreshActions(){
     actionList.replaceChildren();actionProxies=[];
     source.querySelectorAll('button').forEach(b=>{
-      if(!shown(b)||b.closest(repeat))return;
+      if(!shown(b)||b.closest(repeat)||b.closest('[data-nv-skip]'))return;
       const copy=proxyButton(b);actionList.append(copy);actionProxies.push({original:b,copy});
     });
   }
@@ -144,7 +145,7 @@
       const heading=el('p','nv-output-label',fieldLabel(f));const area=el('textarea','nv-output-text');area.readOnly=true;area.value=f.value??f.textContent;
       const copy=button(text.copy,async()=>{try{await navigator.clipboard.writeText(area.value);track('tool_copy',copyParams(f));live.textContent=text.copied;}catch(_){area.focus();area.select();}});const sourceCopy=[...(f.closest('.tool-panel')?.querySelectorAll('button')||[])].find(b=>/copy/i.test(b.id));copy.disabled=Boolean(sourceCopy?.disabled);output.append(heading,area,copy);
     });
-    source.querySelectorAll('.tool-summary[id],[role="alert"]').forEach(e=>{if(shown(e)&&e.textContent.trim())output.append(el('p','nv-output-label',e.textContent.trim()));});
+    source.querySelectorAll('.tool-summary[id],[role="alert"]').forEach(e=>{if(shown(e)&&!e.closest('[data-nv-skip]')&&e.textContent.trim())output.append(el('p','nv-output-label',e.textContent.trim()));});
     if(!output.children.length)output.append(el('p','',text.empty));
     actionProxies.forEach(({original,copy})=>copy.disabled=original.disabled);
   }

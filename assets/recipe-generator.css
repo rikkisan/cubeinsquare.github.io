@@ -1,0 +1,153 @@
+/* Recipe generator: item library and item icons in the crafting slots.
+   Loaded after the page's inline crafting-bench styles; the grid and tooltip
+   look comes from .gallery-grid / .gallery-item / .mc-tooltip in styles.css. */
+
+.rc-lib-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 10px 16px;
+    margin: 14px 0 10px;
+}
+
+.rc-lib-bar .tool-field {
+    flex: 1 1 240px;
+    margin: 0;
+}
+
+.rc-lib-target {
+    margin: 0 0 10px;
+    color: var(--text-dim);
+    font-size: 0.92rem;
+}
+
+.rc-lib-target strong {
+    color: var(--text-main);
+}
+
+.rc-lib-grid {
+    grid-template-columns: repeat(auto-fill, 36px);
+    justify-content: start;
+    max-height: 332px;
+}
+
+.rc-lib-item {
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    box-sizing: content-box;
+}
+
+.rc-lib-item[hidden] {
+    display: none;
+}
+
+.rc-lib-item:focus-visible {
+    outline: 2px solid #facc15;
+    outline-offset: -2px;
+    background: #c6c6c6;
+}
+
+.rc-icon {
+    display: block;
+    flex: none;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    object-fit: cover;
+    object-position: top;
+    pointer-events: none;
+}
+
+.rc-icon-crop {
+    background-repeat: no-repeat;
+}
+
+.rc-icon-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3f3f3f;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.mc-tooltip .tt-since {
+    margin-top: 2px;
+    color: #7fbfff;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+}
+
+/* Icons inside the crafting slots and the result. */
+.craft-slot .rc-slot-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.craft-slot.has-icon::after {
+    content: none;
+}
+
+.craft-slot.has-icon,
+.craft-slot.has-icon.is-filled {
+    background: #8b8b8b;
+}
+
+.craft-slot.is-target {
+    box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd, 0 0 0 3px #facc15;
+}
+
+.craft-slot.is-drop,
+.rc-list-field.is-drop textarea {
+    box-shadow: inset 3px 3px 0 #373737, inset -3px -3px 0 #fdfdfd, 0 0 0 3px #22c55e;
+}
+
+#rc-result-preview {
+    cursor: pointer;
+}
+
+#rc-result-preview:focus-visible {
+    outline: 2px solid #facc15;
+    outline-offset: 3px;
+}
+
+.rc-list-field.is-target textarea {
+    border-color: #facc15;
+    box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.35);
+}
+
+.rc-list-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 10px;
+}
+
+.rc-list-icons:empty {
+    display: none;
+}
+
+.rc-list-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #8b8b8b;
+    box-shadow: inset 2px 2px 0 #373737, inset -2px -2px 0 #fdfdfd;
+    color: #f1f1f1;
+    font-weight: 800;
+}
+
+@media (max-width: 520px) {
+    .craft-slot .rc-slot-icon .rc-icon:not(.rc-icon-crop) {
+        width: 40px;
+        height: 40px;
+    }
+}
