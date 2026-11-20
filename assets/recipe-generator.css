@@ -2,6 +2,12 @@
    Loaded after the page's inline crafting-bench styles; the grid and tooltip
    look comes from .gallery-grid / .gallery-item / .mc-tooltip in styles.css. */
 
+/* .tool-form-grid and .tool-field set display, which beats the hidden attribute: without this the
+   cooking fields showed on crafting recipes, the count on cooking ones and the light level always. */
+.recipe-page [hidden] {
+    display: none !important;
+}
+
 .rc-lib-bar {
     display: flex;
     flex-wrap: wrap;
@@ -150,4 +156,28 @@
         width: 40px;
         height: 40px;
     }
+}
+
+/* Result components (1.20.5+). */
+.rc-components {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.rc-components h3 {
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+}
+
+.rc-components .tool-form-grid {
+    margin-top: 12px;
+}
+
+.rc-components #rc-components-fields > .tool-field {
+    margin-top: 12px;
+}
+
+.rc-json {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }

@@ -282,6 +282,21 @@
                         <input id="rc-cookingtime" type="number" min="1" max="10000" value="200">
                     </label>
                 </div>
+                <div class="rc-components" id="rc-components">
+                    <h3>Composants du résultat</h3>
+                    <p class="tool-summary" id="rc-components-off" hidden>Avant la 1.20.5, le résultat d’une recette n’est qu’un objet et une quantité. Choisissez la 1.20.5 ou plus récente pour ajouter des composants.</p>
+                    <div id="rc-components-fields">
+                        <p class="tool-summary">Depuis la 1.20.5, l’objet fabriqué peut porter son propre nom, une description, des enchantements et d’autres composants. Un champ vide est ignoré.</p>
+                        <div class="tool-form-grid">
+                            <label class="tool-field"><span>Nom</span><input id="rc-name" type="text" placeholder="Lame de l’aube" autocomplete="off"></label>
+                            <label class="tool-field" id="rc-light-field" hidden><span>Niveau de lumière</span><select id="rc-light-level"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15 (par défaut)</option></select></label>
+                            <label class="tool-checkline"><input id="rc-unbreakable" type="checkbox"><span>Incassable</span></label>
+                        </div>
+                        <label class="tool-field"><span>Description, une ligne par entrée</span><textarea id="rc-lore" rows="2" placeholder="Forgée à l’aube"></textarea></label>
+                        <label class="tool-field"><span>Enchantements, « id niveau » par ligne</span><textarea id="rc-enchantments" rows="2" placeholder="sharpness 5" spellcheck="false"></textarea></label>
+                        <label class="tool-field"><span>Autres composants, JSON</span><textarea id="rc-extra" class="rc-json" rows="3" placeholder='{"minecraft:rarity": "epic"}' spellcheck="false"></textarea></label>
+                    </div>
+                </div>
             </div>
 
             <div class="tool-panel">

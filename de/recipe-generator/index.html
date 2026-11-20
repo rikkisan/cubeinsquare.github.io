@@ -282,6 +282,21 @@
                         <input id="rc-cookingtime" type="number" min="1" max="10000" value="200">
                     </label>
                 </div>
+                <div class="rc-components" id="rc-components">
+                    <h3>Komponenten des Ergebnisses</h3>
+                    <p class="tool-summary" id="rc-components-off" hidden>Vor 1.20.5 ist das Ergebnis eines Rezepts nur ein Item mit Anzahl. Wähle 1.20.5 oder neuer, um Komponenten hinzuzufügen.</p>
+                    <div id="rc-components-fields">
+                        <p class="tool-summary">Ab 1.20.5 kann das hergestellte Item einen eigenen Namen, eine Beschreibung, Verzauberungen und weitere Komponenten tragen. Leere Felder werden übersprungen.</p>
+                        <div class="tool-form-grid">
+                            <label class="tool-field"><span>Name</span><input id="rc-name" type="text" placeholder="Klinge der Morgenröte" autocomplete="off"></label>
+                            <label class="tool-field" id="rc-light-field" hidden><span>Lichtstufe</span><select id="rc-light-level"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15 (Standard)</option></select></label>
+                            <label class="tool-checkline"><input id="rc-unbreakable" type="checkbox"><span>Unzerbrechlich</span></label>
+                        </div>
+                        <label class="tool-field"><span>Beschreibung, eine Zeile pro Eintrag</span><textarea id="rc-lore" rows="2" placeholder="Im ersten Licht geschmiedet"></textarea></label>
+                        <label class="tool-field"><span>Verzauberungen, „ID Stufe“ pro Zeile</span><textarea id="rc-enchantments" rows="2" placeholder="sharpness 5" spellcheck="false"></textarea></label>
+                        <label class="tool-field"><span>Weitere Komponenten, JSON</span><textarea id="rc-extra" class="rc-json" rows="3" placeholder='{"minecraft:rarity": "epic"}' spellcheck="false"></textarea></label>
+                    </div>
+                </div>
             </div>
 
             <div class="tool-panel">

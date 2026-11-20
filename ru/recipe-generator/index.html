@@ -282,6 +282,21 @@
                         <input id="rc-cookingtime" type="number" min="1" max="10000" value="200">
                     </label>
                 </div>
+                <div class="rc-components" id="rc-components">
+                    <h3>Компоненты результата</h3>
+                    <p class="tool-summary" id="rc-components-off" hidden>До 1.20.5 результат рецепта — только предмет и количество. Чтобы добавить компоненты, выберите 1.20.5 или новее.</p>
+                    <div id="rc-components-fields">
+                        <p class="tool-summary">С версии 1.20.5 созданный предмет может нести своё название, описание, зачарования и другие компоненты. Пустые поля пропускаются.</p>
+                        <div class="tool-form-grid">
+                            <label class="tool-field"><span>Название</span><input id="rc-name" type="text" placeholder="Клинок рассвета" autocomplete="off"></label>
+                            <label class="tool-field" id="rc-light-field" hidden><span>Уровень света</span><select id="rc-light-level"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15 (по умолчанию)</option></select></label>
+                            <label class="tool-checkline"><input id="rc-unbreakable" type="checkbox"><span>Неразрушимый</span></label>
+                        </div>
+                        <label class="tool-field"><span>Описание, по строке</span><textarea id="rc-lore" rows="2" placeholder="Выкован на рассвете"></textarea></label>
+                        <label class="tool-field"><span>Зачарования, по строке «id уровень»</span><textarea id="rc-enchantments" rows="2" placeholder="sharpness 5" spellcheck="false"></textarea></label>
+                        <label class="tool-field"><span>Другие компоненты, JSON</span><textarea id="rc-extra" class="rc-json" rows="3" placeholder='{"minecraft:rarity": "epic"}' spellcheck="false"></textarea></label>
+                    </div>
+                </div>
             </div>
 
             <div class="tool-panel">

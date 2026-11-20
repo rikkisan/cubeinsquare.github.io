@@ -282,6 +282,21 @@
                         <input id="rc-cookingtime" type="number" min="1" max="10000" value="200">
                     </label>
                 </div>
+                <div class="rc-components" id="rc-components">
+                    <h3>Result components</h3>
+                    <p class="tool-summary" id="rc-components-off" hidden>Before 1.20.5 a recipe result is only an item and a count. Pick 1.20.5 or newer to add components.</p>
+                    <div id="rc-components-fields">
+                        <p class="tool-summary">From 1.20.5 the crafted item can carry its own name, lore, enchantments and other components. Empty fields are skipped.</p>
+                        <div class="tool-form-grid">
+                            <label class="tool-field"><span>Name</span><input id="rc-name" type="text" placeholder="Dawn blade" autocomplete="off"></label>
+                            <label class="tool-field" id="rc-light-field" hidden><span>Light level</span><select id="rc-light-level"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15" selected>15 (default)</option></select></label>
+                            <label class="tool-checkline"><input id="rc-unbreakable" type="checkbox"><span>Unbreakable</span></label>
+                        </div>
+                        <label class="tool-field"><span>Lore, one line each</span><textarea id="rc-lore" rows="2" placeholder="Forged at first light"></textarea></label>
+                        <label class="tool-field"><span>Enchantments, “id level” per line</span><textarea id="rc-enchantments" rows="2" placeholder="sharpness 5" spellcheck="false"></textarea></label>
+                        <label class="tool-field"><span>Other components, JSON</span><textarea id="rc-extra" class="rc-json" rows="3" placeholder='{"minecraft:rarity": "epic"}' spellcheck="false"></textarea></label>
+                    </div>
+                </div>
             </div>
 
             <div class="tool-panel">

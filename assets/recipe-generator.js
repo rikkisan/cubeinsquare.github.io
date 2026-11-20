@@ -36,7 +36,9 @@
           libList: 'the ingredient list', libResultLabel: 'Result slot',
           libCount: (n, v) => `${n.toLocaleString('en')} items exist in ${v}.`,
           libFound: (n) => `Found: ${n}.`, libNone: 'No item matches.', libSince: (v) => `Since ${v}`,
-          libMissing: (list, v) => `Not in ${v}: ${list}. Pick a newer version or another item.` },
+          libMissing: (list, v) => `Not in ${v}: ${list}. Pick a newer version or another item.`,
+          compBadJson: 'Other components: not a JSON object, so they were left out.',
+          compBadEnch: (line) => `Enchantment line not understood: "${line}".` },
     ru: { copied: 'Скопировано', empty: 'Сначала заполните сетку или список ингредиентов.',
           shaped: (n) => `Разных ингредиентов в сетке: ${n}.`,
           list: (n) => `Ингредиентов: ${n}.`,
@@ -44,7 +46,9 @@
           libList: 'список ингредиентов', libResultLabel: 'Слот результата',
           libCount: (n, v) => `В версии ${v} есть ${n.toLocaleString('ru')} ${ruItems(n)}.`,
           libFound: (n) => `Найдено: ${n}.`, libNone: 'Ничего не нашлось.', libSince: (v) => `С версии ${v}`,
-          libMissing: (list, v) => `Нет в версии ${v}: ${list}. Выберите версию новее или другой предмет.` },
+          libMissing: (list, v) => `Нет в версии ${v}: ${list}. Выберите версию новее или другой предмет.`,
+          compBadJson: 'Другие компоненты: это не JSON-объект, поэтому они пропущены.',
+          compBadEnch: (line) => `Не понял строку зачарования: «${line}».` },
     fr: { copied: 'Copié', empty: 'Remplissez d’abord la grille ou la liste.',
           shaped: (n) => `${n} ingrédient(s) distinct(s) dans la grille.`,
           list: (n) => `${n} ingrédient(s).`,
@@ -52,7 +56,9 @@
           libList: 'la liste d’ingrédients', libResultLabel: 'Case du résultat',
           libCount: (n, v) => `${n.toLocaleString('fr')} objets existent en ${v}.`,
           libFound: (n) => `Trouvés : ${n}.`, libNone: 'Aucun objet ne correspond.', libSince: (v) => `Depuis la ${v}`,
-          libMissing: (list, v) => `Absent en ${v} : ${list}. Choisissez une version plus récente ou un autre objet.` },
+          libMissing: (list, v) => `Absent en ${v} : ${list}. Choisissez une version plus récente ou un autre objet.`,
+          compBadJson: 'Autres composants : ce n’est pas un objet JSON, ils ont été ignorés.',
+          compBadEnch: (line) => `Ligne d’enchantement incomprise : « ${line} ».` },
     de: { copied: 'Kopiert', empty: 'Fülle zuerst das Raster oder die Zutatenliste.',
           shaped: (n) => `${n} verschiedene Zutat(en) im Raster.`,
           list: (n) => `${n} Zutat(en).`,
@@ -60,7 +66,9 @@
           libList: 'die Zutatenliste', libResultLabel: 'Ergebnisfeld',
           libCount: (n, v) => `In ${v} gibt es ${n.toLocaleString('de')} Items.`,
           libFound: (n) => `Gefunden: ${n}.`, libNone: 'Kein Item passt.', libSince: (v) => `Seit ${v}`,
-          libMissing: (list, v) => `Nicht in ${v}: ${list}. Wähle eine neuere Version oder ein anderes Item.` }
+          libMissing: (list, v) => `Nicht in ${v}: ${list}. Wähle eine neuere Version oder ein anderes Item.`,
+          compBadJson: 'Weitere Komponenten: kein JSON-Objekt, daher weggelassen.',
+          compBadEnch: (line) => `Verzauberungszeile nicht verstanden: „${line}“.` }
   };
   const t = T[LOCALE] || T.en;
 
@@ -92,11 +100,69 @@
    * {"item": ...}. Cooking and stonecutting results were a plain id string
    * before 1.20.5 and are an object from then on.
    */
-  function craftingResult(id, count, fmt) {
-    return fmt >= 41 ? { id: id, count: count } : { item: id, count: count };
+  function craftingResult(id, count, fmt, components) {
+    if (fmt < 41) return { item: id, count: count };
+    const result = { id: id, count: count };
+    if (components) result.components = components;
+    return result;
   }
-  function cookingResult(id, fmt) {
-    return fmt >= 41 ? { id: id } : id;
+  function cookingResult(id, fmt, components) {
+    if (fmt < 41) return id;
+    return components ? { id: id, components: components } : { id: id };
+  }
+
+  /**
+   * Components on the result item (1.20.5+). Text was a JSON string until 1.21.4 and a text
+   * component from 1.21.5 (format 71), and enchantments lost their "levels" wrapper there too.
+   * Returns { components, problems }; components is null when nothing is set.
+   */
+  function resultComponents(fmt, resultId) {
+    const problems = [];
+    if (fmt < 41) return { components: null, problems };
+    const components = {};
+    const text = (value, extra) => {
+      const component = Object.assign({ text: value }, extra || {});
+      if (fmt >= 71) return extra ? component : value;
+      return JSON.stringify(component);
+    };
+
+    const name = String($('rc-name').value || '').trim();
+    if (name) components['minecraft:item_name'] = text(name);
+
+    const lore = String($('rc-lore').value || '').split('\n').map((line) => line.trim()).filter(Boolean);
+    if (lore.length) components['minecraft:lore'] = lore.map((line) => text(line, { color: 'gray', italic: false }));
+
+    const levels = {};
+    String($('rc-enchantments').value || '').split('\n').map((line) => line.trim()).filter(Boolean).forEach((line) => {
+      // "sharpness 5", "minecraft:sharpness=5" or just "mending" (level 1).
+      const match = line.toLowerCase().match(/^(\S+?)(?:\s*[\s=*]\s*(\d+))?$/);
+      if (!match || !/^[a-z0-9_.-]+(:[a-z0-9_./-]+)?$/.test(match[1])) { problems.push(t.compBadEnch(line)); return; }
+      const id = match[1].includes(':') ? match[1] : 'minecraft:' + match[1];
+      levels[id] = Math.max(1, Math.min(255, Number(match[2]) || 1));
+    });
+    if (Object.keys(levels).length) components['minecraft:enchantments'] = fmt >= 71 ? levels : { levels: levels };
+
+    if ($('rc-unbreakable').checked) components['minecraft:unbreakable'] = {};
+
+    if (resultId === 'minecraft:light') {
+      const level = Number($('rc-light-level').value);
+      if (Number.isInteger(level) && level >= 0 && level < 15) components['minecraft:block_state'] = { level: String(level) };
+    }
+
+    const extraText = String($('rc-extra').value || '').trim();
+    if (extraText) {
+      let extra = null;
+      try { extra = JSON.parse(extraText); } catch (error) { extra = null; }
+      if (extra && typeof extra === 'object' && !Array.isArray(extra)) {
+        Object.keys(extra).forEach((key) => {
+          const full = key.includes(':') ? key : (key.startsWith('!') ? '!minecraft:' + key.slice(1) : 'minecraft:' + key);
+          components[full] = extra[key];
+        });
+      } else {
+        problems.push(t.compBadJson);
+      }
+    }
+    return { components: Object.keys(components).length ? components : null, problems };
   }
 
   function gridItems() {
@@ -160,6 +226,10 @@
     const resultId = namespacedItem($('rc-result').value) || 'minecraft:stone';
     const resultCount = Math.max(1, Math.min(64, Number($('rc-result-count').value) || 1));
     const category = $('rc-category').value;
+    const extras = resultComponents(fmt, resultId);
+    const components = extras.components;
+    const problems = extras.problems;
+    const note = (text) => [text].concat(problems).join(' ');
 
     if (type === 'minecraft:crafting_shaped') {
       const shaped = buildShaped(fmt);
@@ -168,8 +238,8 @@
       if (category) recipe.category = category;
       recipe.pattern = shaped.pattern;
       recipe.key = shaped.key;
-      recipe.result = craftingResult(resultId, resultCount, fmt);
-      return { json: recipe, note: t.shaped(shaped.count) };
+      recipe.result = craftingResult(resultId, resultCount, fmt, components);
+      return { json: recipe, note: note(t.shaped(shaped.count)) };
     }
 
     if (type === 'minecraft:crafting_shapeless') {
@@ -178,8 +248,8 @@
       const recipe = { type: type };
       if (category) recipe.category = category;
       recipe.ingredients = items.map((id) => ingredient(id, fmt));
-      recipe.result = craftingResult(resultId, resultCount, fmt);
-      return { json: recipe, note: t.list(items.length) };
+      recipe.result = craftingResult(resultId, resultCount, fmt, components);
+      return { json: recipe, note: note(t.list(items.length)) };
     }
 
     if (COOKING.includes(type)) {
@@ -188,12 +258,12 @@
       const recipe = { type: type };
       if (category) recipe.category = category;
       recipe.ingredient = ingredient(items[0], fmt);
-      recipe.result = cookingResult(resultId, fmt);
+      recipe.result = cookingResult(resultId, fmt, components);
       const xp = Number($('rc-experience').value);
       if (Number.isFinite(xp) && xp > 0) recipe.experience = xp;
       const time = Number($('rc-cookingtime').value);
       if (Number.isFinite(time) && time > 0) recipe.cookingtime = Math.round(time);
-      return { json: recipe, note: t.list(1) };
+      return { json: recipe, note: note(t.list(1)) };
     }
 
     // stonecutting
@@ -201,10 +271,10 @@
     if (!items.length) return { json: null, note: t.empty };
     const recipe = { type: type, ingredient: ingredient(items[0], fmt) };
     recipe.result = fmt >= 41
-      ? { id: resultId, count: resultCount }
+      ? craftingResult(resultId, resultCount, fmt, components)
       : resultId;
     if (fmt < 41) recipe.count = resultCount;
-    return { json: recipe, note: t.list(1) };
+    return { json: recipe, note: note(t.list(1)) };
   }
 
   function filePath() {
@@ -226,6 +296,11 @@
     $('rc-cooking-fields').hidden = !isCooking;
     $('rc-category-field').hidden = isStonecutting;
     $('rc-result-count-field').hidden = isCooking;
+    // Result components exist from 1.20.5; the light level only matters for the light block.
+    const withComponents = currentFormat() >= 41;
+    $('rc-components-fields').hidden = !withComponents;
+    $('rc-components-off').hidden = withComponents;
+    $('rc-light-field').hidden = namespacedItem($('rc-result').value) !== 'minecraft:light';
     $('rc-list-label').textContent = (isCooking || isStonecutting)
       ? $('rc-list-panel').dataset.singleLabel
       : $('rc-list-panel').dataset.multiLabel;
