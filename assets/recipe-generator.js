@@ -29,11 +29,12 @@
     return a >= 2 && a <= 4 && (b < 12 || b > 14) ? 'предмета' : 'предметов';
   };
   const T = {
-    en: { copied: 'Copied', empty: 'Fill the grid or ingredient list first.',
+    en: { copied: 'Copied', empty: 'Fill the slots first.',
+          noResult: 'Pick the result: click the result slot and then an item in the library, or type an id under Result item.',
           shaped: (n) => `${n} distinct ingredient(s) in the grid.`,
           list: (n) => `${n} ingredient(s).`,
           libTarget: 'Next item goes to:', libSlot: (n) => `slot ${n}`, libResult: 'the result',
-          libList: 'the ingredient list', libResultLabel: 'Result slot',
+          libResultLabel: 'Result slot',
           libCount: (n, v) => `${n.toLocaleString('en')} items exist in ${v}.`,
           libFound: (n) => `Found: ${n}.`, libNone: 'No item matches.', libSince: (v) => `Since ${v}`,
           libMissing: (list, v) => `Not in ${v}: ${list}. Pick a newer version or another item.`,
@@ -44,11 +45,12 @@
           hintCook: 'Put the item to cook in the slot. Click it and pick an item in the library below, drag one onto it, or type an id. Prefix # for an item tag. Fuel is not part of the recipe.',
           hintCut: 'Put the block the stonecutter takes in the slot. Click it and pick an item in the library below, drag one onto it, or type an id. Prefix # for an item tag.',
           compBadEnch: (line) => `Enchantment line not understood: "${line}".` },
-    ru: { copied: 'Скопировано', empty: 'Сначала заполните сетку или список ингредиентов.',
+    ru: { copied: 'Скопировано', empty: 'Сначала заполните слоты.',
+          noResult: 'Выберите результат: нажмите на слот результата, а затем на предмет в библиотеке, или впишите ID в поле «Предмет на выходе».',
           shaped: (n) => `Разных ингредиентов в сетке: ${n}.`,
           list: (n) => `Ингредиентов: ${n}.`,
           libTarget: 'Следующий предмет пойдёт в:', libSlot: (n) => `слот ${n}`, libResult: 'результат',
-          libList: 'список ингредиентов', libResultLabel: 'Слот результата',
+          libResultLabel: 'Слот результата',
           libCount: (n, v) => `В версии ${v} есть ${n.toLocaleString('ru')} ${ruItems(n)}.`,
           libFound: (n) => `Найдено: ${n}.`, libNone: 'Ничего не нашлось.', libSince: (v) => `С версии ${v}`,
           libMissing: (list, v) => `Нет в версии ${v}: ${list}. Выберите версию новее или другой предмет.`,
@@ -59,11 +61,12 @@
           hintCook: 'Положите в слот то, что нужно приготовить или переплавить. Нажмите на слот и выберите предмет в библиотеке ниже, перетащите его на слот или впишите ID. Префикс # означает тег предмета. Топливо в рецепт не входит.',
           hintCut: 'Положите в слот блок, который режет камнерез. Нажмите на слот и выберите предмет в библиотеке ниже, перетащите его на слот или впишите ID. Префикс # означает тег предмета.',
           compBadEnch: (line) => `Не понял строку зачарования: «${line}».` },
-    fr: { copied: 'Copié', empty: 'Remplissez d’abord la grille ou la liste.',
+    fr: { copied: 'Copié', empty: 'Remplissez d’abord les cases.',
+          noResult: 'Choisissez le résultat : cliquez sur sa case puis sur un objet de la bibliothèque, ou tapez un identifiant dans Objet produit.',
           shaped: (n) => `${n} ingrédient(s) distinct(s) dans la grille.`,
           list: (n) => `${n} ingrédient(s).`,
           libTarget: 'Le prochain objet ira dans :', libSlot: (n) => `la case ${n}`, libResult: 'le résultat',
-          libList: 'la liste d’ingrédients', libResultLabel: 'Case du résultat',
+          libResultLabel: 'Case du résultat',
           libCount: (n, v) => `${n.toLocaleString('fr')} objets existent en ${v}.`,
           libFound: (n) => `Trouvés : ${n}.`, libNone: 'Aucun objet ne correspond.', libSince: (v) => `Depuis la ${v}`,
           libMissing: (list, v) => `Absent en ${v} : ${list}. Choisissez une version plus récente ou un autre objet.`,
@@ -74,11 +77,12 @@
           hintCook: 'Placez dans la case ce qu’il faut cuire ou fondre. Cliquez dessus puis choisissez un objet dans la bibliothèque ci-dessous, glissez-en un ou tapez un identifiant. Le préfixe # désigne un tag d’objets. Le combustible ne fait pas partie de la recette.',
           hintCut: 'Placez dans la case le bloc que prend le tailleur de pierre. Cliquez dessus puis choisissez un objet dans la bibliothèque ci-dessous, glissez-en un ou tapez un identifiant. Le préfixe # désigne un tag d’objets.',
           compBadEnch: (line) => `Ligne d’enchantement incomprise : « ${line} ».` },
-    de: { copied: 'Kopiert', empty: 'Fülle zuerst das Raster oder die Zutatenliste.',
+    de: { copied: 'Kopiert', empty: 'Fülle zuerst die Felder.',
+          noResult: 'Wähl das Ergebnis: Klick auf sein Feld und dann auf ein Item in der Bibliothek, oder tippe eine ID unter Ergebnis-Item.',
           shaped: (n) => `${n} verschiedene Zutat(en) im Raster.`,
           list: (n) => `${n} Zutat(en).`,
           libTarget: 'Das nächste Item kommt in:', libSlot: (n) => `Feld ${n}`, libResult: 'das Ergebnis',
-          libList: 'die Zutatenliste', libResultLabel: 'Ergebnisfeld',
+          libResultLabel: 'Ergebnisfeld',
           libCount: (n, v) => `In ${v} gibt es ${n.toLocaleString('de')} Items.`,
           libFound: (n) => `Gefunden: ${n}.`, libNone: 'Kein Item passt.', libSince: (v) => `Seit ${v}`,
           libMissing: (list, v) => `Nicht in ${v}: ${list}. Wähle eine neuere Version oder ein anderes Item.`,
@@ -254,13 +258,17 @@
   function buildRecipe() {
     const fmt = currentFormat();
     const type = $('rc-type').value;
-    const resultId = namespacedItem($('rc-result').value) || 'minecraft:stone';
+    const resultId = namespacedItem($('rc-result').value);
     const resultCount = Math.max(1, Math.min(64, Number($('rc-result-count').value) || 1));
     const category = $('rc-category').value;
     const extras = resultComponents(fmt, resultId);
     const components = extras.components;
     const problems = extras.problems;
     const note = (text) => [text].concat(problems).join(' ');
+
+    const hasInput = type === 'minecraft:crafting_shaped' ? gridItems().some(Boolean) : slotIngredients().length > 0;
+    if (!hasInput) return { json: null, note: t.empty };
+    if (!resultId) return { json: null, note: t.noResult };
 
     if (type === 'minecraft:crafting_shaped') {
       const shaped = buildShaped(fmt);
@@ -759,8 +767,12 @@
     });
   });
 
+  // Empties every slot, the result included, and starts again from the first visible slot.
   $('rc-clear-grid').addEventListener('click', () => {
     for (let i = 0; i < 9; i++) $('rc-cell-' + i).value = '';
+    $('rc-result').value = '';
+    $('rc-result-count').value = 1;
+    setTarget({ kind: 'cell', index: isSingleType($('rc-type').value) ? SINGLE_CELL : 0 });
     update();
   });
 
