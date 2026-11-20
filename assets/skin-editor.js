@@ -6,6 +6,7 @@
     const HISTORY_LIMIT = 40;
     const PREVIEW_GRID_EDGE_INSET_RATIO = 0.08;
     const PREVIEW_GRID_VISIBILITY_EPSILON = 0.001;
+    const OUTER_LAYER_FADED_OPACITY = 0.15;
     const UI_LANG = (document.documentElement.lang || 'en').toLowerCase();
     const UI_TEXT = {
         en: {
@@ -1155,6 +1156,23 @@
         applyPreviewPartVisibility();
     }
 
+    // While the base layer is the paint target, the outer layer is drawn faded: an opaque hat or jacket
+    // otherwise hides every base stroke, and the base grid would float under a surface you cannot see.
+    function applyOuterLayerFocus(outerLayer) {
+        const faded = state.paintLayer !== 'overlay';
+        outerLayer.traverse((node) => {
+            if (!node.isMesh || !node.material) return;
+            (Array.isArray(node.material) ? node.material : [node.material]).forEach((material) => {
+                if (!material.transparent) {
+                    material.transparent = true;
+                    material.needsUpdate = true;
+                }
+                material.opacity = faded ? OUTER_LAYER_FADED_OPACITY : 1;
+                material.depthWrite = !faded;
+            });
+        });
+    }
+
     function applyPreviewPartVisibility() {
         const showOverlay = Boolean(elements.overlay.checked);
         previewHelperMeshes.forEach((mesh) => {
@@ -1174,6 +1192,7 @@
             }
             if (part.outerLayer) {
                 part.outerLayer.visible = showOverlay && !hidden;
+                applyOuterLayerFocus(part.outerLayer);
             }
         });
 
